@@ -1,137 +1,196 @@
 # -*- coding: utf-8 -*-
 """
-Bouwt een mobielvriendelijke, zelfstandige HTML-pagina (docs/index.html)
-met dezelfde data als het Excelbestand: tab per shop, gesorteerd op score,
-prijsvergelijking met kleur, zoekveld. Geschikt voor GitHub Pages.
+Scraper voor Lightspeed-shops (Bierloods22, Beerdome).
+Werkwijze:
+  1. sitemap.xml lezen -> alle product-URL's
+  2. per productpagina de specificaties parsen (brouwerij, stijl, land, ABV,
+     inhoud, Untappd, prijs, voorraad)
+De parsing is bewust generiek (spec-tabellen, dt/dd, 'label: waarde'-tekst),
+omdat Lightspeed-thema's per shop verschillen. Dankzij de cache worden
+productpagina's bij een volgende run niet opnieuw opgehaald binnen
+CACHE_MAX_AGE_HOURS.
 """
 
-import datetime
-import html
 import logging
+import re
+import xml.etree.ElementTree as ET
 
-import scoring
+from bs4 import BeautifulSoup
+
+import config
+import utils
 
 log = logging.getLogger("bierscraper")
 
-CSS = """
-:root { --groen:#1f4e44; --geel:#fff2cc; --rood:#ffc7ce; --felgroen:#00e676; }
-* { box-sizing:border-box; }
-body { font-family:-apple-system,'Segoe UI',Arial,sans-serif; margin:0; background:#f5f5f2; color:#222; }
-header { background:var(--groen); color:#fff; padding:14px 16px; position:sticky; top:0; z-index:5; }
-header h1 { margin:0; font-size:1.15rem; }
-header .sub { font-size:.75rem; opacity:.85; margin-top:2px; }
-.tabs { display:flex; overflow-x:auto; background:#fff; border-bottom:1px solid #ddd;
-        position:sticky; top:56px; z-index:4; -webkit-overflow-scrolling:touch; }
-.tabs button { flex:0 0 auto; border:0; background:none; padding:12px 14px; font-size:.85rem;
-               border-bottom:3px solid transparent; color:#555; }
-.tabs button.active { color:var(--groen); border-bottom-color:var(--groen); font-weight:600; }
-.toolbar { padding:10px 12px; }
-.toolbar input { width:100%; padding:10px 12px; font-size:1rem; border:1px solid #ccc;
-                 border-radius:10px; -webkit-appearance:none; }
-.panel { display:none; padding:0 8px 40px; }
-.panel.active { display:block; }
-.card { background:#fff; border-radius:12px; margin:8px 4px; padding:12px 14px;
-        box-shadow:0 1px 3px rgba(0,0,0,.08); }
-.card.strong { background:var(--geel); }
-.card .top { display:flex; justify-content:space-between; gap:8px; align-items:baseline; }
-.card .name { font-weight:600; font-size:.95rem; }
-.card .brewery { color:#666; font-size:.8rem; }
-.card .score { background:var(--groen); color:#fff; border-radius:8px; padding:2px 8px;
-               font-size:.85rem; font-weight:700; white-space:nowrap; }
-.card .meta { font-size:.78rem; color:#555; margin-top:6px; }
-.card .price-row { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; font-size:.78rem; }
-.badge { border-radius:6px; padding:3px 7px; background:#eee; }
-.badge.own { background:var(--groen); color:#fff; font-weight:600; }
-.badge.hoger { background:var(--rood); }
-.badge.lager { background:var(--felgroen); font-weight:600; }
-.card a { color:var(--groen); font-size:.8rem; }
-.empty { text-align:center; color:#888; padding:30px 0; }
-.dl { display:inline-block; margin-top:6px; color:#fff; text-decoration:underline; font-size:.78rem; }
-"""
-
-JS = """
-function showTab(key){
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.key===key));
+LABELS = {
+    "brouwerij": ["brouwerij", "brewery", "brouwer"],
+    "stijl": ["bierstijl", "stijl", "style", "beer style", "biersoort", "soort"],
+    "land": ["land", "country", "land van herkomst", "herkomst"],
+    "abv": ["alcohol", "alcoholpercentage", "abv", "alc"],
+    "inhoud": ["inhoud", "volume", "content", "size"],
+    "untappd": ["untappd", "untappd score", "untappd rating"],
 }
-function filter(){
-  const q=document.getElementById('zoek').value.toLowerCase();
-  document.querySelectorAll('.panel.active .card').forEach(c=>{
-    c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';
-  });
-}
-"""
+
+OUT_OF_STOCK_MARKERS = [
+    "uitverkocht", "niet op voorraad", "out of stock", "sold out",
+    "niet leverbaar", "tijdelijk uitverkocht",
+]
 
 
-def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
-    price_lookup = scoring.build_price_lookup(all_beers)
-    now = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
-
-    tabs, panels = [], []
-    for i, site in enumerate(sites):
-        beers = sorted(all_beers.get(site["key"], []),
-                       key=lambda b: b.get("score") or 0, reverse=True)
-        active = " active" if i == 0 else ""
-        tabs.append(
-            f'<button class="{active.strip()}" data-key="{site["key"]}" '
-            f'onclick="showTab(\'{site["key"]}\')">{html.escape(site["label"])} ({len(beers)})</button>'
-        )
-        cards = "".join(_card(b, site, sites, price_lookup) for b in beers) \
-            or '<div class="empty">Geen bieren gevonden</div>'
-        panels.append(f'<div class="panel{active}" data-key="{site["key"]}">{cards}</div>')
-
-    doc = f"""<!DOCTYPE html>
-<html lang="nl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bieroverzicht</title><style>{CSS}</style></head>
-<body>
-<header><h1>🍺 Bieroverzicht</h1>
-<div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend</div>
-<a class="dl" href="{excel_name}" download>&#11015; Download als Excel</a></header>
-<div class="tabs">{''.join(tabs)}</div>
-<div class="toolbar"><input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl…" oninput="filter()"></div>
-{''.join(panels)}
-<script>{JS}</script></body></html>"""
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(doc, encoding="utf-8")
-    log.info("HTML geschreven naar %s", output_path)
-
-
-def _card(beer, site, sites, price_lookup):
-    e = lambda v: html.escape(str(v)) if v is not None else ""
-    meta_parts = [p for p in [
-        e(beer.get("stijl")),
-        e(beer.get("land")),
-        f"{beer['abv']}%" if beer.get("abv") is not None else None,
-        f"{beer['inhoud_cl']} cl" if beer.get("inhoud_cl") is not None else None,
-        (f"Untappd {beer['untappd']:.2f}"
-         + (f" ({beer['untappd_aantal']})" if beer.get("untappd_aantal") else ""))
-        if beer.get("untappd") is not None else "Untappd onbekend",
-    ] if p]
-
-    own_price = beer.get("prijs")
-    badges = []
-    if own_price is not None:
-        badges.append(f'<span class="badge own">&euro; {own_price:.2f}</span>')
-    for other in sites:
-        if other["key"] == site["key"]:
+def scrape(site):
+    urls = _product_urls_from_sitemap(site)
+    log.info("%s: %d product-URL's in sitemap", site["label"], len(urls))
+    beers = []
+    for url in urls:
+        html = utils.fetch(url)
+        if not html:
             continue
-        p = scoring.find_price(beer, price_lookup.get(other["key"], {}))
-        if p is None:
-            continue
-        cls = ""
-        if own_price is not None:
-            cls = " hoger" if p > own_price else (" lager" if p < own_price else "")
-        badges.append(
-            f'<span class="badge{cls}">{html.escape(other["label"])}: &euro; {p:.2f}</span>')
+        beer = _parse_product_page(html, url)
+        if beer:
+            beers.append(beer)
+    log.info("%s: %d bieren na filters", site["label"], len(beers))
+    return beers
 
-    strong = " strong" if beer.get("sterke_voorkeur") else ""
-    return f"""<div class="card{strong}">
-  <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
-  <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
-  <div class="score">{beer.get('score', 0)}</div></div>
-  <div class="meta">{' &middot; '.join(meta_parts)}</div>
-  <div class="price-row">{''.join(badges)}</div>
-  <a href="{e(beer.get('weblink'))}" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div>"""
+
+def _product_urls_from_sitemap(site):
+    xml_text = utils.fetch(site["sitemap_url"])
+    if not xml_text:
+        return []
+    urls = []
+    try:
+        root = ET.fromstring(xml_text.encode("utf-8"))
+    except ET.ParseError:
+        return []
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+
+    # sitemap-index? Dan onderliggende sitemaps ophalen
+    sub_sitemaps = [loc.text for loc in root.findall(".//sm:sitemap/sm:loc", ns)]
+    loc_elements = [loc.text for loc in root.findall(".//sm:url/sm:loc", ns)]
+    for sub in sub_sitemaps:
+        sub_xml = utils.fetch(sub)
+        if not sub_xml:
+            continue
+        try:
+            sub_root = ET.fromstring(sub_xml.encode("utf-8"))
+            loc_elements += [loc.text for loc in sub_root.findall(".//sm:url/sm:loc", ns)]
+        except ET.ParseError:
+            continue
+
+    for loc in loc_elements:
+        if not loc:
+            continue
+        # Lightspeed-producten eindigen op .html en zitten niet in service/blog-paden
+        if loc.endswith(".html") and not re.search(
+            r"/(service|blogs?|nieuws|tags?|brands?|merken|page)\b", loc
+        ):
+            urls.append(loc.strip())
+    return sorted(set(urls))
+
+
+def _parse_product_page(html, url):
+    soup = BeautifulSoup(html, "html.parser")
+    page_text = soup.get_text(" ", strip=True)
+    lower_text = page_text.lower()
+
+    # --- voorraad ---
+    if any(marker in lower_text for marker in OUT_OF_STOCK_MARKERS):
+        return None
+
+    specs = _extract_specs(soup)
+
+    # --- stijl ---
+    style_raw = specs.get("stijl")
+    canon, strong = utils.match_style(style_raw)
+    if not canon:
+        # fallback: breadcrumb / categorie / titel
+        crumbs = " ".join(a.get_text(" ", strip=True) for a in soup.select(".breadcrumb a, .breadcrumbs a, nav a"))
+        canon, strong = utils.match_style(crumbs)
+        if canon:
+            style_raw = style_raw or canon
+    if not canon:
+        return None
+
+    # --- untappd ---
+    untappd, untappd_count = utils.parse_untappd(specs.get("untappd") or "")
+    if untappd is None:
+        untappd, untappd_count = utils.parse_untappd(page_text)
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    # --- naam & prijs ---
+    h1 = soup.find("h1")
+    name = h1.get_text(" ", strip=True) if h1 else None
+    if not name:
+        return None
+    price = None
+    price_el = soup.select_one("[class*='price']")
+    if price_el:
+        price = utils.parse_price(price_el.get_text(" ", strip=True))
+    if price is None:
+        price = utils.parse_price(page_text)
+
+    brewery = specs.get("brouwerij")
+    if not brewery:
+        brand = soup.select_one("[class*='brand'] a, [class*='merk'] a")
+        if brand:
+            brewery = brand.get_text(" ", strip=True)
+
+    abv = utils.parse_abv(specs.get("abv") or "") or utils.parse_abv(page_text)
+    volume = utils.parse_volume_cl(specs.get("inhoud") or "") or utils.parse_volume_cl(name) \
+        or utils.parse_volume_cl(page_text)
+    country = utils.parse_country(specs.get("land") or "") or utils.parse_country(page_text)
+
+    return {
+        "brouwerij": brewery,
+        "naam": _clean_name(name, brewery),
+        "inhoud_cl": volume,
+        "land": country,
+        "abv": abv,
+        "stijl": canon,
+        "stijl_ruw": style_raw,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": untappd_count,
+        "prijs": price,
+        "weblink": url,
+    }
+
+
+def _extract_specs(soup):
+    """Verzamel 'label -> waarde' uit tabellen, dl-lijsten en losse tekstregels."""
+    pairs = {}
+
+    for row in soup.select("table tr"):
+        cells = row.find_all(["td", "th"])
+        if len(cells) >= 2:
+            pairs[utils.norm(cells[0].get_text())] = cells[1].get_text(" ", strip=True)
+
+    for dl in soup.select("dl"):
+        dts, dds = dl.find_all("dt"), dl.find_all("dd")
+        for dt, dd in zip(dts, dds):
+            pairs[utils.norm(dt.get_text())] = dd.get_text(" ", strip=True)
+
+    for el in soup.select("li, p, div"):
+        text = el.get_text(" ", strip=True)
+        if 0 < len(text) < 80 and ":" in text:
+            label, _, value = text.partition(":")
+            if value.strip():
+                pairs.setdefault(utils.norm(label), value.strip())
+
+    result = {}
+    for field, keywords in LABELS.items():
+        for kw in keywords:
+            if kw in pairs:
+                result[field] = pairs[kw]
+                break
+    return result
+
+
+def _clean_name(name, brewery):
+    if brewery and name.lower().startswith(brewery.lower()):
+        name = name[len(brewery):]
+    name = re.sub(r"^[\s\-–|:]+", "", name)
+    name = re.sub(r"\b\d{2,4}\s?(cl|ml)\b\.?", "", name, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", name).strip()

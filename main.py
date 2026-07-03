@@ -1,129 +1,137 @@
 # -*- coding: utf-8 -*-
 """
-Scraper voor Hops & Hopes (maatwerkwebsite).
-Op de listingpagina staat per bier al alles: stijl, land, ABV, inhoud,
-Untappd-score + aantal ratings en prijs, in het patroon:
-    'Stout - Imperial / Double · USA - 13.6% - 35,5 cl Untappd 4.21 (332 x ratings) € 22,50'
-We parsen daarom de productkaarten van /bieren, met paginering.
+Bouwt een mobielvriendelijke, zelfstandige HTML-pagina (docs/index.html)
+met dezelfde data als het Excelbestand: tab per shop, gesorteerd op score,
+prijsvergelijking met kleur, zoekveld. Geschikt voor GitHub Pages.
 """
 
+import datetime
+import html
 import logging
-import re
 
-from bs4 import BeautifulSoup
-
-import config
-import utils
+import scoring
 
 log = logging.getLogger("bierscraper")
 
-MAX_PAGES = 80
+CSS = """
+:root { --groen:#1f4e44; --geel:#fff2cc; --rood:#ffc7ce; --felgroen:#00e676; }
+* { box-sizing:border-box; }
+body { font-family:-apple-system,'Segoe UI',Arial,sans-serif; margin:0; background:#f5f5f2; color:#222; }
+header { background:var(--groen); color:#fff; padding:14px 16px; position:sticky; top:0; z-index:5; }
+header h1 { margin:0; font-size:1.15rem; }
+header .sub { font-size:.75rem; opacity:.85; margin-top:2px; }
+.tabs { display:flex; overflow-x:auto; background:#fff; border-bottom:1px solid #ddd;
+        position:sticky; top:56px; z-index:4; -webkit-overflow-scrolling:touch; }
+.tabs button { flex:0 0 auto; border:0; background:none; padding:12px 14px; font-size:.85rem;
+               border-bottom:3px solid transparent; color:#555; }
+.tabs button.active { color:var(--groen); border-bottom-color:var(--groen); font-weight:600; }
+.toolbar { padding:10px 12px; }
+.toolbar input { width:100%; padding:10px 12px; font-size:1rem; border:1px solid #ccc;
+                 border-radius:10px; -webkit-appearance:none; }
+.panel { display:none; padding:0 8px 40px; }
+.panel.active { display:block; }
+.card { background:#fff; border-radius:12px; margin:8px 4px; padding:12px 14px;
+        box-shadow:0 1px 3px rgba(0,0,0,.08); }
+.card.strong { background:var(--geel); }
+.card .top { display:flex; justify-content:space-between; gap:8px; align-items:baseline; }
+.card .name { font-weight:600; font-size:.95rem; }
+.card .brewery { color:#666; font-size:.8rem; }
+.card .score { background:var(--groen); color:#fff; border-radius:8px; padding:2px 8px;
+               font-size:.85rem; font-weight:700; white-space:nowrap; }
+.card .meta { font-size:.78rem; color:#555; margin-top:6px; }
+.card .price-row { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; font-size:.78rem; }
+.badge { border-radius:6px; padding:3px 7px; background:#eee; }
+.badge.own { background:var(--groen); color:#fff; font-weight:600; }
+.badge.hoger { background:var(--rood); }
+.badge.lager { background:var(--felgroen); font-weight:600; }
+.card a { color:var(--groen); font-size:.8rem; }
+.empty { text-align:center; color:#888; padding:30px 0; }
+.dl { display:inline-block; margin-top:6px; color:#fff; text-decoration:underline; font-size:.78rem; }
+"""
+
+JS = """
+function showTab(key){
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.key===key));
+}
+function filter(){
+  const q=document.getElementById('zoek').value.toLowerCase();
+  document.querySelectorAll('.panel.active .card').forEach(c=>{
+    c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+"""
 
 
-def scrape(site):
-    beers = []
-    seen_links = set()
-    for page in range(1, MAX_PAGES + 1):
-        url = site["listing_url"] if page == 1 else f"{site['listing_url']}?page={page}"
-        html = utils.fetch(url)
-        if not html:
-            break
-        page_beers = _parse_listing(html, site["base_url"])
-        new = [b for b in page_beers if b["weblink"] not in seen_links]
-        if not new:
-            break
-        for b in new:
-            seen_links.add(b["weblink"])
-        beers.extend(new)
-    log.info("%s: %d bieren na filters", site["label"], len(beers))
-    return beers
+def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
+    price_lookup = scoring.build_price_lookup(all_beers)
+    now = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+
+    tabs, panels = [], []
+    for i, site in enumerate(sites):
+        beers = sorted(all_beers.get(site["key"], []),
+                       key=lambda b: b.get("score") or 0, reverse=True)
+        active = " active" if i == 0 else ""
+        tabs.append(
+            f'<button class="{active.strip()}" data-key="{site["key"]}" '
+            f'onclick="showTab(\'{site["key"]}\')">{html.escape(site["label"])} ({len(beers)})</button>'
+        )
+        cards = "".join(_card(b, site, sites, price_lookup) for b in beers) \
+            or '<div class="empty">Geen bieren gevonden</div>'
+        panels.append(f'<div class="panel{active}" data-key="{site["key"]}">{cards}</div>')
+
+    doc = f"""<!DOCTYPE html>
+<html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bieroverzicht</title><style>{CSS}</style></head>
+<body>
+<header><h1>🍺 Bieroverzicht</h1>
+<div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend</div>
+<a class="dl" href="{excel_name}" download>&#11015; Download als Excel</a></header>
+<div class="tabs">{''.join(tabs)}</div>
+<div class="toolbar"><input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl…" oninput="filter()"></div>
+{''.join(panels)}
+<script>{JS}</script></body></html>"""
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(doc, encoding="utf-8")
+    log.info("HTML geschreven naar %s", output_path)
 
 
-def _parse_listing(html, base_url):
-    soup = BeautifulSoup(html, "html.parser")
-    beers = []
+def _card(beer, site, sites, price_lookup):
+    e = lambda v: html.escape(str(v)) if v is not None else ""
+    meta_parts = [p for p in [
+        e(beer.get("stijl")),
+        e(beer.get("land")),
+        f"{beer['abv']}%" if beer.get("abv") is not None else None,
+        f"{beer['inhoud_cl']} cl" if beer.get("inhoud_cl") is not None else None,
+        (f"Untappd {beer['untappd']:.2f}"
+         + (f" ({beer['untappd_aantal']})" if beer.get("untappd_aantal") else ""))
+        if beer.get("untappd") is not None else "Untappd onbekend",
+    ] if p]
 
-    # Productkaarten: zoek elementen die zowel 'Untappd' als een prijs bevatten
-    candidates = soup.find_all(["article", "li", "div"], recursive=True)
-    for el in candidates:
-        text = el.get_text(" ", strip=True)
-        if "untappd" not in text.lower() or "€" not in text:
+    own_price = beer.get("prijs")
+    badges = []
+    if own_price is not None:
+        badges.append(f'<span class="badge own">&euro; {own_price:.2f}</span>')
+    for other in sites:
+        if other["key"] == site["key"]:
             continue
-        # geen containers pakken die meerdere producten bevatten
-        if text.lower().count("untappd") > 1:
+        p = scoring.find_price(beer, price_lookup.get(other["key"], {}))
+        if p is None:
             continue
+        cls = ""
+        if own_price is not None:
+            cls = " hoger" if p > own_price else (" lager" if p < own_price else "")
+        badges.append(
+            f'<span class="badge{cls}">{html.escape(other["label"])}: &euro; {p:.2f}</span>')
 
-        link = el.find("a", href=True)
-        if not link:
-            continue
-        href = link["href"]
-        if href.startswith("/"):
-            href = base_url.rstrip("/") + href
-        if not href.startswith("http"):
-            continue
-
-        beer = _parse_card(el, text, href)
-        if beer:
-            beers.append(beer)
-
-    # dedupliceren op link (geneste divs kunnen dubbel matchen)
-    unique = {}
-    for b in beers:
-        unique.setdefault(b["weblink"], b)
-    return list(unique.values())
-
-
-RE_STYLE_LINE = re.compile(
-    r"((?:Stout|IPA|Sour|Mead|Mede|Porter|Barleywine|Lager|Pilsner|Wild Ale|Saison)"
-    r"(?:\s*-\s*[A-Za-z/ ]+)?)"
-)
-RE_UITVERKOCHT = re.compile(r"uitverkocht|sold out|niet op voorraad", re.IGNORECASE)
-
-
-def _parse_card(el, text, href):
-    if RE_UITVERKOCHT.search(text):
-        return None
-
-    style_m = RE_STYLE_LINE.search(text)
-    style_raw = style_m.group(1).strip() if style_m else None
-    canon, strong = utils.match_style(style_raw)
-    if not canon:
-        return None
-
-    untappd, untappd_count = utils.parse_untappd(text)
-    if untappd is not None and untappd < config.MIN_UNTAPPD:
-        return None
-    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
-        return None
-
-    # naam: heading in de kaart, anders linktekst
-    name_el = el.find(["h2", "h3", "h4"])
-    name = name_el.get_text(" ", strip=True) if name_el else el.find("a").get_text(" ", strip=True)
-    if not name:
-        return None
-
-    # brouwerij staat bij Hops & Hopes vaak als aparte regel/element boven de naam
-    brewery = None
-    brewery_el = el.find(class_=re.compile(r"brand|brouwerij|brewery", re.IGNORECASE))
-    if brewery_el:
-        brewery = brewery_el.get_text(" ", strip=True)
-
-    # prijs: laagste bedrag in de kaart is de actuele (sale)prijs
-    prices = [utils.parse_price(p) for p in re.findall(r"€\s*[\d.,]+", text)]
-    prices = [p for p in prices if p]
-    price = min(prices) if prices else None
-
-    return {
-        "brouwerij": brewery,
-        "naam": name,
-        "inhoud_cl": utils.parse_volume_cl(text),
-        "land": utils.parse_country(text),
-        "abv": utils.parse_abv(text),
-        "stijl": canon,
-        "stijl_ruw": style_raw,
-        "sterke_voorkeur": strong,
-        "untappd": untappd,
-        "untappd_aantal": untappd_count,
-        "prijs": price,
-        "weblink": href,
-    }
+    strong = " strong" if beer.get("sterke_voorkeur") else ""
+    return f"""<div class="card{strong}">
+  <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
+  <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
+  <div class="score">{beer.get('score', 0)}</div></div>
+  <div class="meta">{' &middot; '.join(meta_parts)}</div>
+  <div class="price-row">{''.join(badges)}</div>
+  <a href="{e(beer.get('weblink'))}" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div>"""
