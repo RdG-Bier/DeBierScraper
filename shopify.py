@@ -1,115 +1,147 @@
-# Bierscraper
+# -*- coding: utf-8 -*-
+"""
+Scraper voor Shopify-shops (De Biersalon, Beer Republic).
+Gebruikt het publieke /products.json endpoint: gestructureerd en stabiel.
+Untappd-gegevens staan vaak in tags of in de productomschrijving (body_html);
+ontbreken ze daar, dan wordt (optioneel) de productpagina zelf gelezen.
+"""
 
-Scrapt bierdata van 5 webshops en zet die per shop in een tabblad van één
-Excelbestand, inclusief score (0-100), prijsvergelijking met de andere shops
-en voorwaardelijke opmaak.
+import logging
+import re
 
-## Shops
-| Shop | Techniek | Betrouwbaarheid |
-|---|---|---|
-| De Biersalon | Shopify `/products.json` | Hoog (gestructureerde data) |
-| Beer Republic | Shopify `/products.json` | Hoog |
-| Bierloods22 | Lightspeed: sitemap + productpagina's | Middel (HTML-parsing) |
-| Beerdome | Lightspeed: sitemap + productpagina's | Middel |
-| Hops & Hopes | Maatwerk: listingpagina's | Middel |
+from bs4 import BeautifulSoup
 
-## Installatie (Windows)
-1. Installeer Python 3.10+ via python.org (vink "Add to PATH" aan).
-2. Open PowerShell in deze map en voer uit:
-   ```
-   pip install -r requirements.txt
-   ```
+import config
+import utils
 
-## Gebruik
-```
-python main.py                    # alles scrapen
-python main.py --no-cache         # cache negeren, alles vers
-python main.py --site hopsandhopes debiersalon   # alleen deze shops
-python main.py --debug            # uitgebreide logging
-```
-Resultaat: `output/bieroverzicht.xlsx` + per shop een `output/raw_<shop>.json`
-met de ruwe data (handig om te controleren wat er gevonden is).
+log = logging.getLogger("bierscraper")
 
-**Let op:** de eerste run van de Lightspeed-shops (Bierloods22, Beerdome)
-duurt lang: elke productpagina wordt apart opgehaald met een nette pauze van
-0,8 sec. Reken op 30-60 min per shop. Dankzij de cache zijn volgende runs
-binnen `CACHE_MAX_AGE_HOURS` (standaard 20 uur) veel sneller.
+# Als score/land niet in products.json staat: productpagina erbij pakken?
+FETCH_DETAIL_FALLBACK = True
+# Veiligheidslimiet zodat een eerste run niet urenlang detailpagina's trekt.
+MAX_DETAIL_FETCHES = 400
 
-## Hoe de filters werken
-- **Stijl**: alleen bieren waarvan de stijl matcht met de lijst in
-  `config.STYLES`. Matching is fuzzy op tokenniveau; shop-specifieke
-  benamingen kun je toevoegen aan `STYLE_ALIASES`.
-- **Untappd**: score >= 4.00 óf onbekend (instelbaar via `MIN_UNTAPPD` en
-  `INCLUDE_UNKNOWN_UNTAPPD`).
-- **Voorraad**: alleen leverbare bieren (Shopify: `available`-vlag;
-  HTML-shops: geen "uitverkocht"-tekst op de pagina).
-- **Kolommen**: alleen velden die de shop daadwerkelijk aanbiedt. Dit wordt
-  bij elke run opnieuw bepaald, dus als een shop bijv. later Untappd-scores
-  toevoegt, verschijnt die kolom vanzelf.
 
-## De score (0-100)
-Gewichten staan in `config.WEIGHTS` (standaard: stijl 30, Untappd 35,
-aantal ratings 15, prijs 20):
-1. **Stijl**: "sterke voorkeur" = vol gewicht, gewone gewenste stijl = 50%.
-2. **Untappd-score**: lineair van 4.00 (0%) naar 4.60 (100%). Onbekend =
-   45% van het gewicht, zodat nieuwe releases niet onderaan bungelen.
-3. **Aantal ratings**: logaritmisch met plafond op 5.000, zodat een score
-   met veel check-ins zwaarder telt dan één met 8 ratings.
-4. **Prijs**: genormaliseerd naar **euro per liter** (eerlijker dan absolute
-   prijs bij 33cl vs 44cl blikken; uitschakelen via `PRICE_PER_LITER`).
-   Genormaliseerd over alle shops samen, zodat scores tussen tabbladen
-   vergelijkbaar zijn.
+def scrape(site):
+    base = site["base_url"].rstrip("/")
+    beers = []
+    page = 1
+    while True:
+        data = utils.fetch_json(f"{base}/products.json?limit=250&page={page}")
+        if not data or not data.get("products"):
+            break
+        for product in data["products"]:
+            beer = _parse_product(product, base)
+            if beer:
+                beers.append(beer)
+        if len(data["products"]) < 250:
+            break
+        page += 1
+        if page > 60:  # noodstop
+            break
 
-Suggesties om later te overwegen:
-- Een kleine bonus voor bieren die maar bij één shop verkrijgbaar zijn.
-- Een betrouwbaarheidscorrectie: 4.30 met 2.000 ratings > 4.45 met 40 ratings
-  (bayesiaans gemiddelde).
-- ABV meewegen als je dikke stouts extra wilt belonen.
+    log.info("%s: %d producten na stijl/score/voorraad-filter", site["label"], len(beers))
+    return beers
 
-## Prijsvergelijking tussen shops
-Bieren worden gematcht op genormaliseerde `brouwerij + naam` (inhoud,
-verpakking en leestekens worden genegeerd), met een fuzzy fallback
-(drempel `FUZZY_MATCH_THRESHOLD` = 0.90). Voorwaardelijke opmaak:
-- **Rood**: prijs bij de andere shop is hoger dan hier.
-- **Felgroen**: prijs bij de andere shop is lager (daar kopen dus!).
 
-## Finetunen als een shop niet goed geparsed wordt
-1. Draai `python main.py --site <key> --debug` en bekijk `output/raw_<key>.json`.
-2. HTML-parsing bijstellen? De selectors staan per platform in
-   `scrapers/lightspeed.py` en `scrapers/hopsandhopes.py` (goed becommentarieerd).
-3. Mis je een stijlmapping? Voeg een regel toe aan `STYLE_ALIASES` in
-   `config.py`.
+def _parse_product(p, base):
+    title = (p.get("title") or "").strip()
+    vendor = (p.get("vendor") or "").strip() or None
+    product_type = (p.get("product_type") or "").strip()
+    tags = p.get("tags") or []
+    if isinstance(tags, str):
+        tags = [t.strip() for t in tags.split(",")]
+    body_html = p.get("body_html") or ""
+    body_text = BeautifulSoup(body_html, "html.parser").get_text(" ", strip=True)
 
-## Op je iPhone + delen met vrienden (GitHub Pages)
-De scraper draait niet op een telefoon, maar kan gratis automatisch in de
-cloud draaien via GitHub Actions. Je krijgt dan een webpagina (mobiel
-geoptimaliseerd) + downloadbare Excel op een vaste link die je kunt delen.
+    # --- voorraad: minstens één variant leverbaar ---
+    variants = p.get("variants") or []
+    available_variants = [v for v in variants if v.get("available")]
+    if not available_variants:
+        return None
+    variant = min(available_variants, key=lambda v: float(v.get("price") or 9e9))
+    try:
+        price = round(float(variant.get("price")), 2)
+    except (TypeError, ValueError):
+        price = None
 
-Eenmalige setup (op je pc, ±10 min):
-1. Maak een gratis account op github.com en maak een nieuwe **public** repository
-   aan, bijv. `bierscraper`. (Public is nodig voor gratis GitHub Pages.)
-2. Upload de inhoud van deze map naar de repository (via "uploading an
-   existing file" kan dat zonder git-kennis, sleep alle bestanden erin;
-   let op dat de map `.github/workflows/scrape.yml` meekomt).
-3. Ga naar **Settings → Pages** en kies bij "Branch": `main` en map `/docs`,
-   klik Save.
-4. Ga naar het tabblad **Actions**, open "Scrape en publiceer" en klik
-   **Run workflow** voor de eerste run (kan 1-2 uur duren door de nette
-   vertraging bij de Lightspeed-shops).
+    # --- stijl: product_type, anders tags, anders bodytekst ---
+    style_raw = product_type
+    canon, strong = utils.match_style(style_raw)
+    if not canon:
+        for t in tags:
+            canon, strong = utils.match_style(t)
+            if canon:
+                style_raw = t
+                break
+    if not canon:
+        return None  # geen gewenste stijl
 
-Daarna:
-- Je pagina staat op `https://<jouwnaam>.github.io/bierscraper/`
-  → open op je iPhone, zet op je beginscherm, deel de link met vrienden.
-- De Excel is downloadbaar via de knop bovenaan de pagina.
-- **Automatisch verversen**: elke ochtend rond 06:00-07:00.
-- **Handmatig verversen**: GitHub-app (of github.com in Safari) →
-  Actions → Run workflow.
+    searchable = " ".join([title, product_type, body_text] + [str(t) for t in tags])
 
-Kanttekening: sommige shops blokkeren soms verkeer vanaf datacenters.
-Werkt een shop niet vanuit GitHub Actions maar wel lokaal, laat het weten,
-dan kijken we naar een alternatief.
+    untappd, untappd_count = utils.parse_untappd(searchable)
+    country = parse_country_from_tags(tags) or utils.parse_country(searchable)
+    abv = utils.parse_abv(variant.get("title") or "") or utils.parse_abv(searchable)
+    volume = utils.parse_volume_cl(title) or utils.parse_volume_cl(variant.get("title") or "") \
+        or utils.parse_volume_cl(body_text)
 
-## Nette scraping
-Het script wacht 0,8 sec tussen requests, gebruikt een cache en identificeert
-zich met een eigen User-Agent. Houd het bij persoonlijk gebruik en draai het
-niet vaker dan nodig; controleer bij twijfel de voorwaarden van de shops.
+    url = f"{base}/products/{p.get('handle')}"
+
+    # --- fallback: detailpagina lezen als kernvelden ontbreken ---
+    if FETCH_DETAIL_FALLBACK and (untappd is None or country is None or volume is None):
+        if _parse_product.detail_count < MAX_DETAIL_FETCHES:
+            _parse_product.detail_count += 1
+            html = utils.fetch(url)
+            if html:
+                text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+                if untappd is None:
+                    untappd, untappd_count = utils.parse_untappd(text)
+                if country is None:
+                    country = utils.parse_country(text)
+                if volume is None:
+                    volume = utils.parse_volume_cl(text)
+                if abv is None:
+                    abv = utils.parse_abv(text)
+
+    # --- Untappd-filter ---
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    name = _clean_name(title, vendor)
+    return {
+        "brouwerij": vendor,
+        "naam": name,
+        "inhoud_cl": volume,
+        "land": country,
+        "abv": abv,
+        "stijl": canon,
+        "stijl_ruw": style_raw or None,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": untappd_count,
+        "prijs": price,
+        "weblink": url,
+    }
+
+
+_parse_product.detail_count = 0
+
+
+def parse_country_from_tags(tags):
+    for t in tags:
+        c = utils.parse_country(str(t))
+        if c:
+            return c
+    return None
+
+
+def _clean_name(title, vendor):
+    """'Brouwerij X - Biernaam 44cl' -> 'Biernaam'."""
+    name = title
+    if vendor and name.lower().startswith(vendor.lower()):
+        name = name[len(vendor):]
+    name = re.sub(r"^[\s\-–|:]+", "", name)
+    name = re.sub(r"\b\d{2,4}\s?(cl|ml)\b\.?", "", name, flags=re.IGNORECASE)
+    return re.sub(r"\s+", " ", name).strip() or title

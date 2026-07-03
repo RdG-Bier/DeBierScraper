@@ -1,137 +1,87 @@
 # -*- coding: utf-8 -*-
 """
-Bouwt een mobielvriendelijke, zelfstandige HTML-pagina (docs/index.html)
-met dezelfde data als het Excelbestand: tab per shop, gesorteerd op score,
-prijsvergelijking met kleur, zoekveld. Geschikt voor GitHub Pages.
+Bierscraper - haalt bierdata van 5 webshops en zet die in één Excelbestand.
+
+Gebruik:
+    python main.py                  # alle shops, met cache
+    python main.py --no-cache       # alles vers ophalen
+    python main.py --site hopsandhopes debiersalon   # alleen deze shops
+    python main.py --debug          # extra logging
 """
 
-import datetime
-import html
+import argparse
+import json
 import logging
+import sys
+from pathlib import Path
 
-import scoring
+import config
+import excel_builder
+import html_builder
+import hopsandhopes
+import lightspeed
+import shopify
 
-log = logging.getLogger("bierscraper")
-
-CSS = """
-:root { --groen:#1f4e44; --geel:#fff2cc; --rood:#ffc7ce; --felgroen:#00e676; }
-* { box-sizing:border-box; }
-body { font-family:-apple-system,'Segoe UI',Arial,sans-serif; margin:0; background:#f5f5f2; color:#222; }
-header { background:var(--groen); color:#fff; padding:14px 16px; position:sticky; top:0; z-index:5; }
-header h1 { margin:0; font-size:1.15rem; }
-header .sub { font-size:.75rem; opacity:.85; margin-top:2px; }
-.tabs { display:flex; overflow-x:auto; background:#fff; border-bottom:1px solid #ddd;
-        position:sticky; top:56px; z-index:4; -webkit-overflow-scrolling:touch; }
-.tabs button { flex:0 0 auto; border:0; background:none; padding:12px 14px; font-size:.85rem;
-               border-bottom:3px solid transparent; color:#555; }
-.tabs button.active { color:var(--groen); border-bottom-color:var(--groen); font-weight:600; }
-.toolbar { padding:10px 12px; }
-.toolbar input { width:100%; padding:10px 12px; font-size:1rem; border:1px solid #ccc;
-                 border-radius:10px; -webkit-appearance:none; }
-.panel { display:none; padding:0 8px 40px; }
-.panel.active { display:block; }
-.card { background:#fff; border-radius:12px; margin:8px 4px; padding:12px 14px;
-        box-shadow:0 1px 3px rgba(0,0,0,.08); }
-.card.strong { background:var(--geel); }
-.card .top { display:flex; justify-content:space-between; gap:8px; align-items:baseline; }
-.card .name { font-weight:600; font-size:.95rem; }
-.card .brewery { color:#666; font-size:.8rem; }
-.card .score { background:var(--groen); color:#fff; border-radius:8px; padding:2px 8px;
-               font-size:.85rem; font-weight:700; white-space:nowrap; }
-.card .meta { font-size:.78rem; color:#555; margin-top:6px; }
-.card .price-row { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; font-size:.78rem; }
-.badge { border-radius:6px; padding:3px 7px; background:#eee; }
-.badge.own { background:var(--groen); color:#fff; font-weight:600; }
-.badge.hoger { background:var(--rood); }
-.badge.lager { background:var(--felgroen); font-weight:600; }
-.card a { color:var(--groen); font-size:.8rem; }
-.empty { text-align:center; color:#888; padding:30px 0; }
-.dl { display:inline-block; margin-top:6px; color:#fff; text-decoration:underline; font-size:.78rem; }
-"""
-
-JS = """
-function showTab(key){
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
-  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.key===key));
+SCRAPERS = {
+    "shopify": shopify.scrape,
+    "lightspeed": lightspeed.scrape,
+    "hopsandhopes": hopsandhopes.scrape,
 }
-function filter(){
-  const q=document.getElementById('zoek').value.toLowerCase();
-  document.querySelectorAll('.panel.active .card').forEach(c=>{
-    c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';
-  });
-}
-"""
 
 
-def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
-    price_lookup = scoring.build_price_lookup(all_beers)
-    now = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
+def main():
+    parser = argparse.ArgumentParser(description="Bierscraper")
+    parser.add_argument("--site", nargs="*", help="alleen deze site-keys scrapen")
+    parser.add_argument("--no-cache", action="store_true", help="cache negeren")
+    parser.add_argument("--debug", action="store_true", help="uitgebreide logging")
+    args = parser.parse_args()
 
-    tabs, panels = [], []
-    for i, site in enumerate(sites):
-        beers = sorted(all_beers.get(site["key"], []),
-                       key=lambda b: b.get("score") or 0, reverse=True)
-        active = " active" if i == 0 else ""
-        tabs.append(
-            f'<button class="{active.strip()}" data-key="{site["key"]}" '
-            f'onclick="showTab(\'{site["key"]}\')">{html.escape(site["label"])} ({len(beers)})</button>'
-        )
-        cards = "".join(_card(b, site, sites, price_lookup) for b in beers) \
-            or '<div class="empty">Geen bieren gevonden</div>'
-        panels.append(f'<div class="panel{active}" data-key="{site["key"]}">{cards}</div>')
+    logging.basicConfig(
+        level=logging.DEBUG if args.debug else logging.INFO,
+        format="%(asctime)s %(levelname)-7s %(message)s",
+        datefmt="%H:%M:%S",
+    )
+    log = logging.getLogger("bierscraper")
 
-    doc = f"""<!DOCTYPE html>
-<html lang="nl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bieroverzicht</title><style>{CSS}</style></head>
-<body>
-<header><h1>🍺 Bieroverzicht</h1>
-<div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend</div>
-<a class="dl" href="{excel_name}" download>&#11015; Download als Excel</a></header>
-<div class="tabs">{''.join(tabs)}</div>
-<div class="toolbar"><input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl…" oninput="filter()"></div>
-{''.join(panels)}
-<script>{JS}</script></body></html>"""
+    if args.no_cache:
+        config.CACHE_MAX_AGE_HOURS = 0
 
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(doc, encoding="utf-8")
-    log.info("HTML geschreven naar %s", output_path)
+    sites = config.SITES
+    if args.site:
+        sites = [s for s in sites if s["key"] in args.site]
+        if not sites:
+            log.error("Onbekende site-key(s). Beschikbaar: %s",
+                      ", ".join(s["key"] for s in config.SITES))
+            sys.exit(1)
+
+    all_beers = {}
+    for site in sites:
+        log.info("=== %s ===", site["label"])
+        try:
+            beers = SCRAPERS[site["type"]](site)
+        except Exception:
+            log.exception("Scrapen van %s mislukt; site wordt overgeslagen", site["label"])
+            beers = []
+        all_beers[site["key"]] = beers
+        # ruwe data ook als JSON bewaren, handig voor debugging/finetunen
+        raw_path = Path("output") / f"raw_{site['key']}.json"
+        raw_path.parent.mkdir(exist_ok=True)
+        raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    wb = excel_builder.build_workbook(all_beers, sites)
+    out = Path(config.OUTPUT_FILE)
+    out.parent.mkdir(exist_ok=True)
+    wb.save(out)
+
+    # Voor GitHub Pages: mobiele webpagina + Excel in docs/
+    docs = Path("docs")
+    docs.mkdir(exist_ok=True)
+    wb.save(docs / "bieroverzicht.xlsx")
+    html_builder.build_html(all_beers, sites, docs / "index.html")
+
+    total = sum(len(v) for v in all_beers.values())
+    log.info("Klaar: %d bieren -> %s en docs/index.html", total, out.resolve())
 
 
-def _card(beer, site, sites, price_lookup):
-    e = lambda v: html.escape(str(v)) if v is not None else ""
-    meta_parts = [p for p in [
-        e(beer.get("stijl")),
-        e(beer.get("land")),
-        f"{beer['abv']}%" if beer.get("abv") is not None else None,
-        f"{beer['inhoud_cl']} cl" if beer.get("inhoud_cl") is not None else None,
-        (f"Untappd {beer['untappd']:.2f}"
-         + (f" ({beer['untappd_aantal']})" if beer.get("untappd_aantal") else ""))
-        if beer.get("untappd") is not None else "Untappd onbekend",
-    ] if p]
-
-    own_price = beer.get("prijs")
-    badges = []
-    if own_price is not None:
-        badges.append(f'<span class="badge own">&euro; {own_price:.2f}</span>')
-    for other in sites:
-        if other["key"] == site["key"]:
-            continue
-        p = scoring.find_price(beer, price_lookup.get(other["key"], {}))
-        if p is None:
-            continue
-        cls = ""
-        if own_price is not None:
-            cls = " hoger" if p > own_price else (" lager" if p < own_price else "")
-        badges.append(
-            f'<span class="badge{cls}">{html.escape(other["label"])}: &euro; {p:.2f}</span>')
-
-    strong = " strong" if beer.get("sterke_voorkeur") else ""
-    return f"""<div class="card{strong}">
-  <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
-  <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
-  <div class="score">{beer.get('score', 0)}</div></div>
-  <div class="meta">{' &middot; '.join(meta_parts)}</div>
-  <div class="price-row">{''.join(badges)}</div>
-  <a href="{e(beer.get('weblink'))}" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div>"""
+if __name__ == "__main__":
+    main()

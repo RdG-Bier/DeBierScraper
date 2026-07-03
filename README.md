@@ -1,140 +1,115 @@
-# -*- coding: utf-8 -*-
-"""
-Centrale configuratie voor de bierscraper.
-Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
-"""
+# Bierscraper
 
-# ---------------------------------------------------------------------------
-# Websites
-# type bepaalt welke scraper gebruikt wordt:
-#   shopify    -> leest /products.json (zeer betrouwbaar)
-#   lightspeed -> leest sitemap.xml en daarna elke productpagina (HTML)
-#   hopsandhopes -> leest de listingpagina's (HTML)
-# ---------------------------------------------------------------------------
-SITES = [
-    {
-        "key": "debiersalon",
-        "label": "De Biersalon",
-        "type": "shopify",
-        "base_url": "https://debiersalon.nl",
-    },
-    {
-        "key": "beerrepublic",
-        "label": "Beer Republic",
-        "type": "shopify",
-        "base_url": "https://beerrepublic.eu",
-    },
-    {
-        "key": "bierloods22",
-        "label": "Bierloods22",
-        "type": "lightspeed",
-        "base_url": "https://www.bierloods22.nl",
-        "sitemap_url": "https://www.bierloods22.nl/sitemap.xml",
-    },
-    {
-        "key": "beerdome",
-        "label": "Beerdome",
-        "type": "lightspeed",
-        "base_url": "https://www.beerdome.nl",
-        "sitemap_url": "https://www.beerdome.nl/sitemap.xml",
-    },
-    {
-        "key": "hopsandhopes",
-        "label": "Hops & Hopes",
-        "type": "hopsandhopes",
-        "base_url": "https://www.hopsandhopes.nl",
-        "listing_url": "https://www.hopsandhopes.nl/bieren",
-    },
-]
+Scrapt bierdata van 5 webshops en zet die per shop in een tabblad van één
+Excelbestand, inclusief score (0-100), prijsvergelijking met de andere shops
+en voorwaardelijke opmaak.
 
-# ---------------------------------------------------------------------------
-# Gewenste bierstijlen. Key = canonieke (Untappd-)naam, value = True als
-# "sterke voorkeur". Matching is fuzzy: hoofdletters, streepjes en volgorde
-# maken niet uit; zie utils.match_style().
-# ---------------------------------------------------------------------------
-STYLES = {
-    "Sour - Fruited Gose": False,
-    "Stout - Imperial / Double": False,
-    "Stout - Russian Imperial": False,
-    "Sour - Other Gose": False,
-    "IPA - Imperial / Double New England / Hazy": False,
-    "IPA - Triple": True,
-    "IPA - New England / Hazy": False,
-    "Sour - Smoothie / Pastry": True,
-    "Sour - Other": False,
-    "IPA - Triple New England / Hazy": True,
-    "IPA - Imperial / Double": True,
-    "Stout - Imperial / Double Coffee": False,
-    "Stout - Imperial / Double Pastry": True,
-    "Sour - Traditional Gose": False,
-    "Stout - Pastry": False,
-    "Sour - Fruited": False,
-    "IPA - Imperial / Double Milkshake": False,
-    "Stout - Imperial / Double Milk": False,
-    "IPA - Quadruple": True,
-    "Stout - Imperial / Double Oatmeal": False,
-    "Mede": False,
-    "Mead - Braggot": False,
-    "Mead - Melomel": False,
-    "Mead - Metheglin": False,
-    "Mead - Cyser": False,
-}
+## Shops
+| Shop | Techniek | Betrouwbaarheid |
+|---|---|---|
+| De Biersalon | Shopify `/products.json` | Hoog (gestructureerde data) |
+| Beer Republic | Shopify `/products.json` | Hoog |
+| Bierloods22 | Lightspeed: sitemap + productpagina's | Middel (HTML-parsing) |
+| Beerdome | Lightspeed: sitemap + productpagina's | Middel |
+| Hops & Hopes | Maatwerk: listingpagina's | Middel |
 
-# Extra vertaal-/aliastabel: hoe shops een stijl soms noemen -> canonieke naam.
-# Vul gerust aan als een shop eigen benamingen gebruikt.
-STYLE_ALIASES = {
-    "triple ipa": "IPA - Triple",
-    "tipa": "IPA - Triple",
-    "double ipa": "IPA - Imperial / Double",
-    "dipa": "IPA - Imperial / Double",
-    "imperial ipa": "IPA - Imperial / Double",
-    "quadruple ipa": "IPA - Quadruple",
-    "hazy ipa": "IPA - New England / Hazy",
-    "neipa": "IPA - New England / Hazy",
-    "new england ipa": "IPA - New England / Hazy",
-    "imperial stout": "Stout - Imperial / Double",
-    "double stout": "Stout - Imperial / Double",
-    "russian imperial stout": "Stout - Russian Imperial",
-    "pastry stout": "Stout - Pastry",
-    "imperial pastry stout": "Stout - Imperial / Double Pastry",
-    "fruited sour": "Sour - Fruited",
-    "smoothie sour": "Sour - Smoothie / Pastry",
-    "pastry sour": "Sour - Smoothie / Pastry",
-    "gose": "Sour - Other Gose",
-    "fruited gose": "Sour - Fruited Gose",
-    "mead": "Mede",
-    "mede": "Mede",
-    "braggot": "Mead - Braggot",
-    "melomel": "Mead - Melomel",
-    "metheglin": "Mead - Metheglin",
-    "cyser": "Mead - Cyser",
-}
+## Installatie (Windows)
+1. Installeer Python 3.10+ via python.org (vink "Add to PATH" aan).
+2. Open PowerShell in deze map en voer uit:
+   ```
+   pip install -r requirements.txt
+   ```
 
-# ---------------------------------------------------------------------------
-# Untappd-filter: score >= MIN_UNTAPPD of onbekend
-# ---------------------------------------------------------------------------
-MIN_UNTAPPD = 4.00
-INCLUDE_UNKNOWN_UNTAPPD = True
+## Gebruik
+```
+python main.py                    # alles scrapen
+python main.py --no-cache         # cache negeren, alles vers
+python main.py --site hopsandhopes debiersalon   # alleen deze shops
+python main.py --debug            # uitgebreide logging
+```
+Resultaat: `output/bieroverzicht.xlsx` + per shop een `output/raw_<shop>.json`
+met de ruwe data (handig om te controleren wat er gevonden is).
 
-# ---------------------------------------------------------------------------
-# Scoregewichten (samen max 100). Zie scoring.py voor de berekening.
-# ---------------------------------------------------------------------------
-WEIGHTS = {
-    "style": 30,     # sterke voorkeur = vol gewicht, gewone stijl = de helft
-    "untappd": 35,   # 4.00 -> ondergrens, UNTAPPD_TOP -> vol gewicht
-    "count": 15,     # logaritmisch: meer ratings = betrouwbaarder
-    "price": 20,     # goedkoopste (per liter) = vol gewicht
-}
-UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
-UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
-COUNT_CAP = 5000            # aantal ratings waarbij het count-deel maximaal is
-PRICE_PER_LITER = True      # prijs normaliseren naar EUR/liter (eerlijker bij 33cl vs 44cl)
+**Let op:** de eerste run van de Lightspeed-shops (Bierloods22, Beerdome)
+duurt lang: elke productpagina wordt apart opgehaald met een nette pauze van
+0,8 sec. Reken op 30-60 min per shop. Dankzij de cache zijn volgende runs
+binnen `CACHE_MAX_AGE_HOURS` (standaard 20 uur) veel sneller.
 
-# ---------------------------------------------------------------------------
-# Techniek
-# ---------------------------------------------------------------------------
-REQUEST_DELAY = 0.8          # seconden tussen requests (netjes blijven!)
-CACHE_MAX_AGE_HOURS = 20     # HTML/JSON-cache; zet op 0 om altijd vers op te halen
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) BierScraper/1.0 (persoonlijk gebruik)"
-OUTPUT_FILE = "output/bieroverzicht.xlsx"
-FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
+## Hoe de filters werken
+- **Stijl**: alleen bieren waarvan de stijl matcht met de lijst in
+  `config.STYLES`. Matching is fuzzy op tokenniveau; shop-specifieke
+  benamingen kun je toevoegen aan `STYLE_ALIASES`.
+- **Untappd**: score >= 4.00 óf onbekend (instelbaar via `MIN_UNTAPPD` en
+  `INCLUDE_UNKNOWN_UNTAPPD`).
+- **Voorraad**: alleen leverbare bieren (Shopify: `available`-vlag;
+  HTML-shops: geen "uitverkocht"-tekst op de pagina).
+- **Kolommen**: alleen velden die de shop daadwerkelijk aanbiedt. Dit wordt
+  bij elke run opnieuw bepaald, dus als een shop bijv. later Untappd-scores
+  toevoegt, verschijnt die kolom vanzelf.
+
+## De score (0-100)
+Gewichten staan in `config.WEIGHTS` (standaard: stijl 30, Untappd 35,
+aantal ratings 15, prijs 20):
+1. **Stijl**: "sterke voorkeur" = vol gewicht, gewone gewenste stijl = 50%.
+2. **Untappd-score**: lineair van 4.00 (0%) naar 4.60 (100%). Onbekend =
+   45% van het gewicht, zodat nieuwe releases niet onderaan bungelen.
+3. **Aantal ratings**: logaritmisch met plafond op 5.000, zodat een score
+   met veel check-ins zwaarder telt dan één met 8 ratings.
+4. **Prijs**: genormaliseerd naar **euro per liter** (eerlijker dan absolute
+   prijs bij 33cl vs 44cl blikken; uitschakelen via `PRICE_PER_LITER`).
+   Genormaliseerd over alle shops samen, zodat scores tussen tabbladen
+   vergelijkbaar zijn.
+
+Suggesties om later te overwegen:
+- Een kleine bonus voor bieren die maar bij één shop verkrijgbaar zijn.
+- Een betrouwbaarheidscorrectie: 4.30 met 2.000 ratings > 4.45 met 40 ratings
+  (bayesiaans gemiddelde).
+- ABV meewegen als je dikke stouts extra wilt belonen.
+
+## Prijsvergelijking tussen shops
+Bieren worden gematcht op genormaliseerde `brouwerij + naam` (inhoud,
+verpakking en leestekens worden genegeerd), met een fuzzy fallback
+(drempel `FUZZY_MATCH_THRESHOLD` = 0.90). Voorwaardelijke opmaak:
+- **Rood**: prijs bij de andere shop is hoger dan hier.
+- **Felgroen**: prijs bij de andere shop is lager (daar kopen dus!).
+
+## Finetunen als een shop niet goed geparsed wordt
+1. Draai `python main.py --site <key> --debug` en bekijk `output/raw_<key>.json`.
+2. HTML-parsing bijstellen? De selectors staan per platform in
+   `lightspeed.py` en `hopsandhopes.py` (goed becommentarieerd).
+3. Mis je een stijlmapping? Voeg een regel toe aan `STYLE_ALIASES` in
+   `config.py`.
+
+## Op je iPhone + delen met vrienden (GitHub Pages)
+De scraper draait niet op een telefoon, maar kan gratis automatisch in de
+cloud draaien via GitHub Actions. Je krijgt dan een webpagina (mobiel
+geoptimaliseerd) + downloadbare Excel op een vaste link die je kunt delen.
+
+Eenmalige setup (op je pc, ±10 min):
+1. Maak een gratis account op github.com en maak een nieuwe **public** repository
+   aan, bijv. `bierscraper`. (Public is nodig voor gratis GitHub Pages.)
+2. Upload de inhoud van deze map naar de repository (via "uploading an
+   existing file" kan dat zonder git-kennis, sleep alle bestanden erin;
+   let op dat de map `.github/workflows/scrape.yml` meekomt).
+3. Ga naar **Settings → Pages** en kies bij "Branch": `main` en map `/docs`,
+   klik Save.
+4. Ga naar het tabblad **Actions**, open "Scrape en publiceer" en klik
+   **Run workflow** voor de eerste run (kan 1-2 uur duren door de nette
+   vertraging bij de Lightspeed-shops).
+
+Daarna:
+- Je pagina staat op `https://<jouwnaam>.github.io/bierscraper/`
+  → open op je iPhone, zet op je beginscherm, deel de link met vrienden.
+- De Excel is downloadbaar via de knop bovenaan de pagina.
+- **Automatisch verversen**: elke ochtend rond 06:00-07:00.
+- **Handmatig verversen**: GitHub-app (of github.com in Safari) →
+  Actions → Run workflow.
+
+Kanttekening: sommige shops blokkeren soms verkeer vanaf datacenters.
+Werkt een shop niet vanuit GitHub Actions maar wel lokaal, laat het weten,
+dan kijken we naar een alternatief.
+
+## Nette scraping
+Het script wacht 0,8 sec tussen requests, gebruikt een cache en identificeert
+zich met een eigen User-Agent. Houd het bij persoonlijk gebruik en draai het
+niet vaker dan nodig; controleer bij twijfel de voorwaarden van de shops.

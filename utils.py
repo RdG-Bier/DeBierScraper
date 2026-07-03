@@ -1,196 +1,231 @@
 # -*- coding: utf-8 -*-
-"""
-Scraper voor Lightspeed-shops (Bierloods22, Beerdome).
-Werkwijze:
-  1. sitemap.xml lezen -> alle product-URL's
-  2. per productpagina de specificaties parsen (brouwerij, stijl, land, ABV,
-     inhoud, Untappd, prijs, voorraad)
-De parsing is bewust generiek (spec-tabellen, dt/dd, 'label: waarde'-tekst),
-omdat Lightspeed-thema's per shop verschillen. Dankzij de cache worden
-productpagina's bij een volgende run niet opnieuw opgehaald binnen
-CACHE_MAX_AGE_HOURS.
-"""
+"""Hulpfuncties: HTTP met cache + rate limiting, parsers en normalisatie."""
 
+import hashlib
+import json
 import logging
 import re
-import xml.etree.ElementTree as ET
+import time
+import unicodedata
+from pathlib import Path
 
-from bs4 import BeautifulSoup
+import requests
 
 import config
-import utils
 
 log = logging.getLogger("bierscraper")
 
-LABELS = {
-    "brouwerij": ["brouwerij", "brewery", "brouwer"],
-    "stijl": ["bierstijl", "stijl", "style", "beer style", "biersoort", "soort"],
-    "land": ["land", "country", "land van herkomst", "herkomst"],
-    "abv": ["alcohol", "alcoholpercentage", "abv", "alc"],
-    "inhoud": ["inhoud", "volume", "content", "size"],
-    "untappd": ["untappd", "untappd score", "untappd rating"],
+CACHE_DIR = Path(__file__).parent / "cache"
+CACHE_DIR.mkdir(exist_ok=True)
+
+_session = requests.Session()
+_session.headers.update({"User-Agent": config.USER_AGENT, "Accept-Language": "nl,en;q=0.8"})
+_last_request = [0.0]
+
+
+def fetch(url, use_cache=True, timeout=25):
+    """Haal een URL op, met schijfcache en nette vertraging tussen requests."""
+    key = hashlib.md5(url.encode()).hexdigest()
+    cache_file = CACHE_DIR / f"{key}.cache"
+    if use_cache and config.CACHE_MAX_AGE_HOURS > 0 and cache_file.exists():
+        age_h = (time.time() - cache_file.stat().st_mtime) / 3600
+        if age_h < config.CACHE_MAX_AGE_HOURS:
+            return cache_file.read_text(encoding="utf-8", errors="replace")
+
+    wait = config.REQUEST_DELAY - (time.time() - _last_request[0])
+    if wait > 0:
+        time.sleep(wait)
+    log.info("GET %s", url)
+    try:
+        resp = _session.get(url, timeout=timeout)
+        _last_request[0] = time.time()
+        if resp.status_code != 200:
+            log.warning("HTTP %s voor %s", resp.status_code, url)
+            return None
+        text = resp.text
+        cache_file.write_text(text, encoding="utf-8")
+        return text
+    except requests.RequestException as exc:
+        log.warning("Request mislukt voor %s: %s", url, exc)
+        return None
+
+
+def fetch_json(url, use_cache=True):
+    text = fetch(url, use_cache=use_cache)
+    if not text:
+        return None
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        log.warning("Geen geldige JSON op %s", url)
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Normalisatie & stijlen
+# ---------------------------------------------------------------------------
+
+def norm(text):
+    """Kleine letters, geen accenten/leestekens, enkele spaties."""
+    if not text:
+        return ""
+    text = unicodedata.normalize("NFKD", str(text))
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    text = re.sub(r"[^a-z0-9 ]+", " ", text.lower())
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _style_tokens(style):
+    return set(norm(style).split())
+
+
+_CANON = {s: _style_tokens(s) for s in config.STYLES}
+
+
+def match_style(raw_style):
+    """
+    Map een stijl-string van een shop naar een van de gewenste canonieke stijlen.
+    Retourneert (canonieke_naam, sterke_voorkeur) of (None, False).
+    Werkt op tokenniveau, zodat 'Stout - Imperial / Double Pastry' ook matcht
+    als de shop 'Imperial Pastry Stout' schrijft.
+    """
+    if not raw_style:
+        return None, False
+    n = norm(raw_style)
+    if n in config.STYLE_ALIASES:
+        canon = config.STYLE_ALIASES[n]
+        return canon, config.STYLES.get(canon, False)
+
+    tokens = set(n.split())
+    best, best_score = None, 0.0
+    for canon, ctokens in _CANON.items():
+        if not ctokens:
+            continue
+        # canonieke stijl moet (vrijwel) volledig in de shop-stijl zitten
+        overlap = len(ctokens & tokens) / len(ctokens)
+        if overlap == 1.0:
+            # exacte tokenset wint; specifiekere (langere) stijl gaat voor
+            score = 1.0 + len(ctokens) / 10.0
+            # maar de shop-stijl mag niet véél meer tokens hebben die op een
+            # andere canon duiden ('imperial stout' mag niet op 'Stout - Pastry')
+            if score > best_score:
+                best, best_score = canon, score
+    if best:
+        return best, config.STYLES.get(best, False)
+    return None, False
+
+
+# ---------------------------------------------------------------------------
+# Veldparsers (regex op vrije tekst)
+# ---------------------------------------------------------------------------
+
+RE_UNTAPPD = re.compile(
+    r"untappd[^0-9]{0,25}([0-4][.,]\d{1,3})\s*(?:\(?\s*([\d.,]+)\s*(?:x\s*)?(?:ratings?|beoordelingen)?\)?)?",
+    re.IGNORECASE,
+)
+RE_ABV = re.compile(r"(\d{1,2}(?:[.,]\d{1,2})?)\s?%")
+RE_VOLUME = re.compile(r"(\d{2,4}(?:[.,]\d)?)\s?(cl|ml|l)\b", re.IGNORECASE)
+RE_PRICE = re.compile(r"€\s*([\d.]{1,6},\d{2}|\d+[.,]\d{2})")
+
+
+def parse_untappd(text):
+    """Zoek 'Untappd 4.21 (332 ratings)' in vrije tekst -> (score, aantal)."""
+    if not text:
+        return None, None
+    m = RE_UNTAPPD.search(text)
+    if not m:
+        return None, None
+    score = float(m.group(1).replace(",", "."))
+    count = None
+    if m.group(2):
+        digits = re.sub(r"[^\d]", "", m.group(2))
+        count = int(digits) if digits else None
+    return score, count
+
+
+def parse_abv(text):
+    if not text:
+        return None
+    m = RE_ABV.search(text)
+    if m:
+        val = float(m.group(1).replace(",", "."))
+        if 0 < val <= 60:
+            return val
+    return None
+
+
+def parse_volume_cl(text):
+    """Inhoud naar centiliters."""
+    if not text:
+        return None
+    m = RE_VOLUME.search(text)
+    if not m:
+        return None
+    val = float(m.group(1).replace(",", "."))
+    unit = m.group(2).lower()
+    if unit == "ml":
+        val /= 10
+    elif unit == "l":
+        val *= 100
+    return round(val, 1) if 1 <= val <= 500 else None
+
+
+def parse_price(text):
+    if not text:
+        return None
+    m = RE_PRICE.search(text)
+    if not m:
+        return None
+    raw = m.group(1)
+    # NL-notatie: 1.234,56 -> 1234.56
+    if "," in raw:
+        raw = raw.replace(".", "").replace(",", ".")
+    try:
+        return round(float(raw), 2)
+    except ValueError:
+        return None
+
+
+COUNTRY_WORDS = {
+    "nederland": "Nederland", "netherlands": "Nederland", "the netherlands": "Nederland",
+    "belgie": "België", "belgium": "België", "duitsland": "Duitsland", "germany": "Duitsland",
+    "usa": "USA", "verenigde staten": "USA", "united states": "USA", "engeland": "Engeland",
+    "england": "Engeland", "uk": "Verenigd Koninkrijk", "united kingdom": "Verenigd Koninkrijk",
+    "schotland": "Schotland", "scotland": "Schotland", "polen": "Polen", "poland": "Polen",
+    "zweden": "Zweden", "sweden": "Zweden", "noorwegen": "Noorwegen", "norway": "Noorwegen",
+    "denemarken": "Denemarken", "denmark": "Denemarken", "spanje": "Spanje", "spain": "Spanje",
+    "frankrijk": "Frankrijk", "france": "Frankrijk", "italie": "Italië", "italy": "Italië",
+    "estland": "Estland", "estonia": "Estland", "letland": "Letland", "latvia": "Letland",
+    "litouwen": "Litouwen", "lithuania": "Litouwen", "finland": "Finland", "ierland": "Ierland",
+    "ireland": "Ierland", "canada": "Canada", "roemenie": "Roemenië", "romania": "Roemenië",
+    "tsjechie": "Tsjechië", "czech republic": "Tsjechië", "oostenrijk": "Oostenrijk",
+    "austria": "Oostenrijk", "hongarije": "Hongarije", "hungary": "Hongarije",
+    "zwitserland": "Zwitserland", "switzerland": "Zwitserland", "japan": "Japan",
+    "australie": "Australië", "australia": "Australië", "nieuw zeeland": "Nieuw-Zeeland",
+    "new zealand": "Nieuw-Zeeland", "brazilie": "Brazilië", "brazil": "Brazilië",
+    "oekraine": "Oekraïne", "ukraine": "Oekraïne", "griekenland": "Griekenland",
+    "greece": "Griekenland", "slovenie": "Slovenië", "slovenia": "Slovenië",
+    "slowakije": "Slowakije", "slovakia": "Slowakije", "portugal": "Portugal",
+    "ijsland": "IJsland", "iceland": "IJsland", "mexico": "Mexico", "china": "China",
+    "rusland": "Rusland", "russia": "Rusland", "spain": "Spanje",
 }
 
-OUT_OF_STOCK_MARKERS = [
-    "uitverkocht", "niet op voorraad", "out of stock", "sold out",
-    "niet leverbaar", "tijdelijk uitverkocht",
-]
 
-
-def scrape(site):
-    urls = _product_urls_from_sitemap(site)
-    log.info("%s: %d product-URL's in sitemap", site["label"], len(urls))
-    beers = []
-    for url in urls:
-        html = utils.fetch(url)
-        if not html:
-            continue
-        beer = _parse_product_page(html, url)
-        if beer:
-            beers.append(beer)
-    log.info("%s: %d bieren na filters", site["label"], len(beers))
-    return beers
-
-
-def _product_urls_from_sitemap(site):
-    xml_text = utils.fetch(site["sitemap_url"])
-    if not xml_text:
-        return []
-    urls = []
-    try:
-        root = ET.fromstring(xml_text.encode("utf-8"))
-    except ET.ParseError:
-        return []
-    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-
-    # sitemap-index? Dan onderliggende sitemaps ophalen
-    sub_sitemaps = [loc.text for loc in root.findall(".//sm:sitemap/sm:loc", ns)]
-    loc_elements = [loc.text for loc in root.findall(".//sm:url/sm:loc", ns)]
-    for sub in sub_sitemaps:
-        sub_xml = utils.fetch(sub)
-        if not sub_xml:
-            continue
-        try:
-            sub_root = ET.fromstring(sub_xml.encode("utf-8"))
-            loc_elements += [loc.text for loc in sub_root.findall(".//sm:url/sm:loc", ns)]
-        except ET.ParseError:
-            continue
-
-    for loc in loc_elements:
-        if not loc:
-            continue
-        # Lightspeed-producten eindigen op .html en zitten niet in service/blog-paden
-        if loc.endswith(".html") and not re.search(
-            r"/(service|blogs?|nieuws|tags?|brands?|merken|page)\b", loc
-        ):
-            urls.append(loc.strip())
-    return sorted(set(urls))
-
-
-def _parse_product_page(html, url):
-    soup = BeautifulSoup(html, "html.parser")
-    page_text = soup.get_text(" ", strip=True)
-    lower_text = page_text.lower()
-
-    # --- voorraad ---
-    if any(marker in lower_text for marker in OUT_OF_STOCK_MARKERS):
+def parse_country(text):
+    if not text:
         return None
-
-    specs = _extract_specs(soup)
-
-    # --- stijl ---
-    style_raw = specs.get("stijl")
-    canon, strong = utils.match_style(style_raw)
-    if not canon:
-        # fallback: breadcrumb / categorie / titel
-        crumbs = " ".join(a.get_text(" ", strip=True) for a in soup.select(".breadcrumb a, .breadcrumbs a, nav a"))
-        canon, strong = utils.match_style(crumbs)
-        if canon:
-            style_raw = style_raw or canon
-    if not canon:
-        return None
-
-    # --- untappd ---
-    untappd, untappd_count = utils.parse_untappd(specs.get("untappd") or "")
-    if untappd is None:
-        untappd, untappd_count = utils.parse_untappd(page_text)
-    if untappd is not None and untappd < config.MIN_UNTAPPD:
-        return None
-    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
-        return None
-
-    # --- naam & prijs ---
-    h1 = soup.find("h1")
-    name = h1.get_text(" ", strip=True) if h1 else None
-    if not name:
-        return None
-    price = None
-    price_el = soup.select_one("[class*='price']")
-    if price_el:
-        price = utils.parse_price(price_el.get_text(" ", strip=True))
-    if price is None:
-        price = utils.parse_price(page_text)
-
-    brewery = specs.get("brouwerij")
-    if not brewery:
-        brand = soup.select_one("[class*='brand'] a, [class*='merk'] a")
-        if brand:
-            brewery = brand.get_text(" ", strip=True)
-
-    abv = utils.parse_abv(specs.get("abv") or "") or utils.parse_abv(page_text)
-    volume = utils.parse_volume_cl(specs.get("inhoud") or "") or utils.parse_volume_cl(name) \
-        or utils.parse_volume_cl(page_text)
-    country = utils.parse_country(specs.get("land") or "") or utils.parse_country(page_text)
-
-    return {
-        "brouwerij": brewery,
-        "naam": _clean_name(name, brewery),
-        "inhoud_cl": volume,
-        "land": country,
-        "abv": abv,
-        "stijl": canon,
-        "stijl_ruw": style_raw,
-        "sterke_voorkeur": strong,
-        "untappd": untappd,
-        "untappd_aantal": untappd_count,
-        "prijs": price,
-        "weblink": url,
-    }
+    n = " " + norm(text) + " "
+    for word, country in COUNTRY_WORDS.items():
+        if f" {word} " in n:
+            return country
+    return None
 
 
-def _extract_specs(soup):
-    """Verzamel 'label -> waarde' uit tabellen, dl-lijsten en losse tekstregels."""
-    pairs = {}
-
-    for row in soup.select("table tr"):
-        cells = row.find_all(["td", "th"])
-        if len(cells) >= 2:
-            pairs[utils.norm(cells[0].get_text())] = cells[1].get_text(" ", strip=True)
-
-    for dl in soup.select("dl"):
-        dts, dds = dl.find_all("dt"), dl.find_all("dd")
-        for dt, dd in zip(dts, dds):
-            pairs[utils.norm(dt.get_text())] = dd.get_text(" ", strip=True)
-
-    for el in soup.select("li, p, div"):
-        text = el.get_text(" ", strip=True)
-        if 0 < len(text) < 80 and ":" in text:
-            label, _, value = text.partition(":")
-            if value.strip():
-                pairs.setdefault(utils.norm(label), value.strip())
-
-    result = {}
-    for field, keywords in LABELS.items():
-        for kw in keywords:
-            if kw in pairs:
-                result[field] = pairs[kw]
-                break
-    return result
-
-
-def _clean_name(name, brewery):
-    if brewery and name.lower().startswith(brewery.lower()):
-        name = name[len(brewery):]
-    name = re.sub(r"^[\s\-–|:]+", "", name)
-    name = re.sub(r"\b\d{2,4}\s?(cl|ml)\b\.?", "", name, flags=re.IGNORECASE)
-    return re.sub(r"\s+", " ", name).strip()
+def beer_match_key(brewery, name):
+    """Genormaliseerde sleutel om hetzelfde bier tussen shops te matchen."""
+    combined = f"{brewery or ''} {name or ''}"
+    n = norm(combined)
+    # inhoud, verpakking en ruis eruit
+    n = re.sub(r"\b\d{2,4}\s?(cl|ml|l)\b", " ", n)
+    n = re.sub(r"\b(can|blik|bottle|fles|krat|4 pack|sixpack)\b", " ", n)
+    return re.sub(r"\s+", " ", n).strip()
