@@ -1,0 +1,42 @@
+name: Scrape en publiceer
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/cache@v4
+        with:
+          path: cache
+          key: scraper-cache-${{ github.run_id }}
+          restore-keys: scraper-cache-
+
+      - run: pip install -r requirements.txt
+
+      - run: python main.py
+
+      - name: Resultaat committen (docs/)
+        run: |
+          git config user.name "bierscraper-bot"
+          git config user.email "actions@github.com"
+          git add docs/
+          git diff --cached --quiet || git commit -m "Bieroverzicht bijgewerkt $(date +'%d-%m-%Y %H:%M')"
+          git push
