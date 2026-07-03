@@ -1,4 +1,0 @@
-requests>=2.31
-beautifulsoup4>=4.12
-openpyxl>=3.1
-lxml>=5.0
