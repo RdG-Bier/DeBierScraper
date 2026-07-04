@@ -90,7 +90,9 @@ def _product_urls_from_sitemap(site):
 
 def _parse_product_page(html, url):
     soup = BeautifulSoup(html, "html.parser")
-    page_text = soup.get_text(" ", strip=True)
+    # scripts/styles verwijderen: die bevatten teksten als "Out of stock" in
+    # vertaaltabellen, wat elke pagina onterecht als uitverkocht markeerde
+    page_text = utils.soup_text(soup)
     lower_text = page_text.lower()
 
     # --- voorraad ---
@@ -116,7 +118,7 @@ def _parse_product_page(html, url):
     # --- untappd ---
     untappd, untappd_count = utils.parse_untappd(specs.get("untappd") or "")
     if untappd is None:
-        untappd, untappd_count = utils.parse_untappd(page_text)
+        untappd, untappd_count = utils.parse_untappd_soup(soup)
     if untappd is None:
         untappd, untappd_count = utils.parse_untappd_html(html)
     if untappd is not None and untappd < config.MIN_UNTAPPD:

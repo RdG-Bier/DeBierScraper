@@ -31,8 +31,10 @@ HEADER_FILL = PatternFill("solid", start_color="1F4E44")
 HEADER_FONT = Font(name="Arial", bold=True, color="FFFFFF")
 BODY_FONT = Font(name="Arial")
 STRONG_FILL = PatternFill("solid", start_color="FFF2CC")  # sterke voorkeur licht geel
-RED_FILL = PatternFill("solid", start_color="FFC7CE")
-GREEN_FILL = PatternFill("solid", start_color="00FF00")   # felgroen, zoals gevraagd
+# Let op: voor VOORWAARDELIJKE opmaak (dxf) moet zowel start- als eindkleur
+# gezet zijn, anders toont Excel geen vulling (bekende openpyxl-eigenaardigheid)
+RED_FILL = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
+GREEN_FILL = PatternFill(start_color="00FF00", end_color="00FF00", fill_type="solid")  # felgroen
 
 
 def build_workbook(all_beers, sites):

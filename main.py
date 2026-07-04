@@ -70,6 +70,10 @@ def main():
         raw_path.parent.mkdir(exist_ok=True)
         raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
 
+    import scoring
+    filled = scoring.enrich_untappd(all_beers)
+    log.info("Untappd-scores geleend van andere shops: %d bieren aangevuld", filled)
+
     wb = excel_builder.build_workbook(all_beers, sites)
     out = Path(config.OUTPUT_FILE)
     out.parent.mkdir(exist_ok=True)

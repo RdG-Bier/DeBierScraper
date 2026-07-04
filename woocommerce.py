@@ -111,10 +111,13 @@ def _parse_product(p, site, detail_count):
         html = utils.fetch(url)
         if html:
             utils.save_debug_sample(site["key"], "productpagina", html)
-            text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
-            untappd, untappd_count = utils.parse_untappd(text)
+            soup = BeautifulSoup(html, "html.parser")
+            # scope naar het hoofdproduct (pagina bevat ook 'related products')
+            main = soup.select_one("div.product") or soup
+            untappd, untappd_count = utils.parse_untappd_soup(main)
             if untappd is None:
                 untappd, untappd_count = utils.parse_untappd_html(html)
+            text = utils.soup_text(soup)
             if country is None:
                 country = utils.parse_country(text)
             if abv is None:

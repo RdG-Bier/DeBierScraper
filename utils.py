@@ -281,6 +281,65 @@ def parse_untappd_html(html):
 _saved_samples = set()
 
 
+# Score met het AANTAL vóór de score, zoals bij Beerdome en De Biersalon:
+# 'Untappd (987 ratings) ..... 4.21'
+RE_UNTAPPD_COUNT_FIRST = re.compile(
+    r"untappd\D{0,15}\(?\s*([\d.,]{1,9})\s*(?:x\s*)?(?:ratings?|beoordelingen)\)?"
+    r"\D{0,200}?([0-4][.,]\d{1,2})",
+    re.IGNORECASE | re.DOTALL,
+)
+
+# Bekende selector-combinaties per shopthema: (score-selector, count-selector)
+UNTAPPD_SELECTORS = [
+    (".untappd-score .score", ".untappd-rating-title"),   # Beerdome / Hops & Hopes
+    (".score-text", ".aantalr"),                          # De Biersalon
+    ("[class*='untappd'] [class*='score']", "[class*='untappd'] [class*='count']"),
+]
+
+
+def parse_untappd_soup(soup):
+    """Untappd-score/aantal uit een BeautifulSoup-document, via bekende
+    selectors en daarna tekstpatronen. Score 0.0 = nog geen rating = None."""
+    for score_sel, count_sel in UNTAPPD_SELECTORS:
+        el = soup.select_one(score_sel)
+        if not el:
+            continue
+        m = re.search(r"([0-4][.,]\d{1,2})", el.get_text(" ", strip=True))
+        if not m:
+            continue
+        score = float(m.group(1).replace(",", "."))
+        count = None
+        cel = soup.select_one(count_sel)
+        if cel:
+            cm = re.search(r"([\d.,]{1,9})", cel.get_text(" ", strip=True))
+            if cm:
+                digits = re.sub(r"[^\d]", "", cm.group(1))
+                count = int(digits) if digits else None
+        if score == 0:
+            return None, count
+        return score, count
+
+    text = soup_text(soup)
+    score, count = parse_untappd(text)
+    if score is None:
+        m = RE_UNTAPPD_COUNT_FIRST.search(text)
+        if m:
+            digits = re.sub(r"[^\d]", "", m.group(1))
+            count = int(digits) if digits else None
+            score = float(m.group(2).replace(",", "."))
+    if score == 0:
+        score = None
+    return score, count
+
+
+def soup_text(soup):
+    """Zichtbare tekst ZONDER script/style-inhoud (die bevatten woorden als
+    'Out of stock' in vertaaltabellen en gaven valse voorraad-matches)."""
+    for tag in soup.find_all(["script", "style", "noscript", "template"]):
+        tag.decompose()
+    return soup.get_text(" ", strip=True)
+
+
 def save_debug_sample(site_key, name, content):
     """Bewaar één voorbeeldbestand per site in docs/debug/ zodat de ruwe
     bron (HTML/JSON) achteraf te inspecteren is via de GitHub-repository."""

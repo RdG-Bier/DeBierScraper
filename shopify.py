@@ -19,11 +19,12 @@ log = logging.getLogger("bierscraper")
 # Als score/land niet in products.json staat: productpagina erbij pakken?
 FETCH_DETAIL_FALLBACK = True
 # Veiligheidslimiet zodat een eerste run niet urenlang detailpagina's trekt.
-MAX_DETAIL_FETCHES = 400
+MAX_DETAIL_FETCHES = 800
 
 
 def scrape(site):
     base = site["base_url"].rstrip("/")
+    _parse_product.detail_count = 0  # budget per shop, niet gedeeld
     beers = []
     page = 1
     while True:
@@ -94,11 +95,12 @@ def _parse_product(p, base):
             html = utils.fetch(url)
             if html:
                 utils.save_debug_sample(base.split("//")[1], "productpagina", html)
-                text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+                soup = BeautifulSoup(html, "html.parser")
                 if untappd is None:
-                    untappd, untappd_count = utils.parse_untappd(text)
+                    untappd, untappd_count = utils.parse_untappd_soup(soup)
                 if untappd is None:
                     untappd, untappd_count = utils.parse_untappd_html(html)
+                text = utils.soup_text(soup)
                 if country is None:
                     country = utils.parse_country(text)
                 if volume is None:

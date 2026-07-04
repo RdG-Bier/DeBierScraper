@@ -45,34 +45,97 @@ def _parse_listing(html, base_url):
     soup = BeautifulSoup(html, "html.parser")
     beers = []
 
-    # Productkaarten: zoek elementen die zowel 'Untappd' als een prijs bevatten
-    candidates = soup.find_all(["article", "li", "div"], recursive=True)
-    for el in candidates:
-        text = el.get_text(" ", strip=True)
-        if "untappd" not in text.lower() or "€" not in text:
-            continue
-        # geen containers pakken die meerdere producten bevatten
-        if text.lower().count("untappd") > 1:
-            continue
+    # Werkelijke kaartstructuur (uit debug-sample):
+    # <div class="beer-item"> <h4>Brouwerij</h4> <h3>Biernaam</h3>
+    #   <p>Stijl</p> <p>Land - ABV% - Inhoud</p>
+    #   <strong>Untappd <span class="score">4.53</span> (345 ratings)</strong>
+    cards = soup.select(".beer-item")
+    if cards:
+        for el in cards:
+            beer = _parse_beer_item(el, base_url)
+            if beer:
+                beers.append(beer)
+    else:
+        # fallback: generieke aanpak voor het geval het thema ooit wijzigt
+        for el in soup.find_all(["article", "li", "div"], recursive=True):
+            text = el.get_text(" ", strip=True)
+            if "untappd" not in text.lower() or "€" not in text:
+                continue
+            if text.lower().count("untappd") > 1:
+                continue
+            link = el.find("a", href=True)
+            if not link:
+                continue
+            href = link["href"]
+            if href.startswith("/"):
+                href = base_url.rstrip("/") + href
+            if not href.startswith("http"):
+                continue
+            beer = _parse_card(el, text, href)
+            if beer:
+                beers.append(beer)
 
-        link = el.find("a", href=True)
-        if not link:
-            continue
-        href = link["href"]
-        if href.startswith("/"):
-            href = base_url.rstrip("/") + href
-        if not href.startswith("http"):
-            continue
-
-        beer = _parse_card(el, text, href)
-        if beer:
-            beers.append(beer)
-
-    # dedupliceren op link (geneste divs kunnen dubbel matchen)
     unique = {}
     for b in beers:
         unique.setdefault(b["weblink"], b)
     return list(unique.values())
+
+
+def _parse_beer_item(el, base_url):
+    text = el.get_text(" ", strip=True)
+    if RE_UITVERKOCHT.search(text):
+        return None
+
+    link = el.find("a", href=True)
+    if not link:
+        return None
+    href = link["href"]
+    if href.startswith("/"):
+        href = base_url.rstrip("/") + href
+
+    brewery_el = el.find("h4")
+    name_el = el.find("h3")
+    brewery = brewery_el.get_text(" ", strip=True) if brewery_el else None
+    name = name_el.get_text(" ", strip=True) if name_el else None
+    if not name:
+        return None
+
+    # stijl: eerste <p> in .beer-info
+    style_raw = None
+    for p in el.find_all("p"):
+        candidate = p.get_text(" ", strip=True)
+        canon, strong = utils.match_style(candidate)
+        if canon:
+            style_raw = candidate
+            break
+    else:
+        canon, strong = None, False
+    if not canon:
+        return None
+
+    untappd, untappd_count = utils.parse_untappd(text)
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    prices = [utils.parse_price(p) for p in re.findall(r"€\s*[\d.,]+", text)]
+    prices = [p for p in prices if p]
+
+    return {
+        "brouwerij": brewery,
+        "naam": name,
+        "inhoud_cl": utils.parse_volume_cl(text),
+        "land": utils.parse_country(text),
+        "abv": utils.parse_abv(text),
+        "stijl": canon,
+        "stijl_ruw": style_raw,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": untappd_count,
+        "prijs": min(prices) if prices else None,
+        "weblink": href,
+    }
 
 
 RE_STYLE_LINE = re.compile(

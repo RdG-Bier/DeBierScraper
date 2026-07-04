@@ -70,6 +70,44 @@ def _score(beer, ppl_min, ppl_max):
     return max(0.0, total)
 
 
+def enrich_untappd(all_beers):
+    """De Untappd-score is een wereldwijd gemiddelde en dus shop-onafhankelijk.
+    Toont een shop (zoals Beer Republic) de score niet, dan lenen we hem van
+    hetzelfde bier bij een andere shop (matching op brouwerij + naam)."""
+    known = {}
+    for beers in all_beers.values():
+        for b in beers:
+            if b.get("untappd") is not None:
+                key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+                if key and key not in known:
+                    known[key] = (b["untappd"], b.get("untappd_aantal"))
+    filled = 0
+    for beers in all_beers.values():
+        for b in beers:
+            if b.get("untappd") is None:
+                key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+                hit = known.get(key) or _fuzzy_get(known, key)
+                if hit:
+                    b["untappd"], b["untappd_aantal"] = hit
+                    filled += 1
+    return filled
+
+
+def _fuzzy_get(mapping, key):
+    if not key:
+        return None
+    best_key, best_ratio = None, 0.0
+    for other in mapping:
+        if abs(len(other) - len(key)) > 12:
+            continue
+        ratio = difflib.SequenceMatcher(None, key, other).ratio()
+        if ratio > best_ratio:
+            best_key, best_ratio = other, ratio
+    if best_key and best_ratio >= config.FUZZY_MATCH_THRESHOLD:
+        return mapping[best_key]
+    return None
+
+
 def build_price_lookup(all_beers):
     """
     Retourneert dict: site_key -> dict match_key -> prijs.
