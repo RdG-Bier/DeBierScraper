@@ -34,9 +34,9 @@ SITES = [
     {
         "key": "beerdome",
         "label": "Beerdome",
-        "type": "lightspeed",
+        "type": "woocommerce",
         "base_url": "https://www.beerdome.nl",
-        "sitemap_url": "https://www.beerdome.nl/sitemap.xml",
+        "api_url": "https://www.beerdome.nl/wp-json/wc/store/v1/products",
     },
     {
         "key": "hopsandhopes",
@@ -129,6 +129,8 @@ UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
 UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
 COUNT_CAP = 5000            # aantal ratings waarbij het count-deel maximaal is
 PRICE_PER_LITER = True      # prijs normaliseren naar EUR/liter (eerlijker bij 33cl vs 44cl)
+PRICE_CAP_EUR = 20.0        # boven deze absolute prijs wordt een bier veel minder interessant
+PRICE_CAP_MALUS = 20        # puntenaftrek voor bieren boven het prijsplafond
 
 # ---------------------------------------------------------------------------
 # Techniek

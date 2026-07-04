@@ -45,6 +45,7 @@ def scrape(site):
         html = utils.fetch(url)
         if not html:
             continue
+        utils.save_debug_sample("lightspeed", url.split("/")[2], html)
         beer = _parse_product_page(html, url)
         if beer:
             beers.append(beer)
@@ -102,11 +103,13 @@ def _parse_product_page(html, url):
     style_raw = specs.get("stijl")
     canon, strong = utils.match_style(style_raw)
     if not canon:
-        # fallback: breadcrumb / categorie / titel
-        crumbs = " ".join(a.get_text(" ", strip=True) for a in soup.select(".breadcrumb a, .breadcrumbs a, nav a"))
-        canon, strong = utils.match_style(crumbs)
-        if canon:
-            style_raw = style_raw or canon
+        # fallback: ALLEEN echte breadcrumbs (geen nav-menu's: die bevatten
+        # alle categorieën van de shop en gaven massaal valse 'Mede'-matches)
+        for a in soup.select(".breadcrumb a, .breadcrumbs a, [class*='breadcrumb'] a"):
+            canon, strong = utils.match_style(a.get_text(" ", strip=True))
+            if canon:
+                style_raw = style_raw or a.get_text(" ", strip=True)
+                break
     if not canon:
         return None
 
@@ -114,6 +117,8 @@ def _parse_product_page(html, url):
     untappd, untappd_count = utils.parse_untappd(specs.get("untappd") or "")
     if untappd is None:
         untappd, untappd_count = utils.parse_untappd(page_text)
+    if untappd is None:
+        untappd, untappd_count = utils.parse_untappd_html(html)
     if untappd is not None and untappd < config.MIN_UNTAPPD:
         return None
     if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:

@@ -61,7 +61,13 @@ def _score(beer, ppl_min, ppl_max):
         frac = 1 - (ppl - ppl_min) / (ppl_max - ppl_min)
         total += w["price"] * max(0.0, min(1.0, frac))
 
-    return total
+    # 5. prijsplafond: boven PRICE_CAP_EUR (absolute prijs) wordt een bier
+    #    veel minder interessant -> stevige puntenaftrek
+    price = beer.get("prijs")
+    if price is not None and price > config.PRICE_CAP_EUR:
+        total -= config.PRICE_CAP_MALUS
+
+    return max(0.0, total)
 
 
 def build_price_lookup(all_beers):

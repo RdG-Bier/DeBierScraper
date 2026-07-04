@@ -93,9 +93,12 @@ def _parse_product(p, base):
             _parse_product.detail_count += 1
             html = utils.fetch(url)
             if html:
+                utils.save_debug_sample(base.split("//")[1], "productpagina", html)
                 text = BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
                 if untappd is None:
                     untappd, untappd_count = utils.parse_untappd(text)
+                if untappd is None:
+                    untappd, untappd_count = utils.parse_untappd_html(html)
                 if country is None:
                     country = utils.parse_country(text)
                 if volume is None:

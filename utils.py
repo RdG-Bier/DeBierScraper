@@ -101,6 +101,12 @@ def match_style(raw_style):
     for canon, ctokens in _CANON.items():
         if not ctokens:
             continue
+        # Stijlen van één woord (zoals 'Mede') alleen exact matchen: 'mede'
+        # is ook een gewoon Nederlands woord en zit in menu's/lopende tekst.
+        if len(ctokens) == 1:
+            if n == next(iter(ctokens)):
+                return canon, config.STYLES.get(canon, False)
+            continue
         # canonieke stijl moet (vrijwel) volledig in de shop-stijl zitten
         overlap = len(ctokens & tokens) / len(ctokens)
         if overlap == 1.0:
@@ -229,3 +235,59 @@ def beer_match_key(brewery, name):
     n = re.sub(r"\b\d{2,4}\s?(cl|ml|l)\b", " ", n)
     n = re.sub(r"\b(can|blik|bottle|fles|krat|4 pack|sixpack)\b", " ", n)
     return re.sub(r"\s+", " ", n).strip()
+
+
+# Untappd-score verstopt in ruwe HTML: data-attributen of JSON-blobs,
+# bijv. data-untappd-score="4.32", "untappd_rating":4.32, "rating":"4.32"
+RE_UNTAPPD_HTML = [
+    # geen spaties in de 'gap': alleen attribuut/JSON-context zoals
+    # data-untappd-score="4.32" of "untappd_rating":4.15 (voorkomt valse
+    # matches in lopende tekst zoals 'untappd hier 3.5 km')
+    re.compile(r'untappd[\w\-"\':=]{0,40}?([0-4]\.\d{1,3})', re.IGNORECASE),
+    re.compile(r'"untappd[^"]*"\s*:\s*"?([0-4]\.\d{1,3})"?', re.IGNORECASE),
+    re.compile(r'data-(?:untappd-)?(?:score|rating)\s*=\s*"([0-4]\.\d{1,3})"', re.IGNORECASE),
+]
+RE_UNTAPPD_COUNT_HTML = re.compile(
+    r"(?:untappd_?count|ratings?_count|review_count|checkin_count"
+    r"|(?<![a-z_])count|(?<![a-z_])checkins?|(?<![a-z_])aantal"
+    r"|(?<![a-z_])beoordelingen|(?<![a-z_])ratings(?![a-z]))"
+    r'["\':= ]{1,5}"?([\d.,]{1,9})',
+    re.IGNORECASE,
+)
+
+
+def parse_untappd_html(html):
+    """Zoek Untappd-score/aantal in ruwe HTML-broncode (dus incl. attributen
+    en ingebedde JSON), als fallback op de zichtbare tekst."""
+    if not html:
+        return None, None
+    score = None
+    for pattern in RE_UNTAPPD_HTML:
+        m = pattern.search(html)
+        if m:
+            score = float(m.group(1))
+            break
+    if score is None:
+        return None, None
+    count = None
+    m = RE_UNTAPPD_COUNT_HTML.search(html)
+    if m:
+        digits = re.sub(r"[^\d]", "", m.group(1))
+        if digits:
+            count = int(digits)
+    return score, count
+
+
+_saved_samples = set()
+
+
+def save_debug_sample(site_key, name, content):
+    """Bewaar één voorbeeldbestand per site in docs/debug/ zodat de ruwe
+    bron (HTML/JSON) achteraf te inspecteren is via de GitHub-repository."""
+    key = f"{site_key}-{name}"
+    if key in _saved_samples or not content:
+        return
+    _saved_samples.add(key)
+    debug_dir = Path(__file__).parent / "docs" / "debug"
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    (debug_dir / f"{key}.txt").write_text(content[:400000], encoding="utf-8", errors="replace")

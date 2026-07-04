@@ -28,6 +28,8 @@ def scrape(site):
         html = utils.fetch(url)
         if not html:
             break
+        if page == 1:
+            utils.save_debug_sample(site["key"], "listing", html)
         page_beers = _parse_listing(html, site["base_url"])
         new = [b for b in page_beers if b["weblink"] not in seen_links]
         if not new:

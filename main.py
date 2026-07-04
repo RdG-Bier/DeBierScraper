@@ -21,11 +21,13 @@ import html_builder
 import hopsandhopes
 import lightspeed
 import shopify
+import woocommerce
 
 SCRAPERS = {
     "shopify": shopify.scrape,
     "lightspeed": lightspeed.scrape,
     "hopsandhopes": hopsandhopes.scrape,
+    "woocommerce": woocommerce.scrape,
 }
 
 
@@ -64,7 +66,7 @@ def main():
             beers = []
         all_beers[site["key"]] = beers
         # ruwe data ook als JSON bewaren, handig voor debugging/finetunen
-        raw_path = Path("output") / f"raw_{site['key']}.json"
+        raw_path = Path("docs") / f"raw_{site['key']}.json"
         raw_path.parent.mkdir(exist_ok=True)
         raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
 
