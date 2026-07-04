@@ -118,6 +118,62 @@ def match_style(raw_style):
                 best, best_score = canon, score
     if best:
         return best, config.STYLES.get(best, False)
+
+    # omgekeerde richting: shoplabel is een DEEL van een canonieke stijl
+    # ('Stout - Imperial' -> 'Stout - Imperial / Double'); kortste canon wint
+    if len(tokens) >= 2:
+        candidates = [(canon, ctokens) for canon, ctokens in _CANON.items()
+                      if len(ctokens) > 1 and tokens <= ctokens]
+        if candidates:
+            best = min(candidates, key=lambda x: len(x[1]))[0]
+            return best, config.STYLES.get(best, False)
+    return None, False
+
+
+# trefwoorden in naam/omschrijving om een substijl af te leiden
+NAME_HINTS = [
+    (r"\btipa\b|triple\s+ipa", "IPA - Triple"),
+    (r"quadruple\s+ipa|\bqipa\b", "IPA - Quadruple"),
+    (r"russian\s+imperial", "Stout - Russian Imperial"),
+    (r"imperial\s+pastry\s+stout", "Stout - Imperial / Double Pastry"),
+    (r"imperial\s+stout|\bris\b", "Stout - Imperial / Double"),
+    (r"pastry\s+stout", "Stout - Pastry"),
+    (r"pastry\s+sour|smoothie", "Sour - Smoothie / Pastry"),
+    (r"fruited\s+gose", "Sour - Fruited Gose"),
+    (r"\bgose\b", "Sour - Other Gose"),
+    (r"fruited\s+sour|fruit\s+sour", "Sour - Fruited"),
+    (r"\bdipa\b|double\s+ipa|imperial\s+ipa", "IPA - Imperial / Double"),
+    (r"\bneipa\b|new\s+england|\bhazy\b", "IPA - New England / Hazy"),
+    (r"\bmead\b|\bmede\b|melomel|metheglin|braggot|cyser", "Mede"),
+]
+
+# brede families: als een shop alleen 'Stout'/'IPA'/'Sour' als label heeft,
+# nemen we het bier mee met die brede stijl (later verfijnd via andere shops)
+BROAD_FAMILIES = [
+    ("gose", "Sour - Other Gose"), ("mead", "Mede"), ("mede", "Mede"),
+    ("stout", "Stout"), ("ipa", "IPA"), ("sour", "Sour"),
+]
+
+
+def derive_style(candidates, name_text=""):
+    """Bepaal de stijl: (1) exacte/gedeeltelijke match op stijl-labels,
+    (2) trefwoorden in labels+naam, (3) brede familie.
+    Retourneert (stijl, sterke_voorkeur) of (None, False)."""
+    for c in candidates:
+        canon, strong = match_style(c)
+        if canon:
+            return canon, strong
+    searchable = norm(" ".join(str(c) for c in candidates if c) + " " + (name_text or ""))
+    for pattern, style in NAME_HINTS:
+        if re.search(pattern, searchable):
+            canon, strong = match_style(style)
+            return (canon or style), strong
+    for keyword, family in BROAD_FAMILIES:
+        if re.search(rf"\b{keyword}\b", searchable):
+            canon, strong = match_style(family)
+            if canon:
+                return canon, strong
+            return family, False
     return None, False
 
 
@@ -221,6 +277,8 @@ def parse_country(text):
     if not text:
         return None
     n = " " + norm(text) + " "
+    # 'New England' is een bierstijl, geen land
+    n = n.replace(" new england ", " ")
     for word, country in COUNTRY_WORDS.items():
         if f" {word} " in n:
             return country

@@ -25,6 +25,11 @@ MAX_DETAIL_FETCHES = 800
 def scrape(site):
     base = site["base_url"].rstrip("/")
     _parse_product.detail_count = 0  # budget per shop, niet gedeeld
+
+    # Tegel-data van de collectiepagina (indien geconfigureerd): daar staat de
+    # precieze Untappd-stijl + score/aantal die NIET in products.json zitten
+    tile_map = _scrape_collection_tiles(site) if site.get("collection_url") else {}
+
     beers = []
     page = 1
     while True:
@@ -32,7 +37,7 @@ def scrape(site):
         if not data or not data.get("products"):
             break
         for product in data["products"]:
-            beer = _parse_product(product, base)
+            beer = _parse_product(product, base, tile_map)
             if beer:
                 beers.append(beer)
         if len(data["products"]) < 250:
@@ -45,7 +50,60 @@ def scrape(site):
     return beers
 
 
-def _parse_product(p, base):
+RE_TILE_STYLE = re.compile(r'\[\s*"([^"\]]{3,60})"\s*\]')
+RE_TILE_SCORE = re.compile(r"(\d[.,]\d{1,2})\s+([\d.,]+)\s*ratings", re.IGNORECASE)
+
+
+def _scrape_collection_tiles(site):
+    """Lees collectiepagina's en bouw: producthandle -> tegel-info
+    (stijl, untappd, aantal, land). Tegels tonen bij De Biersalon de exacte
+    Untappd-stijl als ["Stout - Imperial / Double"]."""
+    tile_map = {}
+    for page in range(1, 90):
+        html = utils.fetch(f"{site['collection_url']}?page={page}")
+        if not html:
+            break
+        if page == 1:
+            utils.save_debug_sample(site["key"], "collectie", html)
+        soup = BeautifulSoup(html, "html.parser")
+        for t in soup.find_all(["script", "style"]):
+            t.decompose()
+        new = 0
+        for a in soup.find_all("a", href=re.compile(r"/products/[a-z0-9\-]+")):
+            m = re.search(r"/products/([a-z0-9\-]+)", a["href"])
+            handle = m.group(1)
+            if handle in tile_map:
+                continue
+            container = a
+            for _ in range(7):
+                container = container.parent
+                if container is None:
+                    break
+                text = container.get_text(" ", strip=True)
+                if ("ratings" in text.lower() or "untappd" in text.lower()
+                        or RE_TILE_STYLE.search(text)) and len(text) < 700:
+                    info = {}
+                    sm = RE_TILE_STYLE.search(text)
+                    if sm:
+                        info["stijl"] = sm.group(1)
+                    um = RE_TILE_SCORE.search(text)
+                    if um:
+                        score = float(um.group(1).replace(",", "."))
+                        digits = re.sub(r"[^\d]", "", um.group(2))
+                        info["untappd"] = score if score > 0 else None
+                        info["untappd_aantal"] = int(digits) if digits else None
+                    info["land"] = utils.parse_country(text)
+                    if info:
+                        tile_map[handle] = info
+                        new += 1
+                    break
+        if new == 0 and page > 1:
+            break
+    log.info("%s: tegel-info voor %d producten", site["label"], len(tile_map))
+    return tile_map
+
+
+def _parse_product(p, base, tile_map=None):
     title = (p.get("title") or "").strip()
     vendor = (p.get("vendor") or "").strip() or None
     product_type = (p.get("product_type") or "").strip()
@@ -66,22 +124,23 @@ def _parse_product(p, base):
     except (TypeError, ValueError):
         price = None
 
-    # --- stijl: product_type, anders tags, anders bodytekst ---
-    style_raw = product_type
-    canon, strong = utils.match_style(style_raw)
+    tile = (tile_map or {}).get(p.get("handle")) or {}
+
+    # --- stijl: tegel-info (exacte Untappd-stijl) > product_type/tags > breed ---
+    style_candidates = [c for c in [tile.get("stijl"), product_type] if c] + \
+        [str(t) for t in tags]
+    canon, strong = utils.derive_style(style_candidates, title)
     if not canon:
-        for t in tags:
-            canon, strong = utils.match_style(t)
-            if canon:
-                style_raw = t
-                break
-    if not canon:
-        return None  # geen gewenste stijl
+        return None  # geen (verwante) doelstijl
+    style_raw = tile.get("stijl") or product_type or None
 
     searchable = " ".join([title, product_type, body_text] + [str(t) for t in tags])
 
-    untappd, untappd_count = utils.parse_untappd(searchable)
-    country = parse_country_from_tags(tags) or utils.parse_country(searchable)
+    untappd = tile.get("untappd")
+    untappd_count = tile.get("untappd_aantal")
+    if untappd is None and "untappd" not in tile:  # geen tegel-info aanwezig
+        untappd, untappd_count = utils.parse_untappd(searchable)
+    country = tile.get("land") or parse_country_from_tags(tags) or utils.parse_country(searchable)
     abv = utils.parse_abv(variant.get("title") or "") or utils.parse_abv(searchable)
     volume = utils.parse_volume_cl(title) or utils.parse_volume_cl(variant.get("title") or "") \
         or utils.parse_volume_cl(body_text)
@@ -89,7 +148,7 @@ def _parse_product(p, base):
     url = f"{base}/products/{p.get('handle')}"
 
     # --- fallback: detailpagina lezen als kernvelden ontbreken ---
-    if FETCH_DETAIL_FALLBACK and (untappd is None or country is None or volume is None):
+    if FETCH_DETAIL_FALLBACK and not tile and (untappd is None or country is None or volume is None):
         if _parse_product.detail_count < MAX_DETAIL_FETCHES:
             _parse_product.detail_count += 1
             html = utils.fetch(url)

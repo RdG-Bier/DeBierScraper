@@ -46,20 +46,7 @@ SUBSTYLE_MAP = [
     ("Mede", set(), "Mede"),
 ]
 
-# trefwoorden in de biernaam als de filters geen uitsluitsel geven
-NAME_HINTS = [
-    (r"\btipa\b|triple\s+ipa", "IPA - Triple"),
-    (r"\bquadruple\s+ipa|\bqipa\b", "IPA - Quadruple"),
-    (r"imperial\s+stout|\bris\b", "Stout - Imperial / Double"),
-    (r"pastry\s+stout", "Stout - Pastry"),
-    (r"pastry\s+sour|smoothie", "Sour - Smoothie / Pastry"),
-    (r"fruited\s+gose", "Sour - Fruited Gose"),
-    (r"\bgose\b", "Sour - Other Gose"),
-    (r"fruited\s+sour|fruit\s+sour", "Sour - Fruited"),
-    (r"\bdipa\b|double\s+ipa|imperial\s+ipa", "IPA - Imperial / Double"),
-    (r"\bneipa\b|new\s+england|hazy", "IPA - New England / Hazy"),
-    (r"\bmead\b|\bmede\b|melomel|metheglin|braggot|cyser", "Mede"),
-]
+NAME_HINTS = utils.NAME_HINTS
 
 RE_TILE = re.compile(
     r"(?P<stijl>[A-Za-z /\-]{2,30})\s*\|\s*Untappd:\s*(?P<score>[\d.,]+|n\.?n\.?b\.?)",

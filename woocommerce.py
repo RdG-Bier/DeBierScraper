@@ -62,18 +62,12 @@ def _parse_product(p, site, detail_count):
         "html.parser",
     ).get_text(" ", strip=True)
 
-    # --- stijl uit categorieën/tags ---
-    style_raw, canon, strong = None, None, False
-    for candidate in categories + tags:
-        canon, strong = utils.match_style(candidate)
-        if canon:
-            style_raw = candidate
-            break
+    # --- stijl uit categorieën/tags, met brede fallback + naamhints ---
+    canon, strong = utils.derive_style(categories + tags, name)
     if not canon:
-        canon, strong = utils.match_style(desc[:200])
-        if not canon:
-            return None
-        style_raw = canon
+        return None
+    style_raw = next((c for c in categories + tags
+                      if utils.match_style(c)[0]), None) or canon
 
     # --- prijs (Store API geeft centen als string + currency_minor_unit) ---
     price = None

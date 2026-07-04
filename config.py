@@ -17,6 +17,7 @@ SITES = [
         "label": "De Biersalon",
         "type": "shopify",
         "base_url": "https://debiersalon.nl",
+        "collection_url": "https://debiersalon.nl/en/collections/bieren",
     },
     {
         "key": "beerrepublic",
