@@ -1,0 +1,1484 @@
+
+<!DOCTYPE html>
+<html lang="nl-NL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="ondigital">
+    <link rel="pingback" href="https://www.beerdome.nl/xmlrpc.php">
+    
+    <!-- Preconnect to external resources for better performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin>
+    
+    
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <style type="text/css">@font-face {font-family:Questrial;font-style:normal;font-weight:400;src:url(/cf-fonts/s/questrial/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Questrial;font-style:normal;font-weight:400;src:url(/cf-fonts/s/questrial/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Questrial;font-style:normal;font-weight:400;src:url(/cf-fonts/s/questrial/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Work Sans;font-style:normal;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Work Sans;font-style:normal;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Work Sans;font-style:normal;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Work Sans;font-style:italic;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/latin-ext/wght/italic.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Work Sans;font-style:italic;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/vietnamese/wght/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:Work Sans;font-style:italic;font-weight:100 900;src:url(/cf-fonts/v/work-sans/5.2.8/latin/wght/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Questrial&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"></noscript>
+    
+        
+    <!-- Load main stylesheet early to prevent FOUC -->
+    <link rel="stylesheet" href="https://www.beerdome.nl/wp-content/themes/beerdome/style.css?v=1782801609">
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+        /* Prevent age verification flash on page load */
+        .age-verification-overlay {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+        .age-verification-overlay.show {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        
+        /* Prevent mobile menu flash on page load */
+        @media (max-width: 1199px) {
+            .nav {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: #fff;
+                z-index: 1000;
+                transform: translateX(-100%) !important;
+                transition: transform 0.3s ease;
+            }
+            .nav.is-active {
+                transform: translateX(0) !important;
+            }
+        }
+    </style>
+
+    <script type="text/javascript">
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
+	gtag("consent", "default", {
+		ad_personalization: "denied",
+		ad_storage: "denied",
+		ad_user_data: "denied",
+		analytics_storage: "denied",
+		functionality_storage: "denied",
+		personalization_storage: "denied",
+		security_storage: "granted",
+		wait_for_update: 500,
+	});
+	gtag("set", "ads_data_redaction", true);
+	</script>
+<script type="text/javascript">
+		(function (w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+		var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l !== 'dataLayer' ? '&l=' + l : '';
+		j.async = true;
+		j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(
+		window,
+		document,
+		'script',
+		'dataLayer',
+		'GTM-K2XMG76'
+	);
+</script>
+<script type="text/javascript"
+		id="Cookiebot"
+		src="https://consent.cookiebot.com/uc.js"
+		data-implementation="wp"
+		data-cbid="3df747ed-8001-45da-a3a5-277db261257f"
+							async	></script>
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" hreflang="nl" href="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" />
+<link rel="alternate" hreflang="en" href="https://www.beerdome.nl/en/product/sudden-death-the-thing-that-does-everything/" />
+<link rel="alternate" hreflang="x-default" href="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	const gtm4wp_use_sku_instead = 0;
+	const gtm4wp_currency = 'EUR';
+	const gtm4wp_product_per_impression = 0;
+	const gtm4wp_clear_ecommerce = false;
+	const gtm4wp_datalayer_max_timeout = 2000;
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><meta name="description" content="Hazy Quadruple IPA with Nelson, Southern Cross, Eclipse, Citra.">
+<link rel="preload" href="https://www.beerdome.nl/wp-content/themes/beerdome/style.css" as="style">
+<link rel="preload" href="https://www.beerdome.nl/wp-content/themes/beerdome/js/custom.js" as="script">
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.9 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<link rel="canonical" href="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" />
+	<meta property="og:locale" content="nl_NL" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Sudden Death - The Thing That Does Everything - Beerdome" />
+	<meta property="og:description" content="Hazy Quadruple IPA with Nelson, Southern Cross, Eclipse, Citra." />
+	<meta property="og:url" content="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" />
+	<meta property="og:site_name" content="Beerdome" />
+	<meta property="article:modified_time" content="2026-07-03T21:48:40+00:00" />
+	<meta property="og:image" content="https://www.beerdome.nl/wp-content/uploads/2026/07/does-everything_1.jpg" />
+	<meta property="og:image:width" content="1000" />
+	<meta property="og:image:height" content="1500" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Geschatte leestijd" />
+	<meta name="twitter:data1" content="1 minuut" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/","url":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/","name":"Sudden Death - The Thing That Does Everything - Beerdome","isPartOf":{"@id":"https:\/\/www.beerdome.nl\/nl\/#website"},"primaryImageOfPage":{"@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/#primaryimage"},"image":{"@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/#primaryimage"},"thumbnailUrl":"https:\/\/www.beerdome.nl\/wp-content\/uploads\/2026\/07\/does-everything_1.jpg","datePublished":"2026-07-03T09:05:54+00:00","dateModified":"2026-07-03T21:48:40+00:00","breadcrumb":{"@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/#breadcrumb"},"inLanguage":"nl-NL","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/"]}]},{"@type":"ImageObject","inLanguage":"nl-NL","@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/#primaryimage","url":"https:\/\/www.beerdome.nl\/wp-content\/uploads\/2026\/07\/does-everything_1.jpg","contentUrl":"https:\/\/www.beerdome.nl\/wp-content\/uploads\/2026\/07\/does-everything_1.jpg","width":1000,"height":1500},{"@type":"BreadcrumbList","@id":"https:\/\/www.beerdome.nl\/nl\/product\/sudden-death-the-thing-that-does-everything\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/www.beerdome.nl\/nl\/"},{"@type":"ListItem","position":2,"name":"Biersoort","item":"https:\/\/www.beerdome.nl\/nl\/biersoort\/"},{"@type":"ListItem","position":3,"name":"IPA","item":"https:\/\/www.beerdome.nl\/nl\/biersoort\/ipa\/"},{"@type":"ListItem","position":4,"name":"NEIPA","item":"https:\/\/www.beerdome.nl\/nl\/product-categorie\/biersoort\/ipa\/neipa\/"},{"@type":"ListItem","position":5,"name":"Sudden Death &#8211; The Thing That Does Everything"}]},{"@type":"WebSite","@id":"https:\/\/www.beerdome.nl\/nl\/#website","url":"https:\/\/www.beerdome.nl\/nl\/","name":"Beerdome","description":"Dé webshop voor alle soorten en smaken bieren","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.beerdome.nl\/nl\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"nl-NL"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<script type='application/javascript'  id='pys-version-script'>console.log('PixelYourSite Free version 11.2.0.7');</script>
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<style>.block-hero-home__beerdome-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;border-radius:inherit}.product-card .cat,.product-card>a:not(.cat){display:inline-block;min-height:24px;padding:4px 0}</style>
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='formidable-css' href='https://www.beerdome.nl/wp-content/plugins/formidable/css/formidableforms.css?ver=6291213' media='all' />
+<link rel='stylesheet' id='eu-vat-for-woocommerce-checkout-eu-vat-field-block-css' href='https://www.beerdome.nl/wp-content/plugins/eu-vat-for-woocommerce/includes/blocks/build/checkout-eu-vat-field-block/style-index.css?ver=4.5.9' media='all' />
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<link rel='stylesheet' id='wc-blocks-style-css' href='https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-10.9.1' media='all' />
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='untappd-ratings-frontend-css' href='https://www.beerdome.nl/wp-content/plugins/untappd-ratings/assets/css/frontend.css?ver=2.3.4' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css' href='https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=10.9.1' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css' href='https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=10.9.1' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css' href='https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=10.9.1' media='all' />
+<style id="woocommerce-inline-inline-css">
+.woocommerce form .form-row .required { visibility: visible; }
+/*# sourceURL=woocommerce-inline-inline-css */
+</style>
+<link rel='stylesheet' id='wp-loyalty-rules-alertify-front-css' href='https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/Assets/Admin/Css/alertify.min.css?ver=1.4.3' media='all' />
+<link rel='stylesheet' id='wp-loyalty-rules-main-front-css' href='https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/Assets/Site/Css/wlr-main.min.css?ver=1.4.3' media='all' />
+<link rel='stylesheet' id='wp-loyalty-rules-wlr-font-css' href='https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/Assets/Site/Css/wlr-fonts.min.css?ver=1.4.3' media='all' />
+<link rel='stylesheet' id='wbte-ewb-frontend-css' href='https://www.beerdome.nl/wp-content/plugins/wt-eu-withdrawal-button/assets/css/wbte-ewb-frontend.css?ver=1.0.5' media='all' />
+<style id="wpgb-head-inline-css">
+.wp-grid-builder:not(.wpgb-template),.wpgb-facet{opacity:0.01}.wpgb-facet fieldset{margin:0;padding:0;border:none;outline:none;box-shadow:none}.wpgb-facet fieldset:last-child{margin-bottom:40px;}.wpgb-facet fieldset legend.wpgb-sr-only{height:1px;width:1px}
+/*# sourceURL=wpgb-head-inline-css */
+</style>
+<link rel='stylesheet' id='wpml-menu-item-0-css' href='https://www.beerdome.nl/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1' media='all' />
+<link rel='stylesheet' id='beerdome-search-css' href='https://www.beerdome.nl/wp-content/plugins/beerdome-search/assets/css/beerdome-search.min.css?ver=1.18.20' media='all' />
+<style id="beerdome-search-inline-css">
+.bds-search {
+  --bds-input-bg: #f2f2f2;
+  --bds-input-border: #e9e9e9;
+}
+/*# sourceURL=beerdome-search-inline-css */
+</style>
+<link rel='stylesheet' id='beerdome-topbar-css' href='https://www.beerdome.nl/wp-content/plugins/beerdome-topbar/assets/css/beerdome-topbar.min.css?ver=1.1.9' media='all' />
+<link rel='stylesheet' id='on-gift-cards-css' href='https://www.beerdome.nl/wp-content/plugins/on-gift-cards/assets/css/frontend.css?ver=1.0.0' media='all' />
+<link rel='stylesheet' id='untappd-user-checkins-css' href='https://www.beerdome.nl/wp-content/plugins/untappd-ratings/assets/css/frontend.css?ver=2.3.4' media='all' />
+<link rel='stylesheet' id='brands-styles-css' href='https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/css/brands.css?ver=10.9.1' media='all' />
+<link rel='stylesheet' id='slick-css-css' href='https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css?ver=1.8.1' media='all' />
+<link rel='stylesheet' id='fancybox-css-css' href='https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css?ver=5.0.0' media='all' />
+<link rel='stylesheet' id='woo_discount_pro_style-css' href='https://www.beerdome.nl/wp-content/plugins/woo-discount-rules-pro/Assets/Css/awdr_style.css?ver=2.6.16' media='all' />
+<script id="wpml-cookie-js-extra">
+var wpml_cookies = {"wp-wpml_current_language":{"value":"nl","expires":1,"path":"/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"nl","expires":1,"path":"/"}};
+//# sourceURL=wpml-cookie-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wpml-cookie-js" src="https://www.beerdome.nl/wp-content/plugins/sitepress-multilingual-cms/res/js/cookies/language-cookie.js?ver=495000"></script>
+<script id="jquery-core-js-extra">
+var pysFacebookRest = {"restApiUrl":"https://www.beerdome.nl/nl/wp-json/pys-facebook/v1/event","debug":""};
+//# sourceURL=jquery-core-js-extra
+</script>
+<script id="jquery-core-js" src="https://www.beerdome.nl/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://www.beerdome.nl/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<script data-wp-strategy="defer" defer id="wc-jquery-blockui-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.9.1"></script>
+<script id="wc-add-to-cart-js-extra">
+var wc_add_to_cart_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/nl/?wc-ajax=%%endpoint%%","i18n_view_cart":"Bekijk winkelwagen","cart_url":"https://www.beerdome.nl/nl/winkelwagen/","is_cart":"","cart_redirect_after_add":"no"};
+//# sourceURL=wc-add-to-cart-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wc-add-to-cart-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=10.9.1"></script>
+<script id="wc-single-product-js-extra">
+var wc_single_product_params = {"i18n_required_rating_text":"Selecteer een waardering","i18n_rating_options":["1 van de 5 sterren","2 van de 5 sterren","3 van de 5 sterren","4 van de 5 sterren","5 van de 5 sterren"],"i18n_product_gallery_trigger_text":"Afbeeldinggalerij in volledig scherm bekijken","review_rating_required":"yes","flexslider":{"rtl":false,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"zoom_enabled":"","zoom_options":[],"photoswipe_enabled":"","photoswipe_options":{"shareEl":false,"closeOnScroll":false,"history":false,"hideAnimationDuration":0,"showAnimationDuration":0},"flexslider_enabled":""};
+//# sourceURL=wc-single-product-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wc-single-product-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js?ver=10.9.1"></script>
+<script data-wp-strategy="defer" defer id="wc-js-cookie-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.10.9.1"></script>
+<script id="woocommerce-js-extra">
+var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/nl/?wc-ajax=%%endpoint%%","i18n_password_show":"Wachtwoord weergeven","i18n_password_hide":"Wachtwoord verbergen"};
+//# sourceURL=woocommerce-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="woocommerce-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=10.9.1"></script>
+<script id="wc-cart-fragments-js-extra">
+var wc_cart_fragments_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/nl/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_cb5e2d951a9c566b2571f7ca977561b9-nl","fragment_name":"wc_fragments_cb5e2d951a9c566b2571f7ca977561b9","request_timeout":"5000"};
+//# sourceURL=wc-cart-fragments-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="wc-cart-fragments-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=10.9.1"></script>
+<script id="wp-loyalty-rules-main-js-extra">
+var wlr_localize_data = {"point_popup_message":"How much punten you would like to use","popup_ok":"Ok","popup_cancel":"Cancel","revoke_coupon_message":"Are you sure you want to return the beloningen ?","wlr_redeem_nonce":"665ec5dcb8","wlr_reward_nonce":"8679e58514","apply_share_nonce":"ebd9b4fab4","revoke_coupon_nonce":"776bf303ca","pagination_nonce":"e12685c206","enable_sent_email_nonce":"ae05f429b6","home_url":"https://www.beerdome.nl/nl/","ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","admin_url":"https://www.beerdome.nl/wp-admin/","is_cart":"","is_checkout":"","plugin_url":"https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/","is_pro":"1","is_allow_update_referral":"1","theme_color":"#093d32","followup_share_window_open":"1","social_share_window_open":"1","is_checkout_block":""};
+//# sourceURL=wp-loyalty-rules-main-js-extra
+</script>
+<script id="wp-loyalty-rules-main-js" src="https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/Assets/Site/Js/wlr-main.min.js?ver=1.4.3%26t%3D1783148005"></script>
+<meta name="generator" content="WPML ver:4.9.5 stt:37,1;" />
+<noscript><style>.wp-grid-builder .wpgb-card.wpgb-card-hidden .wpgb-card-wrapper{opacity:1!important;visibility:visible!important;transform:none!important}.wpgb-facet {opacity:1!important;pointer-events:auto!important}.wpgb-facet *:not(.wpgb-pagination-facet){display:none}</style></noscript><script>document.documentElement.className += " js";</script>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to off -->
+<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+	var dataLayer_content = {"pagePostType":"product","pagePostType2":"single-product","pagePostAuthor":"Ronald Renkema","productRatingCounts":[],"productAverageRating":0,"productReviewCount":0,"productType":"simple","productIsVariable":0};
+	dataLayer.push( dataLayer_content );
+</script>
+<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+	console.warn && console.warn("[GTM4WP] Google Tag Manager container code placement set to OFF !!!");
+	console.warn && console.warn("[GTM4WP] Data layer codes are active but GTM container must be loaded using custom coding !!!");
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<link rel="icon" href="https://www.beerdome.nl/wp-content/uploads/2025/08/cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://www.beerdome.nl/wp-content/uploads/2025/08/cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.beerdome.nl/wp-content/uploads/2025/08/cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.beerdome.nl/wp-content/uploads/2025/08/cropped-favicon-270x270.png" />
+    
+    <title>Sudden Death - The Thing That Does Everything - Beerdome</title>
+    
+    <!-- FontAwesome loaded with defer for better performance -->
+    <script src="https://kit.fontawesome.com/8c79efa3fe.js" crossorigin="anonymous" defer></script>
+</head>
+
+<body class="wp-singular product-template-default single single-product postid-20021 wp-theme-beerdome theme-beerdome woocommerce woocommerce-page woocommerce-no-js woocommerce-block-theme-has-button-styles">
+<div class="header-wrapper">
+<div class="topbar">
+    <div class="container-fluid outer-container">
+        <div class="row align-items-center justify-content-center justify-content-lg-between">
+            <div class="col-12 col-lg-auto topbar__green">
+                <div class="d-flex topbar__inner justify-content-center justify-content-md-between">
+                    <div class="topbar__slider js-topbar-usps-slider">
+                        <div class="topbar__slide topbar__slide--trustpilot">
+                            <a class="topbar__trustpilot" href="https://nl.trustpilot.com/review/beerdome.nl" target="_blank" rel="noopener noreferrer">
+                                <img src="/wp-content/uploads/2025/08/trustpilot-placeholder.png" alt="Trustpilot" width="120" height="24">
+                            </a>
+                        </div>
+                                                                                    <div class="topbar__slide">
+                                    <i class="fa-regular fa-truck"></i>                                    Snelle verzending                                </div>
+                                                            <div class="topbar__slide">
+                                    <i class="fa-regular fa-star"></i>                                    Dagelijks nieuwe speciaal bieren                                </div>
+                                                            <div class="topbar__slide">
+                                    <i class="fa-regular fa-box"></i>                                    Levering aan EU-landen                                </div>
+                                                                        </div>
+                </div>
+            </div>
+            <div class="col-auto topbar__nav d-none d-lg-block">
+                <div class="menu-topbar-container"><ul id="menu-topbar" class="topbar__primary"><li id="menu-item-7661" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7661"><a href="https://www.beerdome.nl/nl/blogs/">Blogs</a></li>
+<li id="menu-item-7662" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7662"><a href="https://www.beerdome.nl/nl/over-ons/">Over ons</a></li>
+<li id="menu-item-wpml-ls-20-nl" class="menu-item wpml-ls-slot-20 wpml-ls-item wpml-ls-item-nl wpml-ls-current-language wpml-ls-menu-item wpml-ls-first-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-20-nl"><a href="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" aria-current="page"><img
+            class="wpml-ls-flag"
+            src="https://www.beerdome.nl/wp-content/plugins/sitepress-multilingual-cms/res/flags/nl.svg"
+            alt="Nederlands"
+            loading="lazy"
+            
+            
+    /></a></li>
+<li id="menu-item-wpml-ls-20-en" class="menu-item wpml-ls-slot-20 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-last-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-wpml-ls-20-en"><a href="https://www.beerdome.nl/en/product/sudden-death-the-thing-that-does-everything/" title="Overschakelen naar Engels" aria-label="Overschakelen naar Engels"><img
+            class="wpml-ls-flag"
+            src="https://www.beerdome.nl/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.svg"
+            alt="Engels"
+            loading="lazy"
+            
+            
+    /></a></li>
+</ul></div>            </div>
+        </div>
+    </div>
+</div>
+
+<header class="header">
+    <div class="container-fluid outer-container">
+        <div class="row justify-content-between">
+            <div class="col min-w-0 col-md-auto d-flex align-items-center">
+                <div class="d-flex" style="gap:35px;">
+                <a class="header__site-logo" href="https://www.beerdome.nl/nl/" title="Beerdome">
+                    
+                                                <img src="https://www.beerdome.nl/wp-content/uploads/2026/05/beerdome-logo.svg"
+                             alt="Logo Beerdome"
+                             width="0"
+                             height="0"/>
+                                    </a>
+                <div class="d-none d-lg-flex align-items-center">
+                    <div class="bds-search bds-search--pirx bds-search--bar"
+     data-instance="1"
+     data-lang="nl">
+
+    <form class="bds-search__form" role="search" action="https://www.beerdome.nl/nl/zoekresultaten/" method="get">
+        <div class="bds-search__input-wrap">
+            <svg class="bds-search__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+
+            <input type="search"
+                   class="bds-search__input"
+                   name="s"
+                   placeholder="Zoek bier, brouwerij of stijl..."
+                   autocomplete="off"
+                   aria-label="Producten zoeken"
+                   aria-autocomplete="list"
+                   aria-controls="bds-dropdown-1"
+                   aria-expanded="false">
+
+                            <div class="bds-search__loader" hidden>
+                    <div class="bds-search__spinner"></div>
+                </div>
+            
+                            <button type="button"
+                        class="bds-search__filter-btn"
+                        aria-label="Filters"
+                        aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                        <line x1="11" y1="18" x2="13" y2="18"></line>
+                    </svg>
+                    <span class="bds-search__filter-count" hidden>0</span>
+                </button>
+            
+                            <button type="submit" class="bds-search__submit">
+                    Zoeken                </button>
+                    </div>
+
+        <input type="hidden" name="lang" value="nl">
+    </form>
+
+    <div class="bds-search__dropdown"
+         id="bds-dropdown-1"
+         role="listbox"
+         aria-label="Zoekresultaten"
+         hidden></div>
+
+            <div class="bds-search__filters" hidden></div>
+    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-auto ms-auto col-md-auto ms-md-0 align-items-center header__btns">
+                <button class="header__search-toggle d-lg-none" type="button" aria-label="Zoeken openen" aria-expanded="false" aria-controls="header-mobile-search">
+                    <i class="fa-regular fa-magnifying-glass" aria-hidden="true"></i>
+                </button>
+
+                <div class="d-none d-lg-flex">
+                    <div class="untappd-header-login"><a href="#" class="untappd-header-login-link untappd-header-guest" data-popup-action="open"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" class="untappd-logo" viewBox="0 0 1252 1252"><defs><linearGradient id="utlg1-a"><stop offset="0" stop-color="#734019"/><stop offset="1" stop-color="#8e4e22"/></linearGradient><linearGradient id="utlg1-b"><stop offset="0" stop-color="#e17e24"/><stop offset="1" stop-color="#924f21"/></linearGradient><linearGradient xlink:href="#utlg1-a" id="utlg1-c" x1="11.405" x2="980.347" y1="156.407" y2="29.127" gradientTransform="rotate(35.432 -98.561 379.96)" gradientUnits="userSpaceOnUse"/><linearGradient xlink:href="#utlg1-b" id="utlg1-d" x1="-280.79" x2="140.13" y1="232.862" y2="1057.147" gradientTransform="rotate(35.432 219.274 967.13)" gradientUnits="userSpaceOnUse"/></defs><path fill="#ffce0d" d="M0 0h1252v1252H0z"/><path fill="url(#utlg1-c)" d="M680.281 957.45c92.174 38.905 226.357-51.582 218.238-150.953L620.59 404.68l-95.705-52.353-214.26-230.033-3.856-16.874-14.635-4.208-2.07-16.806c-38.811 3.74-64.518 21.522-80.775 55.87l15.288 7.664.537 13.96 14.429 9.56 143.179 279.199 19.63 104.973z" transform="translate(253.953 99.819)"/><path fill="url(#utlg1-d)" d="M-158.903 806.832c-5.214 99.913 125.537 195.291 216.214 153.838l283.245-398.089 16.657-107.809 143.384-279.756 14.555-9.368-1.025-15.193 15.099-7.668c-16.726-35.22-42.194-53.34-80.025-56.938l-2.004 16.984-12.943 5.255-4.08 16.822L216.37 354.56l-92.027 54.183z" transform="translate(253.953 99.819)"/></svg><span class="untappd-header-login-text">Mijn Untappd</span></a><div class="untappd-header-logged-in" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" class="untappd-logo" viewBox="0 0 1252 1252"><defs><linearGradient id="utlg2-a"><stop offset="0" stop-color="#734019"/><stop offset="1" stop-color="#8e4e22"/></linearGradient><linearGradient id="utlg2-b"><stop offset="0" stop-color="#e17e24"/><stop offset="1" stop-color="#924f21"/></linearGradient><linearGradient xlink:href="#utlg2-a" id="utlg2-c" x1="11.405" x2="980.347" y1="156.407" y2="29.127" gradientTransform="rotate(35.432 -98.561 379.96)" gradientUnits="userSpaceOnUse"/><linearGradient xlink:href="#utlg2-b" id="utlg2-d" x1="-280.79" x2="140.13" y1="232.862" y2="1057.147" gradientTransform="rotate(35.432 219.274 967.13)" gradientUnits="userSpaceOnUse"/></defs><path fill="#ffce0d" d="M0 0h1252v1252H0z"/><path fill="url(#utlg2-c)" d="M680.281 957.45c92.174 38.905 226.357-51.582 218.238-150.953L620.59 404.68l-95.705-52.353-214.26-230.033-3.856-16.874-14.635-4.208-2.07-16.806c-38.811 3.74-64.518 21.522-80.775 55.87l15.288 7.664.537 13.96 14.429 9.56 143.179 279.199 19.63 104.973z" transform="translate(253.953 99.819)"/><path fill="url(#utlg2-d)" d="M-158.903 806.832c-5.214 99.913 125.537 195.291 216.214 153.838l283.245-398.089 16.657-107.809 143.384-279.756 14.555-9.368-1.025-15.193 15.099-7.668c-16.726-35.22-42.194-53.34-80.025-56.938l-2.004 16.984-12.943 5.255-4.08 16.822L216.37 354.56l-92.027 54.183z" transform="translate(253.953 99.819)"/></svg><span class="untappd-header-username"></span><a href="#" class="untappd-header-change" data-popup-action="open" title="Wijzig username"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path d="M122.9 379.1c-10.7 10.7-18.5 24.1-22.6 38.7L64.9 545.6c-2.3 8.3 0 17.3 6.2 23.4 6.2 6.1 15.1 8.5 23.4 6.2l127.8-35.5c14.6-4.1 27.9-11.8 38.7-22.6l294-294c13.4-13.5 21-31.9 21-51.1 0-19.2-7.6-37.6-21.2-51.1l-35.7-35.7C505.6 71.6 487.2 64 468 64c-19.2 0-37.6 7.6-51.1 21.2l-294 294zM468 112c6.4 0 12.6 2.6 17.2 7.1l35.7 35.7c4.6 4.6 7.1 10.7 7.1 17.2s-2.6 12.6-7.1 17.2L468 242.1 397.9 172l52.9-52.9c4.6-4.6 10.7-7.1 17.2-7.1zM173.9 396 364 205.9l70.1 70.1L244 466.1 173.9 396zm-28.6 39.3 59.4 59.4-82.2 22.8 22.8-82.2z"/></svg></a></div></div>                </div>
+
+				
+                <a href="https://www.beerdome.nl/nl/mijn-account/" aria-label="Mijn account">
+                    <i class="fa-regular fa-user" aria-hidden="true"></i>
+                </a>
+
+                <div class="header__static-nav">
+                    <a href="https://www.beerdome.nl/nl/winkelwagen/" class="header__cart header__cart--mobile-direct">
+                        <div class="header__cart-count">
+                            0                        </div>
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<rect x="15" y="227" style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" width="482" height="270"/>
+	<path style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" d="M226,227v-22.292&#10;&#9;&#9;c0-14.807-4.383-29.282-12.596-41.603L196,137L181,15h-61l-15,122l-17.404,26.106C79.383,175.426,75,189.901,75,204.708V497"/>
+	<path style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" d="M437,497V204.708&#10;&#9;&#9;c0-14.807-4.383-29.282-12.596-41.603L407,137L392,15h-61l-15,122l-17.404,26.106C290.383,175.426,286,189.901,286,204.708V227"/>
+	<line style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" x1="75" y1="332" x2="437" y2="332"/>
+	<line style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" x1="75" y1="392" x2="437" y2="392"/>
+	<line style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" x1="226" y1="332" x2="226" y2="392"/>
+	<line style="fill:none;stroke:#000000;stroke-width:30;stroke-miterlimit:10;" x1="286" y1="332" x2="286" y2="392"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>                        
+                        <!-- Cart Dropdown - Desktop only -->
+                        <div class="header__cart-dropdown-wrapper d-none d-lg-block">
+                            <div class="header__cart-dropdown">
+    <div class="container-popup">
+        <span class="title">Je bierkratje</span>
+                    <div class="cart-dropdown__empty">
+                <p>Je bierkratje is leeg</p>
+            </div>
+            </div>
+    <div class="cart-dropdown__footer">
+        <div>
+            <div class="cart-dropdown__totals">
+                <span>Subtotaal:</span>
+                <strong><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;0,00</bdi></span></strong>
+            </div>
+
+                    </div>
+
+
+        
+        <a href="https://www.beerdome.nl/nl/winkelwagen/" class="cart-dropdown__btn">
+            Bierkratje bekijken        </a>
+    </div>
+</div>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="header__hamburger d-xl-none js-nav-trigger">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile search bar -->
+        <div class="header__mobile-search" id="header-mobile-search">
+            <div class="bds-search bds-search--pirx bds-search--bar"
+     data-instance="2"
+     data-lang="nl">
+
+    <form class="bds-search__form" role="search" action="https://www.beerdome.nl/nl/zoekresultaten/" method="get">
+        <div class="bds-search__input-wrap">
+            <svg class="bds-search__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+
+            <input type="search"
+                   class="bds-search__input"
+                   name="s"
+                   placeholder="Zoek bier, brouwerij of stijl..."
+                   autocomplete="off"
+                   aria-label="Producten zoeken"
+                   aria-autocomplete="list"
+                   aria-controls="bds-dropdown-2"
+                   aria-expanded="false">
+
+                            <div class="bds-search__loader" hidden>
+                    <div class="bds-search__spinner"></div>
+                </div>
+            
+                            <button type="button"
+                        class="bds-search__filter-btn"
+                        aria-label="Filters"
+                        aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                        <line x1="11" y1="18" x2="13" y2="18"></line>
+                    </svg>
+                    <span class="bds-search__filter-count" hidden>0</span>
+                </button>
+            
+                            <button type="submit" class="bds-search__submit">
+                    Zoeken                </button>
+                    </div>
+
+        <input type="hidden" name="lang" value="nl">
+    </form>
+
+    <div class="bds-search__dropdown"
+         id="bds-dropdown-2"
+         role="listbox"
+         aria-label="Zoekresultaten"
+         hidden></div>
+
+            <div class="bds-search__filters" hidden></div>
+    </div>
+        </div>
+        
+        <nav class="nav"><ul id="menu-primary" class="nav__list"><li id="menu-item-8723" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/alle-speciaalbier/">Alle Speciaalbier</a></li>
+<li id="menu-item-7327" class="nav__item nav__item--has-dropdown"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/">Biersoort<span class="nav__chevron"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.432 4.81a.578.578 0 0 1-.425.19.578.578 0 0 1-.424-.19l-3.4-3.69A.656.656 0 0 1 .05.91.7.7 0 0 1 .176.19.6.6 0 0 1 .373.049a.56.56 0 0 1 .465.004c.073.034.14.084.195.146l2.974 3.227L6.982.2a.577.577 0 0 1 .422-.183c.158.002.309.07.42.191A.68.68 0 0 1 8 .662a.683.683 0 0 1-.169.459L4.432 4.809Z" fill="#183541"/></svg></span></a>
+<div class="nav__dropdown-container"><ul class="nav__dropdown">
+	<li id="menu-item-7328" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/alcoholvrij/">Alcoholvrij</a></li>
+	<li id="menu-item-7329" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/barley-wine/">Barley wine</a></li>
+	<li id="menu-item-7330" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/berliner-weisse/">Berliner Weisse</a></li>
+	<li id="menu-item-7331" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/blond/">Blond</a></li>
+	<li id="menu-item-7332" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/bock-bier/">Bock bier</a></li>
+	<li id="menu-item-7333" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/brown-ale/">Brown Ale</a></li>
+	<li id="menu-item-7334" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/cider/">Cider</a></li>
+	<li id="menu-item-7335" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/gose/">Gose</a></li>
+	<li id="menu-item-7336" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/hard-seltzer/">Hard Seltzer</a></li>
+	<li id="menu-item-7337" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/ipa/">IPA</a></li>
+	<li id="menu-item-7338" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/lager/">Lager</a></li>
+	<li id="menu-item-7339" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/lambiek-geuze-wild-ales/">Lambiek &#8211; Geuze &#8211; Wild Ales</a></li>
+	<li id="menu-item-8580" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/mede/">Mede</a></li>
+	<li id="menu-item-8581" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/pale-ale/">Pale Ale</a></li>
+	<li id="menu-item-8582" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/quadrupel/">Quadrupel</a></li>
+	<li id="menu-item-8583" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/red-ale/">Red Ale</a></li>
+	<li id="menu-item-8584" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/saison/">Saison</a></li>
+	<li id="menu-item-8585" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/sour/">Sour</a></li>
+	<li id="menu-item-8586" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/stout-porter/">Stout &#8211; Porter</a></li>
+	<li id="menu-item-8587" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/strong-dark-ale/">Strong Dark Ale</a></li>
+	<li id="menu-item-8588" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/tripel/">Tripel</a></li>
+	<li id="menu-item-8589" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/vatgerijpt/">Vatgerijpt</a></li>
+	<li id="menu-item-8590" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biersoort/weizen/">Weizen</a></li>
+</ul></div>
+</li>
+<li id="menu-item-8724" class="nav__item nav__item--has-dropdown"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/">Bierlanden<span class="nav__chevron"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.432 4.81a.578.578 0 0 1-.425.19.578.578 0 0 1-.424-.19l-3.4-3.69A.656.656 0 0 1 .05.91.7.7 0 0 1 .176.19.6.6 0 0 1 .373.049a.56.56 0 0 1 .465.004c.073.034.14.084.195.146l2.974 3.227L6.982.2a.577.577 0 0 1 .422-.183c.158.002.309.07.42.191A.68.68 0 0 1 8 .662a.683.683 0 0 1-.169.459L4.432 4.809Z" fill="#183541"/></svg></span></a>
+<div class="nav__dropdown-container"><ul class="nav__dropdown">
+	<li id="menu-item-8725" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/amerikaans-bier/">Amerika</a></li>
+	<li id="menu-item-8726" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/argentijns-bier/">Argentinië</a></li>
+	<li id="menu-item-8727" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/armeens-bier/">Armenië</a></li>
+	<li id="menu-item-8728" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/australisch-bier/">Australië</a></li>
+	<li id="menu-item-8729" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/belgisch-bier/">België</a></li>
+	<li id="menu-item-8730" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/bier-hong-kong/">Hong Kong</a></li>
+	<li id="menu-item-8731" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/bier-kroatie/">Kroatië</a></li>
+	<li id="menu-item-8732" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/bier-noors/">Noorwegen</a></li>
+	<li id="menu-item-8733" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/braziliaans-bier/">Brazilië</a></li>
+	<li id="menu-item-8734" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/bulgaars-bier/">Bulgarije</a></li>
+	<li id="menu-item-8735" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/canadees-bier/">Canada</a></li>
+	<li id="menu-item-8736" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/cyprus-bier/">Cyprus</a></li>
+	<li id="menu-item-8737" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/deens-bier/">Denemarken</a></li>
+	<li id="menu-item-8738" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/duits-bier/">Duitsland</a></li>
+	<li id="menu-item-8739" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/engels-bier/">Engeland</a></li>
+	<li id="menu-item-8740" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/estland-bier/">Estland</a></li>
+	<li id="menu-item-8741" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/fins-bier/">Finland</a></li>
+	<li id="menu-item-8742" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/frans-bier/">Frankrijk</a></li>
+	<li id="menu-item-8743" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/grieks-bier/">Griekenland</a></li>
+	<li id="menu-item-8744" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/hongaars-bier/">Hongarije</a></li>
+	<li id="menu-item-8745" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/iers-bier/">Ierland</a></li>
+	<li id="menu-item-8746" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/ijslands-bier/">IJsland</a></li>
+	<li id="menu-item-8747" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/italiaans-bier/">Italië</a></li>
+	<li id="menu-item-8748" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/koreaans-bier/">Korea</a></li>
+	<li id="menu-item-8749" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/letland-bier/">Letland</a></li>
+	<li id="menu-item-8750" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/litouws-bier/">Litouwen</a></li>
+	<li id="menu-item-8751" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/luxemburgs-bier/">Luxemburg</a></li>
+	<li id="menu-item-8752" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/nederlands-bier/">Nederland</a></li>
+	<li id="menu-item-8753" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/noors-bier/">Nieuw-Zeeland</a></li>
+	<li id="menu-item-8754" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/oekraine-bier/">Oekraïne</a></li>
+	<li id="menu-item-8755" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/oostenrijks-bier/">Oostenrijk</a></li>
+	<li id="menu-item-8756" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/pools-bier/">Polen</a></li>
+	<li id="menu-item-8757" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/portugees-bier/">Portugal</a></li>
+	<li id="menu-item-8758" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/roemeens-bier/">Roemenië</a></li>
+	<li id="menu-item-8759" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/russisch-bier/">Rusland</a></li>
+	<li id="menu-item-8760" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/servisch-bier/">Servië</a></li>
+	<li id="menu-item-8761" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/sloveens-bier/">Slovenië</a></li>
+	<li id="menu-item-8762" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/slowaaks-bier/">Slowakije</a></li>
+	<li id="menu-item-8763" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/spaans-bier/">Spanje</a></li>
+	<li id="menu-item-8764" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/tsjechisch-bier/">Tsjechië</a></li>
+	<li id="menu-item-8765" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/zuid-afrikaans-bier/">Zuid-Afrika</a></li>
+	<li id="menu-item-8766" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/zweeds-bier/">Zweden</a></li>
+	<li id="menu-item-8767" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/bierlanden/zwitsers-bier/">Zwitserland</a></li>
+</ul></div>
+</li>
+<li id="menu-item-7341" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/natuurwijn/">Natuurwijn</a></li>
+<li id="menu-item-7298" class="nav__item nav__item--has-dropdown"><a class="nav__link" href="https://www.beerdome.nl/nl/biercadeaus/">Biercadeaus<span class="nav__chevron"><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.432 4.81a.578.578 0 0 1-.425.19.578.578 0 0 1-.424-.19l-3.4-3.69A.656.656 0 0 1 .05.91.7.7 0 0 1 .176.19.6.6 0 0 1 .373.049a.56.56 0 0 1 .465.004c.073.034.14.084.195.146l2.974 3.227L6.982.2a.577.577 0 0 1 .422-.183c.158.002.309.07.42.191A.68.68 0 0 1 8 .662a.683.683 0 0 1-.169.459L4.432 4.809Z" fill="#183541"/></svg></span></a>
+<div class="nav__dropdown-container"><ul class="nav__dropdown">
+	<li id="menu-item-7299" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biercadeaus/bierglazen/">Bierglazen</a></li>
+	<li id="menu-item-7300" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biercadeaus/bierpakketten/">Bierpakketten</a></li>
+	<li id="menu-item-8401" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/biercadeaus/merchandise/">Merchandise</a></li>
+</ul></div>
+</li>
+<li id="menu-item-8567" class="nav__item"><a class="nav__link" href="https://www.beerdome.nl/nl/cadeaubonnen/">Cadeaubonnen</a></li>
+<li class="nav__item menu-item-sale"><a href="https://www.beerdome.nl/nl/sale/" class="sale-link"><i class="fa-regular fa-percent"></i> Sale</a></li><li class="nav__item nav__item--extra-nav"><ul class="extra-nav"><li class="menu-item nav__lang-switcher">
+        <div class="nav__lang-inner">
+            <span class="nav__lang-label">Taal</span>
+            <div class="nav__lang-buttons" role="group" aria-label="Taal kiezen">
+                                    <a href="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"
+                       class="nav__lang-btn is-active"
+                       hreflang="nl"
+                       lang="nl"
+                       title="Nederlands"
+                             aria-current="true">
+                                                    <span class="nav__lang-flag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="#ae1c28" d="M0 0h512v170.7H0z"/><path fill="#fff" d="M0 170.7h512v170.6H0z"/><path fill="#21468b" d="M0 341.3h512V512H0z"/></svg></span>
+                                                <span class="nav__lang-name">Nederlands</span>
+                    </a>
+                                    <a href="https://www.beerdome.nl/en/product/sudden-death-the-thing-that-does-everything/"
+                       class="nav__lang-btn"
+                       hreflang="en"
+                       lang="en"
+                       title="English"
+                            >
+                                                    <span class="nav__lang-flag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="#012169" d="M0 0h512v512H0z"/><path fill="#fff" d="M512 0v64L322 256l190 187v69h-67L254 324 68 512H0v-68l186-187L0 74V0h62l192 188L440 0z"/><path fill="#c8102e" d="m184 324 11 34L42 512H0v-3zm124-12 54 8 150 147v45zM512 0 320 196l-4-44L466 0zM0 1l193 189-59-8L0 49z"/><path fill="#fff" d="M176 0v512h160V0zM0 176v160h512V176z"/><path fill="#c8102e" d="M0 208v96h512v-96zM208 0v512h96V0z"/></svg></span>
+                                                <span class="nav__lang-name">English</span>
+                    </a>
+                            </div>
+        </div>
+    </li><li class="menu-item menu-item-untappd">
+            <div class="untappd-header-login"><a href="#" class="untappd-header-login-link untappd-header-guest" data-popup-action="open"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" class="untappd-logo" viewBox="0 0 1252 1252"><defs><linearGradient id="utlg3-a"><stop offset="0" stop-color="#734019"/><stop offset="1" stop-color="#8e4e22"/></linearGradient><linearGradient id="utlg3-b"><stop offset="0" stop-color="#e17e24"/><stop offset="1" stop-color="#924f21"/></linearGradient><linearGradient xlink:href="#utlg3-a" id="utlg3-c" x1="11.405" x2="980.347" y1="156.407" y2="29.127" gradientTransform="rotate(35.432 -98.561 379.96)" gradientUnits="userSpaceOnUse"/><linearGradient xlink:href="#utlg3-b" id="utlg3-d" x1="-280.79" x2="140.13" y1="232.862" y2="1057.147" gradientTransform="rotate(35.432 219.274 967.13)" gradientUnits="userSpaceOnUse"/></defs><path fill="#ffce0d" d="M0 0h1252v1252H0z"/><path fill="url(#utlg3-c)" d="M680.281 957.45c92.174 38.905 226.357-51.582 218.238-150.953L620.59 404.68l-95.705-52.353-214.26-230.033-3.856-16.874-14.635-4.208-2.07-16.806c-38.811 3.74-64.518 21.522-80.775 55.87l15.288 7.664.537 13.96 14.429 9.56 143.179 279.199 19.63 104.973z" transform="translate(253.953 99.819)"/><path fill="url(#utlg3-d)" d="M-158.903 806.832c-5.214 99.913 125.537 195.291 216.214 153.838l283.245-398.089 16.657-107.809 143.384-279.756 14.555-9.368-1.025-15.193 15.099-7.668c-16.726-35.22-42.194-53.34-80.025-56.938l-2.004 16.984-12.943 5.255-4.08 16.822L216.37 354.56l-92.027 54.183z" transform="translate(253.953 99.819)"/></svg><span class="untappd-header-login-text">Mijn Untappd</span></a><div class="untappd-header-logged-in" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" class="untappd-logo" viewBox="0 0 1252 1252"><defs><linearGradient id="utlg4-a"><stop offset="0" stop-color="#734019"/><stop offset="1" stop-color="#8e4e22"/></linearGradient><linearGradient id="utlg4-b"><stop offset="0" stop-color="#e17e24"/><stop offset="1" stop-color="#924f21"/></linearGradient><linearGradient xlink:href="#utlg4-a" id="utlg4-c" x1="11.405" x2="980.347" y1="156.407" y2="29.127" gradientTransform="rotate(35.432 -98.561 379.96)" gradientUnits="userSpaceOnUse"/><linearGradient xlink:href="#utlg4-b" id="utlg4-d" x1="-280.79" x2="140.13" y1="232.862" y2="1057.147" gradientTransform="rotate(35.432 219.274 967.13)" gradientUnits="userSpaceOnUse"/></defs><path fill="#ffce0d" d="M0 0h1252v1252H0z"/><path fill="url(#utlg4-c)" d="M680.281 957.45c92.174 38.905 226.357-51.582 218.238-150.953L620.59 404.68l-95.705-52.353-214.26-230.033-3.856-16.874-14.635-4.208-2.07-16.806c-38.811 3.74-64.518 21.522-80.775 55.87l15.288 7.664.537 13.96 14.429 9.56 143.179 279.199 19.63 104.973z" transform="translate(253.953 99.819)"/><path fill="url(#utlg4-d)" d="M-158.903 806.832c-5.214 99.913 125.537 195.291 216.214 153.838l283.245-398.089 16.657-107.809 143.384-279.756 14.555-9.368-1.025-15.193 15.099-7.668c-16.726-35.22-42.194-53.34-80.025-56.938l-2.004 16.984-12.943 5.255-4.08 16.822L216.37 354.56l-92.027 54.183z" transform="translate(253.953 99.819)"/></svg><span class="untappd-header-username"></span><a href="#" class="untappd-header-change" data-popup-action="open" title="Wijzig username"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Pro 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path d="M122.9 379.1c-10.7 10.7-18.5 24.1-22.6 38.7L64.9 545.6c-2.3 8.3 0 17.3 6.2 23.4 6.2 6.1 15.1 8.5 23.4 6.2l127.8-35.5c14.6-4.1 27.9-11.8 38.7-22.6l294-294c13.4-13.5 21-31.9 21-51.1 0-19.2-7.6-37.6-21.2-51.1l-35.7-35.7C505.6 71.6 487.2 64 468 64c-19.2 0-37.6 7.6-51.1 21.2l-294 294zM468 112c6.4 0 12.6 2.6 17.2 7.1l35.7 35.7c4.6 4.6 7.1 10.7 7.1 17.2s-2.6 12.6-7.1 17.2L468 242.1 397.9 172l52.9-52.9c4.6-4.6 10.7-7.1 17.2-7.1zM173.9 396 364 205.9l70.1 70.1L244 466.1 173.9 396zm-28.6 39.3 59.4 59.4-82.2 22.8 22.8-82.2z"/></svg></a></div></div>
+        </li>
+        <li class="menu-item">
+            <a class="d-flex align-items-center untappd" href="https://www.beerdome.nl/nl/blogs/">
+                Blogs
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="d-flex align-items-center untappd" href="https://www.beerdome.nl/nl/over-ons/">
+                Over ons
+            </a>
+        </li></ul></li></ul></nav>    </div>
+
+</header>
+</div>    <div class="product">
+<div class="woocommerce-notices-container"><div class="woocommerce-notices-wrapper"></div>
+    <div class="product__content">
+        <div class="container-fluid outer-container">
+            <div class="row">
+                <div class="col-12 col-md-5">
+                    <div class="product__images-container">
+                        <div class="product__images js-product-images">
+                                                            <a href="https://www.beerdome.nl/wp-content/uploads/2026/07/does-everything_1.jpg"
+                                   data-fancybox="gallery" class="product__images-item">
+                                    <img src="https://www.beerdome.nl/wp-content/uploads/2026/07/does-everything_1.jpg"
+                                         alt="Sudden Death &#8211; The Thing That Does Everything">
+
+
+                                                                    </a>
+                            
+                                                    </div>
+
+                        <div class="product__images-nav js-product-images-nav">
+                                                            <div class="product__images-nav-item">
+                                    <img src="https://www.beerdome.nl/wp-content/uploads/2026/07/does-everything_1.jpg"
+                                         alt="Sudden Death &#8211; The Thing That Does Everything">
+                                </div>
+                            
+                                                    </div>
+                    </div>
+
+                </div>
+
+                <div class="col-12 col-md-6 offset-md-1">
+                    <div class="productinfo-container">
+                        <p id="breadcrumbs"><span><span><a href="https://www.beerdome.nl/nl/">Home</a></span> » <span><a href="https://www.beerdome.nl/nl/biersoort/">Biersoort</a></span> » <span><a href="https://www.beerdome.nl/nl/biersoort/ipa/">IPA</a></span> » <span><a href="https://www.beerdome.nl/nl/product-categorie/biersoort/ipa/neipa/">NEIPA</a></span> » <span class="breadcrumb_last" aria-current="page">Sudden Death &#8211; The Thing That Does Everything</span></span></p>                        <h1 class="product__title">
+                            Sudden Death &#8211; The Thing That Does Everything                        </h1>
+
+                        <div class="product__details">
+                                                            <div class="row">
+                                                                            <div class="col-md-4 mb-4">
+                                            <strong>Alcoholpercentage</strong><br>
+                                            <span>12.0%</span>
+                                        </div>
+                                                                            <div class="col-md-4 mb-4">
+                                            <strong>Allergenen</strong><br>
+                                            <span>Gluten</span>
+                                        </div>
+                                                                            <div class="col-md-4 mb-4">
+                                            <strong>Bierstijl</strong><br>
+                                            <span>IPA - Quadruple</span>
+                                        </div>
+                                                                            <div class="col-md-4 mb-4">
+                                            <strong>Inhoud</strong><br>
+                                            <span>44cl</span>
+                                        </div>
+                                                                            <div class="col-md-4 mb-4">
+                                            <strong>Land</strong><br>
+                                            <span>Duitsland</span>
+                                        </div>
+                                                                    </div>
+                                                    </div>
+
+                                                    <div class="woocommerce-product-short-description mb-4">
+                                <p>Hazy Quadruple IPA with Nelson, Southern Cross, Eclipse, Citra.</p>
+                            </div>
+                        
+                        <div class="untappd-user-checkin-lazy" 
+                    data-beer-id="6683030" 
+                    data-text-tried="Je hebt dit bier al geproefd!" 
+                    data-text-not-tried="Je hebt dit bier nog niet geproefd" 
+                    data-show-icon="true">
+                <span class="untappd-checkin-text">Laden...</span>
+                </div>
+                        <div class="product__price">
+                            <div class="product__price-inner">
+                                
+                                <div class="product-pricing">
+                                    
+                                    <div class="current-price fw-bold">
+                                        <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;8,49</bdi></span> <span class="incl-btw">incl. btw</span>
+                                    </div>
+                                    
+                                                                            <div class="statiegeld-info" style="font-size: 0.85em; color: #888; margin-top: 0.25em; font-weight: normal;">
+                                            + €0,15 statiegeld                                        </div>
+                                                                    </div>
+
+                            </div>
+
+                            <div class="untappd-score"><div class="untappd-rating-title">Untappd (987 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 20.724%"></span></div><span class="score d-none d-sm-inline-block">4.21</span></div></div>                        </div>
+
+
+                        <div class="product__add-to-cart">
+                            <p class="stock in-stock">Op voorraad</p>
+
+	
+	<form class="cart" action="https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/" method="post" enctype='multipart/form-data'>
+		
+		<div class="quantity">
+		<label class="screen-reader-text" for="quantity_6a48ade52da27">Sudden Death - The Thing That Does Everything aantal</label>
+	<input
+		type="number"
+				id="quantity_6a48ade52da27"
+		class="input-text qty text"
+		name="quantity"
+		value="1"
+		aria-label="Productaantal"
+				min="1"
+					max="14"
+							step="1"
+			placeholder=""
+			inputmode="numeric"
+			autocomplete="off"
+			/>
+	</div>
+
+		<button type="submit" name="add-to-cart" value="20021" class="single_add_to_cart_button button alt">Toevoegen aan je kratje</button>
+
+		<input type="hidden" name="gtm4wp_product_data" value="{&quot;internal_id&quot;:20021,&quot;item_id&quot;:20021,&quot;item_name&quot;:&quot;Sudden Death - The Thing That Does Everything&quot;,&quot;sku&quot;:&quot;6683030&quot;,&quot;price&quot;:8.4900000000000002131628207280300557613372802734375,&quot;stocklevel&quot;:14,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;Duits bier&quot;,&quot;id&quot;:20021}" />
+	</form>
+
+	
+                        </div>
+
+
+                        <div class="product__usp">
+                            
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-box"></i>
+                                <div class="countdown-wrapper">
+                                    <span class="usp-title">Volgende verzending</span>
+                                    <p>Je hebt nog <span id="countdown"
+                                                         data-target="1783346400"></span></p>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-badge-check"></i>
+                                <div>
+                                    <span class="usp-title">Op voorraad</span>
+                                    <p>Wees er snel bij!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                                                    <div class="product-accordion">
+                                <button
+                                    class="accordion-toggle active"
+                                    type="button"
+                                    aria-expanded="true"
+                                    aria-controls="product-description-accordion"
+                                >
+                                    <span>Meer over het product</span>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    </svg>
+                                </button>
+                                <div
+                                    class="accordion-content"
+                                    id="product-description-accordion"
+                                    style="max-height: none; padding: 1rem;"
+                                >
+                                    <div class="accordion-content__inner">
+                                        <p>Hazy Quadruple IPA with Nelson, Southern Cross, Eclipse, Citra.</p>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="product__upsell">
+
+        <div class="container">
+            <div class="product__upsell-title">Anderen kochten ook</div>
+
+            <div class="related-products"><div class="js-upsell-products">                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/sudden-death-echoes-of-collapse/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1.jpg" class="attachment-full size-full" alt="Sudden Death - Echoes Of Collapse" decoding="async" fetchpriority="high" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/echos-of-collaps_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/sudden-death/" class="cat">Sudden Death</a>
+    <a href="https://www.beerdome.nl/nl/product/sudden-death-echoes-of-collapse/"><span class="product-card__title">Sudden Death - Echoes Of Collapse</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (1050 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 20.881%"></span></div><span class="score d-none d-sm-inline-block">4.21</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;7,79</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="5" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20022"
+                        aria-label="Voeg Sudden Death - Echoes Of Collapse toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/sudden-death-brewpub-anniversary-special-4/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1.jpg" class="attachment-full size-full" alt="Sudden Death - Brewpub Anniversary Special 4" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/special-4_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/sudden-death/" class="cat">Sudden Death</a>
+    <a href="https://www.beerdome.nl/nl/product/sudden-death-brewpub-anniversary-special-4/"><span class="product-card__title">Sudden Death - Brewpub Anniversary Special 4</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (776 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 3.402%"></span></div><span class="score d-none d-sm-inline-block">4.03</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;7,29</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="20" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20023"
+                        aria-label="Voeg Sudden Death - Brewpub Anniversary Special 4 toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/sudden-death-lets-order-a-pizza-2026/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1.jpg" class="attachment-full size-full" alt="Sudden Death - Let&#039;s Order A Pizza (2026)" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/order-pizza_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/sudden-death/" class="cat">Sudden Death</a>
+    <a href="https://www.beerdome.nl/nl/product/sudden-death-lets-order-a-pizza-2026/"><span class="product-card__title">Sudden Death - Let&#039;s Order A Pizza (2026)</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (947 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 16.383%"></span></div><span class="score d-none d-sm-inline-block">4.16</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;8,29</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="17" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20024"
+                        aria-label="Voeg Sudden Death - Let&#039;s Order A Pizza (2026) toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/sudden-death-brick-by-brick/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1.jpg" class="attachment-full size-full" alt="Sudden Death - Brick By Brick" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/Brick-by-brick_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/sudden-death/" class="cat">Sudden Death</a>
+    <a href="https://www.beerdome.nl/nl/product/sudden-death-brick-by-brick/"><span class="product-card__title">Sudden Death - Brick By Brick</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (570 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 58.798%"></span><span class="untappd-circle" style="--fill: 0%"></span></div><span class="score d-none d-sm-inline-block">3.59</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;6,79</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="11" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20025"
+                        aria-label="Voeg Sudden Death - Brick By Brick toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/hop-hooligans-gelato-sourpuss-portokalopita/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1.jpg" class="attachment-full size-full" alt="Hop Hooligans - Gelato Sourpuss: Portokalopita" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/sour-puss_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/hop-hooligans/" class="cat">Hop Hooligans</a>
+    <a href="https://www.beerdome.nl/nl/product/hop-hooligans-gelato-sourpuss-portokalopita/"><span class="product-card__title">Hop Hooligans - Gelato Sourpuss: Portokalopita</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (460 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 4.467%"></span></div><span class="score d-none d-sm-inline-block">4.04</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;8,79</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="20" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20026"
+                        aria-label="Voeg Hop Hooligans - Gelato Sourpuss: Portokalopita toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/hop-hooligans-head-over-heals/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1.jpg" class="attachment-full size-full" alt="Hop Hooligans - Head Over Heals" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/head-over-heels_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/hop-hooligans/" class="cat">Hop Hooligans</a>
+    <a href="https://www.beerdome.nl/nl/product/hop-hooligans-head-over-heals/"><span class="product-card__title">Hop Hooligans - Head Over Heals</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (220 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 1.932%"></span></div><span class="score d-none d-sm-inline-block">4.02</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;8,29</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="20" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20027"
+                        aria-label="Voeg Hop Hooligans - Head Over Heals toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/hop-hooligans-cosmic-jelly/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1.jpg" class="attachment-full size-full" alt="Hop Hooligans - Cosmic Jelly" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/cosmic-jelly_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/hop-hooligans/" class="cat">Hop Hooligans</a>
+    <a href="https://www.beerdome.nl/nl/product/hop-hooligans-cosmic-jelly/"><span class="product-card__title">Hop Hooligans - Cosmic Jelly</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (387 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 94.548%"></span><span class="untappd-circle" style="--fill: 0%"></span></div><span class="score d-none d-sm-inline-block">3.95</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;6,99</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="8" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20028"
+                        aria-label="Voeg Hop Hooligans - Cosmic Jelly toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                                    <div class="col-md-3">
+                        
+<div class="product-card">
+
+    <div class="product-image">
+        
+        <a href="https://www.beerdome.nl/nl/product/seoul-brewery-kyoto-twilight/">
+            <img loading="lazy" width="1000" height="1500" src="https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1.jpg" class="attachment-full size-full" alt="Seoul Brewery - Kyoto Twilight" decoding="async" srcset="https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1.jpg 1000w, https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1-200x300.jpg 200w, https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1-683x1024.jpg 683w, https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1-768x1152.jpg 768w, https://www.beerdome.nl/wp-content/uploads/2026/07/twilight-triple_1-600x900.jpg 600w" sizes="(max-width: 1000px) 100vw, 1000px" />        </a>
+    </div>
+
+    <a href="https://www.beerdome.nl/nl/merk/seoul/" class="cat">Seoul</a>
+    <a href="https://www.beerdome.nl/nl/product/seoul-brewery-kyoto-twilight/"><span class="product-card__title">Seoul Brewery - Kyoto Twilight</span></a>
+
+    <div class="untappd-score"><div class="untappd-rating-title">Untappd (403 ratings)</div><div class="untappd-rating-wrapper d-flex align-items-center"><div class="untappd-rating"><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 100%"></span><span class="untappd-circle" style="--fill: 57.469%"></span><span class="untappd-circle" style="--fill: 0%"></span></div><span class="score d-none d-sm-inline-block">3.57</span></div></div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="product-price">
+            <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no">&euro;</span>&nbsp;5,79</bdi></span>        </div>
+
+        <div class="product-cart">
+                            <input type="number"
+                       class="product-quantity"
+                       value="1"
+                       min="1"
+                       aria-label="Aantal"
+                       max="44" />
+                <button type="button"
+                        class="button ajax_add_to_cart"
+                        data-product_id="20030"
+                        aria-label="Voeg Seoul Brewery - Kyoto Twilight toe aan winkelwagen">
+                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                </button>
+                    </div>
+
+    </div>
+</div>
+                    </div>
+                </div></div>        </div>
+    </div>
+
+            <div class="product-sticky-cart" id="product-sticky-cart" hidden aria-hidden="true">
+            <div class="product-sticky-cart__inner">
+                                    <div class="product-sticky-cart__thumb" aria-hidden="true">
+                        <img src="https://www.beerdome.nl/wp-content/uploads/2026/07/does-everything_1-200x300.jpg" alt="" width="48" height="48" loading="lazy" decoding="async">
+                    </div>
+                                <div class="product-sticky-cart__info">
+                    <div class="product-sticky-cart__price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">&euro;</span>&nbsp;8,49</span></div>
+                </div>
+                <div class="product-sticky-cart__actions">
+                    <div class="product-sticky-cart__qty" role="group" aria-label="Aantal">
+                        <button type="button" class="product-sticky-cart__qty-btn product-sticky-cart__qty-btn--minus" aria-label="Minder">−</button>
+                        <input
+                            type="number"
+                            class="product-sticky-cart__qty-input"
+                            value="1"
+                            min="1"
+                                                            max="14"
+                                                        step="1"
+                            inputmode="numeric"
+                            aria-label="Aantal"
+                        >
+                        <button type="button" class="product-sticky-cart__qty-btn product-sticky-cart__qty-btn--plus" aria-label="Meer">+</button>
+                    </div>
+                    <button
+                        type="button"
+                        class="product-sticky-cart__button"
+                                            >
+                        In kratje                    </button>
+                </div>
+            </div>
+        </div>
+    
+<footer class="footer">
+    <div class="footer__top">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="title">Meld je aan voor onze nieuwsbrief</span>
+                    <p>Ontvang de nieuwste aanbiedingen en promoties</p>
+                </div>
+                <div class="offset-lg-2 col-lg-4">
+                    <div class="frm_forms " id="frm_form_2_container" data-token="73ca090b01cb86846622ca28f07151a8">
+<form enctype="multipart/form-data" method="post" class="frm-show-form  frm_pro_form " id="form_newsletter" data-token="73ca090b01cb86846622ca28f07151a8">
+<div class="frm_form_fields ">
+<fieldset>
+<legend class="frm_screen_reader">Newsletter</legend>
+
+<div class="frm_fields_container">
+<input type="hidden" name="frm_action" value="create" />
+<input type="hidden" name="form_id" value="2" />
+<input type="hidden" name="frm_hide_fields_2" id="frm_hide_fields_2" value="" />
+<input type="hidden" name="form_key" value="newsletter" />
+<input type="hidden" name="item_meta[0]" value="" />
+<input type="hidden" id="frm_submit_entry_2" name="frm_submit_entry_2" value="8bc8fb5204" /><input type="hidden" name="_wp_http_referer" value="/nl/product/sudden-death-the-thing-that-does-everything/" /><div id="frm_field_7_container" class="frm_form_field form-field  frm_required_field frm_top_container">
+	<label for="field_ua3zb" id="field_ua3zb_label" class="frm_primary_label">
+		<span class="frm_required" aria-hidden="true"></span>
+	</label>
+	<input type="email" id="field_ua3zb" name="item_meta[7]" value=""  autocomplete="email"  placeholder="E-mailadres" data-reqmsg="Dit veld kan niet leeg zijn." aria-required="true" data-invmsg="Dit veld is ongeldig" aria-invalid="false"  />
+	
+	
+</div>
+<div id="frm_field_6_container" class="frm_form_field form-field ">
+	<div class="frm_submit frm_flex">
+<button class="frm_button_submit frm_final_submit" type="submit"   formnovalidate="formnovalidate">&gt;</button>
+
+
+
+</div>
+</div>
+	<input type="hidden" name="item_key" value="" />
+			<div id="frm_field_11_container">
+			<label for="field_93p4n" >
+				Indien je een mens bent, laat dit veld leeg:.			</label>
+			<input  id="field_93p4n" type="text" class="frm_form_field form-field frm_verify" name="item_meta[11]" value=""  />
+		</div>
+		<input name="frm_state" type="hidden" value="QLj08N5RxXF/xqzD30bgf5xz76EB9EQcDYa24IIB8Gv7QOUQMc9sc6AwqJz+lmMs" /></div>
+</fieldset>
+</div>
+
+</form>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 footer__col footer__col--br">
+                <h3>
+                Klantenservice                </h3>
+                <div class="menu-footer-1-container"><ul id="menu-footer-1" class="footer__nav"><li id="menu-item-7401" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7401"><a href="https://www.beerdome.nl/nl/over-ons/">Over ons</a></li>
+<li id="menu-item-7409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7409"><a href="https://www.beerdome.nl/nl/veelgestelde-vragen/">Veelgestelde vragen</a></li>
+<li id="menu-item-7402" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7402"><a href="https://www.beerdome.nl/nl/betaalmethoden/">Betaalmethoden</a></li>
+<li id="menu-item-7404" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7404"><a href="https://www.beerdome.nl/nl/algemene-voorwaarden/">Algemene Voorwaarden</a></li>
+<li id="menu-item-7403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7403"><a href="https://www.beerdome.nl/nl/privacy-policy/">Privacy Policy</a></li>
+</ul></div>            </div>
+            <div class="col-12 col-md-3 footer__col footer__col--br">
+                <h3>
+                Mijn account                </h3>
+                <div class="menu-footer-2-container"><ul id="menu-footer-2" class="footer__nav"><li id="menu-item-7410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7410"><a href="https://www.beerdome.nl/nl/mijn-account/">Registreren</a></li>
+<li id="menu-item-7411" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7411"><a href="/nl/mijn-account/orders/">Mijn bestellingen</a></li>
+</ul></div>            </div>
+            <div class="col-12 col-md-3 footer__col">
+                <h3>
+                Categorieën                </h3>
+                <div class="menu-footer-3-container"><ul id="menu-footer-3" class="footer__nav"><li id="menu-item-7412" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product-ancestor current-menu-parent current-product-parent menu-item-7412"><a href="https://www.beerdome.nl/nl/alle-speciaalbier/">Alle Speciaalbier</a></li>
+<li id="menu-item-7414" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product-ancestor current-menu-parent current-product-parent menu-item-7414"><a href="https://www.beerdome.nl/nl/biersoort/">Biersoort</a></li>
+<li id="menu-item-7413" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat current-product-ancestor current-menu-parent current-product-parent menu-item-7413"><a href="https://www.beerdome.nl/nl/bierlanden/">Bierlanden</a></li>
+<li id="menu-item-7415" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7415"><a href="https://www.beerdome.nl/nl/crowlers/">Crowlers</a></li>
+<li id="menu-item-7417" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7417"><a href="https://www.beerdome.nl/nl/sale/">Sale</a></li>
+<li id="menu-item-7416" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7416"><a href="https://www.beerdome.nl/nl/natuurwijn/">Natuurwijn</a></li>
+<li id="menu-item-7418" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-7418"><a href="https://www.beerdome.nl/nl/biercadeaus/">Biercadeaus</a></li>
+</ul></div>            </div>
+
+            <div class="col-12 col-md-2 footer__col">
+                <h3>
+                Contact                </h3>
+                <div class="last">
+                    <p>Beerdome</p>
+<p>Legolaan 12</p>
+<p>9861 AT Grootegast</p>
+<p>KvK: 68251262<br />
+BTW: NL001445809B51</p>
+                    <a href="/cdn-cgi/l/email-protection#236a4d454c6341464651474c4e460d4d4f"><i class="fa-regular fa-envelope"></i><span class="__cf_email__" data-cfemail="e7ae898188a78582829583888a82c9898b">[email&#160;protected]</span></a>
+                </div>
+                <div class="footer__trustpilot">
+                    <img src="/wp-content/uploads/2025/08/trustpilot-logo.png" alt="trustpilotlogo" loading="lazy">
+                    <a href="https://nl.trustpilot.com/review/beerdome.nl" target="_blank">
+						Bekijk onze reviews					</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__copyright">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-md-auto">
+                    <img src="https://www.beerdome.nl/wp-content/themes/beerdome/assets/nix18.png" alt="Nix" loading="lazy">
+                </div>
+                <div class="col-12 col-md-auto">
+                    Copyright © 2026 Beerdome  |  Realisatie: <a href="https://weareon-it.nl" target="_blank">ON. IT</a>
+                </div>
+                <div class="col-12 col-md-auto">
+                    <div class="socials">
+                        <a href="https://www.facebook.com/beerdomeNL/?locale=nl_NL" target="_blank" rel="noopener noreferrer" aria-label="Beerdome op Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/beerdome/" target="_blank" rel="noopener noreferrer" aria-label="Beerdome op Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer__under">
+        <div class="container">
+                            <ul>
+                                    <li>
+                        <i class="fa-regular fa-truck"></i>                        Snelle verzending                    </li>
+                                    <li>
+                        <i class="fa-regular fa-star"></i>                        Dagelijks nieuwe speciaal bieren                    </li>
+                                    <li>
+                        <i class="fa-regular fa-box"></i>                        Levering aan EU-landen                    </li>
+                                </ul>
+                    </div>
+        </div>
+</footer>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<!-- Age Verification -->
+<div class="age-verification-overlay" id="age-verification" style="display: none; opacity: 0; visibility: hidden;">
+    <div class="age-verification-overlay__modal">
+        <div class="age-verification-overlay__logo">
+            <img src="https://www.beerdome.nl/wp-content/themes/beerdome/assets/nix18-color.png" alt="NIX18" loading="lazy">
+        </div>
+        
+        <div id="age-verification-content">
+            <span class="age-verification-overlay__title">Leeftijdsverificatie</span>
+            <p class="age-verification-overlay__text">
+                Bevestig dat u 18 jaar of ouder bent om toegang te krijgen tot deze website.            </p>
+            
+            <div class="age-verification-overlay__buttons">
+                <button class="age-verification-overlay__button age-verification-overlay__button--yes" id="age-verify-yes">
+                    Ja, ik ben 18 jaar of ouder                </button>
+                <button class="age-verification-overlay__button age-verification-overlay__button--no" id="age-verify-no">
+                    Nee, ik verlaat de website                </button>
+            </div>
+        </div>
+        
+        <div class="age-verification-overlay__nix-logo">
+            <img src="https://www.beerdome.nl/wp-content/themes/beerdome/assets/nix18.png" alt="NIX18" loading="lazy" onerror="this.style.display='none'">
+        </div>
+    </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+				( function() {
+					const style = document.createElement( 'style' );
+					style.appendChild( document.createTextNode( '#frm_field_11_container {visibility:hidden;overflow:hidden;width:0;height:0;position:absolute;}' ) );
+					document.head.appendChild( style );
+					document.currentScript?.remove();
+				} )();
+			</script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/nl/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/beerdome/*","/nl/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+        <div id="untappd-login-popup-root" class="untappd-login-popup" style="display: none;" aria-modal="true" role="dialog">
+            <div class="untappd-login-popup-overlay"></div>
+            <div class="untappd-login-popup-content">
+                <button class="untappd-login-popup-close" aria-label="Sluiten">&times;</button>
+                <h3>Verbind met Untappd</h3>
+                <p>Vul je Untappd username in om te zien welke bieren je al hebt geproefd. Wanneer je een bier op onze website bekijkt zal dit zichtbaar zijn onder de productomschrijving.</p>
+                                <div class="untappd-popup-oauth-mount" aria-live="polite">
+                    <p class="untappd-popup-oauth-loading">Laden…</p>
+                </div>
+                <template id="untappd-tpl-oauth-connected">
+                    <div class="untappd-oauth-connected">
+                        <p class="untappd-oauth-status">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style="color: #4caf50; vertical-align: middle;">
+                                <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm4.707 7.707l-5 5a1 1 0 01-1.414 0l-2.5-2.5a1 1 0 111.414-1.414L9 10.586l4.293-4.293a1 1 0 111.414 1.414z"/>
+                            </svg>
+                            <strong>Verbonden met Untappd</strong>
+                        </p>
+                        <p style="margin-top: 15px;">
+                            <a href="#" class="untappd-oauth-disconnect" style="color: #dc3545; text-decoration: underline;">
+                                Verbinding verbreken                            </a>
+                        </p>
+                    </div>
+                </template>
+                <template id="untappd-tpl-oauth-connect">
+                    <div class="untappd-oauth-option">
+                        <button type="button" class="untappd-oauth-connect button button-primary">
+                            Verbind met Untappd Account                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div id='pys_ajax_events'></div>        <script>
+            var node = document.getElementsByClassName('woocommerce-message')[0];
+            if(node && document.getElementById('pys_late_event')) {
+                var messageText = node.textContent.trim();
+                if(!messageText) {
+                    node.style.display = 'none';
+                }
+            }
+        </script>
+        <noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=1072457470072865&ev=ViewContent&noscript=1&cd%5Bcontent_ids%5D=%5B%2220021%22%5D&cd%5Bcontent_type%5D=product&cd%5Bcontent_name%5D=Sudden+Death+-+The+Thing+That+Does+Everything&cd%5Bcategory_name%5D=Alle+Speciaalbier%2C+Bierlanden%2C+Biersoort%2C+Duits+bier%2C+IPA%2C+NEIPA&cd%5Bvalue%5D=8.49&cd%5Bcurrency%5D=EUR&cd%5Bcontents%5D=%5B%7B%22id%22%3A%2220021%22%2C%22quantity%22%3A1%7D%5D&cd%5Bproduct_price%5D=8.49&cd%5Bpage_title%5D=Sudden+Death+-+The+Thing+That+Does+Everything&cd%5Bpost_type%5D=product&cd%5Bpost_id%5D=20021&cd%5Bplugin%5D=PixelYourSite&cd%5Buser_role%5D=guest&cd%5Bevent_url%5D=www.beerdome.nl%2Fnl%2Fproduct%2Fsudden-death-the-thing-that-does-everything%2F" alt=""></noscript>
+<noscript><img height="1" width="1" style="display: none;" src="https://www.facebook.com/tr?id=1072457470072865&ev=PageView&noscript=1&cd%5Bpage_title%5D=Sudden+Death+-+The+Thing+That+Does+Everything&cd%5Bpost_type%5D=product&cd%5Bpost_id%5D=20021&cd%5Bplugin%5D=PixelYourSite&cd%5Buser_role%5D=guest&cd%5Bevent_url%5D=www.beerdome.nl%2Fnl%2Fproduct%2Fsudden-death-the-thing-that-does-everything%2F" alt=""></noscript>
+	<script type='text/javascript'>
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<script id="wp-loyalty-rules-alertify-front-js" src="https://www.beerdome.nl/wp-content/plugins/wp-loyalty-rules/Assets/Admin/Js/alertify.min.js?ver=1.4.3"></script>
+<script id="wbte-ewb-frontend-js-extra">
+var wbte_ewb_frontend_params = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","rest_url":"https://www.beerdome.nl/nl/wp-json/wbte-ewb/v1/","nonce":"47ec19a573","currency_symbol":"\u20ac","currency_position":"left_space","currency_decimals":"2","currency_decimal_sep":",","currency_thousand_sep":".","allow_partial_withdrawals":"yes","reason_required":"no","i18n":{"loading":"Laden...","select_order":"Selecteer een bestelling.","select_items":"Selecteer minimaal \u00e9\u00e9n item.","withdraw_qty":"hoeveelheid","invalid_item_qty":"Voer voor elk geselecteerd artikel een geldig aantal in.","reason_required":"Geef een reden voor herroeping op.","submit_error":"Er is een fout opgetreden. Probeer het opnieuw.","submit_success":"Uw herroepingsverzoek is succesvol ingediend.","order_required":"Voer uw bestelnummer in.","email_required":"Voer een geldig e-mailadres in.","fetching_items":"In aanmerking komende items ophalen...","no_eligible_items":"Er zijn geen in aanmerking komende artikelen gevonden voor deze bestelling.","confirm_title":"Controleer uw herroepingsverzoek","confirm_intro":"Controleer de onderstaande gegevens. Klik op Herroeping bevestigen om uw wettelijke herroeping te voltooien.","confirm_withdrawal":"Herroeping bevestigen","confirm_cancel":"Annuleren","label_customer":"Klant","label_order":"Bestelling","label_request_type":"Type herroeping","label_items":"Artikelen om te herroepen","label_reason":"Reden van herroeping","request_type_full":"Volledige herroeping","request_type_partial":"Gedeeltelijke herroeping","guest_queue_success":"Bedankt. Als de door u verstrekte gegevens correct zijn, ontvangt u een verificatie-e-mail om uw herroepingsverzoek te voltooien."}};
+//# sourceURL=wbte-ewb-frontend-js-extra
+</script>
+<script id="wbte-ewb-frontend-js" src="https://www.beerdome.nl/wp-content/plugins/wt-eu-withdrawal-button/assets/js/wbte-ewb-frontend.js?ver=1.0.5"></script>
+<script id="awdr-main-js-extra">
+var awdr_params = {"ajaxurl":"https://www.beerdome.nl/wp-admin/admin-ajax.php","nonce":"13e1091054","enable_update_price_with_qty":"show_when_matched","refresh_order_review":"0","custom_target_simple_product":"","custom_target_variable_product":"","js_init_trigger":"","awdr_opacity_to_bulk_table":"","awdr_dynamic_bulk_table_status":"0","awdr_dynamic_bulk_table_off":"on","custom_simple_product_id_selector":"","custom_variable_product_id_selector":""};
+//# sourceURL=awdr-main-js-extra
+</script>
+<script id="awdr-main-js" src="https://www.beerdome.nl/wp-content/plugins/woo-discount-rules/v2/Assets/Js/site_main.js?ver=2.6.16"></script>
+<script id="awdr-dynamic-price-js" src="https://www.beerdome.nl/wp-content/plugins/woo-discount-rules/v2/Assets/Js/awdr-dynamic-price.js?ver=2.6.16"></script>
+<script id="beerdome-search-js-extra">
+var bdsConfig = {"ajaxUrl":"https://www.beerdome.nl/wp-admin/admin-ajax.php","nonce":"68c9d3c676","lang":"nl","minChars":"2","maxSuggestions":"7","showImage":"1","showPrice":"1","showDesc":"","showSku":"","showCategories":"1","showDetailsPanel":"","showHistory":"","showPopular":"1","showPopularMobile":"1","showBlog":"1","showBlogSidebar":"1","showBlogMobile":"1","showBrands":"1","showBrandsSidebar":"1","showBrandsMobile":"","filtersEnabled":"1","darkenBackground":"","mobileBreakpoint":"992","mobileOverlay":"1","noResultsText":"Geen resultaten gevonden","seeAllText":"Bekijk alle %d producten...","historyConfig":{"enabled":false,"max_items":5},"i18n":{"filters":"Filters","clearFilters":"Filters wissen","apply":"Toepassen","searching":"Zoeken...","recentSearches":"Recente zoekopdrachten","clearHistory":"Wissen","outOfStock":"Niet op voorraad","popularProducts":"Populaire producten","relatedContent":"Gerelateerde content","breweries":"Brouwerijen","productSingular":"product","productPlural":"producten"}};
+//# sourceURL=beerdome-search-js-extra
+</script>
+<script id="beerdome-search-js" src="https://www.beerdome.nl/wp-content/plugins/beerdome-search/assets/js/beerdome-search.min.js?ver=1.18.20"></script>
+<script id="beerdome-topbar-js-extra">
+var btConfig = {"ajaxUrl":"https://www.beerdome.nl/wp-admin/admin-ajax.php","nonce":"0ea0054bce"};
+//# sourceURL=beerdome-topbar-js-extra
+</script>
+<script id="beerdome-topbar-js" src="https://www.beerdome.nl/wp-content/plugins/beerdome-topbar/assets/js/beerdome-topbar.min.js?ver=1.1.9"></script>
+<script id="gtm4wp-additional-datalayer-pushes-js-after">
+	dataLayer.push({"ecommerce":{"currency":"EUR","value":8.4900000000000002131628207280300557613372802734375,"items":[{"item_id":20021,"item_name":"Sudden Death - The Thing That Does Everything","sku":"6683030","price":8.4900000000000002131628207280300557613372802734375,"stocklevel":14,"stockstatus":"instock","google_business_vertical":"retail","item_category":"Duits bier","id":20021}]},"event":"view_item"});
+//# sourceURL=gtm4wp-additional-datalayer-pushes-js-after
+</script>
+<script id="gtm4wp-ecommerce-generic-js" src="https://www.beerdome.nl/wp-content/plugins/duracelltomi-google-tag-manager/dist/js/gtm4wp-ecommerce-generic.js?ver=1.22.3"></script>
+<script id="gtm4wp-woocommerce-js" src="https://www.beerdome.nl/wp-content/plugins/duracelltomi-google-tag-manager/dist/js/gtm4wp-woocommerce.js?ver=1.22.3"></script>
+<script id="on-gift-cards-js-extra">
+var onGiftCards = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","nonce":"6eb0042efa"};
+//# sourceURL=on-gift-cards-js-extra
+</script>
+<script id="on-gift-cards-js" src="https://www.beerdome.nl/wp-content/plugins/on-gift-cards/assets/js/frontend.js?ver=1.0.0"></script>
+<script id="untappd-session-boot-js" src="https://www.beerdome.nl/wp-content/plugins/untappd-ratings/assets/js/untappd-session-boot.js?ver=2.3.4"></script>
+<script id="untappd-user-checkins-js-extra">
+var untappdUser = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","checkin_nonce":"","username":""};
+var untappdUser = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","checkin_nonce":"","username":""};
+//# sourceURL=untappd-user-checkins-js-extra
+</script>
+<script id="untappd-user-checkins-js" src="https://www.beerdome.nl/wp-content/plugins/untappd-ratings/assets/js/user-checkins.js?ver=2.3.4"></script>
+<script id="slick-js-js" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js?ver=1.8.1"></script>
+<script id="fancybox-js-js" src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js?ver=5.0.0"></script>
+<script id="custom-js-js-extra">
+var cartAjax = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php","nonce":"89f3bd9517"};
+var onWebsiteCart = {"quantities":[]};
+var couponText = {"kortingscode_toevoegen":"Kortingscode toevoegen","kortingscodes":"Kortingscodes","kortingscode":"Kortingscode"};
+var onWebsiteStrings = {"stock_max_available":"Slechts %d stuks beschikbaar.","stock_max_in_cart":"Maximale voorraad in kratje","error_add_to_cart":"Er ging iets fout bij het toevoegen aan het kratje.","success_added":"Product toegevoegd aan kratje!","out_of_stock":"Uitverkocht","cart_name":"kratje"};
+//# sourceURL=custom-js-js-extra
+</script>
+<script id="custom-js-js" src="https://www.beerdome.nl/wp-content/themes/beerdome/js/custom.js?ver=1782801609"></script>
+<script id="cart-widget-js-extra">
+var actions = {"current_language":"nl","force_reset":"0"};
+//# sourceURL=cart-widget-js-extra
+</script>
+<script data-wp-strategy="defer" defer id="cart-widget-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce-multilingual/res/js/cart_widget.min.js?ver=5.5.6"></script>
+<script id="sourcebuster-js-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=10.9.1"></script>
+<script id="wc-order-attribution-js-extra">
+var wc_order_attribution = {"params":{"lifetime":1.0000000000000000818030539140313095458623138256371021270751953125e-5,"session":30,"base64":false,"ajaxurl":"https://www.beerdome.nl/wp-admin/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
+//# sourceURL=wc-order-attribution-js-extra
+</script>
+<script id="wc-order-attribution-js" src="https://www.beerdome.nl/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.9.1"></script>
+<script id="jquery-bind-first-js" defer src="https://www.beerdome.nl/wp-content/plugins/pixelyoursite/dist/scripts/jquery.bind-first-0.2.3.min.js?ver=0.2.3"></script>
+<script id="js-cookie-pys-js" defer data-cookieconsent="true" src="https://www.beerdome.nl/wp-content/plugins/pixelyoursite/dist/scripts/js.cookie-2.1.3.min.js?ver=2.1.3"></script>
+<script id="js-tld-js" defer src="https://www.beerdome.nl/wp-content/plugins/pixelyoursite/dist/scripts/tld.min.js?ver=2.3.1"></script>
+<script id="pys-js-extra">
+var pysOptions = {"staticEvents":{"facebook":{"woo_view_content":[{"delay":0,"type":"static","name":"ViewContent","pixelIds":["1072457470072865"],"eventID":"f4ea671a-b7b8-48c5-9c81-f15d6cb7f53e","params":{"content_ids":["20021"],"content_type":"product","content_name":"Sudden Death - The Thing That Does Everything","category_name":"Alle Speciaalbier, Bierlanden, Biersoort, Duits bier, IPA, NEIPA","value":"8.49","currency":"EUR","contents":[{"id":"20021","quantity":1}],"product_price":"8.49","page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"woo_view_content","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}],"init_event":[{"delay":0,"type":"static","ajaxFire":false,"name":"PageView","pixelIds":["1072457470072865"],"eventID":"ced622fc-a994-43fb-9ae4-77898d894f2b","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"init_event","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}]}},"dynamicEvents":{"automatic_event_form":{"facebook":{"delay":0,"type":"dyn","name":"Form","pixelIds":["1072457470072865"],"eventID":"250adbe0-a977-420e-9a78-6637326cd9fd","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"automatic_event_form","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}},"automatic_event_download":{"facebook":{"delay":0,"type":"dyn","name":"Download","extensions":["","doc","exe","js","pdf","ppt","tgz","zip","xls"],"pixelIds":["1072457470072865"],"eventID":"50c4bd18-c665-415a-8416-a70194fcf705","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"automatic_event_download","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}},"automatic_event_comment":{"facebook":{"delay":0,"type":"dyn","name":"Comment","pixelIds":["1072457470072865"],"eventID":"739644ab-4abe-4ab9-9fdc-58f9378a35e9","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"automatic_event_comment","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}},"automatic_event_scroll":{"facebook":{"delay":0,"type":"dyn","name":"PageScroll","scroll_percent":30,"pixelIds":["1072457470072865"],"eventID":"51f600bf-d985-4e90-b2f6-77b759965f37","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"automatic_event_scroll","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}},"automatic_event_time_on_page":{"facebook":{"delay":0,"type":"dyn","name":"TimeOnPage","time_on_page":30,"pixelIds":["1072457470072865"],"eventID":"0949b3dc-cf9c-4242-8609-b4c7869aeb2f","params":{"page_title":"Sudden Death - The Thing That Does Everything","post_type":"product","post_id":20021,"plugin":"PixelYourSite","user_role":"guest","event_url":"www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/"},"e_id":"automatic_event_time_on_page","ids":[],"hasTimeWindow":false,"timeWindow":0,"woo_order":"","edd_order":""}}},"triggerEvents":[],"triggerEventTypes":[],"facebook":{"pixelIds":["1072457470072865"],"advancedMatching":[],"advancedMatchingEnabled":false,"removeMetadata":true,"wooVariableAsSimple":false,"serverApiEnabled":true,"send_external_id":null,"enabled_medical":false,"do_not_track_medical_param":["event_url","post_title","page_title","landing_page","content_name","categories","category_name","tags"],"meta_ldu":false},"debug":"","siteUrl":"https://www.beerdome.nl","ajaxUrl":"https://www.beerdome.nl/wp-admin/admin-ajax.php","ajax_event":"2a8889ab26","enable_remove_download_url_param":"1","cookie_duration":"7","last_visit_duration":"60","enable_success_send_form":"","ajaxForServerEvent":"1","ajaxForServerStaticEvent":"1","useSendBeacon":"1","send_external_id":"1","external_id_expire":"180","track_cookie_for_subdomains":"1","google_consent_mode":"1","gdpr":{"ajax_enabled":false,"all_disabled_by_api":false,"facebook_disabled_by_api":false,"analytics_disabled_by_api":false,"google_ads_disabled_by_api":false,"pinterest_disabled_by_api":false,"bing_disabled_by_api":false,"reddit_disabled_by_api":false,"externalID_disabled_by_api":false,"facebook_prior_consent_enabled":true,"analytics_prior_consent_enabled":true,"google_ads_prior_consent_enabled":null,"pinterest_prior_consent_enabled":true,"bing_prior_consent_enabled":true,"cookiebot_integration_enabled":false,"cookiebot_facebook_consent_category":"marketing","cookiebot_analytics_consent_category":"statistics","cookiebot_tiktok_consent_category":"marketing","cookiebot_google_ads_consent_category":"marketing","cookiebot_pinterest_consent_category":"marketing","cookiebot_bing_consent_category":"marketing","consent_magic_integration_enabled":false,"real_cookie_banner_integration_enabled":false,"cookie_notice_integration_enabled":false,"cookie_law_info_integration_enabled":false,"analytics_storage":{"enabled":true,"value":"granted","filter":false},"ad_storage":{"enabled":true,"value":"granted","filter":false},"ad_user_data":{"enabled":true,"value":"granted","filter":false},"ad_personalization":{"enabled":true,"value":"granted","filter":false}},"cookie":{"disabled_all_cookie":false,"disabled_start_session_cookie":false,"disabled_advanced_form_data_cookie":false,"disabled_landing_page_cookie":false,"disabled_first_visit_cookie":false,"disabled_trafficsource_cookie":false,"disabled_utmTerms_cookie":false,"disabled_utmId_cookie":false},"tracking_analytics":{"TrafficLanding":"https://www.beerdome.nl/nl/product/sudden-death-the-thing-that-does-everything/","TrafficUtms":[],"TrafficUtmsId":[]},"GATags":{"ga_datalayer_type":"default","ga_datalayer_name":"dataLayerPYS"},"woo":{"enabled":true,"enabled_save_data_to_orders":true,"addToCartOnButtonEnabled":true,"addToCartOnButtonValueEnabled":true,"addToCartOnButtonValueOption":"price","singleProductId":20021,"removeFromCartSelector":"form.woocommerce-cart-form .remove","addToCartCatchMethod":"add_cart_hook","is_order_received_page":false,"containOrderId":false},"edd":{"enabled":false},"cache_bypass":"1783148005"};
+//# sourceURL=pys-js-extra
+</script>
+<script id="pys-js" defer src="https://www.beerdome.nl/wp-content/plugins/pixelyoursite/dist/scripts/public.js?ver=11.2.0.7"></script>
+<script id="woo_discount_pro_script-js" src="https://www.beerdome.nl/wp-content/plugins/woo-discount-rules-pro/Assets/Js/awdr_pro.js?ver=2.6.16"></script>
+<script id="formidable-js-extra">
+var frm_js = {"ajax_url":"https://www.beerdome.nl/wp-admin/admin-ajax.php?lang=nl","images_url":"https://www.beerdome.nl/wp-content/plugins/formidable/images","loading":"Bezig met laden\u2026","remove":"Verwijderen","offset":"4","nonce":"f49ccd8d68","id":"ID","no_results":"Geen resultaten gevonden","file_spam":"Dat bestand lijkt op Spam.","calc_error":"Er is een fout in de berekening in het veld met sleutel","empty_fields":"Vul de volgende verplichte velden in voordat je een bestand upload.","focus_first_error":"1","include_alert_role":"1","include_resend_email":""};
+var frm_password_checks = {"eight-char":{"label":"Minimaal acht karakters","regex":"/^.{8,}$/","message":"Wachtwoorden moeten uit minimaal acht karakters bestaan"},"lowercase":{"label":"Een kleine letter","regex":"#[a-z]+#","message":"Wachtwoord moet minimaal een kleine letter bevatten"},"uppercase":{"label":"Een hoofdletter","regex":"#[A-Z]+#","message":"Wachtwoord moet minimaal een hoofdletter bevatten"},"number":{"label":"Een nummer","regex":"#[0-9]+#","message":"Wachtwoord moet minimaal een cijfer bevatten"},"special-char":{"label":"Een speciaal karakter","regex":"/(?=.*[^a-zA-Z0-9])/","message":"Password is ongeldig"}};
+var frmCheckboxI18n = {"errorMsg":{"min_selections":"This field requires a minimum of %1$d selected options but only %2$d were submitted."}};
+//# sourceURL=formidable-js-extra
+</script>
+<script id="formidable-js" src="https://www.beerdome.nl/wp-content/plugins/formidable-pro/js/frm.min.js?ver=6.32-6.32.1-jquery"></script>
+<script id="formidable-js-after">
+window.frm_js.repeaterRowDeleteConfirmation = "Are you sure you want to delete this row?";
+window.frm_js.datepickerLibrary = "default";
+//# sourceURL=formidable-js-after
+</script>
+<script>
+/*<![CDATA[*/
+/*]]>*/
+</script>
+<div hidden data-wpu-integrity="084eed4acc323d9f322edd383384407c"></div>
+        <script>
+            function fireWhenFragmentReady() {
+                jQuery(document.body).trigger('wc_fragment_refresh');
+            }
+
+            jQuery(document).ready(fireWhenFragmentReady);
+        </script>
+				<style>
+			div.woocommerce-MyAccount-content .alg-wc-frontend-billing-edit {
+				display: block !important;
+			}
+		</style>
+		
+
+<!-- Attched assets/javascripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://app.reloadify.com/assets/popups.js?reloadify_account_id=d638961e-0c7e-4d91-be11-7a8fd1711bd1" async></script>
+
+</body>
+</html>
