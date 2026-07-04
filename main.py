@@ -22,12 +22,14 @@ import hopsandhopes
 import lightspeed
 import shopify
 import woocommerce
+import bierloods22
 
 SCRAPERS = {
     "shopify": shopify.scrape,
     "lightspeed": lightspeed.scrape,
     "hopsandhopes": hopsandhopes.scrape,
     "woocommerce": woocommerce.scrape,
+    "bierloods22": bierloods22.scrape,
 }
 
 

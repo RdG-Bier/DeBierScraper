@@ -73,24 +73,38 @@ def _score(beer, ppl_min, ppl_max):
 def enrich_untappd(all_beers):
     """De Untappd-score is een wereldwijd gemiddelde en dus shop-onafhankelijk.
     Toont een shop (zoals Beer Republic) de score niet, dan lenen we hem van
-    hetzelfde bier bij een andere shop (matching op brouwerij + naam)."""
-    known = {}
+    hetzelfde bier bij een andere shop. Ook brede stijlen (Bierloods22 kent
+    alleen 'Stout'/'IPA'/'Sour') worden verfijnd naar de precieze substijl
+    van hetzelfde bier elders (matching op brouwerij + naam)."""
+    known_score, known_style = {}, {}
     for beers in all_beers.values():
         for b in beers:
-            if b.get("untappd") is not None:
-                key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
-                if key and key not in known:
-                    known[key] = (b["untappd"], b.get("untappd_aantal"))
-    filled = 0
+            key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if not key:
+                continue
+            if b.get("untappd") is not None and key not in known_score:
+                known_score[key] = (b["untappd"], b.get("untappd_aantal"))
+            if b.get("stijl") in config.STYLES and key not in known_style:
+                known_style[key] = b["stijl"]
+
+    filled = refined = 0
     for beers in all_beers.values():
         for b in beers:
+            key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             if b.get("untappd") is None:
-                key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
-                hit = known.get(key) or _fuzzy_get(known, key)
+                hit = known_score.get(key) or _fuzzy_get(known_score, key)
                 if hit:
                     b["untappd"], b["untappd_aantal"] = hit
                     filled += 1
-    return filled
+                    # geleende score kan alsnog onder de grens liggen; het bier
+                    # blijft staan, maar de score maakt hem laag in de ranking
+            if b.get("stijl") not in config.STYLES:  # brede stijl
+                style = known_style.get(key) or _fuzzy_get(known_style, key)
+                if style:
+                    b["stijl"] = style
+                    b["sterke_voorkeur"] = config.STYLES.get(style, False)
+                    refined += 1
+    return filled + refined
 
 
 def _fuzzy_get(mapping, key):

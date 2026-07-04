@@ -234,6 +234,10 @@ def beer_match_key(brewery, name):
     # inhoud, verpakking en ruis eruit
     n = re.sub(r"\b\d{2,4}\s?(cl|ml|l)\b", " ", n)
     n = re.sub(r"\b(can|blik|bottle|fles|krat|4 pack|sixpack)\b", " ", n)
+    # brouwerij-achtervoegsels: 'White Dog Brewery' moet 'White Dog' matchen
+    n = re.sub(r"\b(brewery|brewing(\s+(co|company))?|brew\s+co|craft\s+brewery"
+               r"|brouwerij|bierbrouwerij|bryghus|bryggeri|brasserie|birrificio"
+               r"|cervejaria|browar|co|company)\b\.?", " ", n)
     return re.sub(r"\s+", " ", n).strip()
 
 

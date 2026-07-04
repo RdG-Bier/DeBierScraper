@@ -27,9 +27,8 @@ SITES = [
     {
         "key": "bierloods22",
         "label": "Bierloods22",
-        "type": "lightspeed",
+        "type": "bierloods22",
         "base_url": "https://www.bierloods22.nl",
-        "sitemap_url": "https://www.bierloods22.nl/sitemap.xml",
     },
     {
         "key": "beerdome",
