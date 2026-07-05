@@ -145,7 +145,7 @@
                 <div class="col-auto d-flex align-items-start mt-1">
 
                     <div class="nav-search">
-                        <div id="component-iaqayt" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;2649c762c3d6fcbc1d3ff003a14833ff4eacac5333e9e0f86c1e6b06d9f5f2ac{\u0022id\u0022:\u0022component-iaqayt\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/search\\\/searchform.twig\u0022}&quot;}">
+                        <div id="component-vhupvj" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;48efc4c9e9ccfa128b55de6f41658898e2c0fef33f3228bb877d4a84ee3e76e1{\u0022id\u0022:\u0022component-vhupvj\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/search\\\/searchform.twig\u0022}&quot;}">
 <div class="field d-flex">
     <input type="text" class="text" name="query" value sprig s-trigger="keyup changed delay:300ms" s-replace="#results" placeholder="Zoek in onze bieren..." data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-trigger="keyup changed delay:300ms" data-hx-select="#results" data-hx-target="#results" data-hx-swap="outerHTML" data-sprig-parsed> 
     <button type="submit"><img src="/dist/images/icon-search-mobile.svg" width="17" height="17" alt="Speciaalbier"></button>
@@ -235,7 +235,7 @@
 <section class="beers-overview back-subpage">
 
     <div class="backdrop bg-offwhite position-absolute w-100">
-		<div class="bannerphoto" style="background-image: url(https://www.hopsandhopes.nl/uploads/media/_crop1440x700/231/banner-het-anker-whiskey.webp);"></div>
+		<div class="bannerphoto" style="background-image: url(https://www.hopsandhopes.nl/uploads/media/_crop1440x700/227/banner-dulle-griet.webp);"></div>
 </div>
     <div class="container py-5">
 
@@ -266,28 +266,9 @@
                                             <label><input type="checkbox" name="style[]" value="porter" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Porter<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="sour" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Sour<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="stout" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Stout<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="blonde-golden-ale-other" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Blonde / Golden Ale - Other<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="blonde-golden-ale-other-2" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Blonde / Golden Ale - Other<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="bock-single-traditional" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Bock - Single / Traditional<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="hard-seltzer" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Hard Seltzer<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-australian" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - Australian<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-fruited" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - Fruited<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-new-england-hazy-2" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - New England / Hazy<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-new-zealand" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - New Zealand<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-other" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - Other<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-quadruple" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - Quadruple<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="ipa-sour" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> IPA - Sour<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="lager" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Lager<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="lager-other" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Lager-Other<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="non-alcoholic-ipa" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Non-Alcoholic - IPA<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="non-alcoholic-sour" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Non-Alcoholic -Sour<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="pale-ale-new-england-hazy" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Pale Ale - New England / Hazy<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="porter-smoked" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Porter - Smoked<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="red-ale" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Red Ale<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="schwarzbier" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Schwarzbier<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="schwarzbier-2" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Schwarzbier<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="stout-imperial-double-coffee" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Stout - Imperial / Double Coffee<span class="checkmark"></span></label>
-                                            <label><input type="checkbox" name="style[]" value="wheat-beer-fruited" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Wheat Beer - Fruited<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="ale" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Ale<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="blond" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Belgian Blonde<span class="checkmark"></span></label>
                                             <label><input type="checkbox" name="style[]" value="dubbel" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> Belgian Dubbel<span class="checkmark"></span></label>
@@ -2369,6 +2350,10 @@
                                 Musai Brewery<span class="checkmark"></span>
                             </label>
                                                     <label>
+                                <input type="checkbox" name="brewery[]" value="muza-brewing-co" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> 
+                                MUZA BREWING CO<span class="checkmark"></span>
+                            </label>
+                                                    <label>
                                 <input type="checkbox" name="brewery[]" value="nano-cinco" sprig data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-sprig-parsed> 
                                 Nano Cinco<span class="checkmark"></span>
                             </label>
@@ -3622,7 +3607,7 @@
 
                         <div id="view-controls" class="d-flex filter-tag-bar">
                             <div class="col d-none d-md-block py-md-2 pt-md-3">
-                                <strong>501</strong> bieren gevonden
+                                <strong>494</strong> bieren gevonden
                             </div>
                             <div class="col-6 col-md-auto ms-md-auto py-md-2 pe-2 pe-md-0">
                                 <span class="d-none d-md-inline">Aantal per pagina:</span>
@@ -3707,7 +3692,7 @@
 	 
 	<strong style="line-height:1.2em;" class="d-inline-block my-2">
 		Untappd <span class="score d-inline-block d-sm-none">4.53&nbsp;</span>
-					(345<div class="d-inline d-md-none">x</div>
+					(371<div class="d-inline d-md-none">x</div>
 			<div class="d-none d-md-inline"> ratings</div>)
 			</strong>
 	<div class="untappd-score d-flex align-items-center mb-3">
@@ -3732,7 +3717,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508007" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;921f60e9ba5b9f82dd1ba91f8a3a659e8b2a51ab6d195de2b10a3608f90d2f74{\u0022id\u0022:\u0022add-button-2508007\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508007,\u0022variantStock\u0022:8,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508007" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;921f60e9ba5b9f82dd1ba91f8a3a659e8b2a51ab6d195de2b10a3608f90d2f74{\u0022id\u0022:\u0022add-button-2508007\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508007,\u0022variantStock\u0022:8,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508007">
 
     <div class="price text-large">
@@ -3850,7 +3835,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508531" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;e0175a556e97e49926c77719b1287b845c7e773e0cbabbefff7ae10e1ef3e6fa{\u0022id\u0022:\u0022add-button-2508531\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508531,\u0022variantStock\u0022:9,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508531" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;e0175a556e97e49926c77719b1287b845c7e773e0cbabbefff7ae10e1ef3e6fa{\u0022id\u0022:\u0022add-button-2508531\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508531,\u0022variantStock\u0022:9,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508531">
 
     <div class="price text-large">
@@ -3968,7 +3953,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508529" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;817a4da5e08556a6eaeb4cf65549220f339d2a6e69820cfe53e4a8b6ce67404c{\u0022id\u0022:\u0022add-button-2508529\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508529,\u0022variantStock\u0022:11,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508529" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;817a4da5e08556a6eaeb4cf65549220f339d2a6e69820cfe53e4a8b6ce67404c{\u0022id\u0022:\u0022add-button-2508529\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508529,\u0022variantStock\u0022:11,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508529">
 
     <div class="price text-large">
@@ -4061,7 +4046,7 @@
 	 
 	<strong style="line-height:1.2em;" class="d-inline-block my-2">
 		Untappd <span class="score d-inline-block d-sm-none">4.11&nbsp;</span>
-					(146<div class="d-inline d-md-none">x</div>
+					(161<div class="d-inline d-md-none">x</div>
 			<div class="d-none d-md-inline"> ratings</div>)
 			</strong>
 	<div class="untappd-score d-flex align-items-center mb-3">
@@ -4086,7 +4071,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508527" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;0cb9692235ca7a80dc09936ab08ed4010b67dd942b952f7bc801b327641a9e22{\u0022id\u0022:\u0022add-button-2508527\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508527,\u0022variantStock\u0022:8,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508527" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;0cb9692235ca7a80dc09936ab08ed4010b67dd942b952f7bc801b327641a9e22{\u0022id\u0022:\u0022add-button-2508527\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508527,\u0022variantStock\u0022:8,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508527">
 
     <div class="price text-large">
@@ -4178,16 +4163,16 @@
 	
 	 
 	<strong style="line-height:1.2em;" class="d-inline-block my-2">
-		Untappd <span class="score d-inline-block d-sm-none">4.12&nbsp;</span>
-					(83<div class="d-inline d-md-none">x</div>
+		Untappd <span class="score d-inline-block d-sm-none">4.11&nbsp;</span>
+					(95<div class="d-inline d-md-none">x</div>
 			<div class="d-none d-md-inline"> ratings</div>)
 			</strong>
 	<div class="untappd-score d-flex align-items-center mb-3">
 		<div class="untappd-rating me-2">
-			<div class="fill-rating" style="width: 82.4%;"></div>
+			<div class="fill-rating" style="width: 82.2%;"></div>
 			<div class="empty-rating"></div>
 		</div>
-		<span class="score d-none d-sm-inline-block"> 4.12</span>
+		<span class="score d-none d-sm-inline-block"> 4.11</span>
 	</div>
 
 	
@@ -4204,7 +4189,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508525" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;cee9e8c122721dd37fd0b4d13095dffd2bd358c8eaabbe93ccb6497b07aea285{\u0022id\u0022:\u0022add-button-2508525\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508525,\u0022variantStock\u0022:11,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508525" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;cee9e8c122721dd37fd0b4d13095dffd2bd358c8eaabbe93ccb6497b07aea285{\u0022id\u0022:\u0022add-button-2508525\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508525,\u0022variantStock\u0022:11,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508525">
 
     <div class="price text-large">
@@ -4322,7 +4307,7 @@
 										</p>
 		</div>
 
-					<div id="add-button-2508523" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;f4d39b6370db0c58e4e6c7d8156e547726e95133061217a86dd806d0c0d2bbee{\u0022id\u0022:\u0022add-button-2508523\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508523,\u0022variantStock\u0022:7,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;n6soG-KWGmf10FuhHwZi84E_-8uh97Z2j1nO-9FM-4IX2blZuIECdczcaUrP2HggjZ4KxkZMVLDLXYrmlMCFNOw294zoOLflYLLjbdDMOiM=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+					<div id="add-button-2508523" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;f4d39b6370db0c58e4e6c7d8156e547726e95133061217a86dd806d0c0d2bbee{\u0022id\u0022:\u0022add-button-2508523\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508523,\u0022variantStock\u0022:7,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
     <input type="hidden" name="purchasableId" value="2508523">
 
     <div class="price text-large">
@@ -4415,7 +4400,7 @@
 	 
 	<strong style="line-height:1.2em;" class="d-inline-block my-2">
 		Untappd <span class="score d-inline-block d-sm-none">3.61&nbsp;</span>
-					(182<div class="d-inline d-md-none">x</div>
+					(183<div class="d-inline d-md-none">x</div>
 			<div class="d-none d-md-inline"> ratings</div>)
 			</strong>
 	<div class="untappd-score d-flex align-items-center mb-3">
@@ -4428,4 +4413,122 @@
 
 	
                 
-	<div class="beer-buy d-sm-flex mt-auto align-items-center posi
+	<div class="beer-buy d-sm-flex mt-auto align-items-center position-relative">
+
+		<div class="alert alert-success alert-cart position-absolute" id="variant-2508521" style="display:none;"> 
+						<i class="bi bi-check2-circle"></i> <span style="text-transform:uppercase; font-size:11px; font-family:Arial;">Toegevoegd</span>
+					</div>
+	
+		<div class="price mr-auto">
+			<p class="mb-0">			
+							<span class="price-current">€ 7,50</span> 
+										</p>
+		</div>
+
+					<div id="add-button-2508521" class="sprig-component" data-hx-target="this" data-hx-include="this" data-hx-trigger="refresh" data-hx-get="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render" data-hx-vals="{&quot;sprig:config&quot;:&quot;a07a270d0b0bba74f3174f012baf92449961a60e36240d9e886744e659e07d2c{\u0022id\u0022:\u0022add-button-2508521\u0022,\u0022siteId\u0022:1,\u0022template\u0022:\u0022_includes\\\/products\\\/add-to-card\u0022,\u0022variables\u0022:{\u0022variantId\u0022:2508521,\u0022variantStock\u0022:12,\u0022qty\u0022:0,\u0022lineItemId\u0022:0}}&quot;}"><form sprig s-method="post" s-action="commerce/cart/update-cart" data-hx-headers="{&quot;X-CSRF-Token&quot;:&quot;Ku_zD02FiwjSd6j-Rn-T6qo_lo3LP5D9EKczKS1hk-kHFFh476VQ536NpF48975cmzL3sD8216vaUqH3hFLjuWHiZV1KKcW-Y3oqO5aRMt4=&quot;}" data-hx-post="https://www.hopsandhopes.nl/index.php?p=actions/sprig-core/components/render&amp;sprig%3Aaction=4e16f48243eb41109969b7722a01b88e35dd6d007c9ea9d7736de3be1a0ca738commerce/cart/update-cart" data-sprig-parsed>
+    <input type="hidden" name="purchasableId" value="2508521">
+
+    <div class="price text-large">
+        <div class="d-flex justify-content-between my-3">
+            <div class="input-group plus-minus-input">
+                <button type="button" class="btn-min btn-min-2508521" data-quantity="minus" data-field="quantity" aria-label="Minus">
+                    <i class="bi bi-dash"></i>
+                </button>
+                                    <input type="number" class="input-quantity input-group-field" name="qty" value="0" min="1" max="12" aria-label="Quantity" oninvalid="this.setCustomValidity(Er zijn nog  12  stuks op voorraad)" oninput="this.setCustomValidity('');this.reportValidity();">
+                                <button type="button" class="btn-plus btn-plus-2508521" data-quantity="plus" data-field="quantity" aria-label="Plus">
+                    <i class="bi bi-plus"></i>
+                </button>
+            </div>
+            <div class="w-auto ms-2">
+                <button type="submit" class="btn-add-cart" aria-label="Add to cart"><i class="bi bi-cart3"></i></button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+(function () {
+    var variantId = 2508521;
+    var form = document.querySelector('#add-button-' + variantId + ' form');
+    if (!form) {
+        return;
+    }
+    form.addEventListener('htmx:beforeRequest', function () {
+        var notice = document.getElementById('variant-' + variantId);
+        if (notice && window.$) {
+            $(notice).stop(true, true).fadeIn(200);
+        }
+    });
+})();
+</script>
+
+
+</div>
+			</div>
+
+</div>                    </div>
+                                        <div class="col-6 col-lg-4 0 ">
+                        <div class="beer-item d-flex flex-column h-100">
+			
+	
+		
+		<div class="test "></div>
+			<div class="badge badge-new"><img src="/dist/images/badge-new.svg" alt="Nieuw" class="img-fluid"></div>
+	
+	<div class="beer-img d-flex align-items-end">
+		<a href="https://www.hopsandhopes.nl/bieren/sombra-oscura-brouwerij-halve-tamme" class="w-100"><img src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508584/sombra.webp" alt="Sombra Oscura" class="d-block mx-auto" loading="lazy"></a>
+	</div>
+
+	<div class="beer-info">
+	
+					<h4>Brouwerij Halve Tamme</h4>
+		
+		<h3>Sombra Oscura</h3>
+
+        			<p class="mb-2">Stout - Imperial / Double</p>
+		        
+		<p>
+			
+							
+			<picture class="ps-1">
+				<source
+					type="image/webp"
+					srcset="https://flagcdn.com/20x15/nl.webp,
+					https://flagcdn.com/40x30/nl.webp 2x,
+					https://flagcdn.com/60x45/nl.webp 3x">
+				<source
+					type="image/png"
+					srcset="https://flagcdn.com/20x15/nl.png,
+					https://flagcdn.com/40x30/nl.png 2x,
+					https://flagcdn.com/60x45/nl.png 3x">
+				<img
+					src="https://flagcdn.com/20x15/nl.png"
+					width="20"
+					height="15"
+					class="d-inline-block me-1"
+					alt="NEDERLAND">
+			</picture>	
+		    Nederland<span class="d-inline d-sm-none"><br></span><span class="d-none d-sm-inline"> - </span>
+							12% 
+			-		        			37,5 cl
+		        </p>
+		
+	</div>
+	
+	 
+	<strong style="line-height:1.2em;" class="d-inline-block my-2">
+		Untappd <span class="score d-inline-block d-sm-none">4.15&nbsp;</span>
+					(118<div class="d-inline d-md-none">x</div>
+			<div class="d-none d-md-inline"> ratings</div>)
+			</strong>
+	<div class="untappd-score d-flex align-items-center mb-3">
+		<div class="untappd-rating me-2">
+			<div class="fill-rating" style="width: 83%;"></div>
+			<div class="empty-rating"></div>
+		</div>
+		<span class="score d-none d-sm-inline-block"> 4.15</span>
+	</div>
+
+	
+                
+	<div class="beer-buy
