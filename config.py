@@ -1,154 +1,167 @@
 # -*- coding: utf-8 -*-
 """
-Centrale configuratie voor de bierscraper.
-Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
+Scraper voor De Bierbrigadier (Tilburg).
+Belangrijk: dit leest NIET hun eigen website, maar hun officiële Untappd-
+menupagina (untappd.com/v/de-bierbrigadier-tilburg/...). Untappd toont daar
+het actuele winkelaanbod inclusief prijzen, per categorie gegroepeerd - en
+gebruikt daarbij hun eigen, exacte bierstijl-taxonomie, wat de matching juist
+extra betrouwbaar maakt (geen aliassen nodig, de naam staat er al precies zo).
+
+Let op: Untappd kan geautomatiseerd verkeer vanaf cloud-IP's (zoals GitHub
+Actions) blokkeren, ook als het via andere kanalen wel toegankelijk is.
+Controleer bij de eerste run docs/raw_bierbrigadier.json; blijft die leeg,
+dan blokkeert Untappd het verzoek en is een aangepaste aanpak nodig.
 """
 
-# ---------------------------------------------------------------------------
-# Websites
-# type bepaalt welke scraper gebruikt wordt:
-#   shopify    -> leest /products.json (zeer betrouwbaar)
-#   lightspeed -> leest sitemap.xml en daarna elke productpagina (HTML)
-#   hopsandhopes -> leest de listingpagina's (HTML)
-# ---------------------------------------------------------------------------
-SITES = [
-    {
-        "key": "debiersalon",
-        "label": "De Biersalon",
-        "type": "shopify",
-        "base_url": "https://debiersalon.nl",
-        "collection_url": "https://debiersalon.nl/en/collections/bieren",
-    },
-    {
-        "key": "bierloods22",
-        "label": "Bierloods22",
-        "type": "bierloods22",
-        "base_url": "https://www.bierloods22.nl",
-    },
-    {
-        "key": "bierbrigadier",
-        "label": "Bierbrigadier",
-        "type": "bierbrigadier",
-        "base_url": "http://www.debierbrigadier.nl",
-        "menu_url": "https://untappd.com/v/de-bierbrigadier-tilburg/5523441",
-    },
-    {
-        "key": "hopsandhopes",
-        "label": "Hops & Hopes",
-        "type": "hopsandhopes",
-        "base_url": "https://www.hopsandhopes.nl",
-        "listing_url": "https://www.hopsandhopes.nl/bieren",
-    },
-    {
-        "key": "beerrepublic",
-        "label": "Beer Republic",
-        "type": "shopify",
-        "base_url": "https://beerrepublic.eu",
-    },
-]
+import logging
+import re
 
-# ---------------------------------------------------------------------------
-# Gewenste bierstijlen. Key = canonieke (Untappd-)naam, value = True als
-# "sterke voorkeur". Matching is fuzzy: hoofdletters, streepjes en volgorde
-# maken niet uit; zie utils.match_style().
-# ---------------------------------------------------------------------------
-STYLES = {
-    "Sour - Fruited Gose": False,
-    "Stout - Imperial / Double": False,
-    "Stout - Russian Imperial": False,
-    "Sour - Other Gose": False,
-    "IPA - Imperial / Double New England / Hazy": False,
-    "IPA - Triple": True,
-    "IPA - New England / Hazy": False,
-    "Sour - Smoothie / Pastry": True,
-    "Sour - Other": False,
-    "IPA - Triple New England / Hazy": True,
-    "IPA - Imperial / Double": True,
-    "Stout - Imperial / Double Coffee": False,
-    "Stout - Imperial / Double Pastry": True,
-    "Sour - Traditional Gose": False,
-    "Stout - Pastry": False,
-    "Sour - Fruited": False,
-    "IPA - Imperial / Double Milkshake": False,
-    "Stout - Imperial / Double Milk": False,
-    "IPA - Quadruple": True,
-    "Stout - Imperial / Double Oatmeal": False,
-    "Mede": False,
-    "Mead - Braggot": False,
-    "Mead - Melomel": False,
-    "Mead - Metheglin": False,
-    "Mead - Cyser": False,
-}
+from bs4 import BeautifulSoup
 
-# Extra vertaal-/aliastabel: hoe shops een stijl soms noemen -> canonieke naam.
-# Vul gerust aan als een shop eigen benamingen gebruikt.
-STYLE_ALIASES = {
-    "triple ipa": "IPA - Triple",
-    "tipa": "IPA - Triple",
-    "double ipa": "IPA - Imperial / Double",
-    "dipa": "IPA - Imperial / Double",
-    "imperial ipa": "IPA - Imperial / Double",
-    "quadruple ipa": "IPA - Quadruple",
-    "hazy ipa": "IPA - New England / Hazy",
-    "neipa": "IPA - New England / Hazy",
-    "new england ipa": "IPA - New England / Hazy",
-    "imperial stout": "Stout - Imperial / Double",
-    "double stout": "Stout - Imperial / Double",
-    "russian imperial stout": "Stout - Russian Imperial",
-    "pastry stout": "Stout - Pastry",
-    "imperial pastry stout": "Stout - Imperial / Double Pastry",
-    "fruited sour": "Sour - Fruited",
-    "smoothie sour": "Sour - Smoothie / Pastry",
-    "pastry sour": "Sour - Smoothie / Pastry",
-    "gose": "Sour - Other Gose",
-    "fruited gose": "Sour - Fruited Gose",
-    "mead": "Mede",
-    "mede": "Mede",
-    "braggot": "Mead - Braggot",
-    "melomel": "Mead - Melomel",
-    "metheglin": "Mead - Metheglin",
-    "cyser": "Mead - Cyser",
-}
+import config
+import utils
 
-# ---------------------------------------------------------------------------
-# Untappd-filter: score >= MIN_UNTAPPD of onbekend
-# ---------------------------------------------------------------------------
-MIN_UNTAPPD = 4.00
-INCLUDE_UNKNOWN_UNTAPPD = True
+log = logging.getLogger("bierscraper")
 
-# ---------------------------------------------------------------------------
-# Scoregewichten (samen max 100). Zie scoring.py voor de berekening.
-# ---------------------------------------------------------------------------
-WEIGHTS = {
-    "style": 30,     # sterke voorkeur = vol gewicht, gewone stijl = de helft
-    "untappd": 35,   # 4.00 -> ondergrens, UNTAPPD_TOP -> vol gewicht
-    "count": 15,     # logaritmisch: meer ratings = betrouwbaarder
-    "price": 20,     # goedkoopste (per liter) = vol gewicht
-}
-UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
-UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
-COUNT_CAP = 5000            # aantal ratings waarbij het count-deel maximaal is
-PRICE_PER_LITER = True      # prijs normaliseren naar EUR/liter (eerlijker bij 33cl vs 44cl)
-PRICE_CAP_EUR = 20.0        # boven deze absolute prijs wordt een bier veel minder interessant
-PRICE_CAP_MALUS = 20        # puntenaftrek voor bieren boven het prijsplafond
-
-# ---------------------------------------------------------------------------
-# Techniek
-# ---------------------------------------------------------------------------
-REQUEST_DELAY = 0.8          # seconden tussen requests (netjes blijven!)
-CACHE_MAX_AGE_HOURS = 20     # HTML/JSON-cache; zet op 0 om altijd vers op te halen
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) BierScraper/1.0 (persoonlijk gebruik)"
-OUTPUT_FILE = "output/bieroverzicht.xlsx"
-FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
+RE_BEER_HREF = re.compile(r"^/b/[a-z0-9\-]+/\d+/?$")
+RE_BREWERY_HREF = re.compile(r"^/w/[a-z0-9\-]+/\d+/?$")
+RE_ABV = re.compile(r"([\d.,]+)\s?%\s*ABV", re.IGNORECASE)
+RE_SERVING = re.compile(r"([\d.,]+)\s?(cl|ml)\s+([A-Za-z]+)\s+([\d.,]+)\s*EUR", re.IGNORECASE)
+# Untappd-scores liggen tussen 0 en 5; dit voorkomt dat een jaartal in de
+# biernaam (bijv. "He Was A Zombie (2026)") per ongeluk als score wordt
+# gelezen — "(2026)" matcht dit patroon niet, "(4.2)" en "(4)" wel.
+RE_SCORE = re.compile(r"\(([0-5](?:[.,]\d{1,3})?|N/?A)\)")
+RE_TOTAL_CLAIM = re.compile(r"([\d.,]+)\s*Beers?\b", re.IGNORECASE)
+MAX_CONTAINER_CHARS = 450  # voorkomt dat we per ongeluk een hele lijst pakken
 
 
-# ---------------------------------------------------------------------------
-# Extra scoregewicht voor specifieke combinaties (bovenop de basisscore,
-# eindresultaat blijft geclipt tussen 0 en 100). "exact" = stijl moet precies
-# gelijk zijn; anders is een prefix-match voldoende (bijv. alle Stout-stijlen).
-# ---------------------------------------------------------------------------
-BONUS_RULES = [
-    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 8},
-    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 8},
-    {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 8},
-]
+def scrape(site):
+    html = utils.fetch(site["menu_url"])
+    if not html:
+        log.warning("Bierbrigadier: kon Untappd-menupagina niet ophalen")
+        return []
+    utils.save_debug_sample(site["key"], "untappd-menu", html)
+
+    claim_m = RE_TOTAL_CLAIM.search(html)
+    if claim_m:
+        log.info("Bierbrigadier: pagina claimt %s bieren in totaal (incl. stijlen "
+                  "die we niet willen)", claim_m.group(1))
+
+    soup = BeautifulSoup(html, "html.parser")
+    for tag in soup.find_all(["script", "style", "noscript"]):
+        tag.decompose()
+
+    beers = []
+    seen = set()
+    for a in soup.find_all("a", href=RE_BEER_HREF):
+        href = a["href"].rstrip("/")
+        if href in seen:
+            continue
+        seen.add(href)
+        beer = _parse_item(a, href)
+        if beer:
+            beers.append(beer)
+
+    log.info("Bierbrigadier: %d bier-links op de menupagina, %d na filters",
+              len(seen), len(beers))
+    return beers
+
+
+def _parse_item(anchor, href):
+    # Klim omhoog tot de container zowel 'ABV' als 'EUR' bevat, met een
+    # lengtelimiet zodat we niet per ongeluk een hele sectie/lijst grijpen.
+    container = anchor
+    text = ""
+    for _ in range(6):
+        container = container.parent
+        if container is None:
+            return None
+        text = container.get_text(" ", strip=True)
+        if len(text) > MAX_CONTAINER_CHARS:
+            return None
+        if "ABV" in text and "EUR" in text:
+            break
+    else:
+        return None
+
+    name = anchor.get_text(" ", strip=True)
+    if not name:
+        return None
+
+    # Stijl: eerst de exacte Untappd-taxonomie herkennen in de tekst (zeer
+    # betrouwbaar, dit IS de bron van die taxonomie), anders structureel
+    # (cursieve tekst direct na de naam), anders opgeven.
+    canon = utils.find_style_in_text(text)
+    style_raw = canon
+    if not canon:
+        style_el = anchor.find_next(["em", "i"])
+        if style_el:
+            style_raw = style_el.get_text(" ", strip=True)
+            canon, _ = utils.match_style(style_raw)
+    if not canon:
+        return None
+    strong = config.STYLES.get(canon, False)
+
+    brewery = None
+    b_link = container.find("a", href=RE_BREWERY_HREF)
+    if b_link:
+        brewery = b_link.get_text(" ", strip=True)
+
+    abv = None
+    m = RE_ABV.search(text)
+    if m:
+        try:
+            abv = float(m.group(1).replace(",", "."))
+        except ValueError:
+            abv = None
+
+    # Serving/prijs eerst bepalen, want de score staat er ALTIJD direct vóór
+    # in de leesvolgorde. Door alleen te zoeken vóór dat punt (en met een
+    # streng 0-5 formaat) vermijden we dat een jaartal in de naam
+    # (bijv. "(2026)") verward wordt met de score.
+    volume = price = None
+    sv = RE_SERVING.search(text)
+    search_area = text[:sv.start()] if sv else text
+    if sv:
+        try:
+            volume = float(sv.group(1).replace(",", "."))
+            if sv.group(2).lower() == "ml":
+                volume /= 10
+        except ValueError:
+            volume = None
+        try:
+            price = round(float(sv.group(4).replace(",", ".")), 2)
+        except ValueError:
+            price = None
+
+    untappd = None
+    score_matches = RE_SCORE.findall(search_area)
+    if score_matches:
+        raw = score_matches[-1]  # laatste treffer = dichtst bij de prijsregel
+        if raw.upper().replace("/", "") != "NA":
+            try:
+                untappd = float(raw.replace(",", "."))
+                if untappd == 0:
+                    untappd = None
+            except ValueError:
+                untappd = None
+
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    return {
+        "brouwerij": brewery,
+        "naam": name,
+        "inhoud_cl": volume,
+        "land": None,  # niet vermeld op de Untappd-menupagina
+        "abv": abv,
+        "stijl": canon,
+        "stijl_ruw": style_raw,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": None,  # aantal ratings staat niet op deze pagina
+        "prijs": price,
+        "weblink": f"https://untappd.com{href}",
+    }

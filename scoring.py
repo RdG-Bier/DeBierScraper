@@ -28,9 +28,11 @@ def _price_per_liter(beer):
     price, vol = beer.get("prijs"), beer.get("inhoud_cl")
     if price is None:
         return None
-    if config.PRICE_PER_LITER and vol:
-        return price / (vol / 100)
-    return price  # fallback: absolute prijs
+    if config.PRICE_PER_LITER:
+        # onbekende inhoud: neem de standaard blikmaat aan, anders zou een
+        # absolute prijs vergeleken worden met prijzen-per-liter (oneerlijk)
+        return price / ((vol or config.DEFAULT_VOLUME_CL) / 100)
+    return price
 
 
 def _score(beer, ppl_min, ppl_max):
@@ -102,12 +104,18 @@ def enrich_untappd(all_beers):
     hetzelfde bier bij een andere shop. Ook brede stijlen (Bierloods22 kent
     alleen 'Stout'/'IPA'/'Sour') worden verfijnd naar de precieze substijl
     van hetzelfde bier elders (matching op brouwerij + naam)."""
-    known_score, known_style = {}, {}
+    known_score, known_style, known_volume = {}, {}, {}
     for beers in all_beers.values():
         for b in beers:
+            # sanity guard: een Untappd-score buiten 0-5 kan nooit kloppen
+            # (bijv. een jaartal dat per ongeluk als score is gelezen)
+            if b.get("untappd") is not None and not (0 < b["untappd"] <= 5):
+                b["untappd"] = None
             key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             if not key:
                 continue
+            if b.get("inhoud_cl") and key not in known_volume:
+                known_volume[key] = b["inhoud_cl"]
             if b.get("untappd") is not None and key not in known_score:
                 known_score[key] = (b["untappd"], b.get("untappd_aantal"))
             if b.get("stijl") in config.STYLES and key not in known_style:
@@ -136,6 +144,11 @@ def enrich_untappd(all_beers):
                 if style:
                     b["stijl"] = style
                     b["sterke_voorkeur"] = config.STYLES.get(style, False)
+                    refined += 1
+            if not b.get("inhoud_cl"):
+                vol = known_volume.get(key) or _fuzzy_get(known_volume, key)
+                if vol:
+                    b["inhoud_cl"] = vol
                     refined += 1
     return filled + refined
 
