@@ -27,7 +27,11 @@ RE_BEER_HREF = re.compile(r"^/b/[a-z0-9\-]+/\d+/?$")
 RE_BREWERY_HREF = re.compile(r"^/w/[a-z0-9\-]+/\d+/?$")
 RE_ABV = re.compile(r"([\d.,]+)\s?%\s*ABV", re.IGNORECASE)
 RE_SERVING = re.compile(r"([\d.,]+)\s?(cl|ml)\s+([A-Za-z]+)\s+([\d.,]+)\s*EUR", re.IGNORECASE)
-RE_SCORE = re.compile(r"\(([\d.,]+|N/?A)\)")
+# Untappd-scores liggen tussen 0 en 5; dit voorkomt dat een jaartal in de
+# biernaam (bijv. "He Was A Zombie (2026)") per ongeluk als score wordt
+# gelezen — "(2026)" matcht dit patroon niet, "(4.2)" en "(4)" wel.
+RE_SCORE = re.compile(r"\(([0-5](?:[.,]\d{1,3})?|N/?A)\)")
+RE_TOTAL_CLAIM = re.compile(r"([\d.,]+)\s*Beers?\b", re.IGNORECASE)
 MAX_CONTAINER_CHARS = 450  # voorkomt dat we per ongeluk een hele lijst pakken
 
 
@@ -37,6 +41,11 @@ def scrape(site):
         log.warning("Bierbrigadier: kon Untappd-menupagina niet ophalen")
         return []
     utils.save_debug_sample(site["key"], "untappd-menu", html)
+
+    claim_m = RE_TOTAL_CLAIM.search(html)
+    if claim_m:
+        log.info("Bierbrigadier: pagina claimt %s bieren in totaal (incl. stijlen "
+                  "die we niet willen)", claim_m.group(1))
 
     soup = BeautifulSoup(html, "html.parser")
     for tag in soup.find_all(["script", "style", "noscript"]):
@@ -106,20 +115,13 @@ def _parse_item(anchor, href):
         except ValueError:
             abv = None
 
-    untappd = None
-    sm_score = RE_SCORE.search(text)
-    if sm_score:
-        raw = sm_score.group(1)
-        if raw.upper().replace("/", "") != "NA":
-            try:
-                untappd = float(raw.replace(",", "."))
-                if untappd == 0:
-                    untappd = None
-            except ValueError:
-                untappd = None
-
+    # Serving/prijs eerst bepalen, want de score staat er ALTIJD direct vóór
+    # in de leesvolgorde. Door alleen te zoeken vóór dat punt (en met een
+    # streng 0-5 formaat) vermijden we dat een jaartal in de naam
+    # (bijv. "(2026)") verward wordt met de score.
     volume = price = None
     sv = RE_SERVING.search(text)
+    search_area = text[:sv.start()] if sv else text
     if sv:
         try:
             volume = float(sv.group(1).replace(",", "."))
@@ -131,6 +133,18 @@ def _parse_item(anchor, href):
             price = round(float(sv.group(4).replace(",", ".")), 2)
         except ValueError:
             price = None
+
+    untappd = None
+    score_matches = RE_SCORE.findall(search_area)
+    if score_matches:
+        raw = score_matches[-1]  # laatste treffer = dichtst bij de prijsregel
+        if raw.upper().replace("/", "") != "NA":
+            try:
+                untappd = float(raw.replace(",", "."))
+                if untappd == 0:
+                    untappd = None
+            except ValueError:
+                untappd = None
 
     if untappd is not None and untappd < config.MIN_UNTAPPD:
         return None
