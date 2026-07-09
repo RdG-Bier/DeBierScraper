@@ -1,155 +1,194 @@
 # -*- coding: utf-8 -*-
 """
-Centrale configuratie voor de bierscraper.
-Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
+Scraper voor Hops & Hopes (maatwerkwebsite).
+Op de listingpagina staat per bier al alles: stijl, land, ABV, inhoud,
+Untappd-score + aantal ratings en prijs, in het patroon:
+    'Stout - Imperial / Double · USA - 13.6% - 35,5 cl Untappd 4.21 (332 x ratings) € 22,50'
+We parsen daarom de productkaarten van /bieren, met paginering.
 """
 
-# ---------------------------------------------------------------------------
-# Websites
-# type bepaalt welke scraper gebruikt wordt:
-#   shopify    -> leest /products.json (zeer betrouwbaar)
-#   lightspeed -> leest sitemap.xml en daarna elke productpagina (HTML)
-#   hopsandhopes -> leest de listingpagina's (HTML)
-# ---------------------------------------------------------------------------
-SITES = [
-    {
-        "key": "debiersalon",
-        "label": "De Biersalon",
-        "type": "shopify",
-        "base_url": "https://debiersalon.nl",
-        "collection_url": "https://debiersalon.nl/en/collections/bieren",
-    },
-    {
-        "key": "bierloods22",
-        "label": "Bierloods22",
-        "type": "bierloods22",
-        "base_url": "https://www.bierloods22.nl",
-    },
-    {
-        "key": "bierbrigadier",
-        "label": "Bierbrigadier",
-        "type": "bierbrigadier",
-        "base_url": "http://www.debierbrigadier.nl",
-        "menu_url": "https://untappd.com/v/de-bierbrigadier-tilburg/5523441",
-    },
-    {
-        "key": "hopsandhopes",
-        "label": "Hops & Hopes",
-        "type": "hopsandhopes",
-        "base_url": "https://www.hopsandhopes.nl",
-        "listing_url": "https://www.hopsandhopes.nl/bieren",
-    },
-    {
-        "key": "beerrepublic",
-        "label": "Beer Republic",
-        "type": "shopify",
-        "base_url": "https://beerrepublic.eu",
-    },
-]
+import logging
+import re
 
-# ---------------------------------------------------------------------------
-# Gewenste bierstijlen. Key = canonieke (Untappd-)naam, value = True als
-# "sterke voorkeur". Matching is fuzzy: hoofdletters, streepjes en volgorde
-# maken niet uit; zie utils.match_style().
-# ---------------------------------------------------------------------------
-STYLES = {
-    "Sour - Fruited Gose": False,
-    "Stout - Imperial / Double": False,
-    "Stout - Russian Imperial": False,
-    "Sour - Other Gose": False,
-    "IPA - Imperial / Double New England / Hazy": False,
-    "IPA - Triple": True,
-    "IPA - New England / Hazy": False,
-    "Sour - Smoothie / Pastry": True,
-    "Sour - Other": False,
-    "IPA - Triple New England / Hazy": True,
-    "IPA - Imperial / Double": True,
-    "Stout - Imperial / Double Coffee": False,
-    "Stout - Imperial / Double Pastry": True,
-    "Sour - Traditional Gose": False,
-    "Stout - Pastry": False,
-    "Sour - Fruited": False,
-    "IPA - Imperial / Double Milkshake": False,
-    "Stout - Imperial / Double Milk": False,
-    "IPA - Quadruple": True,
-    "Stout - Imperial / Double Oatmeal": False,
-    "Mede": False,
-    "Mead - Braggot": False,
-    "Mead - Melomel": False,
-    "Mead - Metheglin": False,
-    "Mead - Cyser": False,
-}
+from bs4 import BeautifulSoup
 
-# Extra vertaal-/aliastabel: hoe shops een stijl soms noemen -> canonieke naam.
-# Vul gerust aan als een shop eigen benamingen gebruikt.
-STYLE_ALIASES = {
-    "triple ipa": "IPA - Triple",
-    "tipa": "IPA - Triple",
-    "double ipa": "IPA - Imperial / Double",
-    "dipa": "IPA - Imperial / Double",
-    "imperial ipa": "IPA - Imperial / Double",
-    "quadruple ipa": "IPA - Quadruple",
-    "hazy ipa": "IPA - New England / Hazy",
-    "neipa": "IPA - New England / Hazy",
-    "new england ipa": "IPA - New England / Hazy",
-    "imperial stout": "Stout - Imperial / Double",
-    "double stout": "Stout - Imperial / Double",
-    "russian imperial stout": "Stout - Russian Imperial",
-    "pastry stout": "Stout - Pastry",
-    "imperial pastry stout": "Stout - Imperial / Double Pastry",
-    "fruited sour": "Sour - Fruited",
-    "smoothie sour": "Sour - Smoothie / Pastry",
-    "pastry sour": "Sour - Smoothie / Pastry",
-    "gose": "Sour - Other Gose",
-    "fruited gose": "Sour - Fruited Gose",
-    "mead": "Mede",
-    "mede": "Mede",
-    "braggot": "Mead - Braggot",
-    "melomel": "Mead - Melomel",
-    "metheglin": "Mead - Metheglin",
-    "cyser": "Mead - Cyser",
-}
+import config
+import utils
 
-# ---------------------------------------------------------------------------
-# Untappd-filter: score >= MIN_UNTAPPD of onbekend
-# ---------------------------------------------------------------------------
-MIN_UNTAPPD = 4.00
-INCLUDE_UNKNOWN_UNTAPPD = True
+log = logging.getLogger("bierscraper")
 
-# ---------------------------------------------------------------------------
-# Scoregewichten (samen max 100). Zie scoring.py voor de berekening.
-# ---------------------------------------------------------------------------
-WEIGHTS = {
-    "style": 30,     # sterke voorkeur = vol gewicht, gewone stijl = de helft
-    "untappd": 35,   # 4.00 -> ondergrens, UNTAPPD_TOP -> vol gewicht
-    "count": 15,     # logaritmisch: meer ratings = betrouwbaarder
-    "price": 20,     # goedkoopste (per liter) = vol gewicht
-}
-UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
-UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
-COUNT_CAP = 5000            # aantal ratings waarbij het count-deel maximaal is
-PRICE_PER_LITER = True      # prijs normaliseren naar EUR/liter (eerlijker bij 33cl vs 44cl)
-DEFAULT_VOLUME_CL = 44.0    # aanname als de inhoud onbekend is (meest gangbare blikmaat)
-PRICE_CAP_EUR = 20.0        # boven deze absolute prijs wordt een bier veel minder interessant
-PRICE_CAP_MALUS = 20        # puntenaftrek voor bieren boven het prijsplafond
-
-# ---------------------------------------------------------------------------
-# Techniek
-# ---------------------------------------------------------------------------
-REQUEST_DELAY = 0.8          # seconden tussen requests (netjes blijven!)
-CACHE_MAX_AGE_HOURS = 4      # HTML/JSON-cache; korter dan de 6,5u tussen runs, zodat elke run verse data haalt
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) BierScraper/1.0 (persoonlijk gebruik)"
-OUTPUT_FILE = "output/bieroverzicht.xlsx"
-FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
+MAX_PAGES = 80
 
 
-# ---------------------------------------------------------------------------
-# Extra scoregewicht voor specifieke combinaties (bovenop de basisscore,
-# eindresultaat blijft geclipt tussen 0 en 100). "exact" = stijl moet precies
-# gelijk zijn; anders is een prefix-match voldoende (bijv. alle Stout-stijlen).
-# ---------------------------------------------------------------------------
-BONUS_RULES = [
-    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 8},
-    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 8},
-    {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 8},
-]
+def scrape(site):
+    beers = []
+    seen_links = set()
+    for page in range(1, MAX_PAGES + 1):
+        url = site["listing_url"] if page == 1 else f"{site['listing_url']}?page={page}"
+        html = utils.fetch(url)
+        if not html:
+            break
+        if page == 1:
+            utils.save_debug_sample(site["key"], "listing", html)
+        page_beers = _parse_listing(html, site["base_url"])
+        new = [b for b in page_beers if b["weblink"] not in seen_links]
+        if not new:
+            break
+        for b in new:
+            seen_links.add(b["weblink"])
+        beers.extend(new)
+    log.info("%s: %d bieren na filters", site["label"], len(beers))
+    return beers
+
+
+def _parse_listing(html, base_url):
+    soup = BeautifulSoup(html, "html.parser")
+    beers = []
+
+    # Werkelijke kaartstructuur (uit debug-sample):
+    # <div class="beer-item"> <h4>Brouwerij</h4> <h3>Biernaam</h3>
+    #   <p>Stijl</p> <p>Land - ABV% - Inhoud</p>
+    #   <strong>Untappd <span class="score">4.53</span> (345 ratings)</strong>
+    cards = soup.select(".beer-item")
+    if cards:
+        for el in cards:
+            beer = _parse_beer_item(el, base_url)
+            if beer:
+                beers.append(beer)
+    else:
+        # fallback: generieke aanpak voor het geval het thema ooit wijzigt
+        for el in soup.find_all(["article", "li", "div"], recursive=True):
+            text = el.get_text(" ", strip=True)
+            if "untappd" not in text.lower() or "€" not in text:
+                continue
+            if text.lower().count("untappd") > 1:
+                continue
+            link = el.find("a", href=True)
+            if not link:
+                continue
+            href = link["href"]
+            if href.startswith("/"):
+                href = base_url.rstrip("/") + href
+            if not href.startswith("http"):
+                continue
+            beer = _parse_card(el, text, href)
+            if beer:
+                beers.append(beer)
+
+    unique = {}
+    for b in beers:
+        unique.setdefault(b["weblink"], b)
+    return list(unique.values())
+
+
+def _parse_beer_item(el, base_url):
+    text = el.get_text(" ", strip=True)
+    if RE_UITVERKOCHT.search(text):
+        return None
+
+    link = el.find("a", href=True)
+    if not link:
+        return None
+    href = link["href"]
+    if href.startswith("/"):
+        href = base_url.rstrip("/") + href
+
+    brewery_el = el.find("h4")
+    name_el = el.find("h3")
+    brewery = brewery_el.get_text(" ", strip=True) if brewery_el else None
+    name = name_el.get_text(" ", strip=True) if name_el else None
+    if not name:
+        return None
+
+    # stijl: eerste <p> in .beer-info
+    style_raw = None
+    for p in el.find_all("p"):
+        candidate = p.get_text(" ", strip=True)
+        canon, strong = utils.match_style(candidate)
+        if canon:
+            style_raw = candidate
+            break
+    else:
+        canon, strong = None, False
+    if not canon:
+        return None
+
+    untappd, untappd_count = utils.parse_untappd(text)
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    prices = [utils.parse_price(p) for p in re.findall(r"€\s*[\d.,]+", text)]
+    prices = [p for p in prices if p]
+
+    return {
+        "brouwerij": brewery,
+        "naam": name,
+        "inhoud_cl": utils.parse_volume_cl(text),
+        "land": utils.parse_country(text),
+        "abv": utils.parse_abv(text),
+        "stijl": canon,
+        "stijl_ruw": style_raw,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": untappd_count,
+        "prijs": min(prices) if prices else None,
+        "weblink": href,
+    }
+
+
+RE_STYLE_LINE = re.compile(
+    r"((?:Stout|IPA|Sour|Mead|Mede|Porter|Barleywine|Lager|Pilsner|Wild Ale|Saison)"
+    r"(?:\s*-\s*[A-Za-z/ ]+)?)"
+)
+RE_UITVERKOCHT = re.compile(r"uitverkocht|sold out|niet op voorraad", re.IGNORECASE)
+
+
+def _parse_card(el, text, href):
+    if RE_UITVERKOCHT.search(text):
+        return None
+
+    style_m = RE_STYLE_LINE.search(text)
+    style_raw = style_m.group(1).strip() if style_m else None
+    canon, strong = utils.match_style(style_raw)
+    if not canon:
+        return None
+
+    untappd, untappd_count = utils.parse_untappd(text)
+    if untappd is not None and untappd < config.MIN_UNTAPPD:
+        return None
+    if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        return None
+
+    # naam: heading in de kaart, anders linktekst
+    name_el = el.find(["h2", "h3", "h4"])
+    name = name_el.get_text(" ", strip=True) if name_el else el.find("a").get_text(" ", strip=True)
+    if not name:
+        return None
+
+    # brouwerij staat bij Hops & Hopes vaak als aparte regel/element boven de naam
+    brewery = None
+    brewery_el = el.find(class_=re.compile(r"brand|brouwerij|brewery", re.IGNORECASE))
+    if brewery_el:
+        brewery = brewery_el.get_text(" ", strip=True)
+
+    # prijs: laagste bedrag in de kaart is de actuele (sale)prijs
+    prices = [utils.parse_price(p) for p in re.findall(r"€\s*[\d.,]+", text)]
+    prices = [p for p in prices if p]
+    price = min(prices) if prices else None
+
+    return {
+        "brouwerij": brewery,
+        "naam": name,
+        "inhoud_cl": utils.parse_volume_cl(text),
+        "land": utils.parse_country(text),
+        "abv": utils.parse_abv(text),
+        "stijl": canon,
+        "stijl_ruw": style_raw,
+        "sterke_voorkeur": strong,
+        "untappd": untappd,
+        "untappd_aantal": untappd_count,
+        "prijs": price,
+        "weblink": href,
+    }
