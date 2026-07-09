@@ -2,7 +2,9 @@ name: Scrape en publiceer
 
 on:
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 3 * * *"
+    - cron: "30 11 * * *"
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 permissions:
