@@ -20,23 +20,17 @@ SITES = [
         "collection_url": "https://debiersalon.nl/en/collections/bieren",
     },
     {
-        "key": "beerrepublic",
-        "label": "Beer Republic",
-        "type": "shopify",
-        "base_url": "https://beerrepublic.eu",
-    },
-    {
         "key": "bierloods22",
         "label": "Bierloods22",
         "type": "bierloods22",
         "base_url": "https://www.bierloods22.nl",
     },
     {
-        "key": "beerdome",
-        "label": "Beerdome",
-        "type": "woocommerce",
-        "base_url": "https://www.beerdome.nl",
-        "api_url": "https://www.beerdome.nl/wp-json/wc/store/v1/products",
+        "key": "bierbrigadier",
+        "label": "Bierbrigadier",
+        "type": "bierbrigadier",
+        "base_url": "http://www.debierbrigadier.nl",
+        "menu_url": "https://untappd.com/v/de-bierbrigadier-tilburg/5523441",
     },
     {
         "key": "hopsandhopes",
@@ -44,6 +38,12 @@ SITES = [
         "type": "hopsandhopes",
         "base_url": "https://www.hopsandhopes.nl",
         "listing_url": "https://www.hopsandhopes.nl/bieren",
+    },
+    {
+        "key": "beerrepublic",
+        "label": "Beer Republic",
+        "type": "shopify",
+        "base_url": "https://beerrepublic.eu",
     },
 ]
 
@@ -140,3 +140,15 @@ CACHE_MAX_AGE_HOURS = 20     # HTML/JSON-cache; zet op 0 om altijd vers op te ha
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) BierScraper/1.0 (persoonlijk gebruik)"
 OUTPUT_FILE = "output/bieroverzicht.xlsx"
 FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
+
+
+# ---------------------------------------------------------------------------
+# Extra scoregewicht voor specifieke combinaties (bovenop de basisscore,
+# eindresultaat blijft geclipt tussen 0 en 100). "exact" = stijl moet precies
+# gelijk zijn; anders is een prefix-match voldoende (bijv. alle Stout-stijlen).
+# ---------------------------------------------------------------------------
+BONUS_RULES = [
+    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 8},
+    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 8},
+    {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 8},
+]

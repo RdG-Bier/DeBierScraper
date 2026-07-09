@@ -67,7 +67,33 @@ def _score(beer, ppl_min, ppl_max):
     if price is not None and price > config.PRICE_CAP_EUR:
         total -= config.PRICE_CAP_MALUS
 
-    return max(0.0, total)
+    # 6. bonusregels: specifieke combinaties wegen net iets zwaarder
+    for rule in config.BONUS_RULES:
+        if _matches_bonus_rule(beer, rule):
+            total += rule["bonus"]
+
+    return max(0.0, min(100.0, total))
+
+
+def _matches_bonus_rule(beer, rule):
+    style = beer.get("stijl") or ""
+    if rule.get("exact"):
+        if style != rule["style"]:
+            return False
+    elif not style.startswith(rule["style"]):
+        return False
+
+    if "max_price" in rule:
+        price = beer.get("prijs")
+        if price is None or price >= rule["max_price"]:
+            return False
+
+    if "min_untappd" in rule:
+        u = beer.get("untappd")
+        if u is None or u < rule["min_untappd"]:
+            return False
+
+    return True
 
 
 def enrich_untappd(all_beers):
@@ -98,6 +124,13 @@ def enrich_untappd(all_beers):
                     filled += 1
                     # geleende score kan alsnog onder de grens liggen; het bier
                     # blijft staan, maar de score maakt hem laag in de ranking
+            elif b.get("untappd_aantal") is None:
+                # score is al bekend (bijv. rechtstreeks van Untappd zelf),
+                # maar het aantal ratings ontbreekt: dat lenen we los erbij
+                hit = known_score.get(key) or _fuzzy_get(known_score, key)
+                if hit and hit[1] is not None:
+                    b["untappd_aantal"] = hit[1]
+                    filled += 1
             if b.get("stijl") not in config.STYLES:  # brede stijl
                 style = known_style.get(key) or _fuzzy_get(known_style, key)
                 if style:

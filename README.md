@@ -7,11 +7,19 @@ en voorwaardelijke opmaak.
 ## Shops
 | Shop | Techniek | Betrouwbaarheid |
 |---|---|---|
-| De Biersalon | Shopify `/products.json` | Hoog (gestructureerde data) |
-| Beer Republic | Shopify `/products.json` | Hoog |
-| Bierloods22 | Lightspeed: sitemap + productpagina's | Middel (HTML-parsing) |
-| Beerdome | Lightspeed: sitemap + productpagina's | Middel |
+| De Biersalon | Shopify collectiepagina's (exacte Untappd-stijl per tegel) | Hoog |
+| Bierloods22 | Categoriepagina's + substijl-filters | Middel |
+| Bierbrigadier | Untappd-menupagina (niet hun eigen site!) | Middel — zie let op hieronder |
 | Hops & Hopes | Maatwerk: listingpagina's | Middel |
+| Beer Republic | Shopify `/products.json` | Hoog (maar zonder Untappd-data) |
+
+**Let op Bierbrigadier:** deze winkel heeft geen bruikbare eigen webshop-data,
+dus deze tab leest in plaats daarvan de officiële Untappd-menupagina van de
+zaak (untappd.com/v/de-bierbrigadier-tilburg/...), waar prijzen wél bij staan.
+Untappd kan geautomatiseerd verkeer vanaf cloud-servers (zoals GitHub Actions)
+soms blokkeren, ook al werkt het vanaf een gewone browser prima. Controleer
+na de eerste run `docs/raw_bierbrigadier.json`: staat die leeg, dan blokkeert
+Untappd het verzoek en moeten we een andere aanpak zoeken.
 
 ## Installatie (Windows)
 1. Installeer Python 3.10+ via python.org (vink "Add to PATH" aan).
@@ -65,6 +73,15 @@ Suggesties om later te overwegen:
 - Een betrouwbaarheidscorrectie: 4.30 met 2.000 ratings > 4.45 met 40 ratings
   (bayesiaans gemiddelde).
 - ABV meewegen als je dikke stouts extra wilt belonen.
+
+### Extra bonusregels
+Bovenop de basisscore wegen deze combinaties net iets zwaarder mee
+(instelbaar via `config.BONUS_RULES`), huidige waarde: +8 punten elk:
+- **IPA - Triple** onder €9
+- **IPA - Quadruple** onder €10
+- **Stout** (elke substijl) met Untappd-score ≥ 4.30 én onder €14
+
+De eindscore blijft altijd tussen 0 en 100 geklemd, ook met deze bonussen.
 
 ## Prijsvergelijking tussen shops
 Bieren worden gematcht op genormaliseerde `brouwerij + naam` (inhoud,

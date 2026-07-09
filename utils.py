@@ -285,6 +285,27 @@ def parse_country(text):
     return None
 
 
+_STYLE_KEYS_BY_LENGTH = sorted(config.STYLES.keys(), key=len, reverse=True)
+
+
+def find_style_in_text(text):
+    """Zoek een van onze exacte doelstijlen als substring in tekst. Werkt
+    uitstekend voor bronnen die zelf al de officiële Untappd-taxonomie
+    gebruiken (zoals een Untappd-menupagina), waar 'IPA - New England / Hazy'
+    letterlijk zo in de tekst staat. Langste namen eerst om te voorkomen dat
+    'Stout - Imperial / Double' matcht binnen '... Double Pastry'."""
+    if not text:
+        return None
+    for style in _STYLE_KEYS_BY_LENGTH:
+        if style in text:
+            return style
+    # generieke mede-stijlen die niet in onze doellijst staan (bijv.
+    # 'Mead - Traditional', 'Mead - Other') vallen terug op de brede 'Mede'
+    if re.search(r"\bMead\s*-\s*\w", text) or re.search(r"\bMede\b", text, re.IGNORECASE):
+        return "Mede"
+    return None
+
+
 def beer_match_key(brewery, name):
     """Genormaliseerde sleutel om hetzelfde bier tussen shops te matchen."""
     combined = f"{brewery or ''} {name or ''}"
