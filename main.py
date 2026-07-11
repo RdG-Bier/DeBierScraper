@@ -24,6 +24,7 @@ import shopify
 import woocommerce
 import bierloods22
 import bierbrigadier
+import drankgigant
 
 SCRAPERS = {
     "shopify": shopify.scrape,
@@ -32,6 +33,7 @@ SCRAPERS = {
     "woocommerce": woocommerce.scrape,
     "bierloods22": bierloods22.scrape,
     "bierbrigadier": bierbrigadier.scrape,
+    "drankgigant": drankgigant.scrape,
 }
 
 
@@ -77,6 +79,17 @@ def main():
     import scoring
     filled = scoring.enrich_untappd(all_beers)
     log.info("Untappd-scores geleend van andere shops: %d bieren aangevuld", filled)
+
+    # shops met 'drop_unrefined_broad': brede stijlen die ook na verrijking
+    # niet verfijnd konden worden, weglaten (houdt bijv. Drankgigant compact)
+    for site in sites:
+        if site.get("drop_unrefined_broad") and site["key"] in all_beers:
+            before = len(all_beers[site["key"]])
+            all_beers[site["key"]] = [
+                b for b in all_beers[site["key"]] if b.get("stijl") in config.STYLES
+            ]
+            log.info("%s: %d brede/onverfijnde bieren weggelaten",
+                     site["label"], before - len(all_beers[site["key"]]))
 
     wb = excel_builder.build_workbook(all_beers, sites)
     out = Path(config.OUTPUT_FILE)
