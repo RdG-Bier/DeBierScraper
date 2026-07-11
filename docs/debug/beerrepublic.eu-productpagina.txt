@@ -214,7 +214,7 @@
 <script>var Shopify = Shopify || {};
 Shopify.shop = "firma-bier.myshopify.com";
 Shopify.locale = "en";
-Shopify.currency = {"active":"USD","rate":"1.1641158"};
+Shopify.currency = {"active":"USD","rate":"1.164228"};
 Shopify.country = "US";
 Shopify.theme = {"name":"ORIGINAL Warehouse 7.0.1","id":197947851090,"schema_name":"Warehouse","schema_version":"7.0.1","theme_store_id":871,"role":"main"};
 Shopify.theme.handle = "null";
@@ -273,7 +273,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
     window.addEventListener('load', asyncLoad, false);
   }
 })();</script>
-<script id="__st">var __st={"a":6912887,"offset":7200,"reqid":"bc3974e0-31bc-4286-85ce-5ecaeb59b698-1783761078","pageurl":"beerrepublic.eu\/products\/strateka","u":"24bc10a16079","p":"product","rtyp":"product","rid":10928786145618};</script>
+<script id="__st">var __st={"a":6912887,"offset":7200,"reqid":"51b65bd8-67d4-4e49-bfa5-a8997397e557-1783780983","pageurl":"beerrepublic.eu\/products\/strateka","u":"83735ad8c493","p":"product","rtyp":"product","rid":10928786145618};</script>
 <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
 <script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.2.iife.js',D={infoText:'Protected by hCaptcha',privacyText:'Privacy',termsText:'Terms'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!1,!0)}();</script>
 <script integrity="sha256-JjoPp5ZfB1sSAs5SQaol1x1GgvveM+BgmRzyDexInEQ=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//beerrepublic.eu/cdn/shopifycloud/storefront/assets/storefront/load_feature-1bd60354.js" crossorigin="anonymous"></script>
@@ -317,7 +317,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 
     <link rel="stylesheet" href="//beerrepublic.eu/cdn/shop/t/109/assets/theme.css?v=57739726778843648991773990127">
 
-    <script type="application/ld+json">{"@context":"http:\/\/schema.org\/","@id":"\/products\/strateka#product","@type":"Product","brand":{"@type":"Brand","name":"Brewskey"},"category":"Beer","description":"IPA Strata, Citra et Eureka","image":"https:\/\/beerrepublic.eu\/cdn\/shop\/files\/STRATEKA_1.png?v=1783433464\u0026width=1920","name":"STRATEKA","offers":{"@id":"\/products\/strateka?variant=53944265703762#offer","@type":"Offer","availability":"http:\/\/schema.org\/InStock","price":"13.14","priceCurrency":"USD","url":"https:\/\/beerrepublic.eu\/products\/strateka?variant=53944265703762"},"sku":"DM-5C bry 10928786145618","url":"https:\/\/beerrepublic.eu\/products\/strateka"}</script><script type="application/ld+json">
+    <script type="application/ld+json">{"@context":"http:\/\/schema.org\/","@id":"\/products\/strateka#product","@type":"Product","brand":{"@type":"Brand","name":"Brewskey"},"category":"Bière","description":"IPA Strata, Citra et Eureka","image":"https:\/\/beerrepublic.eu\/cdn\/shop\/files\/STRATEKA_1.png?v=1783433464\u0026width=1920","name":"STRATEKA","offers":{"@id":"\/products\/strateka?variant=53944265703762#offer","@type":"Offer","availability":"http:\/\/schema.org\/InStock","price":"13.14","priceCurrency":"USD","url":"https:\/\/beerrepublic.eu\/products\/strateka?variant=53944265703762"},"sku":"DM-5C bry 10928786145618","url":"https:\/\/beerrepublic.eu\/products\/strateka"}</script><script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -414,6 +414,23 @@ Shopify.SignInWithShop.User.recognized = false;</script>
   async
 ></script>
 
+<!-- END app block --><!-- BEGIN app block: shopify://apps/mailchimp-forms/blocks/app-embed/019c2d77-533e-7e89-8444-334a40ab2da7 -->
+
+
+
+  <script>
+    if (document.head.querySelector('[mailmunch-script-added]')) {
+      // Script already added, do nothing
+    } else {
+      var script = document.createElement('script');
+      script.src = "https://a.mailmunch.co/app/v1/site.js";
+      script.async = true;
+      script.id = "mailmunch-script";
+      script.setAttribute("mailmunch-script-added", "true");
+      script.setAttribute("data-mailmunch-site-id", "1100140");
+      document.head.appendChild(script);
+    }
+  </script>
 <!-- END app block --><!-- BEGIN app block: shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8 --><!-- Start of Judge.me Core -->
 
 
@@ -517,29 +534,12 @@ jdgm.loadCSS(jdgm.CDN_BASE_URL+"widget_base.css"):jdgm.loadCSS(jdgm.CDN_BASE_URL
 
 
 
-<!-- END app block --><!-- BEGIN app block: shopify://apps/mailchimp-forms/blocks/app-embed/019c2d77-533e-7e89-8444-334a40ab2da7 -->
-
-
-
-  <script>
-    if (document.head.querySelector('[mailmunch-script-added]')) {
-      // Script already added, do nothing
-    } else {
-      var script = document.createElement('script');
-      script.src = "https://a.mailmunch.co/app/v1/site.js";
-      script.async = true;
-      script.id = "mailmunch-script";
-      script.setAttribute("mailmunch-script-added", "true");
-      script.setAttribute("data-mailmunch-site-id", "1100140");
-      document.head.appendChild(script);
-    }
-  </script>
 <!-- END app block --><script src="https://cdn.shopify.com/extensions/019f4da5-9f3a-7850-845c-c74183509d47/forms-2461/assets/shopify-forms-loader.js" type="text/javascript" defer="defer"></script>
-<script src="https://cdn.shopify.com/extensions/019f4b01-300c-7387-8284-9fc89e7271af/revoq-eu-withdrawal-button-122/assets/popup-block.js" type="text/javascript" defer="defer"></script>
-<link href="https://cdn.shopify.com/extensions/019f4b01-300c-7387-8284-9fc89e7271af/revoq-eu-withdrawal-button-122/assets/popup-block.css" rel="stylesheet" type="text/css" media="all">
-<script src="https://cdn.shopify.com/extensions/019f4c84-84df-7501-b4cf-3f7b2005bf6e/judgeme-624/assets/loader.js" type="text/javascript" defer="defer"></script>
 <script src="https://cdn.shopify.com/extensions/019f18c6-595c-7f02-965e-28a91021548f/feebee-128/assets/fee.js" type="text/javascript" defer="defer"></script>
 <link href="https://cdn.shopify.com/extensions/019f18c6-595c-7f02-965e-28a91021548f/feebee-128/assets/fee.css" rel="stylesheet" type="text/css" media="all">
+<script src="https://cdn.shopify.com/extensions/019f5192-1353-76c5-95ec-ea310ee80783/revoq-eu-withdrawal-button-124/assets/popup-block.js" type="text/javascript" defer="defer"></script>
+<link href="https://cdn.shopify.com/extensions/019f5192-1353-76c5-95ec-ea310ee80783/revoq-eu-withdrawal-button-124/assets/popup-block.css" rel="stylesheet" type="text/css" media="all">
+<script src="https://cdn.shopify.com/extensions/019f4c84-84df-7501-b4cf-3f7b2005bf6e/judgeme-624/assets/loader.js" type="text/javascript" defer="defer"></script>
 <link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
 <script>(function(){if ("sendBeacon" in navigator && "performance" in window) {try {var session_token_from_headers = performance.getEntriesByType('navigation')[0].serverTiming.find(x => x.name == '_s').description;} catch {var session_token_from_headers = undefined;}var session_cookie_matches = document.cookie.match(/_shopify_s=([^;]*)/);var session_token_from_cookie = session_cookie_matches && session_cookie_matches.length === 2 ? session_cookie_matches[1] : "";var session_token = session_token_from_headers || session_token_from_cookie || "";function handle_abandonment_event(e) {var entries = performance.getEntries().filter(function(entry) {return /monorail-edge.shopifysvc.com/.test(entry.name);});if (!window.abandonment_tracked && entries.length === 0) {window.abandonment_tracked = true;var currentMs = Date.now();var navigation_start = performance.timing.navigationStart;var payload = {shop_id: 6912887,url: window.location.href,navigation_start,duration: currentMs - navigation_start,session_token,page_type: "product"};window.navigator.sendBeacon("https://monorail-edge.shopifysvc.com/v1/produce", JSON.stringify({schema_id: "online_store_buyer_site_abandonment/1.1",payload: payload,metadata: {event_created_at_ms: currentMs,event_sent_at_ms: currentMs}}));}}window.addEventListener('pagehide', handle_abandonment_event);}}());</script>
 <script>
@@ -549,7 +549,7 @@ jdgm.loadCSS(jdgm.CDN_BASE_URL+"widget_base.css"):jdgm.loadCSS(jdgm.CDN_BASE_URL
   window.ShopifyAnalytics = window.ShopifyAnalytics || {};
   window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
   window.ShopifyAnalytics.meta.currency = 'USD';
-  var meta = {"product":{"id":10928786145618,"gid":"gid:\/\/shopify\/Product\/10928786145618","vendor":"Brewskey","type":"IPA","handle":"strateka","variants":[{"id":53944265703762,"price":1314,"name":"STRATEKA","public_title":null,"sku":"DM-5C bry 10928786145618"}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":10928786145618,"requestId":"bc3974e0-31bc-4286-85ce-5ecaeb59b698-1783761078"}};
+  var meta = {"product":{"id":10928786145618,"gid":"gid:\/\/shopify\/Product\/10928786145618","vendor":"Brewskey","type":"IPA","handle":"strateka","variants":[{"id":53944265703762,"price":1314,"name":"STRATEKA","public_title":null,"sku":"DM-5C bry 10928786145618"}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":10928786145618,"requestId":"51b65bd8-67d4-4e49-bfa5-a8997397e557-1783780983"}};
   for (var attr in meta) {
     window.ShopifyAnalytics.meta[attr] = meta[attr];
   }
@@ -693,7 +693,7 @@ first.parentNode.insertBefore(script, first);
 
     };
     trekkie.load(
-      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":6912887,"isMerchantRequest":null,"themeId":197947851090,"themeCityHash":"6100222303208880887","contentLanguage":"en","currency":"USD","eventMetadataId":"a7c4eda2-aaea-4a74-877f-24d092ae89c5"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["b5387b81","d5bdd5d0"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":true,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":6912887,"isMerchantRequest":null,"themeId":197947851090,"themeCityHash":"6100222303208880887","contentLanguage":"en","currency":"USD","eventMetadataId":"e6a79a8f-8d8b-41ee-8007-44a3194ad92b"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["b5387b81","d5bdd5d0"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":true,"source":"trekkie-storefront-renderer","apiClientId":580111}}
     );
 
     var loaded = false;
@@ -708,7 +708,7 @@ first.parentNode.insertBefore(script, first);
       try { window.ShopifyAnalytics.merchantGoogleAnalytics.call(this); } catch(error) {};
       document.write = originalDocumentWrite;
 
-      window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":10928786145618,"requestId":"bc3974e0-31bc-4286-85ce-5ecaeb59b698-1783761078","shopifyEmitted":true});
+      window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":10928786145618,"requestId":"51b65bd8-67d4-4e49-bfa5-a8997397e557-1783780983","shopifyEmitted":true});
 
       var match = window.location.pathname.match(/checkouts\/(.+)\/(thank_you|post_purchase)/)
       var token = match? match[1]: undefined;
@@ -2919,4 +2919,4 @@ first.parentNode.insertBefore(script, first);
               
                 <svg class="payment-list__item" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-maestro"><title id="pi-maestro">Maestro</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><circle fill="#EB001B" cx="15" cy="12" r="7"/><circle fill="#00A2E5" cx="23" cy="12" r="7"/><path fill="#7375CF" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/></svg>
               
-                <svg class="payment-list__item" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-master"><title id="pi-master">Mastercard</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#1C1C1C" style="fill:#1C1C1C;fill:color(display-p3 0.1098 0.1098 0.1098);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#232323" style="fill:#232323;fill:color(display-p3 0.1373 0.1373 0.1373);fill-opacity:1;"/><path d="M14.6364 19.2727C18.8538 19.2727 22.2727 15.8538 22.2727 11.6364C22.2727 7.41892 18.8538 4 14.6364 4C10.4189 4 7 7.41892 7 11.6364C7 15.8538 10.4189 19.2727 14.6364 19.2727Z" fill="#EB001B" style="fill:#EB001B;fill:color(display-p3 0.9216 0.0000 0.1059);fill-opacity:1;"/><path d="M23.3637 19.2727C27.5811 19.2727 31 15.8538 31 11.6364C31 7.41892 27.5811 4 23.3637 4C19.1462 4 15.7273 7.41892 15.7273 11.6364C15.7273 15.8538 19.1462 19.2727 23.3637 19.2727Z" fill="#F79E1B" style="fill:#F79E1B;fill:color(display-p3 0.9686 0.6196 0.1059);fill-opacity:1;"/><path d="M22.2727 11.6362C22.2727 9.01797 20.9637 6.72706 19 5.41797C17.0364 6.83615 15.7273 9.12706 15.7273 11.6362C15.7273 14.1452 17.0364 16.5452 19 17.8543C20.9637 16.5452 22.2727 14.2543 22.2727 11.6362Z" fill="#FF5F00" style="fill:#FF5F0
+                <svg class="payment-list__item" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-master"><title id="pi-master">Mastercard</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#1C1C1C" style="fill:#1C1C1C;fill:color(display-p3 0.1098 0.1098 0.1098);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#232323" style="fill:#232323;fill:color(display-p3 0.1373 0.1373 0.1373);fill-opacity:1;"/><path d="M14.6364 19.2727C18.8538 19.2727 22.2727 15.8538 22.2727 11.6364C22.2727 7.41892 18.8538 4 14.6364 4C10.4189 4 7 7.41892 7 11.6364C7 15.8538 10.4189 19.2727 14.6364 19.2727Z" fill="#EB001B" style="fill:#EB001B;fill:color(display-p3 0.9216 0.0000 0.1059);fill-opacity:1;"/><path d="M23.3637 19.2727C27.5811 19.2727 31 15.8538 31 11.6364C31 7.41892 27.5811 4 23.3637 4C19.1462 4 15.7273 7.41892 15.7273 11.6364C15.7273 15.8538 19.1462 19.2727 23.3637 19.2727Z" fill="#F79E1B" style="fill:#F79E1B;fill:color(display-p3 0.9686 0.6196 0.1059);fill-opacity:1;"/><path d="M22.2727 11.6362C22.2727 9.01797 20.9637 6.72706 19 5.41797C17.0364 6.83615 15.7273 9.12706 15.7273 11.6362C15.7273 14.1452 17.0364 16.5452 19 17.8543C20.9637 16.5452 22.2727 14.2543 22.2727 11.6362Z" fill="
