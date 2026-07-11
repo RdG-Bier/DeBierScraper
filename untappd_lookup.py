@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Untappd-opzoekmodule: zoekt voor bieren zonder score de Untappd-pagina op
-(zoeken -> bierpagina) en leest daar score, aantal ratings en exacte stijl.
+Untappd-opzoekmodule v2.
+Untappd's zoekfunctie rendert client-side via Algolia; de kale zoekpagina
+bevat dus nooit resultaten. Deze module doet wat de browser ook doet:
+1. haalt eenmalig de publieke Algolia-credentials van de Untappd-zoekpagina
+2. bevraagt rechtstreeks de Algolia 'beer'-index (zelfde API als de site)
+3. leest score/aantal van de gevonden bierpagina als die niet al in het
+   zoekresultaat zitten
 
-Bewust behoudend opgezet:
-- maximaal UNTAPPD_LOOKUP_MAX opzoekingen per run (config)
-- extra vertraging bovenop de normale request-delay
-- permanente cache in docs/untappd_cache.json (wordt mee-gecommit), zodat elk
-  bier hooguit eens per UNTAPPD_CACHE_DAYS opnieuw wordt opgezocht; ook
-  mislukte zoekopdrachten worden onthouden om herhaling te voorkomen
-- naam-verificatie: het zoekresultaat moet voldoende lijken op de gezochte
-  naam, anders liever geen score dan een verkeerde
+Behoudend opgezet: gelimiteerd aantal opzoekingen per run, vertraging,
+permanente cache in docs/untappd_cache.json (incl. missers), en
+naam-verificatie zodat een verkeerde match liever geen score oplevert.
 """
 
 import difflib
@@ -21,25 +21,27 @@ import time
 import urllib.parse
 from pathlib import Path
 
-from bs4 import BeautifulSoup
-
 import config
 import utils
 
 log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
-EXTRA_DELAY = 2.0          # seconden extra rust richting untappd.com
-MATCH_THRESHOLD = 0.62     # gelijkenis zoekopdracht <-> gevonden bier
+CACHE_VERSION = 2          # entries van oudere versies worden opnieuw opgezocht
+EXTRA_DELAY = 1.2          # seconden extra rust per opzoeking
+MATCH_THRESHOLD = 0.60
 
+SEARCH_PAGE = "https://untappd.com/search"
+RE_APP_ID = re.compile(r"applicationI[Dd]\s*[:=]\s*['\"]([A-Z0-9]{8,12})['\"]")
+RE_API_KEYS = re.compile(r"['\"]([a-f0-9]{32})['\"]")
 RE_RATING = re.compile(r'data-rating="([\d.]+)"')
-RE_RATING_ALT = re.compile(r'class="num">\s*\(?([\d.]+)\)?')
 RE_RATERS = re.compile(r'([\d.,]+)\s*Ratings', re.IGNORECASE)
+
+_credentials = {"app_id": None, "keys": []}
 
 
 def enrich_beers(beers, site_key):
-    """Vul untappd/aantal/stijl aan voor bieren zonder score. Retourneert
-    het aantal aangevulde bieren."""
+    """Vul untappd/aantal/stijl aan voor bieren zonder score."""
     cache = _load_cache()
     lookups_done = 0
     filled = 0
@@ -53,13 +55,15 @@ def enrich_beers(beers, site_key):
         key = utils.norm(f"{beer.get('brouwerij') or ''} {name}")
 
         entry = cache.get(key)
-        fresh = entry and (time.time() - entry.get("ts", 0)) < config.UNTAPPD_CACHE_DAYS * 86400
+        fresh = (entry and entry.get("v") == CACHE_VERSION
+                 and (time.time() - entry.get("ts", 0)) < config.UNTAPPD_CACHE_DAYS * 86400)
         if not fresh:
             if lookups_done >= config.UNTAPPD_LOOKUP_MAX:
                 continue  # limiet bereikt; volgende run gaat verder
             lookups_done += 1
             entry = _lookup(name, site_key)
             entry["ts"] = time.time()
+            entry["v"] = CACHE_VERSION
             cache[key] = entry
 
         if entry.get("score"):
@@ -67,14 +71,12 @@ def enrich_beers(beers, site_key):
             beer["untappd_aantal"] = entry.get("count")
             filled += 1
             if entry.get("style"):
-                canon = utils.find_style_in_text(entry["style"]) 
+                canon = utils.find_style_in_text(entry["style"])
                 if not canon:
                     canon, _ = utils.match_style(entry["style"])
                 if canon and beer.get("stijl") not in config.STYLES:
                     beer["stijl"] = canon
                     beer["sterke_voorkeur"] = config.STYLES.get(canon, False)
-            if entry.get("url"):
-                beer["weblink_untappd"] = entry["url"]
 
     _save_cache(cache)
     log.info("Untappd-lookup %s: %d nieuw opgezocht, %d bieren aangevuld "
@@ -82,70 +84,106 @@ def enrich_beers(beers, site_key):
     return filled
 
 
-def _lookup(name, site_key):
-    """Zoek een bier op untappd.com en lees de bierpagina. Retourneert dict
-    met score/count/style/url, of een leeg dict bij geen (betrouwbare) match."""
-    time.sleep(EXTRA_DELAY)
-    q = urllib.parse.quote_plus(name)
-    html = utils.fetch(f"https://untappd.com/search?q={q}", use_cache=False)
+def _get_credentials(site_key):
+    """Haal de publieke Algolia app-id + zoeksleutel(s) van de zoekpagina."""
+    if _credentials["app_id"]:
+        return _credentials
+    html = utils.fetch(SEARCH_PAGE)
     if not html:
-        return {}
-    utils.save_debug_sample(site_key, "untappd-search", html)
+        return _credentials
+    utils.save_debug_sample(site_key, "untappd-zoekpagina", html)
+    m = RE_APP_ID.search(html)
+    if m:
+        _credentials["app_id"] = m.group(1)
+    # meerdere 32-hex sleutels kunnen op de pagina staan (search + analytics);
+    # we proberen ze simpelweg allemaal, de juiste geeft resultaten
+    _credentials["keys"] = list(dict.fromkeys(RE_API_KEYS.findall(html)))
+    log.info("Untappd: Algolia app-id %s, %d kandidaat-sleutels",
+             _credentials["app_id"], len(_credentials["keys"]))
+    return _credentials
 
-    soup = BeautifulSoup(html, "html.parser")
-    beer_url = None
-    for item in soup.select(".beer-item, .results-container .item"):
-        a = item.find("a", href=re.compile(r"^/b/[a-z0-9\-]+/\d+"))
-        if not a:
-            continue
-        found_text = utils.norm(item.get_text(" ", strip=True)[:120])
-        ratio = difflib.SequenceMatcher(None, utils.norm(name), found_text).ratio()
-        # ook: alle woorden van de biernaam moeten grotendeels terugkomen
-        name_tokens = set(utils.norm(name).split())
-        overlap = len(name_tokens & set(found_text.split())) / max(1, len(name_tokens))
-        if ratio >= MATCH_THRESHOLD or overlap >= 0.7:
-            beer_url = "https://untappd.com" + a["href"].split("?")[0]
-            break
-    if not beer_url:
-        # fallback: eerste bierlink op de pagina, maar met strengere check
-        a = soup.find("a", href=re.compile(r"^/b/[a-z0-9\-]+/\d+"))
-        if a:
-            slug = utils.norm(a["href"].split("/")[2].replace("-", " "))
-            name_tokens = set(utils.norm(name).split())
-            if name_tokens and len(name_tokens & set(slug.split())) / len(name_tokens) >= 0.6:
-                beer_url = "https://untappd.com" + a["href"].split("?")[0]
-    if not beer_url:
+
+def _algolia_search(name, site_key):
+    creds = _get_credentials(site_key)
+    if not creds["app_id"] or not creds["keys"]:
+        return None
+    q = urllib.parse.quote_plus(name)
+    for i, api_key in enumerate(list(creds["keys"])):
+        url = (f"https://{creds['app_id']}-dsn.algolia.net/1/indexes/beer"
+               f"?query={q}&hitsPerPage=5"
+               f"&x-algolia-application-id={creds['app_id']}"
+               f"&x-algolia-api-key={api_key}")
+        data = utils.fetch_json(url, use_cache=False)
+        if data and "hits" in data:
+            if i > 0:  # werkende sleutel vooraan zetten voor volgende calls
+                creds["keys"].remove(api_key)
+                creds["keys"].insert(0, api_key)
+            return data["hits"]
+        # 403/foutmelding -> volgende sleutel proberen
+    return None
+
+
+def _lookup(name, site_key):
+    """Zoek een bier via Algolia; lees zo nodig de bierpagina erbij."""
+    time.sleep(EXTRA_DELAY)
+    hits = _algolia_search(name, site_key)
+    if hits is None:
+        log.warning("Untappd/Algolia: zoekopdracht mislukt voor %r", name)
         return {}
+
+    target = utils.norm(name)
+    target_tokens = set(target.split())
+    best, best_ratio = None, 0.0
+    for hit in hits:
+        combined = utils.norm(f"{hit.get('brewery_name') or ''} {hit.get('beer_name') or ''}")
+        ratio = difflib.SequenceMatcher(None, target, combined).ratio()
+        overlap = (len(target_tokens & set(combined.split())) / max(1, len(target_tokens)))
+        score = max(ratio, overlap)
+        if score > best_ratio:
+            best, best_ratio = hit, score
+    if not best or best_ratio < MATCH_THRESHOLD:
+        return {}
+
+    result = {
+        "match": f"{best.get('brewery_name')} - {best.get('beer_name')}",
+        "style": best.get("type_name") or best.get("beer_style"),
+    }
+    # sommige indexvelden bevatten de rating al; anders bierpagina lezen
+    score = best.get("rating_score")
+    count = best.get("rating_count") or best.get("rating_counts")
+    if isinstance(score, (int, float)) and 0 < float(score) <= 5:
+        result["score"] = round(float(score), 2)
+        result["count"] = int(count) if count else None
+        return result
+
+    bid = best.get("bid") or best.get("objectID")
+    slug = (best.get("beer_index") or
+            re.sub(r"[^a-z0-9]+", "-",
+                   utils.norm(f"{best.get('brewery_name','')}-{best.get('beer_name','')}")).strip("-"))
+    if not bid:
+        return result
+    url = f"https://untappd.com/b/{slug}/{bid}"
+    result["url"] = url
 
     time.sleep(EXTRA_DELAY)
-    page = utils.fetch(beer_url, use_cache=False)
+    page = utils.fetch(url, use_cache=False)
     if not page:
-        return {"url": beer_url}
+        return result
     utils.save_debug_sample(site_key, "untappd-bierpagina", page)
-
-    score = None
-    m = RE_RATING.search(page) or RE_RATING_ALT.search(page)
+    m = RE_RATING.search(page)
     if m:
         try:
-            score = round(float(m.group(1)), 2)
-            if not (0 < score <= 5):
-                score = None
+            val = round(float(m.group(1)), 2)
+            if 0 < val <= 5:
+                result["score"] = val
         except ValueError:
-            score = None
-
-    count = None
+            pass
     m = RE_RATERS.search(page)
     if m:
         digits = re.sub(r"[^\d]", "", m.group(1))
-        count = int(digits) if digits else None
-
-    style = None
-    psoup = BeautifulSoup(page, "html.parser")
-    style_el = psoup.select_one("p.style, .name p.style, [class*='style']")
-    if style_el:
-        style = style_el.get_text(" ", strip=True)
-
-    return {"score": score, "count": count, "style": style, "url": beer_url}
+        if digits:
+            result["count"] = int(digits)
+    return result
 
 
 def _load_cache():
