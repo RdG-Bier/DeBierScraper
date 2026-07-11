@@ -116,8 +116,12 @@ def enrich_untappd(all_beers):
                 continue
             if b.get("inhoud_cl") and key not in known_volume:
                 known_volume[key] = b["inhoud_cl"]
-            if b.get("untappd") is not None and key not in known_score:
-                known_score[key] = (b["untappd"], b.get("untappd_aantal"))
+            if b.get("untappd") is not None:
+                if key not in known_score:
+                    known_score[key] = (b["untappd"], b.get("untappd_aantal"))
+                elif known_score[key][1] is None and b.get("untappd_aantal"):
+                    # bron mét aantal ratings is completer: die wint
+                    known_score[key] = (b["untappd"], b["untappd_aantal"])
             if b.get("stijl") in config.STYLES and key not in known_style:
                 known_style[key] = b["stijl"]
 

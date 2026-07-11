@@ -26,6 +26,18 @@ SITES = [
         "base_url": "https://www.bierloods22.nl",
     },
     {
+        "key": "drankgigant",
+        "label": "Drankgigant",
+        "type": "drankgigant",
+        "base_url": "https://www.drankgigant.nl",
+        "listing_url": "https://www.drankgigant.nl/bieren",
+        # ontbrekende scores rechtstreeks op untappd.com opzoeken
+        "untappd_lookup": True,
+        # brede stijlen (Stout/IPA/Sour) die ook na verrijking + lookup geen
+        # substijl hebben, worden uit dit tabblad weggelaten
+        "drop_unrefined_broad": True,
+    },
+    {
         "key": "bierbrigadier",
         "label": "Bierbrigadier",
         "type": "bierbrigadier",
@@ -44,16 +56,6 @@ SITES = [
         "label": "Beer Republic",
         "type": "shopify",
         "base_url": "https://beerrepublic.eu",
-    },
-    {
-        "key": "drankgigant",
-        "label": "Drankgigant",
-        "type": "drankgigant",
-        "base_url": "https://www.drankgigant.nl",
-        "listing_url": "https://www.drankgigant.nl/bieren",
-        # brede stijlen (Stout/IPA/Sour) die ook na verrijking via andere
-        # shops geen substijl hebben, worden uit dit tabblad weggelaten
-        "drop_unrefined_broad": True,
     },
 ]
 
@@ -159,7 +161,13 @@ FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
 # gelijk zijn; anders is een prefix-match voldoende (bijv. alle Stout-stijlen).
 # ---------------------------------------------------------------------------
 BONUS_RULES = [
-    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 16},
-    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 16},
+    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 24},
+    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 24},
     {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 16},
 ]
+
+# ---------------------------------------------------------------------------
+# Untappd-lookup (voor shops met "untappd_lookup": True, zoals Drankgigant)
+# ---------------------------------------------------------------------------
+UNTAPPD_LOOKUP_MAX = 40   # max. nieuwe opzoekingen per run (2 requests per bier)
+UNTAPPD_CACHE_DAYS = 7    # opgezochte bieren zo lang niet opnieuw opvragen

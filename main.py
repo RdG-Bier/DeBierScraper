@@ -25,6 +25,7 @@ import woocommerce
 import bierloods22
 import bierbrigadier
 import drankgigant
+import untappd_lookup
 
 SCRAPERS = {
     "shopify": shopify.scrape,
@@ -79,6 +80,16 @@ def main():
     import scoring
     filled = scoring.enrich_untappd(all_beers)
     log.info("Untappd-scores geleend van andere shops: %d bieren aangevuld", filled)
+
+    # shops met 'untappd_lookup': ontbrekende scores rechtstreeks op
+    # untappd.com opzoeken (gelimiteerd en gecachet; zie untappd_lookup.py)
+    for site in sites:
+        if site.get("untappd_lookup") and all_beers.get(site["key"]):
+            try:
+                untappd_lookup.enrich_beers(all_beers[site["key"]], site["key"])
+            except Exception:
+                log.exception("Untappd-lookup voor %s mislukt; verder zonder",
+                              site["label"])
 
     # shops met 'drop_unrefined_broad': brede stijlen die ook na verrijking
     # niet verfijnd konden worden, weglaten (houdt bijv. Drankgigant compact)
