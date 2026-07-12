@@ -402,21 +402,21 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/grupo-modelo-corona-extra/5848" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5848_e34c0_sm.jpeg" alt="Corona Extra label">
-                            </p><p class="text">
-                                <span class="name">Corona Extra</span>
-                                <span class="brewery">Grupo Modelo</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
                         <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
                             </p><p class="text">
                                 <span class="name">Stella Artois</span>
                                 <span class="brewery">Stella Artois</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/grupo-modelo-corona-extra/5848" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5848_e34c0_sm.jpeg" alt="Corona Extra label">
+                            </p><p class="text">
+                                <span class="name">Corona Extra</span>
+                                <span class="brewery">Grupo Modelo</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -456,21 +456,21 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/birra-peroni-nastro-azzurro/7427" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7427_57d7c_sm.jpeg" alt="Nastro Azzurro label">
-                            </p><p class="text">
-                                <span class="name">Nastro Azzurro</span>
-                                <span class="brewery">Birra Peroni</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
                         <a href="/b/anheuser-busch-michelob-ultra/6655" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-6655_afc4e_sm.jpeg" alt="Michelob ULTRA label">
                             </p><p class="text">
                                 <span class="name">Michelob ULTRA</span>
                                 <span class="brewery">Anheuser-Busch</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/birra-peroni-nastro-azzurro/7427" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7427_57d7c_sm.jpeg" alt="Nastro Azzurro label">
+                            </p><p class="text">
+                                <span class="name">Nastro Azzurro</span>
+                                <span class="brewery">Birra Peroni</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -497,6 +497,17 @@ $(document).ready(() => {
                         </a>
                     </div>
 
+        			                    <div class="item" data-track-venue-impression="venue_id-12112239-type-trending_locations">
+                        <a href="/v/bierfestival-hechtel-eksel/12112239" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Bierfestival Hechtel-Eksel logo">
+                            </p><p class="text">
+                                <span class="name">Bierfestival Hechtel-Eksel</span>
+
+                                <span class="location">België</span>                            </p>
+                        </a>
+                    </div>
+
         			                    <div class="item" data-track-venue-impression="venue_id-12812922-type-trending_locations">
                         <a href="/v/speciaalbierfestival-oss/12812922" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
@@ -505,6 +516,39 @@ $(document).ready(() => {
                                 <span class="name">Speciaalbierfestival Oss</span>
 
                                 <span class="location">Oss, Noord-Brabant                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-1781583-type-trending_locations">
+                        <a href="/v/bospop/1781583" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Bospop logo">
+                            </p><p class="text">
+                                <span class="name">Bospop</span>
+
+                                <span class="location">Weert, Limburg                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-13017436-type-trending_locations">
+                        <a href="/v/speshl-by-beerfreak/13017436" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="СПЕШЛ by Beerfreak logo">
+                            </p><p class="text">
+                                <span class="name">СПЕШЛ by Beerfreak</span>
+
+                                <span class="location">Львів, Львівська обл.                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-10175284-type-trending_locations">
+                        <a href="/v/bierboerse/10175284" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_512.png" alt="Bierbörse logo">
+                            </p><p class="text">
+                                <span class="name">Bierbörse</span>
+
+                                <span class="location">Leverkusen, Nordrhein-Westfalen                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -519,28 +563,6 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-12112239-type-trending_locations">
-                        <a href="/v/bierfestival-hechtel-eksel/12112239" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Bierfestival Hechtel-Eksel logo">
-                            </p><p class="text">
-                                <span class="name">Bierfestival Hechtel-Eksel</span>
-
-                                <span class="location">België</span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-37622-type-trending_locations">
-                        <a href="/v/petco-park/37622" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Petco Park logo">
-                            </p><p class="text">
-                                <span class="name">Petco Park</span>
-
-                                <span class="location">San Diego, CA                                        </span>                            </p>
-                        </a>
-                    </div>
-
         			                    <div class="item" data-track-venue-impression="venue_id-553860-type-trending_locations">
                         <a href="/v/groene-engel/553860" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
@@ -552,47 +574,25 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-58441-type-trending_locations">
-                        <a href="/v/riverbend-music-center/58441" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-59683-type-trending_locations">
+                        <a href="/v/jopenkerk-haarlem/59683" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Riverbend Music Center logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_59683_248f4e10_bg_176.png?v=1" alt="Jopenkerk Haarlem logo">
                             </p><p class="text">
-                                <span class="name">Riverbend Music Center</span>
+                                <span class="name">Jopenkerk Haarlem</span>
 
-                                <span class="location">Cincinnati, OH                                        </span>                            </p>
+                                <span class="location">Haarlem, Noord-Holland                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-4692-type-trending_locations">
-                        <a href="/v/horse-brass-pub/4692" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-5045090-type-trending_locations">
+                        <a href="/v/tree-house-brewing-co/5045090" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_4692_8deda68d_bg_176.png?v=1" alt="Horse Brass Pub logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/iffgnpeigt87bb0ryjjbi927j48v?auto=compress" alt="Tree House Brewing Co. logo">
                             </p><p class="text">
-                                <span class="name">Horse Brass Pub</span>
+                                <span class="name">Tree House Brewing Co.</span>
 
-                                <span class="location">Portland, OR                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-36209-type-trending_locations">
-                        <a href="/v/wrigley-field/36209" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Wrigley Field logo">
-                            </p><p class="text">
-                                <span class="name">Wrigley Field</span>
-
-                                <span class="location">Chicago, IL                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-1781583-type-trending_locations">
-                        <a href="/v/bospop/1781583" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Bospop logo">
-                            </p><p class="text">
-                                <span class="name">Bospop</span>
-
-                                <span class="location">Weert, Limburg                                        </span>                            </p>
+                                <span class="location">Charlton, MA                                        </span>                            </p>
                         </a>
                     </div>
 
