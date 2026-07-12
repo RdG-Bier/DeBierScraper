@@ -124,8 +124,18 @@ def _algolia_search(name, site_key):
 
 
 def _lookup(name, site_key):
-    """Zoek een bier via Algolia; lees zo nodig de bierpagina erbij."""
+    """Zoek een bier: eerst via Algolia (de zoek-API van Untappd zelf),
+    en als dat niets oplevert via een zoekmachine-omweg (DuckDuckGo) naar
+    de Untappd-bierpagina."""
     time.sleep(EXTRA_DELAY)
+    result = _lookup_algolia(name, site_key)
+    if result.get("score"):
+        return result
+    ddg = _lookup_duckduckgo(name, site_key)
+    return ddg if ddg.get("score") else (result or ddg)
+
+
+def _lookup_algolia(name, site_key):
     hits = _algolia_search(name, site_key)
     if hits is None:
         log.warning("Untappd/Algolia: zoekopdracht mislukt voor %r", name)
@@ -147,6 +157,7 @@ def _lookup(name, site_key):
     result = {
         "match": f"{best.get('brewery_name')} - {best.get('beer_name')}",
         "style": best.get("type_name") or best.get("beer_style"),
+        "via": "algolia",
     }
     # sommige indexvelden bevatten de rating al; anders bierpagina lezen
     score = best.get("rating_score")
@@ -170,20 +181,69 @@ def _lookup(name, site_key):
     if not page:
         return result
     utils.save_debug_sample(site_key, "untappd-bierpagina", page)
+    result.update(_parse_beer_page(page))
+    return result
+
+
+RE_DDG_LINK = re.compile(r"(?:uddg=|href=[\"'])(https?[^\"'&]*untappd\.com(?:%2F|/)b(?:%2F|/)[^\"'&]+)")
+
+
+def _lookup_duckduckgo(name, site_key):
+    """Fallback: zoek de Untappd-bierpagina via DuckDuckGo's HTML-zoekpagina
+    en lees die pagina uit. Bierpagina's van Untappd zijn gewoon server-side
+    gerenderd (dezelfde soort pagina als het Bierbrigadier-menu)."""
+    time.sleep(EXTRA_DELAY)
+    q = urllib.parse.quote_plus(f"site:untappd.com/b {name}")
+    html = utils.fetch(f"https://html.duckduckgo.com/html/?q={q}", use_cache=False)
+    if not html:
+        return {}
+    utils.save_debug_sample(site_key, "ddg-zoekresultaat", html)
+
+    target_tokens = set(utils.norm(name).split())
+    beer_url = None
+    for m in RE_DDG_LINK.finditer(html):
+        url = urllib.parse.unquote(m.group(1)).split("?")[0]
+        um = re.match(r"https?://untappd\.com/b/([a-z0-9\-]+)/\d+", url)
+        if not um:
+            continue
+        slug_tokens = set(um.group(1).replace("-", " ").split())
+        overlap = len(target_tokens & slug_tokens) / max(1, len(target_tokens))
+        if overlap >= 0.5:
+            beer_url = url
+            break
+    if not beer_url:
+        return {}
+
+    time.sleep(EXTRA_DELAY)
+    page = utils.fetch(beer_url, use_cache=False)
+    if not page:
+        return {"url": beer_url, "via": "ddg"}
+    utils.save_debug_sample(site_key, "untappd-bierpagina", page)
+    result = {"url": beer_url, "via": "ddg"}
+    result.update(_parse_beer_page(page))
+    return result
+
+
+def _parse_beer_page(page):
+    """Score, aantal ratings en stijl van een Untappd-bierpagina."""
+    out = {}
     m = RE_RATING.search(page)
     if m:
         try:
             val = round(float(m.group(1)), 2)
             if 0 < val <= 5:
-                result["score"] = val
+                out["score"] = val
         except ValueError:
             pass
     m = RE_RATERS.search(page)
     if m:
         digits = re.sub(r"[^\d]", "", m.group(1))
         if digits:
-            result["count"] = int(digits)
-    return result
+            out["count"] = int(digits)
+    sm = re.search(r'class="style"[^>]*>([^<]{3,60})<', page)
+    if sm:
+        out["style"] = sm.group(1).strip()
+    return out
 
 
 def _load_cache():

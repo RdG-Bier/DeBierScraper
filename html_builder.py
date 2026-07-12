@@ -9,6 +9,7 @@ import datetime
 import html
 import logging
 
+import config
 import scoring
 
 log = logging.getLogger("bierscraper")
@@ -86,7 +87,7 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
 <title>Bieroverzicht</title><style>{CSS}</style></head>
 <body>
 <header><h1>🍺 Bieroverzicht</h1>
-<div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend</div>
+<div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend &middot; scraper {config.VERSION}</div>
 <a class="dl" href="{excel_name}" download>&#11015; Download als Excel</a></header>
 <div class="tabs">{''.join(tabs)}</div>
 <div class="toolbar"><input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl…" oninput="filter()"></div>

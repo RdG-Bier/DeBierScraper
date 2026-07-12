@@ -4,6 +4,8 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
+VERSION = "v14"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+
 # ---------------------------------------------------------------------------
 # Websites
 # type bepaalt welke scraper gebruikt wordt:
