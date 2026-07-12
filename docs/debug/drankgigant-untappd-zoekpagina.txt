@@ -465,20 +465,20 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/anheuser-busch-budweiser/3783" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3783_b208c_sm.jpeg" alt="Budweiser label">
-                            </p><p class="text">
-                                <span class="name">Budweiser</span>
-                                <span class="brewery">Anheuser-Busch</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
                         <a href="/b/anheuser-busch-michelob-ultra/6655" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-6655_afc4e_sm.jpeg" alt="Michelob ULTRA label">
                             </p><p class="text">
                                 <span class="name">Michelob ULTRA</span>
+                                <span class="brewery">Anheuser-Busch</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/anheuser-busch-budweiser/3783" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3783_b208c_sm.jpeg" alt="Budweiser label">
+                            </p><p class="text">
+                                <span class="name">Budweiser</span>
                                 <span class="brewery">Anheuser-Busch</span>                            </p>
                         </a>
                     </div>
@@ -497,6 +497,17 @@ $(document).ready(() => {
                         </a>
                     </div>
 
+        			                    <div class="item" data-track-venue-impression="venue_id-12812922-type-trending_locations">
+                        <a href="/v/speciaalbierfestival-oss/12812922" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Speciaalbierfestival Oss logo">
+                            </p><p class="text">
+                                <span class="name">Speciaalbierfestival Oss</span>
+
+                                <span class="location">Oss, Noord-Brabant                                        </span>                            </p>
+                        </a>
+                    </div>
+
         			                    <div class="item" data-track-venue-impression="venue_id-14120127-type-trending_locations">
                         <a href="/v/artbeerfest-caminha-2026/14120127" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
@@ -508,91 +519,80 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-266515-type-trending_locations">
-                        <a href="/v/revolution-production-brewery-and-taproom/266515" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-12112239-type-trending_locations">
+                        <a href="/v/bierfestival-hechtel-eksel/12112239" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_266515_4efc94f4_bg_176.png?v=1" alt="Revolution Production Brewery & Taproom logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Bierfestival Hechtel-Eksel logo">
                             </p><p class="text">
-                                <span class="name">Revolution Production Brewery & Taproom</span>
+                                <span class="name">Bierfestival Hechtel-Eksel</span>
+
+                                <span class="location">België</span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-37622-type-trending_locations">
+                        <a href="/v/petco-park/37622" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Petco Park logo">
+                            </p><p class="text">
+                                <span class="name">Petco Park</span>
+
+                                <span class="location">San Diego, CA                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-553860-type-trending_locations">
+                        <a href="/v/groene-engel/553860" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Groene Engel logo">
+                            </p><p class="text">
+                                <span class="name">Groene Engel</span>
+
+                                <span class="location">Oss, Noord-Brabant                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-58441-type-trending_locations">
+                        <a href="/v/riverbend-music-center/58441" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Riverbend Music Center logo">
+                            </p><p class="text">
+                                <span class="name">Riverbend Music Center</span>
+
+                                <span class="location">Cincinnati, OH                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-4692-type-trending_locations">
+                        <a href="/v/horse-brass-pub/4692" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_4692_8deda68d_bg_176.png?v=1" alt="Horse Brass Pub logo">
+                            </p><p class="text">
+                                <span class="name">Horse Brass Pub</span>
+
+                                <span class="location">Portland, OR                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-36209-type-trending_locations">
+                        <a href="/v/wrigley-field/36209" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Wrigley Field logo">
+                            </p><p class="text">
+                                <span class="name">Wrigley Field</span>
 
                                 <span class="location">Chicago, IL                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-11190683-type-trending_locations">
-                        <a href="/v/new-image-brewing-wheat-ridge/11190683" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-1781583-type-trending_locations">
+                        <a href="/v/bospop/1781583" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_11190683_7ab060d7_bg_176.png?v=1" alt="New Image Brewing - Wheat Ridge logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Bospop logo">
                             </p><p class="text">
-                                <span class="name">New Image Brewing - Wheat Ridge</span>
+                                <span class="name">Bospop</span>
 
-                                <span class="location">Wheat Ridge, CO                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-10175284-type-trending_locations">
-                        <a href="/v/bierboerse/10175284" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_512.png" alt="Bierbörse logo">
-                            </p><p class="text">
-                                <span class="name">Bierbörse</span>
-
-                                <span class="location">Leverkusen, Nordrhein-Westfalen                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-40792-type-trending_locations">
-                        <a href="/v/esl-ballpark/40792" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="ESL Ballpark logo">
-                            </p><p class="text">
-                                <span class="name">ESL Ballpark</span>
-
-                                <span class="location">Rochester, NY                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-1766582-type-trending_locations">
-                        <a href="/v/craft-and-draft/1766582" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/c0ee70f366e2bcee68f9c8d35a34f51891ffa055.png?auto=compress" alt="Craft And Draft logo">
-                            </p><p class="text">
-                                <span class="name">Craft And Draft</span>
-
-                                <span class="location">Columbia, SC                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-6390915-type-trending_locations">
-                        <a href="/v/stonecloud-brewing-company/6390915" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_6390915_22fffb28_bg_176.png?v=1" alt="Stonecloud Brewing Company logo">
-                            </p><p class="text">
-                                <span class="name">Stonecloud Brewing Company</span>
-
-                                <span class="location">Oklahoma City, OK                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-13124944-type-trending_locations">
-                        <a href="/v/tree-house-brewing-co-saratoga-springs/13124944" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/site/assets/images/temp/verfied-venue_bg_176.png?v=1" alt="Tree House Brewing Co. - Saratoga Springs logo">
-                            </p><p class="text">
-                                <span class="name">Tree House Brewing Co. - Saratoga Springs</span>
-
-                                <span class="location">Saratoga Springs, NY                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-25443-type-trending_locations">
-                        <a href="/v/citi-field/25443" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Citi Field logo">
-                            </p><p class="text">
-                                <span class="name">Citi Field</span>
-
-                                <span class="location">Flushing, NY                                        </span>                            </p>
+                                <span class="location">Weert, Limburg                                        </span>                            </p>
                         </a>
                     </div>
 
