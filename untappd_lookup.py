@@ -69,6 +69,8 @@ def enrich_beers(beers, site_key):
         if entry.get("score"):
             beer["untappd"] = entry["score"]
             beer["untappd_aantal"] = entry.get("count")
+            if entry.get("image") and not beer.get("afbeelding"):
+                beer["afbeelding"] = entry["image"]
             filled += 1
             if entry.get("style"):
                 canon = utils.find_style_in_text(entry["style"])
@@ -243,6 +245,9 @@ def _parse_beer_page(page):
     sm = re.search(r'class="style"[^>]*>([^<]{3,60})<', page)
     if sm:
         out["style"] = sm.group(1).strip()
+    im = re.search(r'(https://assets\.untappd\.com/site/beer_logos/[^"\s]+)', page)
+    if im:
+        out["image"] = im.group(1)
     return out
 
 

@@ -123,6 +123,7 @@ def _parse_beer_item(el, base_url):
     prices = [p for p in prices if p]
 
     return {
+        "afbeelding": utils.extract_image(el, "https://www.hopsandhopes.nl"),
         "brouwerij": brewery,
         "naam": name,
         "inhoud_cl": utils.parse_volume_cl(text),

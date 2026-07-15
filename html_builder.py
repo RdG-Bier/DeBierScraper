@@ -39,6 +39,9 @@ header .sub { font-size:.75rem; opacity:.85; margin-top:2px; }
 .card .brewery { color:#666; font-size:.8rem; }
 .card .score { background:var(--groen); color:#fff; border-radius:8px; padding:2px 8px;
                font-size:.85rem; font-weight:700; white-space:nowrap; }
+.card .rechts { display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+.card .label-img { width:56px; height:56px; object-fit:contain; border-radius:8px;
+                   background:#fff; border:1px solid #eee; }
 .card .meta { font-size:.78rem; color:#555; margin-top:6px; }
 .card .price-row { margin-top:8px; display:flex; flex-wrap:wrap; gap:6px; font-size:.78rem; }
 .badge { border-radius:6px; padding:3px 7px; background:#eee; }
@@ -128,10 +131,13 @@ def _card(beer, site, sites, price_lookup):
             f'<span class="badge{cls}">{html.escape(other["label"])}: &euro; {p:.2f}</span>')
 
     strong = " strong" if beer.get("sterke_voorkeur") else ""
+    img = beer.get("afbeelding")
+    img_html = (f'<img class="label-img" src="{e(img)}" alt="" loading="lazy" '
+                f'onerror="this.style.display=\'none\'">') if img else ""
     return f"""<div class="card{strong}">
   <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
   <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
-  <div class="score">{beer.get('score', 0)}</div></div>
+  <div class="rechts"><div class="score">{beer.get('score', 0)}</div>{img_html}</div></div>
   <div class="meta">{' &middot; '.join(meta_parts)}</div>
   <div class="price-row">{''.join(badges)}</div>
   <a href="{e(beer.get('weblink'))}" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>

@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v14"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v15"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -143,6 +143,11 @@ UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
 UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
 COUNT_CAP = 5000            # aantal ratings waarbij het count-deel maximaal is
 PRICE_PER_LITER = True      # prijs normaliseren naar EUR/liter (eerlijker bij 33cl vs 44cl)
+# Vast venster voor de prijscomponent (voorheen min-max over de dataset, maar
+# uitschieters zoals cadeauverpakkingen van 1400 EUR/l drukten daarmee alle
+# gewone bieren op vrijwel identieke prijspunten):
+PRICE_PPL_BEST = 12.0       # <= 12 EUR/liter -> volle prijspunten
+PRICE_PPL_WORST = 40.0      # >= 40 EUR/liter -> nul prijspunten
 DEFAULT_VOLUME_CL = 44.0    # aanname als de inhoud onbekend is (meest gangbare blikmaat)
 PRICE_CAP_EUR = 20.0        # boven deze absolute prijs wordt een bier veel minder interessant
 PRICE_CAP_MALUS = 20        # puntenaftrek voor bieren boven het prijsplafond
@@ -166,6 +171,8 @@ BONUS_RULES = [
     {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 24},
     {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 24},
     {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 16},
+    # topdeal: elke gewenste stijl met hoge score voor weinig geld
+    {"style": "", "exact": False, "min_untappd": 4.30, "max_price": 10.0, "bonus": 12},
 ]
 
 # ---------------------------------------------------------------------------

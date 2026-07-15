@@ -122,14 +122,14 @@ def _parse_tiles(html, canon_or_broad, beers):
             continue
         if container is None or not RE_PRICE.search(text):
             continue
-        beer = _parse_tile(name, text, href, canon_or_broad)
+        beer = _parse_tile(name, text, href, canon_or_broad, container)
         if beer:
             beers[href] = beer
             new += 1
     return new
 
 
-def _parse_tile(name, text, href, canon_or_broad):
+def _parse_tile(name, text, href, canon_or_broad, container=None):
     if RE_UNAVAILABLE.search(text):
         return None
 
@@ -152,6 +152,7 @@ def _parse_tile(name, text, href, canon_or_broad):
     clean_name = re.sub(r"\s+", " ", clean_name).strip()
 
     return {
+        "afbeelding": utils.extract_image(container, "https://www.drankgigant.nl"),
         "brouwerij": None,  # merk zit in de productnaam zelf verwerkt
         "naam": clean_name,
         "inhoud_cl": volume,

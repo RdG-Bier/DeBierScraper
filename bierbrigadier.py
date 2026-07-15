@@ -152,6 +152,7 @@ def _parse_item(anchor, href):
         return None
 
     return {
+        "afbeelding": utils.extract_image(container),
         "brouwerij": brewery,
         "naam": name,
         "inhoud_cl": volume,

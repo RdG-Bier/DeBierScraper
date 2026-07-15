@@ -306,6 +306,23 @@ def find_style_in_text(text):
     return None
 
 
+def extract_image(el, base_url=""):
+    """Eerste bruikbare afbeeldings-URL uit een element (src of data-src)."""
+    if el is None:
+        return None
+    img = el.find("img") if hasattr(el, "find") else None
+    if img is None:
+        return None
+    src = img.get("data-src") or img.get("data-original") or img.get("src")
+    if not src or src.startswith("data:"):
+        return None
+    if src.startswith("//"):
+        return "https:" + src
+    if src.startswith("/") and base_url:
+        return base_url.rstrip("/") + src
+    return src if src.startswith("http") else None
+
+
 def beer_match_key(brewery, name):
     """Genormaliseerde sleutel om hetzelfde bier tussen shops te matchen."""
     combined = f"{brewery or ''} {name or ''}"

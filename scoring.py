@@ -2,10 +2,15 @@
 """Score per bier (0-100) en het matchen van hetzelfde bier tussen shops."""
 
 import difflib
+import json
 import math
+import time
+from pathlib import Path
 
 import config
 import utils
+
+DB_FILE = Path(__file__).parent / "docs" / "bierdatabase.json"
 
 
 def compute_scores(all_beers):
@@ -15,13 +20,8 @@ def compute_scores(all_beers):
     (alle shops samen), zodat scores tussen tabbladen vergelijkbaar zijn.
     """
     flat = [b for beers in all_beers.values() for b in beers]
-    ppl_values = [_price_per_liter(b) for b in flat]
-    ppl_values = [v for v in ppl_values if v is not None]
-    ppl_min = min(ppl_values) if ppl_values else 0
-    ppl_max = max(ppl_values) if ppl_values else 1
-
     for beer in flat:
-        beer["score"] = round(_score(beer, ppl_min, ppl_max), 1)
+        beer["score"] = round(_score(beer), 1)
 
 
 def _price_per_liter(beer):
@@ -35,7 +35,7 @@ def _price_per_liter(beer):
     return price
 
 
-def _score(beer, ppl_min, ppl_max):
+def _score(beer):
     w = config.WEIGHTS
     total = 0.0
 
@@ -57,10 +57,11 @@ def _score(beer, ppl_min, ppl_max):
         frac = math.log10(c) / math.log10(config.COUNT_CAP)
         total += w["count"] * max(0.0, min(1.0, frac))
 
-    # 4. prijs (per liter): goedkoopste in dataset = vol gewicht
+    # 4. prijs (per liter): vast venster (config.PRICE_PPL_BEST/WORST),
+    #    robuust tegen extreme uitschieters in de dataset
     ppl = _price_per_liter(beer)
-    if ppl is not None and ppl_max > ppl_min:
-        frac = 1 - (ppl - ppl_min) / (ppl_max - ppl_min)
+    if ppl is not None:
+        frac = (config.PRICE_PPL_WORST - ppl) / (config.PRICE_PPL_WORST - config.PRICE_PPL_BEST)
         total += w["price"] * max(0.0, min(1.0, frac))
 
     # 5. prijsplafond: boven PRICE_CAP_EUR (absolute prijs) wordt een bier
@@ -104,7 +105,11 @@ def enrich_untappd(all_beers):
     hetzelfde bier bij een andere shop. Ook brede stijlen (Bierloods22 kent
     alleen 'Stout'/'IPA'/'Sour') worden verfijnd naar de precieze substijl
     van hetzelfde bier elders (matching op brouwerij + naam)."""
-    known_score, known_style, known_volume = {}, {}, {}
+    db = _load_db()
+    known_score = {k: (v["s"], v.get("c")) for k, v in db.items() if v.get("s")}
+    known_style = {k: v["st"] for k, v in db.items() if v.get("st") in config.STYLES}
+    known_volume = {k: v["v"] for k, v in db.items() if v.get("v")}
+    known_image = {k: v["img"] for k, v in db.items() if v.get("img")}
     for beers in all_beers.values():
         for b in beers:
             # sanity guard: een Untappd-score buiten 0-5 kan nooit kloppen
@@ -122,6 +127,8 @@ def enrich_untappd(all_beers):
                 elif known_score[key][1] is None and b.get("untappd_aantal"):
                     # bron mét aantal ratings is completer: die wint
                     known_score[key] = (b["untappd"], b["untappd_aantal"])
+            if b.get("afbeelding") and key not in known_image:
+                known_image[key] = b["afbeelding"]
             if b.get("stijl") in config.STYLES and key not in known_style:
                 known_style[key] = b["stijl"]
 
@@ -154,7 +161,48 @@ def enrich_untappd(all_beers):
                 if vol:
                     b["inhoud_cl"] = vol
                     refined += 1
+            if not b.get("afbeelding"):
+                img = known_image.get(key) or _fuzzy_get(known_image, key)
+                if img:
+                    b["afbeelding"] = img
+
+    _update_db(db, all_beers)
     return filled + refined
+
+
+def _load_db():
+    """Permanente bierdatabase: alles wat ooit bij een shop gezien is (score,
+    stijl, inhoud, etiket) blijft bewaard. Zo houden bieren die elders snel
+    uitverkocht raken hun Untappd-score voor toekomstige matches."""
+    if DB_FILE.exists():
+        try:
+            return json.loads(DB_FILE.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            return {}
+    return {}
+
+
+def _update_db(db, all_beers):
+    now = time.time()
+    for beers in all_beers.values():
+        for b in beers:
+            key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if not key:
+                continue
+            entry = db.setdefault(key, {})
+            if b.get("untappd") is not None:
+                new_count = b.get("untappd_aantal") or 0
+                if not entry.get("s") or new_count >= (entry.get("c") or 0):
+                    entry["s"], entry["c"] = b["untappd"], b.get("untappd_aantal")
+            if b.get("stijl") in config.STYLES:
+                entry["st"] = b["stijl"]
+            if b.get("inhoud_cl") and not entry.get("v"):
+                entry["v"] = b["inhoud_cl"]
+            if b.get("afbeelding") and not entry.get("img"):
+                entry["img"] = b["afbeelding"]
+            entry["ts"] = now
+    DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DB_FILE.write_text(json.dumps(db, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
 def _fuzzy_get(mapping, key):

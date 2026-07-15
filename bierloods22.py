@@ -142,6 +142,7 @@ def _parse_tile(container, text, href, broad):
 
     return {
         "href": href, "broad": broad, "brouwerij": brewery, "naam": name,
+        "afbeelding": utils.extract_image(container, "https://www.bierloods22.nl"),
         "untappd": score, "prijs": utils.parse_price(text),
         "volume": utils.parse_volume_cl(text), "abv": utils.parse_abv(text),
     }
@@ -231,6 +232,7 @@ def _finalize(tile, labels):
         return None
 
     return {
+        "afbeelding": tile.get("afbeelding"),
         "brouwerij": tile.get("brouwerij"),
         "naam": tile.get("naam"),
         "inhoud_cl": tile.get("volume"),

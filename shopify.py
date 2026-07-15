@@ -173,8 +173,14 @@ def _parse_product(p, base, tile_map=None):
     if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
         return None
 
+    image = None
+    images = p.get("images") or []
+    if images and isinstance(images[0], dict):
+        image = images[0].get("src")
+
     name = _clean_name(title, vendor)
     return {
+        "afbeelding": image,
         "brouwerij": vendor,
         "naam": name,
         "inhoud_cl": volume,
