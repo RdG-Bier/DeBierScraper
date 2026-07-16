@@ -93,7 +93,25 @@ def enrich_beers(beers, site_key):
     filled = 0
     algolia_ok = 0
 
-    for beer in beers:
+    # Verdeel de bieren: eerst degene die (nog) geen bruikbare cache-entry
+    # hebben en dus opgezocht moeten worden, daarna de rest. Zo raken oude
+    # missers/verouderde entries niet 'achteraan de rij' als het limiet klein
+    # is. Binnen de op-te-zoeken groep: bieren zonder enige entry eerst.
+    def _needs_lookup(b):
+        if b.get("untappd") is not None or not b.get("naam"):
+            return False
+        return not _is_fresh(cache.get(utils.norm(f"{b.get('brouwerij') or ''} {b['naam']}")))
+
+    def _sort_key(b):
+        key = utils.norm(f"{b.get('brouwerij') or ''} {b.get('naam','')}")
+        entry = cache.get(key)
+        # 0 = nooit opgezocht, 1 = verouderde entry (oude versie/misser)
+        return 0 if entry is None else 1
+
+    to_process = sorted((b for b in beers if _needs_lookup(b)), key=_sort_key)
+    already_ok = [b for b in beers if not _needs_lookup(b)]
+
+    for beer in to_process + already_ok:
         if beer.get("untappd") is not None:
             continue
         name = beer.get("naam")
@@ -201,27 +219,56 @@ def _algolia_query(query, creds):
 
 
 def _best_hit(name, hits):
-    """Kies de beste hit; vergelijk zowel met als zonder de merknaam, want
-    de shopnaam bevat het merk vaak dubbel of net anders dan Untappd."""
+    """Kies de beste hit. Cruciaal bij gelijknamige bieren van verschillende
+    brouwerijen (er zijn bijv. meerdere bieren 'Snake Eyes'): de brouwerijnaam
+    uit de shopnaam moet zwaar meewegen, anders wordt de verkeerde gekozen."""
     target = utils.norm(name)
     target_clean = utils.norm(_clean_query(name))
     target_tokens = set(target.split()) | set(target_clean.split())
-    best, best_ratio = None, 0.0
+    best, best_score = None, 0.0
     for hit in hits:
         beer = utils.norm(hit.get("beer_name") or "")
-        combined = utils.norm(f"{hit.get('brewery_name') or ''} {hit.get('beer_name') or ''}")
-        # beste van: volledige naam-match, merk+bier-match, alleen-bier-match
-        ratios = [
+        brewery = utils.norm(hit.get("brewery_name") or "")
+        combined = utils.norm(f"{brewery} {beer}")
+        beer_tokens = set(beer.split())
+        brewery_tokens = set(brewery.split())
+
+        # basis: hoe goed dekt de biernaam de (opgeschoonde) zoekterm
+        name_ratio = max(
             difflib.SequenceMatcher(None, target, combined).ratio(),
             difflib.SequenceMatcher(None, target_clean, combined).ratio(),
             difflib.SequenceMatcher(None, target_clean, beer).ratio(),
-        ]
-        beer_tokens = set(beer.split())
-        overlap = len(target_tokens & beer_tokens) / max(1, len(beer_tokens))
-        s = max(max(ratios), overlap)
-        if s > best_ratio:
-            best, best_ratio = hit, s
-    if not best or best_ratio < MATCH_THRESHOLD:
+        )
+        beer_overlap = len(target_tokens & beer_tokens) / max(1, len(beer_tokens))
+
+        # brouwerij-bonus: hoeveel van de brouwerijwoorden zit in de zoekterm?
+        # (shopnaam 'Kees Snake Eyes...' bevat 'kees' -> match met 'brouwerij kees')
+        brewery_hit = 0.0
+        if brewery_tokens:
+            # negeer generieke woorden die in veel brouwerijnamen staan
+            meaningful = brewery_tokens - {"brouwerij", "brewing", "brewery",
+                                           "company", "co", "de", "the", "craft"}
+            check = meaningful or brewery_tokens
+            brewery_hit = len(target_tokens & check) / max(1, len(check))
+
+        # eindscore: naamgelijkenis is leidend, brouwerij-match is doorslaggevend
+        # bij gelijke namen (weegt stevig mee zodat de juiste brouwerij wint)
+        score = max(name_ratio, beer_overlap) + brewery_hit * 0.6
+        if score > best_score:
+            best, best_score = hit, score
+
+    # drempel op de naamcomponent (niet op de bonus), zodat losse
+    # brouwerij-matches zonder naamgelijkenis niet per ongeluk winnen
+    if not best:
+        return {}
+    beer = utils.norm(best.get("beer_name") or "")
+    combined = utils.norm(f"{utils.norm(best.get('brewery_name') or '')} {beer}")
+    final_name_ratio = max(
+        difflib.SequenceMatcher(None, target_clean, combined).ratio(),
+        difflib.SequenceMatcher(None, target_clean, beer).ratio(),
+        len(target_tokens & set(beer.split())) / max(1, len(set(beer.split()))),
+    )
+    if final_name_ratio < MATCH_THRESHOLD:
         return {}
 
     result = {"via": "algolia", "match": f"{best.get('brewery_name')} - {best.get('beer_name')}",

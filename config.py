@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v19"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v20"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -181,7 +181,7 @@ BONUS_RULES = [
 # ---------------------------------------------------------------------------
 # Untappd-lookup (voor shops met "untappd_lookup": True, zoals Drankgigant)
 # ---------------------------------------------------------------------------
-UNTAPPD_LOOKUP_MAX = 40   # max. nieuwe opzoekingen per run (2 requests per bier)
+UNTAPPD_LOOKUP_MAX = 250  # max. nieuwe opzoekingen per run (Algolia is 1 snel verzoek/bier)
 UNTAPPD_CACHE_DAYS = 7    # opgezochte bieren zo lang niet opnieuw opvragen
 # Scorefilter voor Drankgigant pas toepassen als minstens dit deel van de
 # bieren een score heeft (anders is de zoekbron waarschijnlijk plat en zouden
