@@ -31,7 +31,7 @@ import utils
 log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
-CACHE_VERSION = 4
+CACHE_VERSION = 5
 MISS_CACHE_DAYS = 3
 EXTRA_DELAY = 1.0
 MATCH_THRESHOLD = 0.55
@@ -39,6 +39,42 @@ MATCH_THRESHOLD = 0.55
 SEARCH_PAGE = "https://untappd.com/search"
 RE_APP_ID = re.compile(r"applicationI[Dd]\s*[:=]\s*['\"]([A-Z0-9]{8,12})['\"]")
 RE_API_KEYS = re.compile(r"['\"]([a-f0-9]{32})['\"]")
+
+# Ruiswoorden die shops (vooral Drankgigant) aan de productnaam plakken maar
+# die NIET in de Untappd-biernaam staan. Weghalen geeft veel meer treffers:
+# 'Kees Snake Eyes Triple IPA' -> 'Kees Snake Eyes'
+RE_NOISE = re.compile(
+    r'\b('
+    r'imperial|double|triple|quadruple|quad|dubbel|tripel|kwart|russian|'
+    r'stout|ipa|neipa|dipa|tipa|sour|gose|porter|ale|lager|pils|pilsener|'
+    r'pilsner|blond|blonde|saison|barleywine|witbier|weizen|'
+    r'hazy|pastry|smoothie|milkshake|'
+    r'alcoholarm|alcoholvrij|alcoholvrn|non[\- ]?alcoholic|alcohol[\- ]?free|'
+    r'blik|can|fles|bottle|krat'
+    r')\b', re.IGNORECASE)
+RE_VOL = re.compile(r'\b\d{1,3}(?:[.,]\d)?\s?(?:cl|ml|l)\b', re.IGNORECASE)
+RE_BARREL = re.compile(r'\bwith\b.*$|\(.*?\)|barrel[\- ]?aged|\bb\.?a\.?\b', re.IGNORECASE)
+
+
+def _clean_query(name):
+    """Maak een zoekterm die op de Untappd-biernaam lijkt: haal stijl-,
+    volume- en variantruis eruit."""
+    n = RE_BARREL.sub(' ', name)
+    n = RE_VOL.sub(' ', n)
+    n = RE_NOISE.sub(' ', n)
+    n = re.sub(r'\s+', ' ', n).strip(' -,')
+    return n
+
+
+def _query_variants(name):
+    """Zoekvarianten in volgorde van voorkeur, zonder duplicaten."""
+    variants = []
+    cleaned = _clean_query(name)
+    for v in (cleaned, name):
+        v = v.strip()
+        if v and v not in variants:
+            variants.append(v)
+    return variants
 
 # zoekmachine-fallback (door main.py gezet): (query)->list[{title,url,content}]
 search_fn = None
@@ -136,31 +172,53 @@ def _lookup_algolia(name, site_key):
     creds = _get_creds(site_key)
     if not creds["app_id"] or not creds["keys"]:
         return {}
-    q = urllib.parse.quote_plus(name)
-    hits = None
+
+    # probeer achtereenvolgens de opgeschoonde term en de volledige naam
+    for query in _query_variants(name):
+        hits = _algolia_query(query, creds)
+        if not hits:
+            continue
+        result = _best_hit(name, hits)
+        if result.get("score"):
+            return result
+    return {}
+
+
+def _algolia_query(query, creds):
+    q = urllib.parse.quote_plus(query)
     for i, api_key in enumerate(list(creds["keys"])):
         url = (f"https://{creds['app_id']}-dsn.algolia.net/1/indexes/beer"
-               f"?query={q}&hitsPerPage=5"
+               f"?query={q}&hitsPerPage=6"
                f"&x-algolia-application-id={creds['app_id']}"
                f"&x-algolia-api-key={api_key}")
         data = utils.fetch_json(url, use_cache=False)
         if data and "hits" in data:
-            hits = data["hits"]
             if i > 0:
                 creds["keys"].remove(api_key)
                 creds["keys"].insert(0, api_key)
-            break
-    if not hits:
-        return {}
+            return data["hits"]
+    return None
 
+
+def _best_hit(name, hits):
+    """Kies de beste hit; vergelijk zowel met als zonder de merknaam, want
+    de shopnaam bevat het merk vaak dubbel of net anders dan Untappd."""
     target = utils.norm(name)
-    target_tokens = set(target.split())
+    target_clean = utils.norm(_clean_query(name))
+    target_tokens = set(target.split()) | set(target_clean.split())
     best, best_ratio = None, 0.0
     for hit in hits:
+        beer = utils.norm(hit.get("beer_name") or "")
         combined = utils.norm(f"{hit.get('brewery_name') or ''} {hit.get('beer_name') or ''}")
-        ratio = difflib.SequenceMatcher(None, target, combined).ratio()
-        overlap = len(target_tokens & set(combined.split())) / max(1, len(target_tokens))
-        s = max(ratio, overlap)
+        # beste van: volledige naam-match, merk+bier-match, alleen-bier-match
+        ratios = [
+            difflib.SequenceMatcher(None, target, combined).ratio(),
+            difflib.SequenceMatcher(None, target_clean, combined).ratio(),
+            difflib.SequenceMatcher(None, target_clean, beer).ratio(),
+        ]
+        beer_tokens = set(beer.split())
+        overlap = len(target_tokens & beer_tokens) / max(1, len(beer_tokens))
+        s = max(max(ratios), overlap)
         if s > best_ratio:
             best, best_ratio = hit, s
     if not best or best_ratio < MATCH_THRESHOLD:
