@@ -14,6 +14,10 @@ Robuustheid:
 - permanente bierdatabase (scoring.py) voorkomt dubbel opzoeken
 - gelimiteerd aantal opzoekingen per run + vertraging
 - cache onthoudt hits en missers (missers korter)
+- een cache-VERSIEBUMP vernieuwt alleen missers; gevonden scores blijven geldig
+- netwerk-/blokkadefouten worden NIET als misser gecachet en na een reeks
+  fouten stopt de run (circuit breaker); bestaande scores blijven in gebruik
+- verversing die niets vindt overschrijft een eerder gevonden score niet
 - naam-verificatie: het gevonden bier moet op de zoekterm lijken
 """
 
@@ -31,10 +35,18 @@ import utils
 log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
-CACHE_VERSION = 6
+# LET OP: een versiebump betekent sinds v22 alleen nog "probeer alle MISSERS
+# opnieuw met de nieuwe zoeklogica". Gevonden scores (hits) blijven gewoon
+# geldig - een score wordt niet fout doordat de code verandert (zie _is_fresh).
+# 7 = de v6-missers van de mislukte v21-run opnieuw proberen.
+CACHE_VERSION = 7
 MISS_CACHE_DAYS = 3
 EXTRA_DELAY = 1.0
 MATCH_THRESHOLD = 0.55
+# Na zoveel OPEENVOLGENDE netwerk-/blokkadefouten stoppen we de lookups voor
+# deze run: de bron ligt er dan uit en 250 kansloze verzoeken maken het alleen
+# erger. Bestaande cachescores blijven gewoon in gebruik.
+NETFAIL_ABORT = 8
 
 SEARCH_PAGE = "https://untappd.com/search"
 RE_APP_ID = re.compile(r"applicationI[Dd]\s*[:=]\s*['\"]([A-Z0-9]{8,12})['\"]")
@@ -111,6 +123,9 @@ def enrich_beers(beers, site_key):
     lookups_done = 0
     filled = 0
     algolia_ok = 0
+    netfails_row = 0     # opeenvolgende netwerk-/blokkadefouten (circuit breaker)
+    netfails_total = 0   # totaal deze run, voor de logregel
+    stale_used = 0       # bieren geholpen met een verouderde (maar geldige) cachescore
 
     # Verdeel de bieren: eerst degene die (nog) geen bruikbare cache-entry
     # hebben en dus opgezocht moeten worden, daarna de rest. Zo raken oude
@@ -137,20 +152,42 @@ def enrich_beers(beers, site_key):
         if not name:
             continue
         key = utils.norm(f"{beer.get('brouwerij') or ''} {name}")
+        entry = cache.get(key) or {}
 
-        entry = cache.get(key)
-        if not _is_fresh(entry):
-            if lookups_done >= config.UNTAPPD_LOOKUP_MAX:
-                continue
+        if (not _is_fresh(entry) and lookups_done < config.UNTAPPD_LOOKUP_MAX
+                and netfails_row < NETFAIL_ABORT):
             lookups_done += 1
-            entry = _lookup(name, site_key)
-            entry["ts"] = time.time()
-            entry["v"] = CACHE_VERSION
-            cache[key] = entry
-            if entry.get("via") == "algolia":
-                algolia_ok += 1
+            fresh = _lookup(name, site_key)
+            if fresh.get("netfail"):
+                # Bron onbereikbaar of geblokkeerd: we hebben niets over dit
+                # bier geleerd. Cache NIET aanpassen - anders staat er 3 dagen
+                # een nep-misser en blijft het bier onterecht 'onbekend'.
+                # De volgende run probeert het gewoon opnieuw.
+                netfails_row += 1
+                netfails_total += 1
+                if netfails_row >= NETFAIL_ABORT:
+                    log.warning("Untappd-lookup %s: %d opeenvolgende netwerk-/"
+                                "blokkadefouten - verdere opzoekingen deze run "
+                                "overgeslagen; bestaande cachescores blijven "
+                                "in gebruik", site_key, netfails_row)
+            else:
+                netfails_row = 0
+                if fresh.get("via") == "algolia":
+                    algolia_ok += 1
+                if not fresh.get("score") and entry.get("score"):
+                    # Verversing van een eerder gevonden bier leverde nu niets
+                    # op (Algolia-index hapert wel eens). De oude score is dan
+                    # betrouwbaarder dan 'onbekend': behouden, met teller.
+                    fresh = dict(entry)
+                    fresh["refresh_missed"] = fresh.get("refresh_missed", 0) + 1
+                fresh["ts"] = time.time()
+                fresh["v"] = CACHE_VERSION
+                cache[key] = fresh
+                entry = fresh
 
         if entry.get("score"):
+            if not _is_fresh(entry):
+                stale_used += 1
             beer["untappd"] = entry["score"]
             beer["untappd_aantal"] = entry.get("count")
             if entry.get("image") and not beer.get("afbeelding"):
@@ -164,25 +201,39 @@ def enrich_beers(beers, site_key):
 
     _save_cache(cache)
     log.info("Untappd-lookup %s: %d opgezocht (%d via Algolia), %d aangevuld "
-             "(cache: %d)", site_key, lookups_done, algolia_ok, filled, len(cache))
+             "(%d via oudere cachescore), netwerkfouten: %d (cache: %d)",
+             site_key, lookups_done, algolia_ok, filled, stale_used,
+             netfails_total, len(cache))
     return filled
 
 
 def _is_fresh(entry):
-    if not entry or entry.get("v") != CACHE_VERSION:
+    """Bepaalt of een cache-entry bruikbaar is zonder nieuwe opzoekactie.
+    Hits (mét score) uit een OUDERE cacheversie blijven gewoon geldig binnen
+    de normale houdbaarheid: de score zelf verandert niet doordat de
+    zoeklogica is aangepast. Alleen missers van een oude versie zijn direct
+    'niet vers', zodat ze een nieuwe kans krijgen met de verbeterde logica."""
+    if not entry:
+        return False
+    if entry.get("v") != CACHE_VERSION and not entry.get("score"):
         return False
     age_days = (time.time() - entry.get("ts", 0)) / 86400
     return age_days < (config.UNTAPPD_CACHE_DAYS if entry.get("score") else MISS_CACHE_DAYS)
 
 
 def _lookup(name, site_key):
-    """Eerst Algolia (JSON-API), dan zoekmachine-fallback."""
+    """Eerst Algolia (JSON-API), dan zoekmachine-fallback.
+    Geeft {'netfail': True} terug als de bronnen onbereikbaar/geblokkeerd
+    waren (= niets over dit bier te concluderen), te onderscheiden van
+    {} (= bronnen werkten, maar het bier is echt niet gevonden)."""
     time.sleep(EXTRA_DELAY)
     result = _lookup_algolia(name, site_key)
     if result.get("score"):
         return result
     fb = _lookup_search(name)
-    return fb if fb.get("score") else (result or fb)
+    if fb.get("score"):
+        return fb
+    return result or fb
 
 
 # ---------------------------------------------------------------------------
@@ -208,20 +259,29 @@ def _get_creds(site_key):
 def _lookup_algolia(name, site_key):
     creds = _get_creds(site_key)
     if not creds["app_id"] or not creds["keys"]:
-        return {}
+        # Zonder credentials (zoekpagina onbereikbaar/geblokkeerd) kán er
+        # niets opgezocht worden. Dat zegt niets over dit bier: netfail.
+        return {"netfail": True}
 
+    saw_response = False
     # probeer achtereenvolgens de opgeschoonde term en de volledige naam
     for query in _query_variants(name):
         hits = _algolia_query(query, creds)
+        if hits is None:
+            continue          # netwerk-/blokkadefout voor deze query
+        saw_response = True
         if not hits:
-            continue
+            continue          # geldige respons, maar echt geen resultaten
         result = _best_hit(name, hits)
         if result.get("score"):
             return result
-    return {}
+    return {} if saw_response else {"netfail": True}
 
 
 def _algolia_query(query, creds):
+    """Geeft de lijst hits terug ([] = geldige respons zonder resultaten) of
+    None als geen enkele API-sleutel een bruikbare respons opleverde
+    (netwerkfout, 403/429-blokkade, ongeldige JSON)."""
     q = urllib.parse.quote_plus(query)
     for i, api_key in enumerate(list(creds["keys"])):
         url = (f"https://{creds['app_id']}-dsn.algolia.net/1/indexes/beer"
