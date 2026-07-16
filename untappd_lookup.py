@@ -31,7 +31,7 @@ import utils
 log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
-CACHE_VERSION = 5
+CACHE_VERSION = 6
 MISS_CACHE_DAYS = 3
 EXTRA_DELAY = 1.0
 MATCH_THRESHOLD = 0.55
@@ -45,25 +45,44 @@ RE_API_KEYS = re.compile(r"['\"]([a-f0-9]{32})['\"]")
 # 'Kees Snake Eyes Triple IPA' -> 'Kees Snake Eyes'
 RE_NOISE = re.compile(
     r'\b('
-    r'imperial|double|triple|quadruple|quad|dubbel|tripel|kwart|russian|'
-    r'stout|ipa|neipa|dipa|tipa|sour|gose|porter|ale|lager|pils|pilsener|'
-    r'pilsner|blond|blonde|saison|barleywine|witbier|weizen|'
-    r'hazy|pastry|smoothie|milkshake|'
-    r'alcoholarm|alcoholvrij|alcoholvrn|non[\- ]?alcoholic|alcohol[\- ]?free|'
+    r'imperial|quadruple|quad|dubbel|tripel|kwart|russian|'
+    r'stout|neipa|nedipa|dipa|tipa|ddh|tdh|nepa|xpa|'
+    r'sour|gose|porter|barleywine|witbier|weizen|'
+    r'pale\s+ale|american\s+ipa|american|new\s+england|hazy|juicy|'
+    r'pastry|smoothie|milkshake|single\s+hop|'
+    r'alcoholarm|alcoholvrij|alcohol\s?vrij|non[\- ]?alcoholic|alcohol[\- ]?free|'
     r'blik|can|fles|bottle|krat'
     r')\b', re.IGNORECASE)
+# 'IPA', 'Double', 'Triple', 'Ale' en 'White' zitten vaak IN de biernaam
+# (Double Haze, White Dog, Triple Sec...). Die halen we alleen weg als ze
+# HELEMAAL AAN HET EIND staan, waar ze een stijl-toevoeging zijn.
+RE_TRAIL_STYLE = re.compile(
+    r'(?:\s+(?:double|triple|ipa|ale|blonde?|lager|pils(?:ener|ner)?|'
+    r'saison|white|black))+\s*$', re.IGNORECASE)
 RE_VOL = re.compile(r'\b\d{1,3}(?:[.,]\d)?\s?(?:cl|ml|l)\b', re.IGNORECASE)
-RE_BARREL = re.compile(r'\bwith\b.*$|\(.*?\)|barrel[\- ]?aged|\bb\.?a\.?\b', re.IGNORECASE)
+RE_BARREL = re.compile(r'\bwith\b.*$|\(.*?\)|barrel[\- ]?aged', re.IGNORECASE)
+# batch-/edmatiecodes zoals 'BA 25 01', 'batch 2', losse jaar-/nummerreeksen
+RE_BATCH = re.compile(r'\b(?:ba|batch|b\.?a\.?)\s*\d[\d\s]*\b', re.IGNORECASE)
 
 
 def _clean_query(name):
     """Maak een zoekterm die op de Untappd-biernaam lijkt: haal stijl-,
-    volume- en variantruis eruit."""
+    volume-, batch- en variantruis eruit, maar spaar woorden die deel van de
+    eigenlijke biernaam kunnen zijn (die verwijderen we alleen als trailing
+    stijl-achtervoegsel)."""
     n = RE_BARREL.sub(' ', name)
+    n = RE_BATCH.sub(' ', n)
     n = RE_VOL.sub(' ', n)
     n = RE_NOISE.sub(' ', n)
     n = re.sub(r'\s+', ' ', n).strip(' -,')
-    return n
+    # trailing stijlwoorden herhaald weghalen ('... Double IPA' -> '...')
+    prev = None
+    while prev != n:
+        prev = n
+        n = RE_TRAIL_STYLE.sub('', n).strip(' -,')
+    n = re.sub(r'\s*[/|]\s*', ' ', n)          # losse scheidingstekens weg
+    n = re.sub(r'\s+', ' ', n).strip(' -,/|')
+    return n or name.strip()
 
 
 def _query_variants(name):
