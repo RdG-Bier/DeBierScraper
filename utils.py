@@ -23,7 +23,7 @@ _session.headers.update({"User-Agent": config.USER_AGENT, "Accept-Language": "nl
 _last_request = [0.0]
 
 
-def fetch(url, use_cache=True, timeout=25):
+def fetch(url, use_cache=True, timeout=25, headers=None):
     """Haal een URL op, met schijfcache en nette vertraging tussen requests."""
     key = hashlib.md5(url.encode()).hexdigest()
     cache_file = CACHE_DIR / f"{key}.cache"
@@ -37,7 +37,7 @@ def fetch(url, use_cache=True, timeout=25):
         time.sleep(wait)
     log.info("GET %s", url)
     try:
-        resp = _session.get(url, timeout=timeout)
+        resp = _session.get(url, timeout=timeout, headers=headers)
         _last_request[0] = time.time()
         if resp.status_code != 200:
             log.warning("HTTP %s voor %s", resp.status_code, url)

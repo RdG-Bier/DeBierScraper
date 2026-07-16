@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v16"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v17"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -183,3 +183,7 @@ BONUS_RULES = [
 # ---------------------------------------------------------------------------
 UNTAPPD_LOOKUP_MAX = 40   # max. nieuwe opzoekingen per run (2 requests per bier)
 UNTAPPD_CACHE_DAYS = 7    # opgezochte bieren zo lang niet opnieuw opvragen
+# Scorefilter voor Drankgigant pas toepassen als minstens dit deel van de
+# bieren een score heeft (anders is de zoekbron waarschijnlijk plat en zouden
+# we het hele tabblad ten onrechte leegvegen):
+MIN_SCORE_COVERAGE = 0.30

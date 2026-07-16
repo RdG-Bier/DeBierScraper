@@ -87,21 +87,34 @@ def main():
     untappd_lookup.search_fn = websearch.search
     for site in sites:
         if site.get("untappd_lookup") and all_beers.get(site["key"]):
+            beers = all_beers[site["key"]]
             try:
-                untappd_lookup.enrich_beers(all_beers[site["key"]], site["key"])
+                untappd_lookup.enrich_beers(beers, site["key"])
             except Exception:
                 log.exception("Untappd-lookup voor %s mislukt; verder zonder",
                               site["label"])
-            # NA het opzoeken: bieren zonder score >= MIN_UNTAPPD weglaten
-            if site.get("untappd_min_filter"):
-                before = len(all_beers[site["key"]])
+
+            # Scorefilter alleen toepassen als er DAADWERKELIJK scores bekend
+            # zijn voor een substantieel deel. Anders (bijv. zoekmachine plat)
+            # zouden we het hele tabblad leegvegen -> dan liever alles tonen.
+            with_score = [b for b in beers if b.get("untappd") is not None]
+            coverage = len(with_score) / max(1, len(beers))
+            if site.get("untappd_min_filter") and coverage >= config.MIN_SCORE_COVERAGE:
+                before = len(beers)
+                # score onbekend? -> behouden (twijfel valt in het voordeel van
+                # het bier). Alleen expliciet TE LAGE scores weglaten.
                 all_beers[site["key"]] = [
-                    b for b in all_beers[site["key"]]
-                    if b.get("untappd") is not None and b["untappd"] >= config.MIN_UNTAPPD
+                    b for b in beers
+                    if b.get("untappd") is None or b["untappd"] >= config.MIN_UNTAPPD
                 ]
-                log.info("%s: %d bieren <%.2f of zonder score weggelaten",
-                         site["label"], before - len(all_beers[site["key"]]),
-                         config.MIN_UNTAPPD)
+                log.info("%s: scorefilter toegepast (dekking %.0f%%), %d te lage "
+                         "bieren weggelaten", site["label"], coverage * 100,
+                         before - len(all_beers[site["key"]]))
+            elif site.get("untappd_min_filter"):
+                log.warning("%s: scorefilter OVERGESLAGEN - te weinig scores "
+                            "gevonden (dekking %.0f%%), zoekmachine mogelijk "
+                            "geblokkeerd; alle bieren blijven staan",
+                            site["label"], coverage * 100)
 
     # shops met 'drop_unrefined_broad': brede stijlen die ook na verrijking
     # niet verfijnd konden worden, weglaten (houdt bijv. Drankgigant compact)
