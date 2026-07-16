@@ -130,3 +130,15 @@ dan kijken we naar een alternatief.
 Het script wacht 0,8 sec tussen requests, gebruikt een cache en identificeert
 zich met een eigen User-Agent. Houd het bij persoonlijk gebruik en draai het
 niet vaker dan nodig; controleer bij twijfel de voorwaarden van de shops.
+
+## Untappd-scores via zoekmachine (Drankgigant)
+Drankgigant toont zelf geen Untappd-data. De scraper zoekt daarom per bier
+via een zoekmachine (DuckDuckGo HTML) naar de Untappd-bierpagina en leest
+daaruit de score (bij voorkeur met 2 decimalen), het aantal ratings en de
+stijl. Reeds gevonden bieren staan in `docs/bierdatabase.json` en
+`docs/untappd_cache.json` en worden niet opnieuw opgezocht: alleen nieuw
+toegevoegde bieren kosten nog een zoekopdracht. Bieren waarvoor geen score
+>= 4.00 gevonden wordt, verschijnen niet in het Drankgigant-tabblad.
+
+Instellingen in config.py: UNTAPPD_LOOKUP_MAX (opzoekingen per run),
+UNTAPPD_CACHE_DAYS (houdbaarheid van een gevonden score).

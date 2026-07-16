@@ -26,6 +26,7 @@ import bierloods22
 import bierbrigadier
 import drankgigant
 import untappd_lookup
+import websearch
 
 SCRAPERS = {
     "shopify": shopify.scrape,
@@ -83,6 +84,7 @@ def main():
 
     # shops met 'untappd_lookup': ontbrekende scores rechtstreeks op
     # untappd.com opzoeken (gelimiteerd en gecachet; zie untappd_lookup.py)
+    untappd_lookup.search_fn = websearch.search
     for site in sites:
         if site.get("untappd_lookup") and all_beers.get(site["key"]):
             try:
@@ -90,6 +92,16 @@ def main():
             except Exception:
                 log.exception("Untappd-lookup voor %s mislukt; verder zonder",
                               site["label"])
+            # NA het opzoeken: bieren zonder score >= MIN_UNTAPPD weglaten
+            if site.get("untappd_min_filter"):
+                before = len(all_beers[site["key"]])
+                all_beers[site["key"]] = [
+                    b for b in all_beers[site["key"]]
+                    if b.get("untappd") is not None and b["untappd"] >= config.MIN_UNTAPPD
+                ]
+                log.info("%s: %d bieren <%.2f of zonder score weggelaten",
+                         site["label"], before - len(all_beers[site["key"]]),
+                         config.MIN_UNTAPPD)
 
     # shops met 'drop_unrefined_broad': brede stijlen die ook na verrijking
     # niet verfijnd konden worden, weglaten (houdt bijv. Drankgigant compact)

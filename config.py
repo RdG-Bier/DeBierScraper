@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v15"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v16"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -35,6 +35,9 @@ SITES = [
         "listing_url": "https://www.drankgigant.nl/bieren",
         # ontbrekende scores rechtstreeks op untappd.com opzoeken
         "untappd_lookup": True,
+        # alleen bieren met een gevonden Untappd-score >= MIN_UNTAPPD tonen
+        # (Drankgigant heeft veel gewone bieren met een 3.xx-score)
+        "untappd_min_filter": True,
         # brede stijlen (Stout/IPA/Sour) die ook na verrijking + lookup geen
         # substijl hebben, worden uit dit tabblad weggelaten
         "drop_unrefined_broad": True,
