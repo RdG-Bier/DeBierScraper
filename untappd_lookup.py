@@ -38,8 +38,8 @@ CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
 # LET OP: een versiebump betekent sinds v22 alleen nog "probeer alle MISSERS
 # opnieuw met de nieuwe zoeklogica". Gevonden scores (hits) blijven gewoon
 # geldig - een score wordt niet fout doordat de code verandert (zie _is_fresh).
-# 8 = missers opnieuw proberen met de woord-afpel-varianten van v23.
-CACHE_VERSION = 8
+# 9 = missers opnieuw proberen met de compacte-code-varianten van v24.
+CACHE_VERSION = 9
 MISS_CACHE_DAYS = 3
 EXTRA_DELAY = 1.0
 MATCH_THRESHOLD = 0.55
@@ -60,11 +60,14 @@ RE_API_KEYS = re.compile(r"['\"]([a-f0-9]{32})['\"]")
 # 'Kees Snake Eyes Triple IPA' -> 'Kees Snake Eyes'
 RE_NOISE = re.compile(
     r'\b('
-    r'imperial|quadruple|quad|dubbel|tripel|kwart|russian|'
+    r'imperial|imp|quadruple|quad|dubbel|tripel|kwart|russian|'
     r'stout|neipa|nedipa|dipa|tipa|ddh|tdh|nepa|xpa|'
     r'sour|gose|porter|barleywine|witbier|weizen|'
     r'pale\s+ale|american\s+ipa|american|new\s+england|hazy|juicy|'
     r'pastry|smoothie|milkshake|single\s+hop|'
+    # los 'ba' (zonder cijfers erachter) is vrijwel altijd Barrel Aged;
+    # codes als 'BA25.01' blijven intact omdat daar geen woordgrens na 'ba' zit
+    r'ba|'
     r'alcoholarm|alcoholvrij|alcohol\s?vrij|non[\- ]?alcoholic|alcohol[\- ]?free|'
     r'blik|can|fles|bottle|krat'
     r')\b', re.IGNORECASE)
@@ -76,8 +79,19 @@ RE_TRAIL_STYLE = re.compile(
     r'saison|white|black|cold|west\s+coast|east\s+coast))+\s*$', re.IGNORECASE)
 RE_VOL = re.compile(r'\b\d{1,3}(?:[.,]\d)?\s?(?:cl|ml|l)\b', re.IGNORECASE)
 RE_BARREL = re.compile(r'\bwith\b.*$|\(.*?\)|barrel[\- ]?aged', re.IGNORECASE)
-# batch-/edmatiecodes zoals 'BA 25 01', 'batch 2', losse jaar-/nummerreeksen
-RE_BATCH = re.compile(r'\b(?:ba|batch|b\.?a\.?)\s*\d[\d\s]*\b', re.IGNORECASE)
+# batchcodes zoals 'BA 25.01', 'batch 2', 'BA 25 01'. Verplichte spatie na de
+# code, zodat namen als 'BA25.01' (aan elkaar = de Untappd-biernaam van o.a.
+# Baxbier) intact blijven; decimalen worden volledig meegenomen zodat er geen
+# '.01'-restant in de zoekterm achterblijft.
+RE_BATCH = re.compile(r'\b(?:ba|batch|b\.?a\.?)\s+\d[\d.,]*(?:\s+\d[\d.,]*)*',
+                      re.IGNORECASE)
+# 'B.A.' met punten (zonder cijfers) is altijd Barrel Aged, nooit een naam
+RE_BA_DOTTED = re.compile(r'\bb\.\s?a\.?(?=[\s,)]|$)', re.IGNORECASE)
+# losse punt (niet tussen twee cijfers): restjes van 'Imp.', 'B.A.' etc.
+RE_LONE_DOT = re.compile(r'(?<!\d)\.(?!\d)')
+# shops schrijven seriecodes vaak los ('BA 25.01') terwijl Untappd ze aan
+# elkaar schrijft ('BA25.01'): korte lettercode + spatie + nummer samenvoegen
+RE_COMPACT = re.compile(r'\b([A-Za-z]{2,3})\.?\s+(\d+(?:[.,]\d+)+)\b')
 
 
 def _clean_query(name):
@@ -87,8 +101,10 @@ def _clean_query(name):
     stijl-achtervoegsel)."""
     n = RE_BARREL.sub(' ', name)
     n = RE_BATCH.sub(' ', n)
+    n = RE_BA_DOTTED.sub(' ', n)
     n = RE_VOL.sub(' ', n)
     n = RE_NOISE.sub(' ', n)
+    n = RE_LONE_DOT.sub(' ', n)
     n = re.sub(r'\s+', ' ', n).strip(' -,')
     # trailing stijlwoorden herhaald weghalen ('... Double IPA' -> '...')
     prev = None
@@ -100,7 +116,7 @@ def _clean_query(name):
     return n or name.strip()
 
 
-MAX_QUERY_VARIANTS = 6
+MAX_QUERY_VARIANTS = 8
 # losse verbindingswoorden waarop een afgepelde variant niet mag eindigen
 SKIP_TAIL = {"x", "&", "en", "met", "and", "with", "the", "de", "het", "a"}
 
@@ -113,8 +129,11 @@ def _query_variants(name):
     Zulke woorden zijn niet te voorspellen, en Algolia geeft nul resultaten
     zodra één zoekwoord niet in de biernaam voorkomt. Daarom proberen we na
     de opgeschoonde naam ook varianten waarbij van achteren telkens een woord
-    wordt weggelaten. De naam-verificatie in _best_hit (dekking + brouwerij-
-    bonus) bewaakt dat een bredere zoekopdracht geen verkeerd bier oplevert."""
+    wordt weggelaten. Seriecodes die de shop los schrijft ('BA 25.01') maar
+    Untappd aan elkaar ('BA25.01'), krijgen een eigen compacte variant.
+    De naam-verificatie in _best_hit (dekking + brouwerijbonus + compacte
+    vergelijking) bewaakt dat een bredere zoekopdracht geen verkeerd bier
+    oplevert."""
     variants = []
 
     def _add(v):
@@ -124,6 +143,9 @@ def _query_variants(name):
 
     cleaned = _clean_query(name)
     _add(cleaned)
+    compact = RE_COMPACT.sub(r'\1\2', name)
+    if compact != name:
+        _add(_clean_query(compact))
     words = cleaned.split()
     while len(words) > 2 and len(variants) < MAX_QUERY_VARIANTS - 1:
         words = words[:-1]
@@ -330,6 +352,7 @@ def _best_hit(name, hits):
     target = utils.norm(name)
     target_clean = utils.norm(_clean_query(name))
     target_tokens = set(target.split()) | set(target_clean.split())
+    target_compact = target.replace(" ", "")
     best, best_score = None, 0.0
     for hit in hits:
         beer = utils.norm(hit.get("beer_name") or "")
@@ -357,8 +380,16 @@ def _best_hit(name, hits):
             brewery_hit = len(target_tokens & check) / max(1, len(check))
 
         # eindscore: naamgelijkenis is leidend, brouwerij-match is doorslaggevend
-        # bij gelijke namen (weegt stevig mee zodat de juiste brouwerij wint)
-        score = max(name_ratio, beer_overlap) + brewery_hit * 0.6
+        # bij gelijke namen (weegt stevig mee zodat de juiste brouwerij wint).
+        # De overlap telt ook licht apart mee als tiebreaker: anders scoren
+        # serie-broertjes ('BA25.01' vs 'BA25.02') identiek en wint de
+        # verkeerde als die toevallig eerder in de resultaten staat.
+        score = max(name_ratio, beer_overlap) + 0.25 * beer_overlap + brewery_hit * 0.6
+        beer_compact = beer.replace(" ", "")
+        if len(beer_compact) >= 5 and beer_compact in target_compact:
+            # exact dezelfde naam op spaties na ('BA 25.01' vs 'BA25.01'):
+            # vrijwel zeker het juiste bier
+            score += 0.3
         if score > best_score:
             best, best_score = hit, score
 
@@ -381,7 +412,13 @@ def _best_hit(name, hits):
         difflib.SequenceMatcher(None, target_clean, beer).ratio(),
     )
     if coverage < MATCH_THRESHOLD and seq < STRICT_SEQ_THRESHOLD:
-        return {}
+        # laatste kans: vergelijk zonder spaties. Vangt namen die de shop
+        # anders spelt dan Untappd ('BA 25.01' vs 'BA25.01'); minimale lengte
+        # voorkomt toevalstreffers op korte namen.
+        beer_compact = beer.replace(" ", "")
+        target_compact = target.replace(" ", "")
+        if len(beer_compact) < 5 or beer_compact not in target_compact:
+            return {}
 
     result = {"via": "algolia", "match": f"{best.get('brewery_name')} - {best.get('beer_name')}",
               "style": best.get("type_name") or best.get("beer_style")}

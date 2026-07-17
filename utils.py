@@ -75,6 +75,19 @@ def norm(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
+# cadeau-/proef-/mixpakketten zijn geen individuele bieren: er bestaat geen
+# Untappd-score voor en ze horen niet tussen de bieren in het overzicht
+RE_GIFT_PACK = re.compile(
+    r'\b(cadeau\w*|geschenk\w*|\w*pakket\w*|gift\s?(set|box|pack)|giftpack|'
+    r'mixed\s?(pack|box|case)|mix\s?pack|assortiment|verzamelbox|'
+    r'proefdoos|bierbox|\d+\s*blikken|\d+\s*flessen)\b', re.IGNORECASE)
+
+
+def is_gift_pack(name):
+    """True als de productnaam op een cadeau-/proef-/mixpakket wijst."""
+    return bool(name and RE_GIFT_PACK.search(name))
+
+
 def _style_tokens(style):
     return set(norm(style).split())
 

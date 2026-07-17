@@ -26,6 +26,7 @@ import bierloods22
 import bierbrigadier
 import drankgigant
 import untappd_lookup
+import utils
 import websearch
 
 SCRAPERS = {
@@ -77,6 +78,16 @@ def main():
         raw_path = Path("docs") / f"raw_{site['key']}.json"
         raw_path.parent.mkdir(exist_ok=True)
         raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # cadeau-/proef-/mixpakketten zijn geen individuele bieren: geen
+    # Untappd-score mogelijk en niet zinvol in het overzicht -> weglaten
+    # (na het bewaren van de ruwe data, zodat die compleet blijft)
+    for key, beers in all_beers.items():
+        packs = [b for b in beers if utils.is_gift_pack(b.get("naam"))]
+        if packs:
+            all_beers[key] = [b for b in beers if b not in packs]
+            log.info("%s: %d pakket(ten) weggelaten (o.a. %r)",
+                     key, len(packs), packs[0].get("naam"))
 
     import scoring
     filled = scoring.enrich_untappd(all_beers)
