@@ -38,11 +38,14 @@ CACHE_FILE = Path(__file__).parent / "docs" / "untappd_cache.json"
 # LET OP: een versiebump betekent sinds v22 alleen nog "probeer alle MISSERS
 # opnieuw met de nieuwe zoeklogica". Gevonden scores (hits) blijven gewoon
 # geldig - een score wordt niet fout doordat de code verandert (zie _is_fresh).
-# 7 = de v6-missers van de mislukte v21-run opnieuw proberen.
-CACHE_VERSION = 7
+# 8 = missers opnieuw proberen met de woord-afpel-varianten van v23.
+CACHE_VERSION = 8
 MISS_CACHE_DAYS = 3
 EXTRA_DELAY = 1.0
 MATCH_THRESHOLD = 0.55
+# tekenreeks-gelijkenis mag pas op zichzelf een match rechtvaardigen als hij
+# echt hoog is; zie de eindverificatie in _best_hit
+STRICT_SEQ_THRESHOLD = 0.75
 # Na zoveel OPEENVOLGENDE netwerk-/blokkadefouten stoppen we de lookups voor
 # deze run: de bron ligt er dan uit en 250 kansloze verzoeken maken het alleen
 # erger. Bestaande cachescores blijven gewoon in gebruik.
@@ -70,7 +73,7 @@ RE_NOISE = re.compile(
 # HELEMAAL AAN HET EIND staan, waar ze een stijl-toevoeging zijn.
 RE_TRAIL_STYLE = re.compile(
     r'(?:\s+(?:double|triple|ipa|ale|blonde?|lager|pils(?:ener|ner)?|'
-    r'saison|white|black))+\s*$', re.IGNORECASE)
+    r'saison|white|black|cold|west\s+coast|east\s+coast))+\s*$', re.IGNORECASE)
 RE_VOL = re.compile(r'\b\d{1,3}(?:[.,]\d)?\s?(?:cl|ml|l)\b', re.IGNORECASE)
 RE_BARREL = re.compile(r'\bwith\b.*$|\(.*?\)|barrel[\- ]?aged', re.IGNORECASE)
 # batch-/edmatiecodes zoals 'BA 25 01', 'batch 2', losse jaar-/nummerreeksen
@@ -97,14 +100,37 @@ def _clean_query(name):
     return n or name.strip()
 
 
+MAX_QUERY_VARIANTS = 6
+# losse verbindingswoorden waarop een afgepelde variant niet mag eindigen
+SKIP_TAIL = {"x", "&", "en", "met", "and", "with", "the", "de", "het", "a"}
+
+
 def _query_variants(name):
-    """Zoekvarianten in volgorde van voorkeur, zonder duplicaten."""
+    """Zoekvarianten in volgorde van voorkeur, zonder duplicaten.
+    Shops plakken vaak eigen toevoegingen achter de biernaam die NIET op
+    Untappd staan ('Handlanger MERCILESS Double IPA' heet daar 'Handlanger';
+    '10 Years: Liftoff DOUBLE MASHED TIPA' heet er '10 Years: Liftoff').
+    Zulke woorden zijn niet te voorspellen, en Algolia geeft nul resultaten
+    zodra één zoekwoord niet in de biernaam voorkomt. Daarom proberen we na
+    de opgeschoonde naam ook varianten waarbij van achteren telkens een woord
+    wordt weggelaten. De naam-verificatie in _best_hit (dekking + brouwerij-
+    bonus) bewaakt dat een bredere zoekopdracht geen verkeerd bier oplevert."""
     variants = []
-    cleaned = _clean_query(name)
-    for v in (cleaned, name):
-        v = v.strip()
-        if v and v not in variants:
+
+    def _add(v):
+        v = v.strip(' -,:/|')
+        if v and v not in variants and len(variants) < MAX_QUERY_VARIANTS:
             variants.append(v)
+
+    cleaned = _clean_query(name)
+    _add(cleaned)
+    words = cleaned.split()
+    while len(words) > 2 and len(variants) < MAX_QUERY_VARIANTS - 1:
+        words = words[:-1]
+        if words[-1].lower().strip(':,-') in SKIP_TAIL:
+            continue  # niet eindigen op een los verbindingswoord
+        _add(" ".join(words))
+    _add(name)  # volledige naam als laatste vangnet (bijv. te agressieve cleaning)
     return variants
 
 # zoekmachine-fallback (door main.py gezet): (query)->list[{title,url,content}]
@@ -285,7 +311,7 @@ def _algolia_query(query, creds):
     q = urllib.parse.quote_plus(query)
     for i, api_key in enumerate(list(creds["keys"])):
         url = (f"https://{creds['app_id']}-dsn.algolia.net/1/indexes/beer"
-               f"?query={q}&hitsPerPage=6"
+               f"?query={q}&hitsPerPage=8"
                f"&x-algolia-application-id={creds['app_id']}"
                f"&x-algolia-api-key={api_key}")
         data = utils.fetch_json(url, use_cache=False)
@@ -342,12 +368,19 @@ def _best_hit(name, hits):
         return {}
     beer = utils.norm(best.get("beer_name") or "")
     combined = utils.norm(f"{utils.norm(best.get('brewery_name') or '')} {beer}")
-    final_name_ratio = max(
+    beer_tokens_final = set(beer.split())
+    # Primaire toets: hoe goed dekt de shopnaam de woorden van het gevonden
+    # bier? (bij een korte Untappd-naam die volledig in de langere shopnaam
+    # zit is dit 1.0 - het normale patroon.)
+    coverage = len(target_tokens & beer_tokens_final) / max(1, len(beer_tokens_final))
+    # Secundair: pure tekenreeks-gelijkenis. Alleen doorslaggevend bij ECHT
+    # hoge gelijkenis (typo's/spellingvarianten). Bij een lagere drempel zou
+    # 'Snake Venom' via losse letterovereenkomst op 'Snake Eyes' matchen.
+    seq = max(
         difflib.SequenceMatcher(None, target_clean, combined).ratio(),
         difflib.SequenceMatcher(None, target_clean, beer).ratio(),
-        len(target_tokens & set(beer.split())) / max(1, len(set(beer.split()))),
     )
-    if final_name_ratio < MATCH_THRESHOLD:
+    if coverage < MATCH_THRESHOLD and seq < STRICT_SEQ_THRESHOLD:
         return {}
 
     result = {"via": "algolia", "match": f"{best.get('brewery_name')} - {best.get('beer_name')}",
