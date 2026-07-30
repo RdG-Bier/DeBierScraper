@@ -411,24 +411,6 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
-                            </p><p class="text">
-                                <span class="name">Heineken</span>
-                                <span class="brewery">Heineken</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/omnipollo-joy-objects-house-pilsner/6377631" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6377631_d7845_sm.jpeg" alt="Joy Objects House Pilsner label">
-                            </p><p class="text">
-                                <span class="name">Joy Objects House Pilsner</span>
-                                <span class="brewery">Omnipollo</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
                         <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
@@ -447,12 +429,39 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
+                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
+                            </p><p class="text">
+                                <span class="name">Heineken</span>
+                                <span class="brewery">Heineken</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
                         <a href="/b/birra-peroni-nastro-azzurro/7427" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-7427_57d7c_sm.jpeg" alt="Nastro Azzurro label">
                             </p><p class="text">
                                 <span class="name">Nastro Azzurro</span>
                                 <span class="brewery">Birra Peroni</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/omnipollo-joy-objects-house-pilsner/6377631" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6377631_d7845_sm.jpeg" alt="Joy Objects House Pilsner label">
+                            </p><p class="text">
+                                <span class="name">Joy Objects House Pilsner</span>
+                                <span class="brewery">Omnipollo</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/paulaner-brauerei-paulaner-hefe-weissbier-hefe-weizen-weissbier/15677" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-15677_e4b29_sm.jpeg" alt="Paulaner Hefe-Weißbier / Hefe-Weizen / Weissbier label">
+                            </p><p class="text">
+                                <span class="name">Paulaner Hefe-Weißbier / Hefe-Weizen / Weissbier</span>
+                                <span class="brewery">Paulaner Brauerei</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -465,21 +474,12 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/brasseries-kronenbourg-1664-blanc/5999" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5999_bbc68_sm.jpeg" alt="1664 Blanc label">
                             </p><p class="text">
-                                <span class="name">Modelo Especial</span>
-                                <span class="brewery">Grupo Modelo</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/paulaner-brauerei-paulaner-hefe-weissbier-hefe-weizen-weissbier/15677" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-15677_e4b29_sm.jpeg" alt="Paulaner Hefe-Weißbier / Hefe-Weizen / Weissbier label">
-                            </p><p class="text">
-                                <span class="name">Paulaner Hefe-Weißbier / Hefe-Weizen / Weissbier</span>
-                                <span class="brewery">Paulaner Brauerei</span>                            </p>
+                                <span class="name">1664 Blanc</span>
+                                <span class="brewery">Brasseries Kronenbourg</span>                            </p>
                         </a>
                     </div>
                                 </div>
@@ -519,17 +519,6 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-9732448-type-trending_locations">
-                        <a href="/v/stigbergets-fot/9732448" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/Y6YqKJC7KhzsEFSbtsPXnmLm?auto=compress" alt="Stigbergets Fot logo">
-                            </p><p class="text">
-                                <span class="name">Stigbergets Fot</span>
-
-                                <span class="location">Stockholm, Storstockholm                                        </span>                            </p>
-                        </a>
-                    </div>
-
         			                    <div class="item" data-track-venue-impression="venue_id-2600340-type-trending_locations">
                         <a href="/v/warpigs/2600340" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
@@ -541,58 +530,69 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-12942201-type-trending_locations">
-                        <a href="/v/puhaste-taproom/12942201" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-8349816-type-trending_locations">
+                        <a href="/v/pohjala-brewery-and-tap-room/8349816" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/ven2gvineme0vqa4v7b26bfsu7uc?auto=compress" alt="Pühaste Taproom logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_8349816_12e4b182_bg_176.png?v=1" alt="Põhjala Brewery & Tap Room logo">
                             </p><p class="text">
-                                <span class="name">Pühaste Taproom</span>
+                                <span class="name">Põhjala Brewery & Tap Room</span>
 
-                                <span class="location">Tallinn, Harju maakond                                        </span>                            </p>
+                                <span class="location">Põhja-Tallinna, Harju maakond                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-9832883-type-trending_locations">
-                        <a href="/v/omnipollos-kyrka/9832883" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-2239548-type-trending_locations">
+                        <a href="/v/biercafe-de-vliegende-hollander/2239548" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Omnipollos kyrka logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/p4dj7r3m5yl38pl2er77mw9g8jep?auto=compress" alt="Biercafe de Vliegende Hollander logo">
                             </p><p class="text">
-                                <span class="name">Omnipollos kyrka</span>
+                                <span class="name">Biercafe de Vliegende Hollander</span>
 
-                                <span class="location">Sundbyberg, Storstockholm                                        </span>                            </p>
+                                <span class="location">Middelburg, Zeeland                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-83431-type-trending_locations">
-                        <a href="/v/brasserie-d-achouffe/83431" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-26918-type-trending_locations">
+                        <a href="/v/huisbrouwerij-de-halve-maan/26918" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Brasserie d'Achouffe logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Huisbrouwerij De Halve Maan logo">
                             </p><p class="text">
-                                <span class="name">Brasserie d'Achouffe</span>
+                                <span class="name">Huisbrouwerij De Halve Maan</span>
 
-                                <span class="location">Achouffe, Province de Luxembourg                                        </span>                            </p>
+                                <span class="location">Brugge, West-Vlaanderen                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-4941381-type-trending_locations">
-                        <a href="/v/mikkeller-baghaven/4941381" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-36608-type-trending_locations">
+                        <a href="/v/the-wellington/36608" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/4eaazEdL3fX2b8gQ3ijHDs5C?auto=compress" alt="Mikkeller Baghaven logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="The Wellington logo">
                             </p><p class="text">
-                                <span class="name">Mikkeller Baghaven</span>
+                                <span class="name">The Wellington</span>
 
-                                <span class="location">København, Region Hovedstaden                                        </span>                            </p>
+                                <span class="location">Birmingham, West Midlands                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
-                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-149745-type-trending_locations">
+                        <a href="/v/texelse-bierbrouwerij/149745" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/i2sgcugq1ihgvitgug4grzqoqjo0?auto=compress" alt="Texelse Bierbrouwerij logo">
                             </p><p class="text">
-                                <span class="name">Mikkeller CPH Airport</span>
+                                <span class="name">Texelse Bierbrouwerij</span>
 
-                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
+                                <span class="location">Oudeschild, Noord-Holland                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-4231066-type-trending_locations">
+                        <a href="/v/brew-york-craft-brewery-tap-room/4231066" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_4231066_c914768f_bg_176.png?v=1" alt="Brew York Craft Brewery & Tap Room logo">
+                            </p><p class="text">
+                                <span class="name">Brew York Craft Brewery & Tap Room</span>
+
+                                <span class="location">York, North Yorkshire                                        </span>                            </p>
                         </a>
                     </div>
 
