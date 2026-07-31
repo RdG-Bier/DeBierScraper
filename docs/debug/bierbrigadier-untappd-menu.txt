@@ -512,11 +512,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						86,131						<span>Total</span>
+						86,136						<span>Total</span>
 					</li><li>
 						2,787						<span>Unique</span>
 					</li><li>
-						353						<span>Monthly</span>
+						358						<span>Monthly</span>
 					</li><li>
 												<a href="/v/de-bierbrigadier-tilburg/5523441/activity?filter=you">0</a>
 						<span>You</span>
@@ -853,31 +853,31 @@ $(document).ready(() => {
 
 			<ul class="menu-sorting">
 				<li class="sort-items" data-sort-key="publish_order">
-					<span>Default</span>
+					<span>Standaard</span>
 					</li><li class="sort-items" data-sort-key="beer_name_asc">
-					<span>Beer Name (A to Z)</span>
+					<span>Naam bier (A naar Z)</span>
 					</li><li class="sort-items" data-sort-key="beer_name_desc">
-					<span>Beer Name (Z to A)</span>
+					<span>Naam bier (Z naar A)</span>
 					</li><li class="sort-items" data-sort-key="date">
-					<span>Date (New to Old)</span>
+					<span>Datum (nieuw naar oud)</span>
 					</li><li class="sort-items" data-sort-key="date_asc">
-					<span>Date (Old to New)</span>
+					<span>Datum (oud naar nieuw)</span>
 					</li><li class="sort-items" data-sort-key="highest_abv">
-					<span>ABV (High to Low)</span>
+					<span>Alcoholpercentage (hoog naar laag)</span>
 					</li><li class="sort-items" data-sort-key="lowest_abv">
-					<span>ABV (Low to High)</span>
+					<span>Alcoholpercentage (laag naar hoog)</span>
 					</li><li class="sort-items" data-sort-key="highest_ibu">
-					<span>IBU (High to Low)</span>
+					<span>IBU (hoog naar laag)</span>
 					</li><li class="sort-items" data-sort-key="lowest_ibu">
-					<span>IBU (Low to High)</span>
+					<span>IBU (laag naar hoog)</span>
 					</li><li class="sort-items" data-sort-key="highest_rated">
-					<span>Global Rating (High to Low)</span>
+					<span>Wereldwijde beoordeling (hoog naar laag)</span>
 					</li><li class="sort-items" data-sort-key="lowest_rated">
-					<span>Global Rating (Low to High)</span>
+					<span>Wereldwijde beoordeling (laag naar hoog)</span>
 					</li><li class="sort-items" data-sort-key="most_popular">
-					<span>Most Popular</span>
+					<span>Meest populair</span>
 					</li><li class="sort-items" data-sort-key="least_popular">
-					<span>Least Popular</span>
+					<span>Minst populair</span>
 					</li>			</ul>
 
 		</div>
@@ -6183,6 +6183,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                                                         </p>
                                                         </div>
                                     </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-        
+                <li class="menu-ite
