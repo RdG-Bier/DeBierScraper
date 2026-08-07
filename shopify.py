@@ -6,8 +6,11 @@ Untappd-gegevens staan vaak in tags of in de productomschrijving (body_html);
 ontbreken ze daar, dan wordt (optioneel) de productpagina zelf gelezen.
 """
 
+import collections
+import json
 import logging
 import re
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 
@@ -22,88 +25,92 @@ FETCH_DETAIL_FALLBACK = True
 MAX_DETAIL_FETCHES = 800
 
 
+MAX_FEED_PAGES = 60
+# Telt per reden hoeveel producten zijn afgewezen (voor de diagnose-file)
+REJECT = collections.Counter()
+
+
 def scrape(site):
     base = site["base_url"].rstrip("/")
     _parse_product.detail_count = 0  # budget per shop, niet gedeeld
+    REJECT.clear()
 
-    # Tegel-data van de collectiepagina (indien geconfigureerd): daar staat de
-    # precieze Untappd-stijl + score/aantal die NIET in products.json zitten
-    tile_map = _scrape_collection_tiles(site) if site.get("collection_url") else {}
+    # Bron 1: de hoofdfeed met alle producten.
+    # Bron 2: de JSON-feed per collectie. Nodig als vangnet, want gebleken is
+    # dat de hoofdfeed soms producten mist (bijv. het Arpus QDH-bier dat wel
+    # gewoon op voorraad in de Triple IPA-collectie staat). Collectie-feeds
+    # zijn standaard Shopify-endpoints en kosten maar een paar requests.
+    products = {}
+    herkomst = {}
+
+    herkomst["hoofdfeed"] = _collect_feed(f"{base}/products.json", products)
+    for handle in site.get("collections", []):
+        n = _collect_feed(f"{base}/collections/{handle}/products.json", products)
+        if n:
+            herkomst[f"collectie:{handle}"] = n
+
+    log.info("%s: %d unieke producten uit %d bron(nen) [%s]", site["label"],
+             len(products), len(herkomst),
+             ", ".join(f"{k} +{v}" for k, v in herkomst.items()))
 
     beers = []
-    page = 1
-    while True:
-        data = utils.fetch_json(f"{base}/products.json?limit=250&page={page}")
-        if not data or not data.get("products"):
-            break
-        for product in data["products"]:
-            beer = _parse_product(product, base, tile_map)
-            if beer:
-                beers.append(beer)
-        if len(data["products"]) < 250:
-            break
-        page += 1
-        if page > 60:  # noodstop
-            break
+    for product in products.values():
+        beer = _parse_product(product, base)
+        if beer:
+            beers.append(beer)
 
-    log.info("%s: %d producten na stijl/score/voorraad-filter", site["label"], len(beers))
+    log.info("%s: %d bieren na stijl/score/voorraad-filter (afgewezen: %s)",
+             site["label"], len(beers), dict(REJECT))
+    _write_diagnose(site, len(products), beers, herkomst)
     return beers
 
 
-RE_TILE_STYLE = re.compile(r'\[\s*"([^"\]]{3,60})"\s*\]')
-RE_TILE_SCORE = re.compile(r"(\d[.,]\d{1,2})\s+([\d.,]+)\s*ratings", re.IGNORECASE)
-
-
-def _scrape_collection_tiles(site):
-    """Lees collectiepagina's en bouw: producthandle -> tegel-info
-    (stijl, untappd, aantal, land). Tegels tonen bij De Biersalon de exacte
-    Untappd-stijl als ["Stout - Imperial / Double"]."""
-    tile_map = {}
-    for page in range(1, 90):
-        html = utils.fetch(f"{site['collection_url']}?page={page}")
-        if not html:
+def _collect_feed(feed_url, out):
+    """Lees een Shopify-JSON-feed volledig uit en voeg nieuwe producten toe
+    aan 'out' (handle -> product). Retourneert het aantal NIEUWE producten.
+    Een mislukte pagina wordt één keer opnieuw geprobeerd; anders zouden we
+    bij een hikje stilletjes de rest van de catalogus overslaan."""
+    added = 0
+    page = 1
+    while page <= MAX_FEED_PAGES:
+        url = f"{feed_url}?limit=250&page={page}"
+        data = utils.fetch_json(url)
+        if not data:
+            data = utils.fetch_json(url, use_cache=False)  # één herkansing
+        if not data or not isinstance(data.get("products"), list):
+            if page == 1:
+                log.warning("Feed zonder producten: %s", feed_url)
             break
-        if page == 1:
-            utils.save_debug_sample(site["key"], "collectie", html)
-        soup = BeautifulSoup(html, "html.parser")
-        for t in soup.find_all(["script", "style"]):
-            t.decompose()
-        new = 0
-        for a in soup.find_all("a", href=re.compile(r"/products/[a-z0-9\-]+")):
-            m = re.search(r"/products/([a-z0-9\-]+)", a["href"])
-            handle = m.group(1)
-            if handle in tile_map:
-                continue
-            container = a
-            for _ in range(7):
-                container = container.parent
-                if container is None:
-                    break
-                text = container.get_text(" ", strip=True)
-                if ("ratings" in text.lower() or "untappd" in text.lower()
-                        or RE_TILE_STYLE.search(text)) and len(text) < 700:
-                    info = {}
-                    sm = RE_TILE_STYLE.search(text)
-                    if sm:
-                        info["stijl"] = sm.group(1)
-                    um = RE_TILE_SCORE.search(text)
-                    if um:
-                        score = float(um.group(1).replace(",", "."))
-                        digits = re.sub(r"[^\d]", "", um.group(2))
-                        info["untappd"] = score if score > 0 else None
-                        info["untappd_aantal"] = int(digits) if digits else None
-                    info["land"] = utils.parse_country(text)
-                    if info:
-                        tile_map[handle] = info
-                        new += 1
-                    break
-        if new == 0 and page > 1:
+        batch = data["products"]
+        if not batch:
             break
-    log.info("%s: tegel-info voor %d producten", site["label"], len(tile_map))
-    return tile_map
+        for p in batch:
+            handle = p.get("handle")
+            if handle and handle not in out:
+                out[handle] = p
+                added += 1
+        if len(batch) < 250:
+            break
+        page += 1
+    return added
 
 
-def _parse_product(p, base, tile_map=None):
+def _write_diagnose(site, aantal_producten, beers, herkomst):
+    """Klein overzicht per run in docs/, handig om te zien of er iets mist."""
+    try:
+        path = Path(__file__).parent / "docs" / f"diagnose_{site['key']}.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps({
+            "producten_gevonden": aantal_producten,
+            "bieren_na_filter": len(beers),
+            "bronnen": herkomst,
+            "afgewezen": dict(REJECT),
+        }, indent=1, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass
+
+
+def _parse_product(p, base):
     title = (p.get("title") or "").strip()
     vendor = (p.get("vendor") or "").strip() or None
     product_type = (p.get("product_type") or "").strip()
@@ -117,6 +124,7 @@ def _parse_product(p, base, tile_map=None):
     variants = p.get("variants") or []
     available_variants = [v for v in variants if v.get("available")]
     if not available_variants:
+        REJECT["niet op voorraad"] += 1
         return None
     variant = min(available_variants, key=lambda v: float(v.get("price") or 9e9))
     try:
@@ -124,23 +132,19 @@ def _parse_product(p, base, tile_map=None):
     except (TypeError, ValueError):
         price = None
 
-    tile = (tile_map or {}).get(p.get("handle")) or {}
-
-    # --- stijl: tegel-info (exacte Untappd-stijl) > product_type/tags > breed ---
-    style_candidates = [c for c in [tile.get("stijl"), product_type] if c] + \
-        [str(t) for t in tags]
+    # --- stijl: product_type (bevat bij De Biersalon de exacte Untappd-stijl),
+    #     anders tags, anders een brede stijl uit de titel ---
+    style_candidates = ([product_type] if product_type else []) + [str(t) for t in tags]
     canon, strong = utils.derive_style(style_candidates, title)
     if not canon:
-        return None  # geen (verwante) doelstijl
-    style_raw = tile.get("stijl") or product_type or None
+        REJECT["geen doelstijl"] += 1
+        return None
+    style_raw = product_type or None
 
     searchable = " ".join([title, product_type, body_text] + [str(t) for t in tags])
 
-    untappd = tile.get("untappd")
-    untappd_count = tile.get("untappd_aantal")
-    if untappd is None and "untappd" not in tile:  # geen tegel-info aanwezig
-        untappd, untappd_count = utils.parse_untappd(searchable)
-    country = tile.get("land") or parse_country_from_tags(tags) or utils.parse_country(searchable)
+    untappd, untappd_count = utils.parse_untappd(searchable)
+    country = parse_country_from_tags(tags) or utils.parse_country(searchable)
     abv = utils.parse_abv(variant.get("title") or "") or utils.parse_abv(searchable)
     volume = utils.parse_volume_cl(title) or utils.parse_volume_cl(variant.get("title") or "") \
         or utils.parse_volume_cl(body_text)
@@ -148,7 +152,7 @@ def _parse_product(p, base, tile_map=None):
     url = f"{base}/products/{p.get('handle')}"
 
     # --- fallback: detailpagina lezen als kernvelden ontbreken ---
-    if FETCH_DETAIL_FALLBACK and not tile and (untappd is None or country is None or volume is None):
+    if FETCH_DETAIL_FALLBACK and (untappd is None or country is None or volume is None):
         if _parse_product.detail_count < MAX_DETAIL_FETCHES:
             _parse_product.detail_count += 1
             html = utils.fetch(url)
@@ -169,8 +173,10 @@ def _parse_product(p, base, tile_map=None):
 
     # --- Untappd-filter ---
     if untappd is not None and untappd < config.MIN_UNTAPPD:
+        REJECT["untappd te laag"] += 1
         return None
     if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
+        REJECT["untappd onbekend"] += 1
         return None
 
     image = None

@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v24"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v25"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -19,7 +19,15 @@ SITES = [
         "label": "De Biersalon",
         "type": "shopify",
         "base_url": "https://debiersalon.nl",
-        "collection_url": "https://debiersalon.nl/en/collections/bieren",
+        # Vangnet: JSON-feeds per collectie. De hoofdfeed (/products.json)
+        # bleek producten te missen die wel gewoon op voorraad staan.
+        # Deze endpoints zijn standaard Shopify en kosten weinig requests.
+        "collections": [
+            "bieren", "triple-ipa", "double-ipa", "ipa", "india-pale-ale",
+            "stout", "porter-1", "barleywine", "wild-ale", "fruit",
+            "saison-1", "mede", "barrel-aged", "overige-bierstijlen",
+            "sale", "untappd-toppers",
+        ],
     },
     {
         "key": "bierloods22",
