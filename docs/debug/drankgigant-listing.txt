@@ -5129,4 +5129,4 @@ overflow: auto
             <div class="text-white flex h-[48px] text-19">
                 <button class="minus w-[30px] cursor-pointer text-center leading-[48px]" @click.prevent="qty = qty >= 1 ? +qty - 1 : qty">-</button>
                 <input  class="qty bg-white text-black w-[40px] text-center text-16 lg:text-13" x-model="qty" />
-                <button class="plus w-[30px] cursor-pointer 
+                <button class="plus w-[30px] cursor-pointer text-center leading-[48px]" @cl
