@@ -26,8 +26,89 @@ MAX_DETAIL_FETCHES = 800
 
 
 MAX_FEED_PAGES = 60
+MAX_TILE_PAGES = 60
 # Telt per reden hoeveel producten zijn afgewezen (voor de diagnose-file)
 REJECT = collections.Counter()
+# Details van producten uit config.TRACE_HANDLES (waarom wel/niet opgenomen)
+TRACE = {}
+
+
+def _trace(handle, **info):
+    if handle and handle in getattr(config, "TRACE_HANDLES", ()):
+        TRACE.setdefault(handle, {}).update(info)
+
+# Op de collectiepagina's staat per bier de exacte Untappd-stijl tussen
+# blokhaken, plus score en aantal ratings:
+#   ... 440ml · Letland · 10.3% · ["IPA - Triple New England / Hazy"] 4.26 78ratings
+RE_TILE_STYLE = re.compile(r'\[\s*"([^"\]]{3,60})"\s*\]')
+RE_TILE_SCORE = re.compile(r"(\d[.,]\d{1,2})\s+([\d.,]+)\s*ratings", re.IGNORECASE)
+
+
+def _scrape_collection_tiles(site):
+    """Bouw: producthandle -> tegel-info (stijl, untappd, aantal, land).
+    Deze info zit NIET in products.json (het zijn metavelden), dus zonder
+    tegels vallen bieren terug op een brede stijl als 'Stout' of 'IPA'.
+    We lopen meerdere kleinere stijlcollecties af in plaats van één hele
+    grote, zodat we ook echt tot de laatste pagina komen."""
+    tile_map = {}
+    base = site["base_url"].rstrip("/")
+    for coll in site.get("tile_collections", []):
+        url = coll if coll.startswith("http") else f"{base}/collections/{coll}"
+        gevonden = _tiles_from_collection(url, tile_map, site)
+        if gevonden:
+            log.info("  tegels uit %s: +%d", coll, gevonden)
+    log.info("%s: tegel-info voor %d producten", site["label"], len(tile_map))
+    return tile_map
+
+
+def _tiles_from_collection(url, tile_map, site):
+    nieuw_totaal = 0
+    leeg_achter_elkaar = 0
+    for page in range(1, MAX_TILE_PAGES + 1):
+        html = utils.fetch(f"{url}?page={page}")
+        if not html:
+            break
+        if page == 1:
+            utils.save_debug_sample(site["key"], "collectie", html)
+        soup = BeautifulSoup(html, "html.parser")
+        for t in soup.find_all(["script", "style"]):
+            t.decompose()
+        new = 0
+        for a in soup.find_all("a", href=re.compile(r"/products/[a-z0-9\-]+")):
+            m = re.search(r"/products/([a-z0-9\-]+)", a["href"])
+            handle = m.group(1)
+            if handle in tile_map:
+                continue
+            container = a
+            for _ in range(7):
+                container = container.parent
+                if container is None:
+                    break
+                text = container.get_text(" ", strip=True)
+                if ("ratings" in text.lower() or "untappd" in text.lower()
+                        or RE_TILE_STYLE.search(text)) and len(text) < 700:
+                    info = {}
+                    sm = RE_TILE_STYLE.search(text)
+                    if sm:
+                        info["stijl"] = sm.group(1)
+                    um = RE_TILE_SCORE.search(text)
+                    if um:
+                        score = float(um.group(1).replace(",", "."))
+                        digits = re.sub(r"[^\d]", "", um.group(2))
+                        info["untappd"] = score if score > 0 else None
+                        info["untappd_aantal"] = int(digits) if digits else None
+                    info["land"] = utils.parse_country(text)
+                    if info:
+                        tile_map[handle] = info
+                        new += 1
+                    break
+        nieuw_totaal += new
+        # pas stoppen na twee lege pagina's achter elkaar: één lege pagina kan
+        # ook een hikje of een pagina met alleen al bekende bieren zijn
+        leeg_achter_elkaar = leeg_achter_elkaar + 1 if new == 0 else 0
+        if leeg_achter_elkaar >= 2:
+            break
+    return nieuw_totaal
 
 
 def scrape(site):
@@ -40,6 +121,8 @@ def scrape(site):
     # dat de hoofdfeed soms producten mist (bijv. het Arpus QDH-bier dat wel
     # gewoon op voorraad in de Triple IPA-collectie staat). Collectie-feeds
     # zijn standaard Shopify-endpoints en kosten maar een paar requests.
+    tile_map = _scrape_collection_tiles(site) if site.get("tile_collections") else {}
+
     products = {}
     herkomst = {}
 
@@ -55,13 +138,13 @@ def scrape(site):
 
     beers = []
     for product in products.values():
-        beer = _parse_product(product, base)
+        beer = _parse_product(product, base, tile_map)
         if beer:
             beers.append(beer)
 
     log.info("%s: %d bieren na stijl/score/voorraad-filter (afgewezen: %s)",
              site["label"], len(beers), dict(REJECT))
-    _write_diagnose(site, len(products), beers, herkomst)
+    _write_diagnose(site, len(products), beers, herkomst, tile_map)
     return beers
 
 
@@ -95,22 +178,27 @@ def _collect_feed(feed_url, out):
     return added
 
 
-def _write_diagnose(site, aantal_producten, beers, herkomst):
-    """Klein overzicht per run in docs/, handig om te zien of er iets mist."""
+def _write_diagnose(site, aantal_producten, beers, herkomst, tile_map):
+    """Klein overzicht per run in docs/, handig om te zien of er iets mist.
+    TRACE bevat de details van producten uit config.TRACE_HANDLES: daarmee is
+    van een specifiek bier te zien of het gevonden is en zo nee, waarom niet."""
     try:
         path = Path(__file__).parent / "docs" / f"diagnose_{site['key']}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({
             "producten_gevonden": aantal_producten,
+            "tegels_gevonden": len(tile_map),
             "bieren_na_filter": len(beers),
             "bronnen": herkomst,
             "afgewezen": dict(REJECT),
+            "trace": TRACE,
         }, indent=1, ensure_ascii=False), encoding="utf-8")
     except OSError:
         pass
 
 
-def _parse_product(p, base):
+def _parse_product(p, base, tile_map=None):
+    handle = p.get("handle")
     title = (p.get("title") or "").strip()
     vendor = (p.get("vendor") or "").strip() or None
     product_type = (p.get("product_type") or "").strip()
@@ -123,8 +211,13 @@ def _parse_product(p, base):
     # --- voorraad: minstens één variant leverbaar ---
     variants = p.get("variants") or []
     available_variants = [v for v in variants if v.get("available")]
+    _trace(handle, gevonden_in_feed=True, titel=title,
+           varianten=[{"available": v.get("available"), "prijs": v.get("price"),
+                       "titel": v.get("title")} for v in variants],
+           product_type=p.get("product_type"), tags=p.get("tags"))
     if not available_variants:
         REJECT["niet op voorraad"] += 1
+        _trace(handle, afgewezen="niet op voorraad")
         return None
     variant = min(available_variants, key=lambda v: float(v.get("price") or 9e9))
     try:
@@ -132,19 +225,27 @@ def _parse_product(p, base):
     except (TypeError, ValueError):
         price = None
 
-    # --- stijl: product_type (bevat bij De Biersalon de exacte Untappd-stijl),
-    #     anders tags, anders een brede stijl uit de titel ---
-    style_candidates = ([product_type] if product_type else []) + [str(t) for t in tags]
+    # --- stijl: tegel-info van de collectiepagina heeft voorrang. Die bevat
+    #     de exacte Untappd-stijl (metaveld) die NIET in products.json staat;
+    #     zonder tegel valt een bier terug op een brede stijl. ---
+    tile = (tile_map or {}).get(handle) or {}
+    style_candidates = [c for c in [tile.get("stijl"), product_type] if c] + \
+        [str(t) for t in tags]
     canon, strong = utils.derive_style(style_candidates, title)
+    _trace(handle, tegel=tile or None, stijl_bepaald=canon)
     if not canon:
         REJECT["geen doelstijl"] += 1
+        _trace(handle, afgewezen="geen doelstijl")
         return None
-    style_raw = product_type or None
+    style_raw = tile.get("stijl") or product_type or None
 
     searchable = " ".join([title, product_type, body_text] + [str(t) for t in tags])
 
-    untappd, untappd_count = utils.parse_untappd(searchable)
-    country = parse_country_from_tags(tags) or utils.parse_country(searchable)
+    untappd = tile.get("untappd")
+    untappd_count = tile.get("untappd_aantal")
+    if untappd is None and "untappd" not in tile:
+        untappd, untappd_count = utils.parse_untappd(searchable)
+    country = tile.get("land") or parse_country_from_tags(tags) or utils.parse_country(searchable)
     abv = utils.parse_abv(variant.get("title") or "") or utils.parse_abv(searchable)
     volume = utils.parse_volume_cl(title) or utils.parse_volume_cl(variant.get("title") or "") \
         or utils.parse_volume_cl(body_text)
@@ -152,7 +253,7 @@ def _parse_product(p, base):
     url = f"{base}/products/{p.get('handle')}"
 
     # --- fallback: detailpagina lezen als kernvelden ontbreken ---
-    if FETCH_DETAIL_FALLBACK and (untappd is None or country is None or volume is None):
+    if FETCH_DETAIL_FALLBACK and not tile and (untappd is None or country is None or volume is None):
         if _parse_product.detail_count < MAX_DETAIL_FETCHES:
             _parse_product.detail_count += 1
             html = utils.fetch(url)
@@ -174,9 +275,11 @@ def _parse_product(p, base):
     # --- Untappd-filter ---
     if untappd is not None and untappd < config.MIN_UNTAPPD:
         REJECT["untappd te laag"] += 1
+        _trace(handle, afgewezen=f"untappd te laag ({untappd})")
         return None
     if untappd is None and not config.INCLUDE_UNKNOWN_UNTAPPD:
         REJECT["untappd onbekend"] += 1
+        _trace(handle, afgewezen="untappd onbekend")
         return None
 
     image = None
@@ -185,6 +288,7 @@ def _parse_product(p, base):
         image = images[0].get("src")
 
     name = _clean_name(title, vendor)
+    _trace(handle, opgenomen=True, stijl=canon, untappd=untappd, prijs=price)
     return {
         "afbeelding": image,
         "brouwerij": vendor,

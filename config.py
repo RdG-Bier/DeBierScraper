@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v25"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v26"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -23,10 +23,17 @@ SITES = [
         # bleek producten te missen die wel gewoon op voorraad staan.
         # Deze endpoints zijn standaard Shopify en kosten weinig requests.
         "collections": [
-            "bieren", "triple-ipa", "double-ipa", "ipa", "india-pale-ale",
-            "stout", "porter-1", "barleywine", "wild-ale", "fruit",
-            "saison-1", "mede", "barrel-aged", "overige-bierstijlen",
-            "sale", "untappd-toppers",
+            "bieren", "triple-ipa", "double-ipa", "ipa", "stout",
+            "wild-ale", "fruit", "mede", "sale", "untappd-toppers",
+        ],
+        # Collectiepagina's (HTML) waar de exacte Untappd-stijl + score per
+        # bier op de tegels staat. Meerdere kleinere collecties i.p.v. één
+        # hele grote, zodat elke pagina ook echt bereikt wordt.
+        "tile_collections": [
+            "triple-ipa", "double-ipa", "ipa", "india-pale-ale", "stout",
+            "porter-1", "barleywine", "wild-ale", "fruit", "saison-1",
+            "mede", "barrel-aged", "sale", "untappd-toppers",
+            "overige-bierstijlen", "bieren",
         ],
     },
     {
@@ -195,3 +202,12 @@ UNTAPPD_CACHE_DAYS = 7    # opgezochte bieren zo lang niet opnieuw opvragen
 # bieren een score heeft (anders is de zoekbron waarschijnlijk plat en zouden
 # we het hele tabblad ten onrechte leegvegen):
 MIN_SCORE_COVERAGE = 0.30
+
+
+# ---------------------------------------------------------------------------
+# Diagnose: van deze producthandles wordt per run in docs/diagnose_<shop>.json
+# vastgelegd of ze gevonden zijn en zo niet, waarom ze zijn afgewezen.
+# ---------------------------------------------------------------------------
+TRACE_HANDLES = (
+    "arpus-qdh-riwaka-x-citra-cryo-x-mosaic-cryo-x-nectaron-tipa",
+)
