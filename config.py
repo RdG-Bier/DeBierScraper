@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v26"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v27"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -208,6 +208,11 @@ MIN_SCORE_COVERAGE = 0.30
 # Diagnose: van deze producthandles wordt per run in docs/diagnose_<shop>.json
 # vastgelegd of ze gevonden zijn en zo niet, waarom ze zijn afgewezen.
 # ---------------------------------------------------------------------------
+# Alarmdrempel: zoveel tegels verwacht de scraper minimaal per Shopify-shop.
+# Vallen ze weg, dan is dat direct zichtbaar in de log i.p.v. stilletjes tot
+# verkeerde stijlen en scores te leiden.
+MIN_TILES_WARN = 500
+
 TRACE_HANDLES = (
     "arpus-qdh-riwaka-x-citra-cryo-x-mosaic-cryo-x-nectaron-tipa",
 )

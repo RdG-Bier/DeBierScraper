@@ -75,20 +75,7 @@ def _score(beer):
         if _matches_bonus_rule(beer, rule):
             total += rule["bonus"]
 
-    # 7. normaliseren op het maximaal haalbare. Zonder deze stap liepen bieren
-    #    met bonuspunten tegen het plafond van 100 en kregen tientallen bieren
-    #    allemaal 100.0 - waardoor de onderlinge rangschikking verdween.
-    return max(0.0, min(100.0, 100.0 * total / _max_total()))
-
-
-def _max_total():
-    """Hoogst haalbare ruwe score: alle gewichten vol + de zwaarst mogelijke
-    bonuscombinatie (stijlbonussen sluiten elkaar uit, de generieke topdeal-
-    bonus komt daar bovenop)."""
-    basis = sum(config.WEIGHTS.values())
-    generiek = sum(r["bonus"] for r in config.BONUS_RULES if not r.get("style"))
-    specifiek = max([r["bonus"] for r in config.BONUS_RULES if r.get("style")] + [0])
-    return basis + generiek + specifiek
+    return max(0.0, min(100.0, total))
 
 
 def _matches_bonus_rule(beer, rule):

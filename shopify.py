@@ -58,6 +58,11 @@ def _scrape_collection_tiles(site):
         if gevonden:
             log.info("  tegels uit %s: +%d", coll, gevonden)
     log.info("%s: tegel-info voor %d producten", site["label"], len(tile_map))
+    if len(tile_map) < config.MIN_TILES_WARN:
+        log.warning("%s: WEINIG TEGELS (%d)! Zonder tegels vallen bieren terug "
+                    "op brede stijlen als 'Stout'/'IPA' en kloppen de scores "
+                    "niet meer. Controleer de collectie-URL's in config.py.",
+                    site["label"], len(tile_map))
     return tile_map
 
 
@@ -212,6 +217,7 @@ def _parse_product(p, base, tile_map=None):
     variants = p.get("variants") or []
     available_variants = [v for v in variants if v.get("available")]
     _trace(handle, gevonden_in_feed=True, titel=title,
+           tegel_aanwezig=bool((tile_map or {}).get(handle)),
            varianten=[{"available": v.get("available"), "prijs": v.get("price"),
                        "titel": v.get("title")} for v in variants],
            product_type=p.get("product_type"), tags=p.get("tags"))
