@@ -52,7 +52,7 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.42">
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.44">
 	</link>
 
 	<link id="canonical" rel="canonical" href="https://untappd.com/v/de-bierbrigadier-tilburg/5523441">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.44" />
@@ -60,7 +60,7 @@
 		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.44" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.42"></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.44"></script>
 				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.44" />
 			
 		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.44" />
@@ -99,10 +99,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.42"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/autocomplete.min.js?v2.8.42"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/lodash.min.js?v2.8.42"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.42"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.44"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/libs/js/autocomplete.min.js?v2.8.44"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/libs/js/lodash.min.js?v2.8.44"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.44"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -124,21 +124,6 @@
 		<!-- End Google Tag Manager -->
 	
 	<script src="https://untappd.com/assets/v3/js/venue-impression-tracker.js"></script>
-
-	<script type="text/javascript">
-		var clevertap = {event:[], profile:[], account:[], onUserLogin:[], region: 'us1', notifications:[], privacy:[]};
-        clevertap.account.push({"id": "865-K5R-W96Z"});
-        clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
-        clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
-        (function () {
-                var wzrk = document.createElement('script');
-                wzrk.type = 'text/javascript';
-                wzrk.async = true;
-                wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wzrk, s);
-        })();
-	</script>
 
     
     <!-- Freestar Ad Sticky Styling: https://resources.freestar.com/docs/sticky-ads-1 -->
@@ -166,19 +151,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('a[data-href=":logout"]').on('click', function(event) {
-            clevertap.event.push("logout");
-        });
-        $('a[data-href=":external/help"]').on('click', function(event) {
-            clevertap.event.push("pageview_help");
-        });
-        $('a[data-href=":store"]').on('click', function(event) {
-            clevertap.event.push("pageview_store");
-        });
-        $('a[href="/admin"]').on('click', function(event) {
-          clevertap.event.push("pageview_admin");
-        });
-
             });
 </script>
 <div id="mobile_nav_user">
@@ -385,7 +357,7 @@ $(document).ready(() => {
 </div>
 
 	<div class="hours-area" style="display: none;">{"count":7,"items":[{"day_name":"Monday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Tuesday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Wednesday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Thursday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"20:00:00"}]},{"day_name":"Friday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Saturday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"17:00:00"}]},{"day_name":"Sunday","is_24":0,"is_open":0,"hours":[]}]}</div>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.42"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.44"></script>
 		</div>
 
 	<div class="venue-body">
@@ -411,7 +383,7 @@ $(document).ready(() => {
     <p class="error" style="display: none;">An error occured. Please try again.</p>
     <p class="success" style="display: none;">Great! Your subscription to this venue was successful.</p>
 </div>
-<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.42"></script>
+<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.44"></script>
 
 			<div class="venue-left">
 
@@ -787,8 +759,7 @@ $(document).ready(() => {
 															</div>
 						<div class="venue-content">
 
-								
-	<div class="menu-search-bar">
+								<div class="menu-search-bar">
 
 		<form class="search-form">
 			<div class="search-field">
@@ -980,7 +951,7 @@ $(document).ready(() => {
 	<script type="text/javascript">
 		var _url = "/v/de-bierbrigadier-tilburg/5523441";
 	</script>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.42"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.44"></script>
 
 							<input hidden id="generic-items-enabled" value="1"/>
 															    <div class="menu-header menu-select">
@@ -6190,4 +6161,26 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     </div>
                 <div class="beer-details">
                                             <h5>
-                            <a class="track-click" da
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/p-i-g-s-brew-co-burning/6613384">
+                                                                Burning                            </a>
+                            <em>IPA - Imperial / Double New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>8.5% ABV • N/A IBU
+                                                                    • <a class="track-click" data-track="menu" data-href=":brewery" href="/w/p-i-g-s-brew-co/519302">
+                                    P.i.g.s. Brew Co.                                </a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.05982">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-10"></div>
+	</div>                                                            <span class="num">(4.06)</span>
+                                                    </h6>
+                                    </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
