@@ -30,19 +30,19 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.44">
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.45">
 	</link>
 
-	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.44" />
+	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.45" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.44"></script>
-				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.44" />
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.45"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.45" />
 			
-		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.44" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.45" type="text/css" media="screen" title="no title" charset="utf-8">
 		
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function(){
@@ -77,10 +77,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/autocomplete.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/lodash.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.44"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.45"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -121,12 +121,16 @@
 <link rel="stylesheet" href="https://a.pub.network/untappd-com/cls.css">
 <script data-cfasync="false" type="text/javascript">
     var isLoggedIn = false;
-    console.log("freestar_init", `isLoggedIn: ${isLoggedIn}`);
 
     var env = 'PROD';
 
     var freestar = freestar || {};
     freestar.queue = freestar.queue || [];
+    try {
+        sessionStorage.removeItem('fs.ident');
+    } catch (error) {
+        // Freestar cannot persist identity when session storage is unavailable.
+    }
     freestar.queue.push(function () {
         if (env !== 'PROD') {   
             googletag.pubads().set('page_url', 'https://untappd.com/'); // Makes ads fill in non-prod environments
@@ -160,6 +164,7 @@
 <script src="https://a.pub.network/untappd-com/pubfig.min.js" data-cfasync="false" async></script>
 <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js?network-code=15184186" ></script>
 <!-- End Freestar Ads -->
+
     <!-- Freestar Ad Sticky Styling: https://resources.freestar.com/docs/sticky-ads-1 -->
     <style>
     div.sticky {
@@ -176,7 +181,7 @@
        margin-top: 0px !important;
    }
 </style>
-<script src="https://untappd.com/assets/libs/js/feather-icons@4.29.2.min.js"></script>
+<script src="https://assets.untappd.com/assets/libs/js/feather-icons@4.29.2.min.js"></script>
 <body onunload="">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DVXTR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -213,7 +218,7 @@
   <div class="inner mt-2">
 
 		<a class="track-click logo" style="margin-top: 2px;" data-track="desktop_header" data-href=":root" href="/">
-			<img src="https://untappd.com/assets/design-system/ut-brand-dark.svg" class="" alt="Untappd"/>
+			<img src="https://assets.untappd.com/assets/design-system/ut-brand-dark.svg" class="" alt="Untappd"/>
 		</a>
 
     
@@ -350,8 +355,7 @@ $(document).ready(() => {
             freestar.config.enabled_slots.push({ placementName: "untappd-com_untappd_bottom", slotId: "untappd-com_untappd_bottom" });
         </script>
     </div>
-	
-		</div>
+			</div>
 	</div>
 
 	<div class="sidebar">
@@ -374,12 +378,12 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
                             </p><p class="text">
-                                <span class="name">Heineken</span>
-                                <span class="brewery">Heineken</span>                            </p>
+                                <span class="name">Stella Artois</span>
+                                <span class="brewery">Stella Artois</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -392,30 +396,21 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
+                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
+                            </p><p class="text">
+                                <span class="name">Heineken</span>
+                                <span class="brewery">Heineken</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
                         <a href="/b/grupo-modelo-corona-extra/5848" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-5848_e34c0_sm.jpeg" alt="Corona Extra label">
                             </p><p class="text">
                                 <span class="name">Corona Extra</span>
                                 <span class="brewery">Grupo Modelo</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
-                            </p><p class="text">
-                                <span class="name">Stella Artois</span>
-                                <span class="brewery">Stella Artois</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/hijos-de-rivera-estrella-galicia-especial/7313" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7313_b77df_sm.jpeg" alt="Estrella Galicia Especial label">
-                            </p><p class="text">
-                                <span class="name">Estrella Galicia Especial</span>
-                                <span class="brewery">Hijos de Rivera</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -437,6 +432,24 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
+                        <a href="/b/hijos-de-rivera-estrella-galicia-especial/7313" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7313_b77df_sm.jpeg" alt="Estrella Galicia Especial label">
+                            </p><p class="text">
+                                <span class="name">Estrella Galicia Especial</span>
+                                <span class="brewery">Hijos de Rivera</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/olympic-brewery-mythos/5650" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5650_95ff0_sm.jpeg" alt="Mythos label">
+                            </p><p class="text">
+                                <span class="name">Mythos</span>
+                                <span class="brewery">Olympic Brewery</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
                         <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
@@ -445,20 +458,22 @@ $(document).ready(() => {
                                 <span class="brewery">Grupo Modelo</span>                            </p>
                         </a>
                     </div>
-                                        <div class="item">
-                        <a href="/b/birra-peroni-nastro-azzurro/7427" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7427_57d7c_sm.jpeg" alt="Nastro Azzurro label">
-                            </p><p class="text">
-                                <span class="name">Nastro Azzurro</span>
-                                <span class="brewery">Birra Peroni</span>                            </p>
-                        </a>
-                    </div>
                                 </div>
         </div>
             	<div class="box">
         	<div class="content">
-                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-11507376-type-trending_locations">
+                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-14201399-type-trending_locations">
+                        <a href="/v/vilja-beerfest-2026/14201399" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Vilja Beerfest 2026 logo">
+                            </p><p class="text">
+                                <span class="name">Vilja Beerfest 2026</span>
+
+                                <span class="location">Tampere, Pirkanmaa                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-11507376-type-trending_locations">
                         <a href="/v/summerbreeze-artist-production/11507376" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
                                                                 <img src="https://ss3.4sqi.net/img/categories_v2/event/default_bg_512.png" alt="Summerbreeze Artist Production logo">
@@ -469,80 +484,36 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
-                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-10722591-type-trending_locations">
+                        <a href="/v/bistro-vilja/10722591" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/default_bg_512.png" alt="Bistro Vilja logo">
                             </p><p class="text">
-                                <span class="name">Mikkeller CPH Airport</span>
+                                <span class="name">Bistro Vilja</span>
 
-                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
+                                <span class="location">Tampere, Pirkanmaa                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-14199314-type-trending_locations">
-                        <a href="/v/oeyafestivalen-2026/14199314" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-13923985-type-trending_locations">
+                        <a href="/v/frederiks/13923985" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_rockclub_bg_512.png" alt="Øyafestivalen 2026 logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/bx8irzwgk0cndf4gxv1ajdgunh2o?auto=compress" alt="Frederiks logo">
                             </p><p class="text">
-                                <span class="name">Øyafestivalen 2026</span>
+                                <span class="name">Frederiks</span>
 
-                                <span class="location">Oslo, Oslo                                        </span>                            </p>
+                                <span class="location">Aarhus, Region Midtjylland                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-2600340-type-trending_locations">
-                        <a href="/v/warpigs/2600340" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-14201310-type-trending_locations">
+                        <a href="/v/suuret-oluet-pienet-panimot-sopp-turku-2026/14201310" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/ar7ux6v4c23lmkjfo28vstdef57c?auto=compress" alt="Warpigs logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Suuret Oluet – Pienet Panimot (SOPP) Turku 2026 logo">
                             </p><p class="text">
-                                <span class="name">Warpigs</span>
+                                <span class="name">Suuret Oluet – Pienet Panimot (SOPP) Turku 2026</span>
 
-                                <span class="location">København, Region Hovedstaden                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-5853358-type-trending_locations">
-                        <a href="/v/mad-goat/5853358" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/cMidYcknXKGknYmKg45bP82S?auto=compress" alt="Mad Goat logo">
-                            </p><p class="text">
-                                <span class="name">Mad Goat</span>
-
-                                <span class="location">Oslo, Oslo                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-8051590-type-trending_locations">
-                        <a href="/v/dokkan-brugghus/8051590" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Dokkan Brugghús logo">
-                            </p><p class="text">
-                                <span class="name">Dokkan Brugghús</span>
-
-                                <span class="location">Ísafjörður, Vestfirðir                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-7120727-type-trending_locations">
-                        <a href="/v/head-of-steam-birmingham/7120727" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/f6ddukfn56qofliy9vwjzj19xnc4?auto=compress" alt="Head of Steam Birmingham logo">
-                            </p><p class="text">
-                                <span class="name">Head of Steam Birmingham</span>
-
-                                <span class="location">Birmingham, West Midlands                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-10578290-type-trending_locations">
-                        <a href="/v/juova-hanahuone/10578290" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/8i5w7qp3kp5yyn6mag2v5aurdm5j?auto=compress" alt="Juova Hanahuone logo">
-                            </p><p class="text">
-                                <span class="name">Juova Hanahuone</span>
-
-                                <span class="location">Helsinki, Uusimaa                                        </span>                            </p>
+                                <span class="location">Turku, Southwest Finland                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -557,14 +528,47 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-37622-type-trending_locations">
-                        <a href="/v/petco-park/37622" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-2600340-type-trending_locations">
+                        <a href="/v/warpigs/2600340" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Petco Park logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/ar7ux6v4c23lmkjfo28vstdef57c?auto=compress" alt="Warpigs logo">
                             </p><p class="text">
-                                <span class="name">Petco Park</span>
+                                <span class="name">Warpigs</span>
 
-                                <span class="location">San Diego, CA                                        </span>                            </p>
+                                <span class="location">København, Region Hovedstaden                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-11189288-type-trending_locations">
+                        <a href="/v/antenna-america-tokyo/11189288" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/rgqiflk1q1xaxunmgsuzy0lsoppb?auto=compress" alt="Antenna America Tokyo logo">
+                            </p><p class="text">
+                                <span class="name">Antenna America Tokyo</span>
+
+                                <span class="location">Chuo City, 東京都                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-14199314-type-trending_locations">
+                        <a href="/v/oeyafestivalen-2026/14199314" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_rockclub_bg_512.png" alt="Øyafestivalen 2026 logo">
+                            </p><p class="text">
+                                <span class="name">Øyafestivalen 2026</span>
+
+                                <span class="location">Oslo, Oslo                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
+                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
+                            </p><p class="text">
+                                <span class="name">Mikkeller CPH Airport</span>
+
+                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -589,11 +593,11 @@ $(document).ready(() => {
 </div>
 
 <script>
-window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec472bb7132c66aead485","autocompleteAppId":"9WBO4RQ3HO","autocompleteSearchKey":"61401542b9f2600ef4ae589e9ec97521","initialQuery":"","initialRawQuery":"","initialType":"beer","initialSort":"all","loggedIn":false,"hitsPerPage":5,"assetsBase":"https:\/\/untappd.com\/assets","indexes":{"beer":{"all":"beer","beer_name_asc":"beer_order_by_beer_name","beer_name_desc":"beer_order_by_beer_name_desc","brewery":"beer_order_by_brewery_name","highest_abv":"beer_order_by_abv_desc","lowest_abv":"beer_order_by_abv"},"brewery":{"all":"brewery","brewery_name_asc":"brewery_order_by_brewery_name","brewery_name_desc":"brewery_order_by_brewery_name_desc"},"venues":{"all":"venue","popular_recent":"venue_order_by_recent_popularity","venue_name_asc":"venue_order_by_venue_name","venue_name_desc":"venue_order_by_venue_name_desc"},"beerExact":"beer_exact"},"sortOptions":{"beer":[{"value":"all","label":"Most Popular"},{"value":"beer_name_asc","label":"Beer Name (Asc)"},{"value":"beer_name_desc","label":"Beer Name (Desc)"},{"value":"brewery","label":"Brewery Name"},{"value":"highest_abv","label":"Highest ABV"},{"value":"lowest_abv","label":"Lowest ABV"}],"brewery":[{"value":"all","label":"Popularity"},{"value":"brewery_name_asc","label":"Brewery Name (Asc)"},{"value":"brewery_name_desc","label":"Brewery Name (Desc)"}],"venues":[{"value":"all","label":"Popularity (All-Time)"},{"value":"popular_recent","label":"Popularity (Recent)"},{"value":"venue_name_asc","label":"Venue Name (Asc)"},{"value":"venue_name_desc","label":"Venue Name (Desc)"}]}};
+window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec472bb7132c66aead485","autocompleteAppId":"9WBO4RQ3HO","autocompleteSearchKey":"61401542b9f2600ef4ae589e9ec97521","initialQuery":"","initialRawQuery":"","initialType":"beer","initialSort":"all","loggedIn":false,"hitsPerPage":5,"assetsBase":"https:\/\/untappd.com\/assets","imageCdn":"https:\/\/assets.untappd.com\/assets","indexes":{"beer":{"all":"beer","beer_name_asc":"beer_order_by_beer_name","beer_name_desc":"beer_order_by_beer_name_desc","brewery":"beer_order_by_brewery_name","highest_abv":"beer_order_by_abv_desc","lowest_abv":"beer_order_by_abv"},"brewery":{"all":"brewery","brewery_name_asc":"brewery_order_by_brewery_name","brewery_name_desc":"brewery_order_by_brewery_name_desc"},"venues":{"all":"venue","popular_recent":"venue_order_by_recent_popularity","venue_name_asc":"venue_order_by_venue_name","venue_name_desc":"venue_order_by_venue_name_desc"},"beerExact":"beer_exact"},"sortOptions":{"beer":[{"value":"all","label":"Most Popular"},{"value":"beer_name_asc","label":"Beer Name (Asc)"},{"value":"beer_name_desc","label":"Beer Name (Desc)"},{"value":"brewery","label":"Brewery Name"},{"value":"highest_abv","label":"Highest ABV"},{"value":"lowest_abv","label":"Lowest ABV"}],"brewery":[{"value":"all","label":"Popularity"},{"value":"brewery_name_asc","label":"Brewery Name (Asc)"},{"value":"brewery_name_desc","label":"Brewery Name (Desc)"}],"venues":[{"value":"all","label":"Popularity (All-Time)"},{"value":"popular_recent","label":"Popularity (Recent)"},{"value":"venue_name_asc","label":"Venue Name (Asc)"},{"value":"venue_name_desc","label":"Venue Name (Desc)"}]}};
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.44"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.45"></script>
 <style>
 #pmLink {
 	visibility: hidden;
@@ -628,6 +632,9 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 						<a class="track-click" data-track="footer" data-href=":footer/breweries" href="https://untappd.com/breweries">Breweries</a>
 					</li>
 					<li>
+						<a class="track-click" data-track="footer" data-href=":footer/badges" href="https://badges.untappd.com">Badges</a>
+					</li>
+					<li>
 						<a class="track-click" data-track="footer" data-href=":footer/shop" href="https://untappd.com/shop">Shop</a>
 					</li>
 					<li>
@@ -659,9 +666,9 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 			</div>
 		</div>
 		<ul class="social">
-    <li><a class="track-click" data-track="footer" data-href=":footer/social/twitter" href="https://bit.ly/3T6pKK6" target="_blank"><img src="https://untappd.com/assets/custom/homepage/images/icon-twitter.svg" alt="Icon twitter" /></a></li>
-    <li><a class="track-click" data-track="footer" data-href=":footer/social/facebook" href="https://bit.ly/3RVLffu" target="_blank"><img src="https://untappd.com/assets/custom/homepage/images/icon-facebook.svg" alt="Icon facebook" /></a></li>
-    <li><a class="track-click" data-track="home" data-href=":footer/social/instagram" href="https://bit.ly/3EyG9D5" target="_blank"><img src="https://untappd.com/assets/custom/homepage/images/icon-instagram.svg" alt="Icon instagram" /></a></li>
+    <li><a class="track-click" data-track="footer" data-href=":footer/social/twitter" href="https://bit.ly/3T6pKK6" target="_blank"><img src="https://assets.untappd.com/assets/custom/homepage/images/icon-twitter.svg" alt="Icon twitter" /></a></li>
+    <li><a class="track-click" data-track="footer" data-href=":footer/social/facebook" href="https://bit.ly/3RVLffu" target="_blank"><img src="https://assets.untappd.com/assets/custom/homepage/images/icon-facebook.svg" alt="Icon facebook" /></a></li>
+    <li><a class="track-click" data-track="home" data-href=":footer/social/instagram" href="https://bit.ly/3EyG9D5" target="_blank"><img src="https://assets.untappd.com/assets/custom/homepage/images/icon-instagram.svg" alt="Icon instagram" /></a></li>
 </ul>	</footer>
 
 <script type="text/javascript">
