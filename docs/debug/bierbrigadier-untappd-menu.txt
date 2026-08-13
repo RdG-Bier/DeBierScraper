@@ -52,19 +52,19 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.44">
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.45">
 	</link>
 
-	<link id="canonical" rel="canonical" href="https://untappd.com/v/de-bierbrigadier-tilburg/5523441">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.44" />
+	<link id="canonical" rel="canonical" href="https://untappd.com/v/de-bierbrigadier-tilburg/5523441">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.45" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.44"></script>
-				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.44" />
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.45"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.45" />
 			
-		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.44" />
-		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.44" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.45" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.45" type="text/css" media="screen" title="no title" charset="utf-8">
 		
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function(){
@@ -99,10 +99,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/autocomplete.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/libs/js/lodash.min.js?v2.8.44"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.44"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.45"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -142,7 +142,7 @@
        margin-top: 0px !important;
    }
 </style>
-<script src="https://untappd.com/assets/libs/js/feather-icons@4.29.2.min.js"></script>
+<script src="https://assets.untappd.com/assets/libs/js/feather-icons@4.29.2.min.js"></script>
 <body onunload="">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DVXTR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -179,7 +179,7 @@
   <div class="inner mt-2">
 
 		<a class="track-click logo" style="margin-top: 2px;" data-track="desktop_header" data-href=":root" href="/">
-			<img src="https://untappd.com/assets/design-system/ut-brand-dark.svg" class="" alt="Untappd"/>
+			<img src="https://assets.untappd.com/assets/design-system/ut-brand-dark.svg" class="" alt="Untappd"/>
 		</a>
 
     
@@ -357,7 +357,7 @@ $(document).ready(() => {
 </div>
 
 	<div class="hours-area" style="display: none;">{"count":7,"items":[{"day_name":"Monday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Tuesday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Wednesday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Thursday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"20:00:00"}]},{"day_name":"Friday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Saturday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"17:00:00"}]},{"day_name":"Sunday","is_24":0,"is_open":0,"hours":[]}]}</div>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.44"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.45"></script>
 		</div>
 
 	<div class="venue-body">
@@ -383,7 +383,7 @@ $(document).ready(() => {
     <p class="error" style="display: none;">An error occured. Please try again.</p>
     <p class="success" style="display: none;">Great! Your subscription to this venue was successful.</p>
 </div>
-<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.44"></script>
+<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.45"></script>
 
 			<div class="venue-left">
 
@@ -484,11 +484,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						86,309						<span>Total</span>
+						86,313						<span>Total</span>
 					</li><li>
 						2,794						<span>Unique</span>
 					</li><li>
-						361						<span>Monthly</span>
+						365						<span>Monthly</span>
 					</li><li>
 												<a href="/v/de-bierbrigadier-tilburg/5523441/activity?filter=you">0</a>
 						<span>You</span>
@@ -751,7 +751,7 @@ $(document).ready(() => {
 
 
 <div class="offerings-badge badge-with-text beer">
-    <img src="https://untappd.com/assets/utfb/images/menu-offerings/beer-icon.svg" alt="Venue has beer on menu">
+    <img src="https://assets.untappd.com/assets/utfb/images/menu-offerings/beer-icon.svg" alt="Venue has beer on menu">
                     <span>632 Beers</span>
             </div>    </div>
 </div>
@@ -951,7 +951,7 @@ $(document).ready(() => {
 	<script type="text/javascript">
 		var _url = "/v/de-bierbrigadier-tilburg/5523441";
 	</script>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.44"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.45"></script>
 
 							<input hidden id="generic-items-enabled" value="1"/>
 															    <div class="menu-header menu-select">
@@ -6184,4 +6184,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                                                 <div class="beer-prices">
                                                             <p>
                                                                         <span class="size">
-                                        44cl 
+   
