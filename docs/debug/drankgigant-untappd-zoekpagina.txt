@@ -30,7 +30,7 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.45">
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.46">
 	</link>
 
 	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.45" />
@@ -38,7 +38,7 @@
 		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.45" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.45"></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.46"></script>
 				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.45" />
 			
 		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.45" />
@@ -77,10 +77,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.45"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.45"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.45"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.45"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.46"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -152,8 +152,7 @@
             iai: true,
         };  
     }
-    freestar.config.enabled_slots = [];
-    freestar.initCallback = function () { (freestar.config.enabled_slots.length === 0) ? freestar.initCallbackCalled = false : freestar.newAdSlots(freestar.config.enabled_slots) };
+    initializeUntappdFreestarAds(freestar);
 </script>
 
 <!-- Ad-blocking revenue recovery tool provided by Tyler (https://nextglass.slack.com/archives/C049TLGTPRR/p1770762270660589) -->
@@ -279,7 +278,7 @@ $(document).ready(() => {
 	<div class="leaderboard-ad">
 		<div style="text-align: center;" data-freestar-ad="__336x280 __728x90" id="untappd-com_leaderboard-atf">
 			<script data-cfasync="false" type="text/javascript">
-				freestar.config.enabled_slots.push({ placementName: "untappd-com_leaderboard-atf", slotId: "untappd-com_leaderboard-atf" });
+				freestar.untappd.registerAdSlot({ placementName: "untappd-com_leaderboard-atf", slotId: "untappd-com_leaderboard-atf" });
 			</script>
 		</div>
 	</div>
@@ -352,7 +351,7 @@ $(document).ready(() => {
 			</div>
 			    <div style="text-align: center;" data-freestar-ad="__240x400 __336x280" id="untappd-com_untappd_bottom">
         <script data-cfasync="false" type="text/javascript">
-            freestar.config.enabled_slots.push({ placementName: "untappd-com_untappd_bottom", slotId: "untappd-com_untappd_bottom" });
+            freestar.untappd.registerAdSlot({ placementName: "untappd-com_untappd_bottom", slotId: "untappd-com_untappd_bottom" });
         </script>
     </div>
 			</div>
@@ -362,7 +361,7 @@ $(document).ready(() => {
 			<div class="box">
 		<div style="text-align: center;" data-freestar-ad="__336x280" id="untappd-com_untappd_siderail_right_atf">
 			<script data-cfasync="false" type="text/javascript">
-				freestar.config.enabled_slots.push({ placementName: "untappd-com_untappd_siderail_right_atf", slotId: "untappd-com_untappd_siderail_right_atf" });
+				freestar.untappd.registerAdSlot({ placementName: "untappd-com_untappd_siderail_right_atf", slotId: "untappd-com_untappd_siderail_right_atf" });
 			</script>
 		</div>
 	</div>
@@ -582,7 +581,7 @@ $(document).ready(() => {
     		<div class="sticky">
 		<div style="text-align: center;" data-freestar-ad="__300x600" id="untappd-com_untappd_siderail_right_sticky">
 			<script data-cfasync="false" type="text/javascript">
-				freestar.config.enabled_slots.push({ placementName: "untappd-com_untappd_siderail_right_sticky", slotId: "untappd-com_untappd_siderail_right_sticky" });
+				freestar.untappd.registerAdSlot({ placementName: "untappd-com_untappd_siderail_right_sticky", slotId: "untappd-com_untappd_siderail_right_sticky" });
 			</script>
 		</div>
 	</div>
@@ -597,7 +596,7 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.45"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.46"></script>
 <style>
 #pmLink {
 	visibility: hidden;
