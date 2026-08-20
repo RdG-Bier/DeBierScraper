@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v27"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v28"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -216,3 +216,14 @@ MIN_TILES_WARN = 500
 TRACE_HANDLES = (
     "arpus-qdh-riwaka-x-citra-cryo-x-mosaic-cryo-x-nectaron-tipa",
 )
+
+
+# ---------------------------------------------------------------------------
+# GitHub-gegevens voor de "Ververs nu"-knop op de webpagina. De knop start de
+# workflow via de GitHub API; het benodigde token wordt alleen in de browser
+# van de gebruiker bewaard en staat dus NIET in de gepubliceerde pagina.
+# GITHUB_WORKFLOW = de bestandsnaam van je workflow in .github/workflows/
+# ---------------------------------------------------------------------------
+GITHUB_OWNER = "RdG-Bier"
+GITHUB_REPO = "DeBierScraper"
+GITHUB_WORKFLOW = "main.yml"

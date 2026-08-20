@@ -61,6 +61,22 @@ header .sub { font-size:.75rem; opacity:.85; margin-top:2px; }
 .card a { color:var(--groen); font-size:.8rem; }
 .empty { text-align:center; color:#888; padding:30px 0; }
 .dl { display:inline-block; margin-top:6px; color:#fff; text-decoration:underline; font-size:.78rem; }
+.acties { display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+.knop { background:#fff; color:var(--groen); border:none; border-radius:8px;
+        padding:7px 12px; font-size:.8rem; font-weight:600; cursor:pointer; }
+.knop:disabled { opacity:.55; cursor:default; }
+.status { font-size:.75rem; color:#fff; opacity:.9; }
+#tokenpaneel { display:none; background:#fff; color:#222; padding:12px 14px;
+               border-bottom:1px solid #ddd; font-size:.82rem; }
+#tokenpaneel.open { display:block; }
+#tokenpaneel input { width:100%; padding:9px 10px; margin:8px 0; border:1px solid #ccc;
+                     border-radius:8px; font-size:.85rem; -webkit-appearance:none; }
+#tokenpaneel a { color:var(--groen); }
+#tokenpaneel .rij { display:flex; gap:8px; flex-wrap:wrap; }
+#tokenpaneel .rij button { background:var(--groen); color:#fff; border:none;
+                           border-radius:8px; padding:8px 12px; font-size:.8rem; cursor:pointer; }
+#tokenpaneel .rij button.grijs { background:#777; }
+.mini { font-size:.72rem; color:#666; line-height:1.35; }
 """
 
 JS = """
@@ -68,6 +84,83 @@ function showTab(key){
   document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.key===key));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.dataset.key===key));
 }
+// --- Handmatig verversen -------------------------------------------------
+// De site is een statische pagina; verversen = de GitHub Actions-workflow
+// starten. Dat vereist een token, en dat mag NOOIT in deze (publieke) pagina
+// staan. Daarom bewaren we het token alleen in de browser van de gebruiker
+// zelf (localStorage). Zonder token opent de knop gewoon GitHub.
+var GH_OWNER = "__OWNER__", GH_REPO = "__REPO__", GH_WF = "__WORKFLOW__";
+var ACTIONS_URL = "https://github.com/" + GH_OWNER + "/" + GH_REPO + "/actions";
+
+function tok(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
+function setStatus(t){ document.getElementById("status").textContent = t || ""; }
+
+function ververs(){
+  var t = tok();
+  if(!t){ document.getElementById("tokenpaneel").classList.add("open"); return; }
+  var knop = document.getElementById("verversknop");
+  knop.disabled = true; setStatus("Bezig met starten...");
+  fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+        "/actions/workflows/" + GH_WF + "/dispatches", {
+    method: "POST",
+    headers: { "Accept": "application/vnd.github+json",
+               "Authorization": "Bearer " + t,
+               "X-GitHub-Api-Version": "2022-11-28" },
+    body: JSON.stringify({ ref: "main" })
+  }).then(function(r){
+    if(r.status === 204){
+      setStatus("Gestart! Dit duurt een paar minuten.");
+      setTimeout(volgStatus, 12000);
+    } else if(r.status === 401 || r.status === 403){
+      setStatus("Token afgewezen of verlopen.");
+      document.getElementById("tokenpaneel").classList.add("open");
+      knop.disabled = false;
+    } else {
+      setStatus("Starten mislukt (code " + r.status + ").");
+      knop.disabled = false;
+    }
+  }).catch(function(){
+    setStatus("Geen verbinding met GitHub.");
+    knop.disabled = false;
+  });
+}
+
+function volgStatus(){
+  // status van publieke repo's is ook zonder token op te vragen
+  fetch("https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO +
+        "/actions/runs?per_page=1")
+   .then(function(r){ return r.json(); })
+   .then(function(d){
+     var run = d.workflow_runs && d.workflow_runs[0];
+     if(!run){ setStatus(""); return; }
+     if(run.status !== "completed"){
+       setStatus("Bezig met scrapen... (" + run.status + ")");
+       setTimeout(volgStatus, 15000);
+     } else if(run.conclusion === "success"){
+       setStatus("Klaar! Herlaad de pagina voor de nieuwe lijst.");
+       document.getElementById("verversknop").disabled = false;
+     } else {
+       setStatus("Run mislukt (" + run.conclusion + ").");
+       document.getElementById("verversknop").disabled = false;
+     }
+   }).catch(function(){ setStatus(""); });
+}
+
+function tokenOpslaan(){
+  var v = document.getElementById("tokenveld").value.trim();
+  if(!v){ return; }
+  try { localStorage.setItem("gh_token", v); } catch(e){}
+  document.getElementById("tokenveld").value = "";
+  document.getElementById("tokenpaneel").classList.remove("open");
+  ververs();
+}
+function tokenWissen(){
+  try { localStorage.removeItem("gh_token"); } catch(e){}
+  setStatus("Token gewist.");
+  document.getElementById("tokenpaneel").classList.remove("open");
+}
+function openGitHub(){ window.open(ACTIONS_URL, "_blank"); }
+
 function openImg(src){
   var lb=document.getElementById('lightbox');
   document.getElementById('lightbox-img').src=src;
@@ -107,6 +200,12 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
             or '<div class="empty">Geen bieren gevonden</div>'
         panels.append(f'<div class="panel{active}" data-key="{site["key"]}">{cards}</div>')
 
+    gh_owner = getattr(config, "GITHUB_OWNER", "")
+    gh_repo = getattr(config, "GITHUB_REPO", "")
+    gh_wf = getattr(config, "GITHUB_WORKFLOW", "main.yml")
+    js = (JS.replace("__OWNER__", gh_owner).replace("__REPO__", gh_repo)
+            .replace("__WORKFLOW__", gh_wf))
+
     doc = f"""<!DOCTYPE html>
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,7 +213,27 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
 <body>
 <header><h1>🍺 Bieroverzicht</h1>
 <div class="sub">Bijgewerkt: {now} &middot; score &ge; 4.00 of onbekend &middot; scraper {config.VERSION}</div>
-<a class="dl" href="{excel_name}" download>&#11015; Download als Excel</a></header>
+<div class="acties">
+  <button class="knop" id="verversknop" onclick="ververs()">&#8635; Ververs nu</button>
+  <a class="dl" href="{excel_name}" download>&#11015; Excel</a>
+  <span class="status" id="status"></span>
+</div></header>
+<div id="tokenpaneel">
+  <b>Eenmalig instellen</b>
+  <p class="mini">Deze pagina is statisch; verversen start de scraper op GitHub.
+  Daarvoor is een persoonlijk token nodig. Dat wordt <b>alleen in deze browser</b>
+  bewaard en komt nooit op de website te staan.<br>
+  Maak er een aan via <a href="https://github.com/settings/personal-access-tokens/new"
+  target="_blank">GitHub &rarr; Fine-grained token</a>: kies bij <i>Repository access</i>
+  alleen <code>{gh_repo}</code> en zet bij <i>Permissions</i> alleen
+  <b>Actions: Read and write</b>. Kopieer het token en plak het hieronder.</p>
+  <input id="tokenveld" type="password" placeholder="github_pat_..." autocomplete="off">
+  <div class="rij">
+    <button onclick="tokenOpslaan()">Opslaan en verversen</button>
+    <button class="grijs" onclick="openGitHub()">Liever via GitHub</button>
+    <button class="grijs" onclick="tokenWissen()">Token wissen</button>
+  </div>
+</div>
 <div class="tabs">{''.join(tabs)}</div>
 <div class="toolbar"><input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl…" oninput="filter()"></div>
 {''.join(panels)}
@@ -122,7 +241,7 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
   <div class="box"><button class="close" onclick="closeImg(event)">&times;</button>
   <img id="lightbox-img" src="" alt=""></div>
 </div>
-<script>{JS}</script></body></html>"""
+<script>{js}</script></body></html>"""
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(doc, encoding="utf-8")
