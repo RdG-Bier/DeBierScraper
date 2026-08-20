@@ -5119,4 +5119,5 @@ overflow: auto
                 class="bottom-0 left-0 w-auto p-3  mr-auto"
                 aria-label="Toevoegen"
                 @click.prevent="addProductToCart()"
-    
+            >
+                <svg 
