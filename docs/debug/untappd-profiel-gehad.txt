@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+			<title>Login to Untappd</title>
+		
+	<meta property="og:site_name" content="Untappd" />
+
+	<!-- meta block -->
+			<meta name="description" content="Login to Untappd using your username and password. Don't have an account? Sign up now!" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	<meta name="referrer" content="never">
+	<meta name="author" content="The Untappd Team" />
+	<meta name="Copyright" content="Copyright Untappd 2026. All Rights Reserved." />
+	<meta name="DC.title" content="Untappd" />
+			<meta name="DC.subject" content="Login to Untappd using your username and password. Don't have an account? Sign up now!" />
+			<meta name="DC.creator" content="The Untappd Team" />
+
+	<meta name="google-site-verification" content="EnR7QavTgiLCzZCCOv_OARCHsHhFwkwnJdG0Sti9Amg" />
+	<meta name="bitly-verification" content="b3080898518a"/>
+
+	<!-- favicon -->
+	<link rel="apple-touch-icon" sizes="144x144" href="https://untappd.com/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="https://untappd.com/assets/favicon-32x32-v2.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="https://untappd.com/assets/favicon-16x16-v2.png" sizes="16x16">
+	<link rel="manifest" href="https://untappd.com/assets/manifest.json">
+	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
+
+	<link rel="stylesheet"
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.46">
+	</link>
+
+	<link id="canonical" rel="canonical" href="https://untappd.com/login">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.46" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.46" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.46" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+				<script src='https://www.google.com/recaptcha/api.js'></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.46"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.46" />
+			
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.46" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.46" type="text/css" media="screen" title="no title" charset="utf-8">
+		
+		<script type="text/javascript" language="Javascript">
+			$(document).ready(function(){
+				$(".tip").tipsy({fade: true});
+				$('.badge_hint').tipsy({gravity: 's', fade: true});
+				$('.disabled').tipsy({gravity: 'n', fade: true});
+
+				refreshTime(".timezoner", "D MMM YY", true);
+
+				$(".tab").click(function(){
+					$(".tab-area li").removeClass('active');
+					$(this).parent().addClass('active');
+					$(".list").hide();
+					$($(this).attr("href")).show();
+					return false;
+				});
+			});
+
+			</script>
+			<!-- For IE -->
+	<script type="text/javascript" language="Javascript">
+	onChangeInterval = "";
+	if(!(window.console && console.log)) {
+	  console = {
+	    log: function(){},
+	    debug: function(){},
+	    info: function(){},
+	    warn: function(){},
+	    error: function(){}
+	  };
+	}
+	</script>
+	
+	<!-- algoliasearch -->
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.46"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.46"></script>
+
+	<script>
+        !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
+
+        // Initialize library
+        aa('init', {
+        applicationID: '9WBO4RQ3HO',
+        apiKey: '1d347324d67ec472bb7132c66aead485',
+        })
+    </script>
+
+
+			<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-N4DVXTR');</script>
+		<!-- End Google Tag Manager -->
+	
+	<script src="https://untappd.com/assets/v3/js/venue-impression-tracker.js"></script>
+
+    
+    <!-- Freestar Ad Sticky Styling: https://resources.freestar.com/docs/sticky-ads-1 -->
+    <style>
+    div.sticky {
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        top: 84px; /* Navbar height */
+    }
+    </style>
+
+</head>
+<style type="text/css">
+	.hidden {display: none;}
+	.main {
+       margin-top: 0px !important;
+   }
+</style>
+<script src="https://assets.untappd.com/assets/libs/js/feather-icons@4.29.2.min.js"></script>
+<body onunload="">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4DVXTR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<style type="text/css">
+	.error {margin-bottom: 10px; background-color: #E25858; font-weight: 400;}
+	.error p {margin: 5px; line-height: 20px;}
+	.error p a {font-weight: 600;}
+	.loading-fb, .loading {text-align: center; margin-top: 5px;}
+	.g-recaptcha div { width: 100% !important; }
+	.signin-button { width: 300px; height: 40px; margin-left: auto; margin-right: auto; padding-top: 10px;}
+</style>
+<head>
+			<meta name="appleid-signin-client-id" content="com.untappd.service">
+		<meta name="appleid-signin-scope" content="email name">
+		<meta name="appleid-signin-redirect-uri" content="https://untappd.com/login/apple">
+		<meta name="appleid-signin-state" content="https%3A%2F%2Funtappd.com%2Fuser%2FRdG-NL%2Fbeers">
+	</head>
+<main>
+	<div class="cont login_page">
+		<div class="login_box box">
+			<div class="content">
+
+			<a class="logo" href="/">Untappd</a>
+									<div class="error">
+						  <p>You must log in to continue.</p>
+						</div>
+					
+              <div style="display: none;" class="loading-fb"><img src="https://assets.untappd.com/assets/images/spinner.gif" /></div>
+							<div id="appleid-signin" class="signin-button" data-color="black" data-border="true" data-type="sign-in"></div>
+				<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+						
+							<p class="or">Or</p>
+			
+	  		<form action="https://untappd.com/login" method="POST" onsubmit="$('.submit-btn').hide(); $('.loading').show();">
+	  			<div class="input">
+		  			<p class="user">
+		  				<input type="text" name="username" id="username" placeholder="Username or Email" aria-label="Username">
+		  			</p>
+		  		</div>
+	  			<div class="input">
+	  				<p class="pass">
+		  				<input type="password" name="password" id="password" placeholder="Password" aria-label="Password">
+		  			</p>
+		  		</div>
+
+	  								<div style="margin: 25px auto; text-align: center;">
+						<div class="g-recaptcha" data-sitekey="6Ld_zC4sAAAAAHhpALM7cO_Tb1B1VegKDSjtT-3_"></div>
+					</div>
+				
+				<span class="button yellow submit-btn">
+	  				Sign In
+	  				<input type="submit">
+	  			</span>
+
+                  <div style="display: none;" class="loading"><img src="https://assets.untappd.com/assets/images/spinner.gif" /></div>
+	  			<p class="reset-link">
+	  					  					<a href="/account/reset_password?go_to=https%3A%2F%2Funtappd.com%2Fuser%2FRdG-NL%2Fbeers">Forgot your password?</a>
+	  										</p>
+
+											<input type="hidden" name="go_to" value="https%3A%2F%2Funtappd.com%2Fuser%2FRdG-NL%2Fbeers">
+						
+  				
+				<input type="hidden" name="session_key" value="29F9AC46046F42453BDA92E4EE6AA468" id="session_key">
+				<input type="hidden" name="multi_account" value="false" id="multi_account">
+	  		</form>
+
+
+	  		
+
+
+			<div class="bottom">
+				<p>New around here? <a href="/create?source=login_page&go_to=https%3A%2F%2Funtappd.com%2Fuser%2FRdG-NL%2Fbeers">Sign up!</a></p>			</div>
+						  </div>
+		</div>
+	</div>
+</main>
+<script type="text/javascript" src="https://untappd.com/assets/v2/js/jquery.defaultvalue.js"></script>
+<script>
+$(document).ready(function() {
+	$(' [placeholder] ').defaultValue();
+	$("#username").focus();
+});
+
+var toggleLoginBtn = function() {
+	$('.submit-btn').hide();
+	$('.loading').show();
+}
+
+var toggleFBBtn = function() {
+	$('.submit-btn').hide();
+	$('.fb').hide();
+	$('.loading-fb').show();
+}
+
+var getDataToSend = function(pos) {
+	}
+
+var selectDiv = function(pos) {
+	var buttonId = 'data-' + pos
+	document.getElementById(buttonId).checked = true;
+	getDataToSend(pos)
+
+}
+</script>
+</html>
+
