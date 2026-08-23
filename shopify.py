@@ -103,6 +103,8 @@ def _tiles_from_collection(url, tile_map, site):
                         info["untappd"] = score if score > 0 else None
                         info["untappd_aantal"] = int(digits) if digits else None
                     info["land"] = utils.parse_country(text)
+                    info["volume"] = utils.parse_volume_cl(text)
+                    info["abv"] = utils.parse_abv(text)
                     if info:
                         tile_map[handle] = info
                         new += 1
@@ -252,9 +254,10 @@ def _parse_product(p, base, tile_map=None):
     if untappd is None and "untappd" not in tile:
         untappd, untappd_count = utils.parse_untappd(searchable)
     country = tile.get("land") or parse_country_from_tags(tags) or utils.parse_country(searchable)
-    abv = utils.parse_abv(variant.get("title") or "") or utils.parse_abv(searchable)
-    volume = utils.parse_volume_cl(title) or utils.parse_volume_cl(variant.get("title") or "") \
-        or utils.parse_volume_cl(body_text)
+    abv = tile.get("abv") or utils.parse_abv(variant.get("title") or "") \
+        or utils.parse_abv(searchable)
+    volume = tile.get("volume") or utils.parse_volume_cl(title) \
+        or utils.parse_volume_cl(variant.get("title") or "") or utils.parse_volume_cl(body_text)
 
     url = f"{base}/products/{p.get('handle')}"
 

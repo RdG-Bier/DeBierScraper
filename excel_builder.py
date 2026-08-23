@@ -25,6 +25,7 @@ BASE_COLUMNS = [
     ("untappd_aantal", "Untappd aantal", 13),
     ("prijs", "Prijs (€)", 10),
     ("weblink", "Weblink", 45),
+    ("status", "Untappd-status", 15),
 ]
 
 HEADER_FILL = PatternFill("solid", start_color="1F4E44")
@@ -57,6 +58,16 @@ def build_workbook(all_beers, sites):
 
 def _build_sheet(wb, site, beers, sites, price_lookup):
     ws = wb.create_sheet(site["label"][:31])
+
+    # Statuskolom afleiden uit de Untappd-profielmarkering. Dit moet vóór het
+    # bepalen van de kolommen, want lege velden vallen automatisch weg.
+    for beer in beers:
+        merk = []
+        if beer.get("voorraad"):
+            merk.append("in voorraad")
+        if beer.get("gehad"):
+            merk.append("al gehad")
+        beer["status"] = " + ".join(merk) or None
 
     # Alleen kolommen opnemen waarvoor deze shop daadwerkelijk data heeft;
     # bij elke run opnieuw bepaald, dus als de shop het veld later toevoegt

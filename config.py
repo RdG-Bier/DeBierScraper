@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v28"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v30"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -152,10 +152,10 @@ INCLUDE_UNKNOWN_UNTAPPD = True
 # Scoregewichten (samen max 100). Zie scoring.py voor de berekening.
 # ---------------------------------------------------------------------------
 WEIGHTS = {
-    "style": 30,     # sterke voorkeur = vol gewicht, gewone stijl = de helft
+    "style": 25,     # sterke voorkeur = vol gewicht, gewone stijl = de helft
     "untappd": 35,   # 4.00 -> ondergrens, UNTAPPD_TOP -> vol gewicht
-    "count": 15,     # logaritmisch: meer ratings = betrouwbaarder
-    "price": 20,     # goedkoopste (per liter) = vol gewicht
+    "count": 10,     # logaritmisch: meer ratings = betrouwbaarder
+    "price": 30,     # goedkoopste (per liter) = vol gewicht
 }
 UNTAPPD_TOP = 4.60          # score waarbij het untappd-deel maximaal is
 UNKNOWN_UNTAPPD_FRACTION = 0.45  # onbekende score krijgt 45% van het untappd-gewicht
@@ -186,11 +186,21 @@ FUZZY_MATCH_THRESHOLD = 0.90  # voor het matchen van hetzelfde bier tussen shops
 # gelijk zijn; anders is een prefix-match voldoende (bijv. alle Stout-stijlen).
 # ---------------------------------------------------------------------------
 BONUS_RULES = [
-    {"style": "IPA - Triple", "exact": True, "max_price": 9.0, "bonus": 24},
-    {"style": "IPA - Quadruple", "exact": True, "max_price": 10.0, "bonus": 24},
-    {"style": "Stout", "exact": False, "min_untappd": 4.30, "max_price": 14.0, "bonus": 16},
-    # topdeal: elke gewenste stijl met hoge score voor weinig geld
-    {"style": "", "exact": False, "min_untappd": 4.30, "max_price": 10.0, "bonus": 12},
+    # "family": True -> hele stijlfamilie telt mee, dus 'IPA - Triple' EN
+    #   'IPA - Triple New England / Hazy' krijgen dezelfde bonus.
+    # max_price -> volledige bonus; taper_price -> bonus loopt daar naar 0.
+    #   Zo valt een bier van 9,50 niet ineens van 24 punten naar niets.
+    # min_untappd -> volledige bonus; taper_untappd -> loopt daar naar 0.
+    {"style": "IPA - Triple", "family": True,
+     "max_price": 9.0, "taper_price": 14.0, "bonus": 18},
+    {"style": "IPA - Quadruple", "family": True,
+     "max_price": 10.0, "taper_price": 16.0, "bonus": 18},
+    {"style": "Stout", "family": True,
+     "min_untappd": 4.30, "taper_untappd": 4.10,
+     "max_price": 14.0, "taper_price": 20.0, "bonus": 12},
+    # generieke topdeal: elke gewenste stijl, hoge score, lage prijs
+    {"style": "", "min_untappd": 4.30, "taper_untappd": 4.10,
+     "max_price": 10.0, "taper_price": 15.0, "bonus": 10},
 ]
 
 # ---------------------------------------------------------------------------
@@ -227,3 +237,14 @@ TRACE_HANDLES = (
 GITHUB_OWNER = "RdG-Bier"
 GITHUB_REPO = "DeBierScraper"
 GITHUB_WORKFLOW = "main.yml"
+
+
+# ---------------------------------------------------------------------------
+# Untappd-profielkoppeling. Het profiel moet openbaar zijn
+# (untappd.com/account/privacy -> account NIET op private).
+#   - ingecheckte bieren  -> groene achtergrond ("al gehad")
+#   - de voorraadlijsten  -> gele achtergrond ("in voorraad")
+# ---------------------------------------------------------------------------
+UNTAPPD_USER = "RdG-NL"
+UNTAPPD_VOORRAAD_LIJSTEN = ("Voorraad R", "Voorraad H & R")
+UNTAPPD_MAX_PAGINAS = 120   # 120 x 25 = tot 3000 bieren per lijst

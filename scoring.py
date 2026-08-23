@@ -72,31 +72,52 @@ def _score(beer):
 
     # 6. bonusregels: specifieke combinaties wegen net iets zwaarder
     for rule in config.BONUS_RULES:
-        if _matches_bonus_rule(beer, rule):
-            total += rule["bonus"]
+        total += rule["bonus"] * _bonus_factor(beer, rule)
 
     return max(0.0, min(100.0, total))
 
 
-def _matches_bonus_rule(beer, rule):
+def _bonus_factor(beer, rule):
+    """Hoeveel van de bonus verdient dit bier (0.0 - 1.0)?
+    Vroeger was dit alles-of-niets: 8,99 euro gaf de volle bonus en 9,01 niets,
+    waardoor een 4,46-bier van 12,99 lager eindigde dan een 4,14-bier van 7,89.
+    Nu loopt de bonus geleidelijk af, zodat kleine verschillen in prijs of
+    score ook maar kleine verschillen in punten geven."""
     style = beer.get("stijl") or ""
-    if rule.get("exact"):
-        if style != rule["style"]:
-            return False
-    elif not style.startswith(rule["style"]):
-        return False
+    doel = rule.get("style") or ""
+    if doel:
+        if rule.get("family"):
+            if not style.startswith(doel):
+                return 0.0
+        elif rule.get("exact"):
+            if style != doel:
+                return 0.0
+        elif not style.startswith(doel):
+            return 0.0
+
+    factor = 1.0
 
     if "max_price" in rule:
         price = beer.get("prijs")
-        if price is None or price >= rule["max_price"]:
-            return False
+        if price is None:
+            return 0.0
+        grens, taper = rule["max_price"], rule.get("taper_price", rule["max_price"])
+        if price > grens:
+            if taper <= grens or price >= taper:
+                return 0.0
+            factor *= (taper - price) / (taper - grens)
 
     if "min_untappd" in rule:
         u = beer.get("untappd")
-        if u is None or u < rule["min_untappd"]:
-            return False
+        if u is None:
+            return 0.0
+        grens, taper = rule["min_untappd"], rule.get("taper_untappd", rule["min_untappd"])
+        if u < grens:
+            if taper >= grens or u <= taper:
+                return 0.0
+            factor *= (u - taper) / (grens - taper)
 
-    return True
+    return max(0.0, min(1.0, factor))
 
 
 def enrich_untappd(all_beers):
@@ -122,11 +143,11 @@ def enrich_untappd(all_beers):
             if b.get("inhoud_cl") and key not in known_volume:
                 known_volume[key] = b["inhoud_cl"]
             if b.get("untappd") is not None:
-                if key not in known_score:
+                huidig = known_score.get(key)
+                nieuw_n = b.get("untappd_aantal") or 0
+                if huidig is None or nieuw_n > (huidig[1] or 0):
+                    # de bron met de meeste ratings is het meest actueel
                     known_score[key] = (b["untappd"], b.get("untappd_aantal"))
-                elif known_score[key][1] is None and b.get("untappd_aantal"):
-                    # bron mét aantal ratings is completer: die wint
-                    known_score[key] = (b["untappd"], b["untappd_aantal"])
             if b.get("afbeelding") and key not in known_image:
                 known_image[key] = b["afbeelding"]
             if b.get("stijl") in config.STYLES and key not in known_style:
@@ -136,20 +157,18 @@ def enrich_untappd(all_beers):
     for beers in all_beers.values():
         for b in beers:
             key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
-            if b.get("untappd") is None:
-                hit = known_score.get(key) or _fuzzy_get(known_score, key)
-                if hit:
-                    b["untappd"], b["untappd_aantal"] = hit
-                    filled += 1
-                    # geleende score kan alsnog onder de grens liggen; het bier
-                    # blijft staan, maar de score maakt hem laag in de ranking
-            elif b.get("untappd_aantal") is None:
-                # score is al bekend (bijv. rechtstreeks van Untappd zelf),
-                # maar het aantal ratings ontbreekt: dat lenen we los erbij
-                hit = known_score.get(key) or _fuzzy_get(known_score, key)
-                if hit and hit[1] is not None:
-                    b["untappd_aantal"] = hit[1]
-                    filled += 1
+            hit = known_score.get(key) or _fuzzy_get(known_score, key)
+            if hit:
+                # Untappd-score is een wereldwijd gemiddelde en dus voor ALLE
+                # shops gelijk. Shops cachen op verschillende momenten, dus
+                # we gebruiken overal dezelfde waarde: die met de meeste
+                # ratings. Anders scoort hetzelfde bier per tabblad anders
+                # (en kon een duurdere shop zelfs hoger uitkomen).
+                eigen_n = b.get("untappd_aantal") or 0
+                if b.get("untappd") is None or (hit[1] or 0) > eigen_n:
+                    if b.get("untappd") != hit[0] or b.get("untappd_aantal") != hit[1]:
+                        b["untappd"], b["untappd_aantal"] = hit
+                        filled += 1
             if b.get("stijl") not in config.STYLES:  # brede stijl
                 style = known_style.get(key) or _fuzzy_get(known_style, key)
                 if style:

@@ -26,6 +26,7 @@ import bierloods22
 import bierbrigadier
 import drankgigant
 import untappd_lookup
+import untappd_profiel
 import utils
 import websearch
 
@@ -137,6 +138,12 @@ def main():
             ]
             log.info("%s: %d brede/onverfijnde bieren weggelaten",
                      site["label"], before - len(all_beers[site["key"]]))
+
+    # Untappd-profiel: markeer wat je al gehad hebt en wat in voorraad staat
+    try:
+        untappd_profiel.synchroniseer(all_beers)
+    except Exception:
+        log.exception("Untappd-profielkoppeling mislukt; verder zonder markering")
 
     wb = excel_builder.build_workbook(all_beers, sites)
     out = Path(config.OUTPUT_FILE)
