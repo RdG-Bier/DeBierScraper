@@ -18,6 +18,9 @@ log = logging.getLogger("bierscraper")
 CACHE_DIR = Path(__file__).parent / "cache"
 CACHE_DIR.mkdir(exist_ok=True)
 
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
+
 _session = requests.Session()
 _session.headers.update({"User-Agent": config.USER_AGENT, "Accept-Language": "nl,en;q=0.8"})
 _last_request = [0.0]
@@ -40,7 +43,19 @@ def fetch(url, use_cache=True, timeout=25, headers=None):
         resp = _session.get(url, timeout=timeout, headers=headers)
         _last_request[0] = time.time()
         if resp.status_code != 200:
-            log.warning("HTTP %s voor %s", resp.status_code, url)
+            # Sommige shops weigeren onbekende User-Agents (Hops & Hopes gaf
+            # daardoor 0 bieren terug). Eenmalig opnieuw proberen alsof we een
+            # gewone browser zijn.
+            log.warning("HTTP %s voor %s - opnieuw met browser-UA", resp.status_code, url)
+            time.sleep(1.0)
+            browser = dict(headers or {})
+            browser["User-Agent"] = BROWSER_UA
+            browser.setdefault("Accept",
+                               "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+            resp = _session.get(url, timeout=timeout, headers=browser)
+            _last_request[0] = time.time()
+        if resp.status_code != 200:
+            log.warning("HTTP %s voor %s (ook met browser-UA)", resp.status_code, url)
             return None
         text = resp.text
         cache_file.write_text(text, encoding="utf-8")
