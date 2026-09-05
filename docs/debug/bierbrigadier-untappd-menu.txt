@@ -484,11 +484,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						86,629						<span>Total</span>
+						86,636						<span>Total</span>
 					</li><li>
-						2,804						<span>Unique</span>
+						2,805						<span>Unique</span>
 					</li><li>
-						352						<span>Monthly</span>
+						359						<span>Monthly</span>
 					</li><li>
 												<a href="/v/de-bierbrigadier-tilburg/5523441/activity?filter=you">0</a>
 						<span>You</span>
@@ -498,7 +498,7 @@ $(document).ready(() => {
 								<div class="loyal">
 						<h3>Loyal Patrons (<a href="javascript:void(0)" class="tip" title="This data is refreshed every 48 hours.">?</a>)</h3>
 						<ul>
-							<li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/TheDoubleDee" title="Dennis van Dooren (870 check-ins)">
+							<li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/TheDoubleDee" title="Dennis van Dooren (871 check-ins)">
 									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/a72326d1857adeca3421980791679301_100x100.jpg" alt="Dennis van Dooren avatar">
 								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/KoenG" title="1000 Others (601 check-ins)">
 									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/a1e9df8c36f020eac101628119810bf6_100x100.jpeg" alt="1000 Others avatar">
@@ -1002,13 +1002,13 @@ $(document).ready(() => {
                                     ROTT. BREWING COMPANY                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="0">
-		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(N/A)</span>
+                            <div class="caps small" data-rating="4.475">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-50"></div>
+	</div>                                                            <span class="num">(4.48)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -1218,7 +1218,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.99497">
+                            <div class="caps small" data-rating="3.98642">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1254,13 +1254,13 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.05387">
+                            <div class="caps small" data-rating="4.0444">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.05)</span>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(4.04)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -1434,7 +1434,7 @@ $(document).ready(() => {
                                     Aerofab                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.83036">
+                            <div class="caps small" data-rating="3.82803">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1470,7 +1470,7 @@ $(document).ready(() => {
                                     Aerofab                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.87674">
+                            <div class="caps small" data-rating="3.87613">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1506,13 +1506,13 @@ $(document).ready(() => {
                                     Aerofab                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.90103">
+                            <div class="caps small" data-rating="3.9133">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.9)</span>
+	</div>                                                            <span class="num">(3.91)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -1542,13 +1542,13 @@ $(document).ready(() => {
                                     Basqueland Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="0">
+                            <div class="caps small" data-rating="3.71429">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-70"></div>
 		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(N/A)</span>
+	</div>                                                            <span class="num">(3.71)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -1722,7 +1722,7 @@ $(document).ready(() => {
                                     Warpigs Brewpub                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73447">
+                            <div class="caps small" data-rating="3.73462">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1758,7 +1758,7 @@ $(document).ready(() => {
                                     Clandestin Beer                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.02979">
+                            <div class="caps small" data-rating="4.02972">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1938,13 +1938,13 @@ $(document).ready(() => {
                                     Pulfer Brewery                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.13388">
+                            <div class="caps small" data-rating="4.10809">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.13)</span>
+	</div>                                                            <span class="num">(4.11)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -1974,13 +1974,13 @@ $(document).ready(() => {
                                     Brouwerij LOST                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.02833">
+                            <div class="caps small" data-rating="4.0214">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.03)</span>
+	</div>                                                            <span class="num">(4.02)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -2010,13 +2010,13 @@ $(document).ready(() => {
                                     Brouwerij LOST                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.1838">
+                            <div class="caps small" data-rating="4.1966">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.18)</span>
+	</div>                                                            <span class="num">(4.2)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -2046,7 +2046,7 @@ $(document).ready(() => {
                                     White Dog Brewery                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84457">
+                            <div class="caps small" data-rating="3.84082">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2239,7 +2239,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Funky Fluid                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95864">
+                            <div class="caps small" data-rating="3.95672">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2311,7 +2311,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Funky Fluid                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88224">
+                            <div class="caps small" data-rating="3.88215">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2455,7 +2455,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Augustiner-Bräu München                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.57342">
+                            <div class="caps small" data-rating="3.57337">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2527,11 +2527,11 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     De Noordelijke Mederij                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.54913">
+                            <div class="caps small" data-rating="3.55101">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
+		<div class="cap cap-60"></div>
 		<div class="cap"></div>
 	</div>                                                            <span class="num">(3.55)</span>
                                                     </h6>
@@ -2563,7 +2563,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Rock City Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.32676">
+                            <div class="caps small" data-rating="3.32542">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2707,7 +2707,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Seven Island Brewery                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.30528">
+                            <div class="caps small" data-rating="4.305">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2779,7 +2779,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Omnipollo                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.18928">
+                            <div class="caps small" data-rating="4.1893">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3330,7 +3330,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     De Blauwe IJsbeer                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.53094">
+                            <div class="caps small" data-rating="3.53082">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3762,7 +3762,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     LOC Brewery                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6484">
+                            <div class="caps small" data-rating="3.64871">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3906,7 +3906,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     De Blauwe IJsbeer                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.4475">
+                            <div class="caps small" data-rating="3.44763">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4324,13 +4324,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Amundsen Brewery                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.9722">
+                            <div class="caps small" data-rating="3.95959">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.97)</span>
+	</div>                                                            <span class="num">(3.96)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4396,13 +4396,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     FUERST WIACEK Berlin                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.05575">
+                            <div class="caps small" data-rating="4.03725">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.06)</span>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(4.04)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4432,7 +4432,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     FUERST WIACEK Berlin                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.08943">
+                            <div class="caps small" data-rating="4.08569">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4468,7 +4468,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     FUERST WIACEK Berlin                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09783">
+                            <div class="caps small" data-rating="4.09962">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4612,13 +4612,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     SOMA Beer                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.00075">
+                            <div class="caps small" data-rating="3.98779">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4)</span>
+	</div>                                                            <span class="num">(3.99)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4648,13 +4648,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Basqueland Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75389">
+                            <div class="caps small" data-rating="3.7566">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.75)</span>
+	</div>                                                            <span class="num">(3.76)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4756,7 +4756,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     LERVIG                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77221">
+                            <div class="caps small" data-rating="3.77219">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4792,13 +4792,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     FrauGruber Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88914">
+                            <div class="caps small" data-rating="3.90988">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.91)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4864,7 +4864,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Factory Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.04931">
+                            <div class="caps small" data-rating="4.04822">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4900,13 +4900,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Cervejaria Satélite                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.01502">
+                            <div class="caps small" data-rating="4.00806">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.02)</span>
+	</div>                                                            <span class="num">(4.01)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -4936,7 +4936,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Tesla Cervejaria                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.19099">
+                            <div class="caps small" data-rating="4.19027">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5044,7 +5044,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Sudden Death Brewing Co.                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.08177">
+                            <div class="caps small" data-rating="4.08133">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5116,7 +5116,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Azvex Brewing Company                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.10844">
+                            <div class="caps small" data-rating="4.108">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5188,7 +5188,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Little Rain Brewing Company                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.82322">
+                            <div class="caps small" data-rating="3.82484">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5296,7 +5296,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Sureshot Brewing                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03687">
+                            <div class="caps small" data-rating="4.03683">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5440,7 +5440,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Sudden Death Brewing Co.                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.87171">
+                            <div class="caps small" data-rating="3.87213">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5476,7 +5476,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Sudden Death Brewing Co.                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92893">
+                            <div class="caps small" data-rating="3.9281">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5512,7 +5512,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Folkingebrew                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71327">
+                            <div class="caps small" data-rating="3.71427">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5548,7 +5548,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Funky Fluid                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77458">
+                            <div class="caps small" data-rating="3.77363">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5656,13 +5656,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Hopalaa                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.93528">
+                            <div class="caps small" data-rating="3.9349">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.94)</span>
+	</div>                                                            <span class="num">(3.93)</span>
                                                     </h6>
                                     </div>
             </div>
@@ -5944,7 +5944,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Mad Scientist                                </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.8123">
+                            <div class="caps small" data-rating="3.81376">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6181,5 +6181,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                                     </h6>
                                     </div>
             </div>
-                                                                <div class="beer-prices">
-                                                    
+                                                                <div class="be
