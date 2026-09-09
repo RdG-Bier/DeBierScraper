@@ -484,11 +484,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						86,663						<span>Total</span>
+						86,664						<span>Total</span>
 					</li><li>
 						2,805						<span>Unique</span>
 					</li><li>
-						212						<span>Monthly</span>
+						213						<span>Monthly</span>
 					</li><li>
 												<a href="/v/de-bierbrigadier-tilburg/5523441/activity?filter=you">0</a>
 						<span>You</span>
@@ -871,7 +871,25 @@ $(document).ready(() => {
             </span>
         </div>
 
-		
+					<div class="sort-toggles beverage-tag-filters">
+				<label>Filter by Beverage Tags</label>
+				<div class="beverage-tag-options">
+											<label>
+							<input type="checkbox" class="beverage-tag-filter" value="1">
+							<span>Gluten Free</span>
+						</label>
+											<label>
+							<input type="checkbox" class="beverage-tag-filter" value="2">
+							<span>Vegan</span>
+						</label>
+											<label>
+							<input type="checkbox" class="beverage-tag-filter" value="3">
+							<span>Kosher</span>
+						</label>
+									</div>
+				<p class="beverage-tag-filter-hint">Results will match all selected tags.</p>
+			</div>
+			
 		<div class="selected_sort" style="display: none;">publish_order</div>
 
 		<div class="clear-toggles">
@@ -6048,13 +6066,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
 	</div>                                                            <span class="num">(3.91)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        50cl blik                                    </span>
-                                                                        <span class="price">
-                                        6.19 EUR                                    </span>
-                     
+                                                   
