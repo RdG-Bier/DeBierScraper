@@ -5128,4 +5128,4 @@ overflow: auto
         <template x-if="showButton">
             <div class="text-white flex h-[48px] text-19">
                 <button class="minus w-[30px] cursor-pointer text-center leading-[48px]" @click.prevent="qty = qty >= 1 ? +qty - 1 : qty">-</button>
-                <i
+                <input  class="qty bg-white text-
