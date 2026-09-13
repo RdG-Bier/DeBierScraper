@@ -163,6 +163,7 @@ def main():
     wb.save(docs / "bieroverzicht.xlsx")
     html_builder.build_html(all_beers, sites, docs / "index.html")
     upload_pagina.bouw(docs / "lijsten.html")
+    upload_pagina.schrijf_bekende_bieren(all_beers, docs / "bekende_bieren.json")
 
     total = sum(len(v) for v in all_beers.values())
     log.info("Klaar: %d bieren -> %s en docs/index.html", total, out.resolve())

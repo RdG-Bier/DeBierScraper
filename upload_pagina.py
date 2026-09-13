@@ -9,13 +9,15 @@ browser (kleurt de bieren meteen) en/of gekopieerd naar de bestanden
 mijn_untappd/gehad.txt en voorraad.txt in de repository.
 """
 
+import json
 import logging
 
 import config
+import utils
 
 log = logging.getLogger("bierscraper")
 
-PAGINA = """<!DOCTYPE html>
+PAGINA = r"""<!DOCTYPE html>
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lijsten inlezen</title>
@@ -124,67 +126,136 @@ function zetDoel(){
 }
 
 /* ---------- tekstverwerking ---------- */
-var gevonden = {};   // sleutel -> "Brouwerij - Bier"
+var gevonden = {};     // herkende bieren (genormaliseerd)
+var onzeker = {};      // wel als bier herkend, maar niet in onze database
+var BEKEND = [];       // alle bieren die de scraper kent
+var INDEX = {};        // woord -> lijst met nummers uit BEKEND
+var bekendGeladen = false;
 
-var RE_STIJL = /\\b(IPA|Stout|Sour|Porter|Lager|Pilsner|Pale Ale|Barleywine|Barley Wine|Mead|Mede|Gose|Saison|Wild Ale|Brown Ale|Red Ale|Amber|Witbier|Weizen|Quadrupel|Tripel|Dubbel|Blonde|Cider|Fruit Beer|Smoothie)\\b/i;
-var RE_RUIS = /(%\\s*ABV|\\bABV\\b|Toegevoegd|Added|Untappd|Check-?in|Totaal|Sorteer|Producent|Soort|Filter|^\\s*[\\d.,]+\\s*$|^[^A-Za-z0-9]*$)/i;
+function woorden(s){
+  s = (s || "").toLowerCase();
+  s = s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g,'') : s;
+  return s.replace(/[^a-z0-9]+/g,' ').split(' ').filter(function(w){ return w.length > 1; });
+}
+function laadBekend(){
+  return fetch('bekende_bieren.json').then(function(r){ return r.json(); })
+   .then(function(lijst){
+     BEKEND = lijst.map(function(e){
+       var nt = woorden(e.n).filter(function(w){ return w.length >= 4; });
+       return { b: e.b, n: e.n, nt: nt, bt: woorden(e.b) };
+     }).filter(function(e){ return e.nt.length > 0; });
+     INDEX = {};
+     BEKEND.forEach(function(e, i){
+       e.nt.concat(e.bt).forEach(function(w){
+         if(!INDEX[w]) INDEX[w] = [];
+         if(INDEX[w][INDEX[w].length-1] !== i) INDEX[w].push(i);
+       });
+     });
+     bekendGeladen = true;
+     status(BEKEND.length + " bekende bieren geladen. Kies hierboven een bestand.");
+   }).catch(function(){
+     status("Let op: bekende_bieren.json niet gevonden; draai eerst de scraper. "
+            + "Tekst plakken werkt wel.");
+   });
+}
 
-function isStijlregel(r){
-  if(!RE_STIJL.test(r)) return false;
-  var woorden = r.trim().split(/\\s+/).length;
-  return woorden <= 8;
+/* Zoek de beste echte match voor een gelezen regel. Bijna alle woorden van de
+   biernaam moeten voorkomen, anders wordt het afgewezen. Zo verdwijnt OCR-
+   rommel en worden kleine leesfouten vanzelf rechtgezet. */
+function zoekBier(regel){
+  var kand = {};
+  woorden(regel).forEach(function(w){ kand[w] = 1; });
+  if(Object.keys(kand).length < 2) return null;
+  var mogelijk = {};
+  for(var w in kand){
+    (INDEX[w] || []).forEach(function(i){ mogelijk[i] = 1; });
+  }
+  var best = null, bestScore = 0;
+  for(var i in mogelijk){
+    var e = BEKEND[i];
+    var raakN = 0;
+    e.nt.forEach(function(w){ if(kand[w]) raakN++; });
+    if(raakN < e.nt.length * 0.8) continue;      // naam moet vrijwel compleet zijn
+    var raakB = 0;
+    e.bt.forEach(function(w){ if(kand[w]) raakB++; });
+    var score = (raakN + raakB * 0.5) / (e.nt.length + e.bt.length * 0.5 || 1);
+    if(score > bestScore){ best = e; bestScore = score; }
+  }
+  return bestScore >= 0.55 ? best : null;
 }
-function schoon(r){
-  return r.replace(/[|_«»•©®]/g,' ').replace(/\\s+/g,' ').trim();
-}
-function sleutelVan(tekst){
-  var s = tekst.toLowerCase();
-  s = s.normalize ? s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'') : s;
-  s = s.replace(/[^a-z0-9]+/g,' ');
-  s = s.replace(/\\b(brewery|brewing|brouwerij|company|co|craft|bryggeri|bryghus|brasserie|birrificio|cervejaria|browar)\\b/g,' ');
-  return s.replace(/\\s+/g,' ').trim();
-}
-function voegToe(brouwerij, naam){
-  naam = schoon(naam || ""); brouwerij = schoon(brouwerij || "");
-  if(naam.length < 3 || RE_RUIS.test(naam) || isStijlregel(naam)) return false;
-  var regel = (brouwerij ? brouwerij + " - " : "") + naam;
-  var sl = sleutelVan(regel);
-  if(!sl || gevonden[sl]) return false;
+
+function voegBekendToe(treffer){
+  var regel = (treffer.b ? treffer.b + " - " : "") + treffer.n;
+  var sl = woorden(regel).join(' ');
+  if(gevonden[sl]) return false;
   gevonden[sl] = regel;
   return true;
 }
 
-/* In de Untappd-app staat per bier: naam / brouwerij / stijl / ABV / score.
-   De stijlregel is het betrouwbaarste ankerpunt: de twee regels erboven
-   zijn dan de biernaam en de brouwerij. */
+/* Ankerregels: in de app staat onder elk bier een stijl-, beoordelings- of
+   datumregel. De twee regels daarboven zijn de biernaam en de brouwerij.
+   Ruim geschreven, zodat OCR-typfouten ("Becordeling", "gadronken op")
+   ook nog herkend worden. */
+var RE_ANKER = /(dronken\s*op|ordeling|rating|toegevoegd|checked\s*in|resultat)/i;
+var RE_STIJL = /\b(IPA|Stout|Sour|Porter|Lager|Pilsner|Pale Ale|Barleywine|Barley Wine|Mead|Mede|Gose|Saison|Wild Ale|Brown Ale|Red Ale|Witbier|Weizen|Quadrupel|Tripel|Dubbel|Cider|Smoothie)\b/i;
+function isAnker(r){
+  if(RE_ANKER.test(r)) return true;
+  return RE_STIJL.test(r) && r.trim().split(/\s+/).length <= 8;
+}
+/* Ziet dit eruit als een echte naam, of als OCR-gruis? */
+function isNaamachtig(t){
+  t = (t || "").trim();
+  if(t.length < 3 || t.length > 60) return false;
+  var letters = (t.match(/[a-zA-Z\u00C0-\u024F ]/g) || []).length;
+  if(letters / t.length < 0.65) return false;
+  var woorden = t.split(/\s+/).filter(function(w){ return /^[a-zA-Z\u00C0-\u024F]+$/.test(w); });
+  if(!woorden.length) return false;
+  var langste = 0;
+  woorden.forEach(function(w){ if(w.length > langste) langste = w.length; });
+  return langste >= 4;
+}
+
 function verwerkOcr(tekst){
-  var regels = tekst.split(/\\r?\\n/).map(schoon).filter(function(r){ return r.length > 1; });
+  var regels = tekst.split(/\r?\n/)
+    .map(function(r){ return r.replace(/[|_«»•©®]/g,' ').replace(/\s+/g,' ').trim(); })
+    .filter(function(r){ return r.length > 1; });
   var nieuw = 0;
   for(var i = 0; i < regels.length; i++){
-    if(isStijlregel(regels[i]) && i >= 2){
-      if(voegToe(regels[i-1], regels[i-2])) nieuw++;
-    }
-  }
-  if(nieuw === 0){   // geen stijlregels herkend: alles wat op een naam lijkt
-    regels.forEach(function(r){
-      if(!RE_RUIS.test(r) && !isStijlregel(r) && r.length >= 4 && /[a-z]/i.test(r)){
-        if(voegToe("", r)) nieuw++;
-      }
-    });
+    if(!isAnker(regels[i]) || i < 2) continue;
+    var naam = regels[i-2], brouw = regels[i-1];
+    if(isAnker(naam) || isAnker(brouw)) continue;
+    if(!isNaamachtig(naam) || !isNaamachtig(brouw)) continue;
+
+    // eerst proberen te normaliseren tegen de bieren die we kennen
+    var treffer = bekendGeladen ? (zoekBier(brouw + " " + naam) || zoekBier(naam)) : null;
+    if(treffer){ if(voegBekendToe(treffer)) nieuw++; continue; }
+    // onbekend (bijv. een check-in uit 2024): bewaren als "controleren"
+    var regel = brouw + " - " + naam;
+    var sl = woorden(regel).join(' ');
+    if(sl && !gevonden[sl] && !onzeker[sl]){ onzeker[sl] = regel; nieuw++; }
   }
   toonResultaat();
   return nieuw;
 }
 
+var SCHEIDING = "# --- hieronder niet in de database gevonden: controleer even ---";
 function toonResultaat(){
-  var lijst = Object.keys(gevonden).sort().map(function(k){ return gevonden[k]; });
-  document.getElementById('resultaat').value = lijst.join("\\n");
+  var zeker = Object.keys(gevonden).sort().map(function(k){ return gevonden[k]; });
+  var twijfel = Object.keys(onzeker).sort().map(function(k){ return onzeker[k]; });
+  var tekst = zeker.join("\\n");
+  if(twijfel.length){ tekst += (tekst ? "\\n\\n" : "") + SCHEIDING + "\\n" + twijfel.join("\\n"); }
+  document.getElementById('resultaat').value = tekst;
   toonTelling();
 }
 function toonTelling(){
-  var n = Object.keys(gevonden).length;
-  document.getElementById('telling').textContent =
-    n ? "(" + n + " bieren, doel: " + (doel === "had" ? "al gehad" : "voorraad") + ")" : "";
+  var n = Object.keys(gevonden).length, t = Object.keys(onzeker).length;
+  var tekst = "";
+  if(n || t){
+    tekst = "(" + n + " herkend";
+    if(t) tekst += " + " + t + " te controleren";
+    tekst += ", doel: " + (doel === "had" ? "al gehad" : "voorraad") + ")";
+  }
+  document.getElementById('telling').textContent = tekst;
 }
 function status(t){ document.getElementById('status').textContent = t; }
 function balk(p){ document.getElementById('balk').style.width = Math.round(p*100) + "%"; }
@@ -220,12 +291,13 @@ async function leesVideo(bestand){
     await new Promise(function(r){ video.onseeked = r; });
     var c = tekenOpCanvas(video, video.videoWidth, video.videoHeight);
     status("Beeldje " + (i+1) + " van " + totaal + " lezen... (" +
-           Object.keys(gevonden).length + " bieren gevonden)");
+           (Object.keys(gevonden).length + Object.keys(onzeker).length) + " bieren)");
     balk((i+1) / totaal);
     try { nieuw += verwerkOcr(await ocr(c)); } catch(e){ }
   }
   balk(1);
-  status("Klaar. " + Object.keys(gevonden).length + " bieren gevonden. Controleer de lijst hieronder.");
+  status("Klaar. " + Object.keys(gevonden).length + " herkend, " +
+         Object.keys(onzeker).length + " te controleren.");
   URL.revokeObjectURL(video.src);
 }
 
@@ -237,7 +309,8 @@ async function leesFotos(bestanden){
     try { verwerkOcr(await ocr(bestanden[i])); } catch(e){ }
   }
   balk(1);
-  status("Klaar. " + Object.keys(gevonden).length + " bieren gevonden.");
+  status("Klaar. " + Object.keys(gevonden).length + " herkend, " +
+         Object.keys(onzeker).length + " te controleren.");
 }
 
 function leesPlak(){
@@ -250,12 +323,18 @@ function leesPlak(){
     var iB = kolommen.indexOf('beer_name'), iBr = kolommen.indexOf('brewery_name');
     regels.slice(1).forEach(function(r){
       var v = splitsCsv(r);
-      voegToe(iBr >= 0 ? v[iBr] : "", iB >= 0 ? v[iB] : "");
+      var regel = (((iBr >= 0 ? v[iBr] : "") + " - " + (iB >= 0 ? v[iB] : "")).replace(/^\s*-\s*|\s*-\s*$/g,"")).trim();
+      var t = bekendGeladen ? zoekBier(regel) : null;
+      if(t){ voegBekendToe(t); return; }
+      var sl = woorden(regel).join(' ');
+      if(sl && !gevonden[sl]) gevonden[sl] = regel;
     });
   } else {
     regels.forEach(function(r){
-      var d = r.split(/\\s+-\\s+/);
-      if(d.length === 2){ voegToe(d[0], d[1]); } else { voegToe("", r); }
+      var t = bekendGeladen ? zoekBier(r) : null;
+      if(t){ voegBekendToe(t); return; }          // typefout rechtgezet
+      var sl = woorden(r).join(' ');
+      if(sl && !gevonden[sl]) gevonden[sl] = r;   // onbekend bier: toch bewaren
     });
   }
   document.getElementById('plakveld').value = "";
@@ -278,7 +357,7 @@ function splitsCsv(regel){
 function huidigeLijst(){
   return (document.getElementById('resultaat').value || "")
     .split(/\\r?\\n/).map(function(r){ return r.trim(); })
-    .filter(function(r){ return r.length > 2; });
+    .filter(function(r){ return r.length > 2 && r.charAt(0) !== "#"; });
 }
 function bewaar(){
   var sleutel = doel === "had" ? "untappd_had" : "untappd_wens";
@@ -310,11 +389,54 @@ function download(){
   status("Gedownload als " + naam + ". Upload dit bestand naar mijn_untappd/ in je repository.");
 }
 function leeg(){
-  gevonden = {}; toonResultaat(); balk(0); status("Lijst gewist.");
+  gevonden = {}; onzeker = {}; toonResultaat(); balk(0); status("Lijst gewist.");
 }
 zetDoel();
+laadBekend();
 </script>
 </body></html>"""
+
+
+def schrijf_bekende_bieren(all_beers, output_path):
+    """Lijst met alle bieren die we kennen, als naslag voor de uploadpagina.
+    Daarmee kan die pagina gelezen tekst toetsen aan echte bieren: rommel uit
+    een schermopname valt af en typfouten worden vanzelf rechtgezet."""
+    gezien, uit = set(), []
+    for bieren in all_beers.values():
+        for b in bieren:
+            naam = (b.get("naam") or "").strip()
+            if not naam:
+                continue
+            sleutel = utils.beer_match_key(b.get("brouwerij"), naam)
+            if not sleutel or sleutel in gezien:
+                continue
+            gezien.add(sleutel)
+            uit.append({"b": (b.get("brouwerij") or "").strip(), "n": naam})
+    # Ook alles wat ooit gezien is meenemen: check-ins gaan jaren terug en die
+    # bieren liggen allang niet meer in de schappen.
+    uit_db = 0
+    db_pad = output_path.parent / "bierdatabase.json"
+    if db_pad.exists():
+        try:
+            db = json.loads(db_pad.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            db = {}
+        for sleutel, gegevens in db.items():
+            if sleutel in gezien:
+                continue
+            gezien.add(sleutel)
+            naam = (gegevens or {}).get("nm")
+            if naam:
+                brouwerij, _, biernaam = naam.partition(" - ")
+                uit.append({"b": brouwerij if biernaam else "", "n": biernaam or naam})
+            else:
+                uit.append({"b": "", "n": sleutel})  # alleen sleutelwoorden bekend
+            uit_db += 1
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(uit, ensure_ascii=False), encoding="utf-8")
+    log.info("Bekende bieren voor de uploadpagina: %d (%d uit de shops, %d uit "
+             "de database)", len(uit), len(uit) - uit_db, uit_db)
 
 
 def bouw(output_path):

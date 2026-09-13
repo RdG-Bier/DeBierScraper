@@ -209,6 +209,10 @@ def _update_db(db, all_beers):
             if not key:
                 continue
             entry = db.setdefault(key, {})
+            if not entry.get("nm") and b.get("naam"):
+                # leesbare naam bewaren: dient als naslag voor de uploadpagina,
+                # ook lang nadat een bier uit de schappen is verdwenen
+                entry["nm"] = f"{(b.get('brouwerij') or '').strip()} - {b['naam']}".strip(" -")
             if b.get("untappd") is not None:
                 new_count = b.get("untappd_aantal") or 0
                 if not entry.get("s") or new_count >= (entry.get("c") or 0):
