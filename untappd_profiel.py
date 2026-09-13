@@ -278,18 +278,34 @@ def _parse_bieren(html, gevonden):
 # Markeren + cache
 # ---------------------------------------------------------------------------
 
+def _naam_index(bron):
+    """Extra index op alleen de biernaam, voor shops die de brouwerij anders
+    (of helemaal niet) vermelden. Alleen bij namen van voldoende lengte,
+    anders zou 'Velvet' ook 'Bistro Raspberry Velvet' kunnen raken."""
+    index = {}
+    for waarde in (bron or {}).values():
+        deel = str(waarde).split(" - ", 1)
+        naam = deel[1] if len(deel) == 2 else deel[0]
+        sleutel = utils.beer_match_key(None, naam)
+        if len(sleutel) >= 8:
+            index[sleutel] = waarde
+    return index
+
+
 def _markeer(all_beers, bewaard):
     gehad = bewaard.get("gehad") or {}
     voorraad = bewaard.get("voorraad") or {}
+    gehad_naam = _naam_index(gehad)
+    voorraad_naam = _naam_index(voorraad)
     n_gehad = n_voorraad = 0
     for bieren in all_beers.values():
         for b in bieren:
             sleutel = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             naam_sleutel = utils.beer_match_key(None, b.get("naam"))
-            if sleutel in gehad or (len(naam_sleutel) >= 8 and naam_sleutel in gehad):
+            if sleutel in gehad or naam_sleutel in gehad_naam:
                 b["gehad"] = True
                 n_gehad += 1
-            if sleutel in voorraad or (len(naam_sleutel) >= 8 and naam_sleutel in voorraad):
+            if sleutel in voorraad or naam_sleutel in voorraad_naam:
                 b["voorraad"] = True
                 n_voorraad += 1
     if gehad or voorraad:

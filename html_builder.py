@@ -206,18 +206,25 @@ function bouwIndex(lijst){
   return {vol: vol, naam: naam};
 }
 function markeer(){
+  // De scraper zet de markering al bij het bouwen van de pagina vast in
+  // data-gehad / data-voorraad. Die mag nooit overschreven worden; de
+  // handmatig geplakte lijsten komen er alleen bij.
   var had = bouwIndex(laadLijst('untappd_had'));
   var wens = bouwIndex(laadLijst('untappd_wens'));
   document.querySelectorAll('.card').forEach(function(c){
     var k = c.dataset.key, n = c.dataset.naamkey;
-    var isHad = had.vol[k] || had.naam[n];
-    var isWens = !isHad && (wens.vol[k] || wens.naam[n]);
-    c.classList.toggle('gehad', !!isHad);
-    c.classList.toggle('wens', !!isWens);
+    var isHad = c.dataset.gehad === "1" || !!(had.vol[k] || had.naam[n]);
+    var isWens = c.dataset.voorraad === "1" || !!(wens.vol[k] || wens.naam[n]);
+    c.classList.toggle('gehad', isHad && !isWens);
+    c.classList.toggle('wens', isWens);
     var vlag = c.querySelector('.vlag');
-    vlag.textContent = isHad ? '\\u2713 al gehad' : (isWens ? '\\u2605 wenslijst' : '');
+    if(isWens && isHad){ vlag.textContent = '\u2605 in voorraad \u00b7 \u2713 al gehad'; }
+    else if(isWens){ vlag.textContent = '\u2605 in voorraad'; }
+    else if(isHad){ vlag.textContent = '\u2713 al gehad'; }
+    else { vlag.textContent = ''; }
   });
 }
+
 
 /* ---------- filters ---------- */
 function togglePaneel(id){
@@ -543,7 +550,9 @@ def _card(beer, site, sites, price_lookup):
   data-stijl="{e(beer.get('stijl'))}"
   data-untappd="{beer.get('untappd') if beer.get('untappd') is not None else ''}"
   data-prijs="{beer.get('prijs') if beer.get('prijs') is not None else ''}"
-  data-sterk="{'1' if beer.get('sterke_voorkeur') else '0'}">
+  data-sterk="{'1' if beer.get('sterke_voorkeur') else '0'}"
+  data-gehad="{'1' if beer.get('gehad') else '0'}"
+  data-voorraad="{'1' if beer.get('voorraad') else '0'}">
   <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
   <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
   <div class="rechts"><div class="score">{beer.get('score', 0)}</div>{img_html}</div></div>

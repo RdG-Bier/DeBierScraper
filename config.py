@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v34"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v35"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
