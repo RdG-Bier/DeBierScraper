@@ -37,6 +37,8 @@ import utils
 log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_profiel.json"
+BESTAND_GEHAD = Path(__file__).parent / "mijn_untappd" / "gehad.txt"
+BESTAND_VOORRAAD = Path(__file__).parent / "mijn_untappd" / "voorraad.txt"
 BASIS = "https://untappd.com"
 API = "https://api.untappd.com/v4"
 STAP_HTML = 25
@@ -53,6 +55,13 @@ def synchroniseer(all_beers):
     bewaard = _laad_cache()
     lijstnamen = getattr(config, "UNTAPPD_VOORRAAD_LIJSTEN", ())
 
+    # Route 1: handmatige lijsten uit de repository (werkt altijd)
+    uit_bestand_gehad = _lees_bestand(BESTAND_GEHAD)
+    uit_bestand_voorraad = _lees_bestand(BESTAND_VOORRAAD)
+    if uit_bestand_gehad or uit_bestand_voorraad:
+        log.info("Untappd-bestanden: %d gehad, %d voorraad ingelezen",
+                 len(uit_bestand_gehad), len(uit_bestand_voorraad))
+
     cid = os.environ.get("UNTAPPD_CLIENT_ID", "").strip()
     secret = os.environ.get("UNTAPPD_CLIENT_SECRET", "").strip()
     cookie = os.environ.get("UNTAPPD_COOKIE", "").strip()
@@ -64,10 +73,14 @@ def synchroniseer(all_beers):
     elif cookie:
         methode = "cookie"
         gehad, voorraad = _via_html(gebruiker, lijstnamen, cookie)
-    else:
-        log.warning("Untappd-profiel: geen API-sleutels en geen cookie ingesteld. "
-                    "Untappd vereist inloggen voor profielpagina's, dus de "
-                    "markering blijft leeg. Zie untappd_profiel.py voor uitleg.")
+    elif not (uit_bestand_gehad or uit_bestand_voorraad):
+        log.warning("Untappd: geen cookie, geen API-sleutels en geen bestanden in "
+                    "mijn_untappd/. De markering blijft leeg.")
+
+    gehad = _samenvoegen(gehad, uit_bestand_gehad)
+    voorraad = _samenvoegen(voorraad, uit_bestand_voorraad)
+    if uit_bestand_gehad or uit_bestand_voorraad:
+        methode = (methode + "+bestand") if methode != "geen" else "bestand"
 
     if gehad:
         bewaard["gehad"] = _samenvoegen(bewaard.get("gehad"), gehad)
@@ -282,6 +295,59 @@ def _markeer(all_beers, bewaard):
     if gehad or voorraad:
         log.info("Untappd: %d bieren gemarkeerd als 'gehad', %d als 'voorraad'",
                  n_gehad, n_voorraad)
+
+
+def _lees_bestand(pad):
+    """Lees een handmatige lijst: 'Brouwerij - Bier' per regel, of een
+    Untappd CSV-export met een kolom beer_name (+ brewery_name)."""
+    if not pad.exists():
+        return {}
+    try:
+        regels = [r.strip() for r in pad.read_text(encoding="utf-8").splitlines()]
+    except OSError:
+        return {}
+    regels = [r for r in regels if r and not r.startswith("#")]
+    if not regels:
+        return {}
+    gevonden = {}
+    if "beer_name" in regels[0].lower():
+        kolommen = _split_csv(regels[0])
+        i_bier = kolommen.index("beer_name") if "beer_name" in kolommen else -1
+        i_brouw = kolommen.index("brewery_name") if "brewery_name" in kolommen else -1
+        for regel in regels[1:]:
+            velden = _split_csv(regel)
+            _voeg_toe(gevonden,
+                      velden[i_brouw] if 0 <= i_brouw < len(velden) else "",
+                      velden[i_bier] if 0 <= i_bier < len(velden) else "")
+    else:
+        for regel in regels:
+            brouw, _, naam = regel.partition(" - ")
+            if not naam:
+                brouw, naam = "", regel
+            _voeg_toe(gevonden, brouw, naam)
+    return gevonden
+
+
+def _voeg_toe(doel, brouwerij, naam):
+    naam = (naam or "").strip()
+    if len(naam) < 2:
+        return
+    sleutel = utils.beer_match_key(brouwerij, naam)
+    if sleutel:
+        doel[sleutel] = f"{(brouwerij or '').strip()} - {naam}".strip(" -")
+
+
+def _split_csv(regel):
+    velden, huidig, quotes = [], "", False
+    for teken in regel:
+        if teken == '"':
+            quotes = not quotes
+        elif teken == "," and not quotes:
+            velden.append(huidig.strip().lower()); huidig = ""
+        else:
+            huidig += teken
+    velden.append(huidig.strip().lower())
+    return velden
 
 
 def _samenvoegen(oud, nieuw):

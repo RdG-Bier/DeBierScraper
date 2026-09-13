@@ -396,6 +396,7 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
   <button class="knop" id="verversknop" onclick="ververs()">&#8635; Ververs nu</button>
   <button class="knop" onclick="togglePaneel('filterpaneel')">&#9776; Filters</button>
   <button class="knop" onclick="togglePaneel('untappdpaneel')">Mijn Untappd</button>
+  <a class="knop" href="lijsten.html" style="text-decoration:none">&#128220; Lijsten inlezen</a>
   <a class="dl" href="{excel_name}" download>&#11015; Excel</a>
   <span class="status" id="status"></span>
 </div></header>
@@ -433,15 +434,13 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
 
 <div class="paneel" id="untappdpaneel">
   <h4>Mijn Untappd <span class="mini" id="untappd-aantal"></span></h4>
-  <p class="mini">Je Untappd-profiel <b>{untappd_user}</b> wordt automatisch uitgelezen:
-  ingecheckte bieren krijgen een <b>groene</b> achtergrond, bieren op je
-  voorraadlijsten een <b>gele</b>. Dat gebeurt bij elke scrape-run; je hoeft
-  hier dus niets te doen. Voorwaarde is wel dat je profiel openbaar staat
-  (Untappd &rarr; Settings &rarr; Privacy).<br><br>
-  Klopt er iets niet of wil je zelf bieren toevoegen? Dan kun je hieronder
-  handmatig lijsten plakken (&eacute;&eacute;n bier per regel, eventueel als
-  <i>Brouwerij - Biernaam</i>). Die blijven alleen in deze browser staan en
-  vullen de automatische koppeling aan.</p>
+  <p class="mini">Untappd blokkeert automatisch uitlezen (inloggen verplicht, en
+  API-sleutels worden niet meer uitgegeven). De markering komt daarom uit:<br>
+  <b>1.</b> <code>mijn_untappd/gehad.txt</code> (groen) en
+  <code>voorraad.txt</code> (geel) in de repository - bij te werken via github.com.<br>
+  <b>2.</b> <a href="lijsten.html">Lijsten inlezen</a>: schermopname, screenshots
+  of geplakte tekst laten uitlezen.<br>
+  <b>3.</b> Hieronder plakken, voor als je snel iets wilt toevoegen.</p>
   <div>Extra: al gehad<textarea id="gehadveld" placeholder="Brouwerij Kees - Caramel Fudge Stout"></textarea></div>
   <div>Extra: in voorraad<textarea id="wensveld" placeholder="Arpus - QDH Riwaka"></textarea></div>
   <div class="rij">

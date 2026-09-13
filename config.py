@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v31"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v34"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -72,10 +72,15 @@ SITES = [
         "listing_url": "https://www.hopsandhopes.nl/bieren",
     },
     {
-        "key": "beerrepublic",
-        "label": "Beer Republic",
-        "type": "shopify",
-        "base_url": "https://beerrepublic.eu",
+        "key": "dehopwinkel",
+        "label": "De Hopwinkel",
+        "type": "woocommerce",
+        "base_url": "https://www.dehopwinkel.nl",
+        "api_url": "https://www.dehopwinkel.nl/wp-json/wc/store/v1/products",
+        # LET OP: de robots.txt van deze winkel verbiedt geautomatiseerde
+        # toegang. Zet dit pas op True als je daar toestemming voor hebt
+        # (mailtje naar de winkel volstaat) of als hun robots.txt wijzigt.
+        "enabled": False,
     },
 ]
 

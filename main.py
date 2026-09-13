@@ -18,6 +18,7 @@ from pathlib import Path
 import config
 import excel_builder
 import html_builder
+import upload_pagina
 import hopsandhopes
 import lightspeed
 import shopify
@@ -65,6 +66,12 @@ def main():
             log.error("Onbekende site-key(s). Beschikbaar: %s",
                       ", ".join(s["key"] for s in config.SITES))
             sys.exit(1)
+
+    overgeslagen = [s["label"] for s in sites if s.get("enabled") is False]
+    if overgeslagen:
+        log.info("Uitgeschakeld in config.py, wordt overgeslagen: %s",
+                 ", ".join(overgeslagen))
+    sites = [s for s in sites if s.get("enabled") is not False]
 
     all_beers = {}
     for site in sites:
@@ -155,6 +162,7 @@ def main():
     docs.mkdir(exist_ok=True)
     wb.save(docs / "bieroverzicht.xlsx")
     html_builder.build_html(all_beers, sites, docs / "index.html")
+    upload_pagina.bouw(docs / "lijsten.html")
 
     total = sum(len(v) for v in all_beers.values())
     log.info("Klaar: %d bieren -> %s en docs/index.html", total, out.resolve())
