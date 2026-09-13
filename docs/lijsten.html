@@ -223,8 +223,8 @@ var SCHEIDING = "# --- hieronder niet in de database gevonden: controleer even -
 function toonResultaat(){
   var zeker = Object.keys(gevonden).sort().map(function(k){ return gevonden[k]; });
   var twijfel = Object.keys(onzeker).sort().map(function(k){ return onzeker[k]; });
-  var tekst = zeker.join("\\n");
-  if(twijfel.length){ tekst += (tekst ? "\\n\\n" : "") + SCHEIDING + "\\n" + twijfel.join("\\n"); }
+  var tekst = zeker.join("\n");
+  if(twijfel.length){ tekst += (tekst ? "\n\n" : "") + SCHEIDING + "\n" + twijfel.join("\n"); }
   document.getElementById('resultaat').value = tekst;
   toonTelling();
 }
@@ -296,7 +296,7 @@ async function leesFotos(bestanden){
 
 function leesPlak(){
   var tekst = document.getElementById('plakveld').value || "";
-  var regels = tekst.split(/\\r?\\n/).map(schoon).filter(function(r){ return r.length > 2; });
+  var regels = tekst.split(/\r?\n/).map(schoon).filter(function(r){ return r.length > 2; });
   if(!regels.length) return;
   var kop = regels[0].toLowerCase();
   if(kop.indexOf('beer_name') >= 0){
@@ -337,13 +337,13 @@ function splitsCsv(regel){
 /* ---------- opslaan ---------- */
 function huidigeLijst(){
   return (document.getElementById('resultaat').value || "")
-    .split(/\\r?\\n/).map(function(r){ return r.trim(); })
+    .split(/\r?\n/).map(function(r){ return r.trim(); })
     .filter(function(r){ return r.length > 2 && r.charAt(0) !== "#"; });
 }
 function bewaar(){
   var sleutel = doel === "had" ? "untappd_had" : "untappd_wens";
   var items = huidigeLijst().map(function(r){
-    var d = r.split(/\\s+-\\s+/);
+    var d = r.split(/\s+-\s+/);
     var brouw = d.length === 2 ? d[0] : "", naam = d.length === 2 ? d[1] : r;
     return { vol: sleutelVan(brouw + " " + naam), naam: sleutelVan(naam) };
   });
@@ -364,7 +364,7 @@ function kopieer(){
 }
 function download(){
   var naam = doel === "had" ? "gehad.txt" : "voorraad.txt";
-  var blob = new Blob([huidigeLijst().join("\\n") + "\\n"], {type:"text/plain"});
+  var blob = new Blob([huidigeLijst().join("\n") + "\n"], {type:"text/plain"});
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = naam; a.click();
   status("Gedownload als " + naam + ". Upload dit bestand naar mijn_untappd/ in je repository.");
