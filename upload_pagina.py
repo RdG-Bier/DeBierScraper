@@ -95,6 +95,16 @@ button:disabled { opacity:.5; cursor:default; }
 </div>
 
 <div class="kaart">
+  <h2>2d. CSV-bestand uploaden</h2>
+  <p class="mini">Heb je een CSV van de Untappd-extensie of een Untappd-export?
+  Kies het bestand hieronder. Zowel komma's als puntkomma's als scheidingsteken
+  worden herkend, en de kolommen <i>beer_name/brewery_name</i> of
+  <i>brouwerij_naam</i> worden automatisch gebruikt.</p>
+  <input type="file" accept=".csv,text/csv,text/plain" multiple id="csvbestand"
+         onchange="leesCsvBestanden(this.files)">
+</div>
+
+<div class="kaart">
   <h2>3. Voortgang</h2>
   <div class="balk"><div id="balk"></div></div>
   <div class="status" id="status">Nog niets ingelezen.</div>
@@ -132,6 +142,9 @@ var BEKEND = [];       // alle bieren die de scraper kent
 var INDEX = {};        // woord -> lijst met nummers uit BEKEND
 var bekendGeladen = false;
 
+function schoon(r){
+  return (r || "").replace(/[|_«»•©®]/g,' ').replace(/\s+/g,' ').trim();
+}
 function woorden(s){
   s = (s || "").toLowerCase();
   s = s.normalize ? s.normalize('NFD').replace(/[\u0300-\u036f]/g,'') : s;
@@ -314,43 +327,80 @@ async function leesFotos(bestanden){
 }
 
 function leesPlak(){
-  var tekst = document.getElementById('plakveld').value || "";
-  var regels = tekst.split(/\r?\n/).map(schoon).filter(function(r){ return r.length > 2; });
-  if(!regels.length) return;
-  var kop = regels[0].toLowerCase();
-  if(kop.indexOf('beer_name') >= 0){
-    var kolommen = splitsCsv(regels[0]);
-    var iB = kolommen.indexOf('beer_name'), iBr = kolommen.indexOf('brewery_name');
-    regels.slice(1).forEach(function(r){
-      var v = splitsCsv(r);
-      var regel = (((iBr >= 0 ? v[iBr] : "") + " - " + (iB >= 0 ? v[iB] : "")).replace(/^\s*-\s*|\s*-\s*$/g,"")).trim();
-      var t = bekendGeladen ? zoekBier(regel) : null;
-      if(t){ voegBekendToe(t); return; }
-      var sl = woorden(regel).join(' ');
-      if(sl && !gevonden[sl]) gevonden[sl] = regel;
-    });
-  } else {
-    regels.forEach(function(r){
-      var t = bekendGeladen ? zoekBier(r) : null;
-      if(t){ voegBekendToe(t); return; }          // typefout rechtgezet
-      var sl = woorden(r).join(' ');
-      if(sl && !gevonden[sl]) gevonden[sl] = r;   // onbekend bier: toch bewaren
-    });
-  }
+  var n = verwerkTekst(document.getElementById('plakveld').value || "");
   document.getElementById('plakveld').value = "";
-  toonResultaat();
-  status(Object.keys(gevonden).length + " bieren in de lijst.");
+  status(n + " bieren toegevoegd. Controleer de lijst hieronder.");
 }
-function splitsCsv(regel){
+function splitsCsv(regel, sep){
+  // sep wordt automatisch bepaald als hij niet is meegegeven: de extensie
+  // gebruikt ';', een Untappd-export gebruikt ','.
+  if(!sep){ sep = (regel.split(";").length > regel.split(",").length) ? ";" : ","; }
   var uit=[], cur="", q=false;
   for(var i=0;i<regel.length;i++){
     var c=regel[i];
     if(c === '"'){ q = !q; }
-    else if(c === ',' && !q){ uit.push(cur.trim().toLowerCase()); cur=""; }
+    else if(c === sep && !q){ uit.push(cur.trim().toLowerCase()); cur=""; }
     else { cur += c; }
   }
   uit.push(cur.trim().toLowerCase());
   return uit;
+}
+
+// Gedeelde CSV/tekst-verwerking: gebruikt door plakveld EN bestandsupload.
+function verwerkTekst(tekst){
+  var regels = tekst.split(/\r?\n/).map(schoon).filter(function(r){ return r.length > 2; });
+  if(!regels.length) return 0;
+  var voor = Object.keys(gevonden).length + Object.keys(onzeker).length;
+  var kop = regels[0].toLowerCase();
+  if(kop.indexOf('beer_name') >= 0 || kop.indexOf('brouwerij_naam') >= 0
+     || kop.indexOf('brouwerij') >= 0){
+    var sep = (regels[0].split(";").length > regels[0].split(",").length) ? ";" : ",";
+    var kolommen = splitsCsv(regels[0], sep);
+    var iCombi = kolommen.indexOf('brouwerij_naam');
+    var iB = kolommen.indexOf('beer_name');
+    if(iB < 0) iB = kolommen.indexOf('naam');
+    var iBr = kolommen.indexOf('brewery_name');
+    if(iBr < 0) iBr = kolommen.indexOf('brouwerij');
+    regels.slice(1).forEach(function(r){
+      var v = splitsCsv(r, sep);
+      var regel;
+      if(iCombi >= 0 && v[iCombi]){ regel = v[iCombi]; }
+      else { regel = (((iBr >= 0 ? v[iBr] : "") + " - " + (iB >= 0 ? v[iB] : ""))
+                      .replace(/^\s*-\s*|\s*-\s*$/g,"")).trim(); }
+      if(!regel) return;
+      var t = bekendGeladen ? zoekBier(regel) : null;
+      if(t){ voegBekendToe(t); return; }
+      var sl = woorden(regel).join(' ');
+      if(sl && !gevonden[sl] && !onzeker[sl]) onzeker[sl] = regel;
+    });
+  } else {
+    regels.forEach(function(r){
+      var t = bekendGeladen ? zoekBier(r) : null;
+      if(t){ voegBekendToe(t); return; }
+      var sl = woorden(r).join(' ');
+      if(sl && !gevonden[sl] && !onzeker[sl]) onzeker[sl] = r;
+    });
+  }
+  toonResultaat();
+  return (Object.keys(gevonden).length + Object.keys(onzeker).length) - voor;
+}
+
+function leesCsvBestanden(bestanden){
+  if(!bestanden || !bestanden.length) return;
+  var klaar = 0, totaalNieuw = 0;
+  Array.prototype.forEach.call(bestanden, function(bestand){
+    var lezer = new FileReader();
+    lezer.onload = function(){
+      totaalNieuw += verwerkTekst(String(lezer.result || ""));
+      klaar++;
+      if(klaar === bestanden.length){
+        status(bestanden.length + " bestand(en) verwerkt: " + totaalNieuw
+               + " bieren toegevoegd. Controleer de lijst hieronder.");
+      }
+    };
+    lezer.onerror = function(){ klaar++; status("Kon een bestand niet lezen."); };
+    lezer.readAsText(bestand);
+  });
 }
 
 /* ---------- opslaan ---------- */
