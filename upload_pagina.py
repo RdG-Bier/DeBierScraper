@@ -348,6 +348,20 @@ function splitsCsv(regel){
   return uit;
 }
 
+/* Namen uit een CSV of geplakte tekst komen rechtstreeks van Untappd en zijn
+   dus al correct. Ze worden NIET tegen de database gematcht: dat is bedoeld
+   om rommelige OCR-tekst op te schonen, maar het plakte hier verschillende
+   bieren op elkaar (tien SOMA-bieren werden samen "SOMA Beer - Lag", negen
+   sours werden "All the Coconut"). We bewaren ze daarom letterlijk en
+   ontdubbelen alleen op de naam zelf. */
+function bewaarExact(regel){
+  regel = schoon(regel);
+  if(regel.length < 3) return;
+  var sl = woorden(regel).join(' ');
+  if(!sl || gevonden[sl] || onzeker[sl]) return;
+  gevonden[sl] = regel;
+}
+
 // Gedeelde CSV/tekst-verwerking: gebruikt door plakveld EN bestandsupload.
 function verwerkTekst(tekst){
   var regels = tekst.split(/\r?\n/).map(schoon).filter(function(r){ return r.length > 2; });
@@ -370,18 +384,10 @@ function verwerkTekst(tekst){
       else { regel = (((iBr >= 0 ? v[iBr] : "") + " - " + (iB >= 0 ? v[iB] : ""))
                       .replace(/^\s*-\s*|\s*-\s*$/g,"")).trim(); }
       if(!regel) return;
-      var t = bekendGeladen ? zoekBier(regel) : null;
-      if(t){ voegBekendToe(t); return; }
-      var sl = woorden(regel).join(' ');
-      if(sl && !gevonden[sl] && !onzeker[sl]) onzeker[sl] = regel;
+      bewaarExact(regel);
     });
   } else {
-    regels.forEach(function(r){
-      var t = bekendGeladen ? zoekBier(r) : null;
-      if(t){ voegBekendToe(t); return; }
-      var sl = woorden(r).join(' ');
-      if(sl && !gevonden[sl] && !onzeker[sl]) onzeker[sl] = r;
-    });
+    regels.forEach(function(r){ bewaarExact(r); });
   }
   toonResultaat();
   return (Object.keys(gevonden).length + Object.keys(onzeker).length) - voor;
