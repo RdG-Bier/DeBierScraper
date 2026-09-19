@@ -97,8 +97,7 @@ button:disabled { opacity:.5; cursor:default; }
 <div class="kaart">
   <h2>2d. CSV-bestand uploaden</h2>
   <p class="mini">Heb je een CSV van de Untappd-extensie of een Untappd-export?
-  Kies het bestand hieronder. Zowel komma's als puntkomma's als scheidingsteken
-  worden herkend, en de kolommen <i>beer_name/brewery_name</i> of
+  Kies het bestand hieronder. De kolommen <i>beer_name/brewery_name</i> of
   <i>brouwerij_naam</i> worden automatisch gebruikt.</p>
   <input type="file" accept=".csv,text/csv,text/plain" multiple id="csvbestand"
          onchange="leesCsvBestanden(this.files)">
@@ -331,18 +330,21 @@ function leesPlak(){
   document.getElementById('plakveld').value = "";
   status(n + " bieren toegevoegd. Controleer de lijst hieronder.");
 }
-function splitsCsv(regel, sep){
-  // sep wordt automatisch bepaald als hij niet is meegegeven: de extensie
-  // gebruikt ';', een Untappd-export gebruikt ','.
-  if(!sep){ sep = (regel.split(";").length > regel.split(",").length) ? ";" : ","; }
+// Splitst een CSV-regel op puntkomma. De extensie exporteert altijd met ';'
+// (biernamen bevatten vaak komma's maar zelden een puntkomma). Velden tussen
+// dubbele quotes mogen de puntkomma bevatten; "" is een letterlijk aanhalingsteken.
+function splitsCsv(regel){
   var uit=[], cur="", q=false;
   for(var i=0;i<regel.length;i++){
     var c=regel[i];
-    if(c === '"'){ q = !q; }
-    else if(c === sep && !q){ uit.push(cur.trim().toLowerCase()); cur=""; }
-    else { cur += c; }
+    if(c === '"'){
+      if(q && regel[i+1] === '"'){ cur += '"'; i++; }
+      else { q = !q; }
+    } else if(c === ';' && !q){
+      uit.push(cur.trim()); cur="";
+    } else { cur += c; }
   }
-  uit.push(cur.trim().toLowerCase());
+  uit.push(cur.trim());
   return uit;
 }
 
@@ -352,17 +354,17 @@ function verwerkTekst(tekst){
   if(!regels.length) return 0;
   var voor = Object.keys(gevonden).length + Object.keys(onzeker).length;
   var kop = regels[0].toLowerCase();
-  if(kop.indexOf('beer_name') >= 0 || kop.indexOf('brouwerij_naam') >= 0
-     || kop.indexOf('brouwerij') >= 0){
-    var sep = (regels[0].split(";").length > regels[0].split(",").length) ? ";" : ",";
-    var kolommen = splitsCsv(regels[0], sep);
+  if(kop.indexOf(';') >= 0 &&
+     (kop.indexOf('beer_name') >= 0 || kop.indexOf('brouwerij_naam') >= 0
+      || kop.indexOf('brouwerij') >= 0)){
+    var kolommen = splitsCsv(regels[0]).map(function(k){ return k.toLowerCase(); });
     var iCombi = kolommen.indexOf('brouwerij_naam');
     var iB = kolommen.indexOf('beer_name');
     if(iB < 0) iB = kolommen.indexOf('naam');
     var iBr = kolommen.indexOf('brewery_name');
     if(iBr < 0) iBr = kolommen.indexOf('brouwerij');
     regels.slice(1).forEach(function(r){
-      var v = splitsCsv(r, sep);
+      var v = splitsCsv(r);
       var regel;
       if(iCombi >= 0 && v[iCombi]){ regel = v[iCombi]; }
       else { regel = (((iBr >= 0 ? v[iBr] : "") + " - " + (iB >= 0 ? v[iB] : ""))
