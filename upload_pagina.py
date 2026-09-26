@@ -135,8 +135,9 @@ function zetDoel(){
 }
 
 /* ---------- tekstverwerking ---------- */
-var gevonden = {};     // herkende bieren (genormaliseerd)
-var onzeker = {};      // wel als bier herkend, maar niet in onze database
+var gevonden = {};       // herkende bieren (genormaliseerd)
+var onzeker = {};        // wel als bier herkend, maar niet in onze database
+var exacteSleutels = {}; // strikte sleutels (incl. cijfers) voor CSV-ontdubbeling
 var BEKEND = [];       // alle bieren die de scraper kent
 var INDEX = {};        // woord -> lijst met nummers uit BEKEND
 var bekendGeladen = false;
@@ -357,9 +358,24 @@ function splitsCsv(regel){
 function bewaarExact(regel){
   regel = schoon(regel);
   if(regel.length < 3) return;
-  var sl = woorden(regel).join(' ');
-  if(!sl || gevonden[sl] || onzeker[sl]) return;
-  gevonden[sl] = regel;
+  // Ontdubbelen op een STRIKTE sleutel die cijfers en # behoudt. woorden()
+  // gooit losse cijfers weg (nuttig tegen OCR-ruis), maar dan zouden namen
+  // die alleen in een nummer verschillen ten onrechte samenvallen:
+  // "Hot Cakes #7/#8/#9" of "7 vs 8 Year Anniversary".
+  var sl = regel.toLowerCase();
+  sl = sl.normalize ? sl.normalize('NFD').replace(/[\u0300-\u036f]/g,'') : sl;
+  sl = sl.replace(/[^a-z0-9#]+/g,' ').replace(/\s+/g,' ').trim();
+  if(!sl || exacteSleutels[sl]) return;
+  exacteSleutels[sl] = true;
+  // toon-sleutel (via woorden) apart bijhouden zodat markeer()/opslaan blijft werken
+  var toon = woorden(regel).join(' ');
+  if(gevonden[toon] || onzeker[toon]){
+    // botst met een reeds herkende naam op toon-niveau: gebruik de strikte
+    // sleutel als opslagsleutel zodat beide bewaard blijven
+    gevonden[sl] = regel;
+  } else {
+    gevonden[toon] = regel;
+  }
 }
 
 // Gedeelde CSV/tekst-verwerking: gebruikt door plakveld EN bestandsupload.
@@ -447,7 +463,7 @@ function download(){
   status("Gedownload als " + naam + ". Upload dit bestand naar mijn_untappd/ in je repository.");
 }
 function leeg(){
-  gevonden = {}; onzeker = {}; toonResultaat(); balk(0); status("Lijst gewist.");
+  gevonden = {}; onzeker = {}; exacteSleutels = {}; toonResultaat(); balk(0); status("Lijst gewist.");
 }
 zetDoel();
 laadBekend();
