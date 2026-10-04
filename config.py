@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v43"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v44"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -70,6 +70,24 @@ SITES = [
         "type": "hopsandhopes",
         "base_url": "https://www.hopsandhopes.nl",
         "listing_url": "https://www.hopsandhopes.nl/bieren",
+    },
+    {
+        "key": "hoppenaar",
+        "label": "De Hoppenaar",
+        "type": "shopify",
+        "base_url": "https://www.hoppenaar.nl",
+        # Shopify-collectie-feeds als vangnet naast de hoofdfeed. De stijl
+        # staat bij De Hoppenaar niet in product_type, dus de scraper leidt
+        # 'm af uit tags/titel; de Untappd-score wordt opgezocht (hun site
+        # laadt die via JavaScript, dus niet in de feed).
+        "collections": [
+            "all", "nieuwe-bieren", "ipa", "stout", "zuur-en-funky",
+            "vintage-bieren", "magnum",
+        ],
+        "tile_collections": [
+            "ipa", "stout", "zuur-en-funky", "nieuwe-bieren",
+        ],
+        "untappd_lookup": True,
     },
     {
         "key": "dehopwinkel",
