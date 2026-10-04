@@ -84,7 +84,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
 </style></head>
 <body>
 <header><h1>&#127866; Bieroverzicht</h1>
-<div class="sub">Bijgewerkt: 03-10-2026 19:48 &middot; score &ge; 4.00 of onbekend &middot; scraper v43
+<div class="sub">Bijgewerkt: 04-10-2026 09:41 &middot; score &ge; 4.00 of onbekend &middot; scraper v43
 <br>&#128994; 12 al gehad &middot; &#128993; 1 in voorraad</div>
 <div class="acties">
   <button class="knop" id="verversknop" onclick="ververs()">&#8635; Ververs nu</button>
@@ -95,7 +95,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <span class="status" id="status"></span>
 </div></header>
 
-<div class="tabs"><button class="active" data-key="debiersalon" data-label="De Biersalon" onclick="showTab('debiersalon')">De Biersalon (545)</button><button class="" data-key="bierloods22" data-label="Bierloods22" onclick="showTab('bierloods22')">Bierloods22 (158)</button><button class="" data-key="drankgigant" data-label="Drankgigant" onclick="showTab('drankgigant')">Drankgigant (60)</button><button class="" data-key="bierbrigadier" data-label="Bierbrigadier" onclick="showTab('bierbrigadier')">Bierbrigadier (145)</button><button class="" data-key="hopsandhopes" data-label="Hops &amp; Hopes" onclick="showTab('hopsandhopes')">Hops &amp; Hopes (293)</button></div>
+<div class="tabs"><button class="active" data-key="debiersalon" data-label="De Biersalon" onclick="showTab('debiersalon')">De Biersalon (542)</button><button class="" data-key="bierloods22" data-label="Bierloods22" onclick="showTab('bierloods22')">Bierloods22 (158)</button><button class="" data-key="drankgigant" data-label="Drankgigant" onclick="showTab('drankgigant')">Drankgigant (60)</button><button class="" data-key="bierbrigadier" data-label="Bierbrigadier" onclick="showTab('bierbrigadier')">Bierbrigadier (145)</button><button class="" data-key="hopsandhopes" data-label="Hops &amp; Hopes" onclick="showTab('hopsandhopes')">Hops &amp; Hopes (293)</button></div>
 <div class="toolbar">
   <input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl&hellip;"
          oninput="pasFiltersToe()">
@@ -122,7 +122,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <label><input type="checkbox" id="f-sterk" onchange="pasFiltersToe()"> alleen sterke voorkeur</label>
   <label><input type="checkbox" id="f-verberg-gehad" onchange="pasFiltersToe()"> verberg al gehad</label>
   <label><input type="checkbox" id="f-verberg-wens" onchange="pasFiltersToe()"> verberg wat ik in voorraad heb</label>
-  <details><summary>Bierstijlen</summary><div><label><input type="checkbox" class="f-stijl" value="IPA" onchange="pasFiltersToe()"> IPA</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double" onchange="pasFiltersToe()"> IPA - Imperial / Double</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double Milkshake" onchange="pasFiltersToe()"> IPA - Imperial / Double Milkshake</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double New England / Hazy" onchange="pasFiltersToe()"> IPA - Imperial / Double New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="IPA - New England / Hazy" onchange="pasFiltersToe()"> IPA - New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="IPA - Quadruple" onchange="pasFiltersToe()"> IPA - Quadruple</label><label><input type="checkbox" class="f-stijl" value="IPA - Triple" onchange="pasFiltersToe()"> IPA - Triple</label><label><input type="checkbox" class="f-stijl" value="IPA - Triple New England / Hazy" onchange="pasFiltersToe()"> IPA - Triple New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="Mead - Cyser" onchange="pasFiltersToe()"> Mead - Cyser</label><label><input type="checkbox" class="f-stijl" value="Mead - Melomel" onchange="pasFiltersToe()"> Mead - Melomel</label><label><input type="checkbox" class="f-stijl" value="Mead - Metheglin" onchange="pasFiltersToe()"> Mead - Metheglin</label><label><input type="checkbox" class="f-stijl" value="Mede" onchange="pasFiltersToe()"> Mede</label><label><input type="checkbox" class="f-stijl" value="Sour" onchange="pasFiltersToe()"> Sour</label><label><input type="checkbox" class="f-stijl" value="Sour - Fruited" onchange="pasFiltersToe()"> Sour - Fruited</label><label><input type="checkbox" class="f-stijl" value="Sour - Fruited Gose" onchange="pasFiltersToe()"> Sour - Fruited Gose</label><label><input type="checkbox" class="f-stijl" value="Sour - Other" onchange="pasFiltersToe()"> Sour - Other</label><label><input type="checkbox" class="f-stijl" value="Sour - Other Gose" onchange="pasFiltersToe()"> Sour - Other Gose</label><label><input type="checkbox" class="f-stijl" value="Sour - Smoothie / Pastry" onchange="pasFiltersToe()"> Sour - Smoothie / Pastry</label><label><input type="checkbox" class="f-stijl" value="Stout" onchange="pasFiltersToe()"> Stout</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double" onchange="pasFiltersToe()"> Stout - Imperial / Double</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Coffee" onchange="pasFiltersToe()"> Stout - Imperial / Double Coffee</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Milk" onchange="pasFiltersToe()"> Stout - Imperial / Double Milk</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Oatmeal" onchange="pasFiltersToe()"> Stout - Imperial / Double Oatmeal</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Pastry" onchange="pasFiltersToe()"> Stout - Imperial / Double Pastry</label><label><input type="checkbox" class="f-stijl" value="Stout - Pastry" onchange="pasFiltersToe()"> Stout - Pastry</label><label><input type="checkbox" class="f-stijl" value="Stout - Russian Imperial" onchange="pasFiltersToe()"> Stout - Russian Imperial</label></div></details>
+  <details><summary>Bierstijlen</summary><div><label><input type="checkbox" class="f-stijl" value="IPA" onchange="pasFiltersToe()"> IPA</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double" onchange="pasFiltersToe()"> IPA - Imperial / Double</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double Milkshake" onchange="pasFiltersToe()"> IPA - Imperial / Double Milkshake</label><label><input type="checkbox" class="f-stijl" value="IPA - Imperial / Double New England / Hazy" onchange="pasFiltersToe()"> IPA - Imperial / Double New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="IPA - New England / Hazy" onchange="pasFiltersToe()"> IPA - New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="IPA - Quadruple" onchange="pasFiltersToe()"> IPA - Quadruple</label><label><input type="checkbox" class="f-stijl" value="IPA - Triple" onchange="pasFiltersToe()"> IPA - Triple</label><label><input type="checkbox" class="f-stijl" value="IPA - Triple New England / Hazy" onchange="pasFiltersToe()"> IPA - Triple New England / Hazy</label><label><input type="checkbox" class="f-stijl" value="Mead - Cyser" onchange="pasFiltersToe()"> Mead - Cyser</label><label><input type="checkbox" class="f-stijl" value="Mead - Melomel" onchange="pasFiltersToe()"> Mead - Melomel</label><label><input type="checkbox" class="f-stijl" value="Mead - Metheglin" onchange="pasFiltersToe()"> Mead - Metheglin</label><label><input type="checkbox" class="f-stijl" value="Mede" onchange="pasFiltersToe()"> Mede</label><label><input type="checkbox" class="f-stijl" value="Sour" onchange="pasFiltersToe()"> Sour</label><label><input type="checkbox" class="f-stijl" value="Sour - Fruited" onchange="pasFiltersToe()"> Sour - Fruited</label><label><input type="checkbox" class="f-stijl" value="Sour - Fruited Gose" onchange="pasFiltersToe()"> Sour - Fruited Gose</label><label><input type="checkbox" class="f-stijl" value="Sour - Other" onchange="pasFiltersToe()"> Sour - Other</label><label><input type="checkbox" class="f-stijl" value="Sour - Other Gose" onchange="pasFiltersToe()"> Sour - Other Gose</label><label><input type="checkbox" class="f-stijl" value="Sour - Smoothie / Pastry" onchange="pasFiltersToe()"> Sour - Smoothie / Pastry</label><label><input type="checkbox" class="f-stijl" value="Sour - Traditional Gose" onchange="pasFiltersToe()"> Sour - Traditional Gose</label><label><input type="checkbox" class="f-stijl" value="Stout" onchange="pasFiltersToe()"> Stout</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double" onchange="pasFiltersToe()"> Stout - Imperial / Double</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Coffee" onchange="pasFiltersToe()"> Stout - Imperial / Double Coffee</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Milk" onchange="pasFiltersToe()"> Stout - Imperial / Double Milk</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Oatmeal" onchange="pasFiltersToe()"> Stout - Imperial / Double Oatmeal</label><label><input type="checkbox" class="f-stijl" value="Stout - Imperial / Double Pastry" onchange="pasFiltersToe()"> Stout - Imperial / Double Pastry</label><label><input type="checkbox" class="f-stijl" value="Stout - Pastry" onchange="pasFiltersToe()"> Stout - Pastry</label><label><input type="checkbox" class="f-stijl" value="Stout - Russian Imperial" onchange="pasFiltersToe()"> Stout - Russian Imperial</label></div></details>
   <div class="rij"><button class="grijs" onclick="resetFilters()">Filters wissen</button></div>
 </div>
 
@@ -240,6 +240,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 6.69</span><span class="badge hoger">Hops &amp; Hopes: &euro; 7.25</span></div>
   <a href="https://debiersalon.nl/products/fraugruber-brewing-hand-selected" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
+  data-key="ophiussa nysa"
+  data-naamkey="nysa"
+  data-stijl="Sour - Smoothie / Pastry"
+  data-untappd="4.35"
+  data-prijs="8.69"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Nysa</div>
+  <div class="brewery">Ophiussa</div></div>
+  <div class="rechts"><div class="score">83.4</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8883-removebg-preview.png?v=1789482684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8883-removebg-preview.png?v=1789482684')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Portugal &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.35 (204)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 8.69</span><span class="badge hoger">Hops &amp; Hopes: &euro; 9.25</span></div>
+  <a href="https://debiersalon.nl/products/ophiussa-nysa" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
   data-key="soma beer blep"
   data-naamkey="blep"
   data-stijl="IPA - Triple New England / Hazy"
@@ -271,22 +287,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.49</span><span class="badge hoger">Hops &amp; Hopes: &euro; 12.50</span></div>
   <a href="https://debiersalon.nl/products/mortalis-brewing-company-talaria" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="ophiussa nysa"
-  data-naamkey="nysa"
-  data-stijl="Sour - Smoothie / Pastry"
-  data-untappd="4.34"
-  data-prijs="8.69"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Nysa</div>
-  <div class="brewery">Ophiussa</div></div>
-  <div class="rechts"><div class="score">82.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8883-removebg-preview.png?v=1789482684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8883-removebg-preview.png?v=1789482684')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Portugal &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.34 (190)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 8.69</span><span class="badge hoger">Hops &amp; Hopes: &euro; 9.25</span></div>
-  <a href="https://debiersalon.nl/products/ophiussa-nysa" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="ten men not for breakfast cherry cheesecake"
   data-naamkey="not for breakfast cherry cheesecake"
@@ -384,22 +384,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 12.39</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.25</span></div>
   <a href="https://debiersalon.nl/products/messorem-temporalis-0062" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
-  data-key="third moon quadruple victim of the same curse"
-  data-naamkey="quadruple victim of the same curse"
-  data-stijl="IPA - Quadruple"
-  data-untappd="4.35"
-  data-prijs="12.79"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Quadruple Victim of the Same Curse</div>
-  <div class="brewery">Third Moon Brewing Company</div></div>
-  <div class="rechts"><div class="score">79.5</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8994-removebg-preview.png?v=1789630734" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8994-removebg-preview.png?v=1789630734')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.35 (195)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 12.79</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.75</span></div>
-  <a href="https://debiersalon.nl/products/third-moon-brewing-company-quadruple-victim-of-the-same-curse" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
   data-key="funky fluid gelato xtreme baltic pancake marlobobo collab"
   data-naamkey="gelato xtreme baltic pancake marlobobo collab"
   data-stijl="Sour - Smoothie / Pastry"
@@ -431,6 +415,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 6.59</span><span class="badge hoger">Bierloods22: &euro; 7.29</span></div>
   <a href="https://debiersalon.nl/products/fraugruber-brewing-waiting-in-vain" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="third moon quadruple victim of the same curse"
+  data-naamkey="quadruple victim of the same curse"
+  data-stijl="IPA - Quadruple"
+  data-untappd="4.34"
+  data-prijs="12.79"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Quadruple Victim of the Same Curse</div>
+  <div class="brewery">Third Moon Brewing Company</div></div>
+  <div class="rechts"><div class="score">79.0</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8994-removebg-preview.png?v=1789630734" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8994-removebg-preview.png?v=1789630734')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.34 (199)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 12.79</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.75</span></div>
+  <a href="https://debiersalon.nl/products/third-moon-brewing-company-quadruple-victim-of-the-same-curse" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="blackout deadly splendor bourbon ba"
   data-naamkey="deadly splendor bourbon ba"
@@ -523,7 +523,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Juice Factory (Dead Planet)</div>
   <div class="brewery">Croma</div></div>
   <div class="rechts"><div class="score">77.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8739-removebg-preview.png?v=1788359257" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8739-removebg-preview.png?v=1788359257')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Brazilië &middot; 3.7% &middot; 47.3 cl &middot; Untappd 4.31 (261)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Brazilië &middot; 3.7% &middot; 47.3 cl &middot; Untappd 4.31 (263)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.49</span><span class="badge hoger">Bierloods22: &euro; 11.99</span></div>
   <a href="https://debiersalon.nl/products/croma-juice-factory-dead-planet" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -683,7 +683,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Gemini | Mango Pina Colada</div>
   <div class="brewery">Mortalis Brewing Company</div></div>
   <div class="rechts"><div class="score">74.1</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8586-removebg-preview.png?v=1787321512" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8586-removebg-preview.png?v=1787321512')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.40 (1184)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.40 (1195)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.75</span></div>
   <a href="https://debiersalon.nl/products/mortalis-brewing-company-gemini-mango-pina-colada" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -907,7 +907,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Appaloosa</div>
   <div class="brewery">Lolev Beer</div></div>
   <div class="rechts"><div class="score">70.8</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8929-removebg-preview.png?v=1789627073" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8929-removebg-preview.png?v=1789627073')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.6% &middot; 47.3 cl &middot; Untappd 4.40 (700)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.6% &middot; 47.3 cl &middot; Untappd 4.40 (714)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.69</span><span class="badge hoger">Hops &amp; Hopes: &euro; 10.95</span></div>
   <a href="https://debiersalon.nl/products/lolev-beer-appaloosa" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -1056,6 +1056,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 9.49</span></div>
   <a href="https://debiersalon.nl/products/long-live-beerworks-through-these-eyes" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
+  data-key="third moon triple rise"
+  data-naamkey="triple rise"
+  data-stijl="IPA - Triple New England / Hazy"
+  data-untappd="4.33"
+  data-prijs="13.49"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Triple Rise</div>
+  <div class="brewery">Third Moon Brewing Company</div></div>
+  <div class="rechts"><div class="score">67.8</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8961-removebg-preview.png?v=1789627580" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8961-removebg-preview.png?v=1789627580')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.33 (230)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 13.49</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.75</span></div>
+  <a href="https://debiersalon.nl/products/third-moon-brewing-company-triple-rise" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
   data-key="moersleutel pastry factory muscovado date walnut muffin"
   data-naamkey="pastry factory muscovado date walnut muffin"
   data-stijl="Stout - Imperial / Double Pastry"
@@ -1071,22 +1087,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.19</span><span class="badge hoger">Bierloods22: &euro; 8.99</span><span class="badge lager">Drankgigant: &euro; 6.95</span></div>
   <a href="https://debiersalon.nl/products/moersleutel-craft-brewery-pastry-factory-muscovado-date-walnut-muffin" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="third moon triple rise"
-  data-naamkey="triple rise"
-  data-stijl="IPA - Triple New England / Hazy"
-  data-untappd="4.33"
-  data-prijs="13.49"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Triple Rise</div>
-  <div class="brewery">Third Moon Brewing Company</div></div>
-  <div class="rechts"><div class="score">67.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8961-removebg-preview.png?v=1789627580" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8961-removebg-preview.png?v=1789627580')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.33 (220)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 13.49</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.75</span></div>
-  <a href="https://debiersalon.nl/products/third-moon-brewing-company-triple-rise" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="finback ultraterrestrial"
   data-naamkey="ultraterrestrial"
@@ -1435,10 +1435,26 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Chicken &amp; Broccoli</div>
   <div class="brewery">Other Half Brewing Co.</div></div>
   <div class="rechts"><div class="score">64.6</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8655-removebg-preview.png?v=1787912079" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8655-removebg-preview.png?v=1787912079')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - New England / Hazy &middot; USA &middot; 7.5% &middot; 47.3 cl &middot; Untappd 4.21 (10690)</div>
+  <div class="meta">IPA - New England / Hazy &middot; USA &middot; 7.5% &middot; 47.3 cl &middot; Untappd 4.21 (10736)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.19</span></div>
   <a href="https://debiersalon.nl/products/other-half-brewing-co-chicken-broccoli" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="sparkle green extreme 1 0"
+  data-naamkey="green extreme 1 0"
+  data-stijl="IPA - Triple New England / Hazy"
+  data-untappd="4.04"
+  data-prijs="10.49"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">GREEN EXTREME 1.0</div>
+  <div class="brewery">Sparkle</div></div>
+  <div class="rechts"><div class="score">64.2</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7689-removebg-preview.png?v=1781594975" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7689-removebg-preview.png?v=1781594975')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Frankrijk &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.04 (350)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 10.49</span><span class="badge hoger">Hops &amp; Hopes: &euro; 10.50</span></div>
+  <a href="https://debiersalon.nl/products/sparkle-green-extreme-1-0" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="third moon bestowed birthday 6th anniversary"
   data-naamkey="bestowed birthday 6th anniversary"
@@ -1467,26 +1483,10 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Bistro Raspberry Velvet</div>
   <div class="brewery">Energy City Brewing</div></div>
   <div class="rechts"><div class="score">63.9</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8561-removebg-preview.png?v=1787320703" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8561-removebg-preview.png?v=1787320703')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 6.5% &middot; 47.3 cl &middot; Untappd 4.29 (1954)</div>
+  <div class="meta">Sour - Fruited &middot; USA &middot; 6.5% &middot; 47.3 cl &middot; Untappd 4.29 (1956)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.99</span></div>
   <a href="https://debiersalon.nl/products/energy-city-brewing-bistro-raspberry-velvet" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="sparkle green extreme 1 0"
-  data-naamkey="green extreme 1 0"
-  data-stijl="IPA - Triple New England / Hazy"
-  data-untappd="4.03"
-  data-prijs="10.49"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">GREEN EXTREME 1.0</div>
-  <div class="brewery">Sparkle</div></div>
-  <div class="rechts"><div class="score">63.6</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7689-removebg-preview.png?v=1781594975" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7689-removebg-preview.png?v=1781594975')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Frankrijk &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.03 (346)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 10.49</span><span class="badge hoger">Hops &amp; Hopes: &euro; 10.50</span></div>
-  <a href="https://debiersalon.nl/products/sparkle-green-extreme-1-0" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="pohjala marble cellar series finback collab"
   data-naamkey="marble cellar series finback collab"
@@ -1611,7 +1611,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">LUVV: PINEAPPLE WHIP</div>
   <div class="brewery">HEAVY REEL BREWING CO.</div></div>
   <div class="rechts"><div class="score">62.6</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_5792-removebg-preview.png?v=1769091528" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_5792-removebg-preview.png?v=1769091528')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 5.8% &middot; 47.3 cl &middot; Untappd 4.25 (2601)</div>
+  <div class="meta">Sour - Fruited &middot; USA &middot; 5.8% &middot; 47.3 cl &middot; Untappd 4.25 (2607)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.39</span></div>
   <a href="https://debiersalon.nl/products/heavy-reel-brewing-co-luvv-pineapple-whip" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -1675,7 +1675,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">CHONK: Funky Monkey</div>
   <div class="brewery">Drekker Brewing Company</div></div>
   <div class="rechts"><div class="score">62.3</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7420-removebg-preview.png?v=1779355977" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7420-removebg-preview.png?v=1779355977')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 6.3% &middot; 47.3 cl &middot; Untappd 4.15 (6141)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 6.3% &middot; 47.3 cl &middot; Untappd 4.15 (6144)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.49</span></div>
   <a href="https://debiersalon.nl/products/drekker-brewing-company-chonk-funky-monkey" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -1739,7 +1739,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">V</div>
   <div class="brewery">Wax Wings Brewing Company</div></div>
   <div class="rechts"><div class="score">61.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7346-removebg-preview.png?v=1779355976" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7346-removebg-preview.png?v=1779355976')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.5% &middot; 47.3 cl &middot; Untappd 4.26 (1415)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.5% &middot; 47.3 cl &middot; Untappd 4.26 (1417)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.69</span></div>
   <a href="https://debiersalon.nl/products/wax-wings-brewing-company-v" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -2331,7 +2331,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Gemini | Bomb Pop</div>
   <div class="brewery">Mortalis Brewing Company</div></div>
   <div class="rechts"><div class="score">58.1</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8596-removebg-preview.png?v=1787321510" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8596-removebg-preview.png?v=1787321510')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.32 (3161)</div>
+  <div class="meta">Sour - Fruited &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.32 (3168)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.99</span></div>
   <a href="https://debiersalon.nl/products/mortalis-brewing-company-gemini-bomb-pop" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -2411,7 +2411,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Daily Serving: Tropical Punch</div>
   <div class="brewery">Trillium Brewing Company</div></div>
   <div class="rechts"><div class="score">57.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8936-removebg-preview.png?v=1789627073" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8936-removebg-preview.png?v=1789627073')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 4.5% &middot; 47.3 cl &middot; Untappd 4.23 (6707)</div>
+  <div class="meta">Sour - Fruited &middot; USA &middot; 4.5% &middot; 47.3 cl &middot; Untappd 4.23 (6710)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.39</span></div>
   <a href="https://debiersalon.nl/products/trillium-brewing-company-daily-serving-tropical-punch" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -2575,22 +2575,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 5.89</span></div>
   <a href="https://debiersalon.nl/products/fuerst-wiacek-berlin-muscle-memory" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="dankhouse sand not included"
-  data-naamkey="sand not included"
-  data-stijl="Sour - Fruited"
-  data-untappd="4.22"
-  data-prijs="9.99"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Sand Not Included</div>
-  <div class="brewery">DankHouse Brewing Company</div></div>
-  <div class="rechts"><div class="score">57.2</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6987-removebg-preview.png?v=1776933306" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6987-removebg-preview.png?v=1776933306')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 6.0% &middot; 47.3 cl &middot; Untappd 4.22 (125)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 9.99</span></div>
-  <a href="https://debiersalon.nl/products/dankhouse-brewing-company-sand-not-included" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="perennial artisan ales sump 2025"
   data-naamkey="sump 2025"
@@ -3019,7 +3003,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">BIGGER! BOLDER!</div>
   <div class="brewery">Stigbergets Bryggeri</div></div>
   <div class="rechts"><div class="score">55.0</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8785-removebg-preview.png?v=1788523903" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8785-removebg-preview.png?v=1788523903')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 8.5% &middot; 44.0 cl &middot; Untappd 4.08 (14155)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 8.5% &middot; 44.0 cl &middot; Untappd 4.08 (14254)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 6.19</span><span class="badge hoger">Hops &amp; Hopes: &euro; 7.25</span></div>
   <a href="https://debiersalon.nl/products/stigbergets-bryggeri-bigger-bolder" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -3099,7 +3083,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Operation Genome [26.04] - 3 Sons</div>
   <div class="brewery">Azvex Brewing Company</div></div>
   <div class="rechts"><div class="score">54.5</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8083-removebg-preview.png?v=1783422637" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8083-removebg-preview.png?v=1783422637')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 11.0% &middot; 44.0 cl &middot; Untappd 4.22 (901)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 11.0% &middot; 44.0 cl &middot; Untappd 4.22 (904)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.89</span><span class="badge hoger">Bierloods22: &euro; 12.99</span><span class="badge hoger">Bierbrigadier: &euro; 13.59</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.50</span></div>
   <a href="https://debiersalon.nl/products/azvex-brewing-company-operation-genome-26-04-3-sons" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -3215,22 +3199,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 6.69</span><span class="badge hoger">Bierloods22: &euro; 7.40</span></div>
   <a href="https://debiersalon.nl/products/salikatt-front-runner" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="ophiussa la danse"
-  data-naamkey="la danse"
-  data-stijl="Stout - Imperial / Double Pastry"
-  data-untappd="4.04"
-  data-prijs="8.89"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">La Danse</div>
-  <div class="brewery">Ophiussa</div></div>
-  <div class="rechts"><div class="score">53.8</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8882-removebg-preview.png?v=1789482684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8882-removebg-preview.png?v=1789482684')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Portugal &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.04 (89)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 8.89</span><span class="badge hoger">Hops &amp; Hopes: &euro; 9.50</span></div>
-  <a href="https://debiersalon.nl/products/ophiussa-la-danse" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="counterpart drip freestyle nectaron motueka rakau"
   data-naamkey="drip freestyle nectaron motueka rakau"
@@ -3567,6 +3535,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.99</span></div>
   <a href="https://debiersalon.nl/products/puhaste-moros-cognac-whisky-islay-ba-silver-series" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="ophiussa la danse"
+  data-naamkey="la danse"
+  data-stijl="Stout - Imperial / Double Pastry"
+  data-untappd="4.01"
+  data-prijs="8.89"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">La Danse</div>
+  <div class="brewery">Ophiussa</div></div>
+  <div class="rechts"><div class="score">52.2</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8882-removebg-preview.png?v=1789482684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8882-removebg-preview.png?v=1789482684')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Portugal &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.01 (97)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 8.89</span><span class="badge hoger">Hops &amp; Hopes: &euro; 9.50</span></div>
+  <a href="https://debiersalon.nl/products/ophiussa-la-danse" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="heavy reel luvv fruity flakes"
   data-naamkey="luvv fruity flakes"
@@ -4379,7 +4363,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Candynskij</div>
   <div class="brewery">Sibeeria Brewery</div></div>
   <div class="rechts"><div class="score">48.3</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_9029-removebg-preview.png?v=1790069296" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_9029-removebg-preview.png?v=1790069296')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Coffee &middot; Tsjechië &middot; 10.8% &middot; 50.0 cl &middot; Untappd 4.01 (3311)</div>
+  <div class="meta">Stout - Imperial / Double Coffee &middot; Tsjechië &middot; 10.8% &middot; 50.0 cl &middot; Untappd 4.01 (3315)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.99</span></div>
   <a href="https://debiersalon.nl/products/sibeeria-brewery-candynskij" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -4779,7 +4763,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">The Wheated Man</div>
   <div class="brewery">Jackie O’s Brewery</div></div>
   <div class="rechts"><div class="score">46.9</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7405-removebg-preview.png?v=1779355977" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7405-removebg-preview.png?v=1779355977')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 15.1% &middot; 35.5 cl &middot; Untappd 4.42 (338)</div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 15.1% &middot; 35.5 cl &middot; Untappd 4.42 (343)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 18.49</span><span class="badge lager">Hops &amp; Hopes: &euro; 17.50</span></div>
   <a href="https://debiersalon.nl/products/jackie-o-s-brewery-the-wheated-man" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -5216,22 +5200,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 6.39</span></div>
   <a href="https://debiersalon.nl/products/the-piggy-brewing-company-electric-banana" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
-  data-key="energy city bistro cabana sunrise orange pomegranate"
-  data-naamkey="bistro cabana sunrise orange pomegranate"
-  data-stijl="Sour - Fruited"
-  data-untappd="4.02"
-  data-prijs="8.29"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Bistro Cabana Sunrise Orange &amp; Pomegranate</div>
-  <div class="brewery">Energy City Brewing</div></div>
-  <div class="rechts"><div class="score">44.1</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_4319-removebg-preview.png?v=1758197044" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_4319-removebg-preview.png?v=1758197044')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 6.5% &middot; 47.3 cl &middot; Untappd 4.02 (231)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 8.29</span></div>
-  <a href="https://debiersalon.nl/products/energy-city-brewing-bistro-cabana-sunrise-orange-pomegranate" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
   data-key="counterpart dead sea 2"
   data-naamkey="dead sea 2"
   data-stijl="IPA - New England / Hazy"
@@ -5520,6 +5488,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 8.99</span></div>
   <a href="https://debiersalon.nl/products/untitled-art-dubai-chocolate-bar-stout" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
+  data-key="la pirata black block bourbon ba 2025"
+  data-naamkey="black block bourbon ba 2025"
+  data-stijl="Stout - Imperial / Double"
+  data-untappd="4.05"
+  data-prijs="7.49"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Black Block Bourbon BA (2025)</div>
+  <div class="brewery">La Pirata Brewing</div></div>
+  <div class="rechts"><div class="score">42.0</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6975-removebg-preview.png?v=1776772684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6975-removebg-preview.png?v=1776772684')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; Spanje &middot; 13.0% &middot; 33.0 cl &middot; Untappd 4.05 (934)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 7.49</span></div>
+  <a href="https://debiersalon.nl/products/la-pirata-brewing-black-block-bourbon-ba-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
   data-key="muifelbrouwerij 2 guys 2 barrels barrel aged double mash stout klere boght collab"
   data-naamkey="2 guys 2 barrels barrel aged double mash stout klere boght collab"
   data-stijl="Stout - Imperial / Double"
@@ -5547,7 +5531,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Plain Dark Beer</div>
   <div class="brewery">Newbarns Brewery</div></div>
   <div class="rechts"><div class="score">41.8</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7253-removebg-preview.png?v=1778237365" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7253-removebg-preview.png?v=1778237365')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout &middot; Schotland &middot; 11.0% &middot; 33.0 cl &middot; Untappd 4.06 (3316)</div>
+  <div class="meta">Stout &middot; Schotland &middot; 11.0% &middot; 33.0 cl &middot; Untappd 4.06 (3319)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.19</span></div>
   <a href="https://debiersalon.nl/products/newbarns-brewery-plain-dark-beer" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -5851,7 +5835,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Nobosuma</div>
   <div class="brewery">Brujos Brewing</div></div>
   <div class="rechts"><div class="score">39.4</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8603-removebg-preview.png?v=1787321510" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8603-removebg-preview.png?v=1787321510')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.2% &middot; 47.3 cl &middot; Untappd 4.45 (1072)</div>
+  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.2% &middot; 47.3 cl &middot; Untappd 4.45 (1079)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 27.49</span><span class="badge lager">Hops &amp; Hopes: &euro; 25.00</span></div>
   <a href="https://debiersalon.nl/products/brujos-brewing-nobosuma" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -5887,22 +5871,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.69</span></div>
   <a href="https://debiersalon.nl/products/perennial-artisan-ales-take-10-2024" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="popihn imperial stout cerise griotte tonka"
-  data-naamkey="imperial stout cerise griotte tonka"
-  data-stijl="Stout - Imperial / Double"
-  data-untappd="4.03"
-  data-prijs="6.99"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Imperial Stout - Cerise Griotte / Tonka</div>
-  <div class="brewery">Popihn</div></div>
-  <div class="rechts"><div class="score">39.0</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6452-removebg-preview.png?v=1773147864" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6452-removebg-preview.png?v=1773147864')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Frankrijk &middot; 10.0% &middot; 33.0 cl &middot; Untappd 4.03 (51)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 6.99</span></div>
-  <a href="https://debiersalon.nl/products/popihn-imperial-stout-cerise-griotte-tonka" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="brewlihan serum blueberry mojito"
   data-naamkey="serum blueberry mojito"
@@ -6000,6 +5968,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 15.29</span></div>
   <a href="https://debiersalon.nl/products/prairie-artisan-ales-christmas-bomb-2024" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
+  data-key="menno olivier paradox"
+  data-naamkey="paradox"
+  data-stijl="Sour - Traditional Gose"
+  data-untappd="4.01"
+  data-prijs="7.49"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Paradox</div>
+  <div class="brewery">Menno Olivier Brewing</div></div>
+  <div class="rechts"><div class="score">37.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6974-removebg-preview.png?v=1776772684" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6974-removebg-preview.png?v=1776772684')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Traditional Gose &middot; Spanje &middot; 13.0% &middot; 33.0 cl &middot; Untappd 4.01 (182)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 7.49</span></div>
+  <a href="https://debiersalon.nl/products/menno-olivier-brewing-paradox" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
   data-key="blackout deluxe blend anti cake"
   data-naamkey="deluxe blend anti cake"
   data-stijl="Stout"
@@ -6091,7 +6075,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Ghost Elephant 2025</div>
   <div class="brewery">Varvar Brew</div></div>
   <div class="rechts"><div class="score">37.3</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7573-removebg-preview.png?v=1780572603" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7573-removebg-preview.png?v=1780572603')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Oekraïne &middot; 12.5% &middot; 37.5 cl &middot; Untappd 4.14 (294)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Oekraïne &middot; 12.5% &middot; 37.5 cl &middot; Untappd 4.14 (297)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.69</span><span class="badge lager">Hops &amp; Hopes: &euro; 11.69</span></div>
   <a href="https://debiersalon.nl/products/varvar-brew-ghost-elephant-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -6432,22 +6416,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 9.79</span></div>
   <a href="https://debiersalon.nl/products/blackout-brewing-life-is-the-study-of-dying-scotch-ba" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
-  data-key="the piggy muvuka"
-  data-naamkey="muvuka"
-  data-stijl="Stout - Imperial / Double"
-  data-untappd="4.08"
-  data-prijs="9.49"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Muvuka</div>
-  <div class="brewery">The Piggy Brewing Company</div></div>
-  <div class="rechts"><div class="score">34.9</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6064-removebg-preview.png?v=1770977946" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6064-removebg-preview.png?v=1770977946')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Frankrijk &middot; 12.0% &middot; 33.0 cl &middot; Untappd 4.08 (122)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 9.49</span></div>
-  <a href="https://debiersalon.nl/products/the-piggy-brewing-company-muvuka" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
   data-key="brewlihan sophomore blend 2024"
   data-naamkey="sophomore blend 2024"
   data-stijl="Mede"
@@ -6731,7 +6699,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Barrel Aged Bestowed - German Chocolate Cake</div>
   <div class="brewery">Third Moon Brewing Company</div></div>
   <div class="rechts"><div class="score">32.4</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7802-removebg-preview.png?v=1781782909" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7802-removebg-preview.png?v=1781782909')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Canada &middot; 13.5% &middot; 37.5 cl &middot; Untappd 4.35 (387)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Canada &middot; 13.5% &middot; 37.5 cl &middot; Untappd 4.35 (392)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 29.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 29.95</span></div>
   <a href="https://debiersalon.nl/products/third-moon-brewing-company-barrel-aged-bestowed-german-chocolate-cake" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -6811,7 +6779,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Space Trace (2026)</div>
   <div class="brewery">Bottle Logic Brewing</div></div>
   <div class="rechts"><div class="score">31.3</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7812-removebg-preview.png?v=1781782909" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_7812-removebg-preview.png?v=1781782909')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 13.7% &middot; 50.0 cl &middot; Untappd 4.31 (1100)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 13.7% &middot; 50.0 cl &middot; Untappd 4.31 (1102)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 40.99</span><span class="badge hoger">Bierloods22: &euro; 42.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 39.95</span></div>
   <a href="https://debiersalon.nl/products/bottle-logic-brewing-space-trace-2026" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -7467,7 +7435,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Black Tuesday (2025)</div>
   <div class="brewery">The Bruery</div></div>
   <div class="rechts"><div class="score">23.2</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6263-removebg-preview.png?v=1772112387" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6263-removebg-preview.png?v=1772112387')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 19.1% &middot; 37.5 cl &middot; Untappd 4.38 (1378)</div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 19.1% &middot; 37.5 cl &middot; Untappd 4.38 (1380)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 32.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 31.95</span></div>
   <a href="https://debiersalon.nl/products/the-bruery-black-tuesday-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -7984,6 +7952,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 48.49</span></div>
   <a href="https://debiersalon.nl/products/central-waters-brewing-company-black-gold-hot-honey-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
+  data-key="brett sauvage bouquet 2025"
+  data-naamkey="bouquet 2025"
+  data-stijl="Sour - Fruited"
+  data-untappd="4.35"
+  data-prijs="22.99"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">BOUQUET 2025</div>
+  <div class="brewery">Brett &amp; Sauvage</div></div>
+  <div class="rechts"><div class="score">18.7</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8251-removebg-preview.png?v=1784176908" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8251-removebg-preview.png?v=1784176908')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Fruited &middot; Canada &middot; 4.9% &middot; 50.0 cl &middot; Untappd 4.35 (142)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 22.99</span><span class="badge hoger">Hops &amp; Hopes: &euro; 23.50</span></div>
+  <a href="https://debiersalon.nl/products/brett-sauvage-bouquet-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
   data-key="de biersalon ipa surprise box"
   data-naamkey="ipa surprise box"
   data-stijl="IPA"
@@ -8047,22 +8031,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 20.99</span></div>
   <a href="https://debiersalon.nl/products/equilibrium-brewery-even-caramel-sundaes-batch-3" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="brett sauvage bouquet 2025"
-  data-naamkey="bouquet 2025"
-  data-stijl="Sour - Fruited"
-  data-untappd="4.34"
-  data-prijs="22.99"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">BOUQUET 2025</div>
-  <div class="brewery">Brett &amp; Sauvage</div></div>
-  <div class="rechts"><div class="score">18.1</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8251-removebg-preview.png?v=1784176908" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_8251-removebg-preview.png?v=1784176908')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; Canada &middot; 4.9% &middot; 50.0 cl &middot; Untappd 4.34 (139)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 22.99</span><span class="badge hoger">Hops &amp; Hopes: &euro; 23.50</span></div>
-  <a href="https://debiersalon.nl/products/brett-sauvage-bouquet-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="nano cinco space rocket"
   data-naamkey="space rocket"
@@ -8863,22 +8831,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 31.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 25.00</span></div>
   <a href="https://debiersalon.nl/products/imprint-beer-co-seven-deadly-sins-lust-2025" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="bad bones prescription renewal guatemalan coffee"
-  data-naamkey="prescription renewal guatemalan coffee"
-  data-stijl="Stout - Imperial / Double Coffee"
-  data-untappd="4.05"
-  data-prijs="26.49"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">PRESCRIPTION RENEWAL: GUATEMALAN COFFEE</div>
-  <div class="brewery">Bad Bones</div></div>
-  <div class="rechts"><div class="score">0.0</div><img class="label-img" src="https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6242-removebg-preview.png?v=1772112388" alt="" loading="lazy" onclick="openImg('https://cdn.shopify.com/s/files/1/0915/5172/8003/files/IMG_6242-removebg-preview.png?v=1772112388')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Coffee &middot; Canada &middot; 11.9% &middot; 37.5 cl &middot; Untappd 4.05 (43)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 26.49</span></div>
-  <a href="https://debiersalon.nl/products/bad-bones-prescription" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div></div><div class="panel" data-key="bierloods22"><div class="card sterk"
   data-key="factory the executioner 2026"
   data-naamkey="the executioner 2026"
@@ -9035,7 +8987,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Juice Factory (Dead Planet)</div>
   <div class="brewery">Croma</div></div>
   <div class="rechts"><div class="score">71.3</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/501340634/325x325x2/croma-croma-juice-factory-dead-planet.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/501340634/325x325x2/croma-croma-juice-factory-dead-planet.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; 47.3 cl &middot; Untappd 4.31 (261)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; 47.3 cl &middot; Untappd 4.31 (263)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.99</span><span class="badge lager">De Biersalon: &euro; 10.49</span></div>
   <a href="https://www.bierloods22.nl/nl/croma-juice-factory-dead-planet.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -9083,7 +9035,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Bourbon County Brand Stout (2025)</div>
   <div class="brewery">Goose Island Beer Co.</div></div>
   <div class="rechts"><div class="score">66.5</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/488799724/325x325x2/goose-island-beer-co-goose-island-beer-co-bourbon.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/488799724/325x325x2/goose-island-beer-co-goose-island-beer-co-bourbon.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; 29.5 cl &middot; Untappd 4.36 (20144)</div>
+  <div class="meta">Stout - Imperial / Double &middot; 29.5 cl &middot; Untappd 4.36 (20166)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.99</span><span class="badge hoger">Hops &amp; Hopes: &euro; 11.00</span></div>
   <a href="https://www.bierloods22.nl/nl/goose-island-beer-co-bourbon-county-bran-160860516.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -9835,7 +9787,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Operation Genome [26.04] - 3 Sons</div>
   <div class="brewery">Azvex Brewing Company</div></div>
   <div class="rechts"><div class="score">54.2</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/498793592/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/498793592/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; 44.0 cl &middot; Untappd 4.22 (901)</div>
+  <div class="meta">Stout - Imperial / Double &middot; 44.0 cl &middot; Untappd 4.22 (904)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.99</span><span class="badge lager">De Biersalon: &euro; 12.89</span><span class="badge hoger">Bierbrigadier: &euro; 13.59</span><span class="badge lager">Hops &amp; Hopes: &euro; 12.50</span></div>
   <a href="https://www.bierloods22.nl/nl/azvex-brewing-company-operation-genome-2-163457407.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -10490,8 +10442,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Operation Genome [26.03] - 450 North</div>
   <div class="brewery">Azvex Brewing Company</div></div>
-  <div class="rechts"><div class="score">45.1</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/496354090/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/496354090/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; 25.0% &middot; 44.0 cl &middot; Untappd 4.09 (1447)</div>
+  <div class="rechts"><div class="score">45.2</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/496354090/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/496354090/325x325x2/azvex-brewing-company-azvex-brewing-company-operat.jpg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; 25.0% &middot; 44.0 cl &middot; Untappd 4.09 (1464)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 14.99</span><span class="badge lager">Bierbrigadier: &euro; 14.69</span><span class="badge lager">Hops &amp; Hopes: &euro; 14.00</span></div>
   <a href="https://www.bierloods22.nl/nl/azvex-brewing-company-operation-genome-2603-450-no.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -10538,8 +10490,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Corey</div>
   <div class="brewery">Omnipollo</div></div>
-  <div class="rechts"><div class="score">44.1</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/501338928/325x325x2/omnipollo-omnipollo-corey.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/501338928/325x325x2/omnipollo-omnipollo-corey.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; 33.0 cl &middot; Untappd 4.42 (401)</div>
+  <div class="rechts"><div class="score">44.2</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/501338928/325x325x2/omnipollo-omnipollo-corey.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/501338928/325x325x2/omnipollo-omnipollo-corey.jpg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; 33.0 cl &middot; Untappd 4.42 (437)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 19.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 18.50</span></div>
   <a href="https://www.bierloods22.nl/nl/omnipollo-corey.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -11019,7 +10971,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Munin Marshmallow &amp; Cocoa</div>
   <div class="brewery">RYGR Brygghús</div></div>
   <div class="rechts"><div class="score">32.3</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/501029060/325x325x2/rygr-brygghus-rygr-brygghus-munin-marshmallow-coco.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/501029060/325x325x2/rygr-brygghus-rygr-brygghus-munin-marshmallow-coco.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; 33.0 cl &middot; Untappd 4.34 (594)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; 33.0 cl &middot; Untappd 4.34 (595)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 20.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 16.50</span></div>
   <a href="https://www.bierloods22.nl/nl/rygr-brygghus-munin-marshmallow-cocoa.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -11067,7 +11019,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Space Trace (2026)</div>
   <div class="brewery">Bottle Logic Brewing</div></div>
   <div class="rechts"><div class="score">31.3</div><img class="label-img" src="https://cdn.webshopapp.com/shops/312703/files/498015689/325x325x2/bottle-logic-brewing-bottle-logic-brewing-space-tr.jpg" alt="" loading="lazy" onclick="openImg('https://cdn.webshopapp.com/shops/312703/files/498015689/325x325x2/bottle-logic-brewing-bottle-logic-brewing-space-tr.jpg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; 50.0 cl &middot; Untappd 4.31 (1100)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; 50.0 cl &middot; Untappd 4.31 (1102)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 42.99</span><span class="badge lager">De Biersalon: &euro; 40.99</span><span class="badge lager">Hops &amp; Hopes: &euro; 39.95</span></div>
   <a href="https://www.bierloods22.nl/nl/bottle-logic-brewing-space-trace-2026.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -11551,6 +11503,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
   <a href="https://www.drankgigant.nl/arpus-pineapple-x-red-currant-x-peach-x-red-grapes-x-almond-ale.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
+  data-key="arpus port wine x brandy barrel aged imperial stout"
+  data-naamkey="arpus port wine x brandy barrel aged imperial stout"
+  data-stijl="Stout - Imperial / Double"
+  data-untappd="4.28"
+  data-prijs="10.95"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Arpus Port Wine X Brandy Barrel Aged Imperial Stout</div>
+  <div class="brewery"></div></div>
+  <div class="rechts"><div class="score">71.4</div><img class="label-img" src="https://www.drankgigant.nl/media/catalog/product/cache/13ed84ed003190b4718d374401ffdc37/a/r/arpus_port_wine_x_brandy_barrel_aged_imperial_stout_44cl_1.png" alt="" loading="lazy" onclick="openImg('https://www.drankgigant.nl/media/catalog/product/cache/13ed84ed003190b4718d374401ffdc37/a/r/arpus_port_wine_x_brandy_barrel_aged_imperial_stout_44cl_1.png')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; 44.0 cl &middot; Untappd 4.28 (1174)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 10.95</span><span class="badge lager">Hops &amp; Hopes: &euro; 10.75</span></div>
+  <a href="https://www.drankgigant.nl/arpus-port-wine-x-brandy-barrel-aged-imperial-stout.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="arpus apricot x pear x mango x passionfruit x guava smoothie sour ale"
   data-naamkey="arpus apricot x pear x mango x passionfruit x guava smoothie sour ale"
@@ -11567,22 +11535,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.50</span><span class="badge lager">Bierbrigadier: &euro; 7.29</span></div>
   <a href="https://www.drankgigant.nl/arpus-apricot-x-pear-x-mango-x-passionfruit-x-guava-smoothie-sour-ale.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="arpus port wine x brandy barrel aged imperial stout"
-  data-naamkey="arpus port wine x brandy barrel aged imperial stout"
-  data-stijl="Stout - Imperial / Double"
-  data-untappd="4.27"
-  data-prijs="10.95"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Arpus Port Wine X Brandy Barrel Aged Imperial Stout</div>
-  <div class="brewery"></div></div>
-  <div class="rechts"><div class="score">69.8</div><img class="label-img" src="https://www.drankgigant.nl/media/catalog/product/cache/13ed84ed003190b4718d374401ffdc37/a/r/arpus_port_wine_x_brandy_barrel_aged_imperial_stout_44cl_1.png" alt="" loading="lazy" onclick="openImg('https://www.drankgigant.nl/media/catalog/product/cache/13ed84ed003190b4718d374401ffdc37/a/r/arpus_port_wine_x_brandy_barrel_aged_imperial_stout_44cl_1.png')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; 44.0 cl &middot; Untappd 4.27 (1162)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 10.95</span><span class="badge lager">Hops &amp; Hopes: &euro; 10.75</span></div>
-  <a href="https://www.drankgigant.nl/arpus-port-wine-x-brandy-barrel-aged-imperial-stout.html" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="de moersleutel pastry factory muscovado date walnut muffin stout"
   data-naamkey="de moersleutel pastry factory muscovado date walnut muffin stout"
@@ -14715,7 +14667,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Static Motion</div>
   <div class="brewery">Factory Brewing</div></div>
   <div class="rechts"><div class="score">87.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512689/static.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512689/static.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Finland &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.19 (1218)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Finland &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.19 (1234)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.00</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/static-motion-factory-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14747,7 +14699,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Temporalis #0055</div>
   <div class="brewery">Messorem</div></div>
   <div class="rechts"><div class="score">86.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506720/tempo.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506720/tempo.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.34 (2375)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.34 (2382)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.49</span><span class="badge hoger">De Biersalon: &euro; 12.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/temporalis-0055-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14763,7 +14715,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Temporalis #0056</div>
   <div class="brewery">Messorem</div></div>
   <div class="rechts"><div class="score">85.2</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508388/00561.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508388/00561.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.35 (2078)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.35 (2083)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.75</span><span class="badge hoger">De Biersalon: &euro; 12.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/temporalis-0056-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14794,8 +14746,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Puma</div>
   <div class="brewery">Nano Cinco</div></div>
-  <div class="rechts"><div class="score">84.2</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.0% &middot; 47.3 cl &middot; Untappd 4.34 (95)</div>
+  <div class="rechts"><div class="score">84.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.0% &middot; 47.3 cl &middot; Untappd 4.34 (98)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/puma-nano-cinco" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14811,7 +14763,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">None Sober [Cryptopsy Collab] (Ghost 1721)</div>
   <div class="brewery">Adroit Theory</div></div>
   <div class="rechts"><div class="score">84.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512159/5456.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512159/5456.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.0% &middot; 47.3 cl &middot; Untappd 4.33 (851)</div>
+  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.0% &middot; 47.3 cl &middot; Untappd 4.33 (859)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/none-sober-cryptopsy-collab-adroit-theoryghost-1721" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14827,7 +14779,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Temporalis #0060</div>
   <div class="brewery">Messorem</div></div>
   <div class="rechts"><div class="score">83.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514793/5549.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514793/5549.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.40 (1471)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.40 (1507)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.25</span><span class="badge hoger">De Biersalon: &euro; 12.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/temporalis-0060-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14859,7 +14811,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Vicinity</div>
   <div class="brewery">Trillium Brewing Company</div></div>
   <div class="rechts"><div class="score">83.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double &middot; USA &middot; 8.0% &middot; 47.3 cl &middot; Untappd 4.38 (63328)</div>
+  <div class="meta">IPA - Imperial / Double &middot; USA &middot; 8.0% &middot; 47.3 cl &middot; Untappd 4.38 (63349)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/vicinity-trillium-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -14911,6 +14863,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.25</span><span class="badge lager">De Biersalon: &euro; 6.69</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/hand-selected-fraugruber-brewing-2" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="ophiussa nysa"
+  data-naamkey="nysa"
+  data-stijl="Sour - Smoothie / Pastry"
+  data-untappd="4.35"
+  data-prijs="9.25"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Nysa</div>
+  <div class="brewery">Ophiussa Brewing Co</div></div>
+  <div class="rechts"><div class="score">82.0</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Portugal &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.35 (204)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 9.25</span><span class="badge lager">De Biersalon: &euro; 8.69</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/nysa-ophiussa-brewing-co" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="nano cinco gigan"
   data-naamkey="gigan"
@@ -15008,22 +14976,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 12.25</span><span class="badge hoger">De Biersalon: &euro; 12.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/temporalis-0062-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
-  data-key="ophiussa nysa"
-  data-naamkey="nysa"
-  data-stijl="Sour - Smoothie / Pastry"
-  data-untappd="4.34"
-  data-prijs="9.25"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Nysa</div>
-  <div class="brewery">Ophiussa Brewing Co</div></div>
-  <div class="rechts"><div class="score">81.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Portugal &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.34 (190)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 9.25</span><span class="badge lager">De Biersalon: &euro; 8.69</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/nysa-ophiussa-brewing-co" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
   data-key="du bas canada crash"
   data-naamkey="crash"
   data-stijl="IPA - Quadruple"
@@ -15034,8 +14986,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Crash</div>
   <div class="brewery">Brasserie du Bas-Canada</div></div>
-  <div class="rechts"><div class="score">81.2</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.3% &middot; 47.3 cl &middot; Untappd 4.43 (262)</div>
+  <div class="rechts"><div class="score">81.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.3% &middot; 47.3 cl &middot; Untappd 4.43 (277)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 13.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/crash-brasserie-du-bas-canada" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15056,22 +15008,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 7.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/trinity-hopalaa" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
-  data-key="third moon quadruple victim of the same curse"
-  data-naamkey="quadruple victim of the same curse"
-  data-stijl="IPA - Quadruple"
-  data-untappd="4.35"
-  data-prijs="12.75"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Quadruple Victim of the Same Curse</div>
-  <div class="brewery">Third Moon Brewing Company</div></div>
-  <div class="rechts"><div class="score">79.8</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.35 (195)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge hoger">De Biersalon: &euro; 12.79</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/quadruple-victim-of-the-same-curse-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
   data-key="pentrich dripping in platinum"
   data-naamkey="dripping in platinum"
   data-stijl="IPA - Triple"
@@ -15087,6 +15023,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/dripping-in-platinum-pentrich-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="third moon quadruple victim of the same curse"
+  data-naamkey="quadruple victim of the same curse"
+  data-stijl="IPA - Quadruple"
+  data-untappd="4.34"
+  data-prijs="12.75"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Quadruple Victim of the Same Curse</div>
+  <div class="brewery">Third Moon Brewing Company</div></div>
+  <div class="rechts"><div class="score">79.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.34 (199)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge hoger">De Biersalon: &euro; 12.79</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/quadruple-victim-of-the-same-curse-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="du bas canada desordre"
   data-naamkey="desordre"
@@ -15131,7 +15083,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Squeeze #1</div>
   <div class="brewery">Pulfer Brewery</div></div>
   <div class="rechts"><div class="score">78.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513616/squuze1.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513616/squuze1.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; 2.5% &middot; 50.0 cl &middot; Untappd 4.26 (570)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; 2.5% &middot; 50.0 cl &middot; Untappd 4.26 (578)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/squeeze-1-pulfer-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15147,7 +15099,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Alien Intelligence (PULP)</div>
   <div class="brewery">Elmeleven</div></div>
   <div class="rechts"><div class="score">77.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512684/elmel12.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512684/elmel12.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Zweden &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.26 (1626)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Zweden &middot; 5.0% &middot; 44.0 cl &middot; Untappd 4.26 (1641)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/alien-intelligence-pulp-elmeleven" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15163,7 +15115,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Golden Hour</div>
   <div class="brewery">FrauGruber Brewing</div></div>
   <div class="rechts"><div class="score">77.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508253/5351.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508253/5351.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Duitsland &middot; 10.2% &middot; 44.0 cl &middot; Untappd 4.05 (738)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Duitsland &middot; 10.2% &middot; 44.0 cl &middot; Untappd 4.05 (742)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/golden-hour-fraugruber-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15211,7 +15163,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Sextuple Dry Hopped Quadruple Bone Tree</div>
   <div class="brewery">Third Moon Brewing Company</div></div>
   <div class="rechts"><div class="score">77.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508382/bonetree.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508382/bonetree.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.28 (1032)</div>
+  <div class="meta">IPA - Quadruple &middot; Canada &middot; 11.9% &middot; 47.3 cl &middot; Untappd 4.28 (1033)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/sextuple-dry-hopped-quadruple-bone-tree-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15290,8 +15242,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Twisted Transistor</div>
   <div class="brewery">FrauGruber Brewing</div></div>
-  <div class="rechts"><div class="score">75.4</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512676/twisted12.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512676/twisted12.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Duitsland &middot; 10.2% &middot; 44.0 cl &middot; Untappd 4.03 (179)</div>
+  <div class="rechts"><div class="score">75.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512676/twisted12.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512676/twisted12.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Duitsland &middot; 10.2% &middot; 44.0 cl &middot; Untappd 4.03 (182)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/twisted-transistor-fraugruber-brewing-2" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15307,7 +15259,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Gemini | Mango Pina Colada</div>
   <div class="brewery">Mortalis Brewing Company</div></div>
   <div class="rechts"><div class="score">75.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514804/5554.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514804/5554.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.40 (1184)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; USA &middot; 7.0% &middot; 47.3 cl &middot; Untappd 4.40 (1195)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge hoger">De Biersalon: &euro; 12.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/gemini-mango-pina-colada-mortalis-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15344,22 +15296,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 8.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/motion-sickless-factory-brewing-track-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
-  data-key="clef hruskov zavitek pastry sour ale with pears walnuts and maple syrup"
-  data-naamkey="hruskov zavitek pastry sour ale with pears walnuts and maple syrup"
-  data-stijl="Sour - Smoothie / Pastry"
-  data-untappd="4.19"
-  data-prijs="7.5"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Hruskov zavitek, Pastry Sour Ale with Pears, Walnuts And Maple Syrup</div>
-  <div class="brewery">Clef Brewery</div></div>
-  <div class="rechts"><div class="score">74.2</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Slovenië &middot; 5.3% &middot; 50.0 cl &middot; Untappd 4.19 (324)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/hruskov-zavitek-pastry-sour-ale-with-pears-walnuts-and-maple-syrup-clef-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
   data-key="third moon triple rise"
   data-naamkey="triple rise"
   data-stijl="IPA - Triple New England / Hazy"
@@ -15371,7 +15307,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Triple Rise</div>
   <div class="brewery">Third Moon Brewing Company</div></div>
   <div class="rechts"><div class="score">73.6</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.33 (220)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.33 (230)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge hoger">De Biersalon: &euro; 13.49</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/triple-rise-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15387,7 +15323,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Third Sunrise</div>
   <div class="brewery">Mikkeller</div></div>
   <div class="rechts"><div class="score">73.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Denemarken &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.01 (619)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Denemarken &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.01 (627)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/third-sunrise-mikkeller" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15424,6 +15360,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 8.50</span><span class="badge lager">De Biersalon: &euro; 7.69</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/eos-ophiussa-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
+  data-key="clef hruskov zavitek pastry sour ale with pears walnuts and maple syrup"
+  data-naamkey="hruskov zavitek pastry sour ale with pears walnuts and maple syrup"
+  data-stijl="Sour - Smoothie / Pastry"
+  data-untappd="4.18"
+  data-prijs="7.5"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Hruskov zavitek, Pastry Sour Ale with Pears, Walnuts And Maple Syrup</div>
+  <div class="brewery">Clef Brewery</div></div>
+  <div class="rechts"><div class="score">73.1</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Slovenië &middot; 5.3% &middot; 50.0 cl &middot; Untappd 4.18 (330)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/hruskov-zavitek-pastry-sour-ale-with-pears-walnuts-and-maple-syrup-clef-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
   data-key="third moon triple god of the guilty"
   data-naamkey="triple god of the guilty"
   data-stijl="IPA - Triple New England / Hazy"
@@ -15435,7 +15387,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Triple God of the Guilty</div>
   <div class="brewery">Third Moon Brewing Company</div></div>
   <div class="rechts"><div class="score">73.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512141/5449.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512141/5449.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.26 (384)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Canada &middot; 10.5% &middot; 47.3 cl &middot; Untappd 4.26 (386)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/triple-god-of-the-guilty-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15467,10 +15419,26 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Duplex</div>
   <div class="brewery">Brasserie du Bas-Canada</div></div>
   <div class="rechts"><div class="score">72.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512133/5445.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512133/5445.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double &middot; Canada &middot; 8.2% &middot; 47.3 cl &middot; Untappd 4.27 (1090)</div>
+  <div class="meta">IPA - Imperial / Double &middot; Canada &middot; 8.2% &middot; 47.3 cl &middot; Untappd 4.27 (1098)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/duplex-brasserie-du-bas-canada" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
+  data-key="arpus port wine x brandy barrel aged imperial stout"
+  data-naamkey="port wine x brandy barrel aged imperial stout"
+  data-stijl="Stout - Imperial / Double"
+  data-untappd="4.28"
+  data-prijs="10.75"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Port Wine X Brandy Barrel Aged Imperial Stout</div>
+  <div class="brewery">Ārpus Brewing Co.</div></div>
+  <div class="rechts"><div class="score">72.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505569/5186.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505569/5186.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; Letland &middot; 13.0% &middot; 44.0 cl &middot; Untappd 4.28 (1174)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 10.75</span><span class="badge hoger">Drankgigant: &euro; 10.95</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/port-wine-x-brandy-barrel-aged-imperial-stout-ārpus-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="imprint beer schmoojee surf zombies"
   data-naamkey="schmoojee surf zombies"
@@ -15487,6 +15455,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/schmoojee-surf-zombies-imprint-beer-co.-beer-zombies-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="new holland dragon s milk reserve s mores 2026"
+  data-naamkey="dragon s milk reserve s mores 2026"
+  data-stijl="Stout - Imperial / Double Pastry"
+  data-untappd="4.22"
+  data-prijs="9.75"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Dragon’s Milk Reserve: S’mores (2026)</div>
+  <div class="brewery">New Holland Brewing</div></div>
+  <div class="rechts"><div class="score">71.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514767/dragonmilkreserve.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514767/dragonmilkreserve.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 11.0% &middot; 35.5 cl &middot; Untappd 4.22 (385)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 9.75</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/dragons-milk-reserve-smores-2026-new-holland-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="trillium double dry hopped fort point"
   data-naamkey="double dry hopped fort point"
@@ -15600,21 +15584,21 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 8.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/technology-unknown-pulp-elmeleven" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
-  data-key="arpus port wine x brandy barrel aged imperial stout"
-  data-naamkey="port wine x brandy barrel aged imperial stout"
+  data-key="folkingebrew trifecta b a folkingebrew"
+  data-naamkey="trifecta b a folkingebrew"
   data-stijl="Stout - Imperial / Double"
-  data-untappd="4.27"
-  data-prijs="10.75"
+  data-untappd="4.3"
+  data-prijs="11.0"
   data-sterk="0"
   data-gehad="0"
   data-voorraad="0">
-  <div class="top"><div><div class="name">Port Wine X Brandy Barrel Aged Imperial Stout</div>
-  <div class="brewery">Ārpus Brewing Co.</div></div>
-  <div class="rechts"><div class="score">70.6</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505569/5186.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505569/5186.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Letland &middot; 13.0% &middot; 44.0 cl &middot; Untappd 4.27 (1162)</div>
+  <div class="top"><div><div class="name">Trifecta B.A. (Folkingebrew)</div>
+  <div class="brewery">Folkingebrew</div></div>
+  <div class="rechts"><div class="score">70.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994231/trifecta-folking.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994231/trifecta-folking.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; Nederland &middot; 10.5% &middot; 37.5 cl &middot; Untappd 4.30 (1835)</div>
   <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 10.75</span><span class="badge hoger">Drankgigant: &euro; 10.95</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/port-wine-x-brandy-barrel-aged-imperial-stout-ārpus-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+  <div class="price-row"><span class="badge own">&euro; 11.00</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/trifecta-b-a-folkingebrew-brouwerij-bravoure-brouwerij-frontaal" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="sho iiio kysil"
   data-naamkey="kysil"
@@ -15632,22 +15616,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/kysil-sho-brewery-iiio-2" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
-  data-key="folkingebrew trifecta b a folkingebrew"
-  data-naamkey="trifecta b a folkingebrew"
-  data-stijl="Stout - Imperial / Double"
-  data-untappd="4.3"
-  data-prijs="11.0"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Trifecta B.A. (Folkingebrew)</div>
-  <div class="brewery">Folkingebrew</div></div>
-  <div class="rechts"><div class="score">70.2</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994231/trifecta-folking.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994231/trifecta-folking.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Nederland &middot; 10.5% &middot; 37.5 cl &middot; Untappd 4.30 (1830)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 11.00</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/trifecta-b-a-folkingebrew-brouwerij-bravoure-brouwerij-frontaal" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
   data-key="lolev beer appaloosa"
   data-naamkey="appaloosa"
   data-stijl="IPA - Imperial / Double New England / Hazy"
@@ -15659,26 +15627,10 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Appaloosa</div>
   <div class="brewery">Lolev Beer</div></div>
   <div class="rechts"><div class="score">69.7</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.6% &middot; 47.3 cl &middot; Untappd 4.40 (700)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 8.6% &middot; 47.3 cl &middot; Untappd 4.40 (714)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 10.95</span><span class="badge lager">De Biersalon: &euro; 10.69</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/appaloosa-lolev-beer" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="new holland dragon s milk reserve s mores 2026"
-  data-naamkey="dragon s milk reserve s mores 2026"
-  data-stijl="Stout - Imperial / Double Pastry"
-  data-untappd="4.21"
-  data-prijs="9.75"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Dragon’s Milk Reserve: S’mores (2026)</div>
-  <div class="brewery">New Holland Brewing</div></div>
-  <div class="rechts"><div class="score">69.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514767/dragonmilkreserve.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514767/dragonmilkreserve.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 11.0% &middot; 35.5 cl &middot; Untappd 4.21 (378)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 9.75</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/dragons-milk-reserve-smores-2026-new-holland-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="third moon triple gordie mortis"
   data-naamkey="triple gordie mortis"
@@ -15707,7 +15659,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Hot Pot Jacuzzi</div>
   <div class="brewery">Bad Seed Brewing</div></div>
   <div class="rechts"><div class="score">69.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505546/5171.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505546/5171.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Denemarken &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.05 (1035)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Denemarken &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.05 (1036)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/hot-pot-jacuzzi-bad-seed-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15835,7 +15787,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Bourbon County Brand Stout (2025)</div>
   <div class="brewery">Goose Island Beer Co.</div></div>
   <div class="rechts"><div class="score">66.4</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506737/BCBS2025.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506737/BCBS2025.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 14.8% &middot; 29.5 cl &middot; Untappd 4.36 (20144)</div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 14.8% &middot; 29.5 cl &middot; Untappd 4.36 (20166)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.00</span><span class="badge lager">Bierloods22: &euro; 10.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/bourbon-county-brand-stout-2025-goose-island-beer-co" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15867,7 +15819,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Just Fruit (Strawberry, Raspberry, Blood Orange)</div>
   <div class="brewery">Frequentem Brewing Co.</div></div>
   <div class="rechts"><div class="score">65.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1996091/5031.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1996091/5031.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; USA &middot; 5.2% &middot; 47.3 cl &middot; Untappd 4.35 (938)</div>
+  <div class="meta">Sour - Fruited &middot; USA &middot; 5.2% &middot; 47.3 cl &middot; Untappd 4.35 (939)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/just-fruit-strawberry-raspberry-blood-orange-frequentem-brewing-co.-2" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15914,8 +15866,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Centaur Army White</div>
   <div class="brewery">Neon Raptor Brewing Co.</div></div>
-  <div class="rechts"><div class="score">64.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991339/centaur-white.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991339/centaur-white.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Engeland &middot; 12.0% &middot; 44.0 cl &middot; Untappd 4.14 (1050)</div>
+  <div class="rechts"><div class="score">64.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991339/centaur-white.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991339/centaur-white.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Engeland &middot; 12.0% &middot; 44.0 cl &middot; Untappd 4.14 (1052)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/centaur-army-white-neon-raptor-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -15963,10 +15915,26 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Freshly Squeezed x Hydra Part II</div>
   <div class="brewery">Glass Pyramid Project</div></div>
   <div class="rechts"><div class="score">64.2</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-sale.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-sale.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Finland &middot; 7.0% &middot; 44.0 cl &middot; Untappd 4.10 (946)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Finland &middot; 7.0% &middot; 44.0 cl &middot; Untappd 4.10 (947)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.20</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/freshly-squeezed-x-hydra-part-ii-glass-pyramid-project-mortalis-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="sparkle green extreme 1 0"
+  data-naamkey="green extreme 1 0"
+  data-stijl="IPA - Triple New England / Hazy"
+  data-untappd="4.04"
+  data-prijs="10.5"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">GREEN EXTREME 1.0</div>
+  <div class="brewery">Sparkle</div></div>
+  <div class="rechts"><div class="score">64.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508103/5328.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508103/5328.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; Frankrijk &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.04 (350)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 10.50</span><span class="badge lager">De Biersalon: &euro; 10.49</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/green-extreme-1-0-sparkle" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="mortalis hydra blackberry pineapple coconut"
   data-naamkey="hydra blackberry pineapple coconut"
@@ -15983,22 +15951,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge hoger">De Biersalon: &euro; 12.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/hydra-blackberry-pineapple-coconut-mortalis-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="sparkle green extreme 1 0"
-  data-naamkey="green extreme 1 0"
-  data-stijl="IPA - Triple New England / Hazy"
-  data-untappd="4.03"
-  data-prijs="10.5"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">GREEN EXTREME 1.0</div>
-  <div class="brewery">Sparkle</div></div>
-  <div class="rechts"><div class="score">63.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508103/5328.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508103/5328.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; Frankrijk &middot; 10.0% &middot; 44.0 cl &middot; Untappd 4.03 (346)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 10.50</span><span class="badge lager">De Biersalon: &euro; 10.49</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/green-extreme-1-0-sparkle" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="puhaste sublimis bourbon ba"
   data-naamkey="sublimis bourbon ba"
@@ -16011,7 +15963,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Sublimis Bourbon BA</div>
   <div class="brewery">Pühaste Brewery</div></div>
   <div class="rechts"><div class="score">63.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516321/sublimis.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516321/sublimis.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Estland &middot; 13.6% &middot; 33.0 cl &middot; Untappd 4.26 (576)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Estland &middot; 13.6% &middot; 33.0 cl &middot; Untappd 4.26 (593)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/sublimis-bourbon-ba-pühaste-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16075,7 +16027,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Peach Trees</div>
   <div class="brewery">Bearwood Brewing</div></div>
   <div class="rechts"><div class="score">62.2</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508100/5331.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508100/5331.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double &middot; Engeland &middot; 8.2% &middot; 44.0 cl &middot; Untappd 4.13 (410)</div>
+  <div class="meta">IPA - Imperial / Double &middot; Engeland &middot; 8.2% &middot; 44.0 cl &middot; Untappd 4.13 (411)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/peach-trees-bearwood-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16159,6 +16111,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.25</span><span class="badge lager">De Biersalon: &euro; 7.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/the-goggles-do-nothing-pentrich-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="sureshot now that s what i call sureshot vol 400"
+  data-naamkey="now that s what i call sureshot vol 400"
+  data-stijl="IPA - Imperial / Double"
+  data-untappd="4.06"
+  data-prijs="7.65"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Now That’s What I Call Sureshot! Vol.400</div>
+  <div class="brewery">Sureshot Brewing</div></div>
+  <div class="rechts"><div class="score">60.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-sale.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-sale.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Imperial / Double &middot; Engeland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.06 (652)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 7.65</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/now-thats-what-i-call-sureshot-vol-400-sureshot-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
   data-key="funky fluid gelato summer scoop"
   data-naamkey="gelato summer scoop"
@@ -16256,22 +16224,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 11.50</span><span class="badge lager">De Biersalon: &euro; 11.39</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/destructio-0012-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card sterk"
-  data-key="sureshot now that s what i call sureshot vol 400"
-  data-naamkey="now that s what i call sureshot vol 400"
-  data-stijl="IPA - Imperial / Double"
-  data-untappd="4.05"
-  data-prijs="7.65"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Now That’s What I Call Sureshot! Vol.400</div>
-  <div class="brewery">Sureshot Brewing</div></div>
-  <div class="rechts"><div class="score">59.7</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-sale.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-sale.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double &middot; Engeland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.05 (648)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 7.65</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/now-thats-what-i-call-sureshot-vol-400-sureshot-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
   data-key="rygr brygghus munin marshmallow cocoa"
   data-naamkey="munin marshmallow cocoa"
   data-stijl="Stout - Imperial / Double Pastry"
@@ -16283,7 +16235,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Munin Marshmallow &amp; Cocoa</div>
   <div class="brewery">RYGR Brygghús</div></div>
   <div class="rechts"><div class="score">59.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514435/munin-mars.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514435/munin-mars.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Noorwegen &middot; 15.0% &middot; 33.0 cl &middot; Untappd 4.34 (594)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Noorwegen &middot; 15.0% &middot; 33.0 cl &middot; Untappd 4.34 (595)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 16.50</span><span class="badge hoger">Bierloods22: &euro; 20.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/munin-marshmallow-cocoa-rygr-brygghús" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16363,7 +16315,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Nuclear Mysticism</div>
   <div class="brewery">TEST</div></div>
   <div class="rechts"><div class="score">58.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514427/nuclear_2026-08-19-185859_nvwt.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514427/nuclear_2026-08-19-185859_nvwt.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; USA &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.43 (819)</div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; USA &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.43 (826)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 19.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/nuclear-mysticism-test-omnipollo" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16443,7 +16395,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Operation Genome [26.04] - 3 Sons</div>
   <div class="brewery">Azvex Brewing Company</div></div>
   <div class="rechts"><div class="score">55.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512172/5459.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512172/5459.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 11.0% &middot; 44.0 cl &middot; Untappd 4.22 (901)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 11.0% &middot; 44.0 cl &middot; Untappd 4.22 (904)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.50</span><span class="badge hoger">De Biersalon: &euro; 12.89</span><span class="badge hoger">Bierloods22: &euro; 12.99</span><span class="badge hoger">Bierbrigadier: &euro; 13.59</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/operation-genome-azvex-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16458,8 +16410,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">The Amazing Cosmos (German Chocolate Cake) (2026)</div>
   <div class="brewery">Dude Brewing</div></div>
-  <div class="rechts"><div class="score">55.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512215/5460.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512215/5460.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Brazilië &middot; 11.0% &middot; 35.0 cl &middot; Untappd 4.25 (250)</div>
+  <div class="rechts"><div class="score">55.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512215/5460.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512215/5460.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Brazilië &middot; 11.0% &middot; 35.0 cl &middot; Untappd 4.25 (259)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 14.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/the-amazing-cosmos-german-chocolate-cake-2026-dude-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16667,7 +16619,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Khazad-Doom</div>
   <div class="brewery">Sudden Death Brewing Co.</div></div>
   <div class="rechts"><div class="score">53.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508120/5316.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508120/5316.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Duitsland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.12 (1449)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Duitsland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.12 (1451)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/khazad-doom-sudden-death-brewing-co." target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16699,26 +16651,10 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">BIGGER! BOLDER!</div>
   <div class="brewery">Stigbergets Bryggeri</div></div>
   <div class="rechts"><div class="score">52.4</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 8.5% &middot; 44.0 cl &middot; Untappd 4.08 (14155)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 8.5% &middot; 44.0 cl &middot; Untappd 4.08 (14254)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.25</span><span class="badge lager">De Biersalon: &euro; 6.19</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/bigger-bolder-stigbergets-bryggeri" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="ophiussa la danse"
-  data-naamkey="la danse"
-  data-stijl="Stout - Imperial / Double Pastry"
-  data-untappd="4.04"
-  data-prijs="9.5"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">La Danse</div>
-  <div class="brewery">Ophiussa Brewing Co</div></div>
-  <div class="rechts"><div class="score">52.3</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Portugal &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.04 (89)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 9.50</span><span class="badge lager">De Biersalon: &euro; 8.89</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/la-danse-ophiussa-brewing-c0.-hoppy-people" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="du bas canada sorcelleries cafe"
   data-naamkey="sorcelleries cafe"
@@ -16747,7 +16683,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">BA Executor - Willet Rye Barrel-Aged</div>
   <div class="brewery">Emperor&#x27;s Brewery</div></div>
   <div class="rechts"><div class="score">51.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991351/executor.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1991351/executor.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 14.2% &middot; 33.0 cl &middot; Untappd 4.29 (771)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Engeland &middot; 14.2% &middot; 33.0 cl &middot; Untappd 4.29 (777)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 13.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/ba-executor-willet-rye-barrel-aged-emperors-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16762,8 +16698,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">When We Became the Violence</div>
   <div class="brewery">The Hollows</div></div>
-  <div class="rechts"><div class="score">51.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513614/hollows.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513614/hollows.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Pastry &middot; Nederland &middot; 15.2% &middot; 33.0 cl &middot; Untappd 4.18 (515)</div>
+  <div class="rechts"><div class="score">51.2</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513614/hollows.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513614/hollows.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Pastry &middot; Nederland &middot; 15.2% &middot; 33.0 cl &middot; Untappd 4.18 (522)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 9.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/when-we-became-the-violence-the-hollows" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -16827,10 +16763,26 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">ANTWERP Heaven Hill Bourbon Barrel Aged (2023)</div>
   <div class="brewery">Galea Craft Beers</div></div>
   <div class="rechts"><div class="score">50.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514687/antwhea.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514687/antwhea.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; België &middot; 14.5% &middot; 33.0 cl &middot; Untappd 4.15 (1156)</div>
+  <div class="meta">Stout - Imperial / Double &middot; België &middot; 14.5% &middot; 33.0 cl &middot; Untappd 4.15 (1157)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.35</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/antwerp-heaven-hill-bourbon-barrel-aged-2023-galea-craft-beers" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="ophiussa la danse"
+  data-naamkey="la danse"
+  data-stijl="Stout - Imperial / Double Pastry"
+  data-untappd="4.01"
+  data-prijs="9.5"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">La Danse</div>
+  <div class="brewery">Ophiussa Brewing Co</div></div>
+  <div class="rechts"><div class="score">50.7</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Portugal &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.01 (97)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 9.50</span><span class="badge lager">De Biersalon: &euro; 8.89</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/la-danse-ophiussa-brewing-c0.-hoppy-people" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="hoppy people check your head"
   data-naamkey="check your head"
@@ -16875,7 +16827,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">I Love Hops #16</div>
   <div class="brewery">Hoppy People</div></div>
   <div class="rechts"><div class="score">50.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516301/ilovehops.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516301/ilovehops.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zwitserland &middot; 7.8% &middot; 44.0 cl &middot; Untappd 4.12 (477)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zwitserland &middot; 7.8% &middot; 44.0 cl &middot; Untappd 4.12 (484)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/i-love-hops-16-hoppy-people" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17071,6 +17023,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 12.75</span><span class="badge lager">De Biersalon: &euro; 12.39</span><span class="badge hoger">Bierloods22: &euro; 12.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/bless-this-mess-vol-1-blackout-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card wens"
+  data-key="fraugruber soaked oats"
+  data-naamkey="soaked oats"
+  data-stijl="IPA - New England / Hazy"
+  data-untappd="4.07"
+  data-prijs="7.25"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="1">
+  <div class="top"><div><div class="name">Soaked Oats</div>
+  <div class="brewery">FrauGruber Brewing</div></div>
+  <div class="rechts"><div class="score">48.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513970/soaked-oats.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513970/soaked-oats.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - New England / Hazy &middot; Duitsland &middot; 8.1% &middot; 44.0 cl &middot; Untappd 4.07 (412)</div>
+  <div class="vlag">★ in voorraad</div>
+  <div class="price-row"><span class="badge own">&euro; 7.25</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/soaked-oats-fraugruber-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="funky fluid dynaboost mosaic"
   data-naamkey="dynaboost mosaic"
@@ -17083,26 +17051,10 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">DynaBoost: Mosaic</div>
   <div class="brewery">Funky Fluid</div></div>
   <div class="rechts"><div class="score">48.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508246/5344.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508246/5344.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Polen &middot; 8.0% &middot; 50.0 cl &middot; Untappd 4.03 (788)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Polen &middot; 8.0% &middot; 50.0 cl &middot; Untappd 4.03 (794)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/dynaboost-mosaic-funky-fluid" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card wens"
-  data-key="fraugruber soaked oats"
-  data-naamkey="soaked oats"
-  data-stijl="IPA - New England / Hazy"
-  data-untappd="4.07"
-  data-prijs="7.25"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="1">
-  <div class="top"><div><div class="name">Soaked Oats</div>
-  <div class="brewery">FrauGruber Brewing</div></div>
-  <div class="rechts"><div class="score">48.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513970/soaked-oats.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2513970/soaked-oats.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - New England / Hazy &middot; Duitsland &middot; 8.1% &middot; 44.0 cl &middot; Untappd 4.07 (407)</div>
-  <div class="vlag">★ in voorraad</div>
-  <div class="price-row"><span class="badge own">&euro; 7.25</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/soaked-oats-fraugruber-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="jackie o s the wheated man"
   data-naamkey="the wheated man"
@@ -17114,8 +17066,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">The Wheated Man</div>
   <div class="brewery">Jackie O&#x27;s Brewery</div></div>
-  <div class="rechts"><div class="score">48.8</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506693/wheatedman.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506693/wheatedman.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 15.1% &middot; 35.5 cl &middot; Untappd 4.42 (338)</div>
+  <div class="rechts"><div class="score">48.9</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506693/wheatedman.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506693/wheatedman.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 15.1% &middot; 35.5 cl &middot; Untappd 4.42 (343)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 17.50</span><span class="badge hoger">De Biersalon: &euro; 18.49</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/the-wheated-man-jackie-os-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17147,7 +17099,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Patterns</div>
   <div class="brewery">Factory Brewing</div></div>
   <div class="rechts"><div class="score">48.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512814/patterns.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512814/patterns.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Finland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.10 (1079)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Finland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.10 (1089)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/patterns" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17259,7 +17211,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Operation Genome [26.03] - 450 North</div>
   <div class="brewery">Azvex Brewing Company</div></div>
   <div class="rechts"><div class="score">47.6</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505561/5182.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505561/5182.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Smoothie / Pastry &middot; Engeland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.09 (1447)</div>
+  <div class="meta">Sour - Smoothie / Pastry &middot; Engeland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.09 (1464)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 14.00</span><span class="badge hoger">Bierloods22: &euro; 14.99</span><span class="badge hoger">Bierbrigadier: &euro; 14.69</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/operation-genome-26-03-450-north-azvex-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17275,7 +17227,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Golden Buzz</div>
   <div class="brewery">Fermenterarna</div></div>
   <div class="rechts"><div class="score">47.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2507280/5302.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2507280/5302.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 9.0% &middot; 44.0 cl &middot; Untappd 4.02 (2186)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zweden &middot; 9.0% &middot; 44.0 cl &middot; Untappd 4.02 (2201)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/golden-buzz-fermenterarna" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17306,8 +17258,8 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   data-voorraad="0">
   <div class="top"><div><div class="name">Corey</div>
   <div class="brewery">Omnipollo</div></div>
-  <div class="rechts"><div class="score">47.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516319/corey1.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516319/corey1.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Zweden &middot; 12.7% &middot; 33.0 cl &middot; Untappd 4.42 (401)</div>
+  <div class="rechts"><div class="score">47.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516319/corey1.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2516319/corey1.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; Zweden &middot; 12.7% &middot; 33.0 cl &middot; Untappd 4.42 (437)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 18.50</span><span class="badge hoger">Bierloods22: &euro; 19.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/corey-omnipollo-3-sons-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17419,7 +17371,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Common Factor 2026</div>
   <div class="brewery">Factory Brewing</div></div>
   <div class="rechts"><div class="score">46.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506071/common-factor_2026-05-17-093737_zwyy.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2506071/common-factor_2026-05-17-093737_zwyy.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - New England / Hazy &middot; Finland &middot; 7.3% &middot; 44.0 cl &middot; Untappd 4.03 (1139)</div>
+  <div class="meta">IPA - New England / Hazy &middot; Finland &middot; 7.3% &middot; 44.0 cl &middot; Untappd 4.03 (1140)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/common-factor-2026-factory-cloudwater-verdant-track-left-handed-rivington-pollys-two-flints" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17499,7 +17451,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Bourbon BA George 2026</div>
   <div class="brewery">Mikkeller</div></div>
   <div class="rechts"><div class="score">45.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2511632/5396.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2511632/5396.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Coffee &middot; Denemarken &middot; 12.5% &middot; 50.0 cl &middot; Untappd 4.18 (538)</div>
+  <div class="meta">Stout - Imperial / Double Coffee &middot; Denemarken &middot; 12.5% &middot; 50.0 cl &middot; Untappd 4.18 (544)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 15.00</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/bourbon-ba-george-2026-mikkeller" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17531,7 +17483,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Mourning Coffee #2</div>
   <div class="brewery">Metalhead</div></div>
   <div class="rechts"><div class="score">44.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505554/5179.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2505554/5179.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Coffee &middot; 12.0% &middot; 25.0 cl &middot; Untappd 4.13 (382)</div>
+  <div class="meta">Stout - Imperial / Double Coffee &middot; 12.0% &middot; 25.0 cl &middot; Untappd 4.13 (384)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 6.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/mourning-coffee-2-metalhead" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17611,7 +17563,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">TNT</div>
   <div class="brewery">Hoppy People</div></div>
   <div class="rechts"><div class="score">43.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2507304/tn.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2507304/tn.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zwitserland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.02 (1005)</div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; Zwitserland &middot; 8.0% &middot; 44.0 cl &middot; Untappd 4.02 (1008)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/tnt-hoppy-people-xül-beer-co" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17739,7 +17691,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Balam Nile (2025)</div>
   <div class="brewery">Blood Brothers Brewing</div></div>
   <div class="rechts"><div class="score">42.0</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994509/4965.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994509/4965.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Coffee &middot; Canada &middot; 13.5% &middot; 47.3 cl &middot; Untappd 4.31 (230)</div>
+  <div class="meta">Stout - Imperial / Double Coffee &middot; Canada &middot; 13.5% &middot; 47.3 cl &middot; Untappd 4.31 (234)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 18.25</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/balam-nile-2025-blood-brothers-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17787,7 +17739,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Solera (2025)</div>
   <div class="brewery">Lough Gill Brewery</div></div>
   <div class="rechts"><div class="score">41.6</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1988215/4611.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1988215/4611.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Oatmeal &middot; Ierland &middot; 11.9% &middot; 33.0 cl &middot; Untappd 4.06 (838)</div>
+  <div class="meta">Stout - Imperial / Double Oatmeal &middot; Ierland &middot; 11.9% &middot; 33.0 cl &middot; Untappd 4.06 (840)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 7.75</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/solera-2025-lough-gill-brewery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17867,7 +17819,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Ghost Elephant 2025</div>
   <div class="brewery">Varvar Brew</div></div>
   <div class="rechts"><div class="score">40.5</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-sale.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-sale.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Oekraïne &middot; 12.5% &middot; 37.5 cl &middot; Untappd 4.14 (294)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Oekraïne &middot; 12.5% &middot; 37.5 cl &middot; Untappd 4.14 (297)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.69</span><span class="badge hoger">De Biersalon: &euro; 12.69</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/ghost-elephant-2025-varvar-brew" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17899,7 +17851,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Nobosuma</div>
   <div class="brewery">Brujos Brewing</div></div>
   <div class="rechts"><div class="score">39.4</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514744/nobosuma.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514744/nobosuma.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.2% &middot; 47.3 cl &middot; Untappd 4.45 (1072)</div>
+  <div class="meta">IPA - Quadruple &middot; USA &middot; 12.2% &middot; 47.3 cl &middot; Untappd 4.45 (1079)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 25.00</span><span class="badge hoger">De Biersalon: &euro; 27.49</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/nobosuma-brujos-brewing-uchu-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -17979,26 +17931,10 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Epic Waterfall</div>
   <div class="brewery">Goede Kant van het Spoor</div></div>
   <div class="rechts"><div class="score">38.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514665/epic123.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514665/epic123.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Russian Imperial &middot; Nederland &middot; 11.9% &middot; 33.0 cl &middot; Untappd 4.08 (153)</div>
+  <div class="meta">Stout - Russian Imperial &middot; Nederland &middot; 11.9% &middot; 33.0 cl &middot; Untappd 4.08 (154)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 8.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/epic-waterfall-goede-kant-van-het-spoor" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card sterk"
-  data-key="brujos unholy chvrch brujos edition"
-  data-naamkey="unholy chvrch brujos edition"
-  data-stijl="IPA - Triple New England / Hazy"
-  data-untappd="4.44"
-  data-prijs="23.5"
-  data-sterk="1"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Unholy Chvrch (Brujos Edition)</div>
-  <div class="brewery">Brujos Brewing</div></div>
-  <div class="rechts"><div class="score">38.0</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Triple New England / Hazy &middot; USA &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.44 (504)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 23.50</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/unholy-chvrch-brujos-edition-brujos-brewing-omnipollo" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="hoppy people kompressor 2k26 primavera edition"
   data-naamkey="kompressor 2k26 primavera edition"
@@ -18047,19 +17983,35 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 19.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/september-citrus-tree-house-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card sterk"
+  data-key="brujos unholy chvrch brujos edition"
+  data-naamkey="unholy chvrch brujos edition"
+  data-stijl="IPA - Triple New England / Hazy"
+  data-untappd="4.43"
+  data-prijs="23.5"
+  data-sterk="1"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Unholy Chvrch (Brujos Edition)</div>
+  <div class="brewery">Brujos Brewing</div></div>
+  <div class="rechts"><div class="score">37.5</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Triple New England / Hazy &middot; USA &middot; 10.0% &middot; 47.3 cl &middot; Untappd 4.43 (541)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 23.50</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/unholy-chvrch-brujos-edition-brujos-brewing-omnipollo" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="jackie o s beyond the moat"
   data-naamkey="beyond the moat"
   data-stijl="Stout - Imperial / Double"
-  data-untappd="4.25"
+  data-untappd="4.24"
   data-prijs="18.0"
   data-sterk="0"
   data-gehad="0"
   data-voorraad="0">
   <div class="top"><div><div class="name">Beyond the Moat</div>
   <div class="brewery">Jackie O&#x27;s Brewery</div></div>
-  <div class="rechts"><div class="score">37.5</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1978179/IMG_4176-1.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1978179/IMG_4176-1.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 12.1% &middot; 35.5 cl &middot; Untappd 4.25 (567)</div>
+  <div class="rechts"><div class="score">36.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1978179/IMG_4176-1.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1978179/IMG_4176-1.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 12.1% &middot; 35.5 cl &middot; Untappd 4.24 (568)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 18.00</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/beyond-the-moat-jackie-os-brewery-bissel-brothers-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -18315,7 +18267,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Barrel Aged Bestowed - German Chocolate Cake</div>
   <div class="brewery">Third Moon Brewing Company</div></div>
   <div class="rechts"><div class="score">32.4</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; Canada &middot; 13.5% &middot; 37.5 cl &middot; Untappd 4.35 (387)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; Canada &middot; 13.5% &middot; 37.5 cl &middot; Untappd 4.35 (392)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 29.95</span><span class="badge hoger">De Biersalon: &euro; 29.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/barrel-aged-bestowed-german-chocolate-cake-third-moon-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -18395,7 +18347,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Space Trace (2026)</div>
   <div class="brewery">Bottle Logic Brewing</div></div>
   <div class="rechts"><div class="score">31.3</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508378/space123.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2508378/space123.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 13.7% &middot; 50.0 cl &middot; Untappd 4.31 (1100)</div>
+  <div class="meta">Stout - Imperial / Double Pastry &middot; USA &middot; 13.7% &middot; 50.0 cl &middot; Untappd 4.31 (1102)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 39.95</span><span class="badge hoger">De Biersalon: &euro; 40.99</span><span class="badge hoger">Bierloods22: &euro; 42.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/space-trace-2026-bottle-logic-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -18576,22 +18528,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 62.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/maman-2025-perennial-artisan-ales" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
-  data-key="brujos sitra achra 2026"
-  data-naamkey="sitra achra 2026"
-  data-stijl="IPA - Imperial / Double New England / Hazy"
-  data-untappd="4.48"
-  data-prijs="21.5"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">Sitra Achra (2026)</div>
-  <div class="brewery">Brujos Brewing</div></div>
-  <div class="rechts"><div class="score">27.5</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 9.2% &middot; 47.3 cl &middot; Untappd 4.48 (399)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 21.50</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/sitra-achra-2026-brujos-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
   data-key="eastside wasted years bourbon barrel aged coffee vanilla and cinnamon imperial stout"
   data-naamkey="wasted years bourbon barrel aged coffee vanilla and cinnamon imperial stout"
   data-stijl="Stout - Imperial / Double Coffee"
@@ -18607,6 +18543,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 11.95</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/wasted-years-bourbon-barrel-aged-coffee-vanilla-and-cinnamon-imperial-stout-eastside-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
+  data-key="brujos sitra achra 2026"
+  data-naamkey="sitra achra 2026"
+  data-stijl="IPA - Imperial / Double New England / Hazy"
+  data-untappd="4.47"
+  data-prijs="21.5"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">Sitra Achra (2026)</div>
+  <div class="brewery">Brujos Brewing</div></div>
+  <div class="rechts"><div class="score">27.0</div><img class="label-img" src="https://www.hopsandhopes.nl/dist/images/badge-new.svg" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/dist/images/badge-new.svg')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">IPA - Imperial / Double New England / Hazy &middot; USA &middot; 9.2% &middot; 47.3 cl &middot; Untappd 4.47 (431)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 21.50</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/sitra-achra-2026-brujos-brewing" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="goose island beer reserve rye bourbon county brand stout 2019"
   data-naamkey="reserve rye bourbon county brand stout 2019"
@@ -18859,7 +18811,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Black Tuesday (2025)</div>
   <div class="brewery">The Bruery</div></div>
   <div class="rechts"><div class="score">23.2</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994544/5-9.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/1994544/5-9.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 19.1% &middot; 37.5 cl &middot; Untappd 4.38 (1378)</div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 19.1% &middot; 37.5 cl &middot; Untappd 4.38 (1380)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 31.95</span><span class="badge hoger">De Biersalon: &euro; 32.99</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/black-tuesday-2025-the-bruery" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -18955,7 +18907,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Twenty Six (XXVI) Barrel Aged Stout</div>
   <div class="brewery">Central Waters Brewing Company</div></div>
   <div class="rechts"><div class="score">21.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/70269/cw-twenty-six.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/70269/cw-twenty-six.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 14.4% &middot; 65.0 cl &middot; Untappd 4.34 (2901)</div>
+  <div class="meta">Stout - Imperial / Double &middot; USA &middot; 14.4% &middot; 65.0 cl &middot; Untappd 4.34 (2903)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 42.00</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/twenty-six-xxvi-barrel-aged-stout-central-waters-brewing-company" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -18987,7 +18939,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Patience</div>
   <div class="brewery">Salikatt Bryggeri</div></div>
   <div class="rechts"><div class="score">20.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514649/pati123.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2514649/pati123.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Stout - Imperial / Double &middot; Noorwegen &middot; 14.0% &middot; 37.5 cl &middot; Untappd 4.34 (1213)</div>
+  <div class="meta">Stout - Imperial / Double &middot; Noorwegen &middot; 14.0% &middot; 37.5 cl &middot; Untappd 4.34 (1214)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 34.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/patience-salikatt-bryggeri" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -19003,7 +18955,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="top"><div><div class="name">Quantum Satis 2024</div>
   <div class="brewery">Quantum Satis</div></div>
   <div class="rechts"><div class="score">19.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2511935/5410.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2511935/5410.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Mead - Melomel &middot; Polen &middot; 15.7% &middot; 37.5 cl &middot; Untappd 4.35 (310)</div>
+  <div class="meta">Mead - Melomel &middot; Polen &middot; 15.7% &middot; 37.5 cl &middot; Untappd 4.35 (312)</div>
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 35.00</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/quantum-satis-quantim-satis-2024" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
@@ -19040,6 +18992,22 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="price-row"><span class="badge own">&euro; 21.50</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/mort-verte-messorem" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
+  data-key="brett sauvage bouquet 2025"
+  data-naamkey="bouquet 2025"
+  data-stijl="Sour - Fruited"
+  data-untappd="4.35"
+  data-prijs="23.5"
+  data-sterk="0"
+  data-gehad="0"
+  data-voorraad="0">
+  <div class="top"><div><div class="name">BOUQUET 2025</div>
+  <div class="brewery">Brett &amp; Sauvage</div></div>
+  <div class="rechts"><div class="score">18.7</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512113/5436.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512113/5436.webp')" onerror="this.style.display='none'"></div></div>
+  <div class="meta">Sour - Fruited &middot; Canada &middot; 4.9% &middot; 50.0 cl &middot; Untappd 4.35 (142)</div>
+  <div class="vlag"></div>
+  <div class="price-row"><span class="badge own">&euro; 23.50</span><span class="badge lager">De Biersalon: &euro; 22.99</span></div>
+  <a href="https://www.hopsandhopes.nl/bieren/bouquet-2025-brett---sauvage" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
+</div><div class="card"
   data-key="messorem mort jaune"
   data-naamkey="mort jaune"
   data-stijl="Stout - Imperial / Double"
@@ -19071,22 +19039,6 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
   <div class="vlag"></div>
   <div class="price-row"><span class="badge own">&euro; 26.14</span></div>
   <a href="https://www.hopsandhopes.nl/bieren/need-backup-cachaça-bourbon-barrel-aged-croma" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
-</div><div class="card"
-  data-key="brett sauvage bouquet 2025"
-  data-naamkey="bouquet 2025"
-  data-stijl="Sour - Fruited"
-  data-untappd="4.34"
-  data-prijs="23.5"
-  data-sterk="0"
-  data-gehad="0"
-  data-voorraad="0">
-  <div class="top"><div><div class="name">BOUQUET 2025</div>
-  <div class="brewery">Brett &amp; Sauvage</div></div>
-  <div class="rechts"><div class="score">18.1</div><img class="label-img" src="https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512113/5436.webp" alt="" loading="lazy" onclick="openImg('https://www.hopsandhopes.nl/uploads/media/products/_thumb/2512113/5436.webp')" onerror="this.style.display='none'"></div></div>
-  <div class="meta">Sour - Fruited &middot; Canada &middot; 4.9% &middot; 50.0 cl &middot; Untappd 4.34 (139)</div>
-  <div class="vlag"></div>
-  <div class="price-row"><span class="badge own">&euro; 23.50</span><span class="badge lager">De Biersalon: &euro; 22.99</span></div>
-  <a href="https://www.hopsandhopes.nl/bieren/bouquet-2025-brett---sauvage" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div><div class="card"
   data-key="nano cinco space rocket"
   data-naamkey="space rocket"
