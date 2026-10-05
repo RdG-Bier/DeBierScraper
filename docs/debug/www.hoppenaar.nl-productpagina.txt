@@ -474,7 +474,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
     window.addEventListener('load', asyncLoad, false);
   }
 })();</script>
-<script id="__st">var __st={"a":89775374710,"offset":7200,"reqid":"3fd7ddab-e384-4485-b3ed-2e8c73094455-1791195672","pageurl":"www.hoppenaar.nl\/products\/insurgence","u":"d2e42d0d8d2b","p":"product","rtyp":"product","rid":15222084370806};</script>
+<script id="__st">var __st={"a":89775374710,"offset":7200,"reqid":"3438e100-a8aa-43c7-a342-cb646f4596e6-1791228475","pageurl":"www.hoppenaar.nl\/products\/insurgence","u":"c5e65434e18d","p":"product","rtyp":"product","rid":15222084370806};</script>
 <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
 <script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.3.iife.js',D={infoText:'Beschermd door hCaptcha',privacyText:'Privacy',termsText:'Voorwaarden'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!0,!0)}();</script>
 <script integrity="sha256-JjoPp5ZfB1sSAs5SQaol1x1GgvveM+BgmRzyDexInEQ=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//www.hoppenaar.nl/cdn/shopifycloud/storefront/assets/storefront/load_feature-1bd60354.js" crossorigin="anonymous"></script>
@@ -531,11 +531,11 @@ Shopify.SignInWithShop.User.recognized = false;</script>
 <script>
   window.__TREKKIE_SHIM_QUEUE = window.__TREKKIE_SHIM_QUEUE || [];
 </script>
-<script>(function(){var wpmLoader=function(){"use strict";var e=/Googlebot|Storebot-Google|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|AdsBot-Google|Mediapartners-Google|APIs-Google|PetalBot|SemrushBot|AhrefsBot|MJ12bot|DotBot|Acunetix|PerplexityBot|Perplexity-User/i,t=/bytedance/i;function i(){try{var e=document.cookie;if(!e||"string"!=typeof e)return;for(var t=0,i=e.split(";");t<i.length;t++){var n=i[t],r=n.indexOf("=");if(-1!==r){var o=n.slice(0,r).trim();if(o){var a=void 0;try{a=decodeURIComponent(o)}catch(e){a=o}if("_shopify_s"===a){var d=n.slice(r+1).trim();try{return decodeURIComponent(d)}catch(e){return d}}}}}return}catch(e){return}}function n(e){try{"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(e)}catch(e){}}function r(e,t){return"string"==typeof e&&e.length>0&&e.length<=t?e:void 0}function o(e){var t;switch(null==(t=null==e?void 0:e.navigation)?void 0:t.type){case 0:return"navigate";case 1:return"reload";case 2:return"back_forward";default:return}}function a(){var e,t,i;try{var n=null==(i=null==(t=null==(e=self.ShopifyAnalytics)?void 0:e.lib)?void 0:t.trekkie)?void 0:i.state;return"awaiting-consent"===n||"initialized"===n?n:void 0}catch(e){return}}return function(d,s,u,l){var c=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};try{var p=c.trekkieShim;!0!==p&&"true"!==p||null!=window.__TREKKIE_SHIM_QUEUE||(window.__TREKKIE_SHIM_QUEUE=[])}catch(e){}var f,v,h,y,g=(v=(f={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,h=f.legacy,(y=navigator.userAgent).match(e)?"bot":y.match(v)?"modern":y.match(h)?"legacy":y.match(t)?"bot":"unknown"),m=function(e){var t,i,n=r(e,128);try{var a=window.performance,d=null==(t=null==a?void 0:a.getEntriesByType)?void 0:t.call(a,"navigation")[0];if(!d)return{requestId:n,navigationType:o(a)};var s="type"in d?r(d.type,64):void 0,u="serverTiming"in d&&Array.isArray(d.serverTiming)?d.serverTiming:[];return{requestId:null!=n?n:r(null==(i=u.find(function(e){return"requestID"===e.name}))?void 0:i.description,128),navigationType:s}}catch(e){return{requestId:n}}}(c.requestId),w=function(e){var t=e.version,r=e.browserTarget,o=e.surface,a=e.shopId,d=e.monorailEndpoint,s=window.location.href;return{emit:function(e){var u=e.status,l=e.errorMsg,c=e.failureReason,p=e.useKeepaliveFallback,f=void 0!==p&&p,v=e.navigationType,h=e.pagehidePersisted,y=e.requestId,g=e.trekkieState;if(d){var m,w;try{var b=(new Date).getTime();m=JSON.stringify({metadata:{event_sent_at_ms:b},events:[{schema_id:"web_pixels_manager_load/3.3",payload:{version:t,bundle_target:r,page_url:s,status:u,surface:o,error_msg:l,failure_reason:c,navigation_type:v,pagehide_persisted:h,request_id:y,trekkie_state:g,shop_id:a,visit_token:i()},metadata:{event_created_at_ms:b}}]})}catch(e){return}try{if("function"==typeof window.navigator.sendBeacon&&-1===(w=window.navigator.userAgent).indexOf("iPhone; CPU iPhone OS 12_")&&-1===w.indexOf("iPad; CPU OS 12_")&&-1===w.indexOf("iPod touch; CPU iPhone OS 12_")&&window.navigator.sendBeacon.bind(window.navigator)(d,m))return}catch(e){}if(f)try{"function"==typeof window.fetch&&window.fetch(d,{method:"POST",headers:{"Content-Type":"text/plain"},body:m,keepalive:!0}).catch(function(){})}catch(e){}else try{var _=new XMLHttpRequest;_.open("POST",d,!0),_.setRequestHeader("Content-Type","text/plain"),_.send(m)}catch(e){n("[Web Pixels Manager] Got an unhandled error while logging to Monorail.")}}else n("[Web Pixels Manager] No Monorail endpoint provided, skipping logging.")}}}({version:u,browserTarget:g,surface:d.surface,shopId:d.shopId,monorailEndpoint:d.monorailEndpoint});if(Boolean(null==(_=null==(b=window.Shopify)?void 0:b.analytics)?void 0:_.replayQueue))w.emit({status:"setup-skipped",errorMsg:"replay queue already initialized."});else{var b,_;w.emit({status:"setup-started"}),window.Shopify=window.Shopify||{};var S=window.Shopify;S.analytics=S.analytics||{};var P=S.analytics;P.replayQueue=[],P.publish=function(e,t,i){return P.replayQueue.push([e,t,i]),!0};try{self.performance.mark("wpm:start")}catch(e){}var k,C="modern"===g?"modern":"legacy",E=(null!=l?l:{modern:"",legacy:""})[C],I=[(k={baseUrl:s,hashVersion:u,buildTarget:C}).baseUrl,"/wpm","/b",k.hashVersion,"modern"===k.buildTarget?"m":"l",".js"].join(""),O=!1,T=!1;try{c.browserTarget=g,function(){O=!0;try{window.addEventListener("pagehide",M)}catch(e){O=!1}}(),R(function(){try{R(x)}catch(e){D(e)}}),w.emit({status:"loading",requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()})}catch(e){D(e)}}function U(){var e;if(q(),!function(){var e,t;return Boolean(null==(t=null==(e=window.Shopify)?void 0:e.analytics)?void 0:t.initialized)}()){var t,i,n;try{if("function"!=typeof(null==(e=window.webPixelsManager)?void 0:e.init))return void A();if(!(null!==(n=i=t=window.webPixelsManager.init(d))&&"function"!=typeof n&&Object(n)===n&&"publish"in i&&"function"==typeof i.publish&&"publishCustomEvent"in i&&"function"==typeof i.publishCustomEvent&&"visitor"in i&&"function"==typeof i.visitor))return void A()}catch(e){return void A(e)}var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var i=e[0],n=e[1],r=e[2];t.publishCustomEvent(i,n,r)}),r.replayQueue=[],r.publish=t.publishCustomEvent,r.visitor=t.visitor,r.initialized=!0}}function A(e){B("manager_api_unavailable",void 0===e?void 0:Q(e))}function x(){B("script_load_failed","".concat(I," has failed to load"))}function B(e,t){T||(T=!0,q(),w.emit({status:"failed",errorMsg:t,failureReason:e,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function M(e){O&&(q(),w.emit({status:"pagehide-while-loading",useKeepaliveFallback:!0,pagehidePersisted:e.persisted,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function q(){O=!1;try{window.removeEventListener("pagehide",M)}catch(e){}}function R(e){var t;!function(e){var t=e.src,i=e.async,n=void 0===i||i,r=e.onload,o=e.onerror,a=e.sri,d=e.scriptDataAttributes,s=void 0===d?{}:d,u=document.createElement("script"),l=document.querySelector("head"),c=document.querySelector("body");if(u.async=n,u.src=t,a&&(u.integrity=a,u.crossOrigin="anonymous"),s)for(var p in s)if(Object.prototype.hasOwnProperty.call(s,p))try{u.dataset[p]=String(s[p])}catch(e){}if(r&&u.addEventListener("load",r),o&&u.addEventListener("error",o),l)l.appendChild(u);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(u)}}({src:I,async:!0,onload:U,onerror:e,sri:(t=E,"string"==typeof t&&/^sha384-[A-Za-z0-9+/=]+$/.test(t)?E:""),scriptDataAttributes:c})}function D(e){B("script_append_failed",Q(e))}function Q(e){return e instanceof Error?e.message:"Unknown error"}}}();wpmLoader({shopId: 89775374710,storefrontBaseUrl: "https://www.hoppenaar.nl",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://www.hoppenaar.nl/.well-known/shopify/monorail/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["4c64608a","16072cab","8450a54b","7ee89bf1"],webPixelsConfigList: [{"id":"4345266550","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-160283RC0L\\\",\\\"GT-NCGLSZGG\\\"],\\\"target_country\\\":\\\"ZZ\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"remove_from_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"add_shipping_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"view_item_list\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"a3321ca85cf5aaf6b57585fcd8d67b3a","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"De Hoppenaar","paymentSettings":{"currencyCode":"EUR"},"myshopifyDomain":"s1d0r6-0y.myshopify.com","countryCode":"NL","storefrontUrl":"https:\/\/www.hoppenaar.nl"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":12.95,"currencyCode":"EUR"},"product":{"title":"Ophiussa x One Drop - Insurgence","vendor":"Ophiussa","id":"15222084370806","untranslatedTitle":"Ophiussa x One Drop - Insurgence","url":"\/products\/insurgence","type":""},"id":"55797483766134","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":[{"id":"15222084370806","handle":"insurgence","isCollective":null,"title":"Ophiussa x One Drop - Insurgence","type":null,"untranslatedTitle":"Ophiussa x One Drop - Insurgence","url":"\/products\/insurgence","vendor":"Ophiussa","remoteShopId":null,"variants":[{"id":"55797483766134","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954"},"price":{"amount":12.95,"currencyCode":"EUR"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}]},{"id":"15675210039670","handle":"statiegeld-0-15","isCollective":null,"title":"Statiegeld","type":"Statiegeld","untranslatedTitle":"Statiegeld","url":"\/products\/statiegeld-0-15","vendor":"De Hoppenaar","remoteShopId":null,"variants":[{"id":"57574810157430","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/550x549.jpg?v=1774949261"},"price":{"amount":0.1,"currencyCode":"EUR"},"sku":null,"title":"10","untranslatedTitle":"10"}]}],"purchasingCompany":null},},"https://www.hoppenaar.nl/cdn","5982071ew7ea472e3p69b68784m2150dfea",{"modern":"","legacy":""},{"trekkieShim":true,"agentContext":true,"apiClientId":"580111","facebookCapiEnabled":"false","themeId":"188545368438","themePublished":"true","eventMetadataId":"e1f76410-e7e1-42f3-89c0-9a55428310d7","pageType":"product","resourceId":"15222084370806","shopId":"89775374710","storefrontBaseUrl":"https:\/\/www.hoppenaar.nl","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"4c64608a\", \"16072cab\", \"8450a54b\", \"7ee89bf1\"]","isMerchantRequest":"false","hashVersion":"5982071ew7ea472e3p69b68784m2150dfea","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":12.95,\"currencyCode\":\"EUR\"},\"product\":{\"title\":\"Ophiussa x One Drop - Insurgence\",\"vendor\":\"Ophiussa\",\"id\":\"15222084370806\",\"untranslatedTitle\":\"Ophiussa x One Drop - Insurgence\",\"url\":\"\/products\/insurgence\",\"type\":\"\"},\"id\":\"55797483766134\",\"image\":{\"src\":\"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
+<script>(function(){var wpmLoader=function(){"use strict";var e=/Googlebot|Storebot-Google|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|AdsBot-Google|Mediapartners-Google|APIs-Google|PetalBot|SemrushBot|AhrefsBot|MJ12bot|DotBot|Acunetix|PerplexityBot|Perplexity-User/i,t=/bytedance/i;function i(){try{var e=document.cookie;if(!e||"string"!=typeof e)return;for(var t=0,i=e.split(";");t<i.length;t++){var n=i[t],r=n.indexOf("=");if(-1!==r){var o=n.slice(0,r).trim();if(o){var a=void 0;try{a=decodeURIComponent(o)}catch(e){a=o}if("_shopify_s"===a){var d=n.slice(r+1).trim();try{return decodeURIComponent(d)}catch(e){return d}}}}}return}catch(e){return}}function n(e){try{"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(e)}catch(e){}}function r(e,t){return"string"==typeof e&&e.length>0&&e.length<=t?e:void 0}function o(e){var t;switch(null==(t=null==e?void 0:e.navigation)?void 0:t.type){case 0:return"navigate";case 1:return"reload";case 2:return"back_forward";default:return}}function a(){var e,t,i;try{var n=null==(i=null==(t=null==(e=self.ShopifyAnalytics)?void 0:e.lib)?void 0:t.trekkie)?void 0:i.state;return"awaiting-consent"===n||"initialized"===n?n:void 0}catch(e){return}}return function(d,s,u,l){var c=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};try{var p=c.trekkieShim;!0!==p&&"true"!==p||null!=window.__TREKKIE_SHIM_QUEUE||(window.__TREKKIE_SHIM_QUEUE=[])}catch(e){}var f,v,h,y,g=(v=(f={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,h=f.legacy,(y=navigator.userAgent).match(e)?"bot":y.match(v)?"modern":y.match(h)?"legacy":y.match(t)?"bot":"unknown"),m=function(e){var t,i,n=r(e,128);try{var a=window.performance,d=null==(t=null==a?void 0:a.getEntriesByType)?void 0:t.call(a,"navigation")[0];if(!d)return{requestId:n,navigationType:o(a)};var s="type"in d?r(d.type,64):void 0,u="serverTiming"in d&&Array.isArray(d.serverTiming)?d.serverTiming:[];return{requestId:null!=n?n:r(null==(i=u.find(function(e){return"requestID"===e.name}))?void 0:i.description,128),navigationType:s}}catch(e){return{requestId:n}}}(c.requestId),w=function(e){var t=e.version,r=e.browserTarget,o=e.surface,a=e.shopId,d=e.monorailEndpoint,s=window.location.href;return{emit:function(e){var u=e.status,l=e.errorMsg,c=e.failureReason,p=e.useKeepaliveFallback,f=void 0!==p&&p,v=e.navigationType,h=e.pagehidePersisted,y=e.requestId,g=e.trekkieState;if(d){var m,w;try{var b=(new Date).getTime();m=JSON.stringify({metadata:{event_sent_at_ms:b},events:[{schema_id:"web_pixels_manager_load/3.3",payload:{version:t,bundle_target:r,page_url:s,status:u,surface:o,error_msg:l,failure_reason:c,navigation_type:v,pagehide_persisted:h,request_id:y,trekkie_state:g,shop_id:a,visit_token:i()},metadata:{event_created_at_ms:b}}]})}catch(e){return}try{if("function"==typeof window.navigator.sendBeacon&&-1===(w=window.navigator.userAgent).indexOf("iPhone; CPU iPhone OS 12_")&&-1===w.indexOf("iPad; CPU OS 12_")&&-1===w.indexOf("iPod touch; CPU iPhone OS 12_")&&window.navigator.sendBeacon.bind(window.navigator)(d,m))return}catch(e){}if(f)try{"function"==typeof window.fetch&&window.fetch(d,{method:"POST",headers:{"Content-Type":"text/plain"},body:m,keepalive:!0}).catch(function(){})}catch(e){}else try{var _=new XMLHttpRequest;_.open("POST",d,!0),_.setRequestHeader("Content-Type","text/plain"),_.send(m)}catch(e){n("[Web Pixels Manager] Got an unhandled error while logging to Monorail.")}}else n("[Web Pixels Manager] No Monorail endpoint provided, skipping logging.")}}}({version:u,browserTarget:g,surface:d.surface,shopId:d.shopId,monorailEndpoint:d.monorailEndpoint});if(Boolean(null==(_=null==(b=window.Shopify)?void 0:b.analytics)?void 0:_.replayQueue))w.emit({status:"setup-skipped",errorMsg:"replay queue already initialized."});else{var b,_;w.emit({status:"setup-started"}),window.Shopify=window.Shopify||{};var S=window.Shopify;S.analytics=S.analytics||{};var P=S.analytics;P.replayQueue=[],P.publish=function(e,t,i){return P.replayQueue.push([e,t,i]),!0};try{self.performance.mark("wpm:start")}catch(e){}var k,C="modern"===g?"modern":"legacy",E=(null!=l?l:{modern:"",legacy:""})[C],I=[(k={baseUrl:s,hashVersion:u,buildTarget:C}).baseUrl,"/wpm","/b",k.hashVersion,"modern"===k.buildTarget?"m":"l",".js"].join(""),O=!1,T=!1;try{c.browserTarget=g,function(){O=!0;try{window.addEventListener("pagehide",M)}catch(e){O=!1}}(),R(function(){try{R(x)}catch(e){D(e)}}),w.emit({status:"loading",requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()})}catch(e){D(e)}}function U(){var e;if(q(),!function(){var e,t;return Boolean(null==(t=null==(e=window.Shopify)?void 0:e.analytics)?void 0:t.initialized)}()){var t,i,n;try{if("function"!=typeof(null==(e=window.webPixelsManager)?void 0:e.init))return void A();if(!(null!==(n=i=t=window.webPixelsManager.init(d))&&"function"!=typeof n&&Object(n)===n&&"publish"in i&&"function"==typeof i.publish&&"publishCustomEvent"in i&&"function"==typeof i.publishCustomEvent&&"visitor"in i&&"function"==typeof i.visitor))return void A()}catch(e){return void A(e)}var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var i=e[0],n=e[1],r=e[2];t.publishCustomEvent(i,n,r)}),r.replayQueue=[],r.publish=t.publishCustomEvent,r.visitor=t.visitor,r.initialized=!0}}function A(e){B("manager_api_unavailable",void 0===e?void 0:Q(e))}function x(){B("script_load_failed","".concat(I," has failed to load"))}function B(e,t){T||(T=!0,q(),w.emit({status:"failed",errorMsg:t,failureReason:e,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function M(e){O&&(q(),w.emit({status:"pagehide-while-loading",useKeepaliveFallback:!0,pagehidePersisted:e.persisted,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function q(){O=!1;try{window.removeEventListener("pagehide",M)}catch(e){}}function R(e){var t;!function(e){var t=e.src,i=e.async,n=void 0===i||i,r=e.onload,o=e.onerror,a=e.sri,d=e.scriptDataAttributes,s=void 0===d?{}:d,u=document.createElement("script"),l=document.querySelector("head"),c=document.querySelector("body");if(u.async=n,u.src=t,a&&(u.integrity=a,u.crossOrigin="anonymous"),s)for(var p in s)if(Object.prototype.hasOwnProperty.call(s,p))try{u.dataset[p]=String(s[p])}catch(e){}if(r&&u.addEventListener("load",r),o&&u.addEventListener("error",o),l)l.appendChild(u);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(u)}}({src:I,async:!0,onload:U,onerror:e,sri:(t=E,"string"==typeof t&&/^sha384-[A-Za-z0-9+/=]+$/.test(t)?E:""),scriptDataAttributes:c})}function D(e){B("script_append_failed",Q(e))}function Q(e){return e instanceof Error?e.message:"Unknown error"}}}();wpmLoader({shopId: 89775374710,storefrontBaseUrl: "https://www.hoppenaar.nl",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://www.hoppenaar.nl/.well-known/shopify/monorail/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["4c64608a","16072cab","8450a54b","7ee89bf1"],webPixelsConfigList: [{"id":"4345266550","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-160283RC0L\\\",\\\"GT-NCGLSZGG\\\"],\\\"target_country\\\":\\\"ZZ\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"remove_from_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"add_shipping_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"view_item_list\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"a3321ca85cf5aaf6b57585fcd8d67b3a","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"De Hoppenaar","paymentSettings":{"currencyCode":"EUR"},"myshopifyDomain":"s1d0r6-0y.myshopify.com","countryCode":"NL","storefrontUrl":"https:\/\/www.hoppenaar.nl"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":12.95,"currencyCode":"EUR"},"product":{"title":"Ophiussa x One Drop - Insurgence","vendor":"Ophiussa","id":"15222084370806","untranslatedTitle":"Ophiussa x One Drop - Insurgence","url":"\/products\/insurgence","type":""},"id":"55797483766134","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":[{"id":"15222084370806","handle":"insurgence","isCollective":null,"title":"Ophiussa x One Drop - Insurgence","type":null,"untranslatedTitle":"Ophiussa x One Drop - Insurgence","url":"\/products\/insurgence","vendor":"Ophiussa","remoteShopId":null,"variants":[{"id":"55797483766134","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954"},"price":{"amount":12.95,"currencyCode":"EUR"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}]},{"id":"15675210039670","handle":"statiegeld-0-15","isCollective":null,"title":"Statiegeld","type":"Statiegeld","untranslatedTitle":"Statiegeld","url":"\/products\/statiegeld-0-15","vendor":"De Hoppenaar","remoteShopId":null,"variants":[{"id":"57574810157430","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/550x549.jpg?v=1774949261"},"price":{"amount":0.1,"currencyCode":"EUR"},"sku":null,"title":"10","untranslatedTitle":"10"}]}],"purchasingCompany":null},},"https://www.hoppenaar.nl/cdn","5982071ew7ea472e3p69b68784m2150dfea",{"modern":"","legacy":""},{"trekkieShim":true,"agentContext":true,"apiClientId":"580111","facebookCapiEnabled":"false","themeId":"188545368438","themePublished":"true","eventMetadataId":"99f85444-c50e-4f0f-895b-e079a5d50345","pageType":"product","resourceId":"15222084370806","shopId":"89775374710","storefrontBaseUrl":"https:\/\/www.hoppenaar.nl","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"4c64608a\", \"16072cab\", \"8450a54b\", \"7ee89bf1\"]","isMerchantRequest":"false","hashVersion":"5982071ew7ea472e3p69b68784m2150dfea","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":12.95,\"currencyCode\":\"EUR\"},\"product\":{\"title\":\"Ophiussa x One Drop - Insurgence\",\"vendor\":\"Ophiussa\",\"id\":\"15222084370806\",\"untranslatedTitle\":\"Ophiussa x One Drop - Insurgence\",\"url\":\"\/products\/insurgence\",\"type\":\"\"},\"id\":\"55797483766134\",\"image\":{\"src\":\"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Ophiussa_-_Insurgence_-_De_Hoppenaar_5ee91bbe-0b89-4ff9-930f-cc8210084c86.png?v=1751460954\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
   window.ShopifyAnalytics = window.ShopifyAnalytics || {};
   window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
   window.ShopifyAnalytics.meta.currency = 'EUR';
-  var meta = {"product":{"id":15222084370806,"gid":"gid:\/\/shopify\/Product\/15222084370806","vendor":"Ophiussa","type":"","handle":"insurgence","variants":[{"id":55797483766134,"price":1295,"name":"Ophiussa x One Drop - Insurgence","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":15222084370806,"requestId":"3fd7ddab-e384-4485-b3ed-2e8c73094455-1791195672"}};
+  var meta = {"product":{"id":15222084370806,"gid":"gid:\/\/shopify\/Product\/15222084370806","vendor":"Ophiussa","type":"","handle":"insurgence","variants":[{"id":55797483766134,"price":1295,"name":"Ophiussa x One Drop - Insurgence","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":15222084370806,"requestId":"3438e100-a8aa-43c7-a342-cb646f4596e6-1791228475"}};
   for (var attr in meta) {
     window.ShopifyAnalytics.meta[attr] = meta[attr];
   }
@@ -694,7 +694,7 @@ first.parentNode.insertBefore(script, first);
 
     };
     trekkie.load(
-      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":89775374710,"isMerchantRequest":null,"themeId":188545368438,"themeCityHash":"5693659112458388117","contentLanguage":"nl","currency":"EUR","eventMetadataId":"e1f76410-e7e1-42f3-89c0-9a55428310d7"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["764d78cb","8450a54b","7ee89bf1","4c64608a"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":false,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":89775374710,"isMerchantRequest":null,"themeId":188545368438,"themeCityHash":"1164864552935207791","contentLanguage":"nl","currency":"EUR","eventMetadataId":"99f85444-c50e-4f0f-895b-e079a5d50345"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["764d78cb","8450a54b","7ee89bf1","4c64608a"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":false,"source":"trekkie-storefront-renderer","apiClientId":580111}}
     );
 
     var loaded = false;
@@ -717,7 +717,7 @@ first.parentNode.insertBefore(script, first);
       }
     });
 
-    window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":15222084370806,"requestId":"3fd7ddab-e384-4485-b3ed-2e8c73094455-1791195672","shopifyEmitted":true});
+    window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":15222084370806,"requestId":"3438e100-a8aa-43c7-a342-cb646f4596e6-1791228475","shopifyEmitted":true});
 
     var eventsListenerScript = document.createElement('script');
     eventsListenerScript.async = true;
@@ -729,7 +729,7 @@ first.parentNode.insertBefore(script, first);
   src="https://www.hoppenaar.nl/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.9.4.min.js"
   data-application="storefront-renderer"
   data-shop-id="89775374710"
-  data-render-region="gcp-us-west1"
+  data-render-region="gcp-us-east1"
   data-page-type="product"
   data-theme-instance-id="188545368438"
   data-theme-name="Venue"
@@ -742,7 +742,7 @@ first.parentNode.insertBefore(script, first);
   data-shs-logs-sample-rate="1"
   data-shs-beacon-endpoint="https://www.hoppenaar.nl/api/collect"
 ></script>
-<meta name="shopify-y" content="b073af1f-9880-4dba-9665-9d6db0845dd7" data-expiration="1822753178000"><meta name="shopify-s" content="71efad8d-59d0-4e22-bdc9-8694c844c3d5" data-expiration="1791197378000"><meta name="new-cookie-storage-activated" content="t">
+<meta name="shopify-y" content="81794d8a-da8d-4b4e-81cd-23e68707f73f" data-expiration="1822785968000"><meta name="shopify-s" content="16d8dc0f-4ae1-4f03-909e-9078baec2e1b" data-expiration="1791230168000"><meta name="new-cookie-storage-activated" content="t">
 </head>
 
   <body
@@ -1493,54 +1493,623 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
     <div class="header-navs js-heaver-navs u-clearfix u-hidden@tab-down"><nav class="primary-nav header-navs__items js-primary-nav" role="navigation">
           <nested-menu submenu-direction="below">
             <ul class="primary-nav__items js-primary-nav-items"><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/"
-                        class="primary-nav__link"
-                        
-                      >Home</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/collections/all"
-                        class="primary-nav__link"
-                        
-                      >Alle bieren</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/pages/bierstijlen"
-                        class="primary-nav__link"
-                        
-                      >Bierstijlen</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
                         href="/collections/nieuwe-bieren"
                         class="primary-nav__link"
                         
-                      >Nieuwe bieren</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/collections/vintage-bieren"
-                        class="primary-nav__link"
-                        
-                      >Vintage bieren</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
+                      >Nieuw binnen</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><header-details-disclosure>
+                        <details
+                          id="Details-HeaderMenu-2"
+                          data-link-title="Alle bieren"
+                        >
+                          <summary class="header__menu-item">
+                            <a
+                              href="/collections/all"
+                              class="primary-nav__link"
+                              
+                            >Alle bieren</a>
+                          </summary>
+                          <div id="HeaderMenu-MenuList-2" class="nav__sub" tabindex="-1">
+                            <nested-menu class="nav__sub-wrap">
+                              <ul class="list-menu has-animation" role="list" style="animation-delay: 100ms"><li class="list-menu__item"><a
+                                        href="/collections/all"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Alle bieren</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/amerika"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Uit Amerika</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/canada"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Uit Canada</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/bieren-van-de-hoppenaar"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Bieren van De Hoppenaar</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/alcoholvrij"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Alcoholvrij</span>
+                                      </a></li></ul>
+                            </nested-menu>
+                          </div>
+                        </details>
+                      </header-details-disclosure></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><header-details-disclosure>
+                        <details
+                          id="Details-HeaderMenu-3"
+                          data-link-title="Bierstijlen"
+                        >
+                          <summary class="header__menu-item">
+                            <a
+                              href="/pages/bierstijlen"
+                              class="primary-nav__link"
+                              
+                            >Bierstijlen</a>
+                          </summary>
+                          <div id="HeaderMenu-MenuList-3" class="nav__sub" tabindex="-1">
+                            <nested-menu class="nav__sub-wrap">
+                              <ul class="list-menu has-animation" role="list" style="animation-delay: 100ms"><li class="list-menu__item"><header-details-disclosure>
+                                        <details id="Details-HeaderSubMenu-1">
+                                          <summary class="header__menu-item">
+                                            <a
+                                              href="/collections/ipa"
+                                              class="list-menu__link"
+                                              
+                                              style="z-index: 1"
+                                            >
+                                              <span class="list-menu__text">IPA</span><span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></a>
+                                          </summary>
+                                          <div
+                                            id="HeaderSubMenu-MenuList-1"
+                                            class="nav__sub-t"
+                                            tabindex="-1"
+                                          >
+                                            <div class="nav__sub-t-wrap">
+                                              <ul class="list-menu has-animation" style="animation-delay: 100ms"><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/single-ipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Single IPA</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/dipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">DIPA</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/tipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">TIPA</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/qipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">QIPA</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/west-coast-ipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">West Coast IPA</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/overige-ipas"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Overige IPA&#39;s</span>
+                                                    </a>
+                                                  </li></ul>
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </header-details-disclosure></li><li class="list-menu__item"><header-details-disclosure>
+                                        <details id="Details-HeaderSubMenu-2">
+                                          <summary class="header__menu-item">
+                                            <a
+                                              href="/collections/zuur-en-funky"
+                                              class="list-menu__link"
+                                              
+                                              style="z-index: 1"
+                                            >
+                                              <span class="list-menu__text">Zuur &amp; funky</span><span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></a>
+                                          </summary>
+                                          <div
+                                            id="HeaderSubMenu-MenuList-2"
+                                            class="nav__sub-t"
+                                            tabindex="-1"
+                                          >
+                                            <div class="nav__sub-t-wrap">
+                                              <ul class="list-menu has-animation" style="animation-delay: 100ms"><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/fruited-sour"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Fruited Sour / Gose</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/smoothie-sour"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Smoothie Sour</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/lambiek-en-geuze"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Lambiek &amp; geuze</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/wild-ale"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Wild Ale</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/sour-ipa"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Sour IPA</span>
+                                                    </a>
+                                                  </li></ul>
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </header-details-disclosure></li><li class="list-menu__item"><header-details-disclosure>
+                                        <details id="Details-HeaderSubMenu-3">
+                                          <summary class="header__menu-item">
+                                            <a
+                                              href="/collections/zwaar-en-donker"
+                                              class="list-menu__link"
+                                              
+                                              style="z-index: 1"
+                                            >
+                                              <span class="list-menu__text">Zwaar &amp; donker</span><span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></a>
+                                          </summary>
+                                          <div
+                                            id="HeaderSubMenu-MenuList-3"
+                                            class="nav__sub-t"
+                                            tabindex="-1"
+                                          >
+                                            <div class="nav__sub-t-wrap">
+                                              <ul class="list-menu has-animation" style="animation-delay: 100ms"><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/stout"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Stout</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/barrel-aged"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Barrel aged</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/barleywine"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Barleywine</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/porter"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Porter</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/quadrupel"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Quadrupel</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/strong-ale"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Strong Ale</span>
+                                                    </a>
+                                                  </li></ul>
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </header-details-disclosure></li><li class="list-menu__item"><header-details-disclosure>
+                                        <details id="Details-HeaderSubMenu-4">
+                                          <summary class="header__menu-item">
+                                            <a
+                                              href="/collections/traditioneel"
+                                              class="list-menu__link"
+                                              
+                                              style="z-index: 1"
+                                            >
+                                              <span class="list-menu__text">Traditioneel</span><span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></a>
+                                          </summary>
+                                          <div
+                                            id="HeaderSubMenu-MenuList-4"
+                                            class="nav__sub-t"
+                                            tabindex="-1"
+                                          >
+                                            <div class="nav__sub-t-wrap">
+                                              <ul class="list-menu has-animation" style="animation-delay: 100ms"><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/blond"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Blond</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/tripel"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Tripel</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/dubbel"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Dubbel</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/wit"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Wit</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/weizen"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Weizen</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/lager"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Lager</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/bokbier"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Bokbier</span>
+                                                    </a>
+                                                  </li></ul>
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </header-details-disclosure></li><li class="list-menu__item"><header-details-disclosure>
+                                        <details id="Details-HeaderSubMenu-5">
+                                          <summary class="header__menu-item">
+                                            <a
+                                              href="/collections/cider"
+                                              class="list-menu__link"
+                                              
+                                              style="z-index: 1"
+                                            >
+                                              <span class="list-menu__text">Cider &amp; mede</span><span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></a>
+                                          </summary>
+                                          <div
+                                            id="HeaderSubMenu-MenuList-5"
+                                            class="nav__sub-t"
+                                            tabindex="-1"
+                                          >
+                                            <div class="nav__sub-t-wrap">
+                                              <ul class="list-menu has-animation" style="animation-delay: 100ms"><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/cider"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Cider</span>
+                                                    </a>
+                                                  </li><li class="list-menu__item">
+                                                    <a
+                                                      href="/collections/mede"
+                                                      class="list-menu__link"
+                                                      
+                                                    >
+                                                      <span class="list-menu__text">Mede</span>
+                                                    </a>
+                                                  </li></ul>
+                                            </div>
+                                          </div>
+                                        </details>
+                                      </header-details-disclosure></li></ul>
+                            </nested-menu>
+                          </div>
+                        </details>
+                      </header-details-disclosure></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><header-details-disclosure>
+                        <details
+                          id="Details-HeaderMenu-4"
+                          data-link-title="Specials"
+                        >
+                          <summary class="header__menu-item">
+                            <a
+                              href="/collections/vintage-bieren"
+                              class="primary-nav__link"
+                              
+                            >Specials</a>
+                          </summary>
+                          <div id="HeaderMenu-MenuList-4" class="nav__sub" tabindex="-1">
+                            <nested-menu class="nav__sub-wrap">
+                              <ul class="list-menu has-animation" role="list" style="animation-delay: 100ms"><li class="list-menu__item"><a
+                                        href="/collections/vintage-bieren"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Vintage bieren</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/magnum"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Magnum flessen</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/bourbon-countys"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Bourbon County</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/cantillon-drop"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Cantillon</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/3-fonteinen-drop"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">3 Fonteinen</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/antidoot-pellicle-tilquin-drop"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Antidoot / Pellicle / Tilquin</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/bofkont-drop"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Bofkont</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/nieuwste-zure-drop"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Nieuwste zure drop</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/collections/bier-adventskalender"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Bier adventskalender 2026</span>
+                                      </a></li></ul>
+                            </nested-menu>
+                          </div>
+                        </details>
+                      </header-details-disclosure></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
                         href="/collections/black-friday-sale"
                         class="primary-nav__link"
                         
-                      >Sale!</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/pages/onze-locaties"
-                        class="primary-nav__link"
-                        
-                      >Onze locaties</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/pages/over-ons"
-                        class="primary-nav__link"
-                        
-                      >Over ons</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/pages/contact"
-                        class="primary-nav__link"
-                        
-                      >Contact &amp; FAQ</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/policies/refund-policy"
-                        class="primary-nav__link"
-                        
-                      >Retourbeleid</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/policies/shipping-policy"
-                        class="primary-nav__link"
-                        
-                      >Verzendbeleid</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><a
-                        href="/policies/terms-of-service"
-                        class="primary-nav__link"
-                        
-                      >Algemene voorwaarden</a></li></ul>
+                      >Sale!</a></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><header-details-disclosure>
+                        <details
+                          id="Details-HeaderMenu-6"
+                          data-link-title="Over ons"
+                        >
+                          <summary class="header__menu-item">
+                            <a
+                              href="/pages/over-ons"
+                              class="primary-nav__link"
+                              
+                            >Over ons</a>
+                          </summary>
+                          <div id="HeaderMenu-MenuList-6" class="nav__sub" tabindex="-1">
+                            <nested-menu class="nav__sub-wrap">
+                              <ul class="list-menu has-animation" role="list" style="animation-delay: 100ms"><li class="list-menu__item"><a
+                                        href="/pages/over-ons"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Over De Hoppenaar</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/onze-locaties"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Onze locaties</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/onze-winkel"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Winkel Arnhem</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/ons-proeflokaal"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Proeflokaal Arnhem</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/het-poortwachtershuis"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Poortwachtershuis Grave</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/fresh-fast"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Fresh &amp; Fast membership</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/de-hoppenaar-groothandel"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Groothandel</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/pages/kom-werken-bij-de-hoppenaar"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Werken bij</span>
+                                      </a></li></ul>
+                            </nested-menu>
+                          </div>
+                        </details>
+                      </header-details-disclosure></li><li class="primary-nav__item f-family--heading f-caps--true f-space--1"><header-details-disclosure>
+                        <details
+                          id="Details-HeaderMenu-7"
+                          data-link-title="Klantenservice"
+                        >
+                          <summary class="header__menu-item">
+                            <a
+                              href="/pages/contact"
+                              class="primary-nav__link"
+                              
+                            >Klantenservice</a>
+                          </summary>
+                          <div id="HeaderMenu-MenuList-7" class="nav__sub" tabindex="-1">
+                            <nested-menu class="nav__sub-wrap">
+                              <ul class="list-menu has-animation" role="list" style="animation-delay: 100ms"><li class="list-menu__item"><a
+                                        href="/pages/contact"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Contact &amp; FAQ</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/policies/shipping-policy"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Verzendbeleid</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/policies/refund-policy"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Retourbeleid</span>
+                                      </a></li><li class="list-menu__item"><a
+                                        href="/policies/terms-of-service"
+                                        class="list-menu__link"
+                                        
+                                      >
+                                        <span class="list-menu__text">Algemene voorwaarden</span>
+                                      </a></li></ul>
+                            </nested-menu>
+                          </div>
+                        </details>
+                      </header-details-disclosure></li></ul>
           </nested-menu>
         </nav><nav class="secondary-nav header-navs__items js-secondary-nav">
         <div class="secondary-nav__items secondary-nav__items--icon"><ul class="secondary-nav__localize js-secondary-nav-localize"><li class="secondary-nav__item secondary-nav__item--light f-family--heading f-caps--true f-space--1">
@@ -1722,16 +2291,984 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
   </span>
       </button><drawer-menu>
           <nav class="drawer-nav drawer-nav--main">
-            <ul class="list-menu" role="list"></ul>
+            <ul class="list-menu" role="list"><li class="list-menu__item"><a
+                      href="/collections/nieuwe-bieren"
+                      class="list-menu__link f-family--heading f-caps--false f-space--0"
+                      
+                    >
+                      Nieuw binnen
+                    </a></li><li class="list-menu__item"><details
+                      id="Details-menu-drawer-menu-item-2"
+                      
+                    >
+                      <summary
+                        class="list-menu__link f-family--heading f-caps--false f-space--0"
+                        
+                      >
+                        Alle bieren
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                      <div
+                        id="SidebarMenu-MenuList-2"
+                        class="drawer-nav__panel"
+                        tabindex="-1"
+                      >
+                        <div class="drawer-nav__wrapper"><div class="drawer-nav__empty-banner"></div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                            <button class="drawer-nav__back" aria-label="Vorig paneel"><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                            <div class="drawer-nav__title">
+                              Alle bieren
+                            </div>
+                          </div><ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item"><a
+                                      href="/collections/all"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Alle bieren
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/amerika"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Uit Amerika
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/canada"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Uit Canada
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/bieren-van-de-hoppenaar"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Bieren van De Hoppenaar
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/alcoholvrij"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Alcoholvrij
+                                    </a></li></ul>
+<div class="drawer-nav__view-all">
+                              <a href="/collections/all" class="c-btn c-btn--hollow c-btn--full">Bekijk Alle bieren</a>
+                            </div></div>
+                      </div>
+                    </details></li><li class="list-menu__item"><details
+                      id="Details-menu-drawer-menu-item-3"
+                      
+                    >
+                      <summary
+                        class="list-menu__link f-family--heading f-caps--false f-space--0"
+                        
+                      >
+                        Bierstijlen
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                      <div
+                        id="SidebarMenu-MenuList-3"
+                        class="drawer-nav__panel"
+                        tabindex="-1"
+                      >
+                        <div class="drawer-nav__wrapper"><div class="drawer-nav__empty-banner"></div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                            <button class="drawer-nav__back" aria-label="Vorig paneel"><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                            <div class="drawer-nav__title">
+                              Bierstijlen
+                            </div>
+                          </div><ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item"><details id="Details-menu-drawer-submenu-item-1">
+                                      <summary class="list-menu__link f-family--heading f-caps--false f-space--0">
+                                        IPA
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                                      <div
+                                        id="SidebarMenu-ChildMenuList-1"
+                                        class="drawer-nav__panel has-banner"
+                                      >
+                                        <div class="drawer-nav__wrapper"><div
+                                              id="Details-menu-drawer-submenu-item-1-banner"
+                                              class="drawer-nav__banner"
+                                            >
+                                              <div class="o-ratio o-ratio--16:9">
+                                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: IPA</span>
+  <svg
+    id="visual"
+    viewBox="0 0 4560 0"
+    width="4560"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="4560" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_51029746-a4e3-4e8c-9e20-b16133827d70.jpg?v=1751367738&amp;width=1080" alt="IPA" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_51029746-a4e3-4e8c-9e20-b16133827d70.jpg?v=1751367738&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_51029746-a4e3-4e8c-9e20-b16133827d70.jpg?v=1751367738&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_51029746-a4e3-4e8c-9e20-b16133827d70.jpg?v=1751367738&amp;width=1080 1080w" width="1080" height="864" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                                </div>
+                                              </div>
+                                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                                            <button
+                                              class="drawer-nav__back"
+                                              aria-label="Vorig paneel"
+                                            ><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                                            <div class="drawer-nav__title">
+                                              IPA
+                                            </div>
+                                          </div>
+                                          <ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/single-ipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Single IPA
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/dipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  DIPA
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/tipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  TIPA
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/qipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  QIPA
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/west-coast-ipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  West Coast IPA
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/overige-ipas"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Overige IPA&#39;s
+                                                </a>
+                                              </li></ul><div class="drawer-nav__view-all">
+                                              <a href="/collections/ipa" class="c-btn c-btn--hollow c-btn--full">Bekijk IPA</a>
+                                            </div></div>
+                                      </div>
+                                    </details></li><li class="list-menu__item"><details id="Details-menu-drawer-submenu-item-2">
+                                      <summary class="list-menu__link f-family--heading f-caps--false f-space--0">
+                                        Zuur &amp; funky
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                                      <div
+                                        id="SidebarMenu-ChildMenuList-2"
+                                        class="drawer-nav__panel has-banner"
+                                      >
+                                        <div class="drawer-nav__wrapper"><div
+                                              id="Details-menu-drawer-submenu-item-2-banner"
+                                              class="drawer-nav__banner"
+                                            >
+                                              <div class="o-ratio o-ratio--16:9">
+                                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: Zuur en funky</span>
+  <svg
+    id="visual"
+    viewBox="0 0 4560 0"
+    width="4560"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="4560" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_e4acb1b3-3ab5-4e15-9312-3399802f622c.jpg?v=1751376034&amp;width=1080" alt="Zuur en funky" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_e4acb1b3-3ab5-4e15-9312-3399802f622c.jpg?v=1751376034&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_e4acb1b3-3ab5-4e15-9312-3399802f622c.jpg?v=1751376034&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_e4acb1b3-3ab5-4e15-9312-3399802f622c.jpg?v=1751376034&amp;width=1080 1080w" width="1080" height="864" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                                </div>
+                                              </div>
+                                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                                            <button
+                                              class="drawer-nav__back"
+                                              aria-label="Vorig paneel"
+                                            ><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                                            <div class="drawer-nav__title">
+                                              Zuur &amp; funky
+                                            </div>
+                                          </div>
+                                          <ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/fruited-sour"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Fruited Sour / Gose
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/smoothie-sour"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Smoothie Sour
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/lambiek-en-geuze"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Lambiek &amp; geuze
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/wild-ale"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Wild Ale
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/sour-ipa"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Sour IPA
+                                                </a>
+                                              </li></ul><div class="drawer-nav__view-all">
+                                              <a href="/collections/zuur-en-funky" class="c-btn c-btn--hollow c-btn--full">Bekijk Zuur &amp; funky</a>
+                                            </div></div>
+                                      </div>
+                                    </details></li><li class="list-menu__item"><details id="Details-menu-drawer-submenu-item-3">
+                                      <summary class="list-menu__link f-family--heading f-caps--false f-space--0">
+                                        Zwaar &amp; donker
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                                      <div
+                                        id="SidebarMenu-ChildMenuList-3"
+                                        class="drawer-nav__panel has-banner"
+                                      >
+                                        <div class="drawer-nav__wrapper"><div
+                                              id="Details-menu-drawer-submenu-item-3-banner"
+                                              class="drawer-nav__banner"
+                                            >
+                                              <div class="o-ratio o-ratio--16:9">
+                                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: Zwaar en donker</span>
+  <svg
+    id="visual"
+    viewBox="0 0 4560 0"
+    width="4560"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="4560" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_39b16325-e348-4788-bc8c-1b89b5cd2ea2.jpg?v=1751376139&amp;width=1080" alt="Zwaar en donker" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_39b16325-e348-4788-bc8c-1b89b5cd2ea2.jpg?v=1751376139&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_39b16325-e348-4788-bc8c-1b89b5cd2ea2.jpg?v=1751376139&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_39b16325-e348-4788-bc8c-1b89b5cd2ea2.jpg?v=1751376139&amp;width=1080 1080w" width="1080" height="864" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                                </div>
+                                              </div>
+                                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                                            <button
+                                              class="drawer-nav__back"
+                                              aria-label="Vorig paneel"
+                                            ><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                                            <div class="drawer-nav__title">
+                                              Zwaar &amp; donker
+                                            </div>
+                                          </div>
+                                          <ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/stout"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Stout
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/barrel-aged"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Barrel aged
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/barleywine"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Barleywine
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/porter"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Porter
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/quadrupel"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Quadrupel
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/strong-ale"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Strong Ale
+                                                </a>
+                                              </li></ul><div class="drawer-nav__view-all">
+                                              <a href="/collections/zwaar-en-donker" class="c-btn c-btn--hollow c-btn--full">Bekijk Zwaar &amp; donker</a>
+                                            </div></div>
+                                      </div>
+                                    </details></li><li class="list-menu__item"><details id="Details-menu-drawer-submenu-item-4">
+                                      <summary class="list-menu__link f-family--heading f-caps--false f-space--0">
+                                        Traditioneel
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                                      <div
+                                        id="SidebarMenu-ChildMenuList-4"
+                                        class="drawer-nav__panel has-banner"
+                                      >
+                                        <div class="drawer-nav__wrapper"><div
+                                              id="Details-menu-drawer-submenu-item-4-banner"
+                                              class="drawer-nav__banner"
+                                            >
+                                              <div class="o-ratio o-ratio--16:9">
+                                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: Traditioneel</span>
+  <svg
+    id="visual"
+    viewBox="0 0 4560 0"
+    width="4560"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="4560" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_5e28bc48-cbcc-498c-80d1-965826936a7a.jpg?v=1751376549&amp;width=1080" alt="Traditioneel" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I4376_5e28bc48-cbcc-498c-80d1-965826936a7a.jpg?v=1751376549&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_5e28bc48-cbcc-498c-80d1-965826936a7a.jpg?v=1751376549&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I4376_5e28bc48-cbcc-498c-80d1-965826936a7a.jpg?v=1751376549&amp;width=1080 1080w" width="1080" height="864" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                                </div>
+                                              </div>
+                                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                                            <button
+                                              class="drawer-nav__back"
+                                              aria-label="Vorig paneel"
+                                            ><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                                            <div class="drawer-nav__title">
+                                              Traditioneel
+                                            </div>
+                                          </div>
+                                          <ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/blond"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Blond
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/tripel"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Tripel
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/dubbel"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Dubbel
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/wit"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Wit
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/weizen"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Weizen
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/lager"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Lager
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/bokbier"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Bokbier
+                                                </a>
+                                              </li></ul><div class="drawer-nav__view-all">
+                                              <a href="/collections/traditioneel" class="c-btn c-btn--hollow c-btn--full">Bekijk Traditioneel</a>
+                                            </div></div>
+                                      </div>
+                                    </details></li><li class="list-menu__item"><details id="Details-menu-drawer-submenu-item-5">
+                                      <summary class="list-menu__link f-family--heading f-caps--false f-space--0">
+                                        Cider &amp; mede
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                                      <div
+                                        id="SidebarMenu-ChildMenuList-5"
+                                        class="drawer-nav__panel has-banner"
+                                      >
+                                        <div class="drawer-nav__wrapper"><div
+                                              id="Details-menu-drawer-submenu-item-5-banner"
+                                              class="drawer-nav__banner"
+                                            >
+                                              <div class="o-ratio o-ratio--16:9">
+                                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: Cider</span>
+  <svg
+    id="visual"
+    viewBox="0 0 5472 0"
+    width="5472"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="5472" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I3114.jpg?v=1757166320&amp;width=1080" alt="Cider" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I3114.jpg?v=1757166320&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I3114.jpg?v=1757166320&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I3114.jpg?v=1757166320&amp;width=1080 1080w" width="1080" height="720" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                                </div>
+                                              </div>
+                                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                                            <button
+                                              class="drawer-nav__back"
+                                              aria-label="Vorig paneel"
+                                            ><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                                            <div class="drawer-nav__title">
+                                              Cider &amp; mede
+                                            </div>
+                                          </div>
+                                          <ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/cider"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Cider
+                                                </a>
+                                              </li><li class="list-menu__item">
+                                                <a
+                                                  href="/collections/mede"
+                                                  class="list-menu__link f-family--heading f-caps--false f-space--0"
+                                                  
+                                                >
+                                                  Mede
+                                                </a>
+                                              </li></ul><div class="drawer-nav__view-all">
+                                              <a href="/collections/cider" class="c-btn c-btn--hollow c-btn--full">Bekijk Cider &amp; mede</a>
+                                            </div></div>
+                                      </div>
+                                    </details></li></ul>
+<div class="drawer-nav__view-all">
+                              <a href="/pages/bierstijlen" class="c-btn c-btn--hollow c-btn--full">Bekijk Bierstijlen</a>
+                            </div></div>
+                      </div>
+                    </details></li><li class="list-menu__item"><details
+                      id="Details-menu-drawer-menu-item-4"
+                      
+                    >
+                      <summary
+                        class="list-menu__link f-family--heading f-caps--false f-space--0"
+                        
+                      >
+                        Specials
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                      <div
+                        id="SidebarMenu-MenuList-4"
+                        class="drawer-nav__panel has-banner"
+                        tabindex="-1"
+                      >
+                        <div class="drawer-nav__wrapper"><div
+                              id="Details-menu-drawer-menu-item-4-banner"
+                              class="drawer-nav__banner"
+                            >
+                              <div class="o-ratio o-ratio--16:9">
+                                <div class="o-ratio__content">
+
+<image-skeleton
+  
+>
+  <span class="visually-hidden">Afbeelding laden: Vintage bieren</span>
+  <svg
+    id="visual"
+    viewBox="0 0 3648 0"
+    width="3648"
+    height="0"
+    xmlns="http://www.w3.org/2000/svg"
+    
+      preserveAspectRatio="xMinYMin slice"
+    
+  >
+    <rect x="0" y="0" width="3648" height="0"></rect>
+  </svg>
+</image-skeleton>
+<img src="//www.hoppenaar.nl/cdn/shop/collections/BB4I3125.jpg?v=1751364499&amp;width=1080" alt="Vintage bieren" srcset="//www.hoppenaar.nl/cdn/shop/collections/BB4I3125.jpg?v=1751364499&amp;width=352 352w, //www.hoppenaar.nl/cdn/shop/collections/BB4I3125.jpg?v=1751364499&amp;width=832 832w, //www.hoppenaar.nl/cdn/shop/collections/BB4I3125.jpg?v=1751364499&amp;width=1080 1080w" width="1080" height="1620" loading="eager" sizes="(min-width: 460px) 460px, 90vw" class="cta__image">
+                                </div>
+                              </div>
+                            </div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                            <button class="drawer-nav__back" aria-label="Vorig paneel"><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                            <div class="drawer-nav__title">
+                              Specials
+                            </div>
+                          </div><ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item"><a
+                                      href="/collections/vintage-bieren"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Vintage bieren
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/magnum"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Magnum flessen
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/bourbon-countys"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Bourbon County
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/cantillon-drop"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Cantillon
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/3-fonteinen-drop"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      3 Fonteinen
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/antidoot-pellicle-tilquin-drop"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Antidoot / Pellicle / Tilquin
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/bofkont-drop"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Bofkont
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/nieuwste-zure-drop"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Nieuwste zure drop
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/collections/bier-adventskalender"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Bier adventskalender 2026
+                                    </a></li></ul>
+<div class="drawer-nav__view-all">
+                              <a href="/collections/vintage-bieren" class="c-btn c-btn--hollow c-btn--full">Bekijk Specials</a>
+                            </div></div>
+                      </div>
+                    </details></li><li class="list-menu__item"><a
+                      href="/collections/black-friday-sale"
+                      class="list-menu__link f-family--heading f-caps--false f-space--0"
+                      
+                    >
+                      Sale!
+                    </a></li><li class="list-menu__item"><details
+                      id="Details-menu-drawer-menu-item-6"
+                      
+                    >
+                      <summary
+                        class="list-menu__link f-family--heading f-caps--false f-space--0"
+                        
+                      >
+                        Over ons
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                      <div
+                        id="SidebarMenu-MenuList-6"
+                        class="drawer-nav__panel"
+                        tabindex="-1"
+                      >
+                        <div class="drawer-nav__wrapper"><div class="drawer-nav__empty-banner"></div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                            <button class="drawer-nav__back" aria-label="Vorig paneel"><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                            <div class="drawer-nav__title">
+                              Over ons
+                            </div>
+                          </div><ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item"><a
+                                      href="/pages/over-ons"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Over De Hoppenaar
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/onze-locaties"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Onze locaties
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/onze-winkel"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Winkel Arnhem
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/ons-proeflokaal"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Proeflokaal Arnhem
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/het-poortwachtershuis"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Poortwachtershuis Grave
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/fresh-fast"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Fresh &amp; Fast membership
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/de-hoppenaar-groothandel"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Groothandel
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/pages/kom-werken-bij-de-hoppenaar"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Werken bij
+                                    </a></li></ul>
+<div class="drawer-nav__view-all">
+                              <a href="/pages/over-ons" class="c-btn c-btn--hollow c-btn--full">Bekijk Over ons</a>
+                            </div></div>
+                      </div>
+                    </details></li><li class="list-menu__item"><details
+                      id="Details-menu-drawer-menu-item-7"
+                      
+                    >
+                      <summary
+                        class="list-menu__link f-family--heading f-caps--false f-space--0"
+                        
+                      >
+                        Klantenservice
+<span
+    class="icon icon--theme icon--chevron "
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></summary>
+                      <div
+                        id="SidebarMenu-MenuList-7"
+                        class="drawer-nav__panel"
+                        tabindex="-1"
+                      >
+                        <div class="drawer-nav__wrapper"><div class="drawer-nav__empty-banner"></div><div class="drawer-nav__header f-family--heading f-caps--false f-space--0">
+                            <button class="drawer-nav__back" aria-label="Vorig paneel"><span
+    class="icon icon--theme icon--chevron icon--left"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+    ><path d="M13.8683 4.75L33.1183 24L13.8683 43.25" stroke-linecap="square" vector-effect="non-scaling-stroke" /></svg>
+  </span></button>
+                            <div class="drawer-nav__title">
+                              Klantenservice
+                            </div>
+                          </div><ul class="list-menu" role="list" tabindex="-1"><li class="list-menu__item"><a
+                                      href="/pages/contact"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Contact &amp; FAQ
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/policies/shipping-policy"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Verzendbeleid
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/policies/refund-policy"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Retourbeleid
+                                    </a></li><li class="list-menu__item"><a
+                                      href="/policies/terms-of-service"
+                                      class="list-menu__link  f-family--heading f-caps--false f-space--0"
+                                      
+                                    >
+                                      Algemene voorwaarden
+                                    </a></li></ul>
+<div class="drawer-nav__view-all">
+                              <a href="/pages/contact" class="c-btn c-btn--hollow c-btn--full">Bekijk Klantenservice</a>
+                            </div></div>
+                      </div>
+                    </details></li></ul>
           </nav>
         </drawer-menu><nav class="drawer-nav drawer-nav--secondary">
           <ul class="list-menu" role="list"><li class="list-menu__item">
                 <a
-                  href="/"
+                  href="/collections/nieuwe-bieren"
                   class="list-menu__link f-family--heading f-caps--false f-space--0"
                   
                 >
-                  Home
+                  Nieuw binnen
                 </a>
               </li><li class="list-menu__item">
                 <a
@@ -1751,19 +3288,11 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                 </a>
               </li><li class="list-menu__item">
                 <a
-                  href="/collections/nieuwe-bieren"
-                  class="list-menu__link f-family--heading f-caps--false f-space--0"
-                  
-                >
-                  Nieuwe bieren
-                </a>
-              </li><li class="list-menu__item">
-                <a
                   href="/collections/vintage-bieren"
                   class="list-menu__link f-family--heading f-caps--false f-space--0"
                   
                 >
-                  Vintage bieren
+                  Specials
                 </a>
               </li><li class="list-menu__item">
                 <a
@@ -1772,14 +3301,6 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                   
                 >
                   Sale!
-                </a>
-              </li><li class="list-menu__item">
-                <a
-                  href="/pages/onze-locaties"
-                  class="list-menu__link f-family--heading f-caps--false f-space--0"
-                  
-                >
-                  Onze locaties
                 </a>
               </li><li class="list-menu__item">
                 <a
@@ -1795,31 +3316,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                   class="list-menu__link f-family--heading f-caps--false f-space--0"
                   
                 >
-                  Contact &amp; FAQ
-                </a>
-              </li><li class="list-menu__item">
-                <a
-                  href="/policies/refund-policy"
-                  class="list-menu__link f-family--heading f-caps--false f-space--0"
-                  
-                >
-                  Retourbeleid
-                </a>
-              </li><li class="list-menu__item">
-                <a
-                  href="/policies/shipping-policy"
-                  class="list-menu__link f-family--heading f-caps--false f-space--0"
-                  
-                >
-                  Verzendbeleid
-                </a>
-              </li><li class="list-menu__item">
-                <a
-                  href="/policies/terms-of-service"
-                  class="list-menu__link f-family--heading f-caps--false f-space--0"
-                  
-                >
-                  Algemene voorwaarden
+                  Klantenservice
                 </a>
               </li></ul>
         </nav><div class="mobile-draw__footer mobile-footer"><div class="mobile-footer__contact">
@@ -2899,7 +4396,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                   <ul class="footer-nav__items o-list-bare">
                     
                       <li class="footer-nav__item">
-                        <a href="/" class="footer-nav__link">Home</a>
+                        <a href="/collections/nieuwe-bieren" class="footer-nav__link">Nieuw binnen</a>
                       </li>
                     
                       <li class="footer-nav__item">
@@ -2911,11 +4408,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                       </li>
                     
                       <li class="footer-nav__item">
-                        <a href="/collections/nieuwe-bieren" class="footer-nav__link">Nieuwe bieren</a>
-                      </li>
-                    
-                      <li class="footer-nav__item">
-                        <a href="/collections/vintage-bieren" class="footer-nav__link">Vintage bieren</a>
+                        <a href="/collections/vintage-bieren" class="footer-nav__link">Specials</a>
                       </li>
                     
                       <li class="footer-nav__item">
@@ -2923,27 +4416,11 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                       </li>
                     
                       <li class="footer-nav__item">
-                        <a href="/pages/onze-locaties" class="footer-nav__link">Onze locaties</a>
-                      </li>
-                    
-                      <li class="footer-nav__item">
                         <a href="/pages/over-ons" class="footer-nav__link">Over ons</a>
                       </li>
                     
                       <li class="footer-nav__item">
-                        <a href="/pages/contact" class="footer-nav__link">Contact & FAQ</a>
-                      </li>
-                    
-                      <li class="footer-nav__item">
-                        <a href="/policies/refund-policy" class="footer-nav__link">Retourbeleid</a>
-                      </li>
-                    
-                      <li class="footer-nav__item">
-                        <a href="/policies/shipping-policy" class="footer-nav__link">Verzendbeleid</a>
-                      </li>
-                    
-                      <li class="footer-nav__item">
-                        <a href="/policies/terms-of-service" class="footer-nav__link">Algemene voorwaarden</a>
+                        <a href="/pages/contact" class="footer-nav__link">Klantenservice</a>
                       </li>
                     
                   </ul>
@@ -3187,7 +4664,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
   
     <div class="container">
   
-<div id="shopify-block-AaDhudG1zc3dYajRWM__rocket_google_reviews_app_block_6G4ewA" class="shopify-block shopify-app-block"><link rel="stylesheet" href="https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/google-review.min.css" media="print" onload="this.media='all'">
+<div id="shopify-block-AaDhudG1zc3dYajRWM__rocket_google_reviews_app_block_6G4ewA" class="shopify-block shopify-app-block"><link rel="stylesheet" href="https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/google-review.min.css" media="print" onload="this.media='all'">
 <div
   class="grp-entangle--root"
   id="grp-entangle--root-AaDhudG1zc3dYajRWM__rocket_google_reviews_app_block_6G4ewA"
@@ -3203,7 +4680,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
     window.grEntangleApiUrl = 'https://widget-ms-grp.entanglecommerce.com/api/review-with-widgets?shop=s1d0r6-0y.myshopify.com';
   }
   if (typeof window.grEntangleDefaultImage === 'undefined') {
-    window.grEntangleDefaultImage = "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/Google-My-Business_medium.png";
+    window.grEntangleDefaultImage = "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/Google-My-Business_medium.png";
   }
   if (typeof window.grp_app_metadata === 'undefined') {
     
@@ -3274,24 +4751,24 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
 
 <script>
   window.grpExtraScripts = window.grpExtraScripts || {
-    slider: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/slider-bundle.min.js",
-    typewriter: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/typewriter-effect.min.js",
-    centerFocus: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/center-focus-slider.min.js",
-    stories: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/stories.min.js",
-    layoutSliders: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-sliders.min.js",
-    layoutMasonry: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-masonry.min.js",
-    layoutGallery: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-gallery.min.js",
-    layoutModern: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-modern.min.js",
-    layoutStories: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-stories.min.js",
-    layoutMap: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-map.min.js",
-    cards: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-cards.min.js",
-    layoutBadges: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-badges.min.js",
-    layoutListGrid: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-list-grid.min.js",
-    layoutFloating: "https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/grp-layout-floating.min.js"
+    slider: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/slider-bundle.min.js",
+    typewriter: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/typewriter-effect.min.js",
+    centerFocus: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/center-focus-slider.min.js",
+    stories: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/stories.min.js",
+    layoutSliders: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-sliders.min.js",
+    layoutMasonry: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-masonry.min.js",
+    layoutGallery: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-gallery.min.js",
+    layoutModern: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-modern.min.js",
+    layoutStories: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-stories.min.js",
+    layoutMap: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-map.min.js",
+    cards: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-cards.min.js",
+    layoutBadges: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-badges.min.js",
+    layoutListGrid: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-list-grid.min.js",
+    layoutFloating: "https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/grp-layout-floating.min.js"
   };
 </script>
 
-<script defer src="https://cdn.shopify.com/extensions/01a0f385-deab-7596-a50e-d4ee38f64f2c/google-review-plus-by-entangle-1-180/assets/google-review.min.js" id="google-review-js" data-grp-script></script>
+<script defer src="https://cdn.shopify.com/extensions/01a10ba3-dfe9-7859-8034-a23b4c402125/google-review-plus-by-entangle-1-181/assets/google-review.min.js" id="google-review-js" data-grp-script></script>
 <style>
   :root {
     --swiper_dot_color: blue;
@@ -3406,7 +4883,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                         <ul class="search__nav-items o-list-bare">
                           
                             <li class="search__nav-item">
-                              <a href="/" class="search__nav-link">Home</a>
+                              <a href="/collections/nieuwe-bieren" class="search__nav-link">Nieuw binnen</a>
                             </li>
                           
                             <li class="search__nav-item">
@@ -3418,11 +4895,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                             </li>
                           
                             <li class="search__nav-item">
-                              <a href="/collections/nieuwe-bieren" class="search__nav-link">Nieuwe bieren</a>
-                            </li>
-                          
-                            <li class="search__nav-item">
-                              <a href="/collections/vintage-bieren" class="search__nav-link">Vintage bieren</a>
+                              <a href="/collections/vintage-bieren" class="search__nav-link">Specials</a>
                             </li>
                           
                             <li class="search__nav-item">
@@ -3430,27 +4903,11 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
                             </li>
                           
                             <li class="search__nav-item">
-                              <a href="/pages/onze-locaties" class="search__nav-link">Onze locaties</a>
-                            </li>
-                          
-                            <li class="search__nav-item">
                               <a href="/pages/over-ons" class="search__nav-link">Over ons</a>
                             </li>
                           
                             <li class="search__nav-item">
-                              <a href="/pages/contact" class="search__nav-link">Contact & FAQ</a>
-                            </li>
-                          
-                            <li class="search__nav-item">
-                              <a href="/policies/refund-policy" class="search__nav-link">Retourbeleid</a>
-                            </li>
-                          
-                            <li class="search__nav-item">
-                              <a href="/policies/shipping-policy" class="search__nav-link">Verzendbeleid</a>
-                            </li>
-                          
-                            <li class="search__nav-item">
-                              <a href="/policies/terms-of-service" class="search__nav-link">Algemene voorwaarden</a>
+                              <a href="/pages/contact" class="search__nav-link">Klantenservice</a>
                             </li>
                           
                         </ul>
