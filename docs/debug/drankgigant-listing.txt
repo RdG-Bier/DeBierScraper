@@ -5118,4 +5118,6 @@ overflow: auto
             <button
                 class="bottom-0 left-0 w-auto p-3  mr-auto"
                 aria-label="Toevoegen"
-                @click.prevent="addProductToC
+                @click.prevent="addProductToCart()"
+            >
+          
