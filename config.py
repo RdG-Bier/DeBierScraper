@@ -98,7 +98,7 @@ SITES = [
         # LET OP: de robots.txt van deze winkel verbiedt geautomatiseerde
         # toegang. Zet dit pas op True als je daar toestemming voor hebt
         # (mailtje naar de winkel volstaat) of als hun robots.txt wijzigt.
-        "enabled": False,
+        "enabled": True,
     },
 ]
 
