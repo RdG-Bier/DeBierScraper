@@ -30,7 +30,7 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.48">
+    	href="https://untappd.com/assets/css/tailwind.css?v=2.8.50">
 	</link>
 
 	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.49" />
@@ -38,7 +38,7 @@
 		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.49" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.48"></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.50"></script>
 				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.49" />
 			
 		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.49" />
@@ -77,10 +77,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.48"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.48"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.48"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.48"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.50"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.50"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.50"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.50"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -378,6 +378,33 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
+                        <a href="/b/paulaner-brauerei-paulaner-oktoberfest-bier/78539" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-78539_2fcd5_sm.jpeg" alt="Paulaner Oktoberfest Bier label">
+                            </p><p class="text">
+                                <span class="name">Paulaner Oktoberfest Bier</span>
+                                <span class="brewery">Paulaner Brauerei</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/northern-monk-interstellar-haze-pretty-decent-collaboration-ddh-hazy-ipa/6499193" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6499193_54425_sm.jpeg" alt="INTERSTELLAR HAZE // PRETTY DECENT // COLLABORATION DDH HAZY IPA label">
+                            </p><p class="text">
+                                <span class="name">INTERSTELLAR HAZE // PRETTY DECENT // COLLABORATION DDH HAZY IPA</span>
+                                <span class="brewery">Northern Monk</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/asbury-park-brewery-sea-dragon/2354123" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-2354123_427ac_sm.jpeg" alt="Sea Dragon label">
+                            </p><p class="text">
+                                <span class="name">Sea Dragon</span>
+                                <span class="brewery">Asbury Park Brewery</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
                         <a href="/b/samuel-adams-octoberfest/3942" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-3942_bd2f3_sm.jpeg" alt="Octoberfest label">
@@ -387,57 +414,12 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/omnipollo-bomb-atomically-freaky-friday/6842771" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
+                                    <img src="https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png" alt="Bomb Atomically (Freaky Friday) label">
                             </p><p class="text">
-                                <span class="name">Stella Artois</span>
-                                <span class="brewery">Stella Artois</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
-                            </p><p class="text">
-                                <span class="name">Asahi Super Dry</span>
-                                <span class="brewery">Asahi Breweries</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/sierra-nevada-brewing-co-oktoberfest-hoppebrau-2026/6794836" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6794836_94403_sm.jpeg" alt="Oktoberfest - Hoppebräu (2026) label">
-                            </p><p class="text">
-                                <span class="name">Oktoberfest - Hoppebräu (2026)</span>
-                                <span class="brewery">Sierra Nevada Brewing Co.</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
-                            </p><p class="text">
-                                <span class="name">Heineken</span>
-                                <span class="brewery">Heineken</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/plzensky-prazdroj-pilsner-urquell/37936" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-37936_91585_sm.jpeg" alt="Pilsner Urquell label">
-                            </p><p class="text">
-                                <span class="name">Pilsner Urquell</span>
-                                <span class="brewery">Plzeňský Prazdroj</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/birra-moretti-birra-moretti-l-autentica-ricetta-originale/6347" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6347_a13ce_sm.jpeg" alt="Birra Moretti L'Autentica / Ricetta Originale label">
-                            </p><p class="text">
-                                <span class="name">Birra Moretti L'Autentica / Ricetta Originale</span>
-                                <span class="brewery">Birra Moretti</span>                            </p>
+                                <span class="name">Bomb Atomically (Freaky Friday)</span>
+                                <span class="brewery">Omnipollo</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -450,19 +432,59 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
                             </p><p class="text">
-                                <span class="name">Modelo Especial</span>
-                                <span class="brewery">Grupo Modelo</span>                            </p>
+                                <span class="name">Stella Artois</span>
+                                <span class="brewery">Stella Artois</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/ayinger-privatbrauerei-oktober-fest-marzen/5964" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5964_14f6c_sm.jpeg" alt="(Oktober) Fest-Märzen label">
+                            </p><p class="text">
+                                <span class="name">(Oktober) Fest-Märzen</span>
+                                <span class="brewery">Ayinger Privatbrauerei</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/duvel-moortgat-duvel-tripel-hop-krush/6704386" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png" alt="Duvel Tripel Hop Krush label">
+                            </p><p class="text">
+                                <span class="name">Duvel Tripel Hop Krush</span>
+                                <span class="brewery">Duvel Moortgat</span>                            </p>
                         </a>
                     </div>
                                 </div>
         </div>
             	<div class="box">
         	<div class="content">
-                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-10930574-type-trending_locations">
+                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-11234491-type-trending_locations">
+                        <a href="/v/sudden-death-brewing/11234491" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/80cl30vxdjrulhlxox7jsrki68g8?auto=compress" alt="Sudden Death Brewing logo">
+                            </p><p class="text">
+                                <span class="name">Sudden Death Brewing</span>
+
+                                <span class="location">Lübeck, Schleswig-Holstein                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-12344075-type-trending_locations">
+                        <a href="/v/stigbergets-bryggeri-ringon/12344075" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/gcunuwvn1lkrxxybrj6578ogfyvs?auto=compress" alt="Stigbergets Bryggeri Ringön logo">
+                            </p><p class="text">
+                                <span class="name">Stigbergets Bryggeri Ringön</span>
+
+                                <span class="location">Göteborg, Västra Götalands län                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-10930574-type-trending_locations">
                         <a href="/v/nottingham-camra-beer-cider-festival/10930574" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
                                                                 <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Nottingham CAMRA Beer & Cider Festival logo">
@@ -473,80 +495,14 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-78043-type-trending_locations">
-                        <a href="/v/trent-bridge-cricket-ground/78043" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-10149306-type-trending_locations">
+                        <a href="/v/brouwerij-de-12-stuyvers/10149306" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_cricket_bg_512.png" alt="Trent Bridge Cricket Ground logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Brouwerij de 12 Stuyvers logo">
                             </p><p class="text">
-                                <span class="name">Trent Bridge Cricket Ground</span>
+                                <span class="name">Brouwerij de 12 Stuyvers</span>
 
-                                <span class="location">West Bridgford, Nottinghamshire                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
-                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
-                            </p><p class="text">
-                                <span class="name">Mikkeller CPH Airport</span>
-
-                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-37622-type-trending_locations">
-                        <a href="/v/petco-park/37622" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_baseball_bg_512.png" alt="Petco Park logo">
-                            </p><p class="text">
-                                <span class="name">Petco Park</span>
-
-                                <span class="location">San Diego, CA                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-147780-type-trending_locations">
-                        <a href="/v/the-trent-bridge-inn-wetherspoon/147780" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="The Trent Bridge Inn (Wetherspoon) logo">
-                            </p><p class="text">
-                                <span class="name">The Trent Bridge Inn (Wetherspoon)</span>
-
-                                <span class="location">West Bridgford, Nottinghamshire                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-19006-type-trending_locations">
-                        <a href="/v/olutravintola-konttori/19006" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/vmmtkc7gjf5qd105wytw3ox6apvw?auto=compress" alt="Olutravintola Konttori logo">
-                            </p><p class="text">
-                                <span class="name">Olutravintola Konttori</span>
-
-                                <span class="location">Tampere, Pirkanmaa                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-9457305-type-trending_locations">
-                        <a href="/v/goblet-beer-store-zg/9457305" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/vKcsG71U8Hf8zxficaZttH8v?auto=compress" alt="Goblet - Beer Store ZG logo">
-                            </p><p class="text">
-                                <span class="name">Goblet - Beer Store ZG</span>
-
-                                <span class="location">Zagreb, Grad Zagreb                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-10578290-type-trending_locations">
-                        <a href="/v/juova-hanahuone/10578290" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/8i5w7qp3kp5yyn6mag2v5aurdm5j?auto=compress" alt="Juova Hanahuone logo">
-                            </p><p class="text">
-                                <span class="name">Juova Hanahuone</span>
-
-                                <span class="location">Helsinki, Uusimaa                                        </span>                            </p>
+                                <span class="location">Hazerswoude-Dorp, Zuid-Holland                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -561,14 +517,58 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-7387415-type-trending_locations">
-                        <a href="/v/biererei-bar-and-vintage-cellar/7387415" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-78043-type-trending_locations">
+                        <a href="/v/trent-bridge-cricket-ground/78043" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/l7ih1r8u10fual04hglfx8i5n4rn?auto=compress" alt="Biererei Bar & Vintage Cellar logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_cricket_bg_512.png" alt="Trent Bridge Cricket Ground logo">
                             </p><p class="text">
-                                <span class="name">Biererei Bar & Vintage Cellar</span>
+                                <span class="name">Trent Bridge Cricket Ground</span>
 
-                                <span class="location">Berlin, Berlin                                        </span>                            </p>
+                                <span class="location">West Bridgford, Nottinghamshire                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-9973355-type-trending_locations">
+                        <a href="/v/poppels-oel-mat/9973355" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_bg_512.png" alt="Poppels Öl & Mat logo">
+                            </p><p class="text">
+                                <span class="name">Poppels Öl & Mat</span>
+
+                                <span class="location">Jonsered, Västra Götalands län                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-10578290-type-trending_locations">
+                        <a href="/v/juova-hanahuone/10578290" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/8i5w7qp3kp5yyn6mag2v5aurdm5j?auto=compress" alt="Juova Hanahuone logo">
+                            </p><p class="text">
+                                <span class="name">Juova Hanahuone</span>
+
+                                <span class="location">Helsinki, Uusimaa                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-172268-type-trending_locations">
+                        <a href="/v/doornroosje/172268" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/musicvenue_bg_512.png" alt="Doornroosje logo">
+                            </p><p class="text">
+                                <span class="name">Doornroosje</span>
+
+                                <span class="location">Nijmegen, Gelderland                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-8899647-type-trending_locations">
+                        <a href="/v/haket/8899647" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/acec630924a54bf70d970620a3f42c3c4d4e866e.jpg?auto=compress" alt="Haket logo">
+                            </p><p class="text">
+                                <span class="name">Haket</span>
+
+                                <span class="location">Gothenburg, Västra Götalands län                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -597,7 +597,7 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.48"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.50"></script>
 <style>
 #pmLink {
 	visibility: hidden;

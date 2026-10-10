@@ -326,7 +326,7 @@
     "is_on_backorder": false,
     "low_stock_remaining": null,
     "stock_availability": {
-      "text": "13 op voorraad",
+      "text": "12 op voorraad",
       "class": "in-stock"
     },
     "sold_individually": false,
@@ -344,7 +344,7 @@
       "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=8989",
       "single_text": "Toevoegen aan winkelwagen",
       "minimum": 1,
-      "maximum": 13,
+      "maximum": 12,
       "multiple_of": 1
     },
     "is_password_protected": false,
@@ -475,12 +475,12 @@
     "grouped_products": [],
     "has_options": false,
     "is_purchasable": true,
-    "is_in_stock": true,
+    "is_in_stock": false,
     "is_on_backorder": false,
-    "low_stock_remaining": 1,
+    "low_stock_remaining": 0,
     "stock_availability": {
-      "text": "1 op voorraad",
-      "class": "in-stock"
+      "text": "Uitverkocht",
+      "class": "out-of-stock"
     },
     "sold_individually": false,
     "weight": "",
@@ -492,12 +492,12 @@
     "formatted_weight": "N/B",
     "formatted_dimensions": "N/B",
     "add_to_cart": {
-      "text": "Toevoegen aan winkelwagen",
-      "description": "Toevoegen aan winkelwagen: &ldquo;White Dog Brewery &#8211; SUMMERTIME&ldquo;",
-      "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=8948",
+      "text": "Lees verder",
+      "description": "Lees meer over &ldquo;White Dog Brewery &#8211; SUMMERTIME&rdquo;",
+      "url": "https://www.dehopwinkel.nl/product/white-dog-brewery-summertime/",
       "single_text": "Toevoegen aan winkelwagen",
       "minimum": 1,
-      "maximum": 1,
+      "maximum": 9999,
       "multiple_of": 1
     },
     "is_password_protected": false,
