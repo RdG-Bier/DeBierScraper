@@ -5117,4 +5117,5 @@ overflow: auto
         <template x-if="showButton == false">
             <button
                 class="bottom-0 left-0 w-auto p-3  mr-auto"
-                aria-label="Toevoege
+                aria-label="Toevoegen"
+                @click.preve
