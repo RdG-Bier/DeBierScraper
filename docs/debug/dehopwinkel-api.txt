@@ -128,9 +128,9 @@
     "is_purchasable": true,
     "is_in_stock": true,
     "is_on_backorder": false,
-    "low_stock_remaining": null,
+    "low_stock_remaining": 2,
     "stock_availability": {
-      "text": "10 op voorraad",
+      "text": "2 op voorraad",
       "class": "in-stock"
     },
     "sold_individually": false,
@@ -148,7 +148,7 @@
       "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=9305",
       "single_text": "Toevoegen aan winkelwagen",
       "minimum": 1,
-      "maximum": 10,
+      "maximum": 2,
       "multiple_of": 1
     },
     "is_password_protected": false,
