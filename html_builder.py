@@ -227,14 +227,22 @@ function markeer(){
   document.querySelectorAll('.card').forEach(function(c){
     var k = c.dataset.key, n = c.dataset.naamkey;
     var isHad = c.dataset.gehad === "1" || !!(had.vol[k] || had.naam[n]);
-    var isWens = c.dataset.voorraad === "1" || !!(wens.vol[k] || wens.naam[n]);
+    // R/H&R uit de server-attributen; geplakte lijsten tellen als algemene voorraad
+    var isR = c.dataset.voorraadR === "1";
+    var isHR = c.dataset.voorraadHr === "1";
+    var isWens = isR || isHR || c.dataset.voorraad === "1" || !!(wens.vol[k] || wens.naam[n]);
+    // check-in wint van voorraad
     c.classList.toggle('gehad', isHad && !isWens);
-    c.classList.toggle('wens', isWens);
+    c.classList.toggle('wens', isWens && !isHad);
     var vlag = c.querySelector('.vlag');
-    if(isWens && isHad){ vlag.textContent = '\u2605 in voorraad \u00b7 \u2713 al gehad'; }
-    else if(isWens){ vlag.textContent = '\u2605 in voorraad'; }
-    else if(isHad){ vlag.textContent = '\u2713 al gehad'; }
-    else { vlag.textContent = ''; }
+    if(isHad){ vlag.textContent = '\u2713 al gehad'; }
+    else if(isWens){
+      var welke = [];
+      if(isR) welke.push('R');
+      if(isHR) welke.push('H&R');
+      vlag.textContent = welke.length ? '\u2605 in voorraad ' + welke.join(' + ')
+                                      : '\u2605 in voorraad';
+    } else { vlag.textContent = ''; }
   });
 }
 
