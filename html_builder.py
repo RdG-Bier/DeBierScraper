@@ -337,17 +337,38 @@ function volgStatus(){
      else { setStatus("Run mislukt ("+run.conclusion+")."); document.getElementById("verversknop").disabled = false; }
    }).catch(function(){ setStatus(""); });
 }
+function tokenStatusTonen(){
+  var el = document.getElementById("tokenstatus");
+  if(!el) return;
+  var t = tok();
+  if(t){
+    var kort = t.length > 12 ? t.slice(0,10) + "\u2026" + t.slice(-4) : t;
+    el.innerHTML = "\u2705 Er is een token ingesteld (<code>" + kort + "</code>). "
+      + "Werkt opslaan niet? Wis het hieronder en plak een nieuw token met "
+      + "<b>Contents: Read and write</b>.";
+  } else {
+    el.innerHTML = "\u26a0\ufe0f Nog geen token in deze browser. Plak er hieronder een.";
+  }
+}
+function opentokenpaneel(){
+  // altijd openen (ook als er al een token is), zodat je kunt wijzigen/wissen
+  ['filterpaneel','untappdpaneel'].forEach(function(x){
+    var p = document.getElementById(x); if(p) p.classList.remove('open'); });
+  tokenStatusTonen();
+  document.getElementById('tokenpaneel').classList.add('open');
+}
 function tokenOpslaan(){
   var v = document.getElementById("tokenveld").value.trim();
   if(!v) return;
   try { localStorage.setItem("gh_token", v); } catch(e){}
   document.getElementById("tokenveld").value = "";
-  document.getElementById('tokenpaneel').classList.remove('open');
-  ververs();
+  tokenStatusTonen();
+  setStatus("Token opgeslagen.");
 }
 function tokenWissen(){
   try { localStorage.removeItem("gh_token"); } catch(e){}
-  setStatus("Token gewist."); document.getElementById('tokenpaneel').classList.remove('open');
+  tokenStatusTonen();
+  setStatus("Token gewist. Plak een nieuw token om weer te kunnen opslaan/verversen.");
 }
 function openGitHub(){ window.open(ACTIONS_URL, "_blank"); }
 
@@ -430,6 +451,7 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
   <button class="knop" id="verversknop" onclick="ververs()">&#8635; Ververs nu</button>
   <button class="knop" onclick="togglePaneel('filterpaneel')">&#9776; Filters</button>
   <button class="knop" onclick="togglePaneel('untappdpaneel')">Mijn Untappd</button>
+  <button class="knop" onclick="opentokenpaneel()">&#128273; Token</button>
   <a class="knop" href="lijsten.html" style="text-decoration:none">&#128220; Lijsten inlezen</a>
   <a class="dl" href="{excel_name}" download>&#11015; Excel</a>
   <span class="status" id="status"></span>
@@ -484,18 +506,22 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
 </div>
 
 <div class="paneel" id="tokenpaneel">
-  <h4>Eenmalig instellen</h4>
-  <p class="mini">Verversen start de scraper op GitHub. Daarvoor is een token nodig;
-  dat wordt <b>alleen in deze browser</b> bewaard. Maak er een aan via
+  <h4>GitHub-token</h4>
+  <p class="mini" id="tokenstatus"></p>
+  <p class="mini">Het token laat deze pagina de scraper starten (&#8220;Ververs nu&#8221;)
+  en je lijsten opslaan. Het wordt <b>alleen in deze browser</b> bewaard, dus voer
+  het op elk apparaat apart in. Maak er een aan via
   <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">GitHub
   &rarr; Fine-grained token</a>: bij <i>Repository access</i> alleen <code>{gh_repo}</code>,
-  bij <i>Permissions</i> alleen <b>Actions: Read and write</b>.</p>
-  <input id="tokenveld" type="password" placeholder="github_pat_..." autocomplete="off"
+  en bij <i>Permissions</i> twee rechten op <b>Read and write</b>:
+  <b>Contents</b> (om lijsten op te slaan) en <b>Actions</b> (om te verversen).</p>
+  <input id="tokenveld" type="password" placeholder="github_pat_... (plak hier een nieuw token)"
+         autocomplete="off"
          style="width:100%;padding:9px 10px;border:1px solid #ccc;border-radius:8px">
   <div class="rij">
-    <button onclick="tokenOpslaan()">Opslaan en verversen</button>
-    <button class="grijs" onclick="openGitHub()">Liever via GitHub</button>
+    <button onclick="tokenOpslaan()">Opslaan</button>
     <button class="grijs" onclick="tokenWissen()">Token wissen</button>
+    <button class="grijs" onclick="openGitHub()">Open GitHub</button>
   </div>
 </div>
 
