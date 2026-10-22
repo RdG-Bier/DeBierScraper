@@ -51,6 +51,12 @@ def scrape(site):
     for tag in soup.find_all(["script", "style", "noscript"]):
         tag.decompose()
 
+    # Heeft dit menu prijzen? (Bierbrigadier wel, De Bierschuur niet.) Expliciet
+    # via config instelbaar; anders afleiden uit de aanwezigheid van "EUR".
+    heeft_prijzen = site.get("heeft_prijzen")
+    if heeft_prijzen is None:
+        heeft_prijzen = "EUR" in html
+
     beers = []
     seen = set()
     for a in soup.find_all("a", href=RE_BEER_HREF):
@@ -58,7 +64,7 @@ def scrape(site):
         if href in seen:
             continue
         seen.add(href)
-        beer = _parse_item(a, href)
+        beer = _parse_item(a, href, heeft_prijzen)
         if beer:
             beers.append(beer)
 
@@ -67,9 +73,10 @@ def scrape(site):
     return beers
 
 
-def _parse_item(anchor, href):
-    # Klim omhoog tot de container zowel 'ABV' als 'EUR' bevat, met een
-    # lengtelimiet zodat we niet per ongeluk een hele sectie/lijst grijpen.
+def _parse_item(anchor, href, heeft_prijzen=True):
+    # Klim omhoog tot de container de biergegevens bevat. Sommige Untappd-
+    # menu's tonen prijzen ("EUR"), andere niet (dan is "ABV" het ankerpunt
+    # en wordt de prijs later geleend van een andere shop).
     container = anchor
     text = ""
     for _ in range(6):
@@ -79,7 +86,7 @@ def _parse_item(anchor, href):
         text = container.get_text(" ", strip=True)
         if len(text) > MAX_CONTAINER_CHARS:
             return None
-        if "ABV" in text and "EUR" in text:
+        if "ABV" in text and ("EUR" in text or not heeft_prijzen):
             break
     else:
         return None

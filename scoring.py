@@ -201,6 +201,45 @@ def _load_db():
     return {}
 
 
+def leen_prijzen(all_beers, doel_keys):
+    """Voor shops die geen eigen prijzen hebben (zoals De Bierschuur, een
+    Untappd-venue-menu): geef elk bier de LAAGSTE prijs van hetzelfde bier bij
+    een andere shop. De Bierschuur is Belgisch en ligt doorgaans onder de
+    laagste NL-prijs, dus de laagst gevonden prijs is een veilige ondergrens.
+    doel_keys = set van shop-keys die prijzen moeten lenen."""
+    # verzamel per bier de laagste prijs over alle ANDERE shops
+    laagste = {}
+    laagste_vol = {}
+    for key, beers in all_beers.items():
+        if key in doel_keys:
+            continue
+        for b in beers:
+            if b.get("prijs") is None:
+                continue
+            sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if not sl:
+                continue
+            if sl not in laagste or b["prijs"] < laagste[sl]:
+                laagste[sl] = b["prijs"]
+                laagste_vol[sl] = b.get("inhoud_cl")
+
+    geleend = 0
+    for key in doel_keys:
+        for b in all_beers.get(key, []):
+            if b.get("prijs") is not None:
+                continue
+            sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            prijs = laagste.get(sl) or _fuzzy_get(laagste, sl)
+            if prijs is not None:
+                b["prijs"] = prijs
+                b["prijs_geleend"] = True
+                if not b.get("inhoud_cl"):
+                    b["inhoud_cl"] = laagste_vol.get(sl) or _fuzzy_get(laagste_vol, sl)
+                geleend += 1
+    # (geen logging in scoring.py)
+    return geleend
+
+
 def _update_db(db, all_beers):
     now = time.time()
     for beers in all_beers.values():

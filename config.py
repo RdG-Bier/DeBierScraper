@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v48"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v49"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -35,6 +35,20 @@ SITES = [
             "mede", "barrel-aged", "sale", "untappd-toppers",
             "overige-bierstijlen", "bieren",
         ],
+    },
+    {
+        "key": "bierschuur",
+        "label": "De Bierschuur",
+        "type": "bierbrigadier",
+        "base_url": "https://www.debierschuur.eu",
+        "menu_url": "https://untappd.com/v/de-bierschuur/2807723",
+        # Dit Untappd-menu toont geen prijzen. Prijs wordt daarom geleend van
+        # hetzelfde bier bij een andere shop (laagste gevonden prijs). De
+        # Bierschuur is Belgisch en ligt doorgaans onder de laagste NL-prijs.
+        "heeft_prijzen": False,
+        "leen_prijzen": True,
+        # alleen bieren met score >= MIN_UNTAPPD tonen (zoals Drankgigant)
+        "untappd_min_filter": True,
     },
 {
         "key": "bierloods22",

@@ -146,6 +146,12 @@ def main():
             log.info("%s: %d brede/onverfijnde bieren weggelaten",
                      site["label"], before - len(all_beers[site["key"]]))
 
+    # Shops zonder eigen prijzen (Untappd-venue-menu's zoals De Bierschuur):
+    # laagste prijs van hetzelfde bier bij een andere shop lenen.
+    prijsloos = {s["key"] for s in sites if s.get("leen_prijzen")}
+    if prijsloos:
+        scoring.leen_prijzen(all_beers, prijsloos)
+
     # Untappd-profiel: markeer wat je al gehad hebt en wat in voorraad staat
     try:
         untappd_profiel.synchroniseer(all_beers)
