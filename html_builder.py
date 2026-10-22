@@ -33,6 +33,7 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
 
 /* tabs blijven altijd bovenin staan, ook bij scrollen */
 .tabs { display:flex; overflow-x:auto; background:#fff; border-bottom:1px solid #ddd;
+       scroll-behavior:smooth; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
         position:sticky; top:0; z-index:20; -webkit-overflow-scrolling:touch; }
 .tabs button { flex:0 0 auto; border:0; background:none; padding:12px 14px; font-size:.85rem;
                border-bottom:3px solid transparent; color:#555; white-space:nowrap; }
@@ -120,15 +121,27 @@ function buurTab(stap){
   var j = i + stap;
   if(j >= 0 && j < TABS.length){ showTab(TABS[j]); }
 }
-var tx=0, ty=0;
+// Swipe-navigatie tussen shops werkt ALLEEN op het bieroverzicht eronder,
+// NIET op de tabbalk zelf. De tabbalk is vrij scrollbaar (overflow-x:auto),
+// zodat je daar met één veegbeweging langs alle shops kunt vliegen.
+var tx=0, ty=0, swipeOpPanel=false;
+function inTabbalk(el){
+  while(el && el !== document.body){
+    if(el.classList && el.classList.contains('tabs')) return true;
+    el = el.parentNode;
+  }
+  return false;
+}
 document.addEventListener('touchstart', function(e){
   if(document.getElementById('lightbox').classList.contains('open')) return;
+  swipeOpPanel = !inTabbalk(e.target);   // op de tabbalk: met rust laten
   tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY;
 }, {passive:true});
 document.addEventListener('touchend', function(e){
+  if(!swipeOpPanel) return;
   if(document.getElementById('lightbox').classList.contains('open')) return;
   var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-  if(Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy)*2){ buurTab(dx < 0 ? 1 : -1); }
+  if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)*1.5){ buurTab(dx < 0 ? 1 : -1); }
 }, {passive:true});
 
 /* ---------- Untappd: al gehad / wenslijst ---------- */
@@ -354,12 +367,26 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
     price_lookup = scoring.build_price_lookup(all_beers)
     now = datetime.datetime.now().strftime("%d-%m-%Y %H:%M")
 
-    n_gehad = sum(1 for bs in all_beers.values() for b in bs if b.get("gehad"))
-    n_voorraad = sum(1 for bs in all_beers.values() for b in bs if b.get("voorraad"))
+    # Teller over UNIEKE bieren (hetzelfde bier kan bij meerdere shops staan).
+    import scoring as _sc
+    def _uniek(pred):
+        gezien = set()
+        for bs in all_beers.values():
+            for b in bs:
+                if pred(b):
+                    gezien.add(_sc.utils.beer_match_key(b.get("brouwerij"), b.get("naam")))
+        return len(gezien)
+    n_gehad = _uniek(lambda b: b.get("gehad"))
+    n_r = _uniek(lambda b: b.get("voorraad_r"))
+    n_hr = _uniek(lambda b: b.get("voorraad_hr"))
+    n_voorraad = _uniek(lambda b: b.get("voorraad"))
     markering_tekst = ""
     if n_gehad or n_voorraad:
+        voorraad_detail = ""
+        if n_r or n_hr:
+            voorraad_detail = f" &middot; {n_r} R / {n_hr} H&amp;R"
         markering_tekst = (f"<br>&#128994; {n_gehad} al gehad &middot; "
-                           f"&#128993; {n_voorraad} in voorraad")
+                           f"&#128993; {n_voorraad} in voorraad{voorraad_detail}")
 
     tabs, panels, stijlen = [], [], set()
     for i, site in enumerate(sites):
@@ -534,16 +561,23 @@ def _card(beer, site, sites, price_lookup):
                 f'onerror="this.style.display=\'none\'">') if img else ""
 
     sterk = " sterk" if beer.get("sterke_voorkeur") else ""
-    # markering uit het gekoppelde Untappd-profiel (server-side gezet)
+    # markering uit de lijsten (server-side gezet). Gehad = groen; voorraad =
+    # geel, met apart label voor R en H&R. Check-ins winnen al van voorraad in
+    # untappd_profiel.py, dus 'gehad' en 'voorraad' sluiten elkaar hier uit.
     klassen = ""
     vlag = ""
-    if beer.get("voorraad"):
-        klassen += " wens"
-        vlag = "\u2605 in voorraad"
     if beer.get("gehad"):
-        if not beer.get("voorraad"):
-            klassen += " gehad"
-        vlag = (vlag + " \u00b7 " if vlag else "") + "\u2713 al gehad"
+        klassen += " gehad"
+        vlag = "\u2713 al gehad"
+    elif beer.get("voorraad_r") or beer.get("voorraad_hr") or beer.get("voorraad"):
+        klassen += " wens"
+        welke = []
+        if beer.get("voorraad_r"): welke.append("R")
+        if beer.get("voorraad_hr"): welke.append("H&R")
+        if welke:
+            vlag = "\u2605 in voorraad " + " + ".join(welke)
+        else:
+            vlag = "\u2605 in voorraad"
     return f"""<div class="card{sterk}{klassen}"
   data-key="{e(_matchsleutel(beer.get('brouwerij'), beer.get('naam')))}"
   data-naamkey="{e(_matchsleutel(None, beer.get('naam')))}"
@@ -552,7 +586,9 @@ def _card(beer, site, sites, price_lookup):
   data-prijs="{beer.get('prijs') if beer.get('prijs') is not None else ''}"
   data-sterk="{'1' if beer.get('sterke_voorkeur') else '0'}"
   data-gehad="{'1' if beer.get('gehad') else '0'}"
-  data-voorraad="{'1' if beer.get('voorraad') else '0'}">
+  data-voorraad="{'1' if beer.get('voorraad') else '0'}"
+  data-voorraad-r="{'1' if beer.get('voorraad_r') else '0'}"
+  data-voorraad-hr="{'1' if beer.get('voorraad_hr') else '0'}">
   <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
   <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
   <div class="rechts"><div class="score">{beer.get('score', 0)}</div>{img_html}</div></div>

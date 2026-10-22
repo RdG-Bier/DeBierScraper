@@ -38,7 +38,11 @@ log = logging.getLogger("bierscraper")
 
 CACHE_FILE = Path(__file__).parent / "docs" / "untappd_profiel.json"
 BESTAND_GEHAD = Path(__file__).parent / "mijn_untappd" / "gehad.txt"
-BESTAND_VOORRAAD = Path(__file__).parent / "mijn_untappd" / "voorraad.txt"
+# Twee aparte voorraadlijsten: R (eigen) en H&R (gezamenlijk). De oude
+# voorraad.txt wordt nog meegelezen als hij bestaat, zodat niets verdwijnt.
+BESTAND_VOORRAAD_R = Path(__file__).parent / "mijn_untappd" / "voorraad_r.txt"
+BESTAND_VOORRAAD_HR = Path(__file__).parent / "mijn_untappd" / "voorraad_hr.txt"
+BESTAND_VOORRAAD_OUD = Path(__file__).parent / "mijn_untappd" / "voorraad.txt"
 BASIS = "https://untappd.com"
 API = "https://api.untappd.com/v4"
 STAP_HTML = 25
@@ -49,52 +53,66 @@ RE_BREWERY = re.compile(r"^/w/")
 
 
 def synchroniseer(all_beers):
-    gebruiker = getattr(config, "UNTAPPD_USER", "")
-    if not gebruiker:
-        return
-    bewaard = _laad_cache()
-    lijstnamen = getattr(config, "UNTAPPD_VOORRAAD_LIJSTEN", ())
+    """Markeert de bieren op basis van drie handmatige lijsten in de repository:
+    gehad.txt (groen), voorraad_r.txt en voorraad_hr.txt (beide geel, maar met
+    eigen label). De lijsten worden gevuld via de 'Lijsten inlezen'-pagina of
+    de browser-extensie. De online Untappd-routes (API/cookie) zijn vervallen
+    omdat Untappd profielpagina's achter een inlogmuur zet."""
+    gehad = _lees_bestand(BESTAND_GEHAD)
+    voorraad_r = _lees_bestand(BESTAND_VOORRAAD_R)
+    voorraad_hr = _lees_bestand(BESTAND_VOORRAAD_HR)
+    # oude losse voorraad.txt: meenemen in R, zodat bestaande data niet verdwijnt
+    for sl, naam in _lees_bestand(BESTAND_VOORRAAD_OUD).items():
+        voorraad_r.setdefault(sl, naam)
 
-    # Route 1: handmatige lijsten uit de repository (werkt altijd)
-    uit_bestand_gehad = _lees_bestand(BESTAND_GEHAD)
-    uit_bestand_voorraad = _lees_bestand(BESTAND_VOORRAAD)
-    if uit_bestand_gehad or uit_bestand_voorraad:
-        log.info("Untappd-bestanden: %d gehad, %d voorraad ingelezen",
-                 len(uit_bestand_gehad), len(uit_bestand_voorraad))
+    log.info("Untappd-lijsten: %d gehad, %d voorraad R, %d voorraad H&R",
+             len(gehad), len(voorraad_r), len(voorraad_hr))
 
-    cid = os.environ.get("UNTAPPD_CLIENT_ID", "").strip()
-    secret = os.environ.get("UNTAPPD_CLIENT_SECRET", "").strip()
-    cookie = os.environ.get("UNTAPPD_COOKIE", "").strip()
+    _markeer(all_beers, gehad, voorraad_r, voorraad_hr)
 
-    gehad, voorraad, methode = {}, {}, "geen"
-    if cid and secret:
-        methode = "api"
-        gehad, voorraad = _via_api(gebruiker, lijstnamen, cid, secret)
-    elif cookie:
-        methode = "cookie"
-        gehad, voorraad = _via_html(gebruiker, lijstnamen, cookie)
-    elif not (uit_bestand_gehad or uit_bestand_voorraad):
-        log.warning("Untappd: geen cookie, geen API-sleutels en geen bestanden in "
-                    "mijn_untappd/. De markering blijft leeg.")
-
-    gehad = _samenvoegen(gehad, uit_bestand_gehad)
-    voorraad = _samenvoegen(voorraad, uit_bestand_voorraad)
-    if uit_bestand_gehad or uit_bestand_voorraad:
-        methode = (methode + "+bestand") if methode != "geen" else "bestand"
-
-    if gehad:
-        bewaard["gehad"] = _samenvoegen(bewaard.get("gehad"), gehad)
-    if voorraad:
-        bewaard["voorraad"] = voorraad
-    bewaard["methode"] = methode
-    bewaard["bijgewerkt"] = time.strftime("%Y-%m-%d %H:%M")
-    _bewaar_cache(bewaard)
-    _markeer(all_beers, bewaard)
+    # resultaat bewaren voor de webpagina (teller + eventuele latere routes)
+    _bewaar_cache({
+        "methode": "bestand",
+        "bijgewerkt": time.strftime("%Y-%m-%d %H:%M"),
+        "aantal_gehad": len(gehad),
+        "aantal_voorraad_r": len(voorraad_r),
+        "aantal_voorraad_hr": len(voorraad_hr),
+    })
 
 
-# ---------------------------------------------------------------------------
-# Route 1: officiele API
-# ---------------------------------------------------------------------------
+def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
+    gehad_naam = _naam_index(gehad)
+    r_naam = _naam_index(voorraad_r)
+    hr_naam = _naam_index(voorraad_hr)
+    n_gehad = n_r = n_hr = 0
+
+    for bieren in all_beers.values():
+        for b in bieren:
+            sleutel = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            naam_sleutel = utils.beer_match_key(None, b.get("naam"))
+
+            is_gehad = sleutel in gehad or naam_sleutel in gehad_naam
+            is_r = sleutel in voorraad_r or naam_sleutel in r_naam
+            is_hr = sleutel in voorraad_hr or naam_sleutel in hr_naam
+
+            if is_gehad:
+                b["gehad"] = True
+                n_gehad += 1
+            # "check-in wint van voorraad": een bier dat je al gedronken hebt
+            # telt niet meer als voorraad, ook al staat het nog op een lijst.
+            # Zo hoef je je voorraadlijst niet handmatig op te schonen.
+            if is_r and not is_gehad:
+                b["voorraad_r"] = True
+                b["voorraad"] = True
+                n_r += 1
+            if is_hr and not is_gehad:
+                b["voorraad_hr"] = True
+                b["voorraad"] = True
+                n_hr += 1
+
+    log.info("Untappd: %d gehad gemarkeerd, %d voorraad R, %d voorraad H&R "
+             "(check-ins gaan voor op voorraad)", n_gehad, n_r, n_hr)
+
 
 def _api_url(pad, cid, secret, **params):
     delen = [f"client_id={cid}", f"client_secret={secret}"]
@@ -291,26 +309,6 @@ def _naam_index(bron):
             index[sleutel] = waarde
     return index
 
-
-def _markeer(all_beers, bewaard):
-    gehad = bewaard.get("gehad") or {}
-    voorraad = bewaard.get("voorraad") or {}
-    gehad_naam = _naam_index(gehad)
-    voorraad_naam = _naam_index(voorraad)
-    n_gehad = n_voorraad = 0
-    for bieren in all_beers.values():
-        for b in bieren:
-            sleutel = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
-            naam_sleutel = utils.beer_match_key(None, b.get("naam"))
-            if sleutel in gehad or naam_sleutel in gehad_naam:
-                b["gehad"] = True
-                n_gehad += 1
-            if sleutel in voorraad or naam_sleutel in voorraad_naam:
-                b["voorraad"] = True
-                n_voorraad += 1
-    if gehad or voorraad:
-        log.info("Untappd: %d bieren gemarkeerd als 'gehad', %d als 'voorraad'",
-                 n_gehad, n_voorraad)
 
 
 def _lees_bestand(pad):

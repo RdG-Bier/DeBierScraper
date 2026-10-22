@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v44"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v45"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -14,7 +14,7 @@ VERSION = "v44"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zi
 #   hopsandhopes -> leest de listingpagina's (HTML)
 # ---------------------------------------------------------------------------
 SITES = [
-    {
+{
         "key": "debiersalon",
         "label": "De Biersalon",
         "type": "shopify",
@@ -36,42 +36,31 @@ SITES = [
             "overige-bierstijlen", "bieren",
         ],
     },
-    {
+{
         "key": "bierloods22",
         "label": "Bierloods22",
         "type": "bierloods22",
         "base_url": "https://www.bierloods22.nl",
     },
-    {
-        "key": "drankgigant",
-        "label": "Drankgigant",
-        "type": "drankgigant",
-        "base_url": "https://www.drankgigant.nl",
-        "listing_url": "https://www.drankgigant.nl/bieren",
-        # ontbrekende scores rechtstreeks op untappd.com opzoeken
-        "untappd_lookup": True,
-        # alleen bieren met een gevonden Untappd-score >= MIN_UNTAPPD tonen
-        # (Drankgigant heeft veel gewone bieren met een 3.xx-score)
-        "untappd_min_filter": True,
-        # brede stijlen (Stout/IPA/Sour) die ook na verrijking + lookup geen
-        # substijl hebben, worden uit dit tabblad weggelaten
-        "drop_unrefined_broad": True,
+{
+        "key": "dehopwinkel",
+        "label": "De Hopwinkel",
+        "type": "woocommerce",
+        "base_url": "https://www.dehopwinkel.nl",
+        "api_url": "https://www.dehopwinkel.nl/wp-json/wc/store/v1/products",
+        # LET OP: de robots.txt van deze winkel verbiedt geautomatiseerde
+        # toegang. Zet dit pas op True als je daar toestemming voor hebt
+        # (mailtje naar de winkel volstaat) of als hun robots.txt wijzigt.
+        "enabled": True,
     },
-    {
-        "key": "bierbrigadier",
-        "label": "Bierbrigadier",
-        "type": "bierbrigadier",
-        "base_url": "http://www.debierbrigadier.nl",
-        "menu_url": "https://untappd.com/v/de-bierbrigadier-tilburg/5523441",
-    },
-    {
+{
         "key": "hopsandhopes",
         "label": "Hops & Hopes",
         "type": "hopsandhopes",
         "base_url": "https://www.hopsandhopes.nl",
         "listing_url": "https://www.hopsandhopes.nl/bieren",
     },
-    {
+{
         "key": "hoppenaar",
         "label": "De Hoppenaar",
         "type": "shopify",
@@ -89,16 +78,27 @@ SITES = [
         ],
         "untappd_lookup": True,
     },
-    {
-        "key": "dehopwinkel",
-        "label": "De Hopwinkel",
-        "type": "woocommerce",
-        "base_url": "https://www.dehopwinkel.nl",
-        "api_url": "https://www.dehopwinkel.nl/wp-json/wc/store/v1/products",
-        # LET OP: de robots.txt van deze winkel verbiedt geautomatiseerde
-        # toegang. Zet dit pas op True als je daar toestemming voor hebt
-        # (mailtje naar de winkel volstaat) of als hun robots.txt wijzigt.
-        "enabled": True,
+{
+        "key": "bierbrigadier",
+        "label": "Bierbrigadier",
+        "type": "bierbrigadier",
+        "base_url": "http://www.debierbrigadier.nl",
+        "menu_url": "https://untappd.com/v/de-bierbrigadier-tilburg/5523441",
+    },
+{
+        "key": "drankgigant",
+        "label": "Drankgigant",
+        "type": "drankgigant",
+        "base_url": "https://www.drankgigant.nl",
+        "listing_url": "https://www.drankgigant.nl/bieren",
+        # ontbrekende scores rechtstreeks op untappd.com opzoeken
+        "untappd_lookup": True,
+        # alleen bieren met een gevonden Untappd-score >= MIN_UNTAPPD tonen
+        # (Drankgigant heeft veel gewone bieren met een 3.xx-score)
+        "untappd_min_filter": True,
+        # brede stijlen (Stout/IPA/Sour) die ook na verrijking + lookup geen
+        # substijl hebben, worden uit dit tabblad weggelaten
+        "drop_unrefined_broad": True,
     },
 ]
 
