@@ -30,6 +30,13 @@ button:disabled { opacity:.5; cursor:default; }
 .telling { font-weight:700; color:var(--groen); }
 .doel-gehad { background:var(--gehad); }
 .doel-wens { background:var(--wens); }
+.zoekresultaten { margin-top:6px; }
+.zoekrij { display:flex; justify-content:space-between; align-items:center; gap:8px;
+           padding:8px 4px; border-bottom:1px solid #eee; font-size:.85rem; }
+.zoekrij .plus { background:var(--groen); color:#fff; border:none; border-radius:6px;
+                 padding:6px 12px; font-size:.8rem; cursor:pointer; white-space:nowrap; }
+.zoekrij .plus.erin { background:#999; }
+.zoekrij .bn { color:#666; font-size:.78rem; }
 </style></head>
 <body>
 <header>
@@ -39,13 +46,15 @@ button:disabled { opacity:.5; cursor:default; }
 <main>
 
 <div class="kaart" id="doelkaart">
-  <h2>1. Waar horen deze bieren bij?</h2>
+  <h2>1. Welke lijst?</h2>
   <label class="keuze"><input type="radio" name="doel" value="had" checked onchange="zetDoel()">
-    Al gehad <span style="background:var(--gehad);padding:1px 8px;border-radius:4px">groen</span></label>
-  <label class="keuze"><input type="radio" name="doel" value="wens" onchange="zetDoel()">
-    In voorraad <span style="background:var(--wens);padding:1px 8px;border-radius:4px">geel</span></label>
-  <p class="mini">Je kunt dit in meerdere rondes doen: eerst je check-ins inlezen,
-  daarna omschakelen naar voorraad en je lijsten erdoorheen halen.</p>
+    Check-ins (al gehad) <span style="background:var(--gehad);padding:1px 8px;border-radius:4px">groen</span></label>
+  <label class="keuze"><input type="radio" name="doel" value="voorraad_r" onchange="zetDoel()">
+    Voorraad R <span style="background:var(--wens);padding:1px 8px;border-radius:4px">geel</span></label>
+  <label class="keuze"><input type="radio" name="doel" value="voorraad_hr" onchange="zetDoel()">
+    Voorraad H&amp;R <span style="background:var(--wens);padding:1px 8px;border-radius:4px">geel</span></label>
+  <p class="mini">Elke lijst heeft een eigen bestand. Een CSV-upload vervangt
+  de hele lijst; losse bieren toevoegen (blok 2e) voegt juist toe.</p>
 </div>
 
 <div class="kaart">
@@ -85,6 +94,20 @@ button:disabled { opacity:.5; cursor:default; }
 </div>
 
 <div class="kaart">
+  <h2>2e. Zoeken &amp; losse bieren toevoegen (werkt op mobiel)</h2>
+  <p class="mini">Zoek in alle bieren die de scraper ooit heeft gezien en voeg
+  er een toe aan de gekozen lijst. Zit een bier er niet bij (pre-order), tik
+  dan rechtsboven op &#8220;handmatig&#8221; en voer het in als
+  <i>Brouwerij - Biernaam</i> (exact zoals op Untappd).</p>
+  <input id="zoekbier" type="search" placeholder="Zoek op brouwerij of biernaam&hellip;"
+         oninput="zoekInDatabase()" autocomplete="off">
+  <div id="zoekresultaten" class="zoekresultaten"></div>
+  <div class="rij" style="margin-top:4px">
+    <button class="grijs" onclick="handmatigToevoegen()">&#10133; Handmatig invoeren</button>
+  </div>
+</div>
+
+<div class="kaart">
   <h2>3. Voortgang</h2>
   <div class="balk"><div id="balk"></div></div>
   <div class="status" id="status">Nog niets ingelezen.</div>
@@ -95,19 +118,30 @@ button:disabled { opacity:.5; cursor:default; }
   <p class="mini">Controleer en verbeter gerust; OCR maakt soms fouten. Eén bier per regel.</p>
   <textarea id="resultaat" placeholder="Hier verschijnen de gevonden bieren."></textarea>
   <div>
-    <button onclick="bewaar()">Opslaan in deze browser</button>
-    <button class="grijs" onclick="kopieer()">Kopieer alles</button>
+    <button onclick="opslaanInRepo('vervang')">&#128190; Opslaan in GitHub (vervang lijst)</button>
+    <button onclick="opslaanInRepo('voegtoe')">&#10133; Toevoegen aan GitHub-lijst</button>
+  </div>
+  <div style="margin-top:6px">
+    <button class="grijs" onclick="bewaar()">Alleen in deze browser</button>
+    <button class="grijs" onclick="kopieer()">Kopieer</button>
     <button class="grijs" onclick="download()">Download .txt</button>
     <button class="grijs" onclick="leeg()">Wissen</button>
   </div>
-  <p class="mini" id="opslaguitleg">Opslaan in deze browser kleurt de bieren meteen in het
-  overzicht. Wil je het blijvend vastleggen (ook op andere apparaten), plak de lijst dan in
-  <code>mijn_untappd/gehad.txt</code> of <code>voorraad.txt</code> in je GitHub-repository.</p>
+  <p class="mini" id="opslaguitleg"><b>Opslaan in GitHub</b> schrijft rechtstreeks naar het
+  lijstbestand, dus het werkt op elk apparaat (ook mobiel) zodra je hier je GitHub-token hebt
+  ingesteld via het bieroverzicht &rarr; &#8220;Vververs nu&#8221;.
+  <br>&#8226; <b>Vervang lijst</b>: voor een CSV-upload van je hele Untappd-lijst.
+  <br>&#8226; <b>Toevoegen</b>: voor losse bieren uit de zoekfunctie; bestaande regels blijven staan.
+  <br>Na het opslaan de scraper draaien (of op de volgende run wachten) om de kleuren te zien.</p>
 </div>
 
 </main>
 <script>
 var doel = "had";
+// koppel doel -> bestandsnaam in de repository
+var DOELBESTAND = { had: "gehad.txt", voorraad_r: "voorraad_r.txt", voorraad_hr: "voorraad_hr.txt" };
+var DOELLABEL = { had: "check-ins", voorraad_r: "voorraad R", voorraad_hr: "voorraad H&R" };
+var GH_OWNER = "RdG-Bier", GH_REPO = "DeBierScraper", GH_PAD = "mijn_untappd/";
 function zetDoel(){
   doel = document.querySelector('input[name=doel]:checked').value;
   document.getElementById('doelkaart').className =
@@ -446,6 +480,134 @@ function download(){
 function leeg(){
   gevonden = {}; onzeker = {}; exacteSleutels = {}; toonResultaat(); balk(0); status("Lijst gewist.");
 }
+/* ============ zoeken in de database + losse bieren toevoegen ============ */
+function zoekInDatabase(){
+  var q = (document.getElementById('zoekbier').value || "").trim().toLowerCase();
+  var box = document.getElementById('zoekresultaten');
+  if(q.length < 2){ box.innerHTML = ""; return; }
+  if(!bekendGeladen){ box.innerHTML = '<p class="mini">Database laden\u2026 (draai eerst de scraper)</p>'; return; }
+  var qt = q.split(/\s+/).filter(function(w){ return w.length > 0; });
+  var treffers = [];
+  for(var i=0;i<BEKEND.length && treffers.length < 40;i++){
+    var e = BEKEND[i];
+    var hooi = (e.b + " " + e.n).toLowerCase();
+    if(qt.every(function(w){ return hooi.indexOf(w) >= 0; })) treffers.push(e);
+  }
+  if(!treffers.length){
+    box.innerHTML = '<p class="mini">Niets gevonden. Tik op &#8220;Handmatig invoeren&#8221; '
+      + 'als dit een pre-order of onbekend bier is.</p>';
+    return;
+  }
+  box.innerHTML = treffers.map(function(e){
+    var regel = (e.b ? e.b + " - " : "") + e.n;
+    var sl = woorden(regel).join(' ');
+    var erin = !!gevonden[sl];
+    return '<div class="zoekrij"><div><b>' + escapeHtml(e.n) + '</b><br>'
+      + '<span class="bn">' + escapeHtml(e.b) + '</span></div>'
+      + '<button class="plus' + (erin ? ' erin' : '') + '" '
+      + 'onclick="voegUitZoek(this, ' + JSON.stringify(regel).replace(/"/g,'&quot;') + ')">'
+      + (erin ? '\u2713 erin' : '\u002b toevoegen') + '</button></div>';
+  }).join('');
+}
+function escapeHtml(s){ return (s||"").replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+function voegUitZoek(knop, regel){
+  var sl = woorden(regel).join(' ');
+  if(gevonden[sl]){ return; }
+  gevonden[sl] = regel;
+  knop.classList.add('erin'); knop.textContent = '\u2713 erin';
+  toonResultaat();
+  status('Toegevoegd: ' + regel);
+}
+function handmatigToevoegen(){
+  var naam = prompt("Voer het bier in als 'Brouwerij - Biernaam'\n(exact zoals op Untappd):", "");
+  if(!naam) return;
+  naam = naam.trim();
+  if(naam.length < 3){ return; }
+  var sl = woorden(naam).join(' ');
+  if(gevonden[sl]){ status('Stond al in de lijst.'); return; }
+  gevonden[sl] = naam;
+  toonResultaat();
+  status('Handmatig toegevoegd: ' + naam);
+}
+
+/* ============ opslaan in de GitHub-repository ============ */
+function ghToken(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
+
+async function opslaanInRepo(modus){
+  // modus: "vervang" (CSV = hele lijst) of "voegtoe" (losse aanvullingen)
+  var token = ghToken();
+  if(!token){
+    alert("Geen GitHub-token gevonden. Open het bieroverzicht, tik op "
+      + "\u201cVververs nu\u201d en stel daar eenmalig je token in. "
+      + "Dat token wordt in deze browser bewaard en ook hier gebruikt.");
+    return;
+  }
+  var bestand = DOELBESTAND[doel];
+  var pad = GH_PAD + bestand;
+  var nieuweRegels = huidigeLijst();   // de bieren uit het resultaatveld
+  if(!nieuweRegels.length){ status("Niets om op te slaan."); return; }
+
+  status("Opslaan in GitHub\u2026");
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + pad;
+  var headers = { "Accept":"application/vnd.github+json", "Authorization":"Bearer " + token,
+                  "X-GitHub-Api-Version":"2022-11-28" };
+
+  // bestaande inhoud + sha ophalen (nodig om te updaten)
+  var bestaand = [], sha = null;
+  try {
+    var r = await fetch(api, { headers: headers });
+    if(r.status === 200){
+      var d = await r.json();
+      sha = d.sha;
+      var tekst = decodeURIComponent(escape(atob(d.content.replace(/\s/g,''))));
+      bestaand = tekst.split(/\r?\n/);
+    } else if(r.status !== 404){
+      status("Kon bestand niet lezen (code " + r.status + ")."); return;
+    }
+  } catch(e){ status("Geen verbinding met GitHub."); return; }
+
+  // commentaarregels en handmatige-marker behouden
+  var kop = bestaand.filter(function(l){ return l.trim().indexOf('#') === 0; });
+  var bestaandeBieren = bestaand.filter(function(l){ return l.trim() && l.trim().indexOf('#') !== 0; });
+
+  var eindlijst;
+  if(modus === "vervang"){
+    eindlijst = nieuweRegels.slice();
+  } else {
+    // toevoegen: samenvoegen en ontdubbelen op strikte sleutel
+    var zien = {}, uit = [];
+    bestaandeBieren.concat(nieuweRegels).forEach(function(r){
+      var sl = r.toLowerCase().normalize ? r.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'') : r.toLowerCase();
+      sl = sl.replace(/[^a-z0-9#]+/g,' ').replace(/\s+/g,' ').trim();
+      if(sl && !zien[sl]){ zien[sl] = 1; uit.push(r); }
+    });
+    eindlijst = uit;
+  }
+
+  var header = kop.length ? kop : ["# " + DOELLABEL[doel] + " - bijgewerkt via Lijsten inlezen"];
+  var inhoud = header.join("\n") + "\n" + eindlijst.sort(function(a,b){
+    return a.toLowerCase() < b.toLowerCase() ? -1 : 1; }).join("\n") + "\n";
+
+  var body = { message: "Lijst " + bestand + " bijgewerkt (" + eindlijst.length + " bieren)",
+               content: btoa(unescape(encodeURIComponent(inhoud))) };
+  if(sha) body.sha = sha;
+
+  try {
+    var pr = await fetch(api, { method:"PUT", headers: headers, body: JSON.stringify(body) });
+    if(pr.status === 200 || pr.status === 201){
+      status("Opgeslagen in " + bestand + " (" + eindlijst.length + " bieren). "
+        + "Draai de scraper of wacht op de volgende run om de kleuren te zien.");
+    } else if(pr.status === 401 || pr.status === 403){
+      alert("Token afgewezen. Controleer of het token schrijfrechten (Contents: Read and write) heeft.");
+      status("Opslaan mislukt: token.");
+    } else {
+      status("Opslaan mislukt (code " + pr.status + ").");
+    }
+  } catch(e){ status("Opslaan mislukt: geen verbinding."); }
+}
+
 zetDoel();
 laadBekend();
 </script>
