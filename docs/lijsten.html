@@ -17,9 +17,12 @@ h2 { font-size:.95rem; margin:0 0 8px; }
 .mini { font-size:.78rem; color:#666; line-height:1.45; }
 label.keuze { display:inline-flex; align-items:center; gap:6px; margin:4px 14px 4px 0;
               font-size:.88rem; }
-input[type=file] { width:100%; margin:8px 0; font-size:.85rem; }
+input[type=file] { width:100%; margin:8px 0; font-size:16px; }
+/* 16px font voorkomt dat iOS de pagina inzoomt bij het tikken in een veld */
+#zoekbier { width:100%; padding:14px 16px; font-size:16px; border:1px solid #ccc;
+            border-radius:10px; margin:4px 0 2px; -webkit-appearance:none; box-sizing:border-box; }
 textarea { width:100%; min-height:150px; padding:10px; border:1px solid #ccc;
-           border-radius:8px; font-family:monospace; font-size:.78rem; }
+           border-radius:8px; font-family:monospace; font-size:16px; }
 button { background:var(--groen); color:#fff; border:none; border-radius:8px;
          padding:10px 14px; font-size:.85rem; cursor:pointer; margin:4px 6px 4px 0; }
 button.grijs { background:#777; }
@@ -145,7 +148,7 @@ var GH_OWNER = "RdG-Bier", GH_REPO = "DeBierScraper", GH_PAD = "mijn_untappd/";
 function zetDoel(){
   doel = document.querySelector('input[name=doel]:checked').value;
   document.getElementById('doelkaart').className =
-    "kaart " + (doel === "had" ? "doel-gehad" : "doel-wens");
+    "kaart " + (doel === "had" ? "doel-gehad" : "doel-wens");  // beide voorraden geel
   toonTelling();
 }
 
@@ -281,7 +284,7 @@ function toonTelling(){
   if(n || t){
     tekst = "(" + n + " herkend";
     if(t) tekst += " + " + t + " te controleren";
-    tekst += ", doel: " + (doel === "had" ? "al gehad" : "voorraad") + ")";
+    tekst += ", doel: " + DOELLABEL[doel] + ")";
   }
   document.getElementById('telling').textContent = tekst;
 }
@@ -449,7 +452,8 @@ function huidigeLijst(){
     .filter(function(r){ return r.length > 2 && r.charAt(0) !== "#"; });
 }
 function bewaar(){
-  var sleutel = doel === "had" ? "untappd_had" : "untappd_wens";
+  var sleutel = { had: "untappd_had", voorraad_r: "untappd_voorraad_r",
+                  voorraad_hr: "untappd_voorraad_hr" }[doel] || "untappd_wens";
   var items = huidigeLijst().map(function(r){
     var d = r.split(/\s+-\s+/);
     var brouw = d.length === 2 ? d[0] : "", naam = d.length === 2 ? d[1] : r;
@@ -461,7 +465,7 @@ function bewaar(){
     samen.forEach(function(e){ if(e.vol && !uniek[e.vol]){ uniek[e.vol] = 1; uit.push(e); } });
     localStorage.setItem(sleutel, JSON.stringify(uit));
     status("Opgeslagen: " + uit.length + " bieren onder '" +
-           (doel === "had" ? "al gehad" : "voorraad") + "'. Open het overzicht om ze te zien.");
+           DOELLABEL[doel] + "'. Open het overzicht om ze te zien.");
   } catch(e){ status("Opslaan mislukt (opslag vol of geblokkeerd)."); }
 }
 function kopieer(){
@@ -471,7 +475,7 @@ function kopieer(){
   catch(e){ status("Kopieren mislukt; selecteer de tekst handmatig."); }
 }
 function download(){
-  var naam = doel === "had" ? "gehad.txt" : "voorraad.txt";
+  var naam = DOELBESTAND[doel];
   var blob = new Blob([huidigeLijst().join("\n") + "\n"], {type:"text/plain"});
   var a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = naam; a.click();
