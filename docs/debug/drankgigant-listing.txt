@@ -6177,4 +6177,4 @@ overflow: auto
             },
             addMessages(messages, hideAfter) {
                 messages.map((message) => {
-                    if (!message.text
+                    if (!message.text || !message.text.trim()) return
