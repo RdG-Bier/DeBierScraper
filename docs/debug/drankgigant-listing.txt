@@ -6185,4 +6185,6 @@ overflow: auto
                     if (hideAfter) {
                         this.setHideTimeOut(this.messages.length -1, hideAfter);
                     }
-                })
+                });
+            },
+            set
