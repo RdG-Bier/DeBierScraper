@@ -202,14 +202,15 @@ def _load_db():
 
 
 def leen_prijzen(all_beers, doel_keys):
-    """Voor shops die geen eigen prijzen hebben (zoals De Bierschuur, een
-    Untappd-venue-menu): geef elk bier de LAAGSTE prijs van hetzelfde bier bij
-    een andere shop. De Bierschuur is Belgisch en ligt doorgaans onder de
-    laagste NL-prijs, dus de laagst gevonden prijs is een veilige ondergrens.
-    doel_keys = set van shop-keys die prijzen moeten lenen."""
-    # verzamel per bier de laagste prijs over alle ANDERE shops
-    laagste = {}
-    laagste_vol = {}
+    """Voor shops zonder eigen prijzen (zoals De Bierschuur, een Untappd-venue-
+    menu): geef elk bier de LAAGSTE prijs van hetzelfde bier. Bron is zowel de
+    huidige andere shops ALS de permanente bierdatabase, die prijzen onthoudt
+    van bieren die nu nergens meer in de schappen liggen. Ook de afbeelding
+    wordt zo nodig uit de database geleend. De Bierschuur is Belgisch en ligt
+    doorgaans onder de laagste NL-prijs, dus de laagst gevonden prijs is een
+    veilige ondergrens."""
+    # 1) laagste prijs (per liter) uit de HUIDIGE andere shops
+    laagste = {}   # sleutel -> {"prijs","vol","ppl"}
     for key, beers in all_beers.items():
         if key in doel_keys:
             continue
@@ -219,24 +220,42 @@ def leen_prijzen(all_beers, doel_keys):
             sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             if not sl:
                 continue
-            if sl not in laagste or b["prijs"] < laagste[sl]:
-                laagste[sl] = b["prijs"]
-                laagste_vol[sl] = b.get("inhoud_cl")
+            vol = b.get("inhoud_cl") or 44.0
+            ppl = b["prijs"] / (vol / 100.0)
+            if sl not in laagste or ppl < laagste[sl]["ppl"]:
+                laagste[sl] = {"prijs": b["prijs"], "vol": b.get("inhoud_cl"), "ppl": ppl}
 
-    geleend = 0
+    # 2) de database erbij: die kent vaak nog meer prijzen (en afbeeldingen)
+    db = _load_db()
+    db_prijs = {k: v["pr"] for k, v in db.items() if v.get("pr")}
+    db_img = {k: v["img"] for k, v in db.items() if v.get("img")}
+
+    geleend = img_geleend = 0
     for key in doel_keys:
         for b in all_beers.get(key, []):
-            if b.get("prijs") is not None:
-                continue
             sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
-            prijs = laagste.get(sl) or _fuzzy_get(laagste, sl)
-            if prijs is not None:
-                b["prijs"] = prijs
-                b["prijs_geleend"] = True
-                if not b.get("inhoud_cl"):
-                    b["inhoud_cl"] = laagste_vol.get(sl) or _fuzzy_get(laagste_vol, sl)
-                geleend += 1
-    # (geen logging in scoring.py)
+            # prijs lenen: kies de laagste tussen live-shops en database
+            if b.get("prijs") is None:
+                kand = []
+                live = laagste.get(sl) or _fuzzy_get(laagste, sl)
+                if live:
+                    kand.append(live)
+                uitdb = db_prijs.get(sl) or _fuzzy_get(db_prijs, sl)
+                if uitdb:
+                    kand.append(uitdb)
+                if kand:
+                    beste = min(kand, key=lambda x: x["ppl"])
+                    b["prijs"] = beste["prijs"]
+                    b["prijs_geleend"] = True
+                    if not b.get("inhoud_cl") and beste.get("vol"):
+                        b["inhoud_cl"] = beste["vol"]
+                    geleend += 1
+            # afbeelding lenen uit de database als die ontbreekt
+            if not b.get("afbeelding"):
+                img = db_img.get(sl) or _fuzzy_get(db_img, sl)
+                if img:
+                    b["afbeelding"] = img
+                    img_geleend += 1
     return geleend
 
 
@@ -262,6 +281,14 @@ def _update_db(db, all_beers):
                 entry["v"] = b["inhoud_cl"]
             if b.get("afbeelding") and not entry.get("img"):
                 entry["img"] = b["afbeelding"]
+            # laagste prijs onthouden (geleende prijzen niet; die zijn zelf al
+            # een schatting). Zo blijft een eens-gevonden prijs beschikbaar,
+            # ook als het bier nu nergens meer in de schappen ligt.
+            if b.get("prijs") is not None and not b.get("prijs_geleend"):
+                vol = b.get("inhoud_cl") or 44.0
+                ppl = b["prijs"] / (vol / 100.0)  # prijs per liter, eerlijke vergelijking
+                if not entry.get("pr") or ppl < entry["pr"]["ppl"]:
+                    entry["pr"] = {"prijs": b["prijs"], "vol": b.get("inhoud_cl"), "ppl": ppl}
             entry["ts"] = now
     DB_FILE.parent.mkdir(parents=True, exist_ok=True)
     DB_FILE.write_text(json.dumps(db, indent=1, ensure_ascii=False), encoding="utf-8")
