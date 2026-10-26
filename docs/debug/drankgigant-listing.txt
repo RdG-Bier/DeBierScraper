@@ -6104,4 +6104,4 @@ overflow: auto
             class="item  flex justify-between py-1 hover:text-black"
             data-label="Affligem">
                                             <div class="flex justify-items-center gap-1 py-0.5 text-14 text-primary hover:text-black relative checkbox-layered"
-                     :
+                     :class="{'amshopby-link-selected'
