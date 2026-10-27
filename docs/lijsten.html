@@ -40,6 +40,10 @@ button:disabled { opacity:.5; cursor:default; }
                  padding:6px 12px; font-size:.8rem; cursor:pointer; white-space:nowrap; }
 .zoekrij .plus.erin { background:#999; }
 .zoekrij .bn { color:#666; font-size:.78rem; }
+.overboekrij { display:flex; align-items:center; gap:10px; padding:9px 4px;
+               border-bottom:1px solid #eee; font-size:.9rem; cursor:pointer; }
+.overboekrij input { width:20px; height:20px; flex:0 0 auto; }
+.overboekrij .bn { color:#888; font-size:.78rem; }
 </style></head>
 <body>
 <header>
@@ -47,6 +51,22 @@ button:disabled { opacity:.5; cursor:default; }
   <a href="index.html">&larr; terug naar het bieroverzicht</a>
 </header>
 <main>
+
+<div class="kaart" id="overboekkaart" style="border:2px solid var(--groen)">
+  <h2>&#128260; Overboeken: voorraad &rarr; check-ins</h2>
+  <p class="mini">Opgedronken? Vink hieronder aan welke bieren uit je voorraad
+  (R &eacute;n H&amp;R samen) je gedronken hebt. Bij &#8220;overboeken&#8221;
+  worden ze toegevoegd aan je check-ins (groen) en meteen uit de voorraadlijst
+  gehaald. Werkt op mobiel; je GitHub-token moet ingesteld zijn.</p>
+  <button class="grijs" onclick="laadOverboekLijst()">&#8635; Voorraadlijst laden</button>
+  <span class="mini" id="overboekstatus" style="margin-left:8px"></span>
+  <input id="overboekzoek" type="search" placeholder="Zoek in je voorraad&hellip;"
+         oninput="toonOverboek()" autocomplete="off" style="margin-top:8px">
+  <div id="overboekresultaten" class="zoekresultaten"></div>
+  <div class="rij" style="margin-top:8px">
+    <button id="overboekknop" onclick="voerOverboekUit()" disabled>Vink bieren aan om over te boeken</button>
+  </div>
+</div>
 
 <div class="kaart" id="doelkaart">
   <h2>1. Welke lijst?</h2>
@@ -538,6 +558,139 @@ function handmatigToevoegen(){
 
 /* ============ opslaan in de GitHub-repository ============ */
 function ghToken(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
+
+/* ============ GitHub-bestand lezen/schrijven (herbruikbaar) ============ */
+function ghHeaders(token){
+  return { "Accept":"application/vnd.github+json", "Authorization":"Bearer " + token,
+           "X-GitHub-Api-Version":"2022-11-28" };
+}
+async function ghLeesBestand(bestand, token){
+  // retourneert {regels, sha} of {regels:[], sha:null} als het niet bestaat
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PAD + bestand;
+  var r = await fetch(api, { headers: ghHeaders(token) });
+  if(r.status === 404) return { regels: [], sha: null };
+  if(r.status !== 200) throw new Error("lezen mislukt (" + r.status + ")");
+  var d = await r.json();
+  var tekst = decodeURIComponent(escape(atob(d.content.replace(/\s/g,''))));
+  return { regels: tekst.split(/\r?\n/), sha: d.sha };
+}
+async function ghSchrijfBestand(bestand, regels, sha, token, label){
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PAD + bestand;
+  var kop = regels.filter(function(l){ return l.trim().indexOf('#') === 0; });
+  var bieren = regels.filter(function(l){ return l.trim() && l.trim().indexOf('#') !== 0; });
+  var header = kop.length ? kop : ["# " + label + " - bijgewerkt via Lijsten inlezen"];
+  var inhoud = header.join("\n") + "\n" + bieren.sort(function(a,b){
+    return a.toLowerCase() < b.toLowerCase() ? -1 : 1; }).join("\n") + "\n";
+  var body = { message: "Lijst " + bestand + " bijgewerkt (" + bieren.length + " bieren)",
+               content: btoa(unescape(encodeURIComponent(inhoud))) };
+  if(sha) body.sha = sha;
+  var pr = await fetch(api, { method:"PUT", headers: ghHeaders(token), body: JSON.stringify(body) });
+  if(pr.status === 401 || pr.status === 403) throw new Error("token");
+  if(pr.status !== 200 && pr.status !== 201) throw new Error("schrijven mislukt (" + pr.status + ")");
+  return bieren.length;
+}
+function strikteSleutel(regel){
+  var sl = regel.toLowerCase();
+  sl = sl.normalize ? sl.normalize('NFD').replace(/[\u0300-\u036f]/g,'') : sl;
+  return sl.replace(/[^a-z0-9#]+/g,' ').replace(/\s+/g,' ').trim();
+}
+
+/* ============ overboeken: voorraad -> check-ins ============ */
+var OVERBOEK = {};   // sleutel -> {regel, bron: "voorraad_r"|"voorraad_hr"}
+
+function laadOverboekLijst(){
+  // leest de voorraadlijsten uit de repository en toont ze als aanvinkbare lijst
+  var vink = document.getElementById('overboekstatus');
+  var token = ghToken();
+  if(!token){
+    vink.textContent = "Stel eerst je GitHub-token in (bieroverzicht \u2192 Token).";
+    return;
+  }
+  vink.textContent = "Voorraadlijsten laden\u2026";
+  return Promise.all([ghLeesBestand("voorraad_r.txt", token), ghLeesBestand("voorraad_hr.txt", token)])
+   .then(function(res){
+     OVERBOEK = {};
+     [["voorraad_r", res[0]], ["voorraad_hr", res[1]]].forEach(function(paar){
+       paar[1].regels.forEach(function(r){
+         r = r.trim();
+         if(!r || r.indexOf('#') === 0) return;
+         var sl = strikteSleutel(r);
+         if(sl && !OVERBOEK[sl]) OVERBOEK[sl] = { regel: r, bron: paar[0] };
+       });
+     });
+     vink.textContent = Object.keys(OVERBOEK).length + " bieren in voorraad geladen.";
+     toonOverboek();
+   })
+   .catch(function(e){ vink.textContent = "Laden mislukt: " + e.message; });
+}
+
+function toonOverboek(){
+  var q = (document.getElementById('overboekzoek').value || "").toLowerCase();
+  var qt = q.split(/\s+/).filter(function(w){ return w.length > 0; });
+  var box = document.getElementById('overboekresultaten');
+  var sleutels = Object.keys(OVERBOEK).sort(function(a,b){
+    return OVERBOEK[a].regel.toLowerCase() < OVERBOEK[b].regel.toLowerCase() ? -1 : 1; });
+  var html = "", getoond = 0;
+  sleutels.forEach(function(sl){
+    var e = OVERBOEK[sl];
+    if(q && !qt.every(function(w){ return e.regel.toLowerCase().indexOf(w) >= 0; })) return;
+    if(getoond >= 150) return;
+    getoond++;
+    var label = e.bron === "voorraad_r" ? "R" : "H&R";
+    html += '<label class="overboekrij"><input type="checkbox" value="' + sl + '" '
+      + (e.gekozen ? 'checked ' : '') + 'onchange="kiesOverboek(this)">'
+      + '<span>' + escapeHtml(e.regel) + ' <span class="bn">(' + label + ')</span></span></label>';
+  });
+  box.innerHTML = html || '<p class="mini">Geen bieren gevonden.</p>';
+  telOverboek();
+}
+function kiesOverboek(cb){ if(OVERBOEK[cb.value]) OVERBOEK[cb.value].gekozen = cb.checked; telOverboek(); }
+function telOverboek(){
+  var n = Object.keys(OVERBOEK).filter(function(k){ return OVERBOEK[k].gekozen; }).length;
+  document.getElementById('overboekknop').textContent =
+    n ? "\u2713 " + n + " bier(en) overboeken naar check-ins" : "Vink bieren aan om over te boeken";
+  document.getElementById('overboekknop').disabled = (n === 0);
+}
+
+async function voerOverboekUit(){
+  var token = ghToken();
+  if(!token){ alert("Geen GitHub-token. Stel het in via het bieroverzicht \u2192 Token."); return; }
+  var gekozen = Object.keys(OVERBOEK).filter(function(k){ return OVERBOEK[k].gekozen; });
+  if(!gekozen.length) return;
+
+  var status2 = document.getElementById('overboekstatus');
+  status2.textContent = "Overboeken\u2026";
+  try {
+    // 1) toevoegen aan check-ins (gehad.txt)
+    var gehad = await ghLeesBestand("gehad.txt", token);
+    var zien = {};
+    gehad.regels.forEach(function(r){ if(r.trim() && r.indexOf('#')!==0) zien[strikteSleutel(r)] = 1; });
+    gekozen.forEach(function(sl){ if(!zien[sl]){ gehad.regels.push(OVERBOEK[sl].regel); zien[sl] = 1; } });
+    await ghSchrijfBestand("gehad.txt", gehad.regels, gehad.sha, token, DOELLABEL.had);
+
+    // 2) verwijderen uit de voorraadlijst(en) waar ze vandaan komen
+    var perBron = { voorraad_r: [], voorraad_hr: [] };
+    gekozen.forEach(function(sl){ perBron[OVERBOEK[sl].bron].push(sl); });
+    for(var bron in perBron){
+      if(!perBron[bron].length) continue;
+      var weg = {}; perBron[bron].forEach(function(sl){ weg[sl] = 1; });
+      var vb = await ghLeesBestand(bron + ".txt", token);
+      var over = vb.regels.filter(function(r){
+        if(!r.trim() || r.indexOf('#') === 0) return true;  // commentaar behouden
+        return !weg[strikteSleutel(r)];
+      });
+      await ghSchrijfBestand(bron + ".txt", over, vb.sha, token,
+                             bron === "voorraad_r" ? "voorraad R" : "voorraad H&R");
+    }
+    status2.textContent = gekozen.length + " bier(en) overgeboekt naar check-ins. "
+      + "Draai de scraper of wacht op de volgende run; ze worden dan groen.";
+    // lijst opnieuw laden zodat de overgeboekte bieren verdwijnen
+    setTimeout(laadOverboekLijst, 1500);
+  } catch(e){
+    if(e.message === "token"){ alert("Token afgewezen. Heeft het Contents: Read and write?"); }
+    status2.textContent = "Overboeken mislukt: " + e.message;
+  }
+}
 
 async function opslaanInRepo(modus){
   // modus: "vervang" (CSV = hele lijst) of "voegtoe" (losse aanvullingen)

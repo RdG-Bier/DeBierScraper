@@ -809,7 +809,7 @@ $(document).ready(() => {
 					</p>
 					<select id="style_picker">
 						<option value="all">All</option>
-						<option value="Barleywine - American">Barleywine - American (2)</option><option value="Barleywine - English">Barleywine - English (7)</option><option value="Barleywine - Other">Barleywine - Other (22)</option><option value="Belgian Blonde">Belgian Blonde (122)</option><option value="Belgian Dubbel">Belgian Dubbel (48)</option><option value="Belgian Enkel / Patersbier">Belgian Enkel / Patersbier (3)</option><option value="Belgian Quadrupel">Belgian Quadrupel (45)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (61)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (69)</option><option value="Belgian Tripel">Belgian Tripel (131)</option><option value="Bitter - Session / Ordinary">Bitter - Session / Ordinary (1)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (10)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (1)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (9)</option><option value="Bock - Doppelbock">Bock - Doppelbock (4)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (6)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Brett Beer">Brett Beer (3)</option><option value="Brown Ale - Belgian">Brown Ale - Belgian (10)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Brown Ale - Other">Brown Ale - Other (1)</option><option value="California Common">California Common (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (2)</option><option value="Cider - Dry">Cider - Dry (3)</option><option value="Cider - Graff">Cider - Graff (4)</option><option value="Cider - Herbed / Spiced">Cider - Herbed / Spiced (1)</option><option value="Cider - Other Fruit">Cider - Other Fruit (5)</option><option value="Cider - Perry / Poiré">Cider - Perry / Poiré (2)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (3)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (17)</option><option value="Festbier">Festbier (1)</option><option value="Fruit Beer">Fruit Beer (50)</option><option value="Grape Ale - Other">Grape Ale - Other (1)</option><option value="Hard Ginger Beer">Hard Ginger Beer (1)</option><option value="Hard Seltzer">Hard Seltzer (2)</option><option value="Historical Beer - Grodziskie / Grätzer">Historical Beer - Grodziskie / Grätzer (1)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (6)</option><option value="Historical Beer - Kentucky Common">Historical Beer - Kentucky Common (1)</option><option value="Historical Beer - Lichtenhainer">Historical Beer - Lichtenhainer (1)</option><option value="Historical Beer - Other">Historical Beer - Other (2)</option><option value="Honey Beer">Honey Beer (4)</option><option value="IPA - American">IPA - American (41)</option><option value="IPA - Belgian">IPA - Belgian (36)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Farmhouse">IPA - Farmhouse (2)</option><option value="IPA - Fruited">IPA - Fruited (7)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (28)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (3)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (4)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (59)</option><option value="IPA - Milkshake">IPA - Milkshake (2)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (94)</option><option value="IPA - New Zealand">IPA - New Zealand (8)</option><option value="IPA - Other">IPA - Other (21)</option><option value="IPA - Quadruple">IPA - Quadruple (3)</option><option value="IPA - Rye">IPA - Rye (2)</option><option value="IPA - Session">IPA - Session (6)</option><option value="IPA - Session New England / Hazy">IPA - Session New England / Hazy (5)</option><option value="IPA - Sour">IPA - Sour (2)</option><option value="IPA - Triple">IPA - Triple (7)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (14)</option><option value="IPA - White / Wheat">IPA - White / Wheat (7)</option><option value="Koji / Ginjo Beer">Koji / Ginjo Beer (1)</option><option value="Lager - Dortmunder / Export">Lager - Dortmunder / Export (1)</option><option value="Lager - Fruited  ">Lager - Fruited   (3)</option><option value="Lager - German Light / Leichtbier">Lager - German Light / Leichtbier (3)</option><option value="Lager - Helles">Lager - Helles (4)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Mexican">Lager - Mexican (4)</option><option value="Lager - Munich Dunkel">Lager - Munich Dunkel (1)</option><option value="Lager - Other">Lager - Other (10)</option><option value="Lager - Other Light">Lager - Other Light (1)</option><option value="Lager - Pale">Lager - Pale (6)</option><option value="Lager - Strong">Lager - Strong (1)</option><option value="Lambic - Faro">Lambic - Faro (1)</option><option value="Lambic - Framboise">Lambic - Framboise (8)</option><option value="Lambic - Fruit">Lambic - Fruit (32)</option><option value="Lambic - Gueuze">Lambic - Gueuze (36)</option><option value="Lambic - Kriek">Lambic - Kriek (22)</option><option value="Lambic - Other">Lambic - Other (9)</option><option value="Lambic - Traditional">Lambic - Traditional (7)</option><option value="Malt Liquor">Malt Liquor (1)</option><option value="Mead - Braggot">Mead - Braggot (3)</option><option value="Mead - Melomel">Mead - Melomel (19)</option><option value="Mead - Metheglin">Mead - Metheglin (1)</option><option value="Mead - Other">Mead - Other (1)</option><option value="Mild - Dark">Mild - Dark (1)</option><option value="Märzen">Märzen (1)</option><option value="Other">Other (9)</option><option value="Pale Ale - American">Pale Ale - American (9)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (6)</option><option value="Pale Ale - English">Pale Ale - English (3)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (9)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (2)</option><option value="Pilsner - American">Pilsner - American (4)</option><option value="Pilsner - Czech / Bohemian">Pilsner - Czech / Bohemian (1)</option><option value="Pilsner - German">Pilsner - German (7)</option><option value="Pilsner - Other">Pilsner - Other (13)</option><option value="Porter - American">Porter - American (3)</option><option value="Porter - English">Porter - English (1)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (6)</option><option value="Porter - Imperial / Double Coffee">Porter - Imperial / Double Coffee (1)</option><option value="Porter - Other">Porter - Other (2)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="RTD - Hard Iced Tea">RTD - Hard Iced Tea (2)</option><option value="RTD - Other">RTD - Other (5)</option><option value="Rauchbier">Rauchbier (6)</option><option value="Red Ale - Ambrée">Red Ale - Ambrée (1)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Red Ale - Other">Red Ale - Other (1)</option><option value="Rye Wine">Rye Wine (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Shandy / Radler">Shandy / Radler (7)</option><option value="Smoked Beer">Smoked Beer (2)</option><option value="Sour - Berliner Weisse">Sour - Berliner Weisse (1)</option><option value="Sour - Flanders Oud Bruin">Sour - Flanders Oud Bruin (4)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (8)</option><option value="Sour - Fruited">Sour - Fruited (20)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (4)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (9)</option><option value="Sour - Other">Sour - Other (6)</option><option value="Sour - Other Gose">Sour - Other Gose (3)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (37)</option><option value="Sour - Traditional Gose">Sour - Traditional Gose (1)</option><option value="Specialty Grain">Specialty Grain (1)</option><option value="Spiced / Herbed Beer">Spiced / Herbed Beer (3)</option><option value="Stout - Belgian">Stout - Belgian (8)</option><option value="Stout - Coffee">Stout - Coffee (6)</option><option value="Stout - English">Stout - English (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (2)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (109)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (10)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (5)</option><option value="Stout - Imperial / Double Oatmeal">Stout - Imperial / Double Oatmeal (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (44)</option><option value="Stout - Irish Dry">Stout - Irish Dry (3)</option><option value="Stout - Milk / Sweet">Stout - Milk / Sweet (2)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Other">Stout - Other (2)</option><option value="Stout - Oyster">Stout - Oyster (1)</option><option value="Stout - Pastry">Stout - Pastry (5)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (19)</option><option value="Stout - Smoked">Stout - Smoked (3)</option><option value="Strong Ale - English">Strong Ale - English (3)</option><option value="Strong Ale - Other">Strong Ale - Other (3)</option><option value="Table Beer">Table Beer (1)</option><option value="Wheat Beer - American Pale Wheat">Wheat Beer - American Pale Wheat (1)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (2)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (12)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (9)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (1)</option><option value="Wheat Beer - Other">Wheat Beer - Other (4)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (6)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (31)</option><option value="Wild Ale - Other">Wild Ale - Other (5)</option><option value="Winter Ale">Winter Ale (12)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
+						<option value="Barleywine - American">Barleywine - American (2)</option><option value="Barleywine - English">Barleywine - English (7)</option><option value="Barleywine - Other">Barleywine - Other (22)</option><option value="Belgian Blonde">Belgian Blonde (122)</option><option value="Belgian Dubbel">Belgian Dubbel (48)</option><option value="Belgian Enkel / Patersbier">Belgian Enkel / Patersbier (3)</option><option value="Belgian Quadrupel">Belgian Quadrupel (45)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (61)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (69)</option><option value="Belgian Tripel">Belgian Tripel (131)</option><option value="Bitter - Session / Ordinary">Bitter - Session / Ordinary (1)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (10)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (1)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (9)</option><option value="Bock - Doppelbock">Bock - Doppelbock (4)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (6)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Brett Beer">Brett Beer (3)</option><option value="Brown Ale - Belgian">Brown Ale - Belgian (10)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Brown Ale - Other">Brown Ale - Other (1)</option><option value="California Common">California Common (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (2)</option><option value="Cider - Dry">Cider - Dry (3)</option><option value="Cider - Graff">Cider - Graff (4)</option><option value="Cider - Herbed / Spiced">Cider - Herbed / Spiced (1)</option><option value="Cider - Other Fruit">Cider - Other Fruit (5)</option><option value="Cider - Perry / Poiré">Cider - Perry / Poiré (2)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (3)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (17)</option><option value="Festbier">Festbier (1)</option><option value="Fruit Beer">Fruit Beer (50)</option><option value="Grape Ale - Other">Grape Ale - Other (1)</option><option value="Hard Ginger Beer">Hard Ginger Beer (1)</option><option value="Hard Seltzer">Hard Seltzer (2)</option><option value="Historical Beer - Grodziskie / Grätzer">Historical Beer - Grodziskie / Grätzer (1)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (6)</option><option value="Historical Beer - Kentucky Common">Historical Beer - Kentucky Common (1)</option><option value="Historical Beer - Lichtenhainer">Historical Beer - Lichtenhainer (1)</option><option value="Historical Beer - Other">Historical Beer - Other (2)</option><option value="Honey Beer">Honey Beer (4)</option><option value="IPA - American">IPA - American (41)</option><option value="IPA - Belgian">IPA - Belgian (36)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Farmhouse">IPA - Farmhouse (2)</option><option value="IPA - Fruited">IPA - Fruited (7)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (28)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (3)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (4)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (59)</option><option value="IPA - Milkshake">IPA - Milkshake (2)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (94)</option><option value="IPA - New Zealand">IPA - New Zealand (8)</option><option value="IPA - Other">IPA - Other (21)</option><option value="IPA - Quadruple">IPA - Quadruple (3)</option><option value="IPA - Rye">IPA - Rye (2)</option><option value="IPA - Session">IPA - Session (6)</option><option value="IPA - Session New England / Hazy">IPA - Session New England / Hazy (5)</option><option value="IPA - Sour">IPA - Sour (2)</option><option value="IPA - Triple">IPA - Triple (7)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (14)</option><option value="IPA - White / Wheat">IPA - White / Wheat (7)</option><option value="Koji / Ginjo Beer">Koji / Ginjo Beer (1)</option><option value="Lager - Dortmunder / Export">Lager - Dortmunder / Export (1)</option><option value="Lager - Fruited  ">Lager - Fruited   (4)</option><option value="Lager - German Light / Leichtbier">Lager - German Light / Leichtbier (3)</option><option value="Lager - Helles">Lager - Helles (4)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Mexican">Lager - Mexican (4)</option><option value="Lager - Munich Dunkel">Lager - Munich Dunkel (1)</option><option value="Lager - Other">Lager - Other (9)</option><option value="Lager - Other Light">Lager - Other Light (1)</option><option value="Lager - Pale">Lager - Pale (6)</option><option value="Lager - Strong">Lager - Strong (1)</option><option value="Lambic - Faro">Lambic - Faro (1)</option><option value="Lambic - Framboise">Lambic - Framboise (8)</option><option value="Lambic - Fruit">Lambic - Fruit (32)</option><option value="Lambic - Gueuze">Lambic - Gueuze (36)</option><option value="Lambic - Kriek">Lambic - Kriek (22)</option><option value="Lambic - Other">Lambic - Other (9)</option><option value="Lambic - Traditional">Lambic - Traditional (7)</option><option value="Malt Liquor">Malt Liquor (1)</option><option value="Mead - Braggot">Mead - Braggot (3)</option><option value="Mead - Melomel">Mead - Melomel (19)</option><option value="Mead - Metheglin">Mead - Metheglin (1)</option><option value="Mead - Other">Mead - Other (1)</option><option value="Mild - Dark">Mild - Dark (1)</option><option value="Märzen">Märzen (1)</option><option value="Other">Other (9)</option><option value="Pale Ale - American">Pale Ale - American (9)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (6)</option><option value="Pale Ale - English">Pale Ale - English (3)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (9)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (2)</option><option value="Pilsner - American">Pilsner - American (4)</option><option value="Pilsner - Czech / Bohemian">Pilsner - Czech / Bohemian (1)</option><option value="Pilsner - German">Pilsner - German (7)</option><option value="Pilsner - Other">Pilsner - Other (13)</option><option value="Porter - American">Porter - American (3)</option><option value="Porter - English">Porter - English (1)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (6)</option><option value="Porter - Imperial / Double Coffee">Porter - Imperial / Double Coffee (1)</option><option value="Porter - Other">Porter - Other (2)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="RTD - Hard Iced Tea">RTD - Hard Iced Tea (2)</option><option value="RTD - Other">RTD - Other (5)</option><option value="Rauchbier">Rauchbier (6)</option><option value="Red Ale - Ambrée">Red Ale - Ambrée (1)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Red Ale - Other">Red Ale - Other (1)</option><option value="Rye Wine">Rye Wine (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Shandy / Radler">Shandy / Radler (7)</option><option value="Smoked Beer">Smoked Beer (2)</option><option value="Sour - Berliner Weisse">Sour - Berliner Weisse (1)</option><option value="Sour - Flanders Oud Bruin">Sour - Flanders Oud Bruin (4)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (8)</option><option value="Sour - Fruited">Sour - Fruited (20)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (4)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (9)</option><option value="Sour - Other">Sour - Other (6)</option><option value="Sour - Other Gose">Sour - Other Gose (3)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (37)</option><option value="Sour - Traditional Gose">Sour - Traditional Gose (1)</option><option value="Specialty Grain">Specialty Grain (1)</option><option value="Spiced / Herbed Beer">Spiced / Herbed Beer (3)</option><option value="Stout - Belgian">Stout - Belgian (8)</option><option value="Stout - Coffee">Stout - Coffee (6)</option><option value="Stout - English">Stout - English (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (2)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (109)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (10)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (5)</option><option value="Stout - Imperial / Double Oatmeal">Stout - Imperial / Double Oatmeal (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (44)</option><option value="Stout - Irish Dry">Stout - Irish Dry (3)</option><option value="Stout - Milk / Sweet">Stout - Milk / Sweet (2)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Other">Stout - Other (2)</option><option value="Stout - Oyster">Stout - Oyster (1)</option><option value="Stout - Pastry">Stout - Pastry (5)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (19)</option><option value="Stout - Smoked">Stout - Smoked (3)</option><option value="Strong Ale - English">Strong Ale - English (3)</option><option value="Strong Ale - Other">Strong Ale - Other (3)</option><option value="Table Beer">Table Beer (1)</option><option value="Wheat Beer - American Pale Wheat">Wheat Beer - American Pale Wheat (1)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (2)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (12)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (9)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (1)</option><option value="Wheat Beer - Other">Wheat Beer - Other (4)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (6)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (31)</option><option value="Wild Ale - Other">Wild Ale - Other (5)</option><option value="Winter Ale">Winter Ale (12)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
 				</div>
 			</div>
 						<div class="filter-holder">
@@ -1221,13 +1221,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80696">
+                            <div class="caps small" data-rating="3.79321">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.81)</span>
+	</div>                                                            <span class="num">(3.79)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1249,7 +1249,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.9562">
+                            <div class="caps small" data-rating="3.95737">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1277,13 +1277,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88612">
+                            <div class="caps small" data-rating="3.88429">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.88)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1305,7 +1305,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.85128">
+                            <div class="caps small" data-rating="3.85396">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1333,7 +1333,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.98913">
+                            <div class="caps small" data-rating="3.99083">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1389,13 +1389,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88798">
+                            <div class="caps small" data-rating="3.88288">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.88)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1417,7 +1417,7 @@ $(document).ready(() => {
                                     Norm Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.87937">
+                            <div class="caps small" data-rating="3.88168">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1473,7 +1473,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.02959">
+                            <div class="caps small" data-rating="4.02945">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1557,7 +1557,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.59342">
+                            <div class="caps small" data-rating="3.5934">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1585,7 +1585,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.60899">
+                            <div class="caps small" data-rating="3.60896">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1613,7 +1613,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.62809">
+                            <div class="caps small" data-rating="3.62681">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1641,7 +1641,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.35951">
+                            <div class="caps small" data-rating="3.35982">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1669,7 +1669,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69684">
+                            <div class="caps small" data-rating="3.69646">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1698,7 +1698,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49889">
+                            <div class="caps small" data-rating="3.49886">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1726,7 +1726,7 @@ $(document).ready(() => {
                                     Uiltje Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.4373">
+                            <div class="caps small" data-rating="3.43763">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1839,7 +1839,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5072">
+                            <div class="caps small" data-rating="3.50739">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1867,7 +1867,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.85286">
+                            <div class="caps small" data-rating="3.85294">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1924,7 +1924,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70914">
+                            <div class="caps small" data-rating="3.71356">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2036,7 +2036,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.9529">
+                            <div class="caps small" data-rating="3.95366">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2064,7 +2064,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.00296">
+                            <div class="caps small" data-rating="4.00453">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2093,7 +2093,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.54841">
+                            <div class="caps small" data-rating="3.54845">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2121,7 +2121,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95276">
+                            <div class="caps small" data-rating="3.95492">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2149,7 +2149,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.27367">
+                            <div class="caps small" data-rating="4.27429">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2177,7 +2177,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.22796">
+                            <div class="caps small" data-rating="4.22892">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2205,7 +2205,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75309">
+                            <div class="caps small" data-rating="3.75012">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2233,7 +2233,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.23097">
+                            <div class="caps small" data-rating="4.23164">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2261,7 +2261,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.83288">
+                            <div class="caps small" data-rating="3.8298">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2289,7 +2289,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.98892">
+                            <div class="caps small" data-rating="3.98968">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2345,7 +2345,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.23208">
+                            <div class="caps small" data-rating="4.23156">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2373,7 +2373,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.33064">
+                            <div class="caps small" data-rating="4.3311">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2401,7 +2401,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.25527">
+                            <div class="caps small" data-rating="4.25742">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2429,13 +2429,13 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.165">
+                            <div class="caps small" data-rating="4.16176">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.17)</span>
+	</div>                                                            <span class="num">(4.16)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2457,7 +2457,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.05375">
+                            <div class="caps small" data-rating="4.05044">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2485,7 +2485,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17714">
+                            <div class="caps small" data-rating="4.17718">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2513,7 +2513,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.86404">
+                            <div class="caps small" data-rating="3.86203">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2569,7 +2569,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.45867">
+                            <div class="caps small" data-rating="3.45877">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2597,7 +2597,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.66305">
+                            <div class="caps small" data-rating="3.66331">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2625,7 +2625,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78571">
+                            <div class="caps small" data-rating="3.78692">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2737,7 +2737,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03799">
+                            <div class="caps small" data-rating="4.03811">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2765,7 +2765,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73263">
+                            <div class="caps small" data-rating="3.73217">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2793,7 +2793,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.90596">
+                            <div class="caps small" data-rating="3.90573">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2821,7 +2821,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84264">
+                            <div class="caps small" data-rating="3.8439">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2849,7 +2849,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.16727">
+                            <div class="caps small" data-rating="4.16597">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2877,7 +2877,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.06232">
+                            <div class="caps small" data-rating="4.06214">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2905,7 +2905,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88673">
+                            <div class="caps small" data-rating="3.88667">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2989,7 +2989,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.89212">
+                            <div class="caps small" data-rating="3.89272">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3045,7 +3045,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.11949">
+                            <div class="caps small" data-rating="4.11898">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3073,7 +3073,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.93496">
+                            <div class="caps small" data-rating="3.93436">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3101,7 +3101,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.94872">
+                            <div class="caps small" data-rating="3.94882">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3129,7 +3129,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03377">
+                            <div class="caps small" data-rating="4.03333">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3157,7 +3157,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09086">
+                            <div class="caps small" data-rating="4.09088">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3185,7 +3185,7 @@ $(document).ready(() => {
                                     PINTA</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49008">
+                            <div class="caps small" data-rating="3.4893">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3241,7 +3241,7 @@ $(document).ready(() => {
                                     PINTA</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.91229">
+                            <div class="caps small" data-rating="3.91327">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3297,7 +3297,7 @@ $(document).ready(() => {
                                     Pühaste </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.25657">
+                            <div class="caps small" data-rating="4.25655">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3325,7 +3325,7 @@ $(document).ready(() => {
                                     Pühaste </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.52655">
+                            <div class="caps small" data-rating="3.52583">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3353,7 +3353,7 @@ $(document).ready(() => {
                                     Pühaste </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56123">
+                            <div class="caps small" data-rating="3.55997">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3409,7 +3409,7 @@ $(document).ready(() => {
                                     Pühaste </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.86999">
+                            <div class="caps small" data-rating="3.87016">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3465,7 +3465,7 @@ $(document).ready(() => {
                                     Pühaste </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.0705">
+                            <div class="caps small" data-rating="4.07047">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3689,7 +3689,7 @@ $(document).ready(() => {
                                     Mortalis Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.39724">
+                            <div class="caps small" data-rating="4.39702">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3745,7 +3745,7 @@ $(document).ready(() => {
                                     Mortalis Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.31738">
+                            <div class="caps small" data-rating="4.31697">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3857,7 +3857,7 @@ $(document).ready(() => {
                                     BramBrass</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.30587">
+                            <div class="caps small" data-rating="4.30758">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3886,7 +3886,7 @@ $(document).ready(() => {
                                     BramBrass</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.26638">
+                            <div class="caps small" data-rating="4.27051">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3999,7 +3999,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03154">
+                            <div class="caps small" data-rating="4.03201">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4027,7 +4027,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73075">
+                            <div class="caps small" data-rating="3.73063">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4055,7 +4055,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.07255">
+                            <div class="caps small" data-rating="4.07229">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4083,7 +4083,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84966">
+                            <div class="caps small" data-rating="3.84948">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4111,7 +4111,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.08916">
+                            <div class="caps small" data-rating="4.08917">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4139,7 +4139,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6437">
+                            <div class="caps small" data-rating="3.64389">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4167,7 +4167,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.896">
+                            <div class="caps small" data-rating="3.89599">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4251,13 +4251,13 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.20645">
+                            <div class="caps small" data-rating="4.20478">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.21)</span>
+	</div>                                                            <span class="num">(4.2)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -4307,7 +4307,7 @@ $(document).ready(() => {
                                     Hoof Hearted Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.29182">
+                            <div class="caps small" data-rating="4.29107">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4447,7 +4447,7 @@ $(document).ready(() => {
                                     Toppling Goliath Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17028">
+                            <div class="caps small" data-rating="4.17057">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4559,7 +4559,7 @@ $(document).ready(() => {
                                     Tired Hands Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17786">
+                            <div class="caps small" data-rating="4.17783">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4615,7 +4615,7 @@ $(document).ready(() => {
                                     Tired Hands Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.20135">
+                            <div class="caps small" data-rating="4.20034">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4671,7 +4671,7 @@ $(document).ready(() => {
                                     Toppling Goliath Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.1006">
+                            <div class="caps small" data-rating="4.10058">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4699,7 +4699,7 @@ $(document).ready(() => {
                                     Toppling Goliath Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.04864">
+                            <div class="caps small" data-rating="4.04869">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4727,7 +4727,7 @@ $(document).ready(() => {
                                     Toppling Goliath Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.29512">
+                            <div class="caps small" data-rating="4.29511">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4755,7 +4755,7 @@ $(document).ready(() => {
                                     Wax Wings Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.05948">
+                            <div class="caps small" data-rating="4.05892">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5175,7 +5175,7 @@ $(document).ready(() => {
                                     Transient Artisan Ales</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.34769">
+                            <div class="caps small" data-rating="4.34741">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5259,7 +5259,7 @@ $(document).ready(() => {
                                     WeldWerks Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.2694">
+                            <div class="caps small" data-rating="4.26943">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5287,7 +5287,7 @@ $(document).ready(() => {
                                     WeldWerks Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.12598">
+                            <div class="caps small" data-rating="4.12596">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5455,7 +5455,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.23979">
+                            <div class="caps small" data-rating="4.2398">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5483,7 +5483,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.24287">
+                            <div class="caps small" data-rating="4.24264">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5539,7 +5539,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.28908">
+                            <div class="caps small" data-rating="4.28881">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5567,7 +5567,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.26484">
+                            <div class="caps small" data-rating="4.26457">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5595,7 +5595,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.39504">
+                            <div class="caps small" data-rating="4.39521">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5624,7 +5624,7 @@ $(document).ready(() => {
                                     Messorem </a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.40093">
+                            <div class="caps small" data-rating="4.40085">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5736,7 +5736,7 @@ $(document).ready(() => {
                                     Le Ketch</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.27889">
+                            <div class="caps small" data-rating="4.2788">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5932,7 +5932,7 @@ $(document).ready(() => {
                                     Brasserie du Bas-Canada</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.2867">
+                            <div class="caps small" data-rating="4.2869">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5960,7 +5960,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.86631">
+                            <div class="caps small" data-rating="3.86606">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5988,7 +5988,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56313">
+                            <div class="caps small" data-rating="3.56317">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6016,7 +6016,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.74876">
+                            <div class="caps small" data-rating="3.74877">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6044,7 +6044,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.54156">
+                            <div class="caps small" data-rating="3.54223">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6156,7 +6156,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.89174">
+                            <div class="caps small" data-rating="3.89117">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6212,7 +6212,7 @@ $(document).ready(() => {
                                     Schlenkerla ("Heller-Bräu" Trum)</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73573">
+                            <div class="caps small" data-rating="3.73575">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6268,7 +6268,7 @@ $(document).ready(() => {
                                     Schlenkerla ("Heller-Bräu" Trum)</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.53765">
+                            <div class="caps small" data-rating="3.53766">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6296,7 +6296,7 @@ $(document).ready(() => {
                                     Schlenkerla ("Heller-Bräu" Trum)</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.47713">
+                            <div class="caps small" data-rating="3.47714">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6352,7 +6352,7 @@ $(document).ready(() => {
                                     Schlenkerla ("Heller-Bräu" Trum)</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78972">
+                            <div class="caps small" data-rating="3.78968">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6376,4 +6376,4 @@ $(document).ready(() => {
                         </h5>
                         <h6>
                             <span>2.9% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Schlenkerla-Br
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Schlenkerla
