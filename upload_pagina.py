@@ -38,8 +38,8 @@ label.keuze { display:inline-flex; align-items:center; gap:6px; margin:4px 14px 
               font-size:.88rem; }
 input[type=file] { width:100%; margin:8px 0; font-size:16px; }
 /* 16px font voorkomt dat iOS de pagina inzoomt bij het tikken in een veld */
-#zoekbier { width:100%; padding:14px 16px; font-size:16px; border:1px solid #ccc;
-            border-radius:10px; margin:4px 0 2px; -webkit-appearance:none; box-sizing:border-box; }
+#zoekbier, #overboekzoek { width:100%; padding:14px 16px; font-size:16px; border:1px solid #ccc;
+            border-radius:10px; margin:6px 0 2px; -webkit-appearance:none; box-sizing:border-box; }
 textarea { width:100%; min-height:150px; padding:10px; border:1px solid #ccc;
            border-radius:8px; font-family:monospace; font-size:16px; }
 button { background:var(--groen); color:#fff; border:none; border-radius:8px;

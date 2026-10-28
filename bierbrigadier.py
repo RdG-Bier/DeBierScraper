@@ -50,6 +50,10 @@ def scrape(site):
     soup = BeautifulSoup(html, "html.parser")
     for tag in soup.find_all(["script", "style", "noscript"]):
         tag.decompose()
+    # "Recent Activity"-sectie weghalen: die bevat check-ins van bezoekers met
+    # /b/-links die GEEN menu-items zijn (anders tel je ze mee als bier).
+    for act in soup.select(".venue-activity, .recent-activity, .activity"):
+        act.decompose()
 
     # Heeft dit menu prijzen? (Bierbrigadier wel, De Bierschuur niet.) Expliciet
     # via config instelbaar; anders afleiden uit de aanwezigheid van "EUR".

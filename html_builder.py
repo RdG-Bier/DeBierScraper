@@ -317,6 +317,13 @@ document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeIm
 /* ---------- handmatig verversen ---------- */
 function tok(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
 function setStatus(t){ document.getElementById("status").textContent = t || ""; }
+// Een lopende run wordt onthouden in localStorage, zodat we ook NA het
+// vergrendelen van de telefoon of het wegklikken van de pagina kunnen zien
+// of hij inmiddels klaar is. De run draait op GitHub's servers en gaat dus
+// gewoon door terwijl je scherm uit staat.
+function verversLoopt(){ try { return localStorage.getItem("ververs_loopt") || ""; } catch(e){ return ""; } }
+function zetVerversLoopt(v){ try { if(v) localStorage.setItem("ververs_loopt", v); else localStorage.removeItem("ververs_loopt"); } catch(e){} }
+
 function ververs(){
   var t = tok();
   if(!t){ togglePaneel('tokenpaneel'); return; }
@@ -328,23 +335,57 @@ function ververs(){
              "X-GitHub-Api-Version":"2022-11-28"},
     body: JSON.stringify({ref:"main"})
   }).then(function(r){
-    if(r.status === 204){ setStatus("Gestart! Dit duurt een paar minuten."); setTimeout(volgStatus, 12000); }
+    if(r.status === 204){
+      // onthoud startmoment zodat we de JUISTE run volgen, ook na herladen
+      zetVerversLoopt(String(Date.now()));
+      setStatus("Gestart! Je kunt wegklikken; dit duurt een paar minuten.");
+      setTimeout(volgStatus, 12000);
+    }
     else if(r.status === 401 || r.status === 403){
       setStatus("Token afgewezen of verlopen."); togglePaneel('tokenpaneel'); knop.disabled = false; }
     else { setStatus("Starten mislukt (code "+r.status+")."); knop.disabled = false; }
   }).catch(function(){ setStatus("Geen verbinding met GitHub."); knop.disabled = false; });
 }
+
 function volgStatus(){
-  fetch("https://api.github.com/repos/"+GH_OWNER+"/"+GH_REPO+"/actions/runs?per_page=1")
+  if(!verversLoopt()) return;   // geen run (meer) om te volgen
+  document.getElementById("verversknop").disabled = true;
+  fetch("https://api.github.com/repos/"+GH_OWNER+"/"+GH_REPO+"/actions/runs?per_page=1&t="+Date.now())
    .then(function(r){ return r.json(); })
    .then(function(d){
      var run = d.workflow_runs && d.workflow_runs[0];
-     if(!run){ setStatus(""); return; }
-     if(run.status !== "completed"){ setStatus("Bezig met scrapen... ("+run.status+")"); setTimeout(volgStatus, 15000); }
-     else if(run.conclusion === "success"){ setStatus("Klaar! Herlaad de pagina."); document.getElementById("verversknop").disabled = false; }
-     else { setStatus("Run mislukt ("+run.conclusion+")."); document.getElementById("verversknop").disabled = false; }
-   }).catch(function(){ setStatus(""); });
+     if(!run){ setTimeout(volgStatus, 15000); return; }
+     if(run.status !== "completed"){
+       setStatus("\u23f3 Bezig met scrapen... ("+run.status+")");
+       setTimeout(volgStatus, 15000);
+     } else if(run.conclusion === "success"){
+       zetVerversLoopt("");
+       toonKlaar();
+     } else {
+       zetVerversLoopt("");
+       setStatus("\u26a0\ufe0f Run mislukt ("+run.conclusion+").");
+       document.getElementById("verversknop").disabled = false;
+     }
+   }).catch(function(){ setTimeout(volgStatus, 20000); });
 }
+
+function toonKlaar(){
+  document.getElementById("verversknop").disabled = false;
+  var el = document.getElementById("status");
+  el.innerHTML = "\u2705 Klaar! "
+    + "<a href='#' onclick='location.reload();return false;' "
+    + "style='color:#fff;font-weight:700;text-decoration:underline'>Tik hier om de nieuwe lijst te laden</a>";
+  // extra: als de telefoon trilfunctie heeft, even een seintje geven
+  try { if(navigator.vibrate) navigator.vibrate([120,60,120]); } catch(e){}
+}
+
+// Bij terugkeer op de pagina (ontgrendelen / terugklikken): meteen checken of
+// een onthouden run inmiddels klaar is. Dit vangt precies het geval op waarin
+// het pollen stopte doordat het scherm vergrendeld was.
+document.addEventListener("visibilitychange", function(){
+  if(!document.hidden && verversLoopt()) volgStatus();
+});
+window.addEventListener("focus", function(){ if(verversLoopt()) volgStatus(); });
 function tokenStatusTonen(){
   var el = document.getElementById("tokenstatus");
   if(!el) return;
@@ -388,6 +429,7 @@ document.addEventListener('DOMContentLoaded', function(){
   if(wens.length){ document.getElementById('wensveld').value =
       wens.map(function(e){ return e.naam; }).join('\\n'); }
   toonAantallen(); markeer(); pasFiltersToe();
+  if(verversLoopt()) volgStatus();   // run van vóór het herladen verder volgen
 });
 """
 
