@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v53"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v54"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -36,7 +36,7 @@ SITES = [
             "overige-bierstijlen", "bieren",
         ],
     },
-    {
+{
         "key": "bierschuur",
         "label": "De Bierschuur",
         "type": "bierbrigadier",
@@ -73,6 +73,17 @@ SITES = [
         "type": "hopsandhopes",
         "base_url": "https://www.hopsandhopes.nl",
         "listing_url": "https://www.hopsandhopes.nl/bieren",
+    },
+    {
+        "key": "beerdudes",
+        "label": "Beer Dudes",
+        "type": "woocommerce",
+        "base_url": "https://www.beerdudes.club",
+        "api_url": "https://www.beerdudes.club/wp-json/wc/store/v1/products",
+        # Untappd-score staat niet op de productpagina; wordt opgezocht/geleend.
+        "untappd_lookup": True,
+        # alleen tonen met score >= MIN_UNTAPPD (zoals Drankgigant/Bierschuur)
+        "untappd_min_filter": True,
     },
 {
         "key": "hoppenaar",

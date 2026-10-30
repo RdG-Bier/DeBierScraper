@@ -365,7 +365,16 @@ def beer_match_key(brewery, name):
     n = re.sub(r"\b(brewery|brewing(\s+(co|company))?|brew\s+co|craft\s+brewery"
                r"|brouwerij|bierbrouwerij|bryghus|bryggeri|brasserie|birrificio"
                r"|cervejaria|browar|co|company)\b\.?", " ", n)
-    return re.sub(r"\s+", " ", n).strip()
+    n = re.sub(r"\s+", " ", n).strip()
+    # Biernaam begint vaak met de brouwerijnaam ("Arpus Brewing Co. - Arpus X
+    # Track...") terwijl de shop "Arpus - X Track..." noemt -> dan staat het
+    # merk er dubbel in. Direct opeenvolgende identieke woorden samenvoegen.
+    woorden = n.split()
+    uniek = []
+    for w in woorden:
+        if not uniek or uniek[-1] != w:
+            uniek.append(w)
+    return " ".join(uniek)
 
 
 # Untappd-score verstopt in ruwe HTML: data-attributen of JSON-blobs,
