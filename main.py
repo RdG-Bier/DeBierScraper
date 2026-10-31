@@ -27,6 +27,7 @@ import bierloods22
 import bierbrigadier
 import drankgigant
 import untappd_lookup
+import combi
 import untappd_profiel
 import utils
 import websearch
@@ -38,6 +39,7 @@ SCRAPERS = {
     "woocommerce": woocommerce.scrape,
     "bierloods22": bierloods22.scrape,
     "bierbrigadier": bierbrigadier.scrape,
+    "combi": combi.scrape,
     "drankgigant": drankgigant.scrape,
 }
 

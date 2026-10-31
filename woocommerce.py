@@ -48,6 +48,15 @@ def scrape(site):
     return beers
 
 
+def _afbeelding(p):
+    """Eerste productfoto uit de Store API (liefst de thumbnail, die is klein)."""
+    for img in (p.get("images") or []):
+        url = img.get("thumbnail") or img.get("src")
+        if url:
+            return url
+    return None
+
+
 def _parse_product(p, site, detail_count):
     if not p.get("is_in_stock", True):
         return None
@@ -127,6 +136,7 @@ def _parse_product(p, site, detail_count):
     return {
         "brouwerij": brewery,
         "naam": _clean_name(name, brewery),
+        "afbeelding": _afbeelding(p),
         "inhoud_cl": volume,
         "land": country,
         "abv": abv,

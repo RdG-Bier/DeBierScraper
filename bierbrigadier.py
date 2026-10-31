@@ -115,6 +115,10 @@ def _parse_item(anchor, href, heeft_prijzen=True):
 
     brewery = None
     b_link = container.find("a", href=RE_BREWERY_HREF)
+    if not b_link:
+        # Untappd-venues linken de brouwerij als '/vandeStreekBier' (zonder
+        # '/w/'), herkenbaar aan data-href=":brewery".
+        b_link = container.find("a", attrs={"data-href": ":brewery"})
     if b_link:
         brewery = b_link.get_text(" ", strip=True)
 
@@ -163,7 +167,11 @@ def _parse_item(anchor, href, heeft_prijzen=True):
         return None
 
     return {
-        "afbeelding": utils.extract_image(container),
+        # De foto staat in een buurblok (.beer-label) naast de tekst; daarom in
+        # het hele menu-item zoeken. Bij menu's zonder prijzen stopte het
+        # omhoogklimmen eerder (bij "ABV") en viel de foto buiten beeld.
+        "afbeelding": utils.extract_image(
+            anchor.find_parent(class_="menu-item") or anchor.find_parent("li") or container),
         "brouwerij": brewery,
         "naam": name,
         "inhoud_cl": volume,
