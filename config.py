@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v54"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v55"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -77,12 +77,12 @@ SITES = [
     {
         "key": "beerdudes",
         "label": "Beer Dudes",
-        "type": "woocommerce",
+        "type": "bierbrigadier",
         "base_url": "https://www.beerdudes.club",
-        "api_url": "https://www.beerdudes.club/wp-json/wc/store/v1/products",
-        # Untappd-score staat niet op de productpagina; wordt opgezocht/geleend.
-        "untappd_lookup": True,
-        # alleen tonen met score >= MIN_UNTAPPD (zoals Drankgigant/Bierschuur)
+        "menu_url": "https://untappd.com/v/beer-dudes/14075288",
+        # Untappd-venue met prijzen EN labels (foto's); die komen rechtstreeks
+        # uit het menu, plus scores en aantallen. Geen aparte webshop-scrape nodig.
+        "heeft_prijzen": True,
         "untappd_min_filter": True,
     },
 {
