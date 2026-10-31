@@ -559,6 +559,12 @@ function handmatigToevoegen(){
 /* ============ opslaan in de GitHub-repository ============ */
 function ghToken(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
 
+/* Alfabetisch sorteren zonder dat accenten de volgorde verstoren:
+   "Ārpus" hoort bij de A, niet achter de Z. */
+function alfabetisch(a, b){
+  return String(a).localeCompare(String(b), "nl", { sensitivity: "base", numeric: true });
+}
+
 /* ============ GitHub-bestand lezen/schrijven (herbruikbaar) ============ */
 function ghHeaders(token){
   return { "Accept":"application/vnd.github+json", "Authorization":"Bearer " + token,
@@ -580,7 +586,7 @@ async function ghSchrijfBestand(bestand, regels, sha, token, label){
   var bieren = regels.filter(function(l){ return l.trim() && l.trim().indexOf('#') !== 0; });
   var header = kop.length ? kop : ["# " + label + " - bijgewerkt via Lijsten inlezen"];
   var inhoud = header.join("\n") + "\n" + bieren.sort(function(a,b){
-    return a.toLowerCase() < b.toLowerCase() ? -1 : 1; }).join("\n") + "\n";
+    return alfabetisch(a, b); }).join("\n") + "\n";
   var body = { message: "Lijst " + bestand + " bijgewerkt (" + bieren.length + " bieren)",
                content: btoa(unescape(encodeURIComponent(inhoud))) };
   if(sha) body.sha = sha;
@@ -629,7 +635,7 @@ function toonOverboek(){
   var qt = q.split(/\s+/).filter(function(w){ return w.length > 0; });
   var box = document.getElementById('overboekresultaten');
   var sleutels = Object.keys(OVERBOEK).sort(function(a,b){
-    return OVERBOEK[a].regel.toLowerCase() < OVERBOEK[b].regel.toLowerCase() ? -1 : 1; });
+    return alfabetisch(OVERBOEK[a].regel, OVERBOEK[b].regel); });
   var html = "", getoond = 0;
   sleutels.forEach(function(sl){
     var e = OVERBOEK[sl];
@@ -745,7 +751,7 @@ async function opslaanInRepo(modus){
 
   var header = kop.length ? kop : ["# " + DOELLABEL[doel] + " - bijgewerkt via Lijsten inlezen"];
   var inhoud = header.join("\n") + "\n" + eindlijst.sort(function(a,b){
-    return a.toLowerCase() < b.toLowerCase() ? -1 : 1; }).join("\n") + "\n";
+    return alfabetisch(a, b); }).join("\n") + "\n";
 
   var body = { message: "Lijst " + bestand + " bijgewerkt (" + eindlijst.length + " bieren)",
                content: btoa(unescape(encodeURIComponent(inhoud))) };
