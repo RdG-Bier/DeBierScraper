@@ -486,18 +486,53 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						87,443						<span>Total</span>
+						87,449						<span>Total</span>
 					</li><li>
 						2,836						<span>Unique</span>
 					</li><li>
-						379						<span>Monthly</span>
+						385						<span>Monthly</span>
 					</li><li>
 												<a href="/v/de-bierbrigadier-tilburg/5523441/activity?filter=you">0</a>
 						<span>You</span>
 					</li>
 				</ul>
 			</div>
-					
+								<div class="loyal">
+						<h3>Loyal Patrons (<a href="javascript:void(0)" class="tip" title="This data is refreshed every 48 hours.">?</a>)</h3>
+						<ul>
+							<li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/TheDoubleDee" title="Dennis van Dooren (891 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/a72326d1857adeca3421980791679301_100x100.jpg" alt="Dennis van Dooren avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/KoenG" title="1000 Others (603 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/a1e9df8c36f020eac101628119810bf6_100x100.jpeg" alt="1000 Others avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/DennisHamers" title="Dennis Hamers (545 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/268df2418c9d7a7c57f406a264ae94c4_100x100.jpg" alt="Dennis Hamers avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Eerik1987" title="Erik van der Linden (431 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/2650d0d18d864247dc80421a584120c3_100x100.jpg" alt="Erik van der Linden avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/rikvanopstal" title="Rik van Opstal (152 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/f4201bb7b5784ba84c8eee90c0347713_100x100.jpg" alt="Rik van Opstal avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Spike303" title="Benny  (131 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/9718020af642bd11599629678575c1de_100x100.jpg" alt="Benny  avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Sjaop" title="Tom Sjaop (117 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/5ddd5dfa682a51da592627904967d96e_100x100.jpg" alt="Tom Sjaop avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/grywnn" title="Heiner Bach (78 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/e775577bd2b18574dae107254d9a83f9_100x100.jpg" alt="Heiner Bach avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Nappie" title="Dylan  (75 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/8accd13cfbfb1958a9be7cef06d4c470_100x100.jpeg" alt="Dylan  avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Cliffkox" title="Cliff Kox (65 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/f5ac838e045e48c4924e4452aabee5e1_100x100.jpg" alt="Cliff Kox avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Delisbier" title="Rene Delisse (63 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/999de0c0eb3a3bbb11790114e103b16e_100x100.jpg" alt="Rene Delisse avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/arold" title="arold  (54 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/1fb459ebec04abedddc999060bd33707_100x100.jpg" alt="arold  avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Righteye_Beer" title="Frank Trommelen (52 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/5cb02566b2ff58731e7a4b8e6ddb1795_100x100.jpg" alt="Frank Trommelen avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/bogdanklimowicz" title="Bogdan Klimowicz (51 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/84e017272056b036b335f24e9da174f4_100x100.png" alt="Bogdan Klimowicz avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Robborland" title="Rob Borland (49 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/7a96c5d9b9238eebb76871194b3c1f56_100x100.jpg" alt="Rob Borland avatar">
+								</a></li>						</ul>
+					</div>
+							
 	</div>
 </div>
 
@@ -4806,7 +4841,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49832">
+                            <div class="caps small" data-rating="3.49854">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6048,78 +6083,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     </div>
                 <div class="beer-details">
                                             <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/salikatt-cruise-pace/6819243">
-                                                                Cruise Pace                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Salikatt_Bryggeri">
-                                    Salikatt</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.91084">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.91)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        44cl blik                                    </span>
-                                                                        <span class="price">
-                                        6.89 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6843534" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/pentrich-brewing-co-confetti-moment-2026/6843534">
-                                                                Confetti Moment (2026)                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>7.4% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Pentrich">
-                                    Pentrich Brewing Co.</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.92319">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.92)</span>
-                                                    </h6>
-                                                    <p class="menu-beverage-tags">Gluten-Free</p>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        44cl blik                                    </span>
-                                                                        <span class="price">
-                                        7.19 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6817142" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/azvex-brewing-company-surfing-snails/6817142">
-                                                      
+                
