@@ -287,12 +287,38 @@ function pasFiltersToe(){
     });
     var knop = document.querySelector('.tabs button[data-key="'+panel.dataset.key+'"]');
     if(knop){ knop.textContent = knop.dataset.label + " (" + zichtbaar + ")"; }
+    sorteerPanel(panel);
   });
+}
+// Kaarten binnen een tabblad herordenen. De oorspronkelijke volgorde (op
+// totaalscore) wordt eenmalig onthouden, zodat "standaard" altijd terug kan.
+// Bieren zonder prijs/score komen bij elke sortering onderaan.
+function sorteerPanel(panel){
+  var wijze = document.getElementById('f-sort').value;
+  var kaarten = Array.prototype.slice.call(panel.querySelectorAll('.card'));
+  if(!kaarten.length) return;
+  kaarten.forEach(function(c, i){ if(c.dataset.orig === undefined) c.dataset.orig = i; });
+  function getal(c, veld){ var v = parseFloat(c.dataset[veld]); return isNaN(v) ? null : v; }
+  kaarten.sort(function(a, b){
+    if(wijze === "prijs-op" || wijze === "prijs-af" || wijze === "untappd-af"){
+      var veld = wijze === "untappd-af" ? "untappd" : "prijs";
+      var x = getal(a, veld), y = getal(b, veld);
+      if(x === null && y !== null) return 1;      // onbekend altijd onderaan
+      if(y === null && x !== null) return -1;
+      if(x !== null && y !== null && x !== y){
+        return wijze === "prijs-op" ? x - y : y - x;
+      }
+    }
+    return a.dataset.orig - b.dataset.orig;        // gelijk of standaard: op score
+  });
+  var ouder = kaarten[0].parentNode;
+  kaarten.forEach(function(c){ ouder.appendChild(c); });
 }
 function resetFilters(){
   document.getElementById('zoek').value = "";
   document.getElementById('f-untappd').value = "";
   document.getElementById('f-prijs').value = "";
+  document.getElementById('f-sort').value = "";
   document.getElementById('f-sterk').checked = false;
   document.getElementById('f-verberg-gehad').checked = false;
   document.getElementById('f-verberg-wens').checked = false;
@@ -520,7 +546,8 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
       <select id="f-untappd" onchange="pasFiltersToe()">
         <option value="">alles</option><option value="4.1">4.10+</option>
         <option value="4.2">4.20+</option><option value="4.3">4.30+</option>
-        <option value="4.4">4.40+</option>
+        <option value="4.4">4.40+</option><option value="4.5">4.50+</option>
+        <option value="4.6">4.60+</option>
       </select>
     </div>
     <div>Prijs maximaal
@@ -528,6 +555,14 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
         <option value="">geen max</option><option value="5">&euro; 5</option>
         <option value="7.5">&euro; 7,50</option><option value="10">&euro; 10</option>
         <option value="15">&euro; 15</option><option value="20">&euro; 20</option>
+      </select>
+    </div>
+    <div>Sorteren
+      <select id="f-sort" onchange="pasFiltersToe()">
+        <option value="">beste score (standaard)</option>
+        <option value="prijs-op">prijs laag &rarr; hoog</option>
+        <option value="prijs-af">prijs hoog &rarr; laag</option>
+        <option value="untappd-af">Untappd hoog &rarr; laag</option>
       </select>
     </div>
   </div>
