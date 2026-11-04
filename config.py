@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v57"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v58"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -75,6 +75,19 @@ SITES = [
         "listing_url": "https://www.hopsandhopes.nl/bieren",
     },
     {
+        "key": "vershoek",
+        "label": "De Vershoek",
+        "type": "bierbrigadier",
+        "base_url": "http://www.de-vershoek.nl",
+        "menu_url": "https://untappd.com/v/de-vershoek/7652000",
+        # Untappd-venue zonder prijzen. Prijs wordt geleend: bij voorkeur van
+        # Bierloods22 (vergelijkbaar prijsniveau), anders laagste prijs elders.
+        "heeft_prijzen": False,
+        "leen_prijzen": True,
+        "prijs_bron": "bierloods22",
+        "untappd_min_filter": True,
+    },
+{
         "key": "beerdudes",
         "label": "Beer Dudes",
         "type": "combi",

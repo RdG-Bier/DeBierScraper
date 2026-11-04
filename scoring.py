@@ -201,7 +201,7 @@ def _load_db():
     return {}
 
 
-def leen_prijzen(all_beers, doel_keys):
+def leen_prijzen(all_beers, doel_keys, voorkeur=None):
     """Voor shops zonder eigen prijzen (zoals De Bierschuur, een Untappd-venue-
     menu): geef elk bier de LAAGSTE prijs van hetzelfde bier. Bron is zowel de
     huidige andere shops ALS de permanente bierdatabase, die prijzen onthoudt
@@ -209,6 +209,17 @@ def leen_prijzen(all_beers, doel_keys):
     wordt zo nodig uit de database geleend. De Bierschuur is Belgisch en ligt
     doorgaans onder de laagste NL-prijs, dus de laagst gevonden prijs is een
     veilige ondergrens."""
+    # 0) optionele voorkeursbron (bijv. De Vershoek -> Bierloods22): als het
+    #    bier daar ligt, wordt DIE prijs gebruikt, ook als hij elders lager is.
+    voorkeur_prijs = {}
+    if voorkeur:
+        for b in all_beers.get(voorkeur, []):
+            if b.get("prijs") is None:
+                continue
+            sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if sl:
+                voorkeur_prijs[sl] = {"prijs": b["prijs"], "vol": b.get("inhoud_cl")}
+
     # 1) laagste prijs (per liter) uit de HUIDIGE andere shops
     laagste = {}   # sleutel -> {"prijs","vol","ppl"}
     for key, beers in all_beers.items():
@@ -235,6 +246,14 @@ def leen_prijzen(all_beers, doel_keys):
         for b in all_beers.get(key, []):
             sl = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             # prijs lenen: kies de laagste tussen live-shops en database
+            if b.get("prijs") is None and voorkeur_prijs:
+                vk = voorkeur_prijs.get(sl) or _fuzzy_get(voorkeur_prijs, sl)
+                if vk:
+                    b["prijs"] = vk["prijs"]
+                    b["prijs_geleend"] = True
+                    if not b.get("inhoud_cl") and vk.get("vol"):
+                        b["inhoud_cl"] = vk["vol"]
+                    geleend += 1
             if b.get("prijs") is None:
                 kand = []
                 live = laagste.get(sl) or _fuzzy_get(laagste, sl)

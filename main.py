@@ -150,9 +150,9 @@ def main():
 
     # Shops zonder eigen prijzen (Untappd-venue-menu's zoals De Bierschuur):
     # laagste prijs van hetzelfde bier bij een andere shop lenen.
-    prijsloos = {s["key"] for s in sites if s.get("leen_prijzen")}
-    if prijsloos:
-        scoring.leen_prijzen(all_beers, prijsloos)
+    for s in sites:
+        if s.get("leen_prijzen") and s["key"] in all_beers:
+            scoring.leen_prijzen(all_beers, {s["key"]}, voorkeur=s.get("prijs_bron"))
 
     # Untappd-profiel: markeer wat je al gehad hebt en wat in voorraad staat
     try:
