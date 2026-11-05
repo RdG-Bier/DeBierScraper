@@ -80,10 +80,109 @@ def synchroniseer(all_beers):
     })
 
 
+# ---------------------------------------------------------------------------
+# Vangnet-matching op woorden. Shops korten namen soms in: Drankgigant noemt
+# "Ārpus X Track QDH Riwaka ... Hand-Selected Superdelic QIPA" gewoon
+# "Arpus X Track Riwaka ... Superdelic QIPA". Exact matchen faalt dan.
+# Regels (bewust streng, om verkeerde matches te voorkomen):
+#   - alle woorden van de kortste naam zitten in de langste
+#   - minimaal 4 betekenisvolle woorden, en >= 60% dekking
+#   - GETALLEN moeten exact gelijk zijn (Temporalis #0060 != #0061,
+#     BCBS 2018 != 2019, "7 Year" != "8 Year")
+# ---------------------------------------------------------------------------
+_STOPWOORDEN = {"x", "and", "with", "w", "the", "of", "by"}
+
+# Extra woorden die GEEN ander bier aanduiden (ruis die shops weglaten/toevoegen)
+_NEUTRAAL = {"qdh", "tdh", "ddh", "dh", "hand", "selected", "cellar", "series",
+             "rackhouse", "ipa", "collab", "collaboration", "edition"}
+# Woorden die juist een VARIANT aanduiden: als dit het verschil is, is het
+# een ander bier (Reserve BCBS, Barrel Aged Royal Cookie, Vanilla Bean Abraxas)
+_VARIANT = {"reserve", "ba", "barrel", "aged", "bourbon", "rum", "whisky", "whiskey",
+            "cognac", "brandy", "port", "sherry", "tequila", "mezcal", "wine", "oak",
+            "maple", "vanilla", "coffee", "chocolate", "coconut", "cherry", "nitro",
+            "alcoholarm", "alcoholvrij", "alcoholfree", "na", "nuchtere", "light",
+            "double", "triple", "quadruple", "imperial", "mash", "special", "version",
+            "variant", "grand", "cru", "xl", "mini", "blend", "anniversary", "bean"}
+# "barrel aged" is wel neutraal als de kortste naam zelf al een vat noemt
+# ("Kentucky Bourbon 2023" vs "Kentucky Bourbon Barrel Aged 2023")
+_VAT = {"bourbon", "rum", "whisky", "whiskey", "cognac", "brandy", "port", "sherry",
+        "barrel", "ba", "tequila", "wine"}
+
+
+def _extra_ok(extra, klein):
+    """Mogen deze extra woorden in de langste naam het verschil zijn?"""
+    if not extra:
+        return True
+    neutraal = set(_NEUTRAAL)
+    if klein & _VAT:
+        neutraal |= {"barrel", "aged", "ba"}
+    rest = extra - neutraal
+    if not rest:
+        return True
+    # precies één onbekend woord dat geen variant is = waarschijnlijk een
+    # collab-partner ("x Finback", "x Lua", "PULP")
+    return len(rest) == 1 and not (rest & _VARIANT)
+
+
+def _woorden(sleutel):
+    return {w for w in sleutel.split() if w not in _STOPWOORDEN}
+
+
+def _getallen(woorden):
+    return {w for w in woorden if any(c.isdigit() for c in w)}
+
+
+def _woord_index(lijst):
+    """Bouwt een index woord -> [(woordenset, sleutel)] voor snel zoeken."""
+    index = {}
+    for sleutel in lijst:
+        ws = _woorden(sleutel)
+        if len(ws) < 4:
+            continue
+        for w in ws:
+            index.setdefault(w, []).append((ws, sleutel))
+    return index
+
+
+def _woord_match(sleutel, index):
+    ws = _woorden(sleutel)
+    if len(ws) < 4:
+        return False
+    # alleen kandidaten die het zeldzaamste woord delen (snel en precies)
+    zeldzaam = min(ws, key=lambda w: len(index.get(w, ())) or 10**9)
+    for kws, _ in index.get(zeldzaam, ()):
+        klein, groot = (ws, kws) if len(ws) <= len(kws) else (kws, ws)
+        if (len(klein) >= 4 and klein <= groot
+                and len(klein) / len(groot) >= 0.6
+                and _getallen(ws) == _getallen(kws)
+                and _extra_ok(groot - klein, klein)):
+            return True
+    return False
+
+
+def _brouwerij_past(shop_brouwerij, lijstregel):
+    """Naam-only matching mag alleen als de brouwerij ontbreekt of overeenkomt.
+    Anders wordt Salikatt 'Resonance' groen door FUERST WIACEK 'Resonance'."""
+    if not shop_brouwerij:
+        return True                     # shop noemt geen brouwerij (Drankgigant)
+    deel = str(lijstregel).split(" - ", 1)
+    if len(deel) < 2:
+        return True                     # lijstregel zonder brouwerij
+    a = {w for w in utils.beer_match_key(None, shop_brouwerij).split() if len(w) >= 3}
+    b = {w for w in utils.beer_match_key(None, deel[0]).split() if len(w) >= 3}
+    return not a or not b or bool(a & b)
+
+
+def _naam_match(b, naam_sleutel, naam_index):
+    regel = naam_index.get(naam_sleutel)
+    return regel is not None and _brouwerij_past(b.get("brouwerij"), regel)
+
+
 def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
     gehad_naam = _naam_index(gehad)
     r_naam = _naam_index(voorraad_r)
     hr_naam = _naam_index(voorraad_hr)
+    gehad_w, r_w, hr_w = _woord_index(gehad), _woord_index(voorraad_r), _woord_index(voorraad_hr)
     n_gehad = n_r = n_hr = 0
 
     for bieren in all_beers.values():
@@ -91,9 +190,12 @@ def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
             sleutel = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
             naam_sleutel = utils.beer_match_key(None, b.get("naam"))
 
-            is_gehad = sleutel in gehad or naam_sleutel in gehad_naam
-            is_r = sleutel in voorraad_r or naam_sleutel in r_naam
-            is_hr = sleutel in voorraad_hr or naam_sleutel in hr_naam
+            is_gehad = (sleutel in gehad or _naam_match(b, naam_sleutel, gehad_naam)
+                        or _woord_match(sleutel, gehad_w))
+            is_r = (sleutel in voorraad_r or _naam_match(b, naam_sleutel, r_naam)
+                    or _woord_match(sleutel, r_w))
+            is_hr = (sleutel in voorraad_hr or _naam_match(b, naam_sleutel, hr_naam)
+                     or _woord_match(sleutel, hr_w))
 
             if is_gehad:
                 b["gehad"] = True
