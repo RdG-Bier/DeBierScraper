@@ -480,11 +480,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						2,326						<span>Total</span>
+						2,336						<span>Total</span>
 					</li><li>
 						260						<span>Unique</span>
 					</li><li>
-						528						<span>Monthly</span>
+						538						<span>Monthly</span>
 					</li><li>
 												<a href="/v/beer-dudes/14075288/activity?filter=you">0</a>
 						<span>You</span>
@@ -742,7 +742,7 @@ $(document).ready(() => {
 
 <div class="offerings-badge badge-with-text beer">
     <img src="https://assets.untappd.com/assets/utfb/images/menu-offerings/beer-icon.svg" alt="Venue has beer on menu">
-                    <span>632 Beers</span>
+                    <span>636 Beers</span>
             </div>    </div>
 </div>
 									</div>
@@ -781,7 +781,7 @@ $(document).ready(() => {
 					</p>
 					<select id="brewery_picker">
 						<option value="all">All</option>
-						<option value="Bierol">Bierol (21)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (6)</option><option value="Brouwerij Alvinne">Brouwerij Alvinne (4)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij Boschdal">Brouwerij Boschdal (4)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (1)</option><option value="Brouwerij EemBier">Brouwerij EemBier (3)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (3)</option><option value="Brouwerij Kees">Brouwerij Kees (5)</option><option value="Brouwerij Kompel">Brouwerij Kompel (1)</option><option value="Brouwerij LOST">Brouwerij LOST (1)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (1)</option><option value="Cigar City Brewing®">Cigar City Brewing® (6)</option><option value="Delftse Brouwers">Delftse Brouwers (2)</option><option value="Dugges Bryggeri">Dugges Bryggeri (5)</option><option value="Folkingebrew">Folkingebrew (3)</option><option value="FrauGruber Brewing">FrauGruber Brewing (6)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (8)</option><option value="Goede Kant van het Spoor">Goede Kant van het Spoor (1)</option><option value="Jopen">Jopen (5)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (9)</option><option value="Muifelbrouwerij">Muifelbrouwerij (2)</option><option value="Nemeton Brewing">Nemeton Brewing (1)</option><option value="Oskar Blues Brewery®">Oskar Blues Brewery® (5)</option><option value="Põhjala">Põhjala (1)</option><option value="Two Chefs Brewing">Two Chefs Brewing (7)</option><option value="vandeStreek bier">vandeStreek bier (2)</option>					</select>
+						<option value="Beerbliotek">Beerbliotek (3)</option><option value="Bierol">Bierol (21)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (6)</option><option value="Brouwerij Alvinne">Brouwerij Alvinne (4)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij Boschdal">Brouwerij Boschdal (4)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (2)</option><option value="Brouwerij EemBier">Brouwerij EemBier (3)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (3)</option><option value="Brouwerij Kees">Brouwerij Kees (5)</option><option value="Brouwerij Kompel">Brouwerij Kompel (1)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (1)</option><option value="Cigar City Brewing®">Cigar City Brewing® (6)</option><option value="Delftse Brouwers">Delftse Brouwers (2)</option><option value="Dugges Bryggeri">Dugges Bryggeri (5)</option><option value="Folkingebrew">Folkingebrew (1)</option><option value="FrauGruber Brewing">FrauGruber Brewing (5)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (8)</option><option value="Goede Kant van het Spoor">Goede Kant van het Spoor (1)</option><option value="Jopen">Jopen (5)</option><option value="Magic Road">Magic Road (7)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (9)</option><option value="Muifelbrouwerij">Muifelbrouwerij (2)</option><option value="Nemeton Brewing">Nemeton Brewing (1)</option><option value="Oskar Blues Brewery®">Oskar Blues Brewery® (5)</option><option value="Põhjala">Põhjala (1)</option><option value="Two Chefs Brewing">Two Chefs Brewing (7)</option><option value="vandeStreek bier">vandeStreek bier (3)</option>					</select>
 				</div>
 			</div><div class="filter-holder">
 				<label>Filter by Style</label>
@@ -791,7 +791,7 @@ $(document).ready(() => {
 					</p>
 					<select id="style_picker">
 						<option value="all">All</option>
-						<option value="Barleywine - American">Barleywine - American (1)</option><option value="Barleywine - Other">Barleywine - Other (2)</option><option value="Belgian Blonde">Belgian Blonde (1)</option><option value="Belgian Quadrupel">Belgian Quadrupel (4)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (2)</option><option value="Belgian Tripel">Belgian Tripel (3)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (4)</option><option value="Bock - Doppelbock">Bock - Doppelbock (5)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (7)</option><option value="Brown Ale - English">Brown Ale - English (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (4)</option><option value="Festbier">Festbier (1)</option><option value="IPA - American">IPA - American (8)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (7)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (5)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (13)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (3)</option><option value="Lager - Helles">Lager - Helles (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Märzen">Märzen (1)</option><option value="Pale Ale - American">Pale Ale - American (3)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (1)</option><option value="Pale Ale - Other">Pale Ale - Other (1)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (1)</option><option value="Sour - Berliner Weisse">Sour - Berliner Weisse (1)</option><option value="Sour - Fruited">Sour - Fruited (3)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (8)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (8)</option><option value="Stout - Other">Stout - Other (2)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (3)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (1)</option>					</select>
+						<option value="Barleywine - American">Barleywine - American (1)</option><option value="Barleywine - Other">Barleywine - Other (2)</option><option value="Belgian Blonde">Belgian Blonde (1)</option><option value="Belgian Quadrupel">Belgian Quadrupel (4)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (2)</option><option value="Belgian Tripel">Belgian Tripel (3)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (5)</option><option value="Bock - Doppelbock">Bock - Doppelbock (5)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (7)</option><option value="Brown Ale - English">Brown Ale - English (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (4)</option><option value="Festbier">Festbier (1)</option><option value="IPA - American">IPA - American (10)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (1)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (8)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (3)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (12)</option><option value="IPA - Other">IPA - Other (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (3)</option><option value="Lager - Helles">Lager - Helles (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Märzen">Märzen (1)</option><option value="Pale Ale - American">Pale Ale - American (3)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (1)</option><option value="Pale Ale - Other">Pale Ale - Other (1)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (1)</option><option value="Porter - Other">Porter - Other (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (1)</option><option value="Sour - Berliner Weisse">Sour - Berliner Weisse (1)</option><option value="Sour - Fruited">Sour - Fruited (3)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (4)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (8)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (8)</option><option value="Stout - Other">Stout - Other (2)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (3)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (1)</option>					</select>
 				</div>
 			</div>
 						<div class="filter-holder">
@@ -813,7 +813,7 @@ $(document).ready(() => {
 					</p>
 					<select id="country_picker">
 						<option value="all">All</option>
-						<option value="Austria">Austria (21)</option><option value="Belgium">Belgium (6)</option><option value="Estonia">Estonia (1)</option><option value="Germany">Germany (7)</option><option value="Netherlands">Netherlands (64)</option><option value="Sweden">Sweden (5)</option><option value="United States">United States (11)</option>					</select>
+						<option value="Austria">Austria (21)</option><option value="Belgium">Belgium (7)</option><option value="Estonia">Estonia (1)</option><option value="Germany">Germany (6)</option><option value="Netherlands">Netherlands (62)</option><option value="Poland">Poland (7)</option><option value="Sweden">Sweden (8)</option><option value="United States">United States (11)</option>					</select>
 				</div>
 			</div>
 
@@ -999,7 +999,7 @@ $(document).ready(() => {
         <p style="font-weight:normal;font-size:0.9em;margin:4px 28px 4px 0px">
             We houden van orde en van labels, maar alles dat binnenkomt, verschijnt eerst in deze vergaarbak. Onze nieuwe parels! Hopelijk niet alleen voor de zwijnen... Bestel via www.beerdudes.club.         </p>
 
-        <span class="updated-time" data-time="2026-11-01T08:44:57.063007Z"></span>
+        <span class="updated-time" data-time="2026-11-06T16:28:37.105586Z"></span>
     </div>
     							
 														<div class="sort-filter-results" style="display: none;">
@@ -1017,12 +1017,446 @@ $(document).ready(() => {
             <div class="menu-section-header">
                 <h4>
                     De nieuwste parels                    <span>
-                        (115 Items)
+                        (123 Items)
                     </span>
                 </h4>
                 <p></p>            </div>
             <ul class="menu-section-list" id="section-menu-list-550550">
                             <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6736992" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/beerbliotek-du-luktar-lite-som-forsta-gangen-jag-traffade-dig-2026-edition/6736992">
+                                                                Du Luktar Lite Som Första Gången Jag Träffade Dig 2026 Edition                            </a>
+                            <em>IPA - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>8% ABV • 65 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Beerbliotek">
+                                    Beerbliotek</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.67424">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-70"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.67)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        4.90 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6736996" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/beerbliotek-sabotage-2026-edition/6736996">
+                                                                Sabotage 2026 Edition                            </a>
+                            <em>IPA - Black / Cascadian Dark Ale</em>
+                        </h5>
+                        <h6>
+                            <span>6.6% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Beerbliotek">
+                                    Beerbliotek</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.68698">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-70"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.69)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        4.40 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6835441" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/beerbliotek-krush-d/6835441">
+                                                                Krush'd                            </a>
+                            <em>IPA - American</em>
+                        </h5>
+                        <h6>
+                            <span>5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Beerbliotek">
+                                    Beerbliotek</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.52796">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-50"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.53)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        4.20 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6738393" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-free-fifty-fifty-strawberry/6738393">
+                                                                Free Fifty Fifty - Strawberry                            </a>
+                            <em>Sour - Smoothie / Pastry</em>
+                        </h5>
+                        <h6>
+                            <span>N/A ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.37045">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-40"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.37)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Non-Alcoholic</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        5.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6738398" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-tatanka-extreme/6738398">
+                                                                Tatanka Extreme                            </a>
+                            <em>Sour - Smoothie / Pastry</em>
+                        </h5>
+                        <h6>
+                            <span>4.1% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.94518">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.95)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.10 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6738404" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-pretty-cherries-kiwi-banana/6738404">
+                                                                Pretty - Cherries, Kiwi, Banana                            </a>
+                            <em>Sour - Smoothie / Pastry</em>
+                        </h5>
+                        <h6>
+                            <span>4.3% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.85441">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.85)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.10 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6282704" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-wonders-banana-mango-and-coconut-milk/6282704">
+                                                                Wonders - Banana, Mango & Coconut Milk                            </a>
+                            <em>Sour - Smoothie / Pastry</em>
+                        </h5>
+                        <h6>
+                            <span>5.1% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.18267">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-20"></div>
+	</div>                                                            <span class="num">(4.18)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.10 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6820553" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-fomo/6820553">
+                                                                FOMO                            </a>
+                            <em>IPA - American</em>
+                        </h5>
+                        <h6>
+                            <span>6% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.64863">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-60"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.65)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        5.70 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6854135" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-experimental-ipa-batch-1/6854135">
+                                                                Experimental IPA Batch: #1                            </a>
+                            <em>IPA - Other</em>
+                        </h5>
+                        <h6>
+                            <span>6% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.89944">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.9)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.20 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6815774" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/magic-road-quince/6815774">
+                                                                Quince                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>5.5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MagicRoad">
+                                    Magic Road</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.71304">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-70"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.71)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        500ml Can                                    </span>
+                                                                        <span class="price">
+                                        5.80 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6905635" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/vandestreek-bier-klophop-fresh-hop-blond-2026/6905635">
+                                                                Klophop Fresh Hop Blond 2026                            </a>
+                            <em>Blonde / Golden Ale - Other</em>
+                        </h5>
+                        <h6>
+                            <span>5% ABV • 29 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/vandeStreekBier">
+                                    vandeStreek bier</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.35326">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-40"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.35)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Vegan &bull; Fresh Hop</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        3.20 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6521824" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-de-dochter-van-de-korenaar-l-esprit-de-noel-ba-porter-no/6521824">
+                                                                L’ Esprit De Noël BA Porter No                            </a>
+                            <em>Porter - Other</em>
+                        </h5>
+                        <h6>
+                            <span>8% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/dedochtervandekorenaar">
+                                    Brouwerij De Dochter van de Korenaar</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.73559">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-70"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.74)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        750ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        18.40 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
             <div class="beer-info " style="min-height: 50px;">
                 <div class="beer-label">
                                                                 <img src="https://labels.untappd.com/7153817" />
@@ -1039,7 +1473,7 @@ $(document).ready(() => {
                                     Brouwerij Alvinne</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.87532">
+                            <div class="caps small" data-rating="3.88133">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1140,7 +1574,7 @@ $(document).ready(() => {
                                     Brouwerij EemBier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.35201">
+                            <div class="caps small" data-rating="3.35197">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1176,7 +1610,7 @@ $(document).ready(() => {
                                     Brouwerij EemBier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51178">
+                            <div class="caps small" data-rating="3.5113">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1212,7 +1646,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.64867">
+                            <div class="caps small" data-rating="3.64865">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1284,7 +1718,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40928">
+                            <div class="caps small" data-rating="3.40929">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1320,7 +1754,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.11174">
+                            <div class="caps small" data-rating="4.11065">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1356,7 +1790,7 @@ $(document).ready(() => {
                                     Brauerei Gebr. Maisel</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79988">
+                            <div class="caps small" data-rating="3.79643">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1393,7 +1827,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73679">
+                            <div class="caps small" data-rating="3.73793">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1429,7 +1863,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.89605">
+                            <div class="caps small" data-rating="3.89727">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1465,13 +1899,13 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80601">
+                            <div class="caps small" data-rating="3.80126">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.81)</span>
+	</div>                                                            <span class="num">(3.8)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1501,7 +1935,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17223">
+                            <div class="caps small" data-rating="4.1719">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1537,7 +1971,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.86373">
+                            <div class="caps small" data-rating="3.86478">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1573,7 +2007,7 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40959">
+                            <div class="caps small" data-rating="3.4085">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1609,7 +2043,7 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.76833">
+                            <div class="caps small" data-rating="3.76869">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1645,13 +2079,13 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.97105">
+                            <div class="caps small" data-rating="4.01548">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.97)</span>
+	</div>                                                            <span class="num">(4.02)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1681,7 +2115,7 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.3783">
+                            <div class="caps small" data-rating="3.37734">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1717,13 +2151,13 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.76404">
+                            <div class="caps small" data-rating="3.76544">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.76)</span>
+	</div>                                                            <span class="num">(3.77)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1753,13 +2187,13 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84104">
+                            <div class="caps small" data-rating="3.84928">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.84)</span>
+	</div>                                                            <span class="num">(3.85)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1789,7 +2223,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56556">
+                            <div class="caps small" data-rating="3.56573">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1825,7 +2259,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.62382">
+                            <div class="caps small" data-rating="3.62383">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1897,7 +2331,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.76343">
+                            <div class="caps small" data-rating="3.7634">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1933,7 +2367,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77269">
+                            <div class="caps small" data-rating="3.77274">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2005,7 +2439,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71138">
+                            <div class="caps small" data-rating="3.71139">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2041,7 +2475,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75352">
+                            <div class="caps small" data-rating="3.75354">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2077,7 +2511,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78064">
+                            <div class="caps small" data-rating="3.78066">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2113,7 +2547,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.81169">
+                            <div class="caps small" data-rating="3.81166">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2149,7 +2583,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.91272">
+                            <div class="caps small" data-rating="3.9127">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2185,7 +2619,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.62744">
+                            <div class="caps small" data-rating="3.63022">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2221,7 +2655,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70888">
+                            <div class="caps small" data-rating="3.71">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2257,13 +2691,13 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.11417">
+                            <div class="caps small" data-rating="4.1202">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.11)</span>
+	</div>                                                            <span class="num">(4.12)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2293,7 +2727,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09198">
+                            <div class="caps small" data-rating="4.0948">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2329,7 +2763,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.98618">
+                            <div class="caps small" data-rating="3.98535">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2365,7 +2799,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92021">
+                            <div class="caps small" data-rating="3.91545">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2401,7 +2835,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78669">
+                            <div class="caps small" data-rating="3.78872">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2423,78 +2857,6 @@ $(document).ready(() => {
                 <li class="menu-item" id="beer">
             <div class="beer-info " style="min-height: 50px;">
                 <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6905686" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/folkingebrew-blueprint-sabro/6905686">
-                                                                Blueprint (Sabro)                            </a>
-                            <em>IPA - Imperial / Double New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>8.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Folkingebrew">
-                                    Folkingebrew</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.11208">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.11)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6905684" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/folkingebrew-blueprint-idaho-7/6905684">
-                                                                Blueprint (Idaho 7)                            </a>
-                            <em>IPA - Imperial / Double New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>8.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Folkingebrew">
-                                    Folkingebrew</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.12393">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.12)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
                                                                 <img src="https://labels.untappd.com/6905693" />
                                     </div>
                 <div class="beer-details">
@@ -2509,7 +2871,7 @@ $(document).ready(() => {
                                     Folkingebrew</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.82731">
+                            <div class="caps small" data-rating="3.82741">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2545,7 +2907,7 @@ $(document).ready(() => {
                                     Brouwerij Poesiat & Kater</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75556">
+                            <div class="caps small" data-rating="3.75746">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2581,13 +2943,13 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40809">
+                            <div class="caps small" data-rating="3.40432">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-40"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.41)</span>
+	</div>                                                            <span class="num">(3.4)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2617,7 +2979,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80719">
+                            <div class="caps small" data-rating="3.80764">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2653,7 +3015,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.14808">
+                            <div class="caps small" data-rating="4.14835">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2689,13 +3051,13 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17645">
+                            <div class="caps small" data-rating="4.17356">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.18)</span>
+	</div>                                                            <span class="num">(4.17)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2725,7 +3087,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.36679">
+                            <div class="caps small" data-rating="4.36625">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2761,7 +3123,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.19885">
+                            <div class="caps small" data-rating="4.19851">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2797,7 +3159,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.01816">
+                            <div class="caps small" data-rating="4.01777">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2833,13 +3195,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92292">
+                            <div class="caps small" data-rating="3.92751">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.92)</span>
+	</div>                                                            <span class="num">(3.93)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2869,13 +3231,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.98565">
+                            <div class="caps small" data-rating="3.98084">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.99)</span>
+	</div>                                                            <span class="num">(3.98)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2905,13 +3267,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95488">
+                            <div class="caps small" data-rating="3.95843">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.95)</span>
+	</div>                                                            <span class="num">(3.96)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2921,42 +3283,6 @@ $(document).ready(() => {
                                         440ml Can                                    </span>
                                                                         <span class="price">
                                         5.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6862325" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/fraugruber-brewing-space-cat/6862325">
-                                                                Space Cat                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/FrauGruberBrewing">
-                                    FrauGruber Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.83552">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.84)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        5.70 EUR                                    </span>
                                                                         </p>
                                                         </div>
                                     </li>
@@ -2977,7 +3303,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.85175">
+                            <div class="caps small" data-rating="3.85314">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3013,7 +3339,7 @@ $(document).ready(() => {
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40361">
+                            <div class="caps small" data-rating="3.3995">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3049,7 +3375,7 @@ $(document).ready(() => {
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.46427">
+                            <div class="caps small" data-rating="3.46461">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3086,13 +3412,13 @@ $(document).ready(() => {
                                     Brouwerij Halve Tamme</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.94375">
+                            <div class="caps small" data-rating="3.94639">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.94)</span>
+	</div>                                                            <span class="num">(3.95)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3122,7 +3448,7 @@ $(document).ready(() => {
                                     Brouwerij Halve Tamme</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.25">
+                            <div class="caps small" data-rating="4.2517">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3158,13 +3484,13 @@ $(document).ready(() => {
                                     Brouwerij Halve Tamme</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.14833">
+                            <div class="caps small" data-rating="4.16328">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.15)</span>
+		<div class="cap cap-20"></div>
+	</div>                                                            <span class="num">(4.16)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3194,7 +3520,7 @@ $(document).ready(() => {
                                     Goede Kant van het Spoor</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.66174">
+                            <div class="caps small" data-rating="3.6607">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3230,7 +3556,7 @@ $(document).ready(() => {
                                     Brouwerij Kompel</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.58444">
+                            <div class="caps small" data-rating="3.58437">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3303,7 +3629,7 @@ $(document).ready(() => {
                                     Delftse Brouwers</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56178">
+                            <div class="caps small" data-rating="3.56188">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3339,7 +3665,7 @@ $(document).ready(() => {
                                     Brouwerij De Dochter van de Korenaar</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70291">
+                            <div class="caps small" data-rating="3.70292">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3361,42 +3687,6 @@ $(document).ready(() => {
                 <li class="menu-item" id="beer">
             <div class="beer-info " style="min-height: 50px;">
                 <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6560697" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-lost-baia/6560697">
-                                                                BAIA                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • 40 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Brouwerij_LOST">
-                                    Brouwerij LOST</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.94169">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.94)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        500ml Can                                    </span>
-                                                                        <span class="price">
-                                        6.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
                                                                 <img src="https://labels.untappd.com/6148843" />
                                     </div>
                 <div class="beer-details">
@@ -3411,7 +3701,7 @@ $(document).ready(() => {
                                     Brouwerij Boschdal</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95196">
+                            <div class="caps small" data-rating="3.952">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3447,7 +3737,7 @@ $(document).ready(() => {
                                     Brouwerij Boschdal</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.52614">
+                            <div class="caps small" data-rating="3.52607">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3591,7 +3881,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.46768">
+                            <div class="caps small" data-rating="3.46959">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3627,13 +3917,13 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.68212">
+                            <div class="caps small" data-rating="3.68623">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-70"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.68)</span>
+	</div>                                                            <span class="num">(3.69)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3663,7 +3953,7 @@ $(document).ready(() => {
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69999">
+                            <div class="caps small" data-rating="3.69977">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3699,7 +3989,7 @@ $(document).ready(() => {
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49854">
+                            <div class="caps small" data-rating="3.49879">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3741,7 +4031,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03562">
+                            <div class="caps small" data-rating="4.03533">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3813,13 +4103,13 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.81899">
+                            <div class="caps small" data-rating="3.81327">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.82)</span>
+	</div>                                                            <span class="num">(3.81)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3849,7 +4139,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.48692">
+                            <div class="caps small" data-rating="3.48691">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3921,7 +4211,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51076">
+                            <div class="caps small" data-rating="3.51337">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3958,7 +4248,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40386">
+                            <div class="caps small" data-rating="3.40392">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3994,7 +4284,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5633">
+                            <div class="caps small" data-rating="3.56328">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4066,13 +4356,13 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.81667">
+                            <div class="caps small" data-rating="3.81447">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.82)</span>
+	</div>                                                            <span class="num">(3.81)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -4354,13 +4644,13 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95">
+                            <div class="caps small" data-rating="3.9625">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.95)</span>
+	</div>                                                            <span class="num">(3.96)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -4498,7 +4788,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.72999">
+                            <div class="caps small" data-rating="3.73001">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4570,7 +4860,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49333">
+                            <div class="caps small" data-rating="3.49324">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4714,7 +5004,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78915">
+                            <div class="caps small" data-rating="3.78908">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4786,7 +5076,7 @@ $(document).ready(() => {
                                     Brouwerij Alvinne</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6549">
+                            <div class="caps small" data-rating="3.65495">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4822,7 +5112,7 @@ $(document).ready(() => {
                                     Brouwerij Alvinne</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75568">
+                            <div class="caps small" data-rating="3.7594">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4894,7 +5184,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.96281">
+                            <div class="caps small" data-rating="3.96353">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4930,13 +5220,13 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.00567">
+                            <div class="caps small" data-rating="4.00333">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.01)</span>
+	</div>                                                            <span class="num">(4)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Gluten-Free</p>
                                                             </div>
@@ -4967,7 +5257,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.94916">
+                            <div class="caps small" data-rating="3.94901">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5003,7 +5293,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.68643">
+                            <div class="caps small" data-rating="3.68669">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5039,7 +5329,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92827">
+                            <div class="caps small" data-rating="3.92937">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5075,7 +5365,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69391">
+                            <div class="caps small" data-rating="3.69456">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5111,7 +5401,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80087">
+                            <div class="caps small" data-rating="3.80129">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5147,7 +5437,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.19945">
+                            <div class="caps small" data-rating="4.19904">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
