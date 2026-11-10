@@ -6153,3 +6153,4 @@ overflow: auto
         </div>
 
         <div class="bg-white transition-all duration-300 md:bg-transparent md:py-0 md:px-0 md:my-6 md:my-0 md:z-auto md:static md:h-auto md:w-auto"
+             :class="{'w-full max-w-[95%] h-screen fixed
