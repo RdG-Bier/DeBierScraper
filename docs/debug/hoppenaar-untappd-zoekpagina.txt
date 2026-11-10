@@ -38,7 +38,7 @@
 		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.51" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.56"></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.57"></script>
 				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.51" />
 			
 		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.51" />
@@ -77,10 +77,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.56"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.57"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -380,39 +380,21 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
+                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
+                            </p><p class="text">
+                                <span class="name">Asahi Super Dry</span>
+                                <span class="brewery">Asahi Breweries</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
                         <a href="/b/sierra-nevada-brewing-co-celebration-2026/6833187" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
                                     <img src="https://assets.untappd.com/site/beer_logos/beer-6833187_8663a_sm.jpeg" alt="Celebration (2026) label">
                             </p><p class="text">
                                 <span class="name">Celebration (2026)</span>
                                 <span class="brewery">Sierra Nevada Brewing Co.</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/3-floyds-brewing-dark-lord-xxx/7608947" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7608947_53408_sm.jpeg" alt="Dark Lord XXX label">
-                            </p><p class="text">
-                                <span class="name">Dark Lord XXX</span>
-                                <span class="brewery">3 Floyds Brewing</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/miller-brewing-company-miller-lite/3811" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3811_99a49_sm.jpeg" alt="Miller Lite label">
-                            </p><p class="text">
-                                <span class="name">Miller Lite</span>
-                                <span class="brewery">Miller Brewing Company</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
-                            </p><p class="text">
-                                <span class="name">Modelo Especial</span>
-                                <span class="brewery">Grupo Modelo</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -434,66 +416,106 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/moersleutel-craft-brewery-geitenbreier-2026/6853057" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6853057_ddf38_sm.jpeg" alt="Geitenbreier (2026) label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
                             </p><p class="text">
-                                <span class="name">Geitenbreier (2026)</span>
-                                <span class="brewery">Moersleutel Craft Brewery</span>                            </p>
+                                <span class="name">Modelo Especial</span>
+                                <span class="brewery">Grupo Modelo</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/samuel-adams-winter-white-ale/6449496" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/miller-brewing-company-miller-lite/3811" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6449496_d52d7_sm.jpeg" alt="Winter White Ale label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3811_99a49_sm.jpeg" alt="Miller Lite label">
                             </p><p class="text">
-                                <span class="name">Winter White Ale</span>
-                                <span class="brewery">Samuel Adams</span>                            </p>
+                                <span class="name">Miller Lite</span>
+                                <span class="brewery">Miller Brewing Company</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/3-floyds-brewing-dark-lord-xxx/7608947" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7608947_53408_sm.jpeg" alt="Dark Lord XXX label">
                             </p><p class="text">
-                                <span class="name">Asahi Super Dry</span>
-                                <span class="brewery">Asahi Breweries</span>                            </p>
+                                <span class="name">Dark Lord XXX</span>
+                                <span class="brewery">3 Floyds Brewing</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/plzensky-prazdroj-pilsner-urquell/37936" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-37936_91585_sm.jpeg" alt="Pilsner Urquell label">
+                            </p><p class="text">
+                                <span class="name">Pilsner Urquell</span>
+                                <span class="brewery">Plzeňský Prazdroj</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/kirin-brewery-company-ichiban-ichiban-shibori/4667" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4667_f3820_sm.jpeg" alt="Ichiban (Ichiban Shibori) (一番搾り) label">
+                            </p><p class="text">
+                                <span class="name">Ichiban (Ichiban Shibori) (一番搾り)</span>
+                                <span class="brewery">Kirin Brewery Company</span>                            </p>
                         </a>
                     </div>
                                 </div>
         </div>
             	<div class="box">
         	<div class="content">
-                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-2759436-type-trending_locations">
-                        <a href="/v/omnipollos-hatt/2759436" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-14355001-type-trending_locations">
+                        <a href="/v/braubeviale-2026/14355001" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Omnipollos hatt logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/event/default_bg_512.png" alt="Braubeviale 2026 logo">
                             </p><p class="text">
-                                <span class="name">Omnipollos hatt</span>
+                                <span class="name">Braubeviale 2026</span>
 
-                                <span class="location">Stockholm, Storstockholm                                        </span>                            </p>
+                                <span class="location">Nürnberg, Bayern                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-51438-type-trending_locations">
-                        <a href="/v/brasserie-cantillon-brouwerij-cantillon-brouwerij-en-brussels-museum-van-de-geuze/51438" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-3912672-type-trending_locations">
+                        <a href="/v/u-s-bank-stadium/3912672" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze) logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_football_bg_512.png" alt="U.S. Bank Stadium logo">
                             </p><p class="text">
-                                <span class="name">Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze)</span>
+                                <span class="name">U.S. Bank Stadium</span>
 
-                                <span class="location">Anderlecht, Brussel-Hoofdstad                                        </span>                            </p>
+                                <span class="location">Minneapolis, MN                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-6745101-type-trending_locations">
-                        <a href="/v/spring-valley-brewery-kyoto/6745101" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-7188751-type-trending_locations">
+                        <a href="/v/moon-under-water/7188751" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Spring Valley Brewery Kyoto (スプリングバレーブルワリー京都) logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/mnxhjdszpopcpygx54h0vf2tvph5?auto=compress" alt="Moon Under Water logo">
                             </p><p class="text">
-                                <span class="name">Spring Valley Brewery Kyoto (スプリングバレーブルワリー京都)</span>
+                                <span class="name">Moon Under Water</span>
 
-                                <span class="location">京都市, 京都府                                        </span>                            </p>
+                                <span class="location">Christchurch, Canterbury                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-9367791-type-trending_locations">
+                        <a href="/v/tai-soon-bar/9367791" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/t9vnhspnkk4bfyy5r715ru18cb3d?auto=compress" alt="Tai Soon Bar logo">
+                            </p><p class="text">
+                                <span class="name">Tai Soon Bar</span>
+
+                                <span class="location">Bangkok, กรุงเทพมหานคร                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-1026-type-trending_locations">
+                        <a href="/v/toronado/1026" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/site/assets/images/verified-venue_bg_176.png?v=1" alt="Toronado logo">
+                            </p><p class="text">
+                                <span class="name">Toronado</span>
+
+                                <span class="location">San Francisco, CA                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -508,69 +530,47 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-7879608-type-trending_locations">
-                        <a href="/v/euljiro-brewing/7879608" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-8395706-type-trending_locations">
+                        <a href="/v/liquor-shop-maruho-minamimise-craft-beer-bottle-shop-and-bistro/8395706" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Euljiro Brewing (을지맥옥) logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/p28MRVQ7gT3S3ov1A2ujCHFE?auto=compress" alt="Liquor shop Maruho Minami-mise Craft beer Bottle shop & Bistro logo">
                             </p><p class="text">
-                                <span class="name">Euljiro Brewing (을지맥옥)</span>
+                                <span class="name">Liquor shop Maruho Minami-mise Craft beer Bottle shop & Bistro</span>
 
-                                <span class="location">서울특별시, 서울특별시                                        </span>                            </p>
+                                <span class="location">Osaka, 大阪府                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-14323256-type-trending_locations">
-                        <a href="/v/biere-a-lille-2026/14323256" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-11905-type-trending_locations">
+                        <a href="/v/tom-ham-s-lighthouse/11905" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/site/assets/images/verified-venue_bg_176.png?v=1" alt="Bière à Lille 2026 logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/seafood_bg_512.png" alt="Tom Ham's Lighthouse logo">
                             </p><p class="text">
-                                <span class="name">Bière à Lille 2026</span>
-
-                                <span class="location">Lille, Hauts-de-France                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-4606005-type-trending_locations">
-                        <a href="/v/dogma-bottle-shop/4606005" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/lui6t86290a9m7khqrko1wbiwpbz?auto=compress" alt="Dogma Bottle Shop logo">
-                            </p><p class="text">
-                                <span class="name">Dogma Bottle Shop</span>
-
-                                <span class="location">Moskva, Московская область                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-5844026-type-trending_locations">
-                        <a href="/v/de-dochter-van-de-korenaar/5844026" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/a1n5z26z622uzn4894xxi7yodjuv?auto=compress" alt="De Dochter van de Korenaar logo">
-                            </p><p class="text">
-                                <span class="name">De Dochter van de Korenaar</span>
-
-                                <span class="location">Baarle-Hertog, Provincie Antwerpen                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
-                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
-                            </p><p class="text">
-                                <span class="name">Mikkeller CPH Airport</span>
-
-                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-274-type-trending_locations">
-                        <a href="/v/blind-lady-ale-house/274" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Blind Lady Ale House logo">
-                            </p><p class="text">
-                                <span class="name">Blind Lady Ale House</span>
+                                <span class="name">Tom Ham's Lighthouse</span>
 
                                 <span class="location">San Diego, CA                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-51438-type-trending_locations">
+                        <a href="/v/brasserie-cantillon-brouwerij-cantillon-brouwerij-en-brussels-museum-van-de-geuze/51438" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze) logo">
+                            </p><p class="text">
+                                <span class="name">Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze)</span>
+
+                                <span class="location">Anderlecht, Brussel-Hoofdstad                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-5872825-type-trending_locations">
+                        <a href="/v/maui-brewing-co-waikiki/5872825" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Maui Brewing Co. Waikiki logo">
+                            </p><p class="text">
+                                <span class="name">Maui Brewing Co. Waikiki</span>
+
+                                <span class="location">Honolulu, HI                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -599,7 +599,7 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.56"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.57"></script>
 <style>
 #pmLink {
 	visibility: hidden;
