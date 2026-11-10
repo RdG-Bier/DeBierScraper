@@ -60,7 +60,7 @@
 		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.51" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.56"></script>
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.57"></script>
 				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.51" />
 			
 		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.51" />
@@ -99,10 +99,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.56"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.56"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.57"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -359,7 +359,7 @@ $(document).ready(() => {
 </div>
 
 	<div class="hours-area" style="display: none;">{"count":7,"items":[{"day_name":"Monday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Tuesday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Wednesday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Thursday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Friday","is_24":0,"is_open":1,"hours":[{"start_time":"12:00:00","end_time":"18:00:00"}]},{"day_name":"Saturday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"17:00:00"}]},{"day_name":"Sunday","is_24":0,"is_open":0,"hours":[]}]}</div>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.56"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.57"></script>
 		</div>
 
 	<div class="venue-body">
@@ -385,7 +385,7 @@ $(document).ready(() => {
     <p class="error" style="display: none;">An error occured. Please try again.</p>
     <p class="success" style="display: none;">Great! Your subscription to this venue was successful.</p>
 </div>
-<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.56"></script>
+<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.57"></script>
 
 			<div class="venue-left">
 
@@ -979,7 +979,7 @@ $(document).ready(() => {
 	<script type="text/javascript">
 		var _url = "/v/beer-dudes/14075288";
 	</script>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.56"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.57"></script>
 
 							<input hidden id="generic-items-enabled" value="1"/>
 							<input hidden id="generic-menu-id" value="101146"/>
@@ -1183,7 +1183,7 @@ $(document).ready(() => {
                                     Folkingebrew</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.27978">
+                            <div class="caps small" data-rating="4.28168">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1219,7 +1219,7 @@ $(document).ready(() => {
                                     Rock City Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17748">
+                            <div class="caps small" data-rating="4.1778">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1255,7 +1255,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.57591">
+                            <div class="caps small" data-rating="3.58488">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1291,7 +1291,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.98942">
+                            <div class="caps small" data-rating="3.99158">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1327,7 +1327,7 @@ $(document).ready(() => {
                                     WALHALLA Brouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.72358">
+                            <div class="caps small" data-rating="3.72177">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1364,7 +1364,7 @@ $(document).ready(() => {
                                     WALHALLA Brouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92773">
+                            <div class="caps small" data-rating="3.92928">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1401,7 +1401,7 @@ $(document).ready(() => {
                                     Beerbliotek</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6701">
+                            <div class="caps small" data-rating="3.66948">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1509,13 +1509,13 @@ $(document).ready(() => {
                                     Magic Road</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.37045">
+                            <div class="caps small" data-rating="3.3">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
+		<div class="cap cap-30"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.37)</span>
+	</div>                                                            <span class="num">(3.3)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Non-Alcoholic</p>
                                                             </div>
@@ -1582,7 +1582,7 @@ $(document).ready(() => {
                                     Magic Road</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79333">
+                            <div class="caps small" data-rating="3.79276">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2116,7 +2116,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.14396">
+                            <div class="caps small" data-rating="4.13601">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2152,7 +2152,7 @@ $(document).ready(() => {
                                     Brauerei Gebr. Maisel</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78587">
+                            <div class="caps small" data-rating="3.7862">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2225,13 +2225,13 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.89373">
+                            <div class="caps small" data-rating="3.8969">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.9)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2261,7 +2261,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79575">
+                            <div class="caps small" data-rating="3.79636">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2297,7 +2297,7 @@ $(document).ready(() => {
                                     Põhjala</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17178">
+                            <div class="caps small" data-rating="4.17198">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2333,7 +2333,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.85418">
+                            <div class="caps small" data-rating="3.85314">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2441,13 +2441,13 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.97623">
+                            <div class="caps small" data-rating="3.96508">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.98)</span>
+	</div>                                                            <span class="num">(3.97)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2513,7 +2513,7 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.7659">
+                            <div class="caps small" data-rating="3.76597">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2585,7 +2585,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5655">
+                            <div class="caps small" data-rating="3.56548">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2729,7 +2729,7 @@ $(document).ready(() => {
                                     Oskar Blues Brewery®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77277">
+                            <div class="caps small" data-rating="3.77278">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2801,7 +2801,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71139">
+                            <div class="caps small" data-rating="3.71138">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2873,7 +2873,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78063">
+                            <div class="caps small" data-rating="3.78059">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2945,7 +2945,7 @@ $(document).ready(() => {
                                     Cigar City Brewing®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.91269">
+                            <div class="caps small" data-rating="3.91268">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3017,7 +3017,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.67209">
+                            <div class="caps small" data-rating="3.67007">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3053,7 +3053,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.10723">
+                            <div class="caps small" data-rating="4.11128">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3089,7 +3089,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.0971">
+                            <div class="caps small" data-rating="4.0976">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3125,7 +3125,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.97127">
+                            <div class="caps small" data-rating="3.97121">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3161,13 +3161,13 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.91746">
+                            <div class="caps small" data-rating="3.91342">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.92)</span>
+	</div>                                                            <span class="num">(3.91)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3197,7 +3197,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78427">
+                            <div class="caps small" data-rating="3.78409">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3233,7 +3233,7 @@ $(document).ready(() => {
                                     Folkingebrew</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.83072">
+                            <div class="caps small" data-rating="3.83159">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3269,13 +3269,13 @@ $(document).ready(() => {
                                     Brouwerij Poesiat & Kater</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.76519">
+                            <div class="caps small" data-rating="3.76324">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.77)</span>
+	</div>                                                            <span class="num">(3.76)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3305,7 +3305,7 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40639">
+                            <div class="caps small" data-rating="3.41038">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3377,7 +3377,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.14174">
+                            <div class="caps small" data-rating="4.14171">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3413,7 +3413,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.17239">
+                            <div class="caps small" data-rating="4.17221">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3449,7 +3449,7 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.36519">
+                            <div class="caps small" data-rating="4.36522">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3521,7 +3521,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.01205">
+                            <div class="caps small" data-rating="4.01201">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3557,7 +3557,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.92189">
+                            <div class="caps small" data-rating="3.92324">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3593,7 +3593,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.9811">
+                            <div class="caps small" data-rating="3.98115">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3629,7 +3629,7 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95208">
+                            <div class="caps small" data-rating="3.95373">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3665,13 +3665,13 @@ $(document).ready(() => {
                                     FrauGruber Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84701">
+                            <div class="caps small" data-rating="3.84484">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.85)</span>
+	</div>                                                            <span class="num">(3.84)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -3701,7 +3701,7 @@ $(document).ready(() => {
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.38882">
+                            <div class="caps small" data-rating="3.38837">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3737,7 +3737,7 @@ $(document).ready(() => {
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.45662">
+                            <div class="caps small" data-rating="3.458">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3918,7 +3918,7 @@ $(document).ready(() => {
                                     Brouwerij Kompel</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5846">
+                            <div class="caps small" data-rating="3.58462">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4027,7 +4027,7 @@ $(document).ready(() => {
                                     Brouwerij De Dochter van de Korenaar</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69892">
+                            <div class="caps small" data-rating="3.69886">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4063,7 +4063,7 @@ $(document).ready(() => {
                                     Brouwerij Boschdal</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.9523">
+                            <div class="caps small" data-rating="3.95251">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4207,7 +4207,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.4664">
+                            <div class="caps small" data-rating="3.46625">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4243,7 +4243,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6625">
+                            <div class="caps small" data-rating="3.66358">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4279,7 +4279,7 @@ $(document).ready(() => {
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69946">
+                            <div class="caps small" data-rating="3.69951">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4315,7 +4315,7 @@ $(document).ready(() => {
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.499">
+                            <div class="caps small" data-rating="3.49905">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4357,7 +4357,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03499">
+                            <div class="caps small" data-rating="4.03494">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4465,7 +4465,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.48688">
+                            <div class="caps small" data-rating="3.48686">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4537,7 +4537,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.50887">
+                            <div class="caps small" data-rating="3.50857">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4574,7 +4574,7 @@ $(document).ready(() => {
                                     Two Chefs Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.40331">
+                            <div class="caps small" data-rating="3.40317">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4610,7 +4610,7 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56453">
+                            <div class="caps small" data-rating="3.56436">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4754,13 +4754,13 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.56294">
+                            <div class="caps small" data-rating="3.57784">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-60"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.56)</span>
+	</div>                                                            <span class="num">(3.58)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -4898,7 +4898,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.81232">
+                            <div class="caps small" data-rating="3.80786">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5078,7 +5078,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77684">
+                            <div class="caps small" data-rating="3.77598">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5330,7 +5330,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78924">
+                            <div class="caps small" data-rating="3.78929">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5366,7 +5366,7 @@ $(document).ready(() => {
                                     Bierol</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.74818">
+                            <div class="caps small" data-rating="3.74805">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5546,7 +5546,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.01371">
+                            <div class="caps small" data-rating="4.01439">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5583,7 +5583,7 @@ $(document).ready(() => {
                                     Brouwerij Kees</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.94701">
+                            <div class="caps small" data-rating="3.94672">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5619,13 +5619,13 @@ $(document).ready(() => {
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.68486">
+                            <div class="caps small" data-rating="3.68546">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-70"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.68)</span>
+	</div>                                                            <span class="num">(3.69)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -5655,7 +5655,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.93192">
+                            <div class="caps small" data-rating="3.93136">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5691,7 +5691,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69261">
+                            <div class="caps small" data-rating="3.6928">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5727,7 +5727,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79671">
+                            <div class="caps small" data-rating="3.79672">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5763,7 +5763,7 @@ $(document).ready(() => {
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.20052">
+                            <div class="caps small" data-rating="4.20077">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5809,8 +5809,8 @@ $(document).ready(() => {
 	});
 </script>
 
-<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.min.js?v=2.8.56"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.min.js?v=2.8.56"></script>
+<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.min.js?v=2.8.57"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.min.js?v=2.8.57"></script>
 		<script>
 		$(".image-big").on("click", function(e) {
 			e.preventDefault();
