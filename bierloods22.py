@@ -12,6 +12,7 @@ Werkwijze:
      (die kan later nog verfijnd worden via matching met andere shops)
 """
 
+import json
 import logging
 import re
 
@@ -72,7 +73,55 @@ def scrape(site):
         if beer:
             beers.append(beer)
     log.info("Bierloods22: %d tegels -> %d bieren na filters", len(tiles), len(beers))
-    return beers
+    return _filter_uitverkocht(beers)
+
+
+# ---------------------------------------------------------------------------
+# Voorraadcontrole. De overzichtspagina's tonen niet of iets op voorraad is:
+# "Niet op voorraad" wordt pas in de browser via JavaScript geladen uit de
+# productdata (<product-url>?format=json, standaard bij Lightspeed-shops).
+# Die data vragen we daarom per bier zelf op. Kan de voorraad niet worden
+# bepaald, dan blijft het bier staan (liever één te veel dan goede kwijt).
+# ---------------------------------------------------------------------------
+def _voorraad_uit_json(data):
+    """True = op voorraad, False = uitverkocht, None = onbekend."""
+    if not isinstance(data, dict):
+        return None
+    prod = data.get("product") if isinstance(data.get("product"), dict) else data
+    stock = prod.get("stock") if isinstance(prod.get("stock"), dict) else {}
+    if "on_stock" in stock:
+        return bool(stock["on_stock"])
+    if "level" in stock and stock.get("track", True) is not False:
+        try:
+            return float(stock["level"]) > 0
+        except (TypeError, ValueError):
+            pass
+    for sleutel in ("on_stock", "in_stock", "available"):
+        if sleutel in prod and isinstance(prod[sleutel], bool):
+            return prod[sleutel]
+    return None
+
+
+def _filter_uitverkocht(beers):
+    over, weg, onbekend = [], 0, 0
+    for i, b in enumerate(beers):
+        url = (b.get("weblink") or "").split("?")[0]
+        data = utils.fetch_json(url + "?format=json", use_cache=False) if url else None
+        if i == 0 and data:
+            utils.save_debug_sample("bierloods22", "product-json", json.dumps(data)[:20000])
+        status = _voorraad_uit_json(data)
+        if status is False:
+            weg += 1
+            continue
+        if status is None:
+            onbekend += 1
+        over.append(b)
+    log.info("Bierloods22: %d uitverkocht weggelaten, %d op voorraad, %d onbekend (behouden)",
+             weg, len(over) - onbekend, onbekend)
+    if beers and onbekend == len(beers):
+        log.warning("Bierloods22: voorraad van geen enkel bier bepaald -- "
+                    "controleer docs/debug/bierloods22-product-json.txt")
+    return over
 
 
 def _scrape_category(cat_url, broad, tiles):

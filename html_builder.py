@@ -34,12 +34,15 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
 /* tabs blijven altijd bovenin staan, ook bij scrollen */
 .tabs { display:flex; overflow-x:auto; background:#fff; border-bottom:1px solid #ddd;
        scroll-behavior:smooth; -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain;
-        position:sticky; top:0; z-index:20; -webkit-overflow-scrolling:touch; }
+        -webkit-overflow-scrolling:touch; }
+/* tabbalk + zoekveld blijven samen bovenin staan bij scrollen */
+.plakbalk { position:sticky; top:0; z-index:20; background:#f5f5f2;
+            box-shadow:0 2px 6px rgba(0,0,0,.06); }
 .tabs button { flex:0 0 auto; border:0; background:none; padding:12px 14px; font-size:.85rem;
                border-bottom:3px solid transparent; color:#555; white-space:nowrap; }
 .tabs button.active { color:var(--groen); border-bottom-color:var(--groen); font-weight:600; }
 
-.toolbar { padding:10px 12px 4px; }
+.toolbar { padding:8px 12px; }
 .toolbar input[type=search] { width:100%; padding:10px 12px; font-size:1rem; border:1px solid #ccc;
                               border-radius:10px; -webkit-appearance:none; }
 .paneel { display:none; background:#fff; border-bottom:1px solid #ddd; padding:12px 14px;
@@ -533,10 +536,12 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
   <span class="status" id="status"></span>
 </div></header>
 
+<div class="plakbalk">
 <div class="tabs">{''.join(tabs)}</div>
 <div class="toolbar">
   <input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl&hellip;"
          oninput="pasFiltersToe()">
+</div>
 </div>
 
 <div class="paneel" id="filterpaneel">
