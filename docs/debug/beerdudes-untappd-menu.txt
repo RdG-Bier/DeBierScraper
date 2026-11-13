@@ -480,11 +480,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						2,498						<span>Total</span>
+						2,499						<span>Total</span>
 					</li><li>
 						285						<span>Unique</span>
 					</li><li>
-						585						<span>Monthly</span>
+						586						<span>Monthly</span>
 					</li><li>
 												<a href="/v/beer-dudes/14075288/activity?filter=you">0</a>
 						<span>You</span>
@@ -742,7 +742,7 @@ $(document).ready(() => {
 
 <div class="offerings-badge badge-with-text beer">
     <img src="https://assets.untappd.com/assets/utfb/images/menu-offerings/beer-icon.svg" alt="Venue has beer on menu">
-                    <span>643 Beers</span>
+                    <span>654 Beers</span>
             </div>    </div>
 </div>
 									</div>
@@ -781,7 +781,7 @@ $(document).ready(() => {
 					</p>
 					<select id="brewery_picker">
 						<option value="all">All</option>
-						<option value="Beerbliotek">Beerbliotek (3)</option><option value="Bierol">Bierol (21)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (6)</option><option value="Brouwerij Alvinne">Brouwerij Alvinne (4)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij Boschdal">Brouwerij Boschdal (3)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (2)</option><option value="Brouwerij EemBier">Brouwerij EemBier (3)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (4)</option><option value="Brouwerij Kees">Brouwerij Kees (5)</option><option value="Brouwerij Kompel">Brouwerij Kompel (1)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (1)</option><option value="Cigar City Brewing®">Cigar City Brewing® (6)</option><option value="Delftse Brouwers">Delftse Brouwers (2)</option><option value="Dugges Bryggeri">Dugges Bryggeri (5)</option><option value="Folkingebrew">Folkingebrew (3)</option><option value="FrauGruber Brewing">FrauGruber Brewing (5)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (8)</option><option value="Goede Kant van het Spoor">Goede Kant van het Spoor (1)</option><option value="Jopen">Jopen (7)</option><option value="Kaapse Brouwers">Kaapse Brouwers (2)</option><option value="Magic Road">Magic Road (7)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (9)</option><option value="Muifelbrouwerij">Muifelbrouwerij (2)</option><option value="Nemeton Brewing">Nemeton Brewing (1)</option><option value="Oskar Blues Brewery®">Oskar Blues Brewery® (5)</option><option value="Põhjala">Põhjala (1)</option><option value="Rock City Brewing">Rock City Brewing (1)</option><option value="Two Chefs Brewing">Two Chefs Brewing (7)</option><option value="WALHALLA Brouwerij">WALHALLA Brouwerij (2)</option><option value="vandeStreek bier">vandeStreek bier (3)</option>					</select>
+						<option value="Beerbliotek">Beerbliotek (3)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (8)</option><option value="Brouwerij Alvinne">Brouwerij Alvinne (1)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (1)</option><option value="Brouwerij EemBier">Brouwerij EemBier (3)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (3)</option><option value="Brouwerij Kees">Brouwerij Kees (2)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (1)</option><option value="Cigar City Brewing®">Cigar City Brewing® (6)</option><option value="Dugges Bryggeri">Dugges Bryggeri (5)</option><option value="Folkingebrew">Folkingebrew (3)</option><option value="FrauGruber Brewing">FrauGruber Brewing (5)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (5)</option><option value="HORIZONT Brewing">HORIZONT Brewing (4)</option><option value="Harviestoun Brewery">Harviestoun Brewery (2)</option><option value="Jopen">Jopen (6)</option><option value="Kaapse Brouwers">Kaapse Brouwers (2)</option><option value="Magic Road">Magic Road (7)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (5)</option><option value="Oskar Blues Brewery®">Oskar Blues Brewery® (5)</option><option value="Põhjala">Põhjala (1)</option><option value="Rock City Brewing">Rock City Brewing (1)</option><option value="Stigbergets Bryggeri">Stigbergets Bryggeri (5)</option><option value="WALHALLA Brouwerij">WALHALLA Brouwerij (2)</option><option value="vandeStreek bier">vandeStreek bier (1)</option>					</select>
 				</div>
 			</div><div class="filter-holder">
 				<label>Filter by Style</label>
@@ -791,7 +791,7 @@ $(document).ready(() => {
 					</p>
 					<select id="style_picker">
 						<option value="all">All</option>
-						<option value="Barleywine - American">Barleywine - American (1)</option><option value="Barleywine - Other">Barleywine - Other (3)</option><option value="Belgian Blonde">Belgian Blonde (1)</option><option value="Belgian Quadrupel">Belgian Quadrupel (5)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (2)</option><option value="Belgian Tripel">Belgian Tripel (3)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (5)</option><option value="Bock - Doppelbock">Bock - Doppelbock (5)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (6)</option><option value="Brown Ale - English">Brown Ale - English (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (4)</option><option value="Festbier">Festbier (1)</option><option value="IPA - American">IPA - American (10)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (1)</option><option value="IPA - Cold">IPA - Cold (1)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (9)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (4)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (14)</option><option value="IPA - Other">IPA - Other (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (4)</option><option value="Lager - Helles">Lager - Helles (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Märzen">Märzen (1)</option><option value="Pale Ale - American">Pale Ale - American (3)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (1)</option><option value="Pale Ale - Other">Pale Ale - Other (1)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (1)</option><option value="Porter - Other">Porter - Other (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (1)</option><option value="Sour - Berliner Weisse">Sour - Berliner Weisse (1)</option><option value="Sour - Fruited">Sour - Fruited (3)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (4)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (9)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (1)</option><option value="Stout - Imperial / Double Oatmeal">Stout - Imperial / Double Oatmeal (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (9)</option><option value="Stout - Other">Stout - Other (1)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (3)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (1)</option>					</select>
+						<option value="Barleywine - Other">Barleywine - Other (4)</option><option value="Belgian Blonde">Belgian Blonde (1)</option><option value="Belgian Quadrupel">Belgian Quadrupel (5)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (1)</option><option value="Belgian Tripel">Belgian Tripel (2)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (1)</option><option value="Bock - Doppelbock">Bock - Doppelbock (1)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (1)</option><option value="Brown Ale - English">Brown Ale - English (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (1)</option><option value="IPA - American">IPA - American (6)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (1)</option><option value="IPA - Cold">IPA - Cold (1)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (7)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (4)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (13)</option><option value="IPA - Other">IPA - Other (1)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (5)</option><option value="Lager - IPL (India Pale Lager)">Lager - IPL (India Pale Lager) (1)</option><option value="Märzen">Märzen (1)</option><option value="Pale Ale - American">Pale Ale - American (2)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (2)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (1)</option><option value="Porter - Other">Porter - Other (1)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (1)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (4)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (6)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (1)</option><option value="Stout - Imperial / Double Oatmeal">Stout - Imperial / Double Oatmeal (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (7)</option><option value="Stout - Other">Stout - Other (1)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (1)</option>					</select>
 				</div>
 			</div>
 						<div class="filter-holder">
@@ -813,7 +813,7 @@ $(document).ready(() => {
 					</p>
 					<select id="country_picker">
 						<option value="all">All</option>
-						<option value="Austria">Austria (21)</option><option value="Belgium">Belgium (7)</option><option value="Estonia">Estonia (1)</option><option value="Germany">Germany (6)</option><option value="Netherlands">Netherlands (71)</option><option value="Poland">Poland (7)</option><option value="Sweden">Sweden (8)</option><option value="United States">United States (11)</option>					</select>
+						<option value="Belgium">Belgium (2)</option><option value="Estonia">Estonia (1)</option><option value="Germany">Germany (6)</option><option value="Hungary">Hungary (4)</option><option value="Netherlands">Netherlands (43)</option><option value="Poland">Poland (7)</option><option value="Scotland">Scotland (2)</option><option value="Sweden">Sweden (13)</option><option value="United States">United States (11)</option>					</select>
 				</div>
 			</div>
 
@@ -864,10 +864,6 @@ $(document).ready(() => {
 					<div class="sort-toggles beverage-tag-filters">
 				<label>Filter by Beverage Tags</label>
 				<div class="beverage-tag-options">
-											<label>
-							<input type="checkbox" class="beverage-tag-filter" value="1">
-							<span>Gluten-Free</span>
-						</label>
 											<label>
 							<input type="checkbox" class="beverage-tag-filter" value="2">
 							<span>Vegan</span>
@@ -999,7 +995,7 @@ $(document).ready(() => {
         <p style="font-weight:normal;font-size:0.9em;margin:4px 28px 4px 0px">
             We houden van orde en van labels, maar alles dat binnenkomt, verschijnt eerst in deze vergaarbak. Onze nieuwe parels! Hopelijk niet alleen voor de zwijnen... Bestel via www.beerdudes.club.         </p>
 
-        <span class="updated-time" data-time="2026-11-08T09:00:39.750243Z"></span>
+        <span class="updated-time" data-time="2026-11-13T11:00:53.239637Z"></span>
     </div>
     							
 														<div class="sort-filter-results" style="display: none;">
@@ -1017,12 +1013,568 @@ $(document).ready(() => {
             <div class="menu-section-header">
                 <h4>
                     De nieuwste parels                    <span>
-                        (132 Items)
+                        (89 Items)
                     </span>
                 </h4>
                 <p></p>            </div>
             <ul class="menu-section-list" id="section-menu-list-550550">
                             <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7644506" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/horizont-brewing-night-shift-vintage-2026-russian-imperial-stout-aged-in-bourbon-and-bourbon-maple-syrup-barrels-with-chocolate-and-coffee/7644506">
+                                                                Night Shift Vintage 2026 - Russian Imperial Stout Aged In Bourbon & Bourbon Maple Syrup Barrels With Chocolate & Coffee                            </a>
+                            <em>Stout - Russian Imperial</em>
+                        </h5>
+                        <h6>
+                            <span>11.2% ABV • 30 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Horizont-brewery">
+                                    HORIZONT Brewing</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.97619">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.98)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Barrel-Aged: Bourbon</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7644709" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/horizont-brewing-night-shift-vintage-2026-barley-wine-aged-in-tennessee-whiskey-bourbon-and-rum-barrels/7644709">
+                                                                Night Shift Vintage 2026 - Barley Wine Aged In Tennessee Whiskey, Bourbon & Rum Barrels                            </a>
+                            <em>Barleywine - Other</em>
+                        </h5>
+                        <h6>
+                            <span>10.9% ABV • 30 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Horizont-brewery">
+                                    HORIZONT Brewing</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.99773">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(4)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Barrel-Aged: Other</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7644718" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/horizont-brewing-night-shift-vintage-2026-cinnamon-roll-inspired-imperial-stout-aged-in-bourbon-rum-and-sherry-barrels/7644718">
+                                                                Night Shift Vintage 2026 - Cinnamon Roll Inspired Imperial Stout Aged In Bourbon, Rum & Sherry Barrels                            </a>
+                            <em>Stout - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>11.1% ABV • 31 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Horizont-brewery">
+                                    HORIZONT Brewing</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.968">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.97)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Barrel-Aged: Other</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7644713" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/horizont-brewing-night-shift-vintage-2026-imperial-milk-porter-and-pastry-stout-blend-aged-in-bourbon-and-rum-barrels-with-chocolate-and-coconut/7644713">
+                                                                Night Shift Vintage 2026 - Imperial Milk Porter & Pastry Stout Blend Aged In Bourbon & Rum Barrels With Chocolate & Coconut                            </a>
+                            <em>Stout - Imperial / Double Milk</em>
+                        </h5>
+                        <h6>
+                            <span>10.4% ABV • 31 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Horizont-brewery">
+                                    HORIZONT Brewing</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.075">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-10"></div>
+	</div>                                                            <span class="num">(4.08)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Barrel-Aged: Other</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/6905562" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-bufo-beep/6905562">
+                                                                BUFO BEEP!                            </a>
+                            <em>Stout - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>14% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="0">
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(N/A)</span>
+                                                    </h6>
+                                                    <p class="menu-beverage-tags">Barrel-Aged</p>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        440ml Can                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/6905555" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-mad-march-hare/6905555">
+                                                                MAD MARCH HARE                            </a>
+                            <em>Stout - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>14% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.9275">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.93)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        440ml Can                                    </span>
+                                                                        <span class="price">
+                                        9.30 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/5131636" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-trippelmas/5131636">
+                                                                Trippelmås                            </a>
+                            <em>IPA - Triple New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>10% ABV • 65 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.17331">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-20"></div>
+	</div>                                                            <span class="num">(4.17)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        440ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.50 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/6905538" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-hair-of-the-dog/6905538">
+                                                                HAIR OF THE DOG                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>7.2% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.02112">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(4.02)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        440ml Can                                    </span>
+                                                                        <span class="price">
+                                        6.40 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/6187794" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-halvnelson/6187794">
+                                                                HALVNELSON                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>5.7% ABV • 45 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.7787">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-80"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.78)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        440ml Can                                    </span>
+                                                                        <span class="price">
+                                        5.40 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/13868" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/harviestoun-brewery-ola-dubh-18-year-special-reserve/13868">
+                                                                Ola Dubh 18 Year Special Reserve                            </a>
+                            <em>Porter - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>10.5% ABV • 40 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/harviestoun">
+                                    Harviestoun Brewery</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="4.05183">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-10"></div>
+	</div>                                                            <span class="num">(4.05)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-containers">
+                        <p>
+                                                        330ml Bottle                        </p>
+                    </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7988" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/harviestoun-brewery-ola-dubh-12-year-special-reserve/7988">
+                                                                Ola Dubh 12 Year Special Reserve                            </a>
+                            <em>Porter - Imperial / Double</em>
+                        </h5>
+                        <h6>
+                            <span>10.5% ABV • 40 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/harviestoun">
+                                    Harviestoun Brewery</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.94371">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.94)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        6.00 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7670124" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brewpub-de-kromme-haring-mudskipper-strata-chinook/7670124">
+                                                                Mudskipper Strata / Chinook                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>5.5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/DeKrommeHaring">
+                                    Brewpub De Kromme Haring</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="0">
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(N/A)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        4.00 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7661149" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brewpub-de-kromme-haring-le-guess-who-2026/7661149">
+                                                                Le Guess Who (2026)                            </a>
+                            <em>Lager - IPL (India Pale Lager)</em>
+                        </h5>
+                        <h6>
+                            <span>5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/DeKrommeHaring">
+                                    Brewpub De Kromme Haring</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.59451">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-60"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.59)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        330ml Can                                    </span>
+                                                                        <span class="price">
+                                        3.50 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7661412" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-halve-tamme-winter-bierfestival-breda-2025-ba/7661412">
+                                                                Winter Bierfestival Breda 2025 BA                            </a>
+                            <em>Belgian Quadrupel</em>
+                        </h5>
+                        <h6>
+                            <span>11.5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijHalveTamme">
+                                    Brouwerij Halve Tamme</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="0">
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(N/A)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        375ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        9.90 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                            <span class="new-trigger">New</span>
+                                                                <img src="https://labels.untappd.com/7660650" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-halve-tamme-winter-bierfestival-breda-2026/7660650">
+                                                                Winter Bierfestival Breda 2026                            </a>
+                            <em>Porter - Imperial / Double Baltic</em>
+                        </h5>
+                        <h6>
+                            <span>10% ABV • 20 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijHalveTamme">
+                                    Brouwerij Halve Tamme</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="0">
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(N/A)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        375ml Bottle                                    </span>
+                                                                        <span class="price">
+                                        7.00 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
             <div class="beer-info " style="min-height: 50px;">
                 <div class="beer-label">
                                                                 <img src="https://labels.untappd.com/6513026" />
@@ -3681,2104 +4233,6 @@ $(document).ready(() => {
                                         440ml Can                                    </span>
                                                                         <span class="price">
                                         5.70 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6920590" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/vandestreek-bier-nickelbock/6920590">
-                                                                Nickelbock                            </a>
-                            <em>Bock - Single / Traditional</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/vandeStreekBier">
-                                    vandeStreek bier</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.39172">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.39)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6905606" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/vandestreek-bier-fresh-hop-bock-2026/6905606">
-                                                                Fresh Hop Bock (2026)                            </a>
-                            <em>Bock - Single / Traditional</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • 18 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/vandeStreekBier">
-                                    vandeStreek bier</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.45566">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.46)</span>
-                                                    </h6>
-                                                    <p class="menu-beverage-tags">Vegan &bull; Fresh Hop</p>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6920560" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-halve-tamme-vinea-barley-wine/6920560">
-                                                                Vinea - Barley Wine                            </a>
-                            <em>Barleywine - American</em>
-                        </h5>
-                        <h6>
-                            <span>12% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijHalveTamme">
-                                    Brouwerij Halve Tamme</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.95707">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.96)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        4.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6754632" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-halve-tamme-staves-2026/6754632">
-                                                                STAVES 2026                            </a>
-                            <em>Rye Wine</em>
-                        </h5>
-                        <h6>
-                            <span>11.2% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijHalveTamme">
-                                    Brouwerij Halve Tamme</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.24654">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.25)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        375ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        9.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6920565" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-halve-tamme-nux/6920565">
-                                                                NUX                            </a>
-                            <em>Porter - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>12.1% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijHalveTamme">
-                                    Brouwerij Halve Tamme</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.16687">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.17)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        375ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        6.80 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6858080" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/goede-kant-van-het-spoor-a-p-g-driessen-2026/6858080">
-                                                                A.P.G. Driessen(2026)                            </a>
-                            <em>Bock - Single / Traditional</em>
-                        </h5>
-                        <h6>
-                            <span>8% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/GoedeKantvanhetSpoor">
-                                    Goede Kant van het Spoor</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.66228">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.66)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.20 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5555686" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-kompel-st-barbara-salvatoris/5555686">
-                                                                St-Barbara Salvatoris                            </a>
-                            <em>Belgian Strong Golden Ale</em>
-                        </h5>
-                        <h6>
-                            <span>8.5% ABV • 20 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijKompel">
-                                    Brouwerij Kompel</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.5847">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.58)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        2.70 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6800345" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/delftse-brouwers-quasi-quokka/6800345">
-                                                                Quasi Quokka                            </a>
-                            <em>Blonde / Golden Ale - Other</em>
-                        </h5>
-                        <h6>
-                            <span>0.3% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/DelftseBrouwers">
-                                    Delftse Brouwers</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.25556">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-30"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.26)</span>
-                                                    </h6>
-                                                    <p class="menu-beverage-tags">Vegan &bull; Non-Alcoholic</p>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        2.60 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/4006094" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/delftse-brouwers-neipa/4006094">
-                                                                NEIPA                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>5.6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/DelftseBrouwers">
-                                    Delftse Brouwers</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.56129">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.56)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        2.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5972278" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-de-dochter-van-de-korenaar-la-bock-brunello-ba/5972278">
-                                                                La Bock Brunello BA                            </a>
-                            <em>Bock - Doppelbock</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/dedochtervandekorenaar">
-                                    Brouwerij De Dochter van de Korenaar</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.69889">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.7)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        4.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6148843" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-boschdal-port-infused-quadrupel/6148843">
-                                                                Port Infused Quadrupel                            </a>
-                            <em>Belgian Quadrupel</em>
-                        </h5>
-                        <h6>
-                            <span>11.8% ABV • 15 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijBoschdal">
-                                    Brouwerij Boschdal</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.95158">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.95)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        4.60 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/3431411" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-boschdal-boschdal-tripel/3431411">
-                                                                Boschdal Tripel                            </a>
-                            <em>Belgian Tripel</em>
-                        </h5>
-                        <h6>
-                            <span>8% ABV • 25 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijBoschdal">
-                                    Brouwerij Boschdal</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.52612">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.53)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/2422768" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-boschdal-boschdal-blond/2422768">
-                                                                Boschdal Blond                            </a>
-                            <em>Blonde / Golden Ale - Other</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • 25 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijBoschdal">
-                                    Brouwerij Boschdal</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.50453">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.5)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/3470690" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/nemeton-brewing-bockthor/3470690">
-                                                                BockThor                            </a>
-                            <em>Bock - Doppelbock</em>
-                        </h5>
-                        <h6>
-                            <span>9.5% ABV • 20 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/NemetonBrewing">
-                                    Nemeton Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.71792">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.72)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.80 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6850219" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/frontaal-brewing-co-faam-bock/6850219">
-                                                                Faam Bock                            </a>
-                            <em>Bock - Single / Traditional</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • 18 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijFrontaal">
-                                    Frontaal Brewing Co.</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.46548">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.47)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6754922" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/frontaal-brewing-co-drop-bock-2026/6754922">
-                                                                Drop Bock (2026)                            </a>
-                            <em>Bock - Doppelbock</em>
-                        </h5>
-                        <h6>
-                            <span>7.5% ABV • 15 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijFrontaal">
-                                    Frontaal Brewing Co.</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.66547">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.67)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5955162" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/muifelbrouwerij-i-spy-double-rye-dubbelbock/5955162">
-                                                                I Spy Double Rye Dubbelbock                            </a>
-                            <em>Bock - Doppelbock</em>
-                        </h5>
-                        <h6>
-                            <span>8% ABV • 20 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Muifelbrouwerij">
-                                    Muifelbrouwerij</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.69979">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.7)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/236058" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/muifelbrouwerij-d-n-ossebock/236058">
-                                                                D'n Ossebock                            </a>
-                            <em>Bock - Single / Traditional</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • 28 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Muifelbrouwerij">
-                                    Muifelbrouwerij</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.49903">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.5)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        2.80 EUR                                    </span>
-                                                                        </p>
-                                                                        <p>
-                                                                        <span class="size">
-                                        750ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        8.20 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6449888" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-coffee-infused-bourbon-barrel-imperial-stout/6449888">
-                                                                Coffee-Infused Bourbon Barrel Imperial Stout                            </a>
-                            <em>Stout - Imperial / Double Coffee</em>
-                        </h5>
-                        <h6>
-                            <span>11.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.03489">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.03)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6506494" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-banana-and-rum-barrel-aged-imperial-stout/6506494">
-                                                                Banana & Rum Barrel Aged Imperial Stout                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>11.3% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.8614">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.86)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6596695" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-cognac-barrel-aged-imperial-stout/6596695">
-                                                                Cognac Barrel Aged Imperial Stout                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>11.1% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.80243">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.8)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/718678" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-funky-falcon/718678">
-                                                                Funky Falcon                            </a>
-                            <em>Pale Ale - American</em>
-                        </h5>
-                        <h6>
-                            <span>5.2% ABV • 22 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.48685">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.49)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6350308" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-haarlem-harvest/6350308">
-                                                                Haarlem Harvest                            </a>
-                            <em>Farmhouse Ale - Saison</em>
-                        </h5>
-                        <h6>
-                            <span>5.4% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.62569">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.63)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        375ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        6.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6743453" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-berlin-wonderland/6743453">
-                                                                Berlin Wonderland                            </a>
-                            <em>Pale Ale - Other</em>
-                        </h5>
-                        <h6>
-                            <span>4.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.50904">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.51)</span>
-                                                    </h6>
-                                                    <p class="menu-beverage-tags">Vegan</p>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6127788" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/two-chefs-brewing-golden-groove-cold-blond/6127788">
-                                                                Golden Groove - Cold Blond                             </a>
-                            <em>Blonde / Golden Ale - Other</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/TwoChefsBrewing">
-                                    Two Chefs Brewing</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.40264">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.4)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        2.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6816053" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/frontaal-brewing-co-low-sun/6816053">
-                                                                Low Sun                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>6.3% ABV • 50 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijFrontaal">
-                                    Frontaal Brewing Co.</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.56417">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.56)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6777962" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-independence-brew/6777962">
-                                                                Independence Brew                            </a>
-                            <em>Farmhouse Ale - Saison</em>
-                        </h5>
-                        <h6>
-                            <span>3.9% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.5">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.5)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        750ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        11.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6906174" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-itsy-bitsy/6906174">
-                                                                Itsy Bitsy                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.81607">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.82)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.20 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/7143990" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-lab-35-festbier/7143990">
-                                                                The Lab #35: Festbier                            </a>
-                            <em>Festbier</em>
-                        </h5>
-                        <h6>
-                            <span>5.5% ABV • 25 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.59818">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.6)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6818158" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-lab-34-erdbeer-rhabarber-berliner-weisse/6818158">
-                                                                The Lab #34: Erdbeer-Rhabarber Berliner Weiße                            </a>
-                            <em>Sour - Berliner Weisse</em>
-                        </h5>
-                        <h6>
-                            <span>4.5% ABV • 5 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.57784">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-60"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.58)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6811864" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-lab-33-sourflower/6811864">
-                                                                The Lab #33: Sourflower                            </a>
-                            <em>IPA - Sour</em>
-                        </h5>
-                        <h6>
-                            <span>4.5% ABV • 19 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.39885">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.4)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6818153" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-lab-32-mk-ultra-pineapple-and-kubeben/6818153">
-                                                                The Lab #32: MK Ultra Pineapple & Kubeben                            </a>
-                            <em>Sour - Fruited</em>
-                        </h5>
-                        <h6>
-                            <span>6% ABV • 15 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.77143">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.77)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6734980" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-lab-31-hopfnwoazen/6734980">
-                                                                The Lab #31: Hopfnwoazen                            </a>
-                            <em>Wheat Beer - Hopfenweisse</em>
-                        </h5>
-                        <h6>
-                            <span>5% ABV • 18 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.77716">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.78)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6779824" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-rebeerth-red-and-white-port-wine/6779824">
-                                                                The Rebeerth: Vanilla Blend - Red & White Port Wine                            </a>
-                            <em>Stout - Russian Imperial</em>
-                        </h5>
-                        <h6>
-                            <span>10.3% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.81408">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.81)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        10.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6708558" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-rebeerth-crazy-caramel/6708558">
-                                                                The Rebeerth : Crazy Caramel - Bourbon Barrel                            </a>
-                            <em>Stout - Imperial / Double Pastry</em>
-                        </h5>
-                        <h6>
-                            <span>10.4% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.026">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.03)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        10.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6708559" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-rebeerth-red-port-wine/6708559">
-                                                                The Rebeerth - Red Port Wine                            </a>
-                            <em>Stout - Russian Imperial</em>
-                        </h5>
-                        <h6>
-                            <span>10.2% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.97411">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.97)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        10.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6708557" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-rebeerth-coffee-slave/6708557">
-                                                                The Rebeerth - Coffee Slave                            </a>
-                            <em>Stout - Russian Imperial</em>
-                        </h5>
-                        <h6>
-                            <span>10.6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.7831">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.78)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        10.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6773607" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-bierol-sommerbier/6773607">
-                                                                Sommerbier                            </a>
-                            <em>Lager - Other</em>
-                        </h5>
-                        <h6>
-                            <span>3.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.39763">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.4)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        2.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6594109" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-hardigatti-2026/6594109">
-                                                                Hardigatti 2026                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.77589">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.78)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.20 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6637809" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-schafehax-2026/6637809">
-                                                                Schafehax (2026)                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.72945">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.73)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.10 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6388564" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-fraxbie/6388564">
-                                                                FraXBie                            </a>
-                            <em>IPA - Session</em>
-                        </h5>
-                        <h6>
-                            <span>4.2% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.67968">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.68)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5217885" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-sunn-seiterl/5217885">
-                                                                Sunn Seiterl                            </a>
-                            <em>Blonde / Golden Ale - Other</em>
-                        </h5>
-                        <h6>
-                            <span>4.7% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.4929">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.49)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.50 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5997949" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-bierol-helles/5997949">
-                                                                Bierol Helles                            </a>
-                            <em>Lager - Helles</em>
-                        </h5>
-                        <h6>
-                            <span>4.9% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.42629">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.43)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6740487" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-haumtaucher-2026/6740487">
-                                                                Haumtaucher 2026                            </a>
-                            <em>IPA - Session</em>
-                        </h5>
-                        <h6>
-                            <span>4.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.81667">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.82)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.50 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/2099567" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-el-patron/2099567">
-                                                                El Patrón                            </a>
-                            <em>IPA - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>8.2% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.89764">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.9)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.60 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/985948" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-the-padawan/985948">
-                                                                The Padawan                            </a>
-                            <em>Pale Ale - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>5.6% ABV • 45 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.7893">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.79)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.10 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/683566" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/bierol-mountain-pale-ale/683566">
-                                                                Mountain Pale Ale                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>6.3% ABV • 60 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Bierol_official">
-                                    Bierol</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.74791">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.75)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.20 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/4902953" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-alvinne-alvinne-cuvee-theo/4902953">
-                                                                Cuvée Theo                            </a>
-                            <em>Farmhouse Ale - Saison</em>
-                        </h5>
-                        <h6>
-                            <span>9% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MarcDKAlvinne">
-                                    Brouwerij Alvinne</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.65552">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.66)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        5.80 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6756693" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-alvinne-pericles-kweepeer/6756693">
-                                                                Pericles Kweepeer                            </a>
-                            <em>Sour - Fruited</em>
-                        </h5>
-                        <h6>
-                            <span>8% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MarcDKAlvinne">
-                                    Brouwerij Alvinne</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.76268">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.76)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        5.30 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5334787" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-alvinne-phi-plum/5334787">
-                                                                Phi Plum                            </a>
-                            <em>Sour - Fruited</em>
-                        </h5>
-                        <h6>
-                            <span>8% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/MarcDKAlvinne">
-                                    Brouwerij Alvinne</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.89496">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Bottle                                    </span>
-                                                                        <span class="price">
-                                        3.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6849286" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-kees-caramel-fudge-stout-2026-cardhu-edition/6849286">
-                                                                Caramel Fudge Stout 2026 Cardhu Edition                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>11% ABV • 45 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijKees">
-                                    Brouwerij Kees</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.96898">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.97)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        6.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6849288" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-kees-caramel-fudge-stout-2026-laphroaig-edition/6849288">
-                                                                Caramel Fudge Stout 2026 Laphroaig Edition                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>11% ABV • 45 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijKees">
-                                    Brouwerij Kees</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.01485">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.01)</span>
-                                                    </h6>
-                                                    <p class="menu-beverage-tags">Gluten-Free</p>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        6.00 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6849289" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/brouwerij-kees-caramel-fudge-stout-2026-macadamia-edition/6849289">
-                                                                Caramel Fudge Stout 2026 Macadamia Edition                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>11% ABV • 45 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijKees">
-                                    Brouwerij Kees</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.94448">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.94)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        4.90 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6819242" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/jopen-dipa-love/6819242">
-                                                                DIPA Love                            </a>
-                            <em>IPA - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>8.5% ABV • 40 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/jopen">
-                                    Jopen</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.68564">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.69)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        3.80 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6853065" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/moersleutel-craft-brewery-pastry-factory-three-bean-cheesecake/6853065">
-                                                                Pastry Factory: Three Bean Cheesecake                            </a>
-                            <em>Stout - Imperial / Double Pastry</em>
-                        </h5>
-                        <h6>
-                            <span>10% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Moersleutel">
-                                    Moersleutel Craft Brewery</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.93179">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-90"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.93)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        7.50 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6853066" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/moersleutel-craft-brewery-blueprints-space-suit/6853066">
-                                                                Blueprints: Space Suit                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>7% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Moersleutel">
-                                    Moersleutel Craft Brewery</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.69069">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-70"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.69)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        6.40 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6853067" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/moersleutel-craft-brewery-blueprints-star-dust/6853067">
-                                                                Blueprints: Star Dust                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Moersleutel">
-                                    Moersleutel Craft Brewery</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.79594">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-80"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.8)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        440ml Can                                    </span>
-                                                                        <span class="price">
-                                        5.80 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6756839" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/moersleutel-craft-brewery-missing-gear/6756839">
-                                                                Missing Gear                            </a>
-                            <em>Stout - Imperial / Double</em>
-                        </h5>
-                        <h6>
-                            <span>14% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Moersleutel">
-                                    Moersleutel Craft Brewery</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.20208">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.2)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        330ml Can                                    </span>
-                                                                        <span class="price">
-                                        9.90 EUR                                    </span>
                                                                         </p>
                                                         </div>
                                     </li>

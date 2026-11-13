@@ -478,7 +478,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
     window.addEventListener('load', asyncLoad, false);
   }
 })();</script>
-<script id="__st">var __st={"a":89775374710,"offset":3600,"reqid":"ed0c6198-7a34-4cd7-9cc5-6fe68e3b1511-1794547112","pageurl":"www.hoppenaar.nl\/products\/croma-the-700","u":"65c7a47a543b","p":"product","rtyp":"product","rid":15546459914614};</script>
+<script id="__st">var __st={"a":89775374710,"offset":3600,"reqid":"ee132271-89bd-4b22-907e-b4a06e1aa925-1794568571","pageurl":"www.hoppenaar.nl\/products\/croma-the-700","u":"da2ee1da518b","p":"product","rtyp":"product","rid":15546459914614};</script>
 <script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
 <script id="captcha-bootstrap">!function(){'use strict';const t='contact',e='account',n='new_comment',o=[[t,t],['blogs',n],['comments',n],[t,'customer']],c=[[e,'customer_login'],[e,'guest_login'],[e,'recover_customer_password'],[e,'create_customer']],r=t=>t.map((([t,e])=>`form[action*='/${t}']:not([data-nocaptcha='true']) input[name='form_type'][value='${e}']`)).join(','),a=t=>()=>t?[...document.querySelectorAll(t)].map((t=>t.form)):[];function s(){const t=[...o],e=r(t);return a(e)}const i='password',u='form_key',d=['recaptcha-v3-token','g-recaptcha-response','h-captcha-response',i],f=()=>{try{return window.sessionStorage}catch{return}},m='__shopify_v',_=t=>t.elements[u];function p(t,e,n=!1){try{const o=window.sessionStorage,c=JSON.parse(o.getItem(e)),{data:r}=function(t){const{data:e,action:n}=t;return t[m]||n?{data:e,action:n}:{data:t,action:n}}(c);for(const[e,n]of Object.entries(r))t.elements[e]&&(t.elements[e].value=n);n&&o.removeItem(e)}catch(o){console.error('form repopulation failed',{error:o})}}const l='form_type',E='cptcha';function T(t){t.dataset[E]=!0}const w=window,h=w.document,L='Shopify',v='ce_forms',y='captcha';let A=!1;((t,e)=>{const n=(g='f06e6c50-85a8-45c8-87d0-21a2b65856fe',I='https://cdn.shopify.com/shopifycloud/storefront-forms-hcaptcha/ce_storefront_forms_captcha_hcaptcha.v1.5.3.iife.js',D={infoText:'Beschermd door hCaptcha',privacyText:'Privacy',termsText:'Voorwaarden'},(t,e,n)=>{const o=w[L][v],c=o.bindForm;if(c)return c(t,g,e,D).then(n);var r;o.q.push([[t,g,e,D],n]),r=I,A||(h.body.append(Object.assign(h.createElement('script'),{id:'captcha-provider',async:!0,src:r})),A=!0)});var g,I,D;w[L]=w[L]||{},w[L][v]=w[L][v]||{},w[L][v].q=[],w[L][y]=w[L][y]||{},w[L][y].protect=function(t,e){n(t,void 0,e),T(t)},Object.freeze(w[L][y]),function(t,e,n,w,h,L){const[v,y,A,g]=function(t,e,n){const i=e?o:[],u=t?c:[],d=[...i,...u],f=r(d),m=r(i),_=r(d.filter((([t,e])=>n.includes(e))));return[a(f),a(m),a(_),s()]}(w,h,L),I=t=>{const e=t.target;return e instanceof HTMLFormElement?e:e&&e.form},D=t=>v().includes(t);t.addEventListener('submit',(t=>{const e=I(t);if(!e)return;const n=D(e)&&!e.dataset.hcaptchaBound&&!e.dataset.recaptchaBound,o=_(e),c=g().includes(e)&&(!o||!o.value);(n||c)&&t.preventDefault(),c&&!n&&(function(t){try{if(!f())return;!function(t){const e=f();if(!e)return;const n=_(t);if(!n)return;const o=n.value;o&&e.removeItem(o)}(t);const e=Array.from(Array(32),(()=>Math.random().toString(36)[2])).join('');!function(t,e){_(t)||t.append(Object.assign(document.createElement('input'),{type:'hidden',name:u})),t.elements[u].value=e}(t,e),function(t,e){const n=f();if(!n)return;const o=[...t.querySelectorAll(`input[type='${i}']`)].map((({name:t})=>t)),c=[...d,...o],r={};for(const[a,s]of new FormData(t).entries())c.includes(a)||(r[a]=s);n.setItem(e,JSON.stringify({[m]:1,action:t.action,data:r}))}(t,e)}catch(e){console.error('failed to persist form',e)}}(e),e.submit())}));const S=(t,e)=>{t&&!t.dataset[E]&&(n(t,e.some((e=>e===t))),T(t))};for(const o of['focusin','change'])t.addEventListener(o,(t=>{const e=I(t);D(e)&&S(e,y())}));const B=e.get('form_key'),M=e.get(l),P=B&&M;t.addEventListener('DOMContentLoaded',(()=>{const t=y();if(P)for(const e of t)e.elements[l].value===M&&p(e,B);[...new Set([...A(),...v().filter((t=>'true'===t.dataset.shopifyCaptcha))])].forEach((e=>S(e,t)))}))}(h,new URLSearchParams(w.location.search),n,t,e,['guest_login'])})(!0,!0)}();</script>
 <script integrity="sha256-FYHzja/5XSmzkjz6zHj7s4rACJGFuVoYZdumgoO2Ecs=" data-source-attribution="shopify.loadfeatures" defer="defer" src="//www.hoppenaar.nl/cdn/shopifycloud/storefront/assets/storefront/load_feature-ed94c51f.js" crossorigin="anonymous"></script>
@@ -521,16 +521,16 @@ Shopify.SignInWithShop.User.recognized = false;</script>
       </style>
 
 <script id="shopify-cfh-end">window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>
-  <script src="https://cdn.shopify.com/extensions/01a167f3-3449-7b78-8699-0f091dea530b/depo-159/assets/bundle.js" type="text/javascript" defer="defer"></script>
+  <script src="https://cdn.shopify.com/extensions/01a1d3b9-8c19-74b9-b535-63ff5e152658/depo-160/assets/bundle.js" type="text/javascript" defer="defer"></script>
 <link href="https://monorail-edge.shopifysvc.com" rel="dns-prefetch">
 <script>
   window.__TREKKIE_SHIM_QUEUE = window.__TREKKIE_SHIM_QUEUE || [];
 </script>
-<script>(function(){var wpmLoader=function(){"use strict";var e=/Googlebot|Storebot-Google|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|AdsBot-Google|Mediapartners-Google|APIs-Google|PetalBot|SemrushBot|AhrefsBot|MJ12bot|DotBot|Acunetix|PerplexityBot|Perplexity-User/i,t=/bytedance/i;function i(){try{var e=document.cookie;if(!e||"string"!=typeof e)return;for(var t=0,i=e.split(";");t<i.length;t++){var n=i[t],r=n.indexOf("=");if(-1!==r){var o=n.slice(0,r).trim();if(o){var a=void 0;try{a=decodeURIComponent(o)}catch(e){a=o}if("_shopify_s"===a){var d=n.slice(r+1).trim();try{return decodeURIComponent(d)}catch(e){return d}}}}}return}catch(e){return}}function n(e){try{"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(e)}catch(e){}}function r(e,t){return"string"==typeof e&&e.length>0&&e.length<=t?e:void 0}function o(e){var t;switch(null==(t=null==e?void 0:e.navigation)?void 0:t.type){case 0:return"navigate";case 1:return"reload";case 2:return"back_forward";default:return}}function a(){var e,t,i;try{var n=null==(i=null==(t=null==(e=self.ShopifyAnalytics)?void 0:e.lib)?void 0:t.trekkie)?void 0:i.state;return"awaiting-consent"===n||"initialized"===n?n:void 0}catch(e){return}}return function(d,s,u,l){var c=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};try{var p=c.trekkieShim;!0!==p&&"true"!==p||null!=window.__TREKKIE_SHIM_QUEUE||(window.__TREKKIE_SHIM_QUEUE=[])}catch(e){}var f,v,h,y,g=(v=(f={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,h=f.legacy,(y=navigator.userAgent).match(e)?"bot":y.match(v)?"modern":y.match(h)?"legacy":y.match(t)?"bot":"unknown"),m=function(e){var t,i,n=r(e,128);try{var a=window.performance,d=null==(t=null==a?void 0:a.getEntriesByType)?void 0:t.call(a,"navigation")[0];if(!d)return{requestId:n,navigationType:o(a)};var s="type"in d?r(d.type,64):void 0,u="serverTiming"in d&&Array.isArray(d.serverTiming)?d.serverTiming:[];return{requestId:null!=n?n:r(null==(i=u.find(function(e){return"requestID"===e.name}))?void 0:i.description,128),navigationType:s}}catch(e){return{requestId:n}}}(c.requestId),w=function(e){var t=e.version,r=e.browserTarget,o=e.surface,a=e.shopId,d=e.monorailEndpoint,s=window.location.href;return{emit:function(e){var u=e.status,l=e.errorMsg,c=e.failureReason,p=e.useKeepaliveFallback,f=void 0!==p&&p,v=e.navigationType,h=e.pagehidePersisted,y=e.requestId,g=e.trekkieState;if(d){var m,w;try{var b=(new Date).getTime();m=JSON.stringify({metadata:{event_sent_at_ms:b},events:[{schema_id:"web_pixels_manager_load/3.3",payload:{version:t,bundle_target:r,page_url:s,status:u,surface:o,error_msg:l,failure_reason:c,navigation_type:v,pagehide_persisted:h,request_id:y,trekkie_state:g,shop_id:a,visit_token:i()},metadata:{event_created_at_ms:b}}]})}catch(e){return}try{if("function"==typeof window.navigator.sendBeacon&&-1===(w=window.navigator.userAgent).indexOf("iPhone; CPU iPhone OS 12_")&&-1===w.indexOf("iPad; CPU OS 12_")&&-1===w.indexOf("iPod touch; CPU iPhone OS 12_")&&window.navigator.sendBeacon.bind(window.navigator)(d,m))return}catch(e){}if(f)try{"function"==typeof window.fetch&&window.fetch(d,{method:"POST",headers:{"Content-Type":"text/plain"},body:m,keepalive:!0}).catch(function(){})}catch(e){}else try{var _=new XMLHttpRequest;_.open("POST",d,!0),_.setRequestHeader("Content-Type","text/plain"),_.send(m)}catch(e){n("[Web Pixels Manager] Got an unhandled error while logging to Monorail.")}}else n("[Web Pixels Manager] No Monorail endpoint provided, skipping logging.")}}}({version:u,browserTarget:g,surface:d.surface,shopId:d.shopId,monorailEndpoint:d.monorailEndpoint});if(Boolean(null==(_=null==(b=window.Shopify)?void 0:b.analytics)?void 0:_.replayQueue))w.emit({status:"setup-skipped",errorMsg:"replay queue already initialized."});else{var b,_;w.emit({status:"setup-started"}),window.Shopify=window.Shopify||{};var S=window.Shopify;S.analytics=S.analytics||{};var P=S.analytics;P.replayQueue=[],P.publish=function(e,t,i){return P.replayQueue.push([e,t,i]),!0};try{self.performance.mark("wpm:start")}catch(e){}var k,C="modern"===g?"modern":"legacy",E=(null!=l?l:{modern:"",legacy:""})[C],I=[(k={baseUrl:s,hashVersion:u,buildTarget:C}).baseUrl,"/wpm","/b",k.hashVersion,"modern"===k.buildTarget?"m":"l",".js"].join(""),O=!1,T=!1;try{c.browserTarget=g,function(){O=!0;try{window.addEventListener("pagehide",M)}catch(e){O=!1}}(),R(function(){try{R(x)}catch(e){D(e)}}),w.emit({status:"loading",requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()})}catch(e){D(e)}}function U(){var e;if(q(),!function(){var e,t;return Boolean(null==(t=null==(e=window.Shopify)?void 0:e.analytics)?void 0:t.initialized)}()){var t,i,n;try{if("function"!=typeof(null==(e=window.webPixelsManager)?void 0:e.init))return void A();if(!(null!==(n=i=t=window.webPixelsManager.init(d))&&"function"!=typeof n&&Object(n)===n&&"publish"in i&&"function"==typeof i.publish&&"publishCustomEvent"in i&&"function"==typeof i.publishCustomEvent&&"visitor"in i&&"function"==typeof i.visitor))return void A()}catch(e){return void A(e)}var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var i=e[0],n=e[1],r=e[2];t.publishCustomEvent(i,n,r)}),r.replayQueue=[],r.publish=t.publishCustomEvent,r.visitor=t.visitor,r.initialized=!0}}function A(e){B("manager_api_unavailable",void 0===e?void 0:Q(e))}function x(){B("script_load_failed","".concat(I," has failed to load"))}function B(e,t){T||(T=!0,q(),w.emit({status:"failed",errorMsg:t,failureReason:e,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function M(e){O&&(q(),w.emit({status:"pagehide-while-loading",useKeepaliveFallback:!0,pagehidePersisted:e.persisted,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function q(){O=!1;try{window.removeEventListener("pagehide",M)}catch(e){}}function R(e){var t;!function(e){var t=e.src,i=e.async,n=void 0===i||i,r=e.onload,o=e.onerror,a=e.sri,d=e.scriptDataAttributes,s=void 0===d?{}:d,u=document.createElement("script"),l=document.querySelector("head"),c=document.querySelector("body");if(u.async=n,u.src=t,a&&(u.integrity=a,u.crossOrigin="anonymous"),s)for(var p in s)if(Object.prototype.hasOwnProperty.call(s,p))try{u.dataset[p]=String(s[p])}catch(e){}if(r&&u.addEventListener("load",r),o&&u.addEventListener("error",o),l)l.appendChild(u);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(u)}}({src:I,async:!0,onload:U,onerror:e,sri:(t=E,"string"==typeof t&&/^sha384-[A-Za-z0-9+/=]+$/.test(t)?E:""),scriptDataAttributes:c})}function D(e){B("script_append_failed",Q(e))}function Q(e){return e instanceof Error?e.message:"Unknown error"}}}();wpmLoader({shopId: 89775374710,storefrontBaseUrl: "https://www.hoppenaar.nl",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://www.hoppenaar.nl/.well-known/shopify/monorail/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["7b21cf0b","b13923a8","4c64608a","08197dfb"],webPixelsConfigList: [{"id":"4345266550","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-160283RC0L\\\",\\\"GT-NCGLSZGG\\\"],\\\"target_country\\\":\\\"ZZ\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"remove_from_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"add_shipping_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"view_item_list\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"a3321ca85cf5aaf6b57585fcd8d67b3a","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"De Hoppenaar","paymentSettings":{"currencyCode":"EUR"},"myshopifyDomain":"s1d0r6-0y.myshopify.com","countryCode":"NL","storefrontUrl":"https:\/\/www.hoppenaar.nl"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":43.95,"currencyCode":"EUR"},"product":{"title":"Croma - The 700","vendor":"Croma","id":"15546459914614","untranslatedTitle":"Croma - The 700","url":"\/products\/croma-the-700","type":"Stout"},"id":"57053789290870","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":[{"id":"15546459914614","handle":"croma-the-700","isCollective":null,"title":"Croma - The 700","type":"Stout","untranslatedTitle":"Croma - The 700","url":"\/products\/croma-the-700","vendor":"Croma","remoteShopId":null,"variants":[{"id":"57053789290870","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510"},"price":{"amount":43.95,"currencyCode":"EUR"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}]},{"id":"15675210039670","handle":"statiegeld-0-15","isCollective":null,"title":null,"type":null,"untranslatedTitle":null,"url":null,"vendor":null,"remoteShopId":null,"variants":[{"id":"57574810157430","image":null,"price":null,"sku":null,"title":null,"untranslatedTitle":null}]}],"purchasingCompany":null},},"https://www.hoppenaar.nl/cdn","1f538ef0wddb2fc58p5c4202ccm39876735",{"modern":"","legacy":""},{"trekkieShim":true,"agentContext":true,"apiClientId":"580111","facebookCapiEnabled":"false","themeId":"188545368438","themePublished":"true","eventMetadataId":"26b5887c-4ad3-44d2-80e2-5f4b7a8ee917","pageType":"product","resourceId":"15546459914614","shopId":"89775374710","storefrontBaseUrl":"https:\/\/www.hoppenaar.nl","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"7b21cf0b\", \"b13923a8\", \"4c64608a\", \"08197dfb\"]","isMerchantRequest":"false","hashVersion":"1f538ef0wddb2fc58p5c4202ccm39876735","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":43.95,\"currencyCode\":\"EUR\"},\"product\":{\"title\":\"Croma - The 700\",\"vendor\":\"Croma\",\"id\":\"15546459914614\",\"untranslatedTitle\":\"Croma - The 700\",\"url\":\"\/products\/croma-the-700\",\"type\":\"Stout\"},\"id\":\"57053789290870\",\"image\":{\"src\":\"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
+<script>(function(){var wpmLoader=function(){"use strict";var e=/Googlebot|Storebot-Google|bingbot|Baiduspider|YandexBot|DuckDuckBot|Slurp|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|AdsBot-Google|Mediapartners-Google|APIs-Google|PetalBot|SemrushBot|AhrefsBot|MJ12bot|DotBot|Acunetix|PerplexityBot|Perplexity-User/i,t=/bytedance/i;function i(){try{var e=document.cookie;if(!e||"string"!=typeof e)return;for(var t=0,i=e.split(";");t<i.length;t++){var n=i[t],r=n.indexOf("=");if(-1!==r){var o=n.slice(0,r).trim();if(o){var a=void 0;try{a=decodeURIComponent(o)}catch(e){a=o}if("_shopify_s"===a){var d=n.slice(r+1).trim();try{return decodeURIComponent(d)}catch(e){return d}}}}}return}catch(e){return}}function n(e){try{"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(e)}catch(e){}}function r(e,t){return"string"==typeof e&&e.length>0&&e.length<=t?e:void 0}function o(e){var t;switch(null==(t=null==e?void 0:e.navigation)?void 0:t.type){case 0:return"navigate";case 1:return"reload";case 2:return"back_forward";default:return}}function a(){var e,t,i;try{var n=null==(i=null==(t=null==(e=self.ShopifyAnalytics)?void 0:e.lib)?void 0:t.trekkie)?void 0:i.state;return"awaiting-consent"===n||"initialized"===n?n:void 0}catch(e){return}}return function(d,s,u,l){var c=arguments.length>4&&void 0!==arguments[4]?arguments[4]:{};try{var p=c.trekkieShim;!0!==p&&"true"!==p||null!=window.__TREKKIE_SHIM_QUEUE||(window.__TREKKIE_SHIM_QUEUE=[])}catch(e){}var f,v,h,y,g=(v=(f={modern:/Edge?\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Firefox\/(1{2}[4-9]|1[2-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Chrom(ium|e)\/(9{2}|\d{3,})\.\d+(\.\d+|)|(Maci|X1{2}).+ Version\/(15\.\d+|(1[6-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(9{2}|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(15[._]\d+|(1[6-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|SamsungBrowser\/([2-9]\d|\d{3,})\.\d+/,legacy:/Edge?\/(1[6-9]|[2-9]\d|\d{3,})\.\d+(\.\d+|)|Firefox\/(5[4-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)|Chrom(ium|e)\/(5[1-9]|[6-9]\d|\d{3,})\.\d+(\.\d+|)([\d.]+$|.*Safari\/(?![\d.]+ Edge\/[\d.]+$))|(Maci|X1{2}).+ Version\/(10\.\d+|(1[1-9]|[2-9]\d|\d{3,})\.\d+)([,.]\d+|)( \(\w+\)|)( Mobile\/\w+|) Safari\/|Chrome.+OPR\/(3[89]|[4-9]\d|\d{3,})\.\d+\.\d+|(CPU[ +]OS|iPhone[ +]OS|CPU[ +]iPhone|CPU IPhone OS|CPU iPad OS)[ +]+(10[._]\d+|(1[1-9]|[2-9]\d|\d{3,})[._]\d+)([._]\d+|)|Android:?[ /-](14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})(\.\d+|)(\.\d+|)|Mobile Safari.+OPR\/([89]\d|\d{3,})\.\d+\.\d+|Android.+Firefox\/(15\d|1[6-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+Chrom(ium|e)\/(14[89]|1[5-9]\d|[2-9]\d{2}|\d{4,})\.\d+(\.\d+|)|Android.+(UC? ?Browser|UCWEB|U3)[ /]?(15\.([5-9]|\d{2,})|(1[6-9]|[2-9]\d|\d{3,})\.\d+)\.\d+|SamsungBrowser\/(5\.\d+|([6-9]|\d{2,})\.\d+)|Android.+MQ{2}Browser\/(14(\.(9|\d{2,})|)|(1[5-9]|[2-9]\d|\d{3,})(\.\d+|))(\.\d+|)|K[Aa][Ii]OS\/(3\.\d+|([4-9]|\d{2,})\.\d+)(\.\d+|)/}).modern,h=f.legacy,(y=navigator.userAgent).match(e)?"bot":y.match(v)?"modern":y.match(h)?"legacy":y.match(t)?"bot":"unknown"),m=function(e){var t,i,n=r(e,128);try{var a=window.performance,d=null==(t=null==a?void 0:a.getEntriesByType)?void 0:t.call(a,"navigation")[0];if(!d)return{requestId:n,navigationType:o(a)};var s="type"in d?r(d.type,64):void 0,u="serverTiming"in d&&Array.isArray(d.serverTiming)?d.serverTiming:[];return{requestId:null!=n?n:r(null==(i=u.find(function(e){return"requestID"===e.name}))?void 0:i.description,128),navigationType:s}}catch(e){return{requestId:n}}}(c.requestId),w=function(e){var t=e.version,r=e.browserTarget,o=e.surface,a=e.shopId,d=e.monorailEndpoint,s=window.location.href;return{emit:function(e){var u=e.status,l=e.errorMsg,c=e.failureReason,p=e.useKeepaliveFallback,f=void 0!==p&&p,v=e.navigationType,h=e.pagehidePersisted,y=e.requestId,g=e.trekkieState;if(d){var m,w;try{var b=(new Date).getTime();m=JSON.stringify({metadata:{event_sent_at_ms:b},events:[{schema_id:"web_pixels_manager_load/3.3",payload:{version:t,bundle_target:r,page_url:s,status:u,surface:o,error_msg:l,failure_reason:c,navigation_type:v,pagehide_persisted:h,request_id:y,trekkie_state:g,shop_id:a,visit_token:i()},metadata:{event_created_at_ms:b}}]})}catch(e){return}try{if("function"==typeof window.navigator.sendBeacon&&-1===(w=window.navigator.userAgent).indexOf("iPhone; CPU iPhone OS 12_")&&-1===w.indexOf("iPad; CPU OS 12_")&&-1===w.indexOf("iPod touch; CPU iPhone OS 12_")&&window.navigator.sendBeacon.bind(window.navigator)(d,m))return}catch(e){}if(f)try{"function"==typeof window.fetch&&window.fetch(d,{method:"POST",headers:{"Content-Type":"text/plain"},body:m,keepalive:!0}).catch(function(){})}catch(e){}else try{var _=new XMLHttpRequest;_.open("POST",d,!0),_.setRequestHeader("Content-Type","text/plain"),_.send(m)}catch(e){n("[Web Pixels Manager] Got an unhandled error while logging to Monorail.")}}else n("[Web Pixels Manager] No Monorail endpoint provided, skipping logging.")}}}({version:u,browserTarget:g,surface:d.surface,shopId:d.shopId,monorailEndpoint:d.monorailEndpoint});if(Boolean(null==(_=null==(b=window.Shopify)?void 0:b.analytics)?void 0:_.replayQueue))w.emit({status:"setup-skipped",errorMsg:"replay queue already initialized."});else{var b,_;w.emit({status:"setup-started"}),window.Shopify=window.Shopify||{};var S=window.Shopify;S.analytics=S.analytics||{};var P=S.analytics;P.replayQueue=[],P.publish=function(e,t,i){return P.replayQueue.push([e,t,i]),!0};try{self.performance.mark("wpm:start")}catch(e){}var k,C="modern"===g?"modern":"legacy",E=(null!=l?l:{modern:"",legacy:""})[C],I=[(k={baseUrl:s,hashVersion:u,buildTarget:C}).baseUrl,"/wpm","/b",k.hashVersion,"modern"===k.buildTarget?"m":"l",".js"].join(""),O=!1,T=!1;try{c.browserTarget=g,function(){O=!0;try{window.addEventListener("pagehide",M)}catch(e){O=!1}}(),R(function(){try{R(x)}catch(e){D(e)}}),w.emit({status:"loading",requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()})}catch(e){D(e)}}function U(){var e;if(q(),!function(){var e,t;return Boolean(null==(t=null==(e=window.Shopify)?void 0:e.analytics)?void 0:t.initialized)}()){var t,i,n;try{if("function"!=typeof(null==(e=window.webPixelsManager)?void 0:e.init))return void A();if(!(null!==(n=i=t=window.webPixelsManager.init(d))&&"function"!=typeof n&&Object(n)===n&&"publish"in i&&"function"==typeof i.publish&&"publishCustomEvent"in i&&"function"==typeof i.publishCustomEvent&&"visitor"in i&&"function"==typeof i.visitor))return void A()}catch(e){return void A(e)}var r=window.Shopify.analytics;r.replayQueue.forEach(function(e){var i=e[0],n=e[1],r=e[2];t.publishCustomEvent(i,n,r)}),r.replayQueue=[],r.publish=t.publishCustomEvent,r.visitor=t.visitor,r.initialized=!0}}function A(e){B("manager_api_unavailable",void 0===e?void 0:Q(e))}function x(){B("script_load_failed","".concat(I," has failed to load"))}function B(e,t){T||(T=!0,q(),w.emit({status:"failed",errorMsg:t,failureReason:e,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function M(e){O&&(q(),w.emit({status:"pagehide-while-loading",useKeepaliveFallback:!0,pagehidePersisted:e.persisted,requestId:m.requestId,navigationType:m.navigationType,trekkieState:a()}))}function q(){O=!1;try{window.removeEventListener("pagehide",M)}catch(e){}}function R(e){var t;!function(e){var t=e.src,i=e.async,n=void 0===i||i,r=e.onload,o=e.onerror,a=e.sri,d=e.scriptDataAttributes,s=void 0===d?{}:d,u=document.createElement("script"),l=document.querySelector("head"),c=document.querySelector("body");if(u.async=n,u.src=t,a&&(u.integrity=a,u.crossOrigin="anonymous"),s)for(var p in s)if(Object.prototype.hasOwnProperty.call(s,p))try{u.dataset[p]=String(s[p])}catch(e){}if(r&&u.addEventListener("load",r),o&&u.addEventListener("error",o),l)l.appendChild(u);else{if(!c)throw new Error("Did not find a head or body element to append the script");c.appendChild(u)}}({src:I,async:!0,onload:U,onerror:e,sri:(t=E,"string"==typeof t&&/^sha384-[A-Za-z0-9+/=]+$/.test(t)?E:""),scriptDataAttributes:c})}function D(e){B("script_append_failed",Q(e))}function Q(e){return e instanceof Error?e.message:"Unknown error"}}}();wpmLoader({shopId: 89775374710,storefrontBaseUrl: "https://www.hoppenaar.nl",extensionsBaseUrl: "https://extensions.shopifycdn.com/cdn/shopifycloud/web-pixels-manager",monorailEndpoint: "https://www.hoppenaar.nl/.well-known/shopify/monorail/unstable/produce_batch",surface: "storefront-renderer",enabledBetaFlags: ["7b21cf0b","b13923a8","4c64608a","08197dfb"],webPixelsConfigList: [{"id":"4345266550","configuration":"{\"config\":\"{\\\"google_tag_ids\\\":[\\\"G-160283RC0L\\\",\\\"GT-NCGLSZGG\\\"],\\\"target_country\\\":\\\"ZZ\\\",\\\"gtag_events\\\":[{\\\"type\\\":\\\"search\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"begin_checkout\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"remove_from_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_item\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"purchase\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"add_shipping_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"page_view\\\",\\\"action_label\\\":[\\\"G-160283RC0L\\\",\\\"MC-RK5Q89G4Z1\\\"]},{\\\"type\\\":\\\"view_item_list\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_payment_info\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"add_to_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"},{\\\"type\\\":\\\"view_cart\\\",\\\"action_label\\\":\\\"G-160283RC0L\\\"}],\\\"enable_monitoring_mode\\\":false}\"}","eventPayloadVersion":"v1","runtimeContext":"OPEN","scriptVersion":"a3321ca85cf5aaf6b57585fcd8d67b3a","type":"APP","apiClientId":1780363,"privacyPurposes":[],"dataSharingAdjustments":{"protectedCustomerApprovalScopes":["read_customer_address","read_customer_email","read_customer_name","read_customer_personal_data","read_customer_phone"],"dataSharingControls":["share_all_events"]},"dataSharingState":"optimized","enabledFlags":["9a3ed68a"]},{"id":"shopify-app-pixel","configuration":"{}","eventPayloadVersion":"v1","runtimeContext":"STRICT","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"APP","privacyPurposes":["ANALYTICS","MARKETING"]},{"id":"shopify-custom-pixel","eventPayloadVersion":"v1","runtimeContext":"LAX","scriptVersion":"0530","apiClientId":"shopify-pixel","type":"CUSTOM","privacyPurposes":["ANALYTICS","MARKETING"]}],isMerchantRequest: false,initData: {"shop":{"name":"De Hoppenaar","paymentSettings":{"currencyCode":"EUR"},"myshopifyDomain":"s1d0r6-0y.myshopify.com","countryCode":"NL","storefrontUrl":"https:\/\/www.hoppenaar.nl"},"customer":null,"cart":null,"checkout":null,"productVariants":[{"price":{"amount":43.95,"currencyCode":"EUR"},"product":{"title":"Croma - The 700","vendor":"Croma","id":"15546459914614","untranslatedTitle":"Croma - The 700","url":"\/products\/croma-the-700","type":"Stout"},"id":"57053789290870","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}],"products":[{"id":"15546459914614","handle":"croma-the-700","isCollective":null,"title":"Croma - The 700","type":"Stout","untranslatedTitle":"Croma - The 700","url":"\/products\/croma-the-700","vendor":"Croma","remoteShopId":null,"variants":[{"id":"57053789290870","image":{"src":"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510"},"price":{"amount":43.95,"currencyCode":"EUR"},"sku":null,"title":"Default Title","untranslatedTitle":"Default Title"}]},{"id":"15675210039670","handle":"statiegeld-0-15","isCollective":null,"title":null,"type":null,"untranslatedTitle":null,"url":null,"vendor":null,"remoteShopId":null,"variants":[{"id":"57574810157430","image":null,"price":null,"sku":null,"title":null,"untranslatedTitle":null}]}],"purchasingCompany":null},},"https://www.hoppenaar.nl/cdn","1f538ef0wddb2fc58p5c4202ccm39876735",{"modern":"","legacy":""},{"trekkieShim":true,"agentContext":true,"apiClientId":"580111","facebookCapiEnabled":"false","themeId":"188545368438","themePublished":"true","eventMetadataId":"d694caa2-8e18-4525-b2e2-2430cbe430b4","pageType":"product","resourceId":"15546459914614","shopId":"89775374710","storefrontBaseUrl":"https:\/\/www.hoppenaar.nl","extensionBaseUrl":"https:\/\/extensions.shopifycdn.com\/cdn\/shopifycloud\/web-pixels-manager","surface":"storefront-renderer","enabledBetaFlags":"[\"7b21cf0b\", \"b13923a8\", \"4c64608a\", \"08197dfb\"]","isMerchantRequest":"false","hashVersion":"1f538ef0wddb2fc58p5c4202ccm39876735","publish":"custom","events":"[[\"page_viewed\",{}],[\"product_viewed\",{\"productVariant\":{\"price\":{\"amount\":43.95,\"currencyCode\":\"EUR\"},\"product\":{\"title\":\"Croma - The 700\",\"vendor\":\"Croma\",\"id\":\"15546459914614\",\"untranslatedTitle\":\"Croma - The 700\",\"url\":\"\/products\/croma-the-700\",\"type\":\"Stout\"},\"id\":\"57053789290870\",\"image\":{\"src\":\"\/\/www.hoppenaar.nl\/cdn\/shop\/files\/Croma_10.png?v=1768408510\"},\"sku\":null,\"title\":\"Default Title\",\"untranslatedTitle\":\"Default Title\"}}]]"});})();</script><script>
   window.ShopifyAnalytics = window.ShopifyAnalytics || {};
   window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
   window.ShopifyAnalytics.meta.currency = 'EUR';
-  var meta = {"product":{"id":15546459914614,"gid":"gid:\/\/shopify\/Product\/15546459914614","vendor":"Croma","type":"Stout","handle":"croma-the-700","variants":[{"id":57053789290870,"price":4395,"name":"Croma - The 700","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":15546459914614,"requestId":"ed0c6198-7a34-4cd7-9cc5-6fe68e3b1511-1794547112"}};
+  var meta = {"product":{"id":15546459914614,"gid":"gid:\/\/shopify\/Product\/15546459914614","vendor":"Croma","type":"Stout","handle":"croma-the-700","variants":[{"id":57053789290870,"price":4395,"name":"Croma - The 700","public_title":null,"sku":null}],"remote":false},"page":{"pageType":"product","resourceType":"product","resourceId":15546459914614,"requestId":"ee132271-89bd-4b22-907e-b4a06e1aa925-1794568571"}};
   for (var attr in meta) {
     window.ShopifyAnalytics.meta[attr] = meta[attr];
   }
@@ -624,7 +624,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
       
     };
     trekkie.load(
-      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":89775374710,"isMerchantRequest":null,"themeId":188545368438,"themeCityHash":"1164864552935207791","contentLanguage":"nl","currency":"EUR","eventMetadataId":"26b5887c-4ad3-44d2-80e2-5f4b7a8ee917"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["7b21cf0b","b13923a8","4c64608a"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":false,"source":"trekkie-storefront-renderer","apiClientId":580111}}
+      {"Trekkie":{"appName":"storefront","development":false,"defaultAttributes":{"shopId":89775374710,"isMerchantRequest":null,"themeId":188545368438,"themeCityHash":"16500134107046556631","contentLanguage":"nl","currency":"EUR","eventMetadataId":"d694caa2-8e18-4525-b2e2-2430cbe430b4"},"isServerSideCookieWritingEnabled":true,"monorailRegion":"shop_domain","enabledBetaFlags":["7b21cf0b","b13923a8","4c64608a"]},"Session Attribution":{},"S2S":{"facebookCapiEnabled":false,"source":"trekkie-storefront-renderer","apiClientId":580111}}
     );
 
     var loaded = false;
@@ -647,7 +647,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
       }
     });
 
-    window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":15546459914614,"requestId":"ed0c6198-7a34-4cd7-9cc5-6fe68e3b1511-1794547112","shopifyEmitted":true});
+    window.ShopifyAnalytics.lib.page(null,{"pageType":"product","resourceType":"product","resourceId":15546459914614,"requestId":"ee132271-89bd-4b22-907e-b4a06e1aa925-1794568571","shopifyEmitted":true});
 
     var eventsListenerScript = document.createElement('script');
     eventsListenerScript.async = true;
@@ -659,7 +659,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
   src="https://www.hoppenaar.nl/cdn/shopifycloud/perf-kit/shopify-perf-kit-3.15.1.min.js"
   data-application="storefront-renderer"
   data-shop-id="89775374710"
-  data-render-region="gcp-us-west1"
+  data-render-region="gcp-us-east1"
   data-page-type="product"
   data-theme-instance-id="188545368438"
   data-theme-name="Venue"
@@ -672,7 +672,7 @@ Shopify.SignInWithShop.User.recognized = false;</script>
   data-shs-logs-sample-rate="1"
   data-shs-beacon-endpoint="https://www.hoppenaar.nl/api/collect"
 ></script>
-<meta name="shopify-y" content="3d676ae5-24a4-47c9-b2eb-b97c6d6b070b" data-expiration="1826104604000"><meta name="shopify-s" content="e72a81fd-ece3-4eec-8349-5f2128955857" data-expiration="1794548804000"><meta name="request-id" content="ed0c6198-7a34-4cd7-9cc5-6fe68e3b1511-1794547112"        >
+<meta name="shopify-y" content="542352ef-ba06-4e72-b3b3-8d9c0d77df56" data-expiration="1826126070000"><meta name="shopify-s" content="444dbb4f-7855-49a6-8b11-40f8b0de29d6" data-expiration="1794570270000"><meta name="request-id" content="ee132271-89bd-4b22-907e-b4a06e1aa925-1794568571"        >
 </head>
 
   <body
@@ -4085,6 +4085,337 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
             </ul>
           </div>
         </div></div><div
+      class="product-single__box__block product-single__box__block--custom-liquid u-mt0 u-mb0"
+      
+    >
+      
+<div class="hp-smaak" aria-labelledby="hp-smaak-titel-15546459914614">
+  <h2 class="hp-smaak__titel" id="hp-smaak-titel-15546459914614">Smaaknotities</h2><p class="hp-smaak__kort">Jubileumstout op Heaven Hill- en Woodford-vaten met kokos, hazelnoot en ahornsiroop.</p><dl class="hp-smaak__lijst"><div class="hp-smaak__rij">
+        <dt>Aroma</dt>
+        <dd><ul class="hp-smaak__chips"><li>Vanille</li><li>Getoaste kokos</li><li>Hazelnoot</li><li>Eik</li></ul></dd>
+      </div><div class="hp-smaak__rij">
+        <dt>Smaak</dt>
+        <dd><ul class="hp-smaak__chips"><li>Pure chocolade</li><li>Karamel</li><li>Ahornsiroop</li><li>Room</li></ul></dd>
+      </div><div class="hp-smaak__rij"><dt>Mondgevoel</dt><dd>Rijk, vol en zacht</dd></div><div class="hp-smaak__rij"><dt>Afdronk</dt><dd>Lang en elegant, met eik en maple</dd></div></dl><div class="hp-smaak__profiel"><div class="hp-smaak__meter" role="img" aria-label="Zoet: 5 van 5">
+            <span class="hp-smaak__meter-label">Zoet</span>
+            <span class="hp-smaak__dots" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i></span>
+          </div><div class="hp-smaak__meter" role="img" aria-label="Bitter: 2 van 5">
+            <span class="hp-smaak__meter-label">Bitter</span>
+            <span class="hp-smaak__dots" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i></i><i></i><i></i></span>
+          </div><div class="hp-smaak__meter" role="img" aria-label="Zuur: 1 van 5">
+            <span class="hp-smaak__meter-label">Zuur</span>
+            <span class="hp-smaak__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></span>
+          </div><div class="hp-smaak__meter" role="img" aria-label="Body: 5 van 5">
+            <span class="hp-smaak__meter-label">Body</span>
+            <span class="hp-smaak__dots" aria-hidden="true"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i></span>
+          </div></div><p class="hp-smaak__bron">Gebaseerd op de beschrijving van de brouwer.</p>
+</div>
+
+<style>
+  .hp-smaak { margin: 1.5rem 0; padding: 1.25rem 24px 1rem; background: var(--color--bg-light, #fff); border-top: 3px solid var(--color--brand, #385a3c); border-bottom: 1px solid rgba(0,0,0,.08); border-radius: 0; text-align: left; font-family: var(--font--body); font-weight: var(--font--body-weight); font-style: var(--font--body-style); }
+  .product-single__box .hp-smaak { margin-left: -24px; margin-right: -24px; }
+  .hp-smaak__titel { margin: 0 0 .4rem; font-family: var(--font--title); font-weight: var(--font--title-weight); font-style: var(--font--title-style); text-transform: var(--font--title-transform); letter-spacing: var(--font--title-space); font-size: calc(var(--font--size-h3, 17) * 1px); line-height: 1.3; color: var(--color--brand, #385a3c); }
+  .hp-smaak__kort { margin: 0 0 1rem; line-height: 1.5; color: var(--color--headings, #212121); }
+  .hp-smaak__lijst { margin: 0; }
+  .hp-smaak__rij { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; padding: .55rem 0; border-top: 1px solid rgba(0,0,0,.07); align-items: baseline; }
+  .hp-smaak__rij dt, .hp-smaak__meter-label { font-family: var(--font--label); font-weight: var(--font--label-weight); font-style: var(--font--label-style); text-transform: var(--font--label-transform); letter-spacing: var(--font--label-space); font-size: calc(var(--font--label-size, 11) * 1px); color: var(--color--text-light, rgba(0,0,0,.7)); }
+  .hp-smaak__rij dd { margin: 0; line-height: 1.45; }
+  .hp-smaak__chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+  .hp-smaak__chips li { margin: 0; padding: .2rem .6rem; font-size: .92em; line-height: 1.4; border-radius: 999px; background: rgba(56,90,60,.09); color: var(--color--brand-dark, #2e4a32); }
+  .hp-smaak__profiel { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .5rem 1.5rem; margin-top: .6rem; padding-top: .8rem; border-top: 1px solid rgba(0,0,0,.07); }
+  .hp-smaak__meter { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+  .hp-smaak__dots { display: inline-flex; gap: 4px; }
+  .hp-smaak__dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(56,90,60,.15); }
+  .hp-smaak__dots i.is-on { background: var(--color--brand, #385a3c); }
+  .hp-smaak__bron { margin: .9rem 0 0; font-size: .85em; color: var(--color--text-lighter, rgba(0,0,0,.55)); }
+  @media (max-width: 767px) {
+    .hp-smaak { padding-left: 18px; padding-right: 18px; }
+    .product-single__box .hp-smaak { margin-left: -18px; margin-right: -18px; }
+  }
+  @media (max-width: 480px) {
+    .hp-smaak__rij { grid-template-columns: 1fr; gap: .3rem; }
+    .hp-smaak__profiel { grid-template-columns: 1fr; }
+  }
+</style>
+<script>
+  /* Lijn het blok exact uit met de randen van de productkaart, ongeacht de padding van het thema */
+  (function () {
+    var el = document.currentScript && document.currentScript.previousElementSibling;
+    while (el && !(el.classList && el.classList.contains('hp-smaak'))) el = el.previousElementSibling;
+    if (!el) return;
+    function fit() {
+      var box = el.closest('.product-single__box'); if (!box) return;
+      var s = getComputedStyle(box), l = parseFloat(s.paddingLeft) || 0, r = parseFloat(s.paddingRight) || 0;
+      el.style.marginLeft = -l + 'px'; el.style.marginRight = -r + 'px';
+      el.style.paddingLeft = l + 'px'; el.style.paddingRight = r + 'px';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+</script>
+
+<script type="application/json" id="hp-ux-data">{"vendor": "Croma", "vintage": false, "title": "Croma - The 700"}</script>
+
+<div class="hp-buybar" id="hp-buybar" hidden>
+  <div class="hp-buybar__inner">
+    <div class="hp-buybar__info">
+      <span class="hp-buybar__title">Croma - The 700</span>
+      <span class="hp-buybar__price">€43,95</span>
+    </div>
+    <div class="product-form__qty hp-buybar__qty"></div>
+    <button type="button" class="c-btn c-btn--primary hp-buybar__add">In winkelwagen</button>
+  </div>
+</div>
+
+<style>
+  /* Sticky koopbalk */
+  .hp-buybar { position: fixed; left: 0; right: 0; top: var(--hp-buybar-top, 0px); z-index: 40; background: var(--color--bg-light, #fff); border-bottom: 1px solid rgba(0,0,0,.08); box-shadow: 0 6px 18px rgba(0,0,0,.08); opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+  .hp-buybar.is-visible { opacity: 1; pointer-events: auto; }
+  .hp-buybar[hidden] { display: none; }
+  .hp-buybar__inner { max-width: 1400px; margin: 0 auto; padding: 10px 30px; display: flex; align-items: center; gap: 16px; }
+  .hp-buybar__info { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; font-family: var(--font--body); }
+  .hp-buybar__title { font-family: var(--font--title); text-transform: var(--font--title-transform); letter-spacing: var(--font--title-space); font-weight: var(--font--title-weight); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hp-buybar__price { color: var(--color--text-light, rgba(0,0,0,.7)); }
+  .hp-buybar__qty { flex: 0 0 auto; margin: 0 !important; }
+  .hp-buybar__qty label { display: none; }
+  .hp-buybar__add { flex: 0 0 auto; min-width: 220px; margin: 0; }
+  @media (max-width: 767px) {
+    .hp-buybar__inner { padding: 8px 18px; gap: 10px; }
+    .hp-buybar__info { display: none; }
+    .hp-buybar__add { flex: 1 1 auto; min-width: 0; }
+  }
+
+  /* Specificaties meer/minder */
+  .hp-spec-hidden { display: none !important; }
+  .hp-toggle-more { display: inline-flex; align-items: center; gap: 8px; margin: 10px 0 26px; padding: 8px 18px; border: 1px solid var(--color--brand, #385a3c); border-radius: 999px; background: transparent; color: var(--color--brand, #385a3c); cursor: pointer; font-family: var(--font--button); font-weight: var(--font--button-weight); text-transform: var(--font--button-transform); letter-spacing: var(--font--button-space); font-size: calc(var(--font--button-size, 12) * 1px); line-height: 1.4; transition: background .15s, color .15s; }
+  .hp-spec-holder, .hp-spec-holder table { margin-bottom: 0 !important; }
+  .hp-toggle-more:hover, .hp-toggle-more:focus-visible { background: var(--color--brand, #385a3c); color: #fff; }
+  .hp-toggle-more svg { width: 10px; height: 10px; transition: transform .2s; }
+  .hp-toggle-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  /* Inklapbare secties */
+  .hp-acc { border-top: 1px solid rgba(0,0,0,.1); }
+  .hp-acc + .hp-acc { border-top: 1px solid rgba(0,0,0,.1); }
+  .hp-acc__head { margin: 0 !important; }
+  .hp-acc__btn { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; border: 0; background: none; cursor: pointer; text-align: left; font: inherit; line-height: 1.25; color: inherit; text-transform: inherit; letter-spacing: inherit; }
+  .hp-acc__chev { flex: 0 0 auto; width: 14px; height: 14px; color: var(--color--brand, #385a3c); transition: transform .2s ease; }
+  .hp-acc__btn[aria-expanded="true"] .hp-acc__chev { transform: rotate(180deg); }
+  .hp-acc__body { padding-bottom: 6px; }
+  .hp-acc__body[hidden] { display: none; }
+  .hp-acc-end { border-top: 1px solid rgba(0,0,0,.1); padding-top: 12px; }
+
+  /* Links in specificaties */
+  .rte table td a.hp-spec-link { color: inherit; text-decoration: underline; text-decoration-color: var(--color--link, #7dae83); text-underline-offset: 3px; }
+  .rte table td a.hp-spec-link:hover { color: var(--color--brand, #385a3c); }
+</style>
+
+<script>
+(function () {
+  var CHEV = '<svg viewBox="0 0 12 8" aria-hidden="true" focusable="false"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var data = {};
+  try { data = JSON.parse(document.getElementById('hp-ux-data').textContent); } catch (e) {}
+
+  /* ---------- Bierstijl -> collectie ---------- */
+  var STIJL = {
+    'triple ipa':'tipa','quadruple ipa':'qipa','double ipa':'dipa','west coast ipa':'west-coast-ipa','black ipa':'black-ipa',
+    'white ipa':'white-ipa','milkshake ipa':'overige-ipas','fruited ipa':'fruited-ipa','sour ipa':'sour-ipa','cold ipa':'cold-ipa',
+    'india pale lager':'lager','ipa':'ipa','pale ale':'pale-ale','stout':'stout','porter':'porter','barleywine':'barleywine',
+    'wheatwine':'barleywine','old ale':'old-ale','strong dark ale':'strong-ale','strong ale':'strong-ale','winter ale':'winter-ale',
+    'geuze':'lambiek-en-geuze','lambiek':'lambiek-en-geuze','flanders red ale':'flanders-red-ale','smoothie sour':'smoothie-sour',
+    'wild ale':'wild-ale','farmhouse ale / saison':'wild-ale','sour':'fruited-sour','fruitbier':'fruited-sour','tripel':'tripel',
+    'quadrupel':'quadrupel','dubbel':'dubbel','blond':'blond','bokbier':'bokbier','lager':'lager','radler':'radler',
+    'witbier':'wit','weizen':'weizen','mede':'mede','cider':'cider','alcoholvrij bier':'alcoholvrij','cream ale':'cream-ale'
+  };
+  var LAND = { 'verenigde staten':'amerika', 'canada':'canada' };
+
+  function link(td, href, title) {
+    if (!td || td.querySelector('a')) return;
+    var a = document.createElement('a');
+    a.href = href; a.className = 'hp-spec-link'; a.title = title;
+    while (td.firstChild) a.appendChild(td.firstChild);
+    td.appendChild(a);
+  }
+
+  function enhanceSpecs(table, holder) {
+    var rows = Array.prototype.slice.call(table.querySelectorAll('tr'));
+    rows.forEach(function (tr) {
+      var th = tr.querySelector('th'), td = tr.querySelector('td');
+      if (!th || !td) return;
+      var k = th.textContent.trim().toLowerCase(), v = td.textContent.trim(), lv = v.toLowerCase();
+      if (k === 'brouwerij') {
+        var vendor = data.vendor || v;
+        var href = /hoppenaar/i.test(vendor) ? '/collections/bieren-van-de-hoppenaar' : '/collections/vendors?q=' + encodeURIComponent(vendor);
+        link(td, href, 'Alle bieren van ' + vendor);
+      } else if (k === 'bierstijl') {
+        var s = lv.replace(/^(barrel aged|alcoholvrije|freeze-distilled)\s+/g, '').replace(/^(barrel aged|alcoholvrije|freeze-distilled)\s+/g, '');
+        if (/^alcoholvrij/.test(lv)) s = 'alcoholvrij bier';
+        if (STIJL[s]) link(td, '/collections/' + STIJL[s], 'Meer ' + v);
+      } else if (k === 'land') {
+        if (LAND[lv]) link(td, '/collections/' + LAND[lv], 'Bieren uit ' + v);
+      } else if (k.indexOf('vatgerijpt') === 0) {
+        if (lv === 'ja') link(td, '/collections/barrel-aged', 'Alle barrel aged bieren');
+      } else if (k === 'jaargang') {
+        if (data.vintage) link(td, '/collections/vintage-bieren', 'Alle vintage bieren');
+      } else if (k === 'serie') {
+        if (/bourbon county/i.test(v)) link(td, '/collections/bourbon-countys', 'Alle Bourbon County-bieren');
+      }
+    });
+
+    var LIMIT = 5;
+    if (rows.length <= LIMIT) return;
+    rows.slice(LIMIT).forEach(function (tr) { tr.classList.add('hp-spec-hidden'); });
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'hp-toggle-more'; btn.setAttribute('aria-expanded', 'false');
+    var extra = rows.length - LIMIT;
+    function label(open) { btn.innerHTML = '<span>' + (open ? 'Bekijk minder' : 'Bekijk meer (' + extra + ')') + '</span>' + CHEV; }
+    label(false);
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      rows.slice(LIMIT).forEach(function (tr) { tr.classList.toggle('hp-spec-hidden', !open); });
+      label(open);
+    });
+    if (holder) holder.classList.add('hp-spec-holder'); table.classList.add('hp-spec-holder');
+    (holder || table).insertAdjacentElement('afterend', btn);
+  }
+
+  /* ---------- Inklapbare secties ---------- */
+  var DICHT = /^(over de stijl|over (?!dit bier)|serveren en bewaren)/i;
+  function isLosseRegel(el) {
+    /* Untappd-link en statiegeldregel blijven altijd zichtbaar */
+    return el.tagName === 'P' && (/untappd/i.test(el.textContent) || /statiegeld/i.test(el.textContent));
+  }
+
+  function enhanceDescription(rte) {
+    if (rte.dataset.hpUx) return; rte.dataset.hpUx = '1';
+    var h2s = Array.prototype.slice.call(rte.querySelectorAll(':scope > h2'));
+    h2s.forEach(function (h, i) {
+      var t = h.textContent.trim();
+      if (/^specificaties$/i.test(t)) {
+        var n = h.nextElementSibling;
+        while (n && n.tagName !== 'H2') {
+          var tbl = n.tagName === 'TABLE' ? n : n.querySelector('table');
+          if (tbl) { enhanceSpecs(tbl, n); break; }
+          n = n.nextElementSibling;
+        }
+        return;
+      }
+      if (!DICHT.test(t)) return;
+      var wrap = document.createElement('div'); wrap.className = 'hp-acc';
+      var body = document.createElement('div'); body.className = 'hp-acc__body'; body.hidden = true;
+      var id = 'hp-acc-' + i; body.id = id;
+      var n2 = h.nextElementSibling, parts = [];
+      while (n2 && n2.tagName !== 'H2' && !isLosseRegel(n2)) { parts.push(n2); n2 = n2.nextElementSibling; }
+      h.parentNode.insertBefore(wrap, h);
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'hp-acc__btn';
+      btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', id);
+      btn.innerHTML = '<span>' + h.innerHTML + '</span>' + CHEV.replace('<svg ', '<svg class="hp-acc__chev" ');
+      h.innerHTML = ''; h.classList.add('hp-acc__head'); h.appendChild(btn);
+      wrap.appendChild(h); wrap.appendChild(body);
+      parts.forEach(function (p) { body.appendChild(p); });
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open)); body.hidden = !open;
+      });
+    });
+    /* scheidingslijn onder de laatste inklapbare sectie */
+    var accs = rte.querySelectorAll(':scope > .hp-acc');
+    if (accs.length) { var last = accs[accs.length - 1].nextElementSibling; if (last) last.classList.add('hp-acc-end'); }
+  }
+
+  /* ---------- Sticky koopbalk ---------- */
+  function initBuybar() {
+    var bar = document.getElementById('hp-buybar');
+    var form = document.querySelector('.product-single__box form[action*="/cart/add"]') || document.querySelector('form[action*="/cart/add"]');
+    if (!bar || !form) return;
+    var addBtn = form.querySelector('[name="add"], [type="submit"]');
+    var block = form.closest('.product-single__box__block') || form;
+    var qtyOrig = document.querySelector('.product-single__box input[name="quantity"]') || form.querySelector('input[name="quantity"]');
+    var barAdd = bar.querySelector('.hp-buybar__add');
+    var qtyWrap = bar.querySelector('.hp-buybar__qty');
+    /* het zichtbare (schuivende) deel van de header; die schuift weg bij omlaag scrollen */
+    var headerEl = document.querySelector('.js-header') || document.querySelector('header-container');
+    document.body.appendChild(bar); /* buiten de (geanimeerde/sticky) productkolom */
+    bar.hidden = false;
+
+    /* aantal-kiezer: kopie van die van de pagina zelf, zodat de stijl gelijk is */
+    var qtyBar = null;
+    var origQtyBox = document.querySelector('.product-single__box .product-form__qty-input');
+    if (origQtyBox && qtyOrig) {
+      var clone = origQtyBox.cloneNode(true);
+      qtyBar = clone.querySelector('input');
+      ['id', 'name', 'form'].forEach(function (a) { qtyBar.removeAttribute(a); });
+      qtyBar.setAttribute('aria-label', 'Hoeveelheid');
+      qtyWrap.appendChild(clone);
+    } else {
+      qtyWrap.remove();
+    }
+
+    function headerBottom() {
+      if (!headerEl) return 0;
+      return Math.max(0, Math.round(headerEl.getBoundingClientRect().bottom));
+    }
+    function syncBtn() {
+      if (!addBtn) return;
+      barAdd.disabled = addBtn.disabled;
+      barAdd.textContent = addBtn.disabled ? 'Uitverkocht' : 'In winkelwagen';
+    }
+    var lastTop = -1;
+    function update() {
+      var top = headerBottom();
+      if (top !== lastTop) { bar.style.setProperty('--hp-buybar-top', top + 'px'); lastTop = top; }
+      var past = block.getBoundingClientRect().bottom < top + 4;
+      if (bar.classList.contains('is-visible') !== past) {
+        bar.classList.toggle('is-visible', past);
+        bar.setAttribute('aria-hidden', String(!past));
+      }
+    }
+    /* de header schuift met een animatie in/uit: tot even na het scrollen elk frame meten */
+    var until = 0, running = false;
+    function loop() {
+      update();
+      if (performance.now() < until) requestAnimationFrame(loop); else running = false;
+    }
+    function kick() { until = performance.now() + 700; if (!running) { running = true; requestAnimationFrame(loop); } }
+    window.addEventListener('scroll', kick, { passive: true });
+    window.addEventListener('resize', kick);
+    if (headerEl) headerEl.addEventListener('transitionend', kick);
+
+    /* aantal synchroniseren in beide richtingen */
+    function toOrig() {
+      if (!qtyBar || !qtyOrig) return;
+      var v = Math.max(1, parseInt(qtyBar.value, 10) || 1);
+      if (String(qtyOrig.value) !== String(v)) {
+        qtyOrig.value = v;
+        qtyOrig.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+    if (qtyBar && qtyOrig) {
+      qtyBar.value = qtyOrig.value || 1;
+      qtyBar.addEventListener('change', toOrig);
+      qtyBar.addEventListener('input', toOrig);
+      qtyWrap.addEventListener('click', function () { setTimeout(toOrig, 0); });
+      qtyOrig.addEventListener('change', function () { qtyBar.value = qtyOrig.value; });
+      qtyOrig.addEventListener('input', function () { qtyBar.value = qtyOrig.value; });
+    }
+    /* klik = originele knop, zodat het thema alles afhandelt (statiegeld, limieten, drawer) */
+    barAdd.addEventListener('click', function () {
+      toOrig();
+      if (addBtn && !addBtn.disabled) addBtn.click();
+    });
+    if (addBtn) new MutationObserver(syncBtn).observe(addBtn, { attributes: true, childList: true, subtree: true, characterData: true });
+    syncBtn(); kick();
+  }
+
+  function init() {
+    document.querySelectorAll('.product-single__box__block--description .rte').forEach(enhanceDescription);
+    initBuybar();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+
+    </div><div
         class="product-single__box__block product-single__box__block--description"
         
       >
@@ -4142,10 +4473,7 @@ Eenheidsprijs:&nbsp;<unit-price class="money"></unit-price><span aria-hidden="tr
 
 </div>
       
-</div><div
-      class="product-single__box__block product-single__box__block--@app"
-      
-    ><!-- Failed to render app block "avada_order_limits_app_block_ynYJpd": app block path "shopify://apps/avada-order-limits/blocks/app-block/d3021427-4f7b-49c8-8963-29d1d52b8956" does not exist --></div></div></sticky-scroll>
+</div></div></sticky-scroll>
               <script src="//www.hoppenaar.nl/cdn/shop/t/17/assets/sticky-scroll.js?v=31610194368136171281763668251" type="module"></script></div>
 
           <div
