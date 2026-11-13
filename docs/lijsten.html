@@ -2,7 +2,6 @@
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lijsten inlezen</title>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
 <style>
 :root { --groen:#1f4e44; --gehad:#d6f0d8; --wens:#fdf0c8; }
 * { box-sizing:border-box; }
@@ -34,6 +33,14 @@ button:disabled { opacity:.5; cursor:default; }
 .doel-gehad { background:var(--gehad); }
 .doel-wens { background:var(--wens); }
 .zoekresultaten { margin-top:6px; }
+/* wisknop (kruisje) in zoekvelden */
+.wisveld { position:relative; display:block; }
+.wisveld input { padding-right:46px !important; }
+.wisknop { position:absolute; right:7px; top:50%; transform:translateY(-50%); width:32px; height:32px;
+           border:0; border-radius:50%; background:#b9b9b4; color:#fff; font-size:20px; line-height:30px;
+           padding:0; margin:0; display:none; cursor:pointer; -webkit-appearance:none; }
+.wisveld.gevuld .wisknop { display:block; }
+input[type=search]::-webkit-search-cancel-button { -webkit-appearance:none; display:none; }
 .zoekrij { display:flex; justify-content:space-between; align-items:center; gap:8px;
            padding:8px 4px; border-bottom:1px solid #eee; font-size:.85rem; }
 .zoekrij .plus { background:var(--groen); color:#fff; border:none; border-radius:6px;
@@ -53,18 +60,19 @@ button:disabled { opacity:.5; cursor:default; }
 <main>
 
 <div class="kaart" id="overboekkaart" style="border:2px solid var(--groen)">
-  <h2>&#128260; Overboeken: voorraad &rarr; check-ins</h2>
-  <p class="mini">Opgedronken? Vink hieronder aan welke bieren uit je voorraad
-  (R &eacute;n H&amp;R samen) je gedronken hebt. Bij &#8220;overboeken&#8221;
-  worden ze toegevoegd aan je check-ins (groen) en meteen uit de voorraadlijst
-  gehaald. Werkt op mobiel; je GitHub-token moet ingesteld zijn.</p>
+  <h2>&#128260; Voorraad bijwerken: overboeken of verwijderen</h2>
+  <p class="mini">Vink hieronder bieren uit je voorraad aan (R &eacute;n H&amp;R samen).
+  <b>Overboeken</b> = opgedronken: ze gaan naar je check-ins (groen) en uit de voorraadlijst.
+  <b>Verwijderen</b> = alleen uit de voorraadlijst halen, zonder check-in (weggegeven,
+  verkeerd toegevoegd of de verkeerde variant). Werkt op mobiel; je GitHub-token moet ingesteld zijn.</p>
   <button class="grijs" onclick="laadOverboekLijst()">&#8635; Voorraadlijst laden</button>
   <span class="mini" id="overboekstatus" style="margin-left:8px"></span>
   <input id="overboekzoek" type="search" placeholder="Zoek in je voorraad&hellip;"
          oninput="toonOverboek()" autocomplete="off" style="margin-top:8px">
   <div id="overboekresultaten" class="zoekresultaten"></div>
   <div class="rij" style="margin-top:8px">
-    <button id="overboekknop" onclick="voerOverboekUit()" disabled>Vink bieren aan om over te boeken</button>
+    <button id="overboekknop" onclick="voerOverboekUit(false)" disabled>Vink bieren aan</button>
+    <button id="verwijderknop" class="grijs" onclick="voerOverboekUit(true)" disabled>Verwijderen uit voorraad</button>
   </div>
 </div>
 
@@ -77,30 +85,11 @@ button:disabled { opacity:.5; cursor:default; }
   <label class="keuze"><input type="radio" name="doel" value="voorraad_hr" onchange="zetDoel()">
     Voorraad H&amp;R <span style="background:var(--wens);padding:1px 8px;border-radius:4px">geel</span></label>
   <p class="mini">Elke lijst heeft een eigen bestand. Een CSV-upload vervangt
-  de hele lijst; losse bieren toevoegen (blok 2e) voegt juist toe.</p>
+  de hele lijst; losse bieren toevoegen (blok 2c) voegt juist toe.</p>
 </div>
 
 <div class="kaart">
-  <h2>2a. Schermopname (snelst voor lange lijsten)</h2>
-  <p class="mini">Maak op je telefoon een schermopname terwijl je <b>rustig</b> door je
-  Untappd-lijst scrollt. Laad die video hier; de pagina pakt er beeldjes uit en
-  leest de biernamen. Scroll niet te snel: ongeveer een half scherm per seconde
-  werkt het beste.</p>
-  <input type="file" accept="video/*" id="video" onchange="leesVideo(this.files[0])">
-  <div class="mini">Beeldje elke
-    <select id="interval"><option value="0.6">0,6 s</option><option value="1" selected>1 s</option>
-    <option value="1.5">1,5 s</option></select> seconde
-  </div>
-</div>
-
-<div class="kaart">
-  <h2>2b. Schermafbeeldingen</h2>
-  <p class="mini">Of kies een of meer screenshots tegelijk.</p>
-  <input type="file" accept="image/*" multiple id="fotos" onchange="leesFotos(this.files)">
-</div>
-
-<div class="kaart">
-  <h2>2c. Tekst plakken</h2>
+  <h2>2a. Tekst plakken</h2>
   <p class="mini">Eén bier per regel, het liefst als <i>Brouwerij - Biernaam</i>.
   Een CSV-export van Untappd mag ook.</p>
   <textarea id="plakveld" placeholder="Funky Fluid - Velvet"></textarea>
@@ -108,7 +97,7 @@ button:disabled { opacity:.5; cursor:default; }
 </div>
 
 <div class="kaart">
-  <h2>2d. CSV-bestand uploaden</h2>
+  <h2>2b. CSV-bestand uploaden</h2>
   <p class="mini">Heb je een CSV van de Untappd-extensie of een Untappd-export?
   Kies het bestand hieronder. De kolommen <i>beer_name/brewery_name</i> of
   <i>brouwerij_naam</i> worden automatisch gebruikt.</p>
@@ -117,7 +106,7 @@ button:disabled { opacity:.5; cursor:default; }
 </div>
 
 <div class="kaart">
-  <h2>2e. Zoeken &amp; losse bieren toevoegen (werkt op mobiel)</h2>
+  <h2>2c. Zoeken &amp; losse bieren toevoegen (werkt op mobiel)</h2>
   <p class="mini">Zoek in alle bieren die de scraper ooit heeft gezien en voeg
   er een toe aan de gekozen lijst. Zit een bier er niet bij (pre-order), tik
   dan rechtsboven op &#8220;handmatig&#8221; en voer het in als
@@ -138,23 +127,24 @@ button:disabled { opacity:.5; cursor:default; }
 
 <div class="kaart" id="resultaatkaart">
   <h2>4. Resultaat <span class="telling" id="telling"></span></h2>
-  <p class="mini">Controleer en verbeter gerust; OCR maakt soms fouten. Eén bier per regel.</p>
+  <p class="mini">Controleer en verbeter gerust. Eén bier per regel, als <i>Brouwerij - Biernaam</i>.</p>
   <textarea id="resultaat" placeholder="Hier verschijnen de gevonden bieren."></textarea>
   <div>
     <button onclick="opslaanInRepo('vervang')">&#128190; Opslaan in GitHub (vervang lijst)</button>
     <button onclick="opslaanInRepo('voegtoe')">&#10133; Toevoegen aan GitHub-lijst</button>
   </div>
   <div style="margin-top:6px">
-    <button class="grijs" onclick="bewaar()">Alleen in deze browser</button>
     <button class="grijs" onclick="kopieer()">Kopieer</button>
     <button class="grijs" onclick="download()">Download .txt</button>
     <button class="grijs" onclick="leeg()">Wissen</button>
   </div>
   <p class="mini" id="opslaguitleg"><b>Opslaan in GitHub</b> schrijft rechtstreeks naar het
   lijstbestand, dus het werkt op elk apparaat (ook mobiel) zodra je hier je GitHub-token hebt
-  ingesteld via het bieroverzicht &rarr; &#8220;Vververs nu&#8221;.
+  ingesteld via het bieroverzicht &rarr; &#128273; Token.
   <br>&#8226; <b>Vervang lijst</b>: voor een CSV-upload van je hele Untappd-lijst.
   <br>&#8226; <b>Toevoegen</b>: voor losse bieren uit de zoekfunctie; bestaande regels blijven staan.
+  <br>Upload je een check-in-CSV van de extensie, dan worden ook <b>je eigen cijfers</b> bewaard
+  (voor de smaakbonus op de voorpagina).
   <br>Na het opslaan de scraper draaien (of op de volgende run wachten) om de kleuren te zien.</p>
 </div>
 
@@ -176,6 +166,7 @@ function zetDoel(){
 var gevonden = {};       // herkende bieren (genormaliseerd)
 var onzeker = {};        // wel als bier herkend, maar niet in onze database
 var exacteSleutels = {}; // strikte sleutels (incl. cijfers) voor CSV-ontdubbeling
+var RATINGS = {};        // "Brouwerij - Bier" -> [eigen cijfer, stijl], uit de check-in-CSV
 var BEKEND = [];       // alle bieren die de scraper kent
 var INDEX = {};        // woord -> lijst met nummers uit BEKEND
 var bekendGeladen = false;
@@ -247,48 +238,6 @@ function voegBekendToe(treffer){
    datumregel. De twee regels daarboven zijn de biernaam en de brouwerij.
    Ruim geschreven, zodat OCR-typfouten ("Becordeling", "gadronken op")
    ook nog herkend worden. */
-var RE_ANKER = /(dronken\s*op|ordeling|rating|toegevoegd|checked\s*in|resultat)/i;
-var RE_STIJL = /\b(IPA|Stout|Sour|Porter|Lager|Pilsner|Pale Ale|Barleywine|Barley Wine|Mead|Mede|Gose|Saison|Wild Ale|Brown Ale|Red Ale|Witbier|Weizen|Quadrupel|Tripel|Dubbel|Cider|Smoothie)\b/i;
-function isAnker(r){
-  if(RE_ANKER.test(r)) return true;
-  return RE_STIJL.test(r) && r.trim().split(/\s+/).length <= 8;
-}
-/* Ziet dit eruit als een echte naam, of als OCR-gruis? */
-function isNaamachtig(t){
-  t = (t || "").trim();
-  if(t.length < 3 || t.length > 60) return false;
-  var letters = (t.match(/[a-zA-Z\u00C0-\u024F ]/g) || []).length;
-  if(letters / t.length < 0.65) return false;
-  var woorden = t.split(/\s+/).filter(function(w){ return /^[a-zA-Z\u00C0-\u024F]+$/.test(w); });
-  if(!woorden.length) return false;
-  var langste = 0;
-  woorden.forEach(function(w){ if(w.length > langste) langste = w.length; });
-  return langste >= 4;
-}
-
-function verwerkOcr(tekst){
-  var regels = tekst.split(/\r?\n/)
-    .map(function(r){ return r.replace(/[|_«»•©®]/g,' ').replace(/\s+/g,' ').trim(); })
-    .filter(function(r){ return r.length > 1; });
-  var nieuw = 0;
-  for(var i = 0; i < regels.length; i++){
-    if(!isAnker(regels[i]) || i < 2) continue;
-    var naam = regels[i-2], brouw = regels[i-1];
-    if(isAnker(naam) || isAnker(brouw)) continue;
-    if(!isNaamachtig(naam) || !isNaamachtig(brouw)) continue;
-
-    // eerst proberen te normaliseren tegen de bieren die we kennen
-    var treffer = bekendGeladen ? (zoekBier(brouw + " " + naam) || zoekBier(naam)) : null;
-    if(treffer){ if(voegBekendToe(treffer)) nieuw++; continue; }
-    // onbekend (bijv. een check-in uit 2024): bewaren als "controleren"
-    var regel = brouw + " - " + naam;
-    var sl = woorden(regel).join(' ');
-    if(sl && !gevonden[sl] && !onzeker[sl]){ onzeker[sl] = regel; nieuw++; }
-  }
-  toonResultaat();
-  return nieuw;
-}
-
 var SCHEIDING = "# --- hieronder niet in de database gevonden: controleer even ---";
 function toonResultaat(){
   var zeker = Object.keys(gevonden).sort().map(function(k){ return gevonden[k]; });
@@ -310,59 +259,6 @@ function toonTelling(){
 }
 function status(t){ document.getElementById('status').textContent = t; }
 function balk(p){ document.getElementById('balk').style.width = Math.round(p*100) + "%"; }
-
-/* ---------- OCR ---------- */
-async function ocr(bron){
-  var res = await Tesseract.recognize(bron, 'eng');
-  return res.data.text || "";
-}
-function tekenOpCanvas(bron, breedte, hoogte){
-  var c = document.createElement('canvas');
-  var schaal = Math.min(1, 1100 / breedte);
-  c.width = Math.round(breedte * schaal); c.height = Math.round(hoogte * schaal);
-  var ctx = c.getContext('2d');
-  ctx.drawImage(bron, 0, 0, c.width, c.height);
-  return c;
-}
-
-async function leesVideo(bestand){
-  if(!bestand) return;
-  var video = document.createElement('video');
-  video.muted = true; video.playsInline = true;
-  video.src = URL.createObjectURL(bestand);
-  status("Video laden...");
-  await new Promise(function(r){ video.onloadedmetadata = r; });
-  var stap = parseFloat(document.getElementById('interval').value) || 1;
-  var duur = video.duration || 0;
-  var totaal = Math.min(Math.ceil(duur / stap), 150);
-  var nieuw = 0;
-  for(var i = 0; i < totaal; i++){
-    var t = i * stap;
-    video.currentTime = Math.min(t, Math.max(0, duur - 0.05));
-    await new Promise(function(r){ video.onseeked = r; });
-    var c = tekenOpCanvas(video, video.videoWidth, video.videoHeight);
-    status("Beeldje " + (i+1) + " van " + totaal + " lezen... (" +
-           (Object.keys(gevonden).length + Object.keys(onzeker).length) + " bieren)");
-    balk((i+1) / totaal);
-    try { nieuw += verwerkOcr(await ocr(c)); } catch(e){ }
-  }
-  balk(1);
-  status("Klaar. " + Object.keys(gevonden).length + " herkend, " +
-         Object.keys(onzeker).length + " te controleren.");
-  URL.revokeObjectURL(video.src);
-}
-
-async function leesFotos(bestanden){
-  if(!bestanden || !bestanden.length) return;
-  for(var i = 0; i < bestanden.length; i++){
-    status("Afbeelding " + (i+1) + " van " + bestanden.length + " lezen...");
-    balk((i+1) / bestanden.length);
-    try { verwerkOcr(await ocr(bestanden[i])); } catch(e){ }
-  }
-  balk(1);
-  status("Klaar. " + Object.keys(gevonden).length + " herkend, " +
-         Object.keys(onzeker).length + " te controleren.");
-}
 
 function leesPlak(){
   var n = verwerkTekst(document.getElementById('plakveld').value || "");
@@ -425,12 +321,21 @@ function verwerkTekst(tekst){
   if(kop.indexOf(';') >= 0 &&
      (kop.indexOf('beer_name') >= 0 || kop.indexOf('brouwerij_naam') >= 0
       || kop.indexOf('brouwerij') >= 0)){
-    var kolommen = splitsCsv(regels[0]).map(function(k){ return k.toLowerCase(); });
-    var iCombi = kolommen.indexOf('brouwerij_naam');
-    var iB = kolommen.indexOf('beer_name');
-    if(iB < 0) iB = kolommen.indexOf('naam');
-    var iBr = kolommen.indexOf('brewery_name');
-    if(iBr < 0) iBr = kolommen.indexOf('brouwerij');
+    // Let op: bij het inlezen worden onderstrepingstekens spaties, dus kolom
+    // "eigen_rating" komt binnen als "eigen rating". Beide vormen herkennen.
+    var kolommen = splitsCsv(regels[0]).map(function(k){ return k.toLowerCase().replace(/[_\s]+/g, ' ').trim(); });
+    function kol(){
+      for(var a = 0; a < arguments.length; a++){
+        var i = kolommen.indexOf(arguments[a].replace(/_/g, ' '));
+        if(i >= 0) return i;
+      }
+      return -1;
+    }
+    var iCombi = kol('brouwerij_naam');
+    var iB = kol('beer_name', 'naam');
+    var iBr = kol('brewery_name', 'brouwerij');
+    var iCijfer = kol('eigen_rating', 'rating_score');
+    var iStijl = kol('stijl', 'beer_type');
     regels.slice(1).forEach(function(r){
       var v = splitsCsv(r);
       var regel;
@@ -439,6 +344,9 @@ function verwerkTekst(tekst){
                       .replace(/^\s*-\s*|\s*-\s*$/g,"")).trim(); }
       if(!regel) return;
       bewaarExact(regel);
+      // eigen Untappd-cijfer onthouden (alleen als je het bier echt beoordeeld hebt)
+      var cijfer = iCijfer >= 0 ? parseFloat(String(v[iCijfer] || "").replace(",", ".")) : NaN;
+      if(cijfer > 0 && cijfer <= 5){ RATINGS[schoon(regel)] = [cijfer, iStijl >= 0 ? (v[iStijl] || "") : ""]; }
     });
   } else {
     regels.forEach(function(r){ bewaarExact(r); });
@@ -471,23 +379,6 @@ function huidigeLijst(){
     .split(/\r?\n/).map(function(r){ return r.trim(); })
     .filter(function(r){ return r.length > 2 && r.charAt(0) !== "#"; });
 }
-function bewaar(){
-  var sleutel = { had: "untappd_had", voorraad_r: "untappd_voorraad_r",
-                  voorraad_hr: "untappd_voorraad_hr" }[doel] || "untappd_wens";
-  var items = huidigeLijst().map(function(r){
-    var d = r.split(/\s+-\s+/);
-    var brouw = d.length === 2 ? d[0] : "", naam = d.length === 2 ? d[1] : r;
-    return { vol: sleutelVan(brouw + " " + naam), naam: sleutelVan(naam) };
-  });
-  try {
-    var bestaand = JSON.parse(localStorage.getItem(sleutel) || "[]");
-    var samen = bestaand.concat(items), uniek = {}, uit = [];
-    samen.forEach(function(e){ if(e.vol && !uniek[e.vol]){ uniek[e.vol] = 1; uit.push(e); } });
-    localStorage.setItem(sleutel, JSON.stringify(uit));
-    status("Opgeslagen: " + uit.length + " bieren onder '" +
-           DOELLABEL[doel] + "'. Open het overzicht om ze te zien.");
-  } catch(e){ status("Opslaan mislukt (opslag vol of geblokkeerd)."); }
-}
 function kopieer(){
   var t = document.getElementById('resultaat');
   t.select(); t.setSelectionRange(0, 999999);
@@ -502,6 +393,7 @@ function download(){
   status("Gedownload als " + naam + ". Upload dit bestand naar mijn_untappd/ in je repository.");
 }
 function leeg(){
+  RATINGS = {};
   gevonden = {}; onzeker = {}; exacteSleutels = {}; toonResultaat(); balk(0); status("Lijst gewist.");
 }
 /* ============ zoeken in de database + losse bieren toevoegen ============ */
@@ -653,26 +545,31 @@ function toonOverboek(){
 function kiesOverboek(cb){ if(OVERBOEK[cb.value]) OVERBOEK[cb.value].gekozen = cb.checked; telOverboek(); }
 function telOverboek(){
   var n = Object.keys(OVERBOEK).filter(function(k){ return OVERBOEK[k].gekozen; }).length;
-  document.getElementById('overboekknop').textContent =
-    n ? "\u2713 " + n + " bier(en) overboeken naar check-ins" : "Vink bieren aan om over te boeken";
-  document.getElementById('overboekknop').disabled = (n === 0);
+  var a = document.getElementById('overboekknop'), v = document.getElementById('verwijderknop');
+  a.textContent = n ? "\u2713 " + n + " bier(en) overboeken naar check-ins" : "Vink bieren aan";
+  v.textContent = n ? "\u2715 " + n + " verwijderen uit voorraad (niet gedronken)" : "Verwijderen uit voorraad";
+  a.disabled = v.disabled = (n === 0);
 }
 
-async function voerOverboekUit(){
+async function voerOverboekUit(alleenVerwijderen){
   var token = ghToken();
   if(!token){ alert("Geen GitHub-token. Stel het in via het bieroverzicht \u2192 Token."); return; }
   var gekozen = Object.keys(OVERBOEK).filter(function(k){ return OVERBOEK[k].gekozen; });
   if(!gekozen.length) return;
+  if(alleenVerwijderen && !confirm(gekozen.length + " bier(en) uit je voorraad verwijderen ZONDER ze als "
+      + "gedronken te noteren?")) return;
 
   var status2 = document.getElementById('overboekstatus');
-  status2.textContent = "Overboeken\u2026";
+  status2.textContent = alleenVerwijderen ? "Verwijderen\u2026" : "Overboeken\u2026";
   try {
-    // 1) toevoegen aan check-ins (gehad.txt)
-    var gehad = await ghLeesBestand("gehad.txt", token);
-    var zien = {};
-    gehad.regels.forEach(function(r){ if(r.trim() && r.indexOf('#')!==0) zien[strikteSleutel(r)] = 1; });
-    gekozen.forEach(function(sl){ if(!zien[sl]){ gehad.regels.push(OVERBOEK[sl].regel); zien[sl] = 1; } });
-    await ghSchrijfBestand("gehad.txt", gehad.regels, gehad.sha, token, DOELLABEL.had);
+    // 1) toevoegen aan check-ins (gehad.txt) -- niet bij alleen verwijderen
+    if(!alleenVerwijderen){
+      var gehad = await ghLeesBestand("gehad.txt", token);
+      var zien = {};
+      gehad.regels.forEach(function(r){ if(r.trim() && r.indexOf('#')!==0) zien[strikteSleutel(r)] = 1; });
+      gekozen.forEach(function(sl){ if(!zien[sl]){ gehad.regels.push(OVERBOEK[sl].regel); zien[sl] = 1; } });
+      await ghSchrijfBestand("gehad.txt", gehad.regels, gehad.sha, token, DOELLABEL.had);
+    }
 
     // 2) verwijderen uit de voorraadlijst(en) waar ze vandaan komen
     var perBron = { voorraad_r: [], voorraad_hr: [] };
@@ -688,14 +585,36 @@ async function voerOverboekUit(){
       await ghSchrijfBestand(bron + ".txt", over, vb.sha, token,
                              bron === "voorraad_r" ? "voorraad R" : "voorraad H&R");
     }
-    status2.textContent = gekozen.length + " bier(en) overgeboekt naar check-ins. "
-      + "Draai de scraper of wacht op de volgende run; ze worden dan groen.";
+    status2.textContent = alleenVerwijderen
+      ? gekozen.length + " bier(en) uit je voorraad verwijderen gelukt."
+      : gekozen.length + " bier(en) overgeboekt naar check-ins. "
+        + "Draai de scraper of wacht op de volgende run; ze worden dan groen.";
     // lijst opnieuw laden zodat de overgeboekte bieren verdwijnen
     setTimeout(laadOverboekLijst, 1500);
   } catch(e){
     if(e.message === "token"){ alert("Token afgewezen. Heeft het Contents: Read and write?"); }
     status2.textContent = "Overboeken mislukt: " + e.message;
   }
+}
+
+/* Eigen cijfers samenvoegen met wat er al stond en wegschrijven als JSON. */
+async function bewaarRatings(token){
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PAD + "mijn_ratings.json";
+  var bestaand = {}, sha = null;
+  var r = await fetch(api, { headers: ghHeaders(token) });
+  if(r.status === 200){
+    var d = await r.json(); sha = d.sha;
+    try { bestaand = JSON.parse(decodeURIComponent(escape(atob(d.content.replace(/\s/g,''))))) || {}; } catch(e){ bestaand = {}; }
+  } else if(r.status !== 404){ throw new Error("lezen (" + r.status + ")"); }
+  for(var regel in RATINGS){ bestaand[regel] = RATINGS[regel]; }
+  var gesorteerd = {};
+  Object.keys(bestaand).sort(alfabetisch).forEach(function(k){ gesorteerd[k] = bestaand[k]; });
+  var body = { message: "Eigen Untappd-cijfers bijgewerkt (" + Object.keys(gesorteerd).length + ")",
+               content: btoa(unescape(encodeURIComponent(JSON.stringify(gesorteerd, null, 0).replace(/\],"/g, '],\n"') + "\n"))) };
+  if(sha) body.sha = sha;
+  var pr = await fetch(api, { method:"PUT", headers: ghHeaders(token), body: JSON.stringify(body) });
+  if(pr.status !== 200 && pr.status !== 201) throw new Error("schrijven (" + pr.status + ")");
+  return Object.keys(gesorteerd).length;
 }
 
 async function opslaanInRepo(modus){
@@ -760,8 +679,13 @@ async function opslaanInRepo(modus){
   try {
     var pr = await fetch(api, { method:"PUT", headers: headers, body: JSON.stringify(body) });
     if(pr.status === 200 || pr.status === 201){
-      status("Opgeslagen in " + bestand + " (" + eindlijst.length + " bieren). "
-        + "Draai de scraper of wacht op de volgende run om de kleuren te zien.");
+      var extra = "";
+      if(doel === "had" && Object.keys(RATINGS).length){
+        try { extra = " " + (await bewaarRatings(token)) + " eigen cijfers bewaard."; }
+        catch(e2){ extra = " (Eigen cijfers bewaren mislukt: " + e2.message + ")"; }
+      }
+      status("Opgeslagen in " + bestand + " (" + eindlijst.length + " bieren)." + extra
+        + " Draai de scraper of wacht op de volgende run om de kleuren te zien.");
     } else if(pr.status === 401 || pr.status === 403){
       alert("Token afgewezen. Controleer of het token schrijfrechten (Contents: Read and write) heeft.");
       status("Opslaan mislukt: token.");
@@ -772,6 +696,28 @@ async function opslaanInRepo(modus){
 }
 
 zetDoel();
+// Kruisje in elk zoekveld om de zoekopdracht in één tik te wissen.
+function maakWisknoppen(){
+  document.querySelectorAll('input[type=search]').forEach(function(inp){
+    if(inp.parentNode.classList.contains('wisveld')) return;
+    var w = document.createElement('span'); w.className = 'wisveld';
+    inp.parentNode.insertBefore(w, inp); w.appendChild(inp);
+    var k = document.createElement('button');
+    k.type = 'button'; k.className = 'wisknop'; k.innerHTML = '&times;';
+    k.setAttribute('aria-label', 'Zoekopdracht wissen');
+    w.appendChild(k);
+    function bij(){ w.classList.toggle('gevuld', inp.value.length > 0); }
+    inp.addEventListener('input', bij);
+    k.addEventListener('click', function(){
+      inp.value = ''; bij();
+      inp.dispatchEvent(new Event('input', {bubbles:true}));
+      inp.focus();
+    });
+    bij();
+  });
+}
+maakWisknoppen();
+
 laadBekend();
 </script>
 </body></html>
