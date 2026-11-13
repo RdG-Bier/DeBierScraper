@@ -3,17 +3,15 @@
 Combi-scraper: voegt een Untappd-venuepagina en een webshop van DEZELFDE winkel
 samen tot één lijst (gebruikt voor Beer Dudes).
 
-Waarom: de Untappd-pagina is rijk (score, aantal ratings, foto, stijl, prijs)
-maar toont zonder JavaScript alleen het eerste menu. De webshop toont juist het
-volledige assortiment, maar zonder Untappd-scores.
+De WEBSHOP is leidend: die bepaalt welke bieren er staan en wat ze kosten,
+want daar zie je wat er op dit moment echt te koop is. Het Untappd-menu loopt
+vaak achter en toont zonder JavaScript maar een deel. Het menu wordt daarom
+alleen gebruikt om webshop-bieren AAN TE VULLEN met wat Untappd beter weet:
+score, exacte stijl, brouwerij, ABV en etiket.
 
-Werkwijze:
-  1. Untappd-venue scrapen (bierbrigadier-scraper) -> rijke gegevens
-  2. Webshop scrapen (woocommerce-scraper)          -> volledig assortiment
-  3. Samenvoegen op naam: komt een bier in beide voor, dan wint Untappd en
-     vult de webshop alleen lege velden aan (foto, inhoud, link).
-     Bieren die alleen in de webshop staan, worden toegevoegd; hun score komt
-     later via de Untappd-lookup/database (zet "untappd_lookup": True).
+Bieren die alleen in de webshop staan, krijgen hun score later via de
+Untappd-lookup/database (zet "untappd_lookup": True).
+Levert de webshop niets op (storing), dan vallen we terug op het Untappd-menu.
 
 Config-velden: "menu_url" (Untappd-venue) en "api_url" (WooCommerce Store API).
 """
@@ -41,8 +39,7 @@ def _zelfde_bier(a, b):
 
 
 def scrape(site):
-    untappd = []
-    shop = []
+    untappd, shop = [], []
     if site.get("menu_url"):
         try:
             untappd = bierbrigadier.scrape(site)
@@ -54,24 +51,30 @@ def scrape(site):
         except Exception:
             log.exception("%s: webshop-deel mislukt", site["label"])
 
-    resultaat = list(untappd)
-    exact = {utils.beer_match_key(b.get("brouwerij"), b.get("naam")): b for b in untappd}
-    aangevuld = toegevoegd = 0
+    if not shop:
+        log.warning("%s: webshop leverde niets op; terugval op het Untappd-menu (%d bieren)",
+                    site["label"], len(untappd))
+        return untappd
+
+    exact = {utils.beer_match_key(u.get("brouwerij"), u.get("naam")): u for u in untappd}
+    aangevuld = 0
     for w in shop:
         sleutel = utils.beer_match_key(w.get("brouwerij"), w.get("naam"))
-        match = exact.get(sleutel)
-        if match is None:
-            match = next((u for u in untappd if _zelfde_bier(u, w)), None)
-        if match is not None:
-            # Untappd wint; webshop vult alleen lege velden aan
-            for veld in ("afbeelding", "inhoud_cl", "land", "prijs"):
-                if not match.get(veld) and w.get(veld):
-                    match[veld] = w[veld]
-            aangevuld += 1
-        else:
-            resultaat.append(w)
-            toegevoegd += 1
+        u = exact.get(sleutel) or next((x for x in untappd if _zelfde_bier(x, w)), None)
+        if u is None:
+            continue
+        aangevuld += 1
+        # wat Untappd beter weet, overnemen; prijs, link en inhoud blijven van de webshop
+        for veld in ("untappd", "untappd_aantal"):
+            if u.get(veld) is not None:
+                w[veld] = u[veld]
+        if u.get("stijl"):
+            w["stijl"], w["stijl_ruw"] = u["stijl"], u.get("stijl_ruw") or u["stijl"]
+            w["sterke_voorkeur"] = u.get("sterke_voorkeur", False)
+        for veld in ("brouwerij", "abv", "afbeelding", "land", "inhoud_cl"):
+            if not w.get(veld) and u.get(veld):
+                w[veld] = u[veld]
 
-    log.info("%s: %d van Untappd, %d uit webshop (%d aangevuld, %d extra) -> %d totaal",
-             site["label"], len(untappd), len(shop), aangevuld, toegevoegd, len(resultaat))
-    return resultaat
+    log.info("%s: %d bieren uit de webshop, waarvan %d aangevuld vanuit het Untappd-menu (%d items)",
+             site["label"], len(shop), aangevuld, len(untappd))
+    return shop

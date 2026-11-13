@@ -20,13 +20,16 @@ import excel_builder
 import html_builder
 import upload_pagina
 import hopsandhopes
-import lightspeed
 import shopify
 import woocommerce
 import bierloods22
 import bierbrigadier
 import drankgigant
 import untappd_lookup
+import bewaking
+import bronnen
+import onderweg
+import zelftest
 import combi
 import untappd_profiel
 import utils
@@ -34,7 +37,6 @@ import websearch
 
 SCRAPERS = {
     "shopify": shopify.scrape,
-    "lightspeed": lightspeed.scrape,
     "hopsandhopes": hopsandhopes.scrape,
     "woocommerce": woocommerce.scrape,
     "bierloods22": bierloods22.scrape,
@@ -69,6 +71,19 @@ def main():
                       ", ".join(s["key"] for s in config.SITES))
             sys.exit(1)
 
+    # Zelftest: controleert de scraper op opgeslagen echte voorbeelden. Bij een
+    # fout wordt er niet gepubliceerd; de vorige pagina blijft dan staan.
+    fouten = zelftest.draai()
+    if fouten:
+        for f in fouten:
+            log.error("ZELFTEST MISLUKT: %s", f)
+        if getattr(config, "ZELFTEST_BLOKKEERT", True):
+            log.error("Er wordt NIET gepubliceerd; de vorige pagina blijft staan. "
+                      "(Zet ZELFTEST_BLOKKEERT = False in config.py om toch door te gaan.)")
+            sys.exit(1)
+    else:
+        log.info("Zelftest geslaagd")
+
     overgeslagen = [s["label"] for s in sites if s.get("enabled") is False]
     if overgeslagen:
         log.info("Uitgeschakeld in config.py, wordt overgeslagen: %s",
@@ -76,6 +91,7 @@ def main():
     sites = [s for s in sites if s.get("enabled") is not False]
 
     all_beers = {}
+    status = bewaking.laad_status()
     for site in sites:
         log.info("=== %s ===", site["label"])
         try:
@@ -83,11 +99,17 @@ def main():
         except Exception:
             log.exception("Scrapen van %s mislukt; site wordt overgeslagen", site["label"])
             beers = []
+        # vangnet: bij 0 of een halvering de vorige gegevens aanhouden
+        beers, vangnet_actief = bewaking.controleer(site, beers, status)
         all_beers[site["key"]] = beers
-        # ruwe data ook als JSON bewaren, handig voor debugging/finetunen
-        raw_path = Path("docs") / f"raw_{site['key']}.json"
-        raw_path.parent.mkdir(exist_ok=True)
-        raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
+        # vastleggen wat de shop ZELF aanlevert (voor de legenda), vóór het aanvullen
+        site["_dekking"] = bronnen.dekking(beers)
+        # ruwe data ook als JSON bewaren, handig voor debugging/finetunen.
+        # Bij een actief vangnet NIET overschrijven: de vorige ronde blijft de maatstaf.
+        if not vangnet_actief:
+            raw_path = Path("docs") / f"raw_{site['key']}.json"
+            raw_path.parent.mkdir(exist_ok=True)
+            raw_path.write_text(json.dumps(beers, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # cadeau-/proef-/mixpakketten zijn geen individuele bieren: geen
     # Untappd-score mogelijk en niet zinvol in het overzicht -> weglaten
@@ -100,6 +122,10 @@ def main():
                      key, len(packs), packs[0].get("naam"))
 
     import scoring
+    n_br = scoring.vul_brouwerijen_aan(all_beers)
+    log.info("Brouwerij afgeleid uit de productnaam bij %d bieren", n_br)
+    # per shop bijhouden wat er wanneer gezien is (labels 'nieuw'/'prijs gedaald', Onderweg)
+    scoring.werk_historie_bij(all_beers)
     filled = scoring.enrich_untappd(all_beers)
     log.info("Untappd-scores geleend van andere shops: %d bieren aangevuld", filled)
 
@@ -172,6 +198,12 @@ def main():
     html_builder.build_html(all_beers, sites, docs / "index.html")
     upload_pagina.bouw(docs / "lijsten.html")
     upload_pagina.schrijf_bekende_bieren(all_beers, docs / "bekende_bieren.json")
+    try:
+        onderweg.schrijf_status()
+        onderweg.bouw(docs / "onderweg.html", sites)
+    except Exception:
+        log.exception("Onderweg-pagina bijwerken mislukt; de rest is wel gepubliceerd")
+    bewaking.bewaar_status(status)
 
     total = sum(len(v) for v in all_beers.values())
     log.info("Klaar: %d bieren -> %s en docs/index.html", total, out.resolve())

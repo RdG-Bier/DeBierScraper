@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v60"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v62"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -312,3 +312,43 @@ GITHUB_WORKFLOW = "main.yml"
 UNTAPPD_USER = "RdG-NL"
 UNTAPPD_VOORRAAD_LIJSTEN = ("Voorraad R", "Voorraad H & R")
 UNTAPPD_MAX_PAGINAS = 120   # 120 x 25 = tot 3000 bieren per lijst
+
+
+# ---------------------------------------------------------------------------
+# Labels "nieuw binnen" en "prijs gedaald" (dagen dat het label blijft staan)
+# ---------------------------------------------------------------------------
+NIEUW_DAGEN = 7
+PRIJSDALING_DAGEN = 7
+
+# ---------------------------------------------------------------------------
+# Je eigen Untappd-beoordelingen: gaf je een bier van dezelfde brouwerij in
+# dezelfde stijlfamilie (IPA / Stout / Sour / Mead) minstens 'vanaf', dan
+# krijgen andere bieren van die brouwerij in die familie bonuspunten:
+# 'punten' bij precies 'vanaf', oplopend tot 'punten_top' bij een 5.00.
+# ---------------------------------------------------------------------------
+EIGEN_RATING_BONUS = {"vanaf": 4.75, "punten": 5, "punten_top": 8}
+
+# ---------------------------------------------------------------------------
+# Onderweg-pagina: minimumbedrag voor gratis verzending per shop (in euro).
+# De Hopwinkel: 150 omdat pre-orders via WhatsApp lopen (normaal 75).
+# ---------------------------------------------------------------------------
+GRATIS_VERZENDING = {
+    "debiersalon": 75,
+    "bierloods22": 85,
+    "dehopwinkel": 150,
+}
+
+# ---------------------------------------------------------------------------
+# Vangnet: levert een shop ineens niets of minder dan de helft van de vorige
+# keer, dan blijven de vorige gegevens staan (met een waarschuwing op de
+# pagina). Na zoveel uur accepteren we de nieuwe situatie toch.
+# ---------------------------------------------------------------------------
+VANGNET_MAX_UREN = 72
+VANGNET_MIN_AANTAL = 20      # alleen bewaken als de shop er eerder minstens zoveel had
+
+# ---------------------------------------------------------------------------
+# Zelftest: voor elke run controleert de scraper zichzelf op opgeslagen echte
+# voorbeelden. True = bij een fout wordt er NIET gepubliceerd (de oude pagina
+# blijft staan). Zet op False om de test alleen te laten waarschuwen.
+# ---------------------------------------------------------------------------
+ZELFTEST_BLOKKEERT = True

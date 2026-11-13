@@ -102,6 +102,58 @@ def _voorraad_uit_json(data):
     return None
 
 
+def _verrijk_uit_json(b, data):
+    """De productdata die we voor de voorraad toch al ophalen, bevat ook
+    inhoud, ABV, land en vaak de exacte Untappd-stijl. Die nemen we over;
+    bestaande waarden worden alleen aangevuld of verfijnd, nooit leeggemaakt."""
+    if not isinstance(data, dict):
+        return
+    prod = data.get("product") if isinstance(data.get("product"), dict) else data
+    specs = prod.get("specs") if isinstance(prod.get("specs"), dict) else {}
+    for spec in specs.values():
+        if not isinstance(spec, dict):
+            continue
+        titel = str(spec.get("title") or "").strip(" :").lower()
+        waarde = str(spec.get("value") or "").strip()
+        if not waarde:
+            continue
+        if titel == "inhoud" and not b.get("inhoud_cl"):
+            b["inhoud_cl"] = utils.parse_volume_cl(waarde)
+        elif titel == "abv" and b.get("abv") is None:
+            b["abv"] = utils.parse_abv(waarde if "%" in waarde else waarde + "%")
+        elif titel == "land" and not b.get("land"):
+            b["land"] = utils.parse_country(waarde) or waarde
+        elif titel == "untappd" and b.get("untappd") is None:
+            try:
+                score = float(waarde.replace(",", "."))
+                if 0 < score <= 5:
+                    b["untappd"] = score
+            except ValueError:
+                pass
+        elif titel == "stijl":
+            _verfijn_stijl(b, waarde)
+    # exacte stijl staat meestal in de omschrijving: "Brouwerij | Stout - Imperial / Double Pastry"
+    tekst = BeautifulSoup(str(prod.get("content") or ""), "html.parser").get_text(" ", strip=True)
+    if "|" in tekst:
+        _verfijn_stijl(b, tekst.rsplit("|", 1)[1].strip())
+
+
+def _verfijn_stijl(b, ruwe_stijl):
+    """Neemt een exactere stijl over, maar alleen binnen dezelfde familie
+    (een 'Stout' wordt geen 'IPA' door een fout in de omschrijving)."""
+    if not ruwe_stijl or len(ruwe_stijl) > 60:
+        return
+    canon, sterk = utils.match_style(ruwe_stijl)
+    if not canon or canon not in config.STYLES:
+        return
+    huidig = b.get("stijl") or ""
+    familie = lambda s: s.split(" - ")[0].split()[0].lower() if s else ""
+    if huidig and familie(huidig) != familie(canon):
+        return
+    if len(canon) >= len(huidig):
+        b["stijl"], b["stijl_ruw"], b["sterke_voorkeur"] = canon, ruwe_stijl, sterk
+
+
 def _filter_uitverkocht(beers):
     over, weg, onbekend = [], 0, 0
     for i, b in enumerate(beers):
@@ -115,6 +167,7 @@ def _filter_uitverkocht(beers):
             continue
         if status is None:
             onbekend += 1
+        _verrijk_uit_json(b, data)
         over.append(b)
     log.info("Bierloods22: %d uitverkocht weggelaten, %d op voorraad, %d onbekend (behouden)",
              weg, len(over) - onbekend, onbekend)

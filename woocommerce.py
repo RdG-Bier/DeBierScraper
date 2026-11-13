@@ -107,6 +107,7 @@ def _parse_product(p, site, detail_count):
     brands = p.get("brands") or []
     if brands and isinstance(brands, list):
         brewery = brands[0].get("name") if isinstance(brands[0], dict) else str(brands[0])
+    brewery, country = _brouwerij_en_land(p, name, brewery, country)
 
     # --- fallback: productpagina lezen voor untappd/brouwerij ---
     if FETCH_DETAIL_FALLBACK and untappd is None and detail_count[0] < MAX_DETAIL_FETCHES:
@@ -148,6 +149,35 @@ def _parse_product(p, site, detail_count):
         "prijs": price,
         "weblink": url,
     }
+
+
+def _brouwerij_en_land(p, name, brewery, country):
+    """Brouwerij (en land) uit de productgegevens halen als 'brands' leeg is:
+    1. productkenmerk 'Brouwer'/'Brouwerij' (Beer Dudes vult dat in)
+    2. het deel van de naam vóór een streepje ("Factory Brewing – Solitary
+       Motion", zo schrijft De Hopwinkel het)"""
+    for attr in (p.get("attributes") or []):
+        soort = (attr.get("name") or "").strip().lower()
+        termen = [t.get("name") for t in (attr.get("terms") or []) if t.get("name")]
+        if not termen:
+            continue
+        if not brewery and soort in ("brouwer", "brouwerij", "brewery", "merk", "brand"):
+            brewery = termen[0].strip()
+        elif not country and soort == "land":
+            country = utils.parse_country(termen[0]) or termen[0].strip()
+    if brewery:
+        # schrijfwijze uit de productnaam overnemen ("De kromme haring" ->
+        # "De Kromme Haring") als de naam ermee begint
+        if name.lower().startswith(brewery.lower()):
+            brewery = name[:len(brewery)]
+        return brewery, country
+    # scheidingsteken: gedachtestreepje of |, of een koppelteken met aan minstens
+    # één kant een spatie ("Messorem -Temporalis", "Co.- Chasm"); een koppelteken
+    # zonder spaties hoort bij de naam zelf ("Bas-Canada")
+    m = re.match(r"^(.{2,60}?)(?:\s*[\u2013\u2014|]\s*|\s+-\s*|\s*-\s+)(\S.*)$", name)
+    if m:
+        brewery = m.group(1).strip()
+    return brewery, country
 
 
 def _clean_name(name, brewery):

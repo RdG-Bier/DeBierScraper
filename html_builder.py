@@ -9,6 +9,7 @@ import datetime
 import html
 import logging
 
+import bronnen
 import config
 import scoring
 
@@ -48,6 +49,23 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
 .paneel { display:none; background:#fff; border-bottom:1px solid #ddd; padding:12px 14px;
           font-size:.82rem; }
 .paneel.open { display:block; }
+/* legenda */
+.leg-cat { border-top:1px solid #e4e4e0; padding:10px 0 4px; }
+.leg-kop { font-weight:700; font-size:.88rem; }
+.leg-nr { display:inline-block; min-width:1.5em; height:1.5em; line-height:1.5em; text-align:center;
+          border-radius:50%; background:var(--groen); color:#fff; font-size:.75rem; margin-right:4px; }
+.leg-shops { color:#555; font-size:.8rem; margin:2px 0 4px; }
+.leg-cat ul { margin:4px 0 6px; padding-left:18px; }
+.leg-cat li { margin:3px 0; line-height:1.4; }
+.leg-shop { margin:4px 0; color:#444; font-size:.78rem; line-height:1.4; }
+/* wisknop (kruisje) in zoekvelden */
+.wisveld { position:relative; display:block; }
+.wisveld input { padding-right:46px !important; }
+.wisknop { position:absolute; right:7px; top:50%; transform:translateY(-50%); width:32px; height:32px;
+           border:0; border-radius:50%; background:#b9b9b4; color:#fff; font-size:20px; line-height:30px;
+           padding:0; margin:0; display:none; cursor:pointer; -webkit-appearance:none; }
+.wisveld.gevuld .wisknop { display:block; }
+input[type=search]::-webkit-search-cancel-button { -webkit-appearance:none; display:none; }
 .paneel h4 { margin:0 0 6px; font-size:.85rem; }
 .paneel label { display:inline-flex; align-items:center; gap:6px; margin:3px 10px 3px 0; }
 .paneel select, .paneel textarea { width:100%; padding:8px 10px; border:1px solid #ccc;
@@ -85,6 +103,18 @@ header .sub { font-size:.72rem; opacity:.85; margin-top:2px; }
 .badge.own { background:var(--groen); color:#fff; font-weight:600; }
 .badge.hoger { background:var(--rood); }
 .badge.lager { background:var(--felgroen); font-weight:600; }
+.badge.daling { background:#fde9c8; color:#8a4b00; font-weight:600; }
+.ppl { display:none; font-size:.72rem; color:#666; align-self:center; }
+body.toon-ppl .ppl { display:inline; }
+.card .labels { margin-top:4px; display:flex; flex-wrap:wrap; gap:4px; }
+.lbl { font-size:.68rem; border-radius:8px; padding:2px 7px; line-height:1.4; }
+.lbl.nieuw { background:#1565c0; color:#fff; font-weight:700; letter-spacing:.04em; }
+.lbl.smaak { background:#fde3ec; color:#a3154a; }
+.lbl.hint { background:#eee; color:#555; }
+.koopbij { font-size:.76rem; color:var(--groen); margin-bottom:5px; }
+.waarschuwing { margin-top:8px; background:#fff3cd; color:#664d03; border-radius:8px; padding:7px 10px;
+                font-size:.75rem; line-height:1.4; }
+.tabs button[data-key="alles"] { font-weight:600; }
 .card a { color:var(--groen); font-size:.8rem; }
 .empty { text-align:center; color:#888; padding:30px 0; }
 
@@ -104,7 +134,7 @@ JS = """
 var GH_OWNER="__OWNER__", GH_REPO="__REPO__", GH_WF="__WORKFLOW__";
 var ACTIONS_URL="https://github.com/"+GH_OWNER+"/"+GH_REPO+"/actions";
 var TABS = __TABS__;
-var huidigeTab = TABS.length ? TABS[0] : "";
+var huidigeTab = "__START__";
 
 /* ---------- tabs & swipe ---------- */
 function showTab(key){
@@ -148,112 +178,56 @@ document.addEventListener('touchend', function(e){
 }, {passive:true});
 
 /* ---------- Untappd: al gehad / wenslijst ---------- */
-function norm(s){
-  s = (s||"").toLowerCase();
-  s = s.normalize ? s.normalize('NFD').replace(/[\\u0300-\\u036f]/g,'') : s;
-  s = s.replace(/[^a-z0-9]+/g,' ');
-  s = s.replace(/\\b\\d{2,4}\\s?(cl|ml|l)\\b/g,' ');
-  s = s.replace(/\\b(can|blik|bottle|fles|krat|brewery|brewing|brouwerij|bierbrouwerij|company|co|craft|bryggeri|bryghus|brasserie|birrificio|cervejaria|browar)\\b/g,' ');
-  return s.replace(/\\s+/g,' ').trim();
-}
-function laadLijst(sleutel){
-  try { return JSON.parse(localStorage.getItem(sleutel) || "[]"); } catch(e){ return []; }
-}
-function parseInvoer(tekst){
-  var regels = (tekst||"").split(/\\r?\\n/).map(function(r){ return r.trim(); })
-                          .filter(function(r){ return r.length > 2; });
-  if(!regels.length) return [];
-  var kop = regels[0].toLowerCase();
-  var uit = [];
-  if(kop.indexOf('beer_name') >= 0){         /* Untappd CSV-export */
-    var kolommen = splitsCsv(regels[0]);
-    var iB = kolommen.indexOf('beer_name'), iBr = kolommen.indexOf('brewery_name');
-    for(var i=1; i<regels.length; i++){
-      var v = splitsCsv(regels[i]);
-      var naam = iB >= 0 ? v[iB] : "", brou = iBr >= 0 ? v[iBr] : "";
-      if(naam){ uit.push({vol: norm(brou + " " + naam), naam: norm(naam)}); }
-    }
-  } else {
-    regels.forEach(function(r){
-      var naam = r, brou = "";
-      var m = r.split(/\\s+-\\s+/);
-      if(m.length === 2){ brou = m[0]; naam = m[1]; }
-      uit.push({vol: norm(brou + " " + naam), naam: norm(naam)});
-    });
+/* ---------- tabblad "Alles": elk bier één keer, bij de goedkoopste shop ---------- */
+function bouwAlles(){
+  var paneel = document.querySelector('.panel[data-key="alles"]');
+  if(!paneel || paneel.dataset.klaar) return;
+  function echtePrijs(c){
+    var p = parseFloat(c.dataset.prijs);
+    return (isNaN(p) || c.dataset.geleend === "1") ? null : p;
   }
-  return uit;
-}
-function splitsCsv(regel){
-  var uit=[], cur="", q=false;
-  for(var i=0;i<regel.length;i++){
-    var c = regel[i];
-    if(c === '"'){ q = !q; }
-    else if(c === ',' && !q){ uit.push(cur.trim().toLowerCase()); cur=""; }
-    else { cur += c; }
-  }
-  uit.push(cur.trim().toLowerCase());
-  return uit;
-}
-function bewaarUntappd(){
-  var had = parseInvoer(document.getElementById('gehadveld').value);
-  var wens = parseInvoer(document.getElementById('wensveld').value);
-  try {
-    localStorage.setItem('untappd_had', JSON.stringify(had));
-    localStorage.setItem('untappd_wens', JSON.stringify(wens));
-  } catch(e){ alert('Opslaan mislukt (opslag vol of geblokkeerd).'); return; }
-  markeer(); pasFiltersToe(); toonAantallen();
-}
-function wisUntappd(){
-  try { localStorage.removeItem('untappd_had'); localStorage.removeItem('untappd_wens'); } catch(e){}
-  document.getElementById('gehadveld').value = "";
-  document.getElementById('wensveld').value = "";
-  markeer(); pasFiltersToe(); toonAantallen();
-}
-function toonAantallen(){
-  document.getElementById('untappd-aantal').textContent =
-    laadLijst('untappd_had').length + " gehad, " + laadLijst('untappd_wens').length + " op wenslijst";
-}
-function bouwIndex(lijst){
-  var vol = {}, naam = {};
-  lijst.forEach(function(e){
-    if(e.vol) vol[e.vol] = 1;
-    if(e.naam && e.naam.length >= 6) naam[e.naam] = 1;
+  var groepen = {}, volgorde = [];
+  document.querySelectorAll('.panel:not([data-key="alles"]) .card').forEach(function(c){
+    var k = c.dataset.key; if(!k) return;
+    if(!groepen[k]){ groepen[k] = []; volgorde.push(k); }
+    groepen[k].push(c);
   });
-  return {vol: vol, naam: naam};
-}
-function markeer(){
-  // De scraper zet de markering al bij het bouwen van de pagina vast in
-  // data-gehad / data-voorraad. Die mag nooit overschreven worden; de
-  // handmatig geplakte lijsten komen er alleen bij.
-  var had = bouwIndex(laadLijst('untappd_had'));
-  var wens = bouwIndex(laadLijst('untappd_wens'));
-  document.querySelectorAll('.card').forEach(function(c){
-    var k = c.dataset.key, n = c.dataset.naamkey;
-    var isHad = c.dataset.gehad === "1" || !!(had.vol[k] || had.naam[n]);
-    // R/H&R uit de server-attributen; geplakte lijsten tellen als algemene voorraad
-    var isR = c.dataset.voorraadR === "1";
-    var isHR = c.dataset.voorraadHr === "1";
-    var isWens = isR || isHR || c.dataset.voorraad === "1" || !!(wens.vol[k] || wens.naam[n]);
-    // check-in wint van voorraad
-    c.classList.toggle('gehad', isHad && !isWens);
-    c.classList.toggle('wens', isWens && !isHad);
-    var vlag = c.querySelector('.vlag');
-    if(isHad){ vlag.textContent = '\u2713 al gehad'; }
-    else if(isWens){
-      var welke = [];
-      if(isR) welke.push('R');
-      if(isHR) welke.push('H&R');
-      vlag.textContent = welke.length ? '\u2605 in voorraad ' + welke.join(' + ')
-                                      : '\u2605 in voorraad';
-    } else { vlag.textContent = ''; }
+  var klonen = volgorde.map(function(k){
+    var g = groepen[k];
+    // welke shop tonen we? de laagste ECHTE prijs; is die er niet, dan de hoogste score
+    var beste = g.slice().sort(function(a, b){
+      var pa = echtePrijs(a), pb = echtePrijs(b);
+      if(pa !== null && pb === null) return -1;
+      if(pb !== null && pa === null) return 1;
+      if(pa !== null && pb !== null && pa !== pb) return pa - pb;
+      return parseFloat(b.dataset.score) - parseFloat(a.dataset.score);
+    })[0];
+    var kloon = beste.cloneNode(true);
+    kloon.removeAttribute('data-orig');
+    kloon.style.display = '';
+    var shops = {}; g.forEach(function(c){ shops[c.dataset.shop] = 1; });
+    var n = Object.keys(shops).length;
+    var regel = document.createElement('div'); regel.className = 'koopbij';
+    var b = document.createElement('b'); b.textContent = beste.dataset.shop;
+    regel.appendChild(document.createTextNode(n > 1 ? 'Goedkoopst bij ' : 'Alleen te koop bij '));
+    regel.appendChild(b);
+    if(n > 1) regel.appendChild(document.createTextNode(' (ook bij ' + (n - 1) + (n === 2 ? ' andere shop)' : ' andere shops)')));
+    kloon.insertBefore(regel, kloon.firstChild);
+    return kloon;
   });
+  klonen.sort(function(a, b){ return parseFloat(b.dataset.score) - parseFloat(a.dataset.score); });
+  var frag = document.createDocumentFragment();
+  klonen.forEach(function(k){ frag.appendChild(k); });
+  paneel.innerHTML = '';
+  paneel.appendChild(frag);
+  paneel.dataset.klaar = "1";
+  pasFiltersToe();
 }
-
 
 /* ---------- filters ---------- */
 function togglePaneel(id){
   var p = document.getElementById(id);
-  ['filterpaneel','untappdpaneel','tokenpaneel'].forEach(function(x){
+  ['filterpaneel','tokenpaneel','legendapaneel'].forEach(function(x){
     if(x !== id){ document.getElementById(x).classList.remove('open'); }
   });
   p.classList.toggle('open');
@@ -265,6 +239,10 @@ function pasFiltersToe(){
   var alleenSterk = document.getElementById('f-sterk').checked;
   var verbergGehad = document.getElementById('f-verberg-gehad').checked;
   var verbergWens = document.getElementById('f-verberg-wens').checked;
+  var alleenNieuw = document.getElementById('f-nieuw').checked;
+  var alleenDaling = document.getElementById('f-daling').checked;
+  var sortering = document.getElementById('f-sort').value;
+  document.body.classList.toggle('toon-ppl', sortering.indexOf('ppl') === 0);
   var stijlen = [];
   document.querySelectorAll('.f-stijl:checked').forEach(function(c){ stijlen.push(c.value); });
 
@@ -285,11 +263,14 @@ function pasFiltersToe(){
       if(ok && stijlen.length && stijlen.indexOf(c.dataset.stijl) < 0) ok = false;
       if(ok && verbergGehad && c.classList.contains('gehad')) ok = false;
       if(ok && verbergWens && c.classList.contains('wens')) ok = false;
+      if(ok && alleenNieuw && c.dataset.nieuw !== "1") ok = false;
+      if(ok && alleenDaling && c.dataset.daling !== "1") ok = false;
       c.style.display = ok ? '' : 'none';
       if(ok) zichtbaar++;
     });
     var knop = document.querySelector('.tabs button[data-key="'+panel.dataset.key+'"]');
-    if(knop){ knop.textContent = knop.dataset.label + " (" + zichtbaar + ")"; }
+    var nogNietKlaar = panel.dataset.key === "alles" && !panel.dataset.klaar;
+    if(knop && !nogNietKlaar){ knop.textContent = knop.dataset.label + " (" + zichtbaar + ")"; }
     sorteerPanel(panel);
   });
 }
@@ -303,13 +284,13 @@ function sorteerPanel(panel){
   kaarten.forEach(function(c, i){ if(c.dataset.orig === undefined) c.dataset.orig = i; });
   function getal(c, veld){ var v = parseFloat(c.dataset[veld]); return isNaN(v) ? null : v; }
   kaarten.sort(function(a, b){
-    if(wijze === "prijs-op" || wijze === "prijs-af" || wijze === "untappd-af"){
-      var veld = wijze === "untappd-af" ? "untappd" : "prijs";
+    if(wijze){
+      var veld = wijze === "untappd-af" ? "untappd" : (wijze.indexOf("ppl") === 0 ? "ppl" : "prijs");
       var x = getal(a, veld), y = getal(b, veld);
       if(x === null && y !== null) return 1;      // onbekend altijd onderaan
       if(y === null && x !== null) return -1;
       if(x !== null && y !== null && x !== y){
-        return wijze === "prijs-op" ? x - y : y - x;
+        return (wijze === "prijs-op" || wijze === "ppl-op") ? x - y : y - x;
       }
     }
     return a.dataset.orig - b.dataset.orig;        // gelijk of standaard: op score
@@ -325,6 +306,8 @@ function resetFilters(){
   document.getElementById('f-sterk').checked = false;
   document.getElementById('f-verberg-gehad').checked = false;
   document.getElementById('f-verberg-wens').checked = false;
+  document.getElementById('f-nieuw').checked = false;
+  document.getElementById('f-daling').checked = false;
   document.querySelectorAll('.f-stijl').forEach(function(c){ c.checked = false; });
   pasFiltersToe();
 }
@@ -430,7 +413,7 @@ function tokenStatusTonen(){
 }
 function opentokenpaneel(){
   // altijd openen (ook als er al een token is), zodat je kunt wijzigen/wissen
-  ['filterpaneel','untappdpaneel'].forEach(function(x){
+  ['filterpaneel','legendapaneel'].forEach(function(x){
     var p = document.getElementById(x); if(p) p.classList.remove('open'); });
   tokenStatusTonen();
   document.getElementById('tokenpaneel').classList.add('open');
@@ -451,13 +434,31 @@ function tokenWissen(){
 function openGitHub(){ window.open(ACTIONS_URL, "_blank"); }
 
 /* ---------- start ---------- */
+
+// Kruisje in elk zoekveld om de zoekopdracht in één tik te wissen.
+function maakWisknoppen(){
+  document.querySelectorAll('input[type=search]').forEach(function(inp){
+    if(inp.parentNode.classList.contains('wisveld')) return;
+    var w = document.createElement('span'); w.className = 'wisveld';
+    inp.parentNode.insertBefore(w, inp); w.appendChild(inp);
+    var k = document.createElement('button');
+    k.type = 'button'; k.className = 'wisknop'; k.innerHTML = '&times;';
+    k.setAttribute('aria-label', 'Zoekopdracht wissen');
+    w.appendChild(k);
+    function bij(){ w.classList.toggle('gevuld', inp.value.length > 0); }
+    inp.addEventListener('input', bij);
+    k.addEventListener('click', function(){
+      inp.value = ''; bij();
+      inp.dispatchEvent(new Event('input', {bubbles:true}));  // filter opnieuw toepassen
+      inp.focus();
+    });
+    bij();
+  });
+}
 document.addEventListener('DOMContentLoaded', function(){
-  var had = laadLijst('untappd_had'), wens = laadLijst('untappd_wens');
-  if(had.length){ document.getElementById('gehadveld').value =
-      had.map(function(e){ return e.naam; }).join('\\n'); }
-  if(wens.length){ document.getElementById('wensveld').value =
-      wens.map(function(e){ return e.naam; }).join('\\n'); }
-  toonAantallen(); markeer(); pasFiltersToe();
+  maakWisknoppen();
+  pasFiltersToe();
+  setTimeout(bouwAlles, 60);        // tabblad "Alles" samenstellen zodra de pagina staat
   if(verversLoopt()) volgStatus();   // run van vóór het herladen verder volgen
 });
 """
@@ -489,6 +490,12 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
                            f"&#128993; {n_voorraad} in voorraad{voorraad_detail}")
 
     tabs, panels, stijlen = [], [], set()
+    # Tabblad "Alles": elk bier één keer, bij de goedkoopste shop. De inhoud
+    # wordt in de browser opgebouwd uit de shop-tabbladen (scheelt paginagrootte).
+    tabs.append('<button data-key="alles" data-label="&#9733; Alles" '
+                'onclick="showTab(\'alles\')">&#9733; Alles</button>')
+    panels.append('<div class="panel" data-key="alles"><div class="empty">Bezig met samenstellen&hellip;</div></div>')
+    waarschuwingen = []
     for i, site in enumerate(sites):
         beers = sorted(all_beers.get(site["key"], []),
                        key=lambda b: b.get("score") or 0, reverse=True)
@@ -496,7 +503,10 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
             if b.get("stijl"):
                 stijlen.add(b["stijl"])
         active = " active" if i == 0 else ""
-        label = html.escape(site["label"])
+        label = html.escape(site["label"]) + bronnen.tabteken(site)
+        if site.get("_waarschuwing"):
+            label += " &#9888;"
+            waarschuwingen.append(f'<b>{html.escape(site["label"])}</b>: {html.escape(site["_waarschuwing"])}')
         tabs.append(
             f'<button class="{active.strip()}" data-key="{site["key"]}" data-label="{label}" '
             f'onclick="showTab(\'{site["key"]}\')">{label} ({len(beers)})</button>'
@@ -514,10 +524,16 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
     gh_owner = getattr(config, "GITHUB_OWNER", "")
     gh_repo = getattr(config, "GITHUB_REPO", "")
     gh_wf = getattr(config, "GITHUB_WORKFLOW", "main.yml")
-    tab_keys = "[" + ",".join(f'"{s["key"]}"' for s in sites) + "]"
+    tab_keys = "[" + ",".join(['"alles"'] + [f'"{s["key"]}"' for s in sites]) + "]"
+    start_tab = sites[0]["key"] if sites else "alles"
+    waarschuwing_html = ('<div class="waarschuwing">&#9888; Oude gegevens getoond &ndash; ' +
+                         " &middot; ".join(waarschuwingen) + '</div>') if waarschuwingen else ""
     js = (JS.replace("__OWNER__", gh_owner).replace("__REPO__", gh_repo)
-            .replace("__WORKFLOW__", gh_wf).replace("__TABS__", tab_keys))
+            .replace("__WORKFLOW__", gh_wf).replace("__TABS__", tab_keys)
+            .replace("__START__", start_tab))
 
+    actieve_sites = [s for s in sites if s["key"] in all_beers]
+    legenda = bronnen.legenda_html(actieve_sites)
     doc = f"""<!DOCTYPE html>
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -529,12 +545,13 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
 <div class="acties">
   <button class="knop" id="verversknop" onclick="ververs()">&#8635; Ververs nu</button>
   <button class="knop" onclick="togglePaneel('filterpaneel')">&#9776; Filters</button>
-  <button class="knop" onclick="togglePaneel('untappdpaneel')">Mijn Untappd</button>
   <button class="knop" onclick="opentokenpaneel()">&#128273; Token</button>
+  <button class="knop" onclick="togglePaneel('legendapaneel')">&#9432; Legenda</button>
   <a class="knop" href="lijsten.html" style="text-decoration:none">&#128220; Lijsten inlezen</a>
+  <a class="knop" href="onderweg.html" style="text-decoration:none">&#128666; Onderweg</a>
   <a class="dl" href="{excel_name}" download>&#11015; Excel</a>
   <span class="status" id="status"></span>
-</div></header>
+</div>{waarschuwing_html}</header>
 
 <div class="plakbalk">
 <div class="tabs">{''.join(tabs)}</div>
@@ -542,6 +559,11 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
   <input id="zoek" type="search" placeholder="Zoek op naam, brouwerij of stijl&hellip;"
          oninput="pasFiltersToe()">
 </div>
+</div>
+
+<div class="paneel" id="legendapaneel">
+  <h4>Legenda: waar komen de gegevens vandaan?</h4>
+  {legenda}
 </div>
 
 <div class="paneel" id="filterpaneel">
@@ -568,31 +590,18 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
         <option value="prijs-op">prijs laag &rarr; hoog</option>
         <option value="prijs-af">prijs hoog &rarr; laag</option>
         <option value="untappd-af">Untappd hoog &rarr; laag</option>
+        <option value="ppl-op">prijs per liter laag &rarr; hoog</option>
+        <option value="ppl-af">prijs per liter hoog &rarr; laag</option>
       </select>
     </div>
   </div>
   <label><input type="checkbox" id="f-sterk" onchange="pasFiltersToe()"> alleen sterke voorkeur</label>
   <label><input type="checkbox" id="f-verberg-gehad" onchange="pasFiltersToe()"> verberg al gehad</label>
   <label><input type="checkbox" id="f-verberg-wens" onchange="pasFiltersToe()"> verberg wat ik in voorraad heb</label>
+  <label><input type="checkbox" id="f-nieuw" onchange="pasFiltersToe()"> alleen nieuw binnen (laatste {config.NIEUW_DAGEN} dagen)</label>
+  <label><input type="checkbox" id="f-daling" onchange="pasFiltersToe()"> alleen prijs gedaald</label>
   <details><summary>Bierstijlen</summary><div>{stijl_opties}</div></details>
   <div class="rij"><button class="grijs" onclick="resetFilters()">Filters wissen</button></div>
-</div>
-
-<div class="paneel" id="untappdpaneel">
-  <h4>Mijn Untappd <span class="mini" id="untappd-aantal"></span></h4>
-  <p class="mini">Untappd blokkeert automatisch uitlezen (inloggen verplicht, en
-  API-sleutels worden niet meer uitgegeven). De markering komt daarom uit:<br>
-  <b>1.</b> <code>mijn_untappd/gehad.txt</code> (groen) en
-  <code>voorraad.txt</code> (geel) in de repository - bij te werken via github.com.<br>
-  <b>2.</b> <a href="lijsten.html">Lijsten inlezen</a>: schermopname, screenshots
-  of geplakte tekst laten uitlezen.<br>
-  <b>3.</b> Hieronder plakken, voor als je snel iets wilt toevoegen.</p>
-  <div>Extra: al gehad<textarea id="gehadveld" placeholder="Brouwerij Kees - Caramel Fudge Stout"></textarea></div>
-  <div>Extra: in voorraad<textarea id="wensveld" placeholder="Arpus - QDH Riwaka"></textarea></div>
-  <div class="rij">
-    <button onclick="bewaarUntappd()">Opslaan</button>
-    <button class="grijs" onclick="wisUntappd()">Wissen</button>
-  </div>
 </div>
 
 <div class="paneel" id="tokenpaneel">
@@ -657,7 +666,16 @@ def _card(beer, site, sites, price_lookup):
     own_price = beer.get("prijs")
     badges = []
     if own_price is not None:
-        badges.append(f'<span class="badge own">&euro; {own_price:.2f}</span>')
+        # geleende prijs (shops zonder eigen prijzen): met ~ ervoor, het is een schatting
+        tilde = "~" if beer.get("prijs_geleend") else ""
+        badges.append(f'<span class="badge own">{tilde}&euro; {own_price:.2f}</span>')
+        if beer.get("prijs_was"):
+            badges.append(f'<span class="badge daling">&darr; was &euro; {beer["prijs_was"]:.2f}</span>')
+    # prijs per liter: alleen als de inhoud echt bekend is (geen aanname)
+    ppl = None
+    if own_price is not None and beer.get("inhoud_cl"):
+        ppl = round(own_price / (beer["inhoud_cl"] / 100.0), 2)
+        badges.append(f'<span class="ppl">&euro; {ppl:.2f}/l</span>')
     for other in sites:
         if other["key"] == site["key"]:
             continue
@@ -694,6 +712,17 @@ def _card(beer, site, sites, price_lookup):
             vlag = "\u2605 in voorraad " + " + ".join(welke)
         else:
             vlag = "\u2605 in voorraad"
+    # extra labels: nieuw binnen, eigen smaak, naamgenoot
+    labels = []
+    if beer.get("nieuw"):
+        labels.append('<span class="lbl nieuw">NIEUW</span>')
+    top = beer.get("eigen_top")
+    if top:
+        labels.append(f'<span class="lbl smaak">&hearts; jij gaf deze brouwer {top["r"]:.2f} '
+                      f'({e(top["bier"])})</span>')
+    if beer.get("naamgenoot"):
+        labels.append(f'<span class="lbl hint">&asymp; zelfde naam als {e(beer["naamgenoot"])}</span>')
+    labels_html = f'<div class="labels">{"".join(labels)}</div>' if labels else ""
     return f"""<div class="card{sterk}{klassen}"
   data-key="{e(_matchsleutel(beer.get('brouwerij'), beer.get('naam')))}"
   data-naamkey="{e(_matchsleutel(None, beer.get('naam')))}"
@@ -704,12 +733,15 @@ def _card(beer, site, sites, price_lookup):
   data-gehad="{'1' if beer.get('gehad') else '0'}"
   data-voorraad="{'1' if beer.get('voorraad') else '0'}"
   data-voorraad-r="{'1' if beer.get('voorraad_r') else '0'}"
-  data-voorraad-hr="{'1' if beer.get('voorraad_hr') else '0'}">
+  data-voorraad-hr="{'1' if beer.get('voorraad_hr') else '0'}"
+  data-score="{beer.get('score', 0)}" data-shop="{e(site['label'])}"
+  data-geleend="{'1' if beer.get('prijs_geleend') else '0'}" data-ppl="{ppl if ppl is not None else ''}"
+  data-nieuw="{'1' if beer.get('nieuw') else '0'}" data-daling="{'1' if beer.get('prijs_was') else '0'}">
   <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
   <div class="brewery">{e(beer.get('brouwerij'))}</div></div>
   <div class="rechts"><div class="score">{beer.get('score', 0)}</div>{img_html}</div></div>
   <div class="meta">{' &middot; '.join(meta_parts)}</div>
-  <div class="vlag">{vlag}</div>
+  <div class="vlag">{vlag}</div>{labels_html}
   <div class="price-row">{''.join(badges)}</div>
   <a href="{e(beer.get('weblink'))}" target="_blank" rel="noopener">Bekijk in shop &rarr;</a>
 </div>"""

@@ -42,7 +42,7 @@ BESTAND_GEHAD = Path(__file__).parent / "mijn_untappd" / "gehad.txt"
 # voorraad.txt wordt nog meegelezen als hij bestaat, zodat niets verdwijnt.
 BESTAND_VOORRAAD_R = Path(__file__).parent / "mijn_untappd" / "voorraad_r.txt"
 BESTAND_VOORRAAD_HR = Path(__file__).parent / "mijn_untappd" / "voorraad_hr.txt"
-BESTAND_VOORRAAD_OUD = Path(__file__).parent / "mijn_untappd" / "voorraad.txt"
+BESTAND_RATINGS = Path(__file__).parent / "mijn_untappd" / "mijn_ratings.json"
 BASIS = "https://untappd.com"
 API = "https://api.untappd.com/v4"
 STAP_HTML = 25
@@ -61,14 +61,15 @@ def synchroniseer(all_beers):
     gehad = _lees_bestand(BESTAND_GEHAD)
     voorraad_r = _lees_bestand(BESTAND_VOORRAAD_R)
     voorraad_hr = _lees_bestand(BESTAND_VOORRAAD_HR)
-    # oude losse voorraad.txt: meenemen in R, zodat bestaande data niet verdwijnt
-    for sl, naam in _lees_bestand(BESTAND_VOORRAAD_OUD).items():
-        voorraad_r.setdefault(sl, naam)
 
     log.info("Untappd-lijsten: %d gehad, %d voorraad R, %d voorraad H&R",
              len(gehad), len(voorraad_r), len(voorraad_hr))
 
     _markeer(all_beers, gehad, voorraad_r, voorraad_hr)
+    ratings = laad_ratings()
+    n_top = markeer_eigen_ratings(all_beers, ratings)
+    log.info("Eigen beoordelingen: %d bekend, %d bieren krijgen een smaakbonus",
+             len(ratings), n_top)
 
     # resultaat bewaren voor de webpagina (teller + eventuele latere routes)
     _bewaar_cache({
@@ -144,20 +145,25 @@ def _woord_index(lijst):
     return index
 
 
-def _woord_match(sleutel, index):
+def _woord_zoek(sleutel, index):
+    """Zoekt via de woord-regels; geeft de gevonden lijst-sleutel terug of None."""
     ws = _woorden(sleutel)
     if len(ws) < 4:
-        return False
+        return None
     # alleen kandidaten die het zeldzaamste woord delen (snel en precies)
     zeldzaam = min(ws, key=lambda w: len(index.get(w, ())) or 10**9)
-    for kws, _ in index.get(zeldzaam, ()):
+    for kws, kandidaat in index.get(zeldzaam, ()):
         klein, groot = (ws, kws) if len(ws) <= len(kws) else (kws, ws)
         if (len(klein) >= 4 and klein <= groot
                 and len(klein) / len(groot) >= 0.6
                 and _getallen(ws) == _getallen(kws)
                 and _extra_ok(groot - klein, klein)):
-            return True
-    return False
+            return kandidaat
+    return None
+
+
+def _woord_match(sleutel, index):
+    return _woord_zoek(sleutel, index) is not None
 
 
 def _brouwerij_past(shop_brouwerij, lijstregel):
@@ -197,6 +203,17 @@ def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
             is_hr = (sleutel in voorraad_hr or _naam_match(b, naam_sleutel, hr_naam)
                      or _woord_match(sleutel, hr_w))
 
+            # Zelfde biernaam bij een ANDERE brouwerij in je lijsten (bijv. de
+            # collab-tweeling Azvex/Lolev "Peregrine Falcon"): niet kleuren,
+            # wel een hint tonen zodat je hem niet over het hoofd ziet.
+            if not (is_gehad or is_r or is_hr):
+                for index, etiket in ((gehad_naam, "al gehad"), (r_naam, "in voorraad R"),
+                                      (hr_naam, "in voorraad H&R")):
+                    regel = index.get(naam_sleutel)
+                    if regel is not None and not _brouwerij_past(b.get("brouwerij"), regel):
+                        b["naamgenoot"] = "%s (%s)" % (regel, etiket)
+                        break
+
             if is_gehad:
                 b["gehad"] = True
                 n_gehad += 1
@@ -216,187 +233,58 @@ def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
              "(check-ins gaan voor op voorraad)", n_gehad, n_r, n_hr)
 
 
-def _api_url(pad, cid, secret, **params):
-    delen = [f"client_id={cid}", f"client_secret={secret}"]
-    delen += [f"{k}={v}" for k, v in params.items()]
-    return f"{API}/{pad}?" + "&".join(delen)
-
-
-def _via_api(gebruiker, lijstnamen, cid, secret):
-    gehad = {}
-    offset = 0
-    for _ in range(getattr(config, "UNTAPPD_MAX_PAGINAS", 120)):
-        data = utils.fetch_json(_api_url(f"user/beers/{gebruiker}", cid, secret,
-                                         limit=STAP_API, offset=offset),
-                                use_cache=False)
-        if not data:
-            break
-        nieuw = _uit_json(data, gehad)
-        if nieuw == 0:
-            break
-        offset += STAP_API
-        time.sleep(VERTRAGING)
-    log.info("Untappd-API: %d ingecheckte bieren voor %s", len(gehad), gebruiker)
-
-    voorraad = {}
-    lijsten = utils.fetch_json(_api_url(f"user/lists/{gebruiker}", cid, secret),
-                               use_cache=False)
-    ids = _lijst_ids(lijsten, lijstnamen)
-    if not ids and lijstnamen:
-        log.warning("Untappd-API: voorraadlijsten %s niet gevonden", ", ".join(lijstnamen))
-    for naam, lijst_id in ids.items():
-        offset = 0
-        aantal_voor = len(voorraad)
-        for _ in range(60):
-            data = utils.fetch_json(_api_url(f"list/details/{lijst_id}", cid, secret,
-                                             limit=STAP_API, offset=offset),
-                                    use_cache=False)
-            if not data or _uit_json(data, voorraad) == 0:
-                break
-            offset += STAP_API
-            time.sleep(VERTRAGING)
-        log.info("  lijst '%s': %d bieren", naam, len(voorraad) - aantal_voor)
-    return gehad, voorraad
-
-
-def _lijst_ids(data, lijstnamen):
-    """Zoek de list_id's van de gewenste lijsten in het API-antwoord."""
-    gewenst = {utils.norm(n): n for n in lijstnamen}
-    gevonden = {}
-
-    def loop(obj):
-        if isinstance(obj, dict):
-            naam = obj.get("list_name") or obj.get("name")
-            lid = obj.get("list_id") or obj.get("id")
-            if naam and lid:
-                sleutel = utils.norm(str(naam))
-                for g, origineel in gewenst.items():
-                    if sleutel == g:
-                        gevonden.setdefault(origineel, lid)
-            for v in obj.values():
-                loop(v)
-        elif isinstance(obj, list):
-            for v in obj:
-                loop(v)
-
-    loop(data or {})
-    return gevonden
-
-
-def _uit_json(data, doel):
-    """Haal alle (brouwerij, bier)-combinaties uit een API-antwoord. Werkt op
-    elke vorm, zodat kleine verschillen tussen endpoints niet uitmaken."""
-    nieuw = 0
-
-    def loop(obj, brouwerij=""):
-        nonlocal nieuw
-        if isinstance(obj, dict):
-            eigen_brouwerij = brouwerij
-            br = obj.get("brewery")
-            if isinstance(br, dict) and br.get("brewery_name"):
-                eigen_brouwerij = br["brewery_name"]
-            elif obj.get("brewery_name"):
-                eigen_brouwerij = obj["brewery_name"]
-            naam = obj.get("beer_name")
-            if naam:
-                sleutel = utils.beer_match_key(eigen_brouwerij, naam)
-                if sleutel and sleutel not in doel:
-                    doel[sleutel] = f"{eigen_brouwerij} - {naam}".strip(" -")
-                    nieuw += 1
-            for v in obj.values():
-                loop(v, eigen_brouwerij)
-        elif isinstance(obj, list):
-            for v in obj:
-                loop(v, brouwerij)
-
-    loop(data or {})
-    return nieuw
-
-
 # ---------------------------------------------------------------------------
-# Route 2: HTML met sessiecookie
+# Eigen Untappd-beoordelingen. Bestand mijn_untappd/mijn_ratings.json wordt
+# gevuld door de 'Lijsten inlezen'-pagina zodra je een check-in-CSV uploadt
+# (de extensie levert de kolommen eigen_rating en stijl). Vorm:
+#   {"Brouwerij - Biernaam": [4.75, "IPA - Triple New England / Hazy"], ...}
 # ---------------------------------------------------------------------------
-
-def _cookie_headers(cookie):
-    waarde = cookie if "=" in cookie else f"untappd_user_v3_e={cookie}"
-    return {"Cookie": waarde, "User-Agent": utils.BROWSER_UA}
-
-
-def _via_html(gebruiker, lijstnamen, cookie):
-    kop = _cookie_headers(cookie)
-    gehad = _html_bierlijst(f"{BASIS}/user/{gebruiker}/beers", "gehad", kop)
-    if not gehad:
-        log.warning("Untappd-cookie werkt niet (of is verlopen): geen bieren opgehaald")
-        return {}, {}
-
-    voorraad = {}
-    html = utils.fetch(f"{BASIS}/user/{gebruiker}/lists", use_cache=False, headers=kop)
-    if html:
-        utils.save_debug_sample("untappd", "profiel-lijsten", html)
-        soup = BeautifulSoup(html, "html.parser")
-        gewenst = {utils.norm(n): n for n in lijstnamen}
-        for a in soup.find_all("a", href=True):
-            tekst = utils.norm(a.get_text(" ", strip=True))
-            if tekst in gewenst:
-                url = a["href"]
-                if url.startswith("/"):
-                    url = BASIS + url
-                gevonden = _html_bierlijst(url, f"lijst-{tekst}", kop)
-                log.info("  lijst '%s': %d bieren", gewenst[tekst], len(gevonden))
-                voorraad.update(gevonden)
-    return gehad, voorraad
-
-
-def _html_bierlijst(url, naam, kop):
-    gevonden = {}
-    for i in range(getattr(config, "UNTAPPD_MAX_PAGINAS", 120)):
-        offset = i * STAP_HTML
-        pagina = url if offset == 0 else f"{url}?offset={offset}"
-        html = utils.fetch(pagina, use_cache=False, headers=kop)
-        if not html:
-            break
-        if i == 0:
-            utils.save_debug_sample("untappd", f"profiel-{naam}", html)
-            if "must log in" in html.lower():
-                log.warning("Untappd: inlogmuur - cookie ontbreekt of is verlopen")
-                return {}
-        if _parse_bieren(html, gevonden) == 0:
-            break
-        time.sleep(VERTRAGING)
-    log.info("Untappd-HTML: %d bieren in '%s'", len(gevonden), naam)
-    return gevonden
-
-
-def _parse_bieren(html, gevonden):
-    soup = BeautifulSoup(html, "html.parser")
-    for t in soup.find_all(["script", "style"]):
-        t.decompose()
-    nieuw = 0
-    for link in soup.find_all("a", href=RE_BEER):
-        naam = link.get_text(" ", strip=True)
-        if not naam or len(naam) < 2:
+def laad_ratings():
+    try:
+        data = json.loads(BESTAND_RATINGS.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    uit = {}
+    for regel, waarde in (data.items() if isinstance(data, dict) else []):
+        try:
+            cijfer = float(waarde[0] if isinstance(waarde, (list, tuple)) else waarde)
+        except (TypeError, ValueError, IndexError):
             continue
-        brouwerij = ""
-        houder = link
-        for _ in range(5):
-            houder = houder.parent
-            if houder is None:
-                break
-            b = houder.find("a", href=RE_BREWERY)
-            if b:
-                brouwerij = b.get_text(" ", strip=True)
-                break
-        sleutel = utils.beer_match_key(brouwerij, naam)
-        if not sleutel or sleutel in gevonden:
+        stijl = waarde[1] if isinstance(waarde, (list, tuple)) and len(waarde) > 1 else ""
+        if 0 < cijfer <= 5:
+            uit[regel] = (cijfer, stijl or "")
+    return uit
+
+
+def _familie(stijl):
+    """IPA / Stout / Sour / Mead: de 'insteek' van een bier."""
+    woord = (stijl or "").split(" - ")[0].strip().split(" ")[0].lower()
+    return {"mede": "mead"}.get(woord, woord)
+
+
+def markeer_eigen_ratings(all_beers, ratings):
+    """Bieren van een brouwerij waaraan jij in dezelfde stijlfamilie een
+    topcijfer gaf, krijgen 'eigen_top' (gebruikt voor de bonus en een label)."""
+    grens = config.EIGEN_RATING_BONUS["vanaf"]
+    beste = {}   # (brouwerij-sleutel, familie) -> (cijfer, biernaam)
+    for regel, (cijfer, stijl) in ratings.items():
+        if cijfer < grens or " - " not in regel:
             continue
-        gevonden[sleutel] = f"{brouwerij} - {naam}".strip(" -")
-        nieuw += 1
-    return nieuw
+        brouwerij, naam = regel.split(" - ", 1)
+        sleutel = (utils.beer_match_key(None, brouwerij), _familie(stijl))
+        if sleutel[0] and sleutel[1] and cijfer > beste.get(sleutel, (0, ""))[0]:
+            beste[sleutel] = (cijfer, naam)
+    n = 0
+    for bieren in all_beers.values():
+        for b in bieren:
+            if not b.get("brouwerij"):
+                continue
+            hit = beste.get((utils.beer_match_key(None, b["brouwerij"]), _familie(b.get("stijl"))))
+            if hit:
+                b["eigen_top"] = {"r": hit[0], "bier": hit[1]}
+                n += 1
+    return n
 
-
-# ---------------------------------------------------------------------------
-# Markeren + cache
-# ---------------------------------------------------------------------------
 
 def _naam_index(bron):
     """Extra index op alleen de biernaam, voor shops die de brouwerij anders

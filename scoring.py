@@ -74,6 +74,13 @@ def _score(beer):
     for rule in config.BONUS_RULES:
         total += rule["bonus"] * _bonus_factor(beer, rule)
 
+    # 7. eigen smaak: gaf je deze brouwerij in deze stijlfamilie eerder een topcijfer?
+    top = beer.get("eigen_top")
+    if top:
+        cfg = config.EIGEN_RATING_BONUS
+        frac = (top["r"] - cfg["vanaf"]) / max(0.01, 5.0 - cfg["vanaf"])
+        total += cfg["punten"] + (cfg["punten_top"] - cfg["punten"]) * max(0.0, min(1.0, frac))
+
     return max(0.0, min(100.0, total))
 
 
@@ -201,6 +208,107 @@ def _load_db():
     return {}
 
 
+def werk_historie_bij(all_beers, nu=None):
+    """Houdt per bier PER SHOP bij: wanneer het daar voor het eerst en voor het
+    laatst gezien is, en tegen welke prijs. Daaruit volgen de labels
+    'nieuw binnen' en 'prijs gedaald', en de Onderweg-pagina kan zien of een
+    besteld bier al bij de shop is binnengekomen.
+
+    Opslag in de bierdatabase onder "sh": {shop: {"e": eerst gezien, "l": laatst
+    gezien, "p": prijs, "pv": vorige (hogere) prijs, "pd": moment van daling}}.
+    De allereerste keer dat een shop wordt bijgehouden, geldt niets als nieuw
+    (anders zou het hele assortiment 'nieuw' zijn)."""
+    nu = nu or time.time()
+    db = _load_db()
+    bekende_shops = {shop for e in db.values() for shop in (e.get("sh") or {})}
+    dag = 86400.0
+    for shop, beers in all_beers.items():
+        eerste_keer = shop not in bekende_shops
+        # Verkoopt een shop hetzelfde bier in meerdere maten (33 cl en 75 cl), dan
+        # staan er twee prijzen onder één naam. Daar volgen we de prijs niet,
+        # anders lijkt het flesje een 'prijsdaling' van de grote fles.
+        aantal = {}
+        for b in beers:
+            k = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            aantal[k] = aantal.get(k, 0) + 1
+        for b in beers:
+            key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if not key:
+                continue
+            entry = db.setdefault(key, {"ts": nu})
+            rec = entry.setdefault("sh", {}).get(shop)
+            prijs = None if (b.get("prijs_geleend") or aantal.get(key, 0) > 1) else b.get("prijs")
+            if rec is not None and aantal.get(key, 0) > 1:
+                for veld in ("p", "pv", "pd"):
+                    rec.pop(veld, None)
+            if rec is None:
+                rec = entry["sh"][shop] = {"e": 0 if eerste_keer else nu, "l": nu}
+                if prijs is not None:
+                    rec["p"] = prijs
+            else:
+                rec["l"] = nu
+                if prijs is not None:
+                    oud = rec.get("p")
+                    if oud is not None and prijs < oud - 0.005:
+                        rec["pv"], rec["pd"] = oud, nu
+                    elif oud is not None and prijs > oud + 0.005:
+                        rec.pop("pv", None)
+                        rec.pop("pd", None)
+                    rec["p"] = prijs
+            if rec.get("e") and nu - rec["e"] <= config.NIEUW_DAGEN * dag:
+                b["nieuw"] = True
+            if rec.get("pd") and rec.get("pv") and nu - rec["pd"] <= config.PRIJSDALING_DAGEN * dag:
+                b["prijs_was"] = rec["pv"]
+    DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DB_FILE.write_text(json.dumps(db, indent=1, ensure_ascii=False), encoding="utf-8")
+
+
+def vul_brouwerijen_aan(all_beers):
+    """Sommige shops (Drankgigant) noemen de brouwerij alleen vooraan in de
+    productnaam, zonder scheidingsteken: "De Moersleutel Motor Oil Imperial
+    Stout". We herkennen de brouwerij aan de hand van alle brouwerijen die de
+    andere shops en de bierdatabase al kennen, en splitsen hem af."""
+    # index: genormaliseerde brouwerijnaam (woorden) -> meest gebruikte schrijfwijze
+    telling = {}
+    def tel(brouwerij):
+        sleutel = tuple(utils.beer_match_key(None, brouwerij).split())
+        if sleutel and len("".join(sleutel)) >= 3:
+            telling.setdefault(sleutel, {}).setdefault(brouwerij.strip(), 0)
+            telling[sleutel][brouwerij.strip()] += 1
+    for beers in all_beers.values():
+        for b in beers:
+            if b.get("brouwerij"):
+                tel(b["brouwerij"])
+    for entry in _load_db().values():
+        nm = entry.get("nm") or ""
+        if " - " in nm:
+            tel(nm.split(" - ", 1)[0])
+    index = {k: max(v, key=v.get) for k, v in telling.items()}
+    langste = max((len(k) for k in index), default=0)
+
+    aangevuld = 0
+    for beers in all_beers.values():
+        for b in beers:
+            if b.get("brouwerij") or not b.get("naam"):
+                continue
+            woorden = b["naam"].split()
+            tokens = utils.beer_match_key(None, b["naam"]).split()
+            for n in range(min(langste, len(tokens) - 1), 0, -1):   # langste eerst
+                label = index.get(tuple(tokens[:n]))
+                if not label:
+                    continue
+                # hoeveel oorspronkelijke woorden horen bij de brouwerij?
+                doel = " ".join(tokens[:n])
+                for i in range(1, len(woorden)):
+                    if utils.beer_match_key(None, " ".join(woorden[:i])) == doel:
+                        b["brouwerij"] = label
+                        b["naam"] = " ".join(woorden[i:])
+                        aangevuld += 1
+                        break
+                break
+    return aangevuld
+
+
 def leen_prijzen(all_beers, doel_keys, voorkeur=None):
     """Voor shops zonder eigen prijzen (zoals De Bierschuur, een Untappd-venue-
     menu): geef elk bier de LAAGSTE prijs van hetzelfde bier. Bron is zowel de
@@ -313,17 +421,53 @@ def _update_db(db, all_beers):
     DB_FILE.write_text(json.dumps(db, indent=1, ensure_ascii=False), encoding="utf-8")
 
 
+_FUZZY_REGISTER = {}     # id(lijst) -> (lijst, aantal, register)
+
+
+def _fuzzy_register(mapping):
+    """Register per opzoeklijst: woordbegin (4 letters) -> namen met dat woord.
+    Eén keer opbouwen per lijst; daarna hoeft een zoekopdracht alleen de namen
+    te bekijken die minstens één woordbegin delen in plaats van alle duizenden."""
+    c = _FUZZY_REGISTER.get(id(mapping))
+    if c and c[0] is mapping and c[1] == len(mapping):
+        return c[2]
+    register = {}
+    for pos, naam in enumerate(mapping):
+        for stuk in {w[:4] for w in naam.split() if len(w) >= 3}:
+            register.setdefault(stuk, []).append((pos, naam))
+    _FUZZY_REGISTER[id(mapping)] = (mapping, len(mapping), register)
+    return register
+
+
 def _fuzzy_get(mapping, key):
+    """Zoekt de best gelijkende naam (minimaal FUZZY_MATCH_THRESHOLD).
+    Versneld in twee stappen: (1) alleen kandidaten die een woordbegin delen,
+    (2) wegstrepen wat op grond van lengte of letters nooit de drempel haalt.
+    Alleen wat overblijft wordt letter voor letter vergeleken."""
     if not key:
         return None
+    drempel = config.FUZZY_MATCH_THRESHOLD
+    register = _fuzzy_register(mapping)
+    kandidaten = {}
+    for stuk in {w[:4] for w in key.split() if len(w) >= 3}:
+        for pos, naam in register.get(stuk, ()):
+            kandidaten[pos] = naam
+    lk = len(key)
+    sm = difflib.SequenceMatcher(None)
+    sm.set_seq2(key)
     best_key, best_ratio = None, 0.0
-    for other in mapping:
-        if abs(len(other) - len(key)) > 12:
+    for pos in sorted(kandidaten):                      # vaste volgorde, zoals voorheen
+        other = kandidaten[pos]
+        lo = len(other)
+        if abs(lo - lk) > 12 or 2.0 * min(lo, lk) < drempel * (lo + lk):
             continue
-        ratio = difflib.SequenceMatcher(None, key, other).ratio()
+        sm.set_seq1(other)
+        if sm.quick_ratio() < drempel:
+            continue
+        ratio = sm.ratio()
         if ratio > best_ratio:
             best_key, best_ratio = other, ratio
-    if best_key and best_ratio >= config.FUZZY_MATCH_THRESHOLD:
+    if best_key and best_ratio >= drempel:
         return mapping[best_key]
     return None
 
@@ -352,14 +496,5 @@ def find_price(beer, site_map):
         return None
     if key in site_map:
         return site_map[key]
-    # fuzzy: alleen vergelijken met keys van vergelijkbare lengte (sneller)
-    best_key, best_ratio = None, 0.0
-    for other in site_map:
-        if abs(len(other) - len(key)) > 12:
-            continue
-        ratio = difflib.SequenceMatcher(None, key, other).ratio()
-        if ratio > best_ratio:
-            best_key, best_ratio = other, ratio
-    if best_key and best_ratio >= config.FUZZY_MATCH_THRESHOLD:
-        return site_map[best_key]
-    return None
+    # kleine spellingsverschillen: via de versnelde vergelijking (zelfde drempel)
+    return _fuzzy_get(site_map, key)
