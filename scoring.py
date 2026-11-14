@@ -74,12 +74,9 @@ def _score(beer):
     for rule in config.BONUS_RULES:
         total += rule["bonus"] * _bonus_factor(beer, rule)
 
-    # 7. eigen smaak: gaf je deze brouwerij in deze stijlfamilie eerder een topcijfer?
-    top = beer.get("eigen_top")
-    if top:
-        cfg = config.EIGEN_RATING_BONUS
-        frac = (top["r"] - cfg["vanaf"]) / max(0.01, 5.0 - cfg["vanaf"])
-        total += cfg["punten"] + (cfg["punten_top"] - cfg["punten"]) * max(0.0, min(1.0, frac))
+    # 7. eigen smaak: gaf je deze brouwerij in deze stijl eerder een 5.00?
+    if beer.get("eigen_top"):
+        total += config.EIGEN_RATING_BONUS["punten"]
 
     return max(0.0, min(100.0, total))
 
@@ -206,6 +203,31 @@ def _load_db():
         except (json.JSONDecodeError, OSError):
             return {}
     return {}
+
+
+def negeer_shopscores(beers):
+    """Voor shops waarvan de meegeleverde Untappd-score niet wordt bijgewerkt:
+    score en aantal weggooien, zodat de actuele score van een andere shop of
+    via de Untappd-zoekfunctie wordt gebruikt. Daarnaast dezelfde verouderde
+    scores uit de bierdatabase halen (herkenbaar aan: score zonder aantal),
+    anders zouden ze via de database aan andere shops worden uitgeleend."""
+    db = _load_db()
+    gewist = 0
+    for b in beers:
+        if b.get("untappd") is None:
+            continue
+        key = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+        entry = db.get(key)
+        if entry and entry.get("s") == b["untappd"] and not entry.get("c"):
+            entry.pop("s", None)
+            entry.pop("c", None)
+            gewist += 1
+        b["untappd"] = None
+        b["untappd_aantal"] = None
+    if gewist:
+        DB_FILE.parent.mkdir(parents=True, exist_ok=True)
+        DB_FILE.write_text(json.dumps(db, indent=1, ensure_ascii=False), encoding="utf-8")
+    return gewist
 
 
 def werk_historie_bij(all_beers, nu=None):

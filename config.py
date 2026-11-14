@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v62"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v63"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -66,6 +66,11 @@ SITES = [
         # toegang. Zet dit pas op True als je daar toestemming voor hebt
         # (mailtje naar de winkel volstaat) of als hun robots.txt wijzigt.
         "enabled": True,
+        # De scores in de webshop worden niet bijgewerkt (One Seed At A Time:
+        # 4.48 in de shop, 4.20 op Untappd) en hebben geen aantal beoordelingen.
+        # Daarom negeren we ze en zoeken we de actuele score zelf op.
+        "score_onbetrouwbaar": True,
+        "untappd_lookup": True,
     },
 {
         "key": "hopsandhopes",
@@ -321,12 +326,13 @@ NIEUW_DAGEN = 7
 PRIJSDALING_DAGEN = 7
 
 # ---------------------------------------------------------------------------
-# Je eigen Untappd-beoordelingen: gaf je een bier van dezelfde brouwerij in
-# dezelfde stijlfamilie (IPA / Stout / Sour / Mead) minstens 'vanaf', dan
-# krijgen andere bieren van die brouwerij in die familie bonuspunten:
-# 'punten' bij precies 'vanaf', oplopend tot 'punten_top' bij een 5.00.
+# Je eigen Untappd-beoordelingen: gaf je een bier een 'vanaf' (5.00), dan
+# krijgen andere bieren van DEZELFDE brouwerij in DEZELFDE stijl 'punten'
+# bonuspunten. "Dezelfde stijl" = de Untappd-stijl, waarbij New England / Hazy
+# niet meetelt: een Triple IPA en een Triple NEIPA horen bij elkaar, maar een
+# Imperial Stout en een Imperial Pastry Stout niet.
 # ---------------------------------------------------------------------------
-EIGEN_RATING_BONUS = {"vanaf": 4.75, "punten": 5, "punten_top": 8}
+EIGEN_RATING_BONUS = {"vanaf": 5.0, "punten": 8}
 
 # ---------------------------------------------------------------------------
 # Onderweg-pagina: minimumbedrag voor gratis verzending per shop (in euro).

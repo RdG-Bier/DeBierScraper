@@ -718,8 +718,8 @@ def _card(beer, site, sites, price_lookup):
         labels.append('<span class="lbl nieuw">NIEUW</span>')
     top = beer.get("eigen_top")
     if top:
-        labels.append(f'<span class="lbl smaak">&hearts; jij gaf deze brouwer {top["r"]:.2f} '
-                      f'({e(top["bier"])})</span>')
+        labels.append(f'<span class="lbl smaak">&hearts; jij gaf {e(top["bier"])} van deze brouwer '
+                      f'een {top["r"]:.2f} in dezelfde stijl</span>')
     if beer.get("naamgenoot"):
         labels.append(f'<span class="lbl hint">&asymp; zelfde naam als {e(beer["naamgenoot"])}</span>')
     labels_html = f'<div class="labels">{"".join(labels)}</div>' if labels else ""

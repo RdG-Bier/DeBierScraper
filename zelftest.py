@@ -127,6 +127,29 @@ def _test_matching(fouten):
     _controleer(fouten, "Matching: ander volgnummer telt niet",
                 not raak("Messorem", "Temporalis #0061"))
 
+    # via de echte markeerfunctie: tikfout en alcoholpercentage in de naam
+    def lijst_van(*regels):
+        uit = {}
+        for r in regels:
+            br, _, nm = r.partition(" - ")
+            up._voeg_toe(uit, br, nm)
+        return uit
+    gehad = lijst_van("Goose Island Beer Co. - Bourbon County Brand Stout (2018) 14.7%")
+    hr = lijst_van("Goose Island Beer Co. - Bourbon County Brand Stout (2018) 15.2%",
+                   "\u0100rpus Brewing Co. - \u0100rpus X Ophiussa Salted Caramel Ice Cream Stout")
+    bieren = {"s": [
+        {"brouwerij": "Arpus", "naam": "X Ophiusa Salted Caramel Ice Cream Stout"},          # tikfout
+        {"brouwerij": "Goose Island", "naam": "Bourbon County Brand Stout (2018)"},          # zonder %
+        {"brouwerij": "Goose Island Beer Co.", "naam": "Bourbon County Brand Stout (2018) 15.2%"},
+        {"brouwerij": "Goose Island Beer Co.", "naam": "Bourbon County Brand Stout (2019) 14.7%"}]}
+    up._markeer(bieren, gehad, {}, hr)
+    tikfout, zonder_pct, pct_152, ander_jaar = bieren["s"]
+    _controleer(fouten, "Matching: tikfout in een woord (Ophiusa/Ophiussa)", tikfout.get("voorraad_hr"))
+    _controleer(fouten, "Matching: percentage aan één kant wordt genegeerd", zonder_pct.get("gehad"))
+    _controleer(fouten, "Matching: 15.2% is niet het gedronken 14.7%-bier",
+                pct_152.get("voorraad_hr") and not pct_152.get("gehad"))
+    _controleer(fouten, "Matching: ander jaar telt niet", not ander_jaar.get("gehad"))
+
 
 def _test_scoring(fouten, tmp):
     import scoring
@@ -155,6 +178,15 @@ def _test_scoring(fouten, tmp):
         _controleer(fouten, "Historie: nieuw bier herkend", nieuw.get("nieuw") is True and not oud.get("nieuw"))
         _controleer(fouten, "Historie: twee maten is geen prijsdaling",
                     not m1.get("prijs_was") and not m2.get("prijs_was"))
+        db = {"oud bier": {"s": 4.48, "c": None, "ts": 1}, "goed bier": {"s": 4.3, "c": 500, "ts": 1}}
+        scoring.DB_FILE.write_text(json.dumps(db), encoding="utf-8")
+        shop = [{"brouwerij": "", "naam": "Oud Bier", "untappd": 4.48},
+                {"brouwerij": "", "naam": "Goed Bier", "untappd": 4.3}]
+        scoring.negeer_shopscores(shop)
+        db = json.loads(scoring.DB_FILE.read_text(encoding="utf-8"))
+        _controleer(fouten, "Verouderde shopscore wordt genegeerd",
+                    shop[0]["untappd"] is None and "s" not in db["oud bier"])
+        _controleer(fouten, "Database-score MET aantal blijft staan", db["goed bier"].get("s") == 4.3)
     finally:
         scoring.DB_FILE = echt_db
 

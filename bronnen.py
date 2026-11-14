@@ -75,9 +75,10 @@ ALGEMEEN = [
     "NIEUW = dit bier is in de afgelopen %d dagen voor het eerst bij deze shop gezien. "
     "'was €...' = de prijs is in de afgelopen %d dagen gedaald." % (
         config.NIEUW_DAGEN, config.PRIJSDALING_DAGEN),
-    "Een hartje = jij gaf een bier van dezelfde brouwerij in dezelfde stijlfamilie "
-    "(IPA, Stout, Sour, Mead) een %.2f of hoger; dat levert bonuspunten op." % (
-        config.EIGEN_RATING_BONUS["vanaf"]),
+    "Een hartje = jij gaf een ander bier van dezelfde brouwerij in dezelfde stijl een "
+    "%.2f (New England / Hazy telt daarbij niet mee: Triple IPA en Triple NEIPA horen "
+    "bij elkaar). Dat levert %d bonuspunten op." % (
+        config.EIGEN_RATING_BONUS["vanaf"], config.EIGEN_RATING_BONUS["punten"]),
     "'≈ zelfde naam als ...' = een bier met dezelfde naam van een andere brouwerij staat "
     "in je lijsten (bijvoorbeeld een collab die bij twee brouwerijen is gebrouwen). "
     "De kaart wordt dan bewust niet gekleurd.",
@@ -132,6 +133,9 @@ def _bijzonderheden(site, labels):
     if site.get("type") == "bierloods22":
         uit.append("uitverkochte bieren worden weggelaten (voorraad per bier gecontroleerd)")
         uit.append("exacte stijl, inhoud, ABV en land komen uit de productgegevens per bier")
+    if site.get("score_onbetrouwbaar"):
+        uit.append("de score die de webshop zelf vermeldt wordt NIET gebruikt, omdat die niet "
+                   "wordt bijgewerkt; de actuele score komt van een andere shop of wordt opgezocht")
     if site.get("type") == "drankgigant":
         uit.append("de brouwerij wordt afgeleid uit het begin van de productnaam")
     if site.get("untappd_min_filter"):

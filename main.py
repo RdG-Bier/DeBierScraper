@@ -122,6 +122,12 @@ def main():
                      key, len(packs), packs[0].get("naam"))
 
     import scoring
+    # shops met verouderde scores in de webshop: die scores niet gebruiken
+    for site in sites:
+        if site.get("score_onbetrouwbaar") and all_beers.get(site["key"]):
+            n_db = scoring.negeer_shopscores(all_beers[site["key"]])
+            log.info("%s: meegeleverde Untappd-scores genegeerd (verouderd); %d verouderde "
+                     "scores ook uit de bierdatabase gehaald", site["label"], n_db)
     n_br = scoring.vul_brouwerijen_aan(all_beers)
     log.info("Brouwerij afgeleid uit de productnaam bij %d bieren", n_br)
     # per shop bijhouden wat er wanneer gezien is (labels 'nieuw'/'prijs gedaald', Onderweg)

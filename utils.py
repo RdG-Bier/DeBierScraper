@@ -351,6 +351,14 @@ def extract_image(el, base_url=""):
     return src if src.startswith("http") else None
 
 
+RE_PERCENTAGE = re.compile(r"\b\d{1,2}(?:[.,]\d{1,2})?\s*%")
+
+
+def zonder_percentage(tekst):
+    """'Bourbon County Brand Stout (2018) 14.7%' -> zonder het percentage."""
+    return RE_PERCENTAGE.sub(" ", tekst or "")
+
+
 def beer_match_key(brewery, name):
     """Genormaliseerde sleutel om hetzelfde bier tussen shops te matchen."""
     combined = f"{brewery or ''} {name or ''}"

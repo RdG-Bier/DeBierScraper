@@ -145,19 +145,66 @@ def _woord_index(lijst):
     return index
 
 
+def _bijna_gelijk(a, b):
+    """Zelfde woord met één tikfout (letter erbij, eraf of anders):
+    'ophiusa' ~ 'ophiussa'. Alleen voor woorden van minstens 5 letters
+    zonder cijfers, en de eerste letter moet gelijk zijn."""
+    if a == b:
+        return True
+    if (min(len(a), len(b)) < 5 or abs(len(a) - len(b)) > 1 or a[0] != b[0]
+            or any(c.isdigit() for c in a + b)):
+        return False
+    if len(a) == len(b):
+        return sum(1 for x, y in zip(a, b) if x != y) == 1
+    kort, lang = (a, b) if len(a) < len(b) else (b, a)
+    for i in range(len(lang)):
+        if lang[:i] + lang[i + 1:] == kort:
+            return True
+    return False
+
+
+def _woorden_in(klein, groot):
+    """Zitten alle woorden van 'klein' in 'groot', met hooguit tikfouten?
+    Geeft de woorden van 'groot' terug die NIET gebruikt zijn (de 'extra'
+    woorden), of None als het niet past."""
+    over = set(groot)
+    for w in klein:
+        if w in over:
+            over.discard(w)
+            continue
+        maatje = next((g for g in over if _bijna_gelijk(w, g)), None)
+        if maatje is None:
+            return None
+        over.discard(maatje)
+    return over
+
+
 def _woord_zoek(sleutel, index):
     """Zoekt via de woord-regels; geeft de gevonden lijst-sleutel terug of None."""
     ws = _woorden(sleutel)
     if len(ws) < 4:
         return None
-    # alleen kandidaten die het zeldzaamste woord delen (snel en precies)
-    zeldzaam = min(ws, key=lambda w: len(index.get(w, ())) or 10**9)
-    for kws, kandidaat in index.get(zeldzaam, ()):
+    # kandidaten: lijstbieren die één van de drie zeldzaamste BEKENDE woorden
+    # delen. Eén woord is niet genoeg: heeft het shopbier een extra woord dat
+    # toevallig in een ánder bier staat ("RaR collab"), dan zou alleen dat andere
+    # bier geprobeerd worden. Een woord met een tikfout staat niet in de index.
+    bekend = sorted((w for w in ws if index.get(w)), key=lambda w: len(index[w]))[:3]
+    if not bekend:
+        return None
+    gezien, kandidaten = set(), []
+    for w in bekend:
+        for kws, kandidaat in index[w]:
+            if kandidaat not in gezien:
+                gezien.add(kandidaat)
+                kandidaten.append((kws, kandidaat))
+    for kws, kandidaat in kandidaten:
         klein, groot = (ws, kws) if len(ws) <= len(kws) else (kws, ws)
-        if (len(klein) >= 4 and klein <= groot
-                and len(klein) / len(groot) >= 0.6
-                and _getallen(ws) == _getallen(kws)
-                and _extra_ok(groot - klein, klein)):
+        if len(klein) < 4 or len(klein) / len(groot) < 0.6:
+            continue
+        if _getallen(ws) != _getallen(kws):
+            continue
+        extra = _woorden_in(klein, groot)
+        if extra is not None and _extra_ok(extra, klein):
             return kandidaat
     return None
 
@@ -184,11 +231,45 @@ def _naam_match(b, naam_sleutel, naam_index):
     return regel is not None and _brouwerij_past(b.get("brouwerij"), regel)
 
 
+def _percentage_index(lijst):
+    """Lijstregels MET een alcoholpercentage in de naam, gesleuteld zonder dat
+    percentage: 'BCBS (2018) 14.7%' -> sleutel van 'BCBS (2018)'."""
+    uit = {}
+    for regel in lijst.values():
+        if utils.RE_PERCENTAGE.search(regel):
+            brouwerij, _, naam = regel.partition(" - ")
+            if not naam:
+                brouwerij, naam = "", regel
+            uit.setdefault(utils.beer_match_key(brouwerij, utils.zonder_percentage(naam)), regel)
+    return uit
+
+
+def _percentage_match(b, lijst, pct_index, woord_index, pct_woord_index):
+    """Percentage in de naam aan maar ÉÉN kant: dan negeren we het.
+    Hoppenaar 'BCBS (2018)' = je check-in 'BCBS (2018) 14.7%'.
+    Staat het aan beide kanten, dan moet het gelijk zijn (dat regelt de gewone
+    matching al): 'BCBS (2018) 14.7%' en '... 15.2%' zijn op Untappd twee bieren."""
+    naam = b.get("naam") or ""
+    if utils.RE_PERCENTAGE.search(naam):
+        # shop noemt een percentage: vergelijk zonder, alleen met lijstregels zónder percentage
+        sleutel = utils.beer_match_key(b.get("brouwerij"), utils.zonder_percentage(naam))
+        regel = lijst.get(sleutel)
+        if regel is None:
+            k = _woord_zoek(sleutel, woord_index)
+            regel = lijst.get(k) if k else None
+        return regel is not None and not utils.RE_PERCENTAGE.search(regel)
+    # shop noemt geen percentage: vergelijk met lijstregels mét percentage (zonder dat percentage)
+    sleutel = utils.beer_match_key(b.get("brouwerij"), naam)
+    return sleutel in pct_index or _woord_zoek(sleutel, pct_woord_index) is not None
+
+
 def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
     gehad_naam = _naam_index(gehad)
     r_naam = _naam_index(voorraad_r)
     hr_naam = _naam_index(voorraad_hr)
     gehad_w, r_w, hr_w = _woord_index(gehad), _woord_index(voorraad_r), _woord_index(voorraad_hr)
+    gehad_p, r_p, hr_p = _percentage_index(gehad), _percentage_index(voorraad_r), _percentage_index(voorraad_hr)
+    gehad_pw, r_pw, hr_pw = _woord_index(gehad_p), _woord_index(r_p), _woord_index(hr_p)
     n_gehad = n_r = n_hr = 0
 
     for bieren in all_beers.values():
@@ -197,11 +278,14 @@ def _markeer(all_beers, gehad, voorraad_r, voorraad_hr):
             naam_sleutel = utils.beer_match_key(None, b.get("naam"))
 
             is_gehad = (sleutel in gehad or _naam_match(b, naam_sleutel, gehad_naam)
-                        or _woord_match(sleutel, gehad_w))
+                        or _woord_match(sleutel, gehad_w)
+                        or _percentage_match(b, gehad, gehad_p, gehad_w, gehad_pw))
             is_r = (sleutel in voorraad_r or _naam_match(b, naam_sleutel, r_naam)
-                    or _woord_match(sleutel, r_w))
+                    or _woord_match(sleutel, r_w)
+                    or _percentage_match(b, voorraad_r, r_p, r_w, r_pw))
             is_hr = (sleutel in voorraad_hr or _naam_match(b, naam_sleutel, hr_naam)
-                     or _woord_match(sleutel, hr_w))
+                     or _woord_match(sleutel, hr_w)
+                     or _percentage_match(b, voorraad_hr, hr_p, hr_w, hr_pw))
 
             # Zelfde biernaam bij een ANDERE brouwerij in je lijsten (bijv. de
             # collab-tweeling Azvex/Lolev "Peregrine Falcon"): niet kleuren,
@@ -256,30 +340,35 @@ def laad_ratings():
     return uit
 
 
-def _familie(stijl):
-    """IPA / Stout / Sour / Mead: de 'insteek' van een bier."""
-    woord = (stijl or "").split(" - ")[0].strip().split(" ")[0].lower()
-    return {"mede": "mead"}.get(woord, woord)
+def _categorie(stijl):
+    """De stijl waarbinnen een eigen 5.00 meetelt: de Untappd-stijl zonder
+    'New England / Hazy' ('IPA - Triple New England / Hazy' -> 'IPA - Triple').
+    Al het andere moet exact gelijk zijn: Imperial Stout != Imperial Pastry Stout."""
+    s = " ".join((stijl or "").split())
+    for weg in (" New England / Hazy", " New England"):
+        s = s.replace(weg, "")
+    return s.strip().lower()
 
 
 def markeer_eigen_ratings(all_beers, ratings):
-    """Bieren van een brouwerij waaraan jij in dezelfde stijlfamilie een
-    topcijfer gaf, krijgen 'eigen_top' (gebruikt voor de bonus en een label)."""
+    """Bieren van een brouwerij waaraan jij in DEZELFDE stijl een 5.00 gaf,
+    krijgen 'eigen_top' (gebruikt voor de bonus en een label)."""
     grens = config.EIGEN_RATING_BONUS["vanaf"]
-    beste = {}   # (brouwerij-sleutel, familie) -> (cijfer, biernaam)
+    beste = {}   # (brouwerij-sleutel, stijlcategorie) -> (cijfer, biernaam)
     for regel, (cijfer, stijl) in ratings.items():
-        if cijfer < grens or " - " not in regel:
+        if cijfer < grens or " - " not in regel or not stijl:
             continue
         brouwerij, naam = regel.split(" - ", 1)
-        sleutel = (utils.beer_match_key(None, brouwerij), _familie(stijl))
-        if sleutel[0] and sleutel[1] and cijfer > beste.get(sleutel, (0, ""))[0]:
+        sleutel = (utils.beer_match_key(None, brouwerij), _categorie(stijl))
+        if sleutel[0] and sleutel[1] and sleutel not in beste:
             beste[sleutel] = (cijfer, naam)
     n = 0
     for bieren in all_beers.values():
         for b in bieren:
+            b.pop("eigen_top", None)
             if not b.get("brouwerij"):
                 continue
-            hit = beste.get((utils.beer_match_key(None, b["brouwerij"]), _familie(b.get("stijl"))))
+            hit = beste.get((utils.beer_match_key(None, b["brouwerij"]), _categorie(b.get("stijl"))))
             if hit:
                 b["eigen_top"] = {"r": hit[0], "bier": hit[1]}
                 n += 1
