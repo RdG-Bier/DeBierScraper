@@ -1,0 +1,598 @@
+# -*- coding: utf-8 -*-
+"""
+Onderweg: bestellingen en pre-orders die nog bij een shop op de plank staan of
+nog moeten uitkomen.
+
+- Je eigen lijst staat in mijn_untappd/onderweg.json en wordt beheerd via de
+  pagina docs/onderweg.html (schrijft met je GitHub-token).
+- Bij elke scraper-run kijkt schrijf_status() of een besteld bier al bij die
+  shop is GEZIEN (in de historie van de bierdatabase). Het resultaat staat in
+  docs/onderweg_status.json en verschijnt op de pagina als groen vinkje.
+"""
+
+import html
+import json
+import logging
+import time
+from pathlib import Path
+
+import config
+import scoring
+import untappd_profiel
+import utils
+
+log = logging.getLogger("bierscraper")
+DATA_FILE = Path(__file__).parent / "mijn_untappd" / "onderweg.json"
+STATUS_FILE = Path(__file__).parent / "docs" / "onderweg_status.json"
+
+
+def laad_items():
+    try:
+        data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    items = data.get("items") if isinstance(data, dict) else data
+    return [i for i in (items or []) if isinstance(i, dict)]
+
+
+def schrijf_status(nu=None):
+    """Bepaalt per besteld bier of het bij de betreffende shop gezien is."""
+    nu = nu or time.time()
+    items = laad_items()
+    db = scoring._load_db()
+    per_shop = {}                      # shop -> {bier-sleutel: historie-record}
+    for sleutel, entry in db.items():
+        for shop, rec in (entry.get("sh") or {}).items():
+            per_shop.setdefault(shop, {})[sleutel] = rec
+    woord_index = {shop: untappd_profiel._woord_index(recs) for shop, recs in per_shop.items()}
+
+    def dag(ts):
+        return time.strftime("%d-%m-%Y", time.localtime(ts)) if ts else ""
+
+    uit = {}
+    for it in items:
+        shop = it.get("shop")
+        recs = per_shop.get(shop) or {}
+        sleutel = utils.beer_match_key(it.get("brouwerij"), it.get("naam"))
+        gevonden = sleutel if sleutel in recs else (
+            untappd_profiel._woord_zoek(sleutel, woord_index.get(shop, {})) if sleutel else None)
+        if gevonden is None:
+            uit[str(it.get("id"))] = {"gezien": False}
+            continue
+        rec = recs[gevonden]
+        uit[str(it.get("id"))] = {
+            "gezien": True,
+            "eerst": dag(rec.get("e")),
+            "laatst": dag(rec.get("l")),
+            "nu": bool(rec.get("l") and nu - rec["l"] < 2 * 86400),   # staat er nu nog
+        }
+    STATUS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    STATUS_FILE.write_text(json.dumps(
+        {"bijgewerkt": time.strftime("%d-%m-%Y %H:%M", time.localtime(nu)), "items": uit},
+        indent=1, ensure_ascii=False), encoding="utf-8")
+    log.info("Onderweg: %d bestelde bieren, waarvan %d bij de shop gezien",
+             len(items), sum(1 for v in uit.values() if v["gezien"]))
+    return uit
+
+
+# ===========================================================================
+# De pagina (docs/onderweg.html)
+# ===========================================================================
+PAGINA = r"""<!DOCTYPE html>
+<html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onderweg</title>
+<style>
+:root { --groen:#1f4e44; --licht:#e8f3ef; }
+* { box-sizing:border-box; }
+body { font-family:-apple-system,'Segoe UI',Arial,sans-serif; margin:0; background:#f5f5f2; color:#222; }
+header { background:var(--groen); color:#fff; padding:14px 16px; }
+header h1 { margin:0; font-size:1.1rem; }
+header a { color:#fff; font-size:.8rem; }
+main { padding:12px; max-width:1000px; margin:0 auto; padding-bottom:90px; }
+.kaart { background:#fff; border-radius:12px; padding:14px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+h2 { font-size:.95rem; margin:0 0 8px; }
+.mini { font-size:.78rem; color:#666; line-height:1.45; }
+button { background:var(--groen); color:#fff; border:0; border-radius:8px; padding:10px 14px;
+         font-size:.85rem; cursor:pointer; margin:4px 6px 4px 0; }
+button.grijs { background:#777; } button.rood { background:#a33; }
+button:disabled { opacity:.5; }
+.tabelwrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -6px; }
+table { border-collapse:collapse; width:100%; font-size:.82rem; min-width:720px; }
+th, td { padding:8px 6px; text-align:left; border-bottom:1px solid #eee; vertical-align:middle; }
+th { background:var(--licht); cursor:pointer; white-space:nowrap; user-select:none; position:sticky; top:0; }
+th .pijl { color:var(--groen); font-size:.7rem; }
+td.num, th.num { text-align:right; white-space:nowrap; }
+td.mid, th.mid { text-align:center; }
+tr.shopkop td { background:#fafaf7; font-weight:700; color:var(--groen); border-bottom:2px solid var(--licht); }
+td input[type=checkbox] { width:20px; height:20px; }
+td select { font-size:16px; padding:4px; border:1px solid #ccc; border-radius:6px; background:#fff; }
+.tag { display:inline-block; font-size:.68rem; padding:1px 6px; border-radius:8px; white-space:nowrap; }
+.tag.groen { background:#d6f0dc; color:#1c6b33; } .tag.geel { background:#fbefc6; color:#7a5c00; }
+.bewerk { background:none; color:var(--groen); padding:4px 8px; margin:0; font-size:1rem; }
+.shopblok { border-top:1px solid #eee; padding:10px 0; }
+.shopblok:first-child { border-top:0; padding-top:0; }
+.shopblok b { color:var(--groen); }
+.balk { height:8px; background:#e2e2dd; border-radius:4px; overflow:hidden; margin:6px 0 4px; }
+.balk div { height:100%; background:#e0a020; } .balk.vol div { background:#2e9e5b; }
+label.veld { display:block; font-size:.8rem; color:#444; margin:8px 0 2px; }
+.formulier input[type=text], .formulier select, .formulier input[type=search] {
+  width:100%; padding:11px 12px; font-size:16px; border:1px solid #ccc; border-radius:8px; background:#fff; }
+.rij2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.vink { display:inline-flex; align-items:center; gap:8px; margin:12px 16px 4px 0; font-size:.9rem; }
+.vink input { width:22px; height:22px; }
+.zoekrij { display:flex; justify-content:space-between; gap:8px; padding:8px 4px; border-bottom:1px solid #eee;
+           font-size:.85rem; cursor:pointer; }
+.zoekrij .bn { color:#666; font-size:.78rem; }
+#opslaanbalk { position:fixed; left:0; right:0; bottom:0; background:#fff; border-top:2px solid var(--groen);
+               padding:10px 14px; display:none; align-items:center; justify-content:space-between; gap:10px;
+               box-shadow:0 -3px 10px rgba(0,0,0,.12); z-index:30; }
+#opslaanbalk.aan { display:flex; }
+#melding { font-size:.8rem; color:#444; min-height:1.2em; margin:6px 0; }
+.wisveld { position:relative; display:block; }
+.wisveld input { padding-right:46px !important; }
+.wisknop { position:absolute; right:7px; top:50%; transform:translateY(-50%); width:32px; height:32px;
+           border:0; border-radius:50%; background:#b9b9b4; color:#fff; font-size:20px; line-height:30px;
+           padding:0; margin:0; display:none; cursor:pointer; -webkit-appearance:none; }
+.wisveld.gevuld .wisknop { display:block; }
+input[type=search]::-webkit-search-cancel-button { -webkit-appearance:none; display:none; }
+</style></head><body>
+<header><h1>&#128666; Onderweg</h1><a href="index.html">&larr; terug naar het bieroverzicht</a></header>
+<main>
+
+<div class="kaart" id="tokenkaart" style="display:none;border:2px solid #e0a020">
+  <b>Alleen lezen.</b> <span class="mini">Om te kunnen opslaan heb je je GitHub-token nodig. Stel die in via het
+  bieroverzicht &rarr; &#128273; Token (met het recht <i>Contents: Read and write</i>).</span>
+</div>
+
+<div class="kaart">
+  <h2>Per shop</h2>
+  <div id="samenvatting"><p class="mini">Laden&hellip;</p></div>
+</div>
+
+<div class="kaart">
+  <h2>Bestelde bieren <span class="mini" id="aantal"></span></h2>
+  <p class="mini">Tik op een kolomkop om te sorteren (nog een keer = omgekeerd). Vinkjes en de lijst
+  kun je direct in de tabel aanpassen; vergeet daarna niet op te slaan.
+  <span class="tag groen">&#10003; webshop</span> = de scraper heeft dit bier bij die shop gezien.</p>
+  <div id="melding"></div>
+  <div class="tabelwrap"><table id="tabel"><thead><tr>
+    <th data-kol="shop">Shop <span class="pijl"></span></th>
+    <th data-kol="brouwerij">Brouwerij <span class="pijl"></span></th>
+    <th data-kol="naam">Naam bier <span class="pijl"></span></th>
+    <th data-kol="prijs" class="num">Prijs <span class="pijl"></span></th>
+    <th data-kol="verwacht">Verwacht <span class="pijl"></span></th>
+    <th data-kol="binnen" class="mid">Binnen? <span class="pijl"></span></th>
+    <th data-kol="betaald" class="mid">Betaald? <span class="pijl"></span></th>
+    <th data-kol="lijst">Lijst <span class="pijl"></span></th>
+    <th></th>
+  </tr></thead><tbody></tbody></table></div>
+  <button onclick="openFormulier(null)">&#10133; Bier toevoegen</button>
+  <button class="grijs" onclick="standaardSortering()">Standaard sortering</button>
+</div>
+
+<div class="kaart formulier" id="formkaart" style="display:none">
+  <h2 id="formtitel">Bier toevoegen</h2>
+  <label class="veld">Zoek in bekende bieren en je voorraadlijsten (vult brouwerij en naam in)</label>
+  <input id="zoekbier" type="search" placeholder="Zoek op brouwerij of biernaam&hellip;" oninput="zoek()" autocomplete="off">
+  <div id="zoekresultaten"></div>
+  <label class="veld">Shop aangeschaft</label>
+  <select id="f-shop" onchange="shopKeuze()"></select>
+  <input id="f-shop-anders" type="text" placeholder="Naam van de shop" style="display:none;margin-top:6px">
+  <label class="veld">Brouwerij</label><input id="f-brouwerij" type="text" autocomplete="off">
+  <label class="veld">Naam bier <span class="mini">(exact zoals op Untappd, dan wordt het later herkend)</span></label>
+  <input id="f-naam" type="text" autocomplete="off">
+  <div class="rij2">
+    <div><label class="veld">Prijs (&euro;)</label><input id="f-prijs" type="text" inputmode="decimal" placeholder="8,49"></div>
+    <div><label class="veld">Verwacht</label><input id="f-verwacht" type="text" placeholder="nov / 12-12 / op voorraad"></div>
+  </div>
+  <label class="veld">Welke lijst?</label>
+  <select id="f-lijst">
+    <option value="">geen (niet naar een voorraadlijst schrijven)</option>
+    <option value="R">Voorraad R</option><option value="H&amp;R">Voorraad H&amp;R</option>
+  </select>
+  <div>
+    <label class="vink"><input type="checkbox" id="f-binnen"> Binnen bij shop</label>
+    <label class="vink"><input type="checkbox" id="f-betaald"> Betaald</label>
+  </div>
+  <div style="margin-top:10px">
+    <button onclick="formulierKlaar()">Overnemen</button>
+    <button class="grijs" onclick="sluitFormulier()">Annuleren</button>
+    <button class="rood" id="f-verwijder" onclick="verwijder()" style="display:none">Verwijderen</button>
+  </div>
+  <p class="mini">Kies je een lijst, dan wordt het bier bij het opslaan ook in die voorraadlijst gezet
+  (als het er nog niet in staat). Zodra het bier bij een shop verschijnt, kleurt het daar geel.</p>
+</div>
+</main>
+
+<div id="opslaanbalk"><span><b>&#9679; Niet-opgeslagen wijzigingen</b></span>
+  <button id="opslaanknop" onclick="opslaan()">Opslaan</button></div>
+
+<script>
+var GH_OWNER = "__GH_OWNER__", GH_REPO = "__GH_REPO__", GH_PAD = "mijn_untappd/";
+var SHOPS = __SHOPS__;            // [{key, label}]
+var MINIMA = __MINIMA__;          // {shop-key: bedrag}
+var LIJSTBESTAND = { "R": "voorraad_r.txt", "H&R": "voorraad_hr.txt" };
+
+var ITEMS = [], SHA = null, STATUS = {}, BEKEND = [], VOORRAAD = { "R": null, "H&R": null };
+var sortKol = null, sortRicht = 1, bewerkId = null, vuil = false;
+
+/* ---------- hulpfuncties ---------- */
+function ghToken(){ try { return localStorage.getItem("gh_token") || ""; } catch(e){ return ""; } }
+function ghHeaders(){ return { "Accept":"application/vnd.github+json", "Authorization":"Bearer " + ghToken(),
+                               "X-GitHub-Api-Version":"2022-11-28" }; }
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function euro(n){ return "\u20ac\u00a0" + (Number(n) || 0).toFixed(2).replace(".", ","); }
+function alfabetisch(a, b){ return String(a).localeCompare(String(b), "nl", { sensitivity:"base", numeric:true }); }
+function shopLabel(key){ for(var i=0;i<SHOPS.length;i++){ if(SHOPS[i].key === key) return SHOPS[i].label; } return key || "?"; }
+function melding(t){ document.getElementById('melding').textContent = t || ""; }
+function zetVuil(v){ vuil = v; document.getElementById('opslaanbalk').classList.toggle('aan', v && !!ghToken()); }
+function regelVan(it){ return (it.brouwerij ? it.brouwerij + " - " : "") + it.naam; }
+
+function norm(s){
+  s = String(s || "").toLowerCase();
+  if(s.normalize) s = s.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return s.replace(/[^a-z0-9#]+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+var STOP = { x:1, and:1, the:1, de:1, het:1, with:1, by:1, of:1, brewing:1, brewery:1, co:1, company:1,
+             brouwerij:1, beer:1, craft:1 };
+function woorden(s){ return norm(s).split(' ').filter(function(w){ return w && !STOP[w]; }); }
+/* Zelfde bier? Exact gelijk, of de kortste naam zit helemaal in de langste
+   (minstens 3 woorden) en de getallen zijn gelijk (#03 is niet #04). */
+function zelfdeBier(a, b){
+  var wa = woorden(a), wb = woorden(b);
+  if(!wa.length || !wb.length) return false;
+  if(wa.join(' ') === wb.join(' ')) return true;
+  var klein = wa.length <= wb.length ? wa : wb, groot = wa.length <= wb.length ? wb : wa;
+  if(klein.length < 3) return false;
+  var set = {}; groot.forEach(function(w){ set[w] = 1; });
+  if(!klein.every(function(w){ return set[w]; })) return false;
+  var cijfers = function(ws){ return ws.filter(function(w){ return /\d/.test(w); }).sort().join(','); };
+  return cijfers(wa) === cijfers(wb);
+}
+/* Zelfde regel "Brouwerij - Bier"? Ook als de brouwerij net anders gespeld is
+   (tikfout, "Brewing" erachter): dan moet de biernaam exact gelijk zijn en
+   de brouwerij minstens één woord delen. */
+function zelfdeRegel(a, b){
+  if(zelfdeBier(a, b)) return true;
+  var da = String(a).split(" - "), db = String(b).split(" - ");
+  if(da.length < 2 || db.length < 2) return false;
+  var na = norm(da.slice(1).join(" - ")), nb = norm(db.slice(1).join(" - "));
+  if(na !== nb || na.length < 8) return false;
+  var wb = {}; woorden(db[0]).forEach(function(w){ wb[w] = 1; });
+  return woorden(da[0]).some(function(w){ return wb[w]; });
+}
+function inLijst(it, lijst){
+  var regels = (VOORRAAD[lijst] || {}).bieren || [];
+  var eigen = regelVan(it);
+  for(var i=0;i<regels.length;i++){ if(zelfdeRegel(eigen, regels[i])) return regels[i]; }
+  return null;
+}
+
+/* ---------- laden ---------- */
+async function ghLees(bestand){
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PAD + bestand;
+  var r = await fetch(api + "?t=" + Date.now(), { headers: ghHeaders() });
+  if(r.status === 404) return { tekst: "", sha: null };
+  if(r.status === 401 || r.status === 403) throw new Error("token");
+  if(r.status !== 200) throw new Error("lezen van " + bestand + " mislukt (" + r.status + ")");
+  var d = await r.json();
+  return { tekst: decodeURIComponent(escape(atob(d.content.replace(/\s/g, '')))), sha: d.sha };
+}
+async function ghSchrijf(bestand, tekst, sha, bericht){
+  var api = "https://api.github.com/repos/" + GH_OWNER + "/" + GH_REPO + "/contents/" + GH_PAD + bestand;
+  var body = { message: bericht, content: btoa(unescape(encodeURIComponent(tekst))) };
+  if(sha) body.sha = sha;
+  var r = await fetch(api, { method:"PUT", headers: ghHeaders(), body: JSON.stringify(body) });
+  if(r.status === 401 || r.status === 403) throw new Error("token");
+  if(r.status === 409) throw new Error("het bestand is intussen gewijzigd; herlaad de pagina");
+  if(r.status !== 200 && r.status !== 201) throw new Error("opslaan van " + bestand + " mislukt (" + r.status + ")");
+  var d = await r.json();
+  return d && d.content ? d.content.sha : null;
+}
+function leesLijstTekst(tekst){
+  var regels = tekst.split(/\r?\n/);
+  return { regels: regels, bieren: regels.map(function(r){ return r.trim(); })
+                                         .filter(function(r){ return r && r.indexOf('#') !== 0; }) };
+}
+async function laad(){
+  var metToken = !!ghToken();
+  document.getElementById('tokenkaart').style.display = metToken ? 'none' : 'block';
+  try {
+    if(metToken){
+      var res = await ghLees("onderweg.json");
+      SHA = res.sha;
+      ITEMS = res.tekst ? (JSON.parse(res.tekst).items || []) : [];
+      for(var lijst in LIJSTBESTAND){
+        var l = await ghLees(LIJSTBESTAND[lijst]);
+        VOORRAAD[lijst] = leesLijstTekst(l.tekst); VOORRAAD[lijst].sha = l.sha;
+      }
+    } else {
+      var r = await fetch("https://raw.githubusercontent.com/" + GH_OWNER + "/" + GH_REPO + "/main/" + GH_PAD
+                          + "onderweg.json?t=" + Date.now());
+      ITEMS = r.ok ? ((await r.json()).items || []) : [];
+    }
+  } catch(e){
+    melding(e.message === "token" ? "Token afgewezen. Controleer het token (Contents: Read and write)."
+                                  : "Laden mislukt: " + e.message);
+  }
+  try { var s = await fetch("onderweg_status.json?t=" + Date.now()); if(s.ok) STATUS = (await s.json()).items || {}; } catch(e){}
+  try { var b = await fetch("bekende_bieren.json"); if(b.ok) BEKEND = await b.json(); } catch(e){}
+  ITEMS.forEach(function(it){
+    // lijst overnemen uit de voorraadlijsten als die nog niet is ingevuld
+    if(!it.lijst && it.brouwerij){
+      if(inLijst(it, "R")) it.lijst = "R"; else if(inLijst(it, "H&R")) it.lijst = "H&R";
+    }
+    it._lijstBijLaden = it.lijst || "";
+  });
+  zetVuil(false);
+  teken();
+}
+
+/* ---------- sorteren en tekenen ---------- */
+function isBinnen(it){ return !!(it.binnen || (STATUS[it.id] || {}).gezien); }
+function standaardVolgorde(a, b){
+  return alfabetisch(shopLabel(a.shop), shopLabel(b.shop))
+      || (isBinnen(b) - isBinnen(a))
+      || alfabetisch(regelVan(a), regelVan(b));
+}
+var WAARDE = {
+  shop: function(i){ return shopLabel(i.shop); }, brouwerij: function(i){ return i.brouwerij || ""; },
+  naam: function(i){ return i.naam || ""; }, prijs: function(i){ return Number(i.prijs) || 0; },
+  verwacht: function(i){ return i.verwacht || ""; }, binnen: function(i){ return isBinnen(i) ? 1 : 0; },
+  betaald: function(i){ return i.betaald ? 1 : 0; }, lijst: function(i){ return i.lijst || ""; }
+};
+function gesorteerd(){
+  var lijst = ITEMS.slice();
+  if(!sortKol) return lijst.sort(standaardVolgorde);
+  var w = WAARDE[sortKol];
+  return lijst.sort(function(a, b){
+    var x = w(a), y = w(b);
+    var c = (typeof x === "number") ? x - y : alfabetisch(x, y);
+    return (c * sortRicht) || standaardVolgorde(a, b);
+  });
+}
+function sorteerOp(kol){
+  if(sortKol === kol){ sortRicht = -sortRicht; }
+  else { sortKol = kol; sortRicht = (kol === "binnen" || kol === "betaald") ? -1 : 1; }  // ja eerst
+  teken();
+}
+function standaardSortering(){ sortKol = null; sortRicht = 1; teken(); }
+
+function teken(){
+  var rijen = gesorteerd(), html = "", vorigeShop = null;
+  rijen.forEach(function(it){
+    if(!sortKol && it.shop !== vorigeShop){
+      html += '<tr class="shopkop"><td colspan="9">' + esc(shopLabel(it.shop)) + '</td></tr>';
+      vorigeShop = it.shop;
+    }
+    var st = STATUS[it.id] || {};
+    var gezien = st.gezien ? ' <span class="tag groen" title="eerst gezien: ' + esc(st.eerst || "eerder")
+                             + '">&#10003; webshop</span>' : '';
+    html += '<tr>'
+      + '<td>' + esc(shopLabel(it.shop)) + '</td>'
+      + '<td>' + esc(it.brouwerij) + '</td>'
+      + '<td>' + esc(it.naam) + '</td>'
+      + '<td class="num">' + (it.prijs != null && it.prijs !== "" ? euro(it.prijs) : "") + '</td>'
+      + '<td>' + esc(it.verwacht) + '</td>'
+      + '<td class="mid"><input type="checkbox" ' + (it.binnen ? 'checked ' : '')
+          + 'onchange="zetVeld(' + it.id + ',\'binnen\',this.checked)">' + gezien + '</td>'
+      + '<td class="mid"><input type="checkbox" ' + (it.betaald ? 'checked ' : '')
+          + 'onchange="zetVeld(' + it.id + ',\'betaald\',this.checked)"></td>'
+      + '<td><select onchange="zetVeld(' + it.id + ',\'lijst\',this.value)">'
+          + ['', 'R', 'H&R'].map(function(l){ return '<option value="' + esc(l) + '"'
+              + ((it.lijst || '') === l ? ' selected' : '') + '>' + (l ? esc(l) : '\u2013') + '</option>'; }).join('')
+          + '</select></td>'
+      + '<td><button class="bewerk" onclick="openFormulier(' + it.id + ')" aria-label="Bewerken">&#9998;</button></td>'
+      + '</tr>';
+  });
+  document.querySelector('#tabel tbody').innerHTML = html
+    || '<tr><td colspan="9" class="mini">Nog niets onderweg. Voeg een bier toe.</td></tr>';
+  document.getElementById('aantal').textContent = "(" + ITEMS.length + ")";
+  document.querySelectorAll('#tabel th[data-kol]').forEach(function(th){
+    th.querySelector('.pijl').textContent = th.dataset.kol === sortKol ? (sortRicht > 0 ? "\u25B2" : "\u25BC") : "";
+  });
+  tekenSamenvatting();
+}
+function tekenSamenvatting(){
+  var perShop = {};
+  ITEMS.forEach(function(it){ (perShop[it.shop] = perShop[it.shop] || []).push(it); });
+  var shops = Object.keys(perShop).sort(function(a, b){ return alfabetisch(shopLabel(a), shopLabel(b)); });
+  var html = shops.map(function(shop){
+    var items = perShop[shop];
+    var som = function(f){ return items.filter(f).reduce(function(t, i){ return t + (Number(i.prijs) || 0); }, 0); };
+    var totaal = som(function(){ return true; }), betaald = som(function(i){ return i.betaald; });
+    var binnen = items.filter(isBinnen).length, min = MINIMA[shop];
+    var regel = '<div class="shopblok"><b>' + esc(shopLabel(shop)) + '</b> &middot; ' + items.length + ' regel(s)'
+      + '<br>Totaal <b>' + euro(totaal) + '</b> &middot; betaald ' + euro(betaald)
+      + ' &middot; nog te betalen ' + euro(totaal - betaald)
+      + '<br>Binnen: ' + binnen + ' van ' + items.length;
+    if(min){
+      var pct = Math.max(0, Math.min(100, Math.round(100 * totaal / min)));
+      regel += '<div class="balk' + (totaal >= min ? ' vol' : '') + '"><div style="width:' + pct + '%"></div></div>'
+        + (totaal >= min
+            ? '<span class="tag groen">&#10003; boven ' + euro(min) + ': gratis verzending</span>'
+            : '<span class="tag geel">nog ' + euro(min - totaal) + ' tot gratis verzending (' + euro(min) + ')</span>');
+    }
+    return regel + '</div>';
+  }).join('');
+  document.getElementById('samenvatting').innerHTML = html || '<p class="mini">Nog niets onderweg.</p>';
+}
+
+/* ---------- wijzigen ---------- */
+function vind(id){ for(var i=0;i<ITEMS.length;i++){ if(ITEMS[i].id === id) return ITEMS[i]; } return null; }
+function zetVeld(id, veld, waarde){
+  var it = vind(id); if(!it) return;
+  it[veld] = waarde; zetVuil(true);
+  tekenSamenvatting();
+}
+function shopKeuze(){
+  document.getElementById('f-shop-anders').style.display =
+    document.getElementById('f-shop').value === "__anders" ? 'block' : 'none';
+}
+function openFormulier(id){
+  bewerkId = id;
+  var it = id == null ? { shop: SHOPS.length ? SHOPS[0].key : "", lijst: "R" } : vind(id);
+  var sel = document.getElementById('f-shop');
+  var bekend = SHOPS.some(function(s){ return s.key === it.shop; });
+  sel.innerHTML = SHOPS.map(function(s){ return '<option value="' + esc(s.key) + '">' + esc(s.label) + '</option>'; }).join('')
+    + '<option value="__anders">Andere shop&hellip;</option>';
+  sel.value = bekend ? it.shop : "__anders";
+  document.getElementById('f-shop-anders').value = bekend ? "" : (it.shop || "");
+  shopKeuze();
+  document.getElementById('f-brouwerij').value = it.brouwerij || "";
+  document.getElementById('f-naam').value = it.naam || "";
+  document.getElementById('f-prijs').value = it.prijs != null && it.prijs !== "" ? String(it.prijs).replace(".", ",") : "";
+  document.getElementById('f-verwacht').value = it.verwacht || "";
+  document.getElementById('f-lijst').value = it.lijst || "";
+  document.getElementById('f-binnen').checked = !!it.binnen;
+  document.getElementById('f-betaald').checked = !!it.betaald;
+  document.getElementById('formtitel').textContent = id == null ? "Bier toevoegen" : "Bier bewerken";
+  document.getElementById('f-verwijder').style.display = id == null ? 'none' : 'inline-block';
+  document.getElementById('zoekbier').value = ""; document.getElementById('zoekresultaten').innerHTML = "";
+  var k = document.getElementById('formkaart'); k.style.display = 'block';
+  if(k.scrollIntoView) k.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+function sluitFormulier(){ document.getElementById('formkaart').style.display = 'none'; bewerkId = null; }
+function formulierKlaar(){
+  var naam = document.getElementById('f-naam').value.trim();
+  if(!naam){ alert("Vul de naam van het bier in."); return; }
+  var shop = document.getElementById('f-shop').value;
+  if(shop === "__anders") shop = document.getElementById('f-shop-anders').value.trim() || "Onbekend";
+  var prijs = parseFloat(document.getElementById('f-prijs').value.replace(/[^0-9.,]/g, "").replace(",", "."));
+  var it = bewerkId == null ? { id: ITEMS.reduce(function(m, i){ return Math.max(m, i.id || 0); }, 0) + 1,
+                                _lijstBijLaden: "" } : vind(bewerkId);
+  it.shop = shop;
+  it.brouwerij = document.getElementById('f-brouwerij').value.trim();
+  it.naam = naam;
+  it.prijs = isNaN(prijs) ? null : Math.round(prijs * 100) / 100;
+  it.verwacht = document.getElementById('f-verwacht').value.trim();
+  it.lijst = document.getElementById('f-lijst').value;
+  it.binnen = document.getElementById('f-binnen').checked;
+  it.betaald = document.getElementById('f-betaald').checked;
+  if(bewerkId == null) ITEMS.push(it);
+  sluitFormulier(); zetVuil(true); teken();
+}
+function verwijder(){
+  var it = vind(bewerkId); if(!it) return;
+  if(!confirm("'" + regelVan(it) + "' uit Onderweg verwijderen?\n\nHet bier blijft in je voorraadlijst staan.")) return;
+  ITEMS = ITEMS.filter(function(i){ return i.id !== bewerkId; });
+  sluitFormulier(); zetVuil(true); teken();
+}
+
+/* ---------- zoeken in bekende bieren + voorraadlijsten ---------- */
+function zoek(){
+  var q = norm(document.getElementById('zoekbier').value), box = document.getElementById('zoekresultaten');
+  if(q.length < 2){ box.innerHTML = ""; return; }
+  var qt = q.split(' '), uit = [], gezien = {};
+  function probeer(brouwerij, naam, lijst){
+    if(uit.length >= 25) return;
+    var hooi = norm(brouwerij + " " + naam);
+    if(!qt.every(function(w){ return hooi.indexOf(w) >= 0; })) return;
+    if(gezien[hooi]) return; gezien[hooi] = 1;
+    uit.push({ b: brouwerij, n: naam, l: lijst });
+  }
+  ["R", "H&R"].forEach(function(lijst){
+    ((VOORRAAD[lijst] || {}).bieren || []).forEach(function(regel){
+      var d = regel.split(" - "); probeer(d.length > 1 ? d[0] : "", d.length > 1 ? d.slice(1).join(" - ") : regel, lijst);
+    });
+  });
+  BEKEND.forEach(function(e){ probeer(e.b || "", e.n || "", ""); });
+  box.innerHTML = uit.map(function(e, i){
+    return '<div class="zoekrij" onclick="kiesZoek(' + i + ')"><div><b>' + esc(e.n) + '</b><br><span class="bn">'
+      + esc(e.b) + '</span></div>' + (e.l ? '<span class="tag geel">in voorraad ' + esc(e.l) + '</span>' : '') + '</div>';
+  }).join('') || '<p class="mini">Niets gevonden; vul brouwerij en naam hieronder zelf in.</p>';
+  box._uit = uit;
+}
+function kiesZoek(i){
+  var e = document.getElementById('zoekresultaten')._uit[i]; if(!e) return;
+  document.getElementById('f-brouwerij').value = e.b;
+  document.getElementById('f-naam').value = e.n;
+  if(e.l) document.getElementById('f-lijst').value = e.l;
+  document.getElementById('zoekresultaten').innerHTML = "";
+}
+
+/* ---------- opslaan: onderweg.json + voorraadlijsten bijwerken ---------- */
+async function opslaan(){
+  if(!ghToken()){ alert("Geen GitHub-token ingesteld (bieroverzicht \u2192 Token)."); return; }
+  var knop = document.getElementById('opslaanknop'); knop.disabled = true; melding("Opslaan\u2026");
+  try {
+    var schoon = ITEMS.map(function(it){
+      var k = {}; for(var v in it){ if(v.charAt(0) !== "_") k[v] = it[v]; } return k; });
+    SHA = await ghSchrijf("onderweg.json", JSON.stringify({ items: schoon }, null, 1) + "\n", SHA,
+                          "Onderweg bijgewerkt (" + schoon.length + " regels)");
+    var bijgeschreven = 0, verwijderd = 0;
+    for(var lijst in LIJSTBESTAND){
+      var v = VOORRAAD[lijst]; if(!v) continue;
+      var regels = v.regels.slice(), gewijzigd = false;
+      ITEMS.forEach(function(it){
+        if(!it.brouwerij) return;                       // vrije regel (geen bier): nooit naar een lijst
+        var staatErIn = inLijst(it, lijst);
+        if(it.lijst === lijst && !staatErIn){
+          regels.push(regelVan(it)); v.bieren.push(regelVan(it)); gewijzigd = true; bijgeschreven++;
+        } else if(it.lijst !== lijst && it._lijstBijLaden === lijst && staatErIn){
+          // lijst is in deze sessie gewijzigd: uit de oude lijst halen
+          regels = regels.filter(function(r){ return r.trim() !== staatErIn; });
+          v.bieren = v.bieren.filter(function(r){ return r !== staatErIn; }); gewijzigd = true; verwijderd++;
+        }
+      });
+      if(gewijzigd){
+        var kop = regels.filter(function(r){ return r.trim().indexOf('#') === 0; });
+        var bieren = regels.map(function(r){ return r.trim(); })
+                           .filter(function(r){ return r && r.indexOf('#') !== 0; }).sort(alfabetisch);
+        v.sha = await ghSchrijf(LIJSTBESTAND[lijst], kop.concat(bieren).join("\n") + "\n", v.sha,
+                                "Voorraad " + lijst + " bijgewerkt vanuit Onderweg");
+        v.regels = kop.concat(bieren);
+      }
+    }
+    ITEMS.forEach(function(it){ it._lijstBijLaden = it.lijst || ""; });
+    zetVuil(false);
+    melding("Opgeslagen." + (bijgeschreven ? " " + bijgeschreven + " bier(en) aan je voorraadlijst toegevoegd." : "")
+            + (verwijderd ? " " + verwijderd + " verplaatst naar de andere lijst." : ""));
+  } catch(e){
+    melding(e.message === "token" ? "Token afgewezen. Heeft het token 'Contents: Read and write'?"
+                                  : "Opslaan mislukt: " + e.message);
+  }
+  knop.disabled = false;
+}
+
+/* ---------- kruisje in het zoekveld ---------- */
+function maakWisknoppen(){
+  document.querySelectorAll('input[type=search]').forEach(function(inp){
+    if(inp.parentNode.classList.contains('wisveld')) return;
+    var w = document.createElement('span'); w.className = 'wisveld';
+    inp.parentNode.insertBefore(w, inp); w.appendChild(inp);
+    var k = document.createElement('button');
+    k.type = 'button'; k.className = 'wisknop'; k.innerHTML = '&times;';
+    k.setAttribute('aria-label', 'Zoekopdracht wissen');
+    w.appendChild(k);
+    function bij(){ w.classList.toggle('gevuld', inp.value.length > 0); }
+    inp.addEventListener('input', bij);
+    k.addEventListener('click', function(){ inp.value = ''; bij();
+      inp.dispatchEvent(new Event('input', {bubbles:true})); inp.focus(); });
+    bij();
+  });
+}
+
+document.querySelectorAll('#tabel th[data-kol]').forEach(function(th){
+  th.addEventListener('click', function(){ sorteerOp(th.dataset.kol); });
+});
+window.addEventListener('beforeunload', function(e){ if(vuil && ghToken()){ e.preventDefault(); e.returnValue = ''; } });
+maakWisknoppen();
+laad();
+</script></body></html>
+"""
+
+
+def bouw(output_path, sites=None):
+    sites = sites if sites is not None else config.SITES
+    shops = [{"key": s["key"], "label": s["label"]} for s in sites]
+    inhoud = (PAGINA
+              .replace("__GH_OWNER__", getattr(config, "GITHUB_OWNER", ""))
+              .replace("__GH_REPO__", getattr(config, "GITHUB_REPO", ""))
+              .replace("__SHOPS__", json.dumps(shops, ensure_ascii=False))
+              .replace("__MINIMA__", json.dumps(getattr(config, "GRATIS_VERZENDING", {}))))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(inhoud, encoding="utf-8")
+    log.info("Onderweg-pagina geschreven naar %s", output_path)
