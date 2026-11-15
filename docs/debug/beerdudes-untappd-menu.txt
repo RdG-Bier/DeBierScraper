@@ -480,11 +480,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						2,589						<span>Total</span>
+						2,615						<span>Total</span>
 					</li><li>
 						285						<span>Unique</span>
 					</li><li>
-						676						<span>Monthly</span>
+						702						<span>Monthly</span>
 					</li><li>
 												<a href="/v/beer-dudes/14075288/activity?filter=you">0</a>
 						<span>You</span>
@@ -539,7 +539,34 @@ $(document).ready(() => {
 </script>
 
 	
-	<div class="venue-photos">
+						<div class="venue-events">
+									<div class="box sb-events">
+		    <div class="content">
+
+		    	<h3>Upcoming Events</h3>
+				<div class="sb-event-list">
+											<div class="sb-event-item">
+
+							<span class="icon">
+                                <img src="https://images.untp.beer/resize?width=64&height=64&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/vce9b6le3fyuasmejbwojf5n1sd0?auto=compress">
+                                                            </span>
+
+							<div class="sb-event-details">
+                                <p>Tue, Dec 1st • 12:00 AM CET - Thu, Dec 31st • 11:55 PM CET</p>
+                                <h4><a href="/v/beer-dudes/14075288/event/1012608">Rinkelende Doos - de bieren</a></h4>
+								<span><a href="/v/beer-dudes/14075288">Beer Dudes</a> • 
+								Kaatsheuvel , NB</span>
+                            </div>
+
+						</div>
+						
+				</div>
+
+				<p class="more"><a href="/v/beer-dudes/14075288/events">See All Events</a></p>
+			</div>
+		</div>
+								</div>
+							<div class="venue-photos">
 		<div class="content">
 			<h3>Photos</h3>
 			<div class="photo-boxes" data-photo-size="6">
