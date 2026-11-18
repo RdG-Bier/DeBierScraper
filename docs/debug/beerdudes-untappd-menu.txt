@@ -482,11 +482,11 @@ $(document).ready(() => {
 				<h3>Venue Stats (<a href="javascript:void(0)" class="tip-info" title="Total = Total Check-ins All Time<br />Unique = Number of Users All Time<br />Monthly = Number for Checkins the last 4 weeks">?</a>)</h3>
 				<ul>
 					<li>
-						2,663						<span>Total</span>
+						2,666						<span>Total</span>
 					</li><li>
 						285						<span>Unique</span>
 					</li><li>
-						607						<span>Monthly</span>
+						610						<span>Monthly</span>
 					</li><li>
 												<a href="/v/beer-dudes/14075288/activity?filter=you">0</a>
 						<span>You</span>
@@ -3870,13 +3870,13 @@ $(document).ready(() => {
                                     Dugges Bryggeri</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80816">
+                            <div class="caps small" data-rating="3.8184">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.81)</span>
+	</div>                                                            <span class="num">(3.82)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -4363,5 +4363,8 @@ $(document).ready(() => {
 </script>
 
 
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "acd9e429a96b40e9b8320b255fcebdb9"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>

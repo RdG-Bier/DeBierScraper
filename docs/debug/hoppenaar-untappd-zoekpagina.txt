@@ -30,19 +30,21 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-        href="https://untappd.com/assets/css/tailwind.css?v=4.5.51">
+        href="https://untappd.com/assets/css/tailwind.css?v=4.5.53">
 	</link>
 
-	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.51" />
+	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.53" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.53" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.53" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/refresh.css?v=4.5.53" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.57"></script>
-				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.51" />
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.60"></script>
+	<script src="https://untappd.com/assets/js/global/user_flair.min.js?v=2.8.60"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.53" />
 			
-		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.51" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.53" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.53" type="text/css" media="screen" title="no title" charset="utf-8">
 		
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function(){
@@ -77,10 +79,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.60"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.60"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.60"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.60"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -198,7 +200,7 @@
 
 <div id="mobile_nav_site">
   <form class="search_box" method="get" action="/search">
-    <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, brewery or bar..." name="q" aria-label="Find a drink, brewery or bar search" />
+    <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, producer or place" name="q" aria-label="Find a drink, producer or place search" />
     <input type="submit" value="Submit the form!" style="position: absolute; top: 0; left: 0; z-index: 0; width: 1px; height: 1px; visibility: hidden;" />
     <div class="autocomplete">
     </div>
@@ -239,7 +241,7 @@
         <li><a class="track-click" data-track="desktop_menu" data-href=":shop" target="_blank" href="https://untappd.com/shop">Shop</a></li>
       </ul>
       <form class="search_box" method="get" action="/search">
-        <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, brewery or bar..." name="q" aria-label="Find a drink, brewery or bar search" />
+        <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, producer or place" name="q" aria-label="Find a drink, producer or place search" />
         <input type="submit" value="Submit the form!" style="position: absolute; top: 0; left: 0; z-index: 0; width: 1px; height: 1px; visibility: hidden;" />
         <div class="autocomplete">
         </div>
@@ -389,21 +391,12 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
                             </p><p class="text">
-                                <span class="name">Modelo Especial</span>
-                                <span class="brewery">Grupo Modelo</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/samuel-adams-winter-white-ale/6449496" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6449496_d52d7_sm.jpeg" alt="Winter White Ale label">
-                            </p><p class="text">
-                                <span class="name">Winter White Ale</span>
-                                <span class="brewery">Samuel Adams</span>                            </p>
+                                <span class="name">Asahi Super Dry</span>
+                                <span class="brewery">Asahi Breweries</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -416,21 +409,39 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/miller-brewing-company-miller-lite/3811" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/kirin-brewery-company-ichiban-ichiban-shibori/4667" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3811_99a49_sm.jpeg" alt="Miller Lite label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4667_f3820_sm.jpeg" alt="Ichiban (Ichiban Shibori) (一番搾り) label">
                             </p><p class="text">
-                                <span class="name">Miller Lite</span>
-                                <span class="brewery">Miller Brewing Company</span>                            </p>
+                                <span class="name">Ichiban (Ichiban Shibori) (一番搾り)</span>
+                                <span class="brewery">Kirin Brewery Company</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/samuel-adams-winter-white-ale/6449496" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6449496_d52d7_sm.jpeg" alt="Winter White Ale label">
                             </p><p class="text">
-                                <span class="name">Asahi Super Dry</span>
-                                <span class="brewery">Asahi Breweries</span>                            </p>
+                                <span class="name">Winter White Ale</span>
+                                <span class="brewery">Samuel Adams</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
+                            </p><p class="text">
+                                <span class="name">Modelo Especial</span>
+                                <span class="brewery">Grupo Modelo</span>                            </p>
+                        </a>
+                    </div>
+                                        <div class="item">
+                        <a href="/b/plzensky-prazdroj-pilsner-urquell/37936" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                            <p class="logo">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-37936_91585_sm.jpeg" alt="Pilsner Urquell label">
+                            </p><p class="text">
+                                <span class="name">Pilsner Urquell</span>
+                                <span class="brewery">Plzeňský Prazdroj</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
@@ -443,39 +454,19 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/3-floyds-brewing-dark-lord-xxx/7608947" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/birra-moretti-birra-moretti-l-autentica-ricetta-originale/6347" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-7608947_53408_sm.jpeg" alt="Dark Lord XXX label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6347_a13ce_sm.jpeg" alt="Birra Moretti L&#039;Autentica / Ricetta Originale label">
                             </p><p class="text">
-                                <span class="name">Dark Lord XXX</span>
-                                <span class="brewery">3 Floyds Brewing</span>                            </p>
-                        </a>
-                    </div>
-                                        <div class="item">
-                        <a href="/b/coors-brewing-company-coors-light/3834" class="track-click" data-track="sidebar" data-href=":beer/toplist">
-                            <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3834_458af_sm.jpeg" alt="Coors Light label">
-                            </p><p class="text">
-                                <span class="name">Coors Light</span>
-                                <span class="brewery">Coors Brewing Company</span>                            </p>
+                                <span class="name">Birra Moretti L&#039;Autentica / Ricetta Originale</span>
+                                <span class="brewery">Birra Moretti</span>                            </p>
                         </a>
                     </div>
                                 </div>
         </div>
             	<div class="box">
         	<div class="content">
-                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-14277392-type-trending_locations">
-                        <a href="/v/billies-craft-beer-fest-2026/14277392" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/we4lrnwcya5dzwol422qd28deu2p?auto=compress" alt="Billie's Craft Beer Fest 2026 logo">
-                            </p><p class="text">
-                                <span class="name">Billie's Craft Beer Fest 2026</span>
-
-                                <span class="location">Antwerpen, Provincie Antwerpen                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-475050-type-trending_locations">
+                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-475050-type-trending_locations">
                         <a href="/v/horeca-expo/475050" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
                                                                 <img src="https://ss3.4sqi.net/img/categories_v2/event/default_bg_512.png" alt="Horeca Expo logo">
@@ -486,36 +477,56 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-3007-type-trending_locations">
-                        <a href="/v/sap-center-at-san-jose/3007" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-19006-type-trending_locations">
+                        <a href="/v/olutravintola-konttori/19006" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_hockey_bg_512.png" alt="SAP Center at San Jose logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/vmmtkc7gjf5qd105wytw3ox6apvw?auto=compress" alt="Olutravintola Konttori logo">
                             </p><p class="text">
-                                <span class="name">SAP Center at San Jose</span>
+                                <span class="name">Olutravintola Konttori</span>
 
-                                <span class="location">San Jose, CA                                        </span>                            </p>
+                                <span class="location">Tampere, Pirkanmaa                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-40587-type-trending_locations">
-                        <a href="/v/rutland-arms/40587" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-284867-type-trending_locations">
+                        <a href="/v/watering-hole/284867" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Rutland Arms logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/f73b5aae0adb4b0c6c52388ef2459ff5534433ec.jpg?auto=compress" alt="Watering Hole logo">
                             </p><p class="text">
-                                <span class="name">Rutland Arms</span>
+                                <span class="name">Watering Hole</span>
 
-                                <span class="location">
-                                        Sheffield, United Kingdom
-                                        </span>                            </p>
+                                <span class="location">Shibuya-ku, 東京都                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-1026-type-trending_locations">
-                        <a href="/v/toronado/1026" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-7204-type-trending_locations">
+                        <a href="/v/the-local-taphouse/7204" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/site/assets/images/verified-venue_bg_176.png?v=1" alt="Toronado logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="The Local Taphouse logo">
                             </p><p class="text">
-                                <span class="name">Toronado</span>
+                                <span class="name">The Local Taphouse</span>
+
+                                <span class="location">Melbourne, VIC                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-11189288-type-trending_locations">
+                        <a href="/v/antenna-america-tokyo/11189288" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/rgqiflk1q1xaxunmgsuzy0lsoppb?auto=compress" alt="Antenna America Tokyo logo">
+                            </p><p class="text">
+                                <span class="name">Antenna America Tokyo</span>
+
+                                <span class="location">Chuo City, 東京都                                        </span>                            </p>
+                        </a>
+                    </div>
+
+        			                    <div class="item" data-track-venue-impression="venue_id-12926162-type-trending_locations">
+                        <a href="/v/the-beer-hall-mason/12926162" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                            <p class="logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/site/assets/images/temp/verfied-venue_bg_176.png?v=1" alt="The Beer Hall - Mason logo">
+                            </p><p class="text">
+                                <span class="name">The Beer Hall - Mason</span>
 
                                 <span class="location">San Francisco, CA                                        </span>                            </p>
                         </a>
@@ -532,27 +543,14 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-20078-type-trending_locations">
-                        <a href="/v/sheffield-tap/20078" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-5315196-type-trending_locations">
+                        <a href="/v/hair-of-the-dog-phrom-phong/5315196" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/Ech5bLkTT5Lo6xyz9zQRybu6?auto=compress" alt="Sheffield Tap logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Hair of the Dog Phrom Phong (แฮร์ออฟเดอะด็อก พร้อมพงษ์) logo">
                             </p><p class="text">
-                                <span class="name">Sheffield Tap</span>
+                                <span class="name">Hair of the Dog Phrom Phong (แฮร์ออฟเดอะด็อก พร้อมพงษ์)</span>
 
-                                <span class="location">
-                                        Sheffield, United Kingdom
-                                        </span>                            </p>
-                        </a>
-                    </div>
-
-        			                    <div class="item" data-track-venue-impression="venue_id-5651199-type-trending_locations">
-                        <a href="/v/heart-of-darkness-saigon/5651199" class="track-click" data-track="sidebar" data-href=":venue/toplist">
-                            <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/e51BmhkZBoobearJZbdMR4ks?auto=compress" alt="Heart of Darkness - Saigon logo">
-                            </p><p class="text">
-                                <span class="name">Heart of Darkness - Saigon</span>
-
-                                <span class="location">Hồ Chí Minh City, Thành phố Hồ Chí Minh                                        </span>                            </p>
+                                <span class="location">วัฒนา, กรุงเทพมหานคร                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -567,14 +565,14 @@ $(document).ready(() => {
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-10022638-type-trending_locations">
-                        <a href="/v/stand-umineko-koto/10022638" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-8433883-type-trending_locations">
+                        <a href="/v/felons-brewing-co/8433883" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Stand Umineko Koto (スタンドうみねこ コト) logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Felons Brewing Co logo">
                             </p><p class="text">
-                                <span class="name">Stand Umineko Koto (スタンドうみねこ コト)</span>
+                                <span class="name">Felons Brewing Co</span>
 
-                                <span class="location">京都市, 京都府                                        </span>                            </p>
+                                <span class="location">Brisbane, QLD                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -603,7 +601,7 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.57"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.60"></script>
 <style>
 #pmLink {
 	visibility: hidden;
@@ -716,5 +714,8 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 
 
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "acd9e429a96b40e9b8320b255fcebdb9"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
