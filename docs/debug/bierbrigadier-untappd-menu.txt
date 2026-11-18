@@ -52,21 +52,21 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-        href="https://untappd.com/assets/css/tailwind.css?v=4.5.53">
+        href="https://untappd.com/assets/css/tailwind.css?v=4.5.56">
 	</link>
 
-	<link id="canonical" rel="canonical" href="https://untappd.com/v/de-bierbrigadier-tilburg/5523441">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.53" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.53" />
-		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.53" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/refresh.css?v=4.5.53" />
+	<link id="canonical" rel="canonical" href="https://untappd.com/v/de-bierbrigadier-tilburg/5523441">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.56" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.56" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.56" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/refresh.css?v=4.5.56" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.60"></script>
-	<script src="https://untappd.com/assets/js/global/user_flair.min.js?v=2.8.60"></script>
-				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.53" />
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.61"></script>
+	<script src="https://untappd.com/assets/js/global/user_flair.min.js?v=2.8.61"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.56" />
 			
-		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.53" />
-		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.53" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.56" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.56" type="text/css" media="screen" title="no title" charset="utf-8">
 		
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function(){
@@ -101,10 +101,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.60"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.60"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.60"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.60"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.61"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -117,13 +117,60 @@
     </script>
 
 
-			<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-N4DVXTR');</script>
-		<!-- End Google Tag Manager -->
+			<script>
+(function () {
+	window.dataLayer = window.dataLayer || [];
+
+	// Signup and login succeed on a redirect, so the server queues the event in
+	// a short-lived cookie (see helpers/analytics_event_helper.php) and the
+	// next page reports it once.
+	var queued = document.cookie.match(/(?:^|; )ut_ga_event=([a-z_]+)\.([a-z_]+)(?:;|$)/);
+	if (queued) {
+		document.cookie = 'ut_ga_event=; path=/; max-age=0';
+		window.dataLayer.push({ event: queued[1], method: queued[2] });
+	}
+
+	// Matched by app id or our untp.beer short links, so links to other apps,
+	// such as Authy, are not counted.
+	function reportAppStoreClick(e) {
+		// auxclick also fires for a right-click, which opens a menu, not the link.
+		if (e.type === 'auxclick' && e.button !== 1) {
+			return;
+		}
+
+		var link = e.target.closest && e.target.closest('a[href]');
+		var app = link && /(id449141888|untp\.beer\/\w*(?:iphone|ios))|com\.untappdllc\.app|untp\.beer\/\w*android/.exec(link.href);
+		if (!app) {
+			return;
+		}
+
+		var store = app[1] ? 'apple' : 'google';
+
+		// The Firebase SDK reads the Play install referrer, so this is how an
+		// Android install is credited to the web page that sent it. The App
+		// Store has no equivalent without an App Store Connect campaign token.
+		var url = new URL(link.href);
+		if (url.hostname === 'play.google.com' && !url.searchParams.has('referrer')) {
+			var section = location.pathname.split('/')[1] || 'home';
+			url.searchParams.set('referrer', 'utm_source=untappd_web&utm_medium=referral&utm_campaign=' + section);
+			link.href = url.href;
+		}
+
+		window.dataLayer.push({ event: 'app_store_click', store: store, page_path: location.pathname });
+	}
+
+	// A middle-click opens the link in a new tab and fires auxclick, not click.
+	document.addEventListener('click', reportAppStoreClick, true);
+	document.addEventListener('auxclick', reportAppStoreClick, true);
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N4DVXTR');</script>
+<!-- End Google Tag Manager -->
 	
 	<script src="https://untappd.com/assets/v3/js/venue-impression-tracker.js"></script>
 
@@ -361,7 +408,7 @@ $(document).ready(() => {
 </div>
 
 	<div class="hours-area" style="display: none;">{"count":7,"items":[{"day_name":"Monday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Tuesday","is_24":0,"is_open":0,"hours":[]},{"day_name":"Wednesday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Thursday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"20:00:00"}]},{"day_name":"Friday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"18:00:00"}]},{"day_name":"Saturday","is_24":0,"is_open":1,"hours":[{"start_time":"11:00:00","end_time":"17:00:00"}]},{"day_name":"Sunday","is_24":0,"is_open":0,"hours":[]}]}</div>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.60"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/timelogic.min.js?v=2.8.61"></script>
 		</div>
 
 	<div class="venue-body">
@@ -387,7 +434,7 @@ $(document).ready(() => {
     <p class="error" style="display: none;">An error occured. Please try again.</p>
     <p class="success" style="display: none;">Great! Your subscription to this venue was successful.</p>
 </div>
-<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.60"></script>
+<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/alerts.min.js?v=2.8.61"></script>
 
 			<div class="venue-left">
 
@@ -755,7 +802,7 @@ $(document).ready(() => {
 
 <div class="offerings-badge badge-with-text beer">
     <img src="https://assets.untappd.com/assets/utfb/images/menu-offerings/beer-icon.svg" alt="Venue has beer on menu">
-                    <span>715 Beers</span>
+                    <span>711 Beers</span>
             </div>    </div>
 </div>
 									</div>
@@ -794,7 +841,7 @@ $(document).ready(() => {
 					</p>
 					<select id="brewery_picker">
 						<option value="all">All</option>
-						<option value="100 Watt Brewery">100 Watt Brewery (1)</option><option value="ART IS AN ALE BREWING">ART IS AN ALE BREWING (8)</option><option value="Aerofab">Aerofab (4)</option><option value="Amundsen Brewery">Amundsen Brewery (2)</option><option value="Aspall Cyder">Aspall Cyder (2)</option><option value="Aspro Brews">Aspro Brews (1)</option><option value="Ayinger Privatbrauerei">Ayinger Privatbrauerei (1)</option><option value="Azvex Brewing Company">Azvex Brewing Company (10)</option><option value="BRULO®">BRULO® (2)</option><option value="Basqueland Brewing">Basqueland Brewing (11)</option><option value="Baxbier">Baxbier (1)</option><option value="Bayreuther Bierbrauerei">Bayreuther Bierbrauerei (1)</option><option value="Bearwood Brewing">Bearwood Brewing (2)</option><option value="Beerbliotek">Beerbliotek (2)</option><option value="Bereta Brewing Co.">Bereta Brewing Co. (4)</option><option value="Berghoeve Brouwerij">Berghoeve Brouwerij (7)</option><option value="Bierbrouwerij De Magistraat">Bierbrouwerij De Magistraat (3)</option><option value="Bierbrouwerij De Roos">Bierbrouwerij De Roos (5)</option><option value="Bierbrouwerij de Koningshoeven">Bierbrouwerij de Koningshoeven (9)</option><option value="Big Belly Brewing Company">Big Belly Brewing Company (3)</option><option value="Bird Brewery">Bird Brewery (4)</option><option value="Bières de Chimay">Bières de Chimay (1)</option><option value="Blackout Brewing">Blackout Brewing (8)</option><option value="Boerenerf">Boerenerf (2)</option><option value="Brasserie Cambier">Brasserie Cambier (1)</option><option value="Brasserie Caulier">Brasserie Caulier (4)</option><option value="Brasserie Dubuisson">Brasserie Dubuisson (1)</option><option value="Brasserie Lefebvre">Brasserie Lefebvre (1)</option><option value="Brasserie Levain">Brasserie Levain (3)</option><option value="Brasserie St-Feuillien">Brasserie St-Feuillien (2)</option><option value="Brasserie d&#039;Orval">Brasserie d&#039;Orval (1)</option><option value="Brasserie de l&#039;Abbaye du Val-Dieu">Brasserie de l&#039;Abbaye du Val-Dieu (2)</option><option value="Brasserie du Bocq">Brasserie du Bocq (2)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brauerei Rittmayer Hallerndorf">Brauerei Rittmayer Hallerndorf (3)</option><option value="Breugem Bier">Breugem Bier (1)</option><option value="Brew York">Brew York (2)</option><option value="Brew Your Mind">Brew Your Mind (4)</option><option value="Brewery De Meester">Brewery De Meester (1)</option><option value="Brewery John Martin &amp; Brewery Timmermans">Brewery John Martin &amp; Brewery Timmermans (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (8)</option><option value="Brouwerij &#039;t IJ">Brouwerij &#039;t IJ (2)</option><option value="Brouwerij 3 Fonteinen">Brouwerij 3 Fonteinen (3)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij Boon">Brouwerij Boon (2)</option><option value="Brouwerij Cornelissen">Brouwerij Cornelissen (1)</option><option value="Brouwerij Corsendonk">Brouwerij Corsendonk (1)</option><option value="Brouwerij De Block">Brouwerij De Block (2)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (1)</option><option value="Brouwerij De Dolle Brouwers">Brouwerij De Dolle Brouwers (2)</option><option value="Brouwerij De Glazen Toren">Brouwerij De Glazen Toren (1)</option><option value="Brouwerij De Halve Maan">Brouwerij De Halve Maan (2)</option><option value="Brouwerij De Kneiter">Brouwerij De Kneiter (4)</option><option value="Brouwerij De Poes">Brouwerij De Poes (1)</option><option value="Brouwerij De Sint-Sixtusabdij van Westvleteren">Brouwerij De Sint-Sixtusabdij van Westvleteren (2)</option><option value="Brouwerij De Snor">Brouwerij De Snor (2)</option><option value="Brouwerij Fusie">Brouwerij Fusie (4)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (4)</option><option value="Brouwerij Het Anker">Brouwerij Het Anker (6)</option><option value="Brouwerij Het Paleisje">Brouwerij Het Paleisje (1)</option><option value="Brouwerij Het Zwijn">Brouwerij Het Zwijn (4)</option><option value="Brouwerij Kees">Brouwerij Kees (10)</option><option value="Brouwerij Kompel">Brouwerij Kompel (2)</option><option value="Brouwerij LOST">Brouwerij LOST (1)</option><option value="Brouwerij Lindemans">Brouwerij Lindemans (4)</option><option value="Brouwerij Maasdorst">Brouwerij Maasdorst (2)</option><option value="Brouwerij Nicolaas">Brouwerij Nicolaas (2)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (2)</option><option value="Brouwerij Roman">Brouwerij Roman (2)</option><option value="Brouwerij Solaes">Brouwerij Solaes (1)</option><option value="Brouwerij Van Steenberge">Brouwerij Van Steenberge (2)</option><option value="Brouwerij de Eeuwige Jeugd">Brouwerij de Eeuwige Jeugd (3)</option><option value="Brouwerij de Toekomst">Brouwerij de Toekomst (14)</option><option value="Brouwerij der Trappisten van Westmalle">Brouwerij der Trappisten van Westmalle (1)</option><option value="Budelse Brouwerij">Budelse Brouwerij (2)</option><option value="Bystersch">Bystersch (4)</option><option value="CRAK Brewery">CRAK Brewery (1)</option><option value="Cervejaria Octopus">Cervejaria Octopus (1)</option><option value="Cervesa Espiga">Cervesa Espiga (1)</option><option value="Cerveza SanFrutos">Cerveza SanFrutos (1)</option><option value="Clandestin Beer">Clandestin Beer (7)</option><option value="Collectief Geneuzel">Collectief Geneuzel (3)</option><option value="Croy Bierbrouwerij">Croy Bierbrouwerij (2)</option><option value="Croyse Brouwers">Croyse Brouwers (1)</option><option value="De Achelse Kluis">De Achelse Kluis (3)</option><option value="De Blauwe IJsbeer">De Blauwe IJsbeer (4)</option><option value="De Lastige Broertjes">De Lastige Broertjes (1)</option><option value="De Struise Brouwers">De Struise Brouwers (7)</option><option value="Deca Brouwerij">Deca Brouwerij (6)</option><option value="Delirium - Huyghe Brewery">Delirium - Huyghe Brewery (1)</option><option value="Dois Corvos">Dois Corvos (4)</option><option value="Dorpsbrouwerij Uzzewuzze">Dorpsbrouwerij Uzzewuzze (1)</option><option value="DosKiwis">DosKiwis (2)</option><option value="Drop Project">Drop Project (3)</option><option value="Dunkertons">Dunkertons (3)</option><option value="Dutch Bargain">Dutch Bargain (3)</option><option value="Elmeleven">Elmeleven (3)</option><option value="FUERST WIACEK Berlin">FUERST WIACEK Berlin (6)</option><option value="Factory Brewing">Factory Brewing (1)</option><option value="Familiebrouwerij Van Sas ">Familiebrouwerij Van Sas  (6)</option><option value="Farsight Brewing">Farsight Brewing (2)</option><option value="Fierce Beer">Fierce Beer (2)</option><option value="Firstep">Firstep (1)</option><option value="Folkingebrew">Folkingebrew (8)</option><option value="FrauGruber Brewing">FrauGruber Brewing (1)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (3)</option><option value="Funky Fluid">Funky Fluid (30)</option><option value="GRASER (Hellerbräu Bamberg)">GRASER (Hellerbräu Bamberg) (2)</option><option value="Gallivant">Gallivant (2)</option><option value="Game Over Brewing Co.">Game Over Brewing Co. (1)</option><option value="Gebrouwen door Vrouwen">Gebrouwen door Vrouwen (1)</option><option value="Glass Pyramid Project">Glass Pyramid Project (2)</option><option value="Goede Kant van het Spoor">Goede Kant van het Spoor (1)</option><option value="Goei Spul">Goei Spul (2)</option><option value="Gooische Bierbrouwerij">Gooische Bierbrouwerij (7)</option><option value="Guilty Monkey Brewery">Guilty Monkey Brewery (3)</option><option value="Guinness">Guinness (1)</option><option value="Gulden Triomfator">Gulden Triomfator (1)</option><option value="Gulpener Bierbrouwerij">Gulpener Bierbrouwerij (4)</option><option value="HORIZONT Brewing">HORIZONT Brewing (4)</option><option value="Hacker-Pschorr">Hacker-Pschorr (1)</option><option value="Healey&#039;s Cornish Cyder Farm">Healey&#039;s Cornish Cyder Farm (3)</option><option value="Het Bieratelier">Het Bieratelier (1)</option><option value="Holy Goat Brewing">Holy Goat Brewing (6)</option><option value="Hooglander Bier">Hooglander Bier (1)</option><option value="IESSEL Cider">IESSEL Cider (2)</option><option value="Jaanihanso">Jaanihanso (2)</option><option value="Jake&#039;s Beer">Jake&#039;s Beer (1)</option><option value="Jopen">Jopen (2)</option><option value="KOMPAAN Dutch Craft Beer Company">KOMPAAN Dutch Craft Beer Company (7)</option><option value="Kaapse Brouwers">Kaapse Brouwers (1)</option><option value="Kasteel Brouwerij Vanhonsebrouck">Kasteel Brouwerij Vanhonsebrouck (1)</option><option value="Krombacher Gruppe">Krombacher Gruppe (1)</option><option value="König Ludwig Schlossbrauerei Kaltenberg">König Ludwig Schlossbrauerei Kaltenberg (1)</option><option value="LERVIG">LERVIG (7)</option><option value="LOC Brewery">LOC Brewery (2)</option><option value="La Calavera">La Calavera (4)</option><option value="La Débauche">La Débauche (1)</option><option value="La Pirata Brewing">La Pirata Brewing (1)</option><option value="Left Handed Giant">Left Handed Giant (5)</option><option value="Lindeboom">Lindeboom (5)</option><option value="Little Rain Brewing Company">Little Rain Brewing Company (1)</option><option value="Locals Only Brewing Co.">Locals Only Brewing Co. (1)</option><option value="Lowlander Botanical Beer">Lowlander Botanical Beer (1)</option><option value="Mad Scientist">Mad Scientist (9)</option><option value="Maison Périgault">Maison Périgault (1)</option><option value="Mead Scientist">Mead Scientist (2)</option><option value="Mederij Marcus">Mederij Marcus (4)</option><option value="Melbourn Bros’ All Saints Brewery">Melbourn Bros’ All Saints Brewery (2)</option><option value="Menno Olivier Brewing">Menno Olivier Brewing (6)</option><option value="Mikkeller">Mikkeller (1)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (4)</option><option value="Muifelbrouwerij">Muifelbrouwerij (7)</option><option value="Nemeton Brewing">Nemeton Brewing (1)</option><option value="Neon Raptor Brewing Co.">Neon Raptor Brewing Co. (1)</option><option value="Nohoval Drinks Company Ltd">Nohoval Drinks Company Ltd (3)</option><option value="Närke Kulturbryggeri">Närke Kulturbryggeri (2)</option><option value="O&#039;Clock Brewing">O&#039;Clock Brewing (3)</option><option value="Omer Vander Ghinste">Omer Vander Ghinste (1)</option><option value="Omnipollo">Omnipollo (1)</option><option value="One Drop Brewing Co">One Drop Brewing Co (6)</option><option value="Ophiussa">Ophiussa (2)</option><option value="Oproer Brouwerij">Oproer Brouwerij (1)</option><option value="Oso Brew Co">Oso Brew Co (2)</option><option value="Ossett Brewery">Ossett Brewery (1)</option><option value="Outer Range Brewing Co.">Outer Range Brewing Co. (4)</option><option value="PINTA">PINTA (3)</option><option value="PINTA Barrel Brewing">PINTA Barrel Brewing (6)</option><option value="Papa&#039;s Aan De Fles">Papa&#039;s Aan De Fles (3)</option><option value="Paulaner Brauerei">Paulaner Brauerei (1)</option><option value="Pentrich Brewing Co.">Pentrich Brewing Co. (2)</option><option value="Pivovar ZICHOVEC">Pivovar ZICHOVEC (5)</option><option value="Polly&#039;s Brew Co.">Polly&#039;s Brew Co. (2)</option><option value="Pomona Island Brew Co.">Pomona Island Brew Co. (1)</option><option value="Popihn">Popihn (2)</option><option value="Pretty Decent Beer Co">Pretty Decent Beer Co (3)</option><option value="Prizm Brewing Co.">Prizm Brewing Co. (2)</option><option value="Pulfer Brewery">Pulfer Brewery (5)</option><option value="Põhjala">Põhjala (2)</option><option value="Pühaste ">Pühaste  (2)</option><option value="ROTT. BREWING COMPANY">ROTT. BREWING COMPANY (5)</option><option value="Ritual Lab ">Ritual Lab  (1)</option><option value="Rock City Brewing">Rock City Brewing (3)</option><option value="SOMA Beer">SOMA Beer (4)</option><option value="Sacrilège">Sacrilège (6)</option><option value="Salikatt">Salikatt (5)</option><option value="Samuel Smith">Samuel Smith (2)</option><option value="Sandford Orchards">Sandford Orchards (7)</option><option value="Scheldebrouwerij">Scheldebrouwerij (2)</option><option value="Schlenkerla (&quot;Heller-Bräu&quot; Trum)">Schlenkerla (&quot;Heller-Bräu&quot; Trum) (1)</option><option value="Schneider Weisse G. Schneider &amp; Sohn">Schneider Weisse G. Schneider &amp; Sohn (3)</option><option value="Sidreria Bereziartua">Sidreria Bereziartua (2)</option><option value="Siren Craft Brew">Siren Craft Brew (2)</option><option value="Spartacus Brewing">Spartacus Brewing (2)</option><option value="Spaten-Franziskaner-Löwenbräu-Gruppe">Spaten-Franziskaner-Löwenbräu-Gruppe (1)</option><option value="St. Peter’s Brewery Co.">St. Peter’s Brewery Co. (1)</option><option value="Stadsbrouwerij 013">Stadsbrouwerij 013 (1)</option><option value="Stadsbrouwerij Artevelde">Stadsbrouwerij Artevelde (2)</option><option value="Stadsbrouwerij De Pelgrim">Stadsbrouwerij De Pelgrim (1)</option><option value="Stadsbrouwerij Tilburg">Stadsbrouwerij Tilburg (5)</option><option value="Stekerij Ambreus">Stekerij Ambreus (2)</option><option value="Stigbergets Bryggeri">Stigbergets Bryggeri (1)</option><option value="Strieper Craft Beer Company">Strieper Craft Beer Company (2)</option><option value="Stroom">Stroom (5)</option><option value="Sudden Death Brewing Co.">Sudden Death Brewing Co. (11)</option><option value="Sullivan&#039;s Brewing Company">Sullivan&#039;s Brewing Company (2)</option><option value="Tale African Beer Craft">Tale African Beer Craft (1)</option><option value="Tartarus Beers">Tartarus Beers (3)</option><option value="Tempest Brewing Co.">Tempest Brewing Co. (2)</option><option value="Texelse Bierbrouwerij">Texelse Bierbrouwerij (1)</option><option value="The Hollows">The Hollows (3)</option><option value="The Kernel Brewery">The Kernel Brewery (3)</option><option value="The Piggy Brewing Company">The Piggy Brewing Company (1)</option><option value="The Sisters Brewery">The Sisters Brewery (2)</option><option value="Thistly Cross Cider">Thistly Cross Cider (1)</option><option value="Thorns Wit">Thorns Wit (2)</option><option value="Track Brewing Company">Track Brewing Company (3)</option><option value="Tuletorn Brewing">Tuletorn Brewing (5)</option><option value="VAT&#039;33">VAT&#039;33 (1)</option><option value="Van Moll">Van Moll (3)</option><option value="Varvar Brew">Varvar Brew (1)</option><option value="Vault City Brewing">Vault City Brewing (19)</option><option value="Vet &amp; Lazy">Vet &amp; Lazy (1)</option><option value="WALHALLA Brouwerij">WALHALLA Brouwerij (4)</option><option value="Walt Cider">Walt Cider (5)</option><option value="Warpigs Brewpub">Warpigs Brewpub (2)</option><option value="Waterland Brewery">Waterland Brewery (2)</option><option value="Westons Cider">Westons Cider (3)</option><option value="White Dog Brewery">White Dog Brewery (1)</option><option value="Woodforde&#039;s Brewery">Woodforde&#039;s Brewery (3)</option><option value="Zapiain Sagardoa">Zapiain Sagardoa (1)</option><option value="Ziemia Obiecana">Ziemia Obiecana (3)</option><option value="Zomerdijk Brewing &amp; Blending">Zomerdijk Brewing &amp; Blending (2)</option><option value="Zuyd Craft">Zuyd Craft (4)</option><option value="vandeStreek bier">vandeStreek bier (5)</option><option value="Ārpus Brewing Co.">Ārpus Brewing Co. (7)</option><option value="서울브루어리ㅣSEOUL BREWERY">서울브루어리ㅣSEOUL BREWERY (2)</option>					</select>
+						<option value="ART IS AN ALE BREWING">ART IS AN ALE BREWING (8)</option><option value="Aerofab">Aerofab (4)</option><option value="Amundsen Brewery">Amundsen Brewery (2)</option><option value="Aspall Cyder">Aspall Cyder (2)</option><option value="Aspro Brews">Aspro Brews (1)</option><option value="Ayinger Privatbrauerei">Ayinger Privatbrauerei (1)</option><option value="Azvex Brewing Company">Azvex Brewing Company (10)</option><option value="BRULO®">BRULO® (2)</option><option value="Basqueland Brewing">Basqueland Brewing (11)</option><option value="Baxbier">Baxbier (1)</option><option value="Bayreuther Bierbrauerei">Bayreuther Bierbrauerei (1)</option><option value="Bearwood Brewing">Bearwood Brewing (2)</option><option value="Beerbliotek">Beerbliotek (2)</option><option value="Bereta Brewing Co.">Bereta Brewing Co. (4)</option><option value="Berghoeve Brouwerij">Berghoeve Brouwerij (7)</option><option value="Bierbrouwerij De Magistraat">Bierbrouwerij De Magistraat (3)</option><option value="Bierbrouwerij De Roos">Bierbrouwerij De Roos (5)</option><option value="Bierbrouwerij de Koningshoeven">Bierbrouwerij de Koningshoeven (9)</option><option value="Big Belly Brewing Company">Big Belly Brewing Company (3)</option><option value="Bird Brewery">Bird Brewery (4)</option><option value="Bières de Chimay">Bières de Chimay (1)</option><option value="Blackout Brewing">Blackout Brewing (8)</option><option value="Boerenerf">Boerenerf (2)</option><option value="Brasserie Cambier">Brasserie Cambier (1)</option><option value="Brasserie Caulier">Brasserie Caulier (4)</option><option value="Brasserie Dubuisson">Brasserie Dubuisson (1)</option><option value="Brasserie Lefebvre">Brasserie Lefebvre (1)</option><option value="Brasserie Levain">Brasserie Levain (3)</option><option value="Brasserie St-Feuillien">Brasserie St-Feuillien (2)</option><option value="Brasserie d&#039;Orval">Brasserie d&#039;Orval (1)</option><option value="Brasserie de l&#039;Abbaye du Val-Dieu">Brasserie de l&#039;Abbaye du Val-Dieu (2)</option><option value="Brasserie du Bocq">Brasserie du Bocq (2)</option><option value="Brauerei Gebr. Maisel">Brauerei Gebr. Maisel (1)</option><option value="Brauerei Rittmayer Hallerndorf">Brauerei Rittmayer Hallerndorf (2)</option><option value="Breugem Bier">Breugem Bier (1)</option><option value="Brew York">Brew York (2)</option><option value="Brew Your Mind">Brew Your Mind (4)</option><option value="Brewery De Meester">Brewery De Meester (1)</option><option value="Brewery John Martin &amp; Brewery Timmermans">Brewery John Martin &amp; Brewery Timmermans (1)</option><option value="Brewpub De Kromme Haring">Brewpub De Kromme Haring (8)</option><option value="Brouwerij &#039;t IJ">Brouwerij &#039;t IJ (2)</option><option value="Brouwerij 3 Fonteinen">Brouwerij 3 Fonteinen (3)</option><option value="Brouwerij Bliksem">Brouwerij Bliksem (1)</option><option value="Brouwerij Boon">Brouwerij Boon (2)</option><option value="Brouwerij Cornelissen">Brouwerij Cornelissen (1)</option><option value="Brouwerij Corsendonk">Brouwerij Corsendonk (1)</option><option value="Brouwerij De Block">Brouwerij De Block (2)</option><option value="Brouwerij De Dochter van de Korenaar">Brouwerij De Dochter van de Korenaar (1)</option><option value="Brouwerij De Dolle Brouwers">Brouwerij De Dolle Brouwers (2)</option><option value="Brouwerij De Glazen Toren">Brouwerij De Glazen Toren (1)</option><option value="Brouwerij De Halve Maan">Brouwerij De Halve Maan (2)</option><option value="Brouwerij De Kneiter">Brouwerij De Kneiter (4)</option><option value="Brouwerij De Poes">Brouwerij De Poes (1)</option><option value="Brouwerij De Sint-Sixtusabdij van Westvleteren">Brouwerij De Sint-Sixtusabdij van Westvleteren (2)</option><option value="Brouwerij De Snor">Brouwerij De Snor (2)</option><option value="Brouwerij Fusie">Brouwerij Fusie (4)</option><option value="Brouwerij Halve Tamme">Brouwerij Halve Tamme (4)</option><option value="Brouwerij Het Anker">Brouwerij Het Anker (6)</option><option value="Brouwerij Het Paleisje">Brouwerij Het Paleisje (1)</option><option value="Brouwerij Het Zwijn">Brouwerij Het Zwijn (4)</option><option value="Brouwerij Kees">Brouwerij Kees (10)</option><option value="Brouwerij Kompel">Brouwerij Kompel (2)</option><option value="Brouwerij LOST">Brouwerij LOST (1)</option><option value="Brouwerij Lindemans">Brouwerij Lindemans (4)</option><option value="Brouwerij Maasdorst">Brouwerij Maasdorst (2)</option><option value="Brouwerij Nicolaas">Brouwerij Nicolaas (2)</option><option value="Brouwerij Poesiat &amp; Kater">Brouwerij Poesiat &amp; Kater (2)</option><option value="Brouwerij Roman">Brouwerij Roman (2)</option><option value="Brouwerij Solaes">Brouwerij Solaes (1)</option><option value="Brouwerij Van Steenberge">Brouwerij Van Steenberge (2)</option><option value="Brouwerij de Eeuwige Jeugd">Brouwerij de Eeuwige Jeugd (3)</option><option value="Brouwerij de Toekomst">Brouwerij de Toekomst (14)</option><option value="Brouwerij der Trappisten van Westmalle">Brouwerij der Trappisten van Westmalle (1)</option><option value="Budelse Brouwerij">Budelse Brouwerij (2)</option><option value="Bystersch">Bystersch (4)</option><option value="CRAK Brewery">CRAK Brewery (1)</option><option value="Cervejaria Octopus">Cervejaria Octopus (1)</option><option value="Cervesa Espiga">Cervesa Espiga (1)</option><option value="Cerveza SanFrutos">Cerveza SanFrutos (1)</option><option value="Clandestin Beer">Clandestin Beer (7)</option><option value="Collectief Geneuzel">Collectief Geneuzel (3)</option><option value="Croy Bierbrouwerij">Croy Bierbrouwerij (2)</option><option value="Croyse Brouwers">Croyse Brouwers (1)</option><option value="De Achelse Kluis">De Achelse Kluis (3)</option><option value="De Blauwe IJsbeer">De Blauwe IJsbeer (4)</option><option value="De Lastige Broertjes">De Lastige Broertjes (1)</option><option value="De Struise Brouwers">De Struise Brouwers (7)</option><option value="Deca Brouwerij">Deca Brouwerij (6)</option><option value="Delirium - Huyghe Brewery">Delirium - Huyghe Brewery (1)</option><option value="Dois Corvos">Dois Corvos (4)</option><option value="Dorpsbrouwerij Uzzewuzze">Dorpsbrouwerij Uzzewuzze (1)</option><option value="DosKiwis">DosKiwis (2)</option><option value="Drop Project">Drop Project (3)</option><option value="Dunkertons">Dunkertons (3)</option><option value="Dutch Bargain">Dutch Bargain (3)</option><option value="Elmeleven">Elmeleven (3)</option><option value="FUERST WIACEK Berlin">FUERST WIACEK Berlin (6)</option><option value="Factory Brewing">Factory Brewing (1)</option><option value="Familiebrouwerij Van Sas ">Familiebrouwerij Van Sas  (6)</option><option value="Farsight Brewing">Farsight Brewing (2)</option><option value="Fierce Beer">Fierce Beer (2)</option><option value="Firstep">Firstep (1)</option><option value="Folkingebrew">Folkingebrew (8)</option><option value="FrauGruber Brewing">FrauGruber Brewing (1)</option><option value="Frontaal Brewing Co.">Frontaal Brewing Co. (3)</option><option value="Funky Fluid">Funky Fluid (30)</option><option value="GRASER (Hellerbräu Bamberg)">GRASER (Hellerbräu Bamberg) (2)</option><option value="Gallivant">Gallivant (2)</option><option value="Game Over Brewing Co.">Game Over Brewing Co. (1)</option><option value="Gebrouwen door Vrouwen">Gebrouwen door Vrouwen (1)</option><option value="Glass Pyramid Project">Glass Pyramid Project (2)</option><option value="Goede Kant van het Spoor">Goede Kant van het Spoor (1)</option><option value="Goei Spul">Goei Spul (2)</option><option value="Gooische Bierbrouwerij">Gooische Bierbrouwerij (7)</option><option value="Guilty Monkey Brewery">Guilty Monkey Brewery (3)</option><option value="Guinness">Guinness (1)</option><option value="Gulden Triomfator">Gulden Triomfator (1)</option><option value="Gulpener Bierbrouwerij">Gulpener Bierbrouwerij (4)</option><option value="HORIZONT Brewing">HORIZONT Brewing (4)</option><option value="Hacker-Pschorr">Hacker-Pschorr (1)</option><option value="Healey&#039;s Cornish Cyder Farm">Healey&#039;s Cornish Cyder Farm (3)</option><option value="Het Bieratelier">Het Bieratelier (1)</option><option value="Holy Goat Brewing">Holy Goat Brewing (6)</option><option value="Hooglander Bier">Hooglander Bier (1)</option><option value="IESSEL Cider">IESSEL Cider (2)</option><option value="Jaanihanso">Jaanihanso (2)</option><option value="Jake&#039;s Beer">Jake&#039;s Beer (1)</option><option value="Jopen">Jopen (2)</option><option value="KOMPAAN Dutch Craft Beer Company">KOMPAAN Dutch Craft Beer Company (7)</option><option value="Kaapse Brouwers">Kaapse Brouwers (1)</option><option value="Kasteel Brouwerij Vanhonsebrouck">Kasteel Brouwerij Vanhonsebrouck (1)</option><option value="Krombacher Gruppe">Krombacher Gruppe (1)</option><option value="König Ludwig Schlossbrauerei Kaltenberg">König Ludwig Schlossbrauerei Kaltenberg (1)</option><option value="LERVIG">LERVIG (7)</option><option value="LOC Brewery">LOC Brewery (2)</option><option value="La Calavera">La Calavera (4)</option><option value="La Débauche">La Débauche (1)</option><option value="La Pirata Brewing">La Pirata Brewing (1)</option><option value="Left Handed Giant">Left Handed Giant (5)</option><option value="Lindeboom">Lindeboom (5)</option><option value="Little Rain Brewing Company">Little Rain Brewing Company (1)</option><option value="Locals Only Brewing Co.">Locals Only Brewing Co. (1)</option><option value="Lowlander Botanical Beer">Lowlander Botanical Beer (1)</option><option value="Mad Scientist">Mad Scientist (9)</option><option value="Maison Périgault">Maison Périgault (1)</option><option value="Mead Scientist">Mead Scientist (2)</option><option value="Mederij Marcus">Mederij Marcus (4)</option><option value="Melbourn Bros’ All Saints Brewery">Melbourn Bros’ All Saints Brewery (2)</option><option value="Menno Olivier Brewing">Menno Olivier Brewing (6)</option><option value="Mikkeller">Mikkeller (1)</option><option value="Moersleutel Craft Brewery">Moersleutel Craft Brewery (4)</option><option value="Muifelbrouwerij">Muifelbrouwerij (7)</option><option value="Nemeton Brewing">Nemeton Brewing (1)</option><option value="Neon Raptor Brewing Co.">Neon Raptor Brewing Co. (1)</option><option value="Nohoval Drinks Company Ltd">Nohoval Drinks Company Ltd (3)</option><option value="Närke Kulturbryggeri">Närke Kulturbryggeri (2)</option><option value="O&#039;Clock Brewing">O&#039;Clock Brewing (3)</option><option value="Omer Vander Ghinste">Omer Vander Ghinste (1)</option><option value="Omnipollo">Omnipollo (1)</option><option value="One Drop Brewing Co">One Drop Brewing Co (6)</option><option value="Ophiussa">Ophiussa (2)</option><option value="Oproer Brouwerij">Oproer Brouwerij (1)</option><option value="Oso Brew Co">Oso Brew Co (2)</option><option value="Ossett Brewery">Ossett Brewery (1)</option><option value="Outer Range Brewing Co.">Outer Range Brewing Co. (4)</option><option value="PINTA">PINTA (3)</option><option value="PINTA Barrel Brewing">PINTA Barrel Brewing (6)</option><option value="Papa&#039;s Aan De Fles">Papa&#039;s Aan De Fles (2)</option><option value="Paulaner Brauerei">Paulaner Brauerei (1)</option><option value="Pentrich Brewing Co.">Pentrich Brewing Co. (2)</option><option value="Pivovar ZICHOVEC">Pivovar ZICHOVEC (5)</option><option value="Polly&#039;s Brew Co.">Polly&#039;s Brew Co. (2)</option><option value="Pomona Island Brew Co.">Pomona Island Brew Co. (1)</option><option value="Popihn">Popihn (2)</option><option value="Pretty Decent Beer Co">Pretty Decent Beer Co (3)</option><option value="Prizm Brewing Co.">Prizm Brewing Co. (2)</option><option value="Pulfer Brewery">Pulfer Brewery (5)</option><option value="Põhjala">Põhjala (2)</option><option value="Pühaste ">Pühaste  (2)</option><option value="ROTT. BREWING COMPANY">ROTT. BREWING COMPANY (5)</option><option value="Ritual Lab ">Ritual Lab  (1)</option><option value="Rock City Brewing">Rock City Brewing (3)</option><option value="SOMA Beer">SOMA Beer (3)</option><option value="Sacrilège">Sacrilège (6)</option><option value="Salikatt">Salikatt (5)</option><option value="Samuel Smith">Samuel Smith (2)</option><option value="Sandford Orchards">Sandford Orchards (7)</option><option value="Scheldebrouwerij">Scheldebrouwerij (2)</option><option value="Schlenkerla (&quot;Heller-Bräu&quot; Trum)">Schlenkerla (&quot;Heller-Bräu&quot; Trum) (1)</option><option value="Schneider Weisse G. Schneider &amp; Sohn">Schneider Weisse G. Schneider &amp; Sohn (3)</option><option value="Sidreria Bereziartua">Sidreria Bereziartua (2)</option><option value="Siren Craft Brew">Siren Craft Brew (2)</option><option value="Spartacus Brewing">Spartacus Brewing (2)</option><option value="Spaten-Franziskaner-Löwenbräu-Gruppe">Spaten-Franziskaner-Löwenbräu-Gruppe (1)</option><option value="St. Peter’s Brewery Co.">St. Peter’s Brewery Co. (1)</option><option value="Stadsbrouwerij 013">Stadsbrouwerij 013 (1)</option><option value="Stadsbrouwerij Artevelde">Stadsbrouwerij Artevelde (2)</option><option value="Stadsbrouwerij De Pelgrim">Stadsbrouwerij De Pelgrim (1)</option><option value="Stadsbrouwerij Tilburg">Stadsbrouwerij Tilburg (5)</option><option value="Stekerij Ambreus">Stekerij Ambreus (2)</option><option value="Stigbergets Bryggeri">Stigbergets Bryggeri (1)</option><option value="Strieper Craft Beer Company">Strieper Craft Beer Company (2)</option><option value="Stroom">Stroom (5)</option><option value="Sudden Death Brewing Co.">Sudden Death Brewing Co. (11)</option><option value="Sullivan&#039;s Brewing Company">Sullivan&#039;s Brewing Company (2)</option><option value="Tale African Beer Craft">Tale African Beer Craft (1)</option><option value="Tartarus Beers">Tartarus Beers (3)</option><option value="Tempest Brewing Co.">Tempest Brewing Co. (2)</option><option value="Texelse Bierbrouwerij">Texelse Bierbrouwerij (1)</option><option value="The Hollows">The Hollows (3)</option><option value="The Kernel Brewery">The Kernel Brewery (3)</option><option value="The Piggy Brewing Company">The Piggy Brewing Company (1)</option><option value="The Sisters Brewery">The Sisters Brewery (2)</option><option value="Thistly Cross Cider">Thistly Cross Cider (1)</option><option value="Thorns Wit">Thorns Wit (2)</option><option value="Track Brewing Company">Track Brewing Company (3)</option><option value="Tuletorn Brewing">Tuletorn Brewing (5)</option><option value="VAT&#039;33">VAT&#039;33 (1)</option><option value="Van Moll">Van Moll (3)</option><option value="Varvar Brew">Varvar Brew (1)</option><option value="Vault City Brewing">Vault City Brewing (19)</option><option value="Vet &amp; Lazy">Vet &amp; Lazy (1)</option><option value="WALHALLA Brouwerij">WALHALLA Brouwerij (4)</option><option value="Walt Cider">Walt Cider (5)</option><option value="Warpigs Brewpub">Warpigs Brewpub (2)</option><option value="Waterland Brewery">Waterland Brewery (2)</option><option value="Westons Cider">Westons Cider (3)</option><option value="White Dog Brewery">White Dog Brewery (1)</option><option value="Woodforde&#039;s Brewery">Woodforde&#039;s Brewery (3)</option><option value="Zapiain Sagardoa">Zapiain Sagardoa (1)</option><option value="Ziemia Obiecana">Ziemia Obiecana (3)</option><option value="Zomerdijk Brewing &amp; Blending">Zomerdijk Brewing &amp; Blending (2)</option><option value="Zuyd Craft">Zuyd Craft (4)</option><option value="vandeStreek bier">vandeStreek bier (5)</option><option value="Ārpus Brewing Co.">Ārpus Brewing Co. (7)</option><option value="서울브루어리ㅣSEOUL BREWERY">서울브루어리ㅣSEOUL BREWERY (2)</option>					</select>
 				</div>
 			</div><div class="filter-holder">
 				<label>Filter by Style</label>
@@ -804,7 +851,7 @@ $(document).ready(() => {
 					</p>
 					<select id="style_picker">
 						<option value="all">All</option>
-						<option value="Barleywine - American">Barleywine - American (5)</option><option value="Barleywine - English">Barleywine - English (3)</option><option value="Barleywine - Other">Barleywine - Other (13)</option><option value="Belgian Blonde">Belgian Blonde (19)</option><option value="Belgian Dubbel">Belgian Dubbel (9)</option><option value="Belgian Quadrupel">Belgian Quadrupel (27)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (10)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (15)</option><option value="Belgian Tripel">Belgian Tripel (38)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (1)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (2)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (15)</option><option value="Bock - Doppelbock">Bock - Doppelbock (13)</option><option value="Bock - Eisbock">Bock - Eisbock (1)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (14)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Bock - Weizendoppelbock">Bock - Weizendoppelbock (2)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (1)</option><option value="Cider - Basque">Cider - Basque (2)</option><option value="Cider - Dry">Cider - Dry (10)</option><option value="Cider - Other">Cider - Other (2)</option><option value="Cider - Other Fruit">Cider - Other Fruit (6)</option><option value="Cider - Rosé">Cider - Rosé (1)</option><option value="Cider - Sweet">Cider - Sweet (3)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (13)</option><option value="Cream Ale">Cream Ale (1)</option><option value="Dark Ale">Dark Ale (1)</option><option value="Farmhouse Ale - Bière de Coupage">Farmhouse Ale - Bière de Coupage (1)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (9)</option><option value="Festbier">Festbier (5)</option><option value="Freeze-Distilled Beer">Freeze-Distilled Beer (4)</option><option value="Fruit Beer">Fruit Beer (6)</option><option value="Grape Ale - Other">Grape Ale - Other (5)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (1)</option><option value="IPA - American">IPA - American (11)</option><option value="IPA - Belgian">IPA - Belgian (1)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (1)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (11)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (28)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (51)</option><option value="IPA - Other">IPA - Other (8)</option><option value="IPA - Quadruple">IPA - Quadruple (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple">IPA - Triple (2)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (6)</option><option value="IPA - White / Wheat">IPA - White / Wheat (2)</option><option value="Kellerbier / Zwickelbier">Kellerbier / Zwickelbier (1)</option><option value="Kellerbier / Zwickelbier - Dunkel">Kellerbier / Zwickelbier - Dunkel (1)</option><option value="Lager - Dark">Lager - Dark (2)</option><option value="Lager - Fruited  ">Lager - Fruited   (1)</option><option value="Lager - Helles">Lager - Helles (2)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Lager - Vienna">Lager - Vienna (1)</option><option value="Lambic - Framboise">Lambic - Framboise (1)</option><option value="Lambic - Fruit">Lambic - Fruit (2)</option><option value="Lambic - Gueuze">Lambic - Gueuze (5)</option><option value="Lambic - Kriek">Lambic - Kriek (5)</option><option value="Mead - Braggot">Mead - Braggot (2)</option><option value="Mead - Cyser">Mead - Cyser (2)</option><option value="Mead - Melomel">Mead - Melomel (3)</option><option value="Mead - Traditional">Mead - Traditional (1)</option><option value="Pale Ale - American">Pale Ale - American (1)</option><option value="Pale Ale - Australian">Pale Ale - Australian (1)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (1)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (4)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (2)</option><option value="Pilsner - German">Pilsner - German (1)</option><option value="Pilsner - Imperial / Double">Pilsner - Imperial / Double (1)</option><option value="Porter - English">Porter - English (3)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (1)</option><option value="Porter - India Export">Porter - India Export (1)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="Rauchbier">Rauchbier (2)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Schwarzbier">Schwarzbier (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (2)</option><option value="Sour - Fruited">Sour - Fruited (24)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (3)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (2)</option><option value="Sour - Other">Sour - Other (5)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (57)</option><option value="Sour - Tomato / Vegetable Gose">Sour - Tomato / Vegetable Gose (1)</option><option value="Stout - American">Stout - American (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (1)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (50)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (5)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (34)</option><option value="Stout - Irish Dry">Stout - Irish Dry (1)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Other">Stout - Other (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (12)</option><option value="Stout - White / Golden">Stout - White / Golden (1)</option><option value="Strong Ale - American">Strong Ale - American (1)</option><option value="Strong Ale - English">Strong Ale - English (1)</option><option value="Strong Ale - Other">Strong Ale - Other (2)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (1)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (1)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (12)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (3)</option><option value="Wheat Beer - Other">Wheat Beer - Other (1)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (14)</option><option value="Wild Ale - Other">Wild Ale - Other (8)</option><option value="Winter Ale">Winter Ale (9)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
+						<option value="Barleywine - American">Barleywine - American (5)</option><option value="Barleywine - English">Barleywine - English (3)</option><option value="Barleywine - Other">Barleywine - Other (13)</option><option value="Belgian Blonde">Belgian Blonde (19)</option><option value="Belgian Dubbel">Belgian Dubbel (8)</option><option value="Belgian Quadrupel">Belgian Quadrupel (27)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (10)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (15)</option><option value="Belgian Tripel">Belgian Tripel (38)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (1)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (2)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (15)</option><option value="Bock - Doppelbock">Bock - Doppelbock (13)</option><option value="Bock - Eisbock">Bock - Eisbock (1)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (14)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Bock - Weizendoppelbock">Bock - Weizendoppelbock (2)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (1)</option><option value="Cider - Basque">Cider - Basque (2)</option><option value="Cider - Dry">Cider - Dry (10)</option><option value="Cider - Other">Cider - Other (2)</option><option value="Cider - Other Fruit">Cider - Other Fruit (6)</option><option value="Cider - Rosé">Cider - Rosé (1)</option><option value="Cider - Sweet">Cider - Sweet (3)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (13)</option><option value="Cream Ale">Cream Ale (1)</option><option value="Dark Ale">Dark Ale (1)</option><option value="Farmhouse Ale - Bière de Coupage">Farmhouse Ale - Bière de Coupage (1)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (9)</option><option value="Festbier">Festbier (5)</option><option value="Freeze-Distilled Beer">Freeze-Distilled Beer (4)</option><option value="Fruit Beer">Fruit Beer (6)</option><option value="Grape Ale - Other">Grape Ale - Other (5)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (1)</option><option value="IPA - American">IPA - American (11)</option><option value="IPA - Belgian">IPA - Belgian (1)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (1)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (11)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (28)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (50)</option><option value="IPA - Other">IPA - Other (8)</option><option value="IPA - Quadruple">IPA - Quadruple (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple">IPA - Triple (2)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (6)</option><option value="IPA - White / Wheat">IPA - White / Wheat (2)</option><option value="Kellerbier / Zwickelbier">Kellerbier / Zwickelbier (1)</option><option value="Kellerbier / Zwickelbier - Dunkel">Kellerbier / Zwickelbier - Dunkel (1)</option><option value="Lager - Dark">Lager - Dark (2)</option><option value="Lager - Fruited  ">Lager - Fruited   (1)</option><option value="Lager - Helles">Lager - Helles (2)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Lager - Vienna">Lager - Vienna (1)</option><option value="Lambic - Framboise">Lambic - Framboise (1)</option><option value="Lambic - Fruit">Lambic - Fruit (2)</option><option value="Lambic - Gueuze">Lambic - Gueuze (5)</option><option value="Lambic - Kriek">Lambic - Kriek (5)</option><option value="Mead - Braggot">Mead - Braggot (2)</option><option value="Mead - Cyser">Mead - Cyser (2)</option><option value="Mead - Melomel">Mead - Melomel (3)</option><option value="Mead - Traditional">Mead - Traditional (1)</option><option value="Pale Ale - American">Pale Ale - American (1)</option><option value="Pale Ale - Australian">Pale Ale - Australian (1)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (1)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (4)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (2)</option><option value="Pilsner - German">Pilsner - German (1)</option><option value="Pilsner - Imperial / Double">Pilsner - Imperial / Double (1)</option><option value="Porter - English">Porter - English (3)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (1)</option><option value="Porter - India Export">Porter - India Export (1)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="Rauchbier">Rauchbier (1)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Schwarzbier">Schwarzbier (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (2)</option><option value="Sour - Fruited">Sour - Fruited (24)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (3)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (2)</option><option value="Sour - Other">Sour - Other (5)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (57)</option><option value="Sour - Tomato / Vegetable Gose">Sour - Tomato / Vegetable Gose (1)</option><option value="Stout - American">Stout - American (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (1)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (50)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (5)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (34)</option><option value="Stout - Irish Dry">Stout - Irish Dry (1)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Other">Stout - Other (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (12)</option><option value="Stout - White / Golden">Stout - White / Golden (1)</option><option value="Strong Ale - American">Strong Ale - American (1)</option><option value="Strong Ale - English">Strong Ale - English (1)</option><option value="Strong Ale - Other">Strong Ale - Other (2)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (1)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (1)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (11)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (3)</option><option value="Wheat Beer - Other">Wheat Beer - Other (1)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (14)</option><option value="Wild Ale - Other">Wild Ale - Other (8)</option><option value="Winter Ale">Winter Ale (9)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
 				</div>
 			</div>
 						<div class="filter-holder">
@@ -826,7 +873,7 @@ $(document).ready(() => {
 					</p>
 					<select id="country_picker">
 						<option value="all">All</option>
-						<option value="Australia">Australia (6)</option><option value="Belgium">Belgium (83)</option><option value="Brazil">Brazil (4)</option><option value="Croatia">Croatia (5)</option><option value="Czech Republic">Czech Republic (5)</option><option value="Denmark">Denmark (3)</option><option value="England">England (67)</option><option value="Estonia">Estonia (11)</option><option value="Finland">Finland (3)</option><option value="France">France (33)</option><option value="Germany">Germany (35)</option><option value="Ghana">Ghana (1)</option><option value="Hungary">Hungary (19)</option><option value="Ireland">Ireland (6)</option><option value="Italy">Italy (2)</option><option value="Latvia">Latvia (7)</option><option value="Netherlands">Netherlands (257)</option><option value="Norway">Norway (14)</option><option value="Poland">Poland (42)</option><option value="Portugal">Portugal (6)</option><option value="Romania">Romania (19)</option><option value="Scotland">Scotland (32)</option><option value="Slovakia">Slovakia (1)</option><option value="South Korea">South Korea (2)</option><option value="Spain">Spain (36)</option><option value="Sweden">Sweden (9)</option><option value="Ukraine">Ukraine (1)</option><option value="United States">United States (4)</option><option value="Wales">Wales (2)</option>					</select>
+						<option value="Australia">Australia (6)</option><option value="Belgium">Belgium (83)</option><option value="Brazil">Brazil (4)</option><option value="Croatia">Croatia (5)</option><option value="Czech Republic">Czech Republic (5)</option><option value="Denmark">Denmark (3)</option><option value="England">England (67)</option><option value="Estonia">Estonia (11)</option><option value="Finland">Finland (3)</option><option value="France">France (33)</option><option value="Germany">Germany (34)</option><option value="Ghana">Ghana (1)</option><option value="Hungary">Hungary (19)</option><option value="Ireland">Ireland (6)</option><option value="Italy">Italy (2)</option><option value="Latvia">Latvia (7)</option><option value="Netherlands">Netherlands (255)</option><option value="Norway">Norway (14)</option><option value="Poland">Poland (42)</option><option value="Portugal">Portugal (6)</option><option value="Romania">Romania (19)</option><option value="Scotland">Scotland (32)</option><option value="Slovakia">Slovakia (1)</option><option value="South Korea">South Korea (2)</option><option value="Spain">Spain (35)</option><option value="Sweden">Sweden (9)</option><option value="Ukraine">Ukraine (1)</option><option value="United States">United States (4)</option><option value="Wales">Wales (2)</option>					</select>
 				</div>
 			</div>
 
@@ -1000,7 +1047,7 @@ $(document).ready(() => {
 	<script type="text/javascript">
 		var _url = "/v/de-bierbrigadier-tilburg/5523441";
 	</script>
-	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.60"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/v3/js/venue/venue.menu.sorting.min.js?v=2.8.61"></script>
 
 							<input hidden id="generic-items-enabled" value="1"/>
 							<input hidden id="generic-menu-id" value="19476"/>
@@ -1012,7 +1059,7 @@ $(document).ready(() => {
         <p style="font-weight:normal;font-size:0.9em;margin:4px 28px 4px 0px">
             What's in store / Wat staat er in de winkel        </p>
 
-        <span class="updated-time" data-time="2026-11-14T15:52:33.781428Z"></span>
+        <span class="updated-time" data-time="2026-11-18T16:04:15.070679Z"></span>
     </div>
     							
 														<div class="sort-filter-results" style="display: none;">
@@ -1052,13 +1099,13 @@ $(document).ready(() => {
                                     Big Belly Brewing Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.53">
+                            <div class="caps small" data-rating="3.61818">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-50"></div>
+		<div class="cap cap-60"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.53)</span>
+	</div>                                                            <span class="num">(3.62)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1268,13 +1315,13 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.00646">
+                            <div class="caps small" data-rating="3.99774">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.01)</span>
+	</div>                                                            <span class="num">(4)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Vegan</p>
                                                             </div>
@@ -1305,7 +1352,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.10236">
+                            <div class="caps small" data-rating="4.10049">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1342,7 +1389,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.04183">
+                            <div class="caps small" data-rating="4.04497">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1527,13 +1574,13 @@ $(document).ready(() => {
                                     HORIZONT Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.01176">
+                            <div class="caps small" data-rating="4.05135">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(4.01)</span>
+		<div class="cap cap-10"></div>
+	</div>                                                            <span class="num">(4.05)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Barrel-Aged: Other</p>
                                                             </div>
@@ -1564,13 +1611,13 @@ $(document).ready(() => {
                                     Prizm Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.97419">
+                            <div class="caps small" data-rating="3.95469">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.97)</span>
+	</div>                                                            <span class="num">(3.95)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1600,7 +1647,7 @@ $(document).ready(() => {
                                     Prizm Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09663">
+                            <div class="caps small" data-rating="4.09626">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1636,7 +1683,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.2464">
+                            <div class="caps small" data-rating="4.24673">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1672,7 +1719,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.22766">
+                            <div class="caps small" data-rating="4.22877">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1708,7 +1755,7 @@ $(document).ready(() => {
                                     SOMA Beer</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.15054">
+                            <div class="caps small" data-rating="4.15027">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1744,13 +1791,13 @@ $(document).ready(() => {
                                     SOMA Beer</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.11613">
+                            <div class="caps small" data-rating="4.11498">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.12)</span>
+	</div>                                                            <span class="num">(4.11)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1780,7 +1827,7 @@ $(document).ready(() => {
                                     SOMA Beer</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.18387">
+                            <div class="caps small" data-rating="4.1841">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1816,7 +1863,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.30962">
+                            <div class="caps small" data-rating="3.31242">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1853,7 +1900,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.33129">
+                            <div class="caps small" data-rating="4.33104">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1889,7 +1936,7 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.21768">
+                            <div class="caps small" data-rating="4.21716">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1925,13 +1972,13 @@ $(document).ready(() => {
                                     Ārpus Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.1784">
+                            <div class="caps small" data-rating="4.17458">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.18)</span>
+	</div>                                                            <span class="num">(4.17)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1997,13 +2044,13 @@ $(document).ready(() => {
                                     One Drop Brewing Co</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.26331">
+                            <div class="caps small" data-rating="4.26645">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-30"></div>
-	</div>                                                            <span class="num">(4.26)</span>
+	</div>                                                            <span class="num">(4.27)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2069,13 +2116,13 @@ $(document).ready(() => {
                                     One Drop Brewing Co</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.24764">
+                            <div class="caps small" data-rating="4.23472">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.25)</span>
+	</div>                                                            <span class="num">(4.23)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2141,13 +2188,13 @@ $(document).ready(() => {
                                     One Drop Brewing Co</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.15591">
+                            <div class="caps small" data-rating="4.15095">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-20"></div>
-	</div>                                                            <span class="num">(4.16)</span>
+	</div>                                                            <span class="num">(4.15)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2177,7 +2224,7 @@ $(document).ready(() => {
                                     Bierbrouwerij de Koningshoeven</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.16346">
+                            <div class="caps small" data-rating="4.16236">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2285,7 +2332,7 @@ $(document).ready(() => {
                                     Sacrilège</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77766">
+                            <div class="caps small" data-rating="3.77764">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2430,7 +2477,7 @@ $(document).ready(() => {
                                     Beerbliotek</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79374">
+                            <div class="caps small" data-rating="3.79371">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2574,7 +2621,7 @@ $(document).ready(() => {
                                     PINTA Barrel Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.13983">
+                            <div class="caps small" data-rating="4.14167">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2635,7 +2682,7 @@ $(document).ready(() => {
             <div class="menu-section-header">
                 <h4>
                     ⚠️ OPRUIMING / SALE                     <span>
-                        (26 Items)
+                        (29 Items)
                     </span>
                 </h4>
                 <p>Deze bieren mogen weg en staan met korting (tot 25%). Op = OP.
@@ -2643,6 +2690,114 @@ $(document).ready(() => {
 Clearance sale. Last cans or bottles. Approaching best before date or just over. Or just beers that need to go to make room for new ones. Up tp 25% discounted. Once they're gone, they're gone.</p>            </div>
             <ul class="menu-section-list" id="section-menu-list-479650">
                             <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6757217" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/white-dog-brewery-basically-juice-batch-2-citra-bru-1-el-dorado/6757217">
+                                                                Basically Juice (batch 2) Citra, BRU-1, El Dorado                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>6% ABV • 25 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/WhiteDogBrewery">
+                                    White Dog Brewery</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.88625">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-90"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.89)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        44cl blik                                    </span>
+                                                                        <span class="price">
+                                        5.59 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6764261" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/stigbergets-bryggeri-three-headed-cod-2026/6764261">
+                                                                THREE-HEADED COD (2026)                            </a>
+                            <em>IPA - New England / Hazy</em>
+                        </h5>
+                        <h6>
+                            <span>7.5% ABV • 50 IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/stigbergetsbryggeri">
+                                    Stigbergets Bryggeri</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.96969">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.97)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        44cl blik                                    </span>
+                                                                        <span class="price">
+                                        5.19 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
+            <div class="beer-info " style="min-height: 50px;">
+                <div class="beer-label">
+                                                                <img src="https://labels.untappd.com/6674719" />
+                                    </div>
+                <div class="beer-details">
+                                            <h5>
+                            <a class="track-click" data-track="menu" data-href=":" href="/b/brew-york-tropic-touch/6674719">
+                                                                Tropic Touch                            </a>
+                            <em>Sour - Smoothie / Pastry</em>
+                        </h5>
+                        <h6>
+                            <span>5.5% ABV • N/A IBU
+                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrewYork">
+                                    Brew York</a>
+                                                                    •
+                            </span>
+                            <div class="caps small" data-rating="3.79266">
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-100"></div>
+		<div class="cap cap-80"></div>
+		<div class="cap"></div>
+	</div>                                                            <span class="num">(3.79)</span>
+                                                    </h6>
+                                                            </div>
+            </div>
+                                                                <div class="beer-prices">
+                                                            <p>
+                                                                        <span class="size">
+                                        44cl blik                                    </span>
+                                                                        <span class="price">
+                                        4.64 EUR                                    </span>
+                                                                        </p>
+                                                        </div>
+                                    </li>
+                <li class="menu-item" id="beer">
             <div class="beer-info " style="min-height: 50px;">
                 <div class="beer-label">
                                                                 <img src="https://labels.untappd.com/6634076" />
@@ -2695,7 +2850,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Mad Scientist</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.81005">
+                            <div class="caps small" data-rating="3.81039">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2731,12 +2886,12 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Factory Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.04955">
+                            <div class="caps small" data-rating="4.05004">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap"></div>
+		<div class="cap cap-10"></div>
 	</div>                                                            <span class="num">(4.05)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Vegan</p>
@@ -3203,7 +3358,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     BRULO®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43219">
+                            <div class="caps small" data-rating="3.43239">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3240,7 +3395,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Funky Fluid</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70452">
+                            <div class="caps small" data-rating="3.70456">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3420,7 +3575,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie Dubuisson</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71111">
+                            <div class="caps small" data-rating="3.71113">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3528,7 +3683,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie du Bocq</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49697">
+                            <div class="caps small" data-rating="3.49673">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4307,7 +4462,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     KOMPAAN Dutch Craft Beer Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51446">
+                            <div class="caps small" data-rating="3.51479">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4343,7 +4498,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     VAT'33</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.68071">
+                            <div class="caps small" data-rating="3.68026">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4415,7 +4570,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.37431">
+                            <div class="caps small" data-rating="3.37415">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4451,7 +4606,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.39399">
+                            <div class="caps small" data-rating="3.39449">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4523,7 +4678,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brouwerij De Snor</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.36063">
+                            <div class="caps small" data-rating="3.36073">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4559,7 +4714,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bierbrouwerij De Magistraat</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.50383">
+                            <div class="caps small" data-rating="3.50458">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4595,7 +4750,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gulpener Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.54318">
+                            <div class="caps small" data-rating="3.54316">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4631,7 +4786,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie Lefebvre</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.48517">
+                            <div class="caps small" data-rating="3.48519">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4703,7 +4858,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bierbrouwerij de Koningshoeven</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.52055">
+                            <div class="caps small" data-rating="3.52054">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4739,7 +4894,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.58809">
+                            <div class="caps small" data-rating="3.5879">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4775,7 +4930,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.85951">
+                            <div class="caps small" data-rating="3.85948">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4847,7 +5002,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Breugem Bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.46093">
+                            <div class="caps small" data-rating="3.46094">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4883,7 +5038,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gooische Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.45819">
+                            <div class="caps small" data-rating="3.45955">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4955,7 +5110,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Schneider Weisse G. Schneider & Sohn</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80385">
+                            <div class="caps small" data-rating="3.80384">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5063,7 +5218,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brouwerij de Eeuwige Jeugd</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.41885">
+                            <div class="caps small" data-rating="3.41882">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5099,7 +5254,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Scheldebrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43297">
+                            <div class="caps small" data-rating="3.43291">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5171,7 +5326,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Van Moll</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51731">
+                            <div class="caps small" data-rating="3.51746">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5207,7 +5362,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bird Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43307">
+                            <div class="caps small" data-rating="3.43311">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5243,7 +5398,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70036">
+                            <div class="caps small" data-rating="3.70023">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5279,7 +5434,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gooische Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5191">
+                            <div class="caps small" data-rating="3.51938">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5326,13 +5481,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Left Handed Giant</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88419">
+                            <div class="caps small" data-rating="3.88608">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.88)</span>
+	</div>                                                            <span class="num">(3.89)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Vegan</p>
                                                             </div>
@@ -5400,7 +5555,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Basqueland Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71295">
+                            <div class="caps small" data-rating="3.71219">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5436,7 +5591,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Mad Scientist</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.53718">
+                            <div class="caps small" data-rating="3.53726">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5508,7 +5663,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.73098">
+                            <div class="caps small" data-rating="3.72844">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5569,7 +5724,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
             <div class="menu-section-header">
                 <h4>
                     💚 IPA - India Pale Ale                    <span>
-                        (48 Items)
+                        (45 Items)
                     </span>
                 </h4>
                 <p></p>            </div>
@@ -5591,7 +5746,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Left Handed Giant</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.77004">
+                            <div class="caps small" data-rating="3.7701">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5628,7 +5783,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Left Handed Giant</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.03251">
+                            <div class="caps small" data-rating="4.02988">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5665,7 +5820,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     FUERST WIACEK Berlin</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.02243">
+                            <div class="caps small" data-rating="4.02186">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5738,7 +5893,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.84744">
+                            <div class="caps small" data-rating="3.8462">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5774,7 +5929,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Folkingebrew</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.83462">
+                            <div class="caps small" data-rating="3.8348">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5810,7 +5965,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.83829">
+                            <div class="caps small" data-rating="3.83915">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5846,13 +6001,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Locals Only Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.8924">
+                            <div class="caps small" data-rating="3.88361">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.88)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -5882,7 +6037,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.97942">
+                            <div class="caps small" data-rating="3.97947">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5919,7 +6074,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     DosKiwis</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.10075">
+                            <div class="caps small" data-rating="4.10316">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5930,139 +6085,4 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                                     <p class="menu-beverage-tags">Vegan</p>
                                                             </div>
             </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        44cl blik                                    </span>
-                                                                        <span class="price">
-                                        7.10 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6844923" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/azvex-brewing-company-markov-chains/6844923">
-                                                                Markov Chains                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.2% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/AzvexBrewing">
-                                    Azvex Brewing Company</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.05985">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.06)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        44cl blik                                    </span>
-                                                                        <span class="price">
-                                        7.19 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6850392" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/azvex-brewing-company-lethal-hop-dose-vial-002/6850392">
-                                                                Lethal Hop Dose: Vial 002                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6.8% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/AzvexBrewing">
-                                    Azvex Brewing Company</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.26382">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-30"></div>
-	</div>                                                            <span class="num">(4.26)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        44cl blik                                    </span>
-                                                                        <span class="price">
-                                        8.59 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6852292" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/ziemia-obiecana-stan-umyslu-2027/6852292">
-                                                                Stan Umysłu 2027                            </a>
-                            <em>IPA - New England / Hazy</em>
-                        </h5>
-                        <h6>
-                            <span>6% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrowarZiemiaObiecana">
-                                    Ziemia Obiecana</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.98125">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.98)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                                                                <div class="beer-prices">
-                                                            <p>
-                                                                        <span class="size">
-                                        50cl blik                                    </span>
-                                                                        <span class="price">
-                                        5.89 EUR                                    </span>
-                                                                        </p>
-                                                        </div>
-                                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6860691" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/oso-brew-co-buckaroo/6860691">
-                                                                Buckaroo                            </a>
-                            <em>IPA - American</em>
-                        </h5>
-                        <h6>
-                            <span>6.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/OsoBrewCo">
-                                    Oso Brew Co</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="3.72374">
-		<
+                                                                <div class="beer-
