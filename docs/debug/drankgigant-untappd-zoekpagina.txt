@@ -30,19 +30,21 @@
 	<link rel="mask-icon" href="https://untappd.com/assets/safari-pinned-tab.svg" color="#5bbad5">
 
 	<link rel="stylesheet"
-        href="https://untappd.com/assets/css/tailwind.css?v=4.5.51">
+        href="https://untappd.com/assets/css/tailwind.css?v=4.5.57">
 	</link>
 
-	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.51" />
+	<link id="canonical" rel="canonical" href="https://untappd.com/search">		<link rel="stylesheet" href="https://untappd.com/assets/css/master.min.css?v=4.5.57" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/style.css?v=4.5.57" />
+		<link rel="stylesheet" href="https://untappd.com/assets/design-system/css/styles.css?v=4.5.57" />
+		<link rel="stylesheet" href="https://untappd.com/assets/v3/css/refresh.css?v=4.5.57" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.57"></script>
-				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.51" />
+			<script src="https://untappd.com/assets/v3/js/common/min/site_common_min.js?v=2.8.61"></script>
+	<script src="https://untappd.com/assets/js/global/user_flair.min.js?v=2.8.61"></script>
+				<link rel="stylesheet" href="https://untappd.com/assets/css/facybox.min.css?v=4.5.57" />
 			
-		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.51" />
-		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.51" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="https://untappd.com/assets/css/jquery.notifyBar.min.css?v=4.5.57" />
+		<link rel="stylesheet" href="https://untappd.com/assets/css/tipsy.min.css?v=4.5.57" type="text/css" media="screen" title="no title" charset="utf-8">
 		
 		<script type="text/javascript" language="Javascript">
 			$(document).ready(function(){
@@ -77,10 +79,10 @@
 	</script>
 	
 	<!-- algoliasearch -->
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.57"></script>
-	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.57"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/algoliasearch.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/autocomplete.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://assets.untappd.com/assets/libs/js/lodash.min.js?v2.8.61"></script>
+	<script type="text/javascript" src="https://untappd.com/assets/js/global/autosearch_tracking.min.js?v2.8.61"></script>
 
 	<script>
         !function(e,a,t,n,s,i,c){e.AlgoliaAnalyticsObject=s,e.aa=e.aa||function(){(e.aa.queue=e.aa.queue||[]).push(arguments)},i=a.createElement(t),c=a.getElementsByTagName(t)[0],i.async=1,i.src="https://cdn.jsdelivr.net/npm/search-insights@0.0.14",c.parentNode.insertBefore(i,c)}(window,document,"script",0,"aa");
@@ -93,13 +95,60 @@
     </script>
 
 
-			<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-N4DVXTR');</script>
-		<!-- End Google Tag Manager -->
+			<script>
+(function () {
+	window.dataLayer = window.dataLayer || [];
+
+	// Signup and login succeed on a redirect, so the server queues the event in
+	// a short-lived cookie (see helpers/analytics_event_helper.php) and the
+	// next page reports it once.
+	var queued = document.cookie.match(/(?:^|; )ut_ga_event=([a-z_]+)\.([a-z_]+)(?:;|$)/);
+	if (queued) {
+		document.cookie = 'ut_ga_event=; path=/; max-age=0';
+		window.dataLayer.push({ event: queued[1], method: queued[2] });
+	}
+
+	// Matched by app id or our untp.beer short links, so links to other apps,
+	// such as Authy, are not counted.
+	function reportAppStoreClick(e) {
+		// auxclick also fires for a right-click, which opens a menu, not the link.
+		if (e.type === 'auxclick' && e.button !== 1) {
+			return;
+		}
+
+		var link = e.target.closest && e.target.closest('a[href]');
+		var app = link && /(id449141888|untp\.beer\/\w*(?:iphone|ios))|com\.untappdllc\.app|untp\.beer\/\w*android/.exec(link.href);
+		if (!app) {
+			return;
+		}
+
+		var store = app[1] ? 'apple' : 'google';
+
+		// The Firebase SDK reads the Play install referrer, so this is how an
+		// Android install is credited to the web page that sent it. The App
+		// Store has no equivalent without an App Store Connect campaign token.
+		var url = new URL(link.href);
+		if (url.hostname === 'play.google.com' && !url.searchParams.has('referrer')) {
+			var section = location.pathname.split('/')[1] || 'home';
+			url.searchParams.set('referrer', 'utm_source=untappd_web&utm_medium=referral&utm_campaign=' + section);
+			link.href = url.href;
+		}
+
+		window.dataLayer.push({ event: 'app_store_click', store: store, page_path: location.pathname });
+	}
+
+	// A middle-click opens the link in a new tab and fires auxclick, not click.
+	document.addEventListener('click', reportAppStoreClick, true);
+	document.addEventListener('auxclick', reportAppStoreClick, true);
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N4DVXTR');</script>
+<!-- End Google Tag Manager -->
 	
 	<script src="https://untappd.com/assets/v3/js/venue-impression-tracker.js"></script>
 
@@ -198,7 +247,7 @@
 
 <div id="mobile_nav_site">
   <form class="search_box" method="get" action="/search">
-    <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, brewery or bar..." name="q" aria-label="Find a drink, brewery or bar search" />
+    <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, producer or place" name="q" aria-label="Find a drink, producer or place search" />
     <input type="submit" value="Submit the form!" style="position: absolute; top: 0; left: 0; z-index: 0; width: 1px; height: 1px; visibility: hidden;" />
     <div class="autocomplete">
     </div>
@@ -239,7 +288,7 @@
         <li><a class="track-click" data-track="desktop_menu" data-href=":shop" target="_blank" href="https://untappd.com/shop">Shop</a></li>
       </ul>
       <form class="search_box" method="get" action="/search">
-        <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, brewery or bar..." name="q" aria-label="Find a drink, brewery or bar search" />
+        <input type="text" class="track-focus search-input-desktop" autocomplete="off" data-track="desktop_search" placeholder="Find a drink, producer or place" name="q" aria-label="Find a drink, producer or place search" />
         <input type="submit" value="Submit the form!" style="position: absolute; top: 0; left: 0; z-index: 0; width: 1px; height: 1px; visibility: hidden;" />
         <div class="autocomplete">
         </div>
@@ -380,197 +429,197 @@ $(document).ready(() => {
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/zymarium-meadery-endless-blueberry/5120017" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/sierra-nevada-brewing-co-celebration-2026/6833187" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5120017_49fb4_sm.jpeg" alt="Endless Blueberry label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6833187_8663a_sm.jpeg" alt="Celebration (2026) label">
                             </p><p class="text">
-                                <span class="name">Endless Blueberry</span>
-                                <span class="brewery">Zymarium Meadery</span>                            </p>
+                                <span class="name">Celebration (2026)</span>
+                                <span class="brewery">Sierra Nevada Brewing Co.</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/saint-errant-brewing-double-barrel-kinnikinnick/6537384" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/samuel-adams-winter-white-ale/6449496" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6537384_47cc4_sm.jpeg" alt="Double Barrel Kinnikinnick label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6449496_d52d7_sm.jpeg" alt="Winter White Ale label">
                             </p><p class="text">
-                                <span class="name">Double Barrel Kinnikinnick</span>
-                                <span class="brewery">Saint Errant Brewing</span>                            </p>
+                                <span class="name">Winter White Ale</span>
+                                <span class="brewery">Samuel Adams</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/private-press-brewing-crystal-spider/6856598" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/heineken-heineken/5860" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6856598_b488f_sm.jpeg" alt="Crystal Spider label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-5860_a68ef_sm.jpeg" alt="Heineken label">
                             </p><p class="text">
-                                <span class="name">Crystal Spider</span>
-                                <span class="brewery">Private Press Brewing</span>                            </p>
+                                <span class="name">Heineken</span>
+                                <span class="brewery">Heineken</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/haunted-brewing-hallowed-by-billies-name/7615447" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/asahi-breweries-asahi-super-dry/8020" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png" alt="Hallowed By Billies Name label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-8020_a6231_sm.jpeg" alt="Asahi Super Dry label">
                             </p><p class="text">
-                                <span class="name">Hallowed By Billies Name</span>
-                                <span class="brewery">Haunted Brewing</span>                            </p>
+                                <span class="name">Asahi Super Dry</span>
+                                <span class="brewery">Asahi Breweries</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/toppling-goliath-brewing-co-mornin-delight-2026/6820039" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/stella-artois-stella-artois/4010" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6820039_205e8_sm.jpeg" alt="Mornin&#039; Delight (2026) label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-4010_5da67_sm.jpeg" alt="Stella Artois label">
                             </p><p class="text">
-                                <span class="name">Mornin&#039; Delight (2026)</span>
-                                <span class="brewery">Toppling Goliath Brewing Co.</span>                            </p>
+                                <span class="name">Stella Artois</span>
+                                <span class="brewery">Stella Artois</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/toppling-goliath-brewing-co-hopsmack/77509" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/grupo-modelo-modelo-especial/6277" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-77509_41044_sm.jpeg" alt="Hopsmack!  label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6277_5ffcb_sm.jpeg" alt="Modelo Especial label">
                             </p><p class="text">
-                                <span class="name">Hopsmack! </span>
-                                <span class="brewery">Toppling Goliath Brewing Co.</span>                            </p>
+                                <span class="name">Modelo Especial</span>
+                                <span class="brewery">Grupo Modelo</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/ill-will-brewing-xenu/6730899" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/plzensky-prazdroj-pilsner-urquell/37936" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6730899_2d8b9_sm.jpeg" alt="Xenu label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-37936_91585_sm.jpeg" alt="Pilsner Urquell label">
                             </p><p class="text">
-                                <span class="name">Xenu</span>
-                                <span class="brewery">ill will brewing</span>                            </p>
+                                <span class="name">Pilsner Urquell</span>
+                                <span class="brewery">Plzeňský Prazdroj</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/zymarium-meadery-billie-s-endless-blueberry-cc/7662589" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/miller-brewing-company-miller-lite/3811" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png" alt="Billie&#039;s Endless Blueberry CC label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-3811_99a49_sm.jpeg" alt="Miller Lite label">
                             </p><p class="text">
-                                <span class="name">Billie&#039;s Endless Blueberry CC</span>
-                                <span class="brewery">Zymarium Meadery</span>                            </p>
+                                <span class="name">Miller Lite</span>
+                                <span class="brewery">Miller Brewing Company</span>                            </p>
                         </a>
                     </div>
                                         <div class="item">
-                        <a href="/b/brasseria-della-fonte-x-anniversary/6757383" class="track-click" data-track="sidebar" data-href=":beer/toplist">
+                        <a href="/b/sapporo-breweries-sapporo-premium-beer/17636" class="track-click" data-track="sidebar" data-href=":beer/toplist">
                             <p class="logo">
-                                    <img src="https://assets.untappd.com/site/beer_logos/beer-6757383_29421_sm.jpeg" alt="X Anniversary label">
+                                    <img src="https://assets.untappd.com/site/beer_logos/beer-17636_dbf93_sm.jpeg" alt="Sapporo Premium Beer label">
                             </p><p class="text">
-                                <span class="name">X Anniversary</span>
-                                <span class="brewery">Brasseria Della Fonte</span>                            </p>
+                                <span class="name">Sapporo Premium Beer</span>
+                                <span class="brewery">Sapporo Breweries</span>                            </p>
                         </a>
                     </div>
                                 </div>
         </div>
             	<div class="box">
         	<div class="content">
-                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-14277392-type-trending_locations">
-                        <a href="/v/billies-craft-beer-fest-2026/14277392" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+                <h3>Trending Locations</h3>                    <div class="item" data-track-venue-impression="venue_id-7857957-type-trending_locations">
+                        <a href="/v/chase-center/7857957" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/we4lrnwcya5dzwol422qd28deu2p?auto=compress" alt="Billie's Craft Beer Fest 2026 logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_basketball_bg_512.png" alt="Chase Center logo">
                             </p><p class="text">
-                                <span class="name">Billie's Craft Beer Fest 2026</span>
+                                <span class="name">Chase Center</span>
 
-                                <span class="location">Antwerpen, Provincie Antwerpen                                        </span>                            </p>
+                                <span class="location">San Francisco, CA                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-10916212-type-trending_locations">
-                        <a href="/v/station-1280/10916212" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-7795784-type-trending_locations">
+                        <a href="/v/mikkeller-cph-airport/7795784" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/meqbbjfo0uxkk13ae4rlf8ej4fye?auto=compress" alt="Station 1280 logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/uL8cyoDJgczeaUEPLznGnovd?auto=compress" alt="Mikkeller CPH Airport logo">
                             </p><p class="text">
-                                <span class="name">Station 1280</span>
+                                <span class="name">Mikkeller CPH Airport</span>
 
-                                <span class="location">Antwerp, Antwerpen                                        </span>                            </p>
+                                <span class="location">Kastrup, Region Hovedstaden                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-875086-type-trending_locations">
-                        <a href="/v/cafe-pardaf/875086" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-19006-type-trending_locations">
+                        <a href="/v/olutravintola-konttori/19006" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_875086_ad357bab_bg_176.png?v=1" alt="Café Pardaf logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/vmmtkc7gjf5qd105wytw3ox6apvw?auto=compress" alt="Olutravintola Konttori logo">
                             </p><p class="text">
-                                <span class="name">Café Pardaf</span>
+                                <span class="name">Olutravintola Konttori</span>
 
-                                <span class="location">Antwerpen, Antwerpen                                        </span>                            </p>
+                                <span class="location">Tampere, Pirkanmaa                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-11988056-type-trending_locations">
-                        <a href="/v/bobergen-olfestival/11988056" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-7532994-type-trending_locations">
+                        <a href="/v/kyoto-beer-lab/7532994" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/ay445y7pznqhnhysdj2u9kk2crx4?auto=compress" alt="BØ-Bergen Ølfestival logo">
+                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Kyoto Beer Lab (京都ビアラボ) logo">
                             </p><p class="text">
-                                <span class="name">BØ-Bergen Ølfestival</span>
+                                <span class="name">Kyoto Beer Lab (京都ビアラボ)</span>
 
-                                <span class="location">Bergen, Hordaland                                        </span>                            </p>
+                                <span class="location">京都市, 京都府                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-5314829-type-trending_locations">
-                        <a href="/v/brouwerij-3-fonteinen-and-lambikodroom/5314829" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-11189288-type-trending_locations">
+                        <a href="/v/antenna-america-tokyo/11189288" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/m1w7cb3rk6o0r2fehjjayamvodio?auto=compress" alt="Brouwerij 3 Fonteinen & lambik-O-droom logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/rgqiflk1q1xaxunmgsuzy0lsoppb?auto=compress" alt="Antenna America Tokyo logo">
                             </p><p class="text">
-                                <span class="name">Brouwerij 3 Fonteinen & lambik-O-droom</span>
+                                <span class="name">Antenna America Tokyo</span>
 
-                                <span class="location">Beersel, Vlaams-Brabant                                        </span>                            </p>
+                                <span class="location">Chuo City, 東京都                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-14356413-type-trending_locations">
-                        <a href="/v/nastoyashchaya-vyderzhka/14356413" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-11658130-type-trending_locations">
+                        <a href="/v/malthouse/11658130" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/nightlife/pub_bg_512.png" alt="Настоящая выдержка logo">
+                                <span>Verified</span>                                <img src="https://assets.untappd.com/venuelogos/venue_11658130_2ed7cc75_bg_176.png?v=1" alt="Malthouse logo">
                             </p><p class="text">
-                                <span class="name">Настоящая выдержка</span>
+                                <span class="name">Malthouse</span>
 
-                                <span class="location">Санкт-Петербург, Санкт-Петербург                                        </span>                            </p>
+                                <span class="location">Wellington, Wellington                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-51438-type-trending_locations">
-                        <a href="/v/brasserie-cantillon-brouwerij-cantillon-brouwerij-en-brussels-museum-van-de-geuze/51438" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-107565-type-trending_locations">
+                        <a href="/v/hotel-sweeneys/107565" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/brewery_bg_512.png" alt="Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze) logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/5cded36f4b8c0a6b46e74553ef2bb06933db34f9.jpg?auto=compress" alt="Hotel Sweeneys logo">
                             </p><p class="text">
-                                <span class="name">Brasserie Cantillon Brouwerij (Cantillon - Brouwerij en Brussels Museum van de Geuze)</span>
+                                <span class="name">Hotel Sweeneys</span>
 
-                                <span class="location">Anderlecht, Brussel-Hoofdstad                                        </span>                            </p>
+                                <span class="location">Sydney, NSW                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-8585819-type-trending_locations">
-                        <a href="/v/dr-beer-bar-en-shop/8585819" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-284867-type-trending_locations">
+                        <a href="/v/watering-hole/284867" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/1ECPSgemPYkaUzrRndrnCNwA?auto=compress" alt="Dr. Beer - Bar en Shop logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/f73b5aae0adb4b0c6c52388ef2459ff5534433ec.jpg?auto=compress" alt="Watering Hole logo">
                             </p><p class="text">
-                                <span class="name">Dr. Beer - Bar en Shop</span>
+                                <span class="name">Watering Hole</span>
 
-                                <span class="location">Antwerpen, Antwerpen                                        </span>                            </p>
+                                <span class="location">Shibuya-ku, 東京都                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-1333310-type-trending_locations">
-                        <a href="/v/billies-bier-kafetaria/1333310" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-2043845-type-trending_locations">
+                        <a href="/v/16-tun/2043845" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/3cbee5ead343e38f701a872fd0703c2b80f3dd32.jpg?auto=compress" alt="Billie's Bier Kafétaria logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/3mb9zlzqsfcwsxfy8dodhl2a5pyi?auto=compress" alt="16 Tun logo">
                             </p><p class="text">
-                                <span class="name">Billie's Bier Kafétaria</span>
+                                <span class="name">16 Tun</span>
 
-                                <span class="location">Antwerpen, Antwerpen                                        </span>                            </p>
+                                <span class="location">Auckland, Auckland                                        </span>                            </p>
                         </a>
                     </div>
 
-        			                    <div class="item" data-track-venue-impression="venue_id-1729468-type-trending_locations">
-                        <a href="/v/albert-cafe-sandwichbar/1729468" class="track-click" data-track="sidebar" data-href=":venue/toplist">
+        			                    <div class="item" data-track-venue-impression="venue_id-3695258-type-trending_locations">
+                        <a href="/v/redwood-tasting-room/3695258" class="track-click" data-track="sidebar" data-href=":venue/toplist">
                             <p class="logo">
-                                                                <img src="https://ss3.4sqi.net/img/categories_v2/food/cafe_bg_512.png" alt="Albert Café & Sandwichbar logo">
+                                <span>Verified</span>                                <img src="https://images.untp.beer/resize?width=176&height=176&background=255,255,255&extend=white&stripmeta=true&url=https://utfb-images.untappd.com/logos/b69e57c54826cf36a3b29e076184d86e2166f47e.jpg?auto=compress" alt="Redwood Tasting Room logo">
                             </p><p class="text">
-                                <span class="name">Albert Café & Sandwichbar</span>
+                                <span class="name">Redwood Tasting Room</span>
 
-                                <span class="location">Århus Vest, Region Midtjylland                                        </span>                            </p>
+                                <span class="location">Fitzroy North, VIC                                        </span>                            </p>
                         </a>
                     </div>
 
@@ -599,7 +648,7 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script>
-<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.57"></script>
+<script type="text/javascript" language="Javascript" src="https://untappd.com/assets/v3/js/search-algolia.js?v=2.8.61"></script>
 <style>
 #pmLink {
 	visibility: hidden;
@@ -712,5 +761,8 @@ window.UNTAPPD_SEARCH_CONFIG = {"appId":"9WBO4RQ3HO","searchKey":"1d347324d67ec4
 </script>
 
 
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "acd9e429a96b40e9b8320b255fcebdb9"}'></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
