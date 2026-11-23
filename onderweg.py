@@ -109,6 +109,8 @@ td input[type=checkbox] { width:20px; height:20px; }
 td select { font-size:16px; padding:4px; border:1px solid #ccc; border-radius:6px; background:#fff; }
 .tag { display:inline-block; font-size:.68rem; padding:1px 6px; border-radius:8px; white-space:nowrap; }
 .tag.groen { background:#d6f0dc; color:#1c6b33; } .tag.geel { background:#fbefc6; color:#7a5c00; }
+.selbinnen { background:#fff; color:var(--groen); border:1px solid var(--groen); font-size:.72rem;
+             padding:3px 8px; margin:0 0 0 8px; font-weight:400; vertical-align:middle; }
 .bewerk { background:none; color:var(--groen); padding:4px 8px; margin:0; font-size:1rem; }
 .shopblok { border-top:1px solid #eee; padding:10px 0; }
 .shopblok:first-child { border-top:0; padding-top:0; }
@@ -152,11 +154,15 @@ input[type=search]::-webkit-search-cancel-button { -webkit-appearance:none; disp
 
 <div class="kaart">
   <h2>Bestelde bieren <span class="mini" id="aantal"></span></h2>
+  <p class="mini"><b>Doos binnen?</b> Vink in de eerste kolom de bieren aan die thuis zijn bezorgd
+  (of tik bij een shop op &#8220;alles wat binnen is aanvinken&#8221;) en tik op
+  <b>&#128230; Ontvangen</b>. Ze gaan dan naar de gekozen voorraadlijst en verdwijnen uit Onderweg.</p>
   <p class="mini">Tik op een kolomkop om te sorteren (nog een keer = omgekeerd). Vinkjes en de lijst
   kun je direct in de tabel aanpassen; vergeet daarna niet op te slaan.
   <span class="tag groen">&#10003; webshop</span> = de scraper heeft dit bier bij die shop gezien.</p>
   <div id="melding"></div>
   <div class="tabelwrap"><table id="tabel"><thead><tr>
+    <th class="mid" title="Selecteren voor Ontvangen">&#128230;</th>
     <th data-kol="shop">Shop <span class="pijl"></span></th>
     <th data-kol="brouwerij">Brouwerij <span class="pijl"></span></th>
     <th data-kol="naam">Naam bier <span class="pijl"></span></th>
@@ -167,6 +173,11 @@ input[type=search]::-webkit-search-cancel-button { -webkit-appearance:none; disp
     <th data-kol="lijst">Lijst <span class="pijl"></span></th>
     <th></th>
   </tr></thead><tbody></tbody></table></div>
+  <div id="ontvangbalk" style="display:none;margin:8px 0;padding:10px;border-radius:10px;background:var(--licht)">
+    <button id="ontvangknop" onclick="ontvangen()">&#128230; Ontvangen</button>
+    <button class="grijs" onclick="geenSelectie()">Selectie wissen</button>
+    <div class="mini" id="ontvanguitleg"></div>
+  </div>
   <button onclick="openFormulier(null)">&#10133; Bier toevoegen</button>
   <button class="grijs" onclick="standaardSortering()">Standaard sortering</button>
 </div>
@@ -364,13 +375,17 @@ function teken(){
   var rijen = gesorteerd(), html = "", vorigeShop = null;
   rijen.forEach(function(it){
     if(!sortKol && it.shop !== vorigeShop){
-      html += '<tr class="shopkop"><td colspan="9">' + esc(shopLabel(it.shop)) + '</td></tr>';
+      html += '<tr class="shopkop"><td colspan="10">' + esc(shopLabel(it.shop))
+        + ' <button class="selbinnen" onclick="selecteerBinnen(' + JSON.stringify(it.shop).replace(/"/g, '&quot;')
+        + ')">alles wat binnen is aanvinken</button></td></tr>';
       vorigeShop = it.shop;
     }
     var st = STATUS[it.id] || {};
     var gezien = st.gezien ? ' <span class="tag groen" title="eerst gezien: ' + esc(st.eerst || "eerder")
                              + '">&#10003; webshop</span>' : '';
     html += '<tr>'
+      + '<td class="mid"><input type="checkbox" class="kies" ' + (it._gekozen ? 'checked ' : '')
+          + 'onchange="kies(' + it.id + ',this.checked)" aria-label="selecteren"></td>'
       + '<td>' + esc(shopLabel(it.shop)) + '</td>'
       + '<td>' + esc(it.brouwerij) + '</td>'
       + '<td>' + esc(it.naam) + '</td>'
@@ -388,12 +403,13 @@ function teken(){
       + '</tr>';
   });
   document.querySelector('#tabel tbody').innerHTML = html
-    || '<tr><td colspan="9" class="mini">Nog niets onderweg. Voeg een bier toe.</td></tr>';
+    || '<tr><td colspan="10" class="mini">Nog niets onderweg. Voeg een bier toe.</td></tr>';
   document.getElementById('aantal').textContent = "(" + ITEMS.length + ")";
   document.querySelectorAll('#tabel th[data-kol]').forEach(function(th){
     th.querySelector('.pijl').textContent = th.dataset.kol === sortKol ? (sortRicht > 0 ? "\u25B2" : "\u25BC") : "";
   });
   tekenSamenvatting();
+  werkOntvangbalkBij();
 }
 function tekenSamenvatting(){
   var perShop = {};
@@ -418,6 +434,73 @@ function tekenSamenvatting(){
     return regel + '</div>';
   }).join('');
   document.getElementById('samenvatting').innerHTML = html || '<p class="mini">Nog niets onderweg.</p>';
+}
+
+/* ---------- ontvangen: geselecteerde bieren naar de voorraad, uit Onderweg ---------- */
+function gekozenItems(){ return ITEMS.filter(function(i){ return i._gekozen; }); }
+function kies(id, aan){ var it = vind(id); if(it){ it._gekozen = aan; } werkOntvangbalkBij(); }
+function selecteerBinnen(shop){
+  ITEMS.forEach(function(i){ if(i.shop === shop && isBinnen(i)) i._gekozen = true; });
+  teken();
+}
+function geenSelectie(){ ITEMS.forEach(function(i){ i._gekozen = false; }); teken(); }
+function werkOntvangbalkBij(){
+  var g = gekozenItems(), balk = document.getElementById('ontvangbalk');
+  balk.style.display = g.length ? 'block' : 'none';
+  if(!g.length) return;
+  var som = g.reduce(function(t, i){ return t + (Number(i.prijs) || 0); }, 0);
+  var perLijst = {};
+  g.forEach(function(i){ var l = i.brouwerij ? (i.lijst ? "voorraad " + i.lijst : "geen lijst gekozen") : "geen bier (alleen weg uit Onderweg)";
+                         perLijst[l] = (perLijst[l] || 0) + 1; });
+  document.getElementById('ontvangknop').textContent = "\ud83d\udce6 " + g.length + " bier(en) ontvangen (" + euro(som) + ")";
+  document.getElementById('ontvanguitleg').textContent = Object.keys(perLijst).map(function(l){
+    return perLijst[l] + " \u2192 " + l; }).join(" \u00b7 ");
+}
+async function ontvangen(){
+  if(!ghToken()){ alert("Geen GitHub-token ingesteld (bieroverzicht \u2192 Token)."); return; }
+  var g = gekozenItems(); if(!g.length) return;
+  var zonderLijst = g.filter(function(i){ return i.brouwerij && !i.lijst; });
+  var vraag = g.length + " bier(en) als ontvangen verwerken?\n\nZe worden in de gekozen voorraadlijst gezet "
+    + "(als ze daar nog niet staan) en uit Onderweg gehaald.";
+  if(zonderLijst.length){
+    vraag += "\n\nLET OP: bij " + zonderLijst.length + " bier(en) is geen lijst gekozen; die worden alleen uit "
+      + "Onderweg gehaald en NIET in een voorraadlijst gezet:\n- "
+      + zonderLijst.map(regelVan).join("\n- ");
+  }
+  if(!confirm(vraag)) return;
+  var knop = document.getElementById('ontvangknop'); knop.disabled = true; melding("Ontvangen verwerken\u2026");
+  try {
+    // 1) zorgen dat elk bier in zijn voorraadlijst staat
+    var toegevoegd = 0;
+    for(var lijst in LIJSTBESTAND){
+      var v = VOORRAAD[lijst]; if(!v) continue;
+      var nieuw = g.filter(function(i){ return i.brouwerij && i.lijst === lijst && !inLijst(i, lijst); });
+      if(!nieuw.length) continue;
+      var regels = v.regels.slice();
+      nieuw.forEach(function(i){ regels.push(regelVan(i)); v.bieren.push(regelVan(i)); toegevoegd++; });
+      var kop = regels.filter(function(r){ return r.trim().indexOf('#') === 0; });
+      var bieren = regels.map(function(r){ return r.trim(); })
+                         .filter(function(r){ return r && r.indexOf('#') !== 0; }).sort(alfabetisch);
+      v.sha = await ghSchrijf(LIJSTBESTAND[lijst], kop.concat(bieren).join("\n") + "\n", v.sha,
+                              "Voorraad " + lijst + ": " + nieuw.length + " ontvangen bier(en) toegevoegd");
+      v.regels = kop.concat(bieren);
+    }
+    // 2) uit Onderweg halen en opslaan (samen met eventuele andere wijzigingen)
+    var weg = {}; g.forEach(function(i){ weg[i.id] = 1; });
+    ITEMS = ITEMS.filter(function(i){ return !weg[i.id]; });
+    zetVuil(true);
+    teken();
+    await opslaan();
+    if(!vuil){
+      melding(g.length + " bier(en) ontvangen en uit Onderweg gehaald"
+        + (toegevoegd ? "; " + toegevoegd + " daarvan nieuw in je voorraadlijst gezet." : "; ze stonden al in je voorraadlijst."));
+    }
+  } catch(e){
+    melding(e.message === "token" ? "Token afgewezen. Heeft het token 'Contents: Read and write'?"
+                                  : "Ontvangen mislukt: " + e.message + " (er is niets uit Onderweg verwijderd)");
+    laad();
+  }
+  knop.disabled = false;
 }
 
 /* ---------- wijzigen ---------- */
