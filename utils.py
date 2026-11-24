@@ -26,8 +26,30 @@ _session.headers.update({"User-Agent": config.USER_AGENT, "Accept-Language": "nl
 _last_request = [0.0]
 
 
-def fetch(url, use_cache=True, timeout=25, headers=None):
-    """Haal een URL op, met schijfcache en nette vertraging tussen requests."""
+# Laatste foutmelding per URL, zodat een lege shop op de pagina kan vertellen
+# WAAROM hij leeg is (time-out, HTTP 429, ...).
+LAATSTE_FOUT = {}
+
+# Bij deze HTTP-codes heeft opnieuw proberen zin (te druk / tijdelijke storing)
+_TIJDELIJK = {408, 425, 429, 500, 502, 503, 504, 520, 521, 522, 524}
+
+
+# Ligt een website helemaal plat, dan niet elk verzoek drie keer proberen (dat
+# zou de run bij ~150 verzoeken uren laten duren): na 3 mislukte verzoeken op
+# rij naar dezelfde website nog maar één poging per verzoek, zonder pauzes.
+_HOST_FOUTEN = {}
+
+
+def laatste_fout(url):
+    return LAATSTE_FOUT.get(url)
+
+
+def fetch(url, use_cache=True, timeout=25, headers=None, pogingen=3):
+    """Haal een URL op, met schijfcache en nette vertraging tussen requests.
+
+    Tijdelijke problemen (time-out, verbroken verbinding, HTTP 429 of 5xx)
+    worden tot 'pogingen' keer opnieuw geprobeerd, met oplopende pauzes en
+    elke keer meer geduld. Lukt het niet, dan staat de reden in LAATSTE_FOUT."""
     key = hashlib.md5(url.encode()).hexdigest()
     cache_file = CACHE_DIR / f"{key}.cache"
     if use_cache and config.CACHE_MAX_AGE_HOURS > 0 and cache_file.exists():
@@ -35,34 +57,62 @@ def fetch(url, use_cache=True, timeout=25, headers=None):
         if age_h < config.CACHE_MAX_AGE_HOURS:
             return cache_file.read_text(encoding="utf-8", errors="replace")
 
-    wait = config.REQUEST_DELAY - (time.time() - _last_request[0])
-    if wait > 0:
-        time.sleep(wait)
-    log.info("GET %s", url)
-    try:
-        resp = _session.get(url, timeout=timeout, headers=headers)
-        _last_request[0] = time.time()
-        if resp.status_code != 200:
-            # Sommige shops weigeren onbekende User-Agents (Hops & Hopes gaf
-            # daardoor 0 bieren terug). Eenmalig opnieuw proberen alsof we een
-            # gewone browser zijn.
-            log.warning("HTTP %s voor %s - opnieuw met browser-UA", resp.status_code, url)
-            time.sleep(1.0)
-            browser = dict(headers or {})
-            browser["User-Agent"] = BROWSER_UA
-            browser.setdefault("Accept",
-                               "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-            resp = _session.get(url, timeout=timeout, headers=browser)
+    LAATSTE_FOUT.pop(url, None)
+    host = url.split("/")[2] if "//" in url else url
+    if _HOST_FOUTEN.get(host, 0) >= 3:
+        pogingen = 1
+    browser_ua = False
+    for poging in range(1, pogingen + 1):
+        wait = config.REQUEST_DELAY - (time.time() - _last_request[0])
+        if wait > 0:
+            time.sleep(wait)
+        geduld = timeout * (1 + 0.5 * (poging - 1))          # 25 s, 37 s, 50 s
+        h = dict(headers or {})
+        if browser_ua:
+            h["User-Agent"] = BROWSER_UA
+            h.setdefault("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+        log.info("GET %s%s", url, "" if poging == 1 else " (poging %d)" % poging)
+        try:
+            resp = _session.get(url, timeout=geduld, headers=h or None)
             _last_request[0] = time.time()
-        if resp.status_code != 200:
-            log.warning("HTTP %s voor %s (ook met browser-UA)", resp.status_code, url)
-            return None
-        text = resp.text
-        cache_file.write_text(text, encoding="utf-8")
-        return text
-    except requests.RequestException as exc:
-        log.warning("Request mislukt voor %s: %s", url, exc)
+        except requests.RequestException as exc:
+            _last_request[0] = time.time()
+            soort = "time-out na %d s" % geduld if isinstance(exc, requests.Timeout) else \
+                    "verbinding mislukt (%s)" % type(exc).__name__
+            LAATSTE_FOUT[url] = soort
+            log.warning("Request mislukt voor %s: %s", url, exc)
+            if poging < pogingen:
+                time.sleep(5 * poging * poging)                   # 5 s, 20 s
+            continue
+
+        if resp.status_code == 200:
+            _HOST_FOUTEN[host] = 0
+            text = resp.text
+            cache_file.write_text(text, encoding="utf-8")
+            return text
+
+        LAATSTE_FOUT[url] = "HTTP %s%s" % (resp.status_code, " (te veel verzoeken)" if resp.status_code == 429 else "")
+        if resp.status_code in _TIJDELIJK:
+            log.warning("HTTP %s voor %s - tijdelijk, nog even wachten", resp.status_code, url)
+            if poging < pogingen:
+                try:
+                    pauze = min(60, int(resp.headers.get("Retry-After", "")))
+                except ValueError:
+                    pauze = 10 * poging
+                time.sleep(max(pauze, 5))
+            continue
+        if not browser_ua:
+            # Sommige shops weigeren onbekende User-Agents (Hops & Hopes gaf
+            # daardoor 0 bieren terug). Opnieuw proberen alsof we een browser zijn.
+            log.warning("HTTP %s voor %s - opnieuw met browser-UA", resp.status_code, url)
+            browser_ua = True
+            time.sleep(1.0)
+            continue
+        log.warning("HTTP %s voor %s (ook met browser-UA)", resp.status_code, url)
         return None
+    _HOST_FOUTEN[host] = _HOST_FOUTEN.get(host, 0) + 1
+    log.warning("Ophalen mislukt na %d poging(en): %s (%s)", pogingen, url, LAATSTE_FOUT.get(url))
+    return None
 
 
 def fetch_json(url, use_cache=True):

@@ -52,9 +52,11 @@ def controleer(site, beers, status, nu=None):
         if nu - sinds < config.VANGNET_MAX_UREN * 3600:
             laatst_goed = (time.strftime("%d-%m %H:%M", time.localtime(st["ok_ts"]))
                            if st.get("ok_ts") else "de vorige ronde")
+            reden = (" (oorzaak: %s)" % site["_fout"]) if site.get("_fout") else ""
             site["_waarschuwing"] = (
-                "de laatste ophaalronde gaf %d bieren (was %d); de gegevens van %s "
-                "blijven staan" % (n_nu, n_vorig, laatst_goed))
+                "de laatste ophaalronde gaf %d bieren (was %d)%s; de gegevens van %s "
+                "blijven staan" % (n_nu, n_vorig, reden, laatst_goed))
+            st["laatste_fout"] = site.get("_fout") or ""
             log.warning("%s: VANGNET actief - %s", site["label"], site["_waarschuwing"])
             return vorige, True
         log.warning("%s: afwijking duurt langer dan %d uur; nieuwe situatie geaccepteerd "

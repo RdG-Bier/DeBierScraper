@@ -36,8 +36,11 @@ MAX_CONTAINER_CHARS = 450  # voorkomt dat we per ongeluk een hele lijst pakken
 
 
 def scrape(site):
-    html = utils.fetch(site["menu_url"])
+    # Untappd-menupagina's zijn groot (De Bierschuur: 270+ bieren) en soms
+    # traag; daarom ruimer geduld dan bij een gewone webshop.
+    html = utils.fetch(site["menu_url"], timeout=45)
     if not html:
+        site["_fout"] = utils.laatste_fout(site["menu_url"]) or "lege pagina"
         log.warning("Bierbrigadier: kon Untappd-menupagina niet ophalen")
         return []
     utils.save_debug_sample(site["key"], "untappd-menu", html)

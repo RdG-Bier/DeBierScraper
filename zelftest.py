@@ -99,6 +99,36 @@ def _test_webshops(fouten):
     _controleer(fouten, "Bierloods22: inhoud en ABV", b["inhoud_cl"] == 44.0 and b["abv"] == 10.0, (b["inhoud_cl"], b["abv"]))
 
 
+def _test_ophalen(fouten):
+    """Tijdelijke storingen (time-out, HTTP 429) moeten opnieuw geprobeerd worden."""
+    import time
+    import requests
+    import utils
+
+    class Antwoord:
+        def __init__(self, code):
+            self.status_code, self.text, self.headers = code, "inhoud", {"Retry-After": "1"}
+    echt_get, echt_sleep, echt_cache = utils._session.get, time.sleep, config.CACHE_MAX_AGE_HOURS
+    time.sleep = lambda s: None
+    config.CACHE_MAX_AGE_HOURS = 0
+    try:
+        for naam, reeks in (("time-out", [requests.Timeout(), Antwoord(200)]),
+                            ("HTTP 429", [Antwoord(429), Antwoord(200)])):
+            it = iter(reeks)
+            def get(url, timeout=None, headers=None, _it=it):
+                x = next(_it)
+                if isinstance(x, Exception):
+                    raise x
+                return x
+            utils._session.get = get
+            utils._HOST_FOUTEN.clear()
+            _controleer(fouten, "Ophalen: na %s opnieuw geprobeerd" % naam,
+                        utils.fetch("https://zelftest.invalid/%s" % naam.replace(" ", "")) == "inhoud")
+    finally:
+        utils._session.get, time.sleep, config.CACHE_MAX_AGE_HOURS = echt_get, echt_sleep, echt_cache
+        utils._HOST_FOUTEN.clear()
+
+
 def _test_matching(fouten):
     import untappd_profiel as up
     import utils
@@ -242,9 +272,9 @@ def draai():
     (leeg = alles in orde)."""
     fouten = []
     tmp = Path(tempfile.mkdtemp(prefix="zelftest_"))
-    logging.disable(logging.INFO)             # de testpagina's niet in het logboek melden
+    logging.disable(logging.WARNING)          # testmeldingen niet in het logboek
     try:
-        for test in (_test_untappd_menu, _test_webshops, _test_matching):
+        for test in (_test_untappd_menu, _test_webshops, _test_matching, _test_ophalen):
             try:
                 test(fouten)
             except Exception as e:                       # een crash is ook een mislukte test
