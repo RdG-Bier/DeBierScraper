@@ -48,6 +48,7 @@
 	<!-- / Yoast SEO plugin. -->
 
 
+<link rel='dns-prefetch' href='//challenges.cloudflare.com' />
 <link rel='dns-prefetch' href='//cdn.weglot.com' />
 <link rel="alternate" type="application/rss+xml" title="Beer Dudes &raquo; feed" href="https://www.beerdudes.club/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Beer Dudes &raquo; reacties feed" href="https://www.beerdudes.club/comments/feed/" />
@@ -93,8 +94,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .woocommerce form .form-row .required { visibility: visible; }
 /*# sourceURL=woocommerce-inline-inline-css */
 </style>
-<link rel='stylesheet' id='weglot-css-css' href='https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/css/front-css.css?ver=6.4.3' media='all' />
-<link rel='stylesheet' id='new-flag-css-css' href='https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/css/new-flags.css?ver=6.4.3' media='all' />
+<link rel='stylesheet' id='weglot-css-css' href='https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/css/front-css.css?ver=6.5' media='all' />
+<link rel='stylesheet' id='new-flag-css-css' href='https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/css/new-flags.css?ver=6.5' media='all' />
 <link rel='stylesheet' id='wc-ppcp-sdk-v6-gateway-css' href='https://www.beerdudes.club/wp-content/plugins/woocommerce-paypal-payments/assets/ppcp-sdk-v6-css-gateway.css?ver=79614cb2e32eb24f0a5c' media='all' />
 <link rel='stylesheet' id='woosb-frontend-css' href='https://www.beerdudes.club/wp-content/plugins/woo-product-bundle/assets/css/frontend.css?ver=8.8.0' media='all' />
 <link rel='stylesheet' id='fkcart-style-css' href='https://www.beerdudes.club/wp-content/plugins/cart-for-woocommerce/assets/css/style.min.css?ver=1.9.1.3' media='all' />
@@ -207,7 +208,7 @@ var woocommerce_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/
 //# sourceURL=woocommerce-js-extra
 </script>
 <script data-wp-strategy="defer" defer id="woocommerce-js" src="https://www.beerdudes.club/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=11.3.1"></script>
-<script id="wp-weglot-js-js" src="https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/front-js.js?ver=6.4.3"></script>
+<script id="wp-weglot-js-js" src="https://www.beerdudes.club/wp-content/plugins/weglot-translate-woocommerce/dist/front-js.js?ver=6.5"></script>
 <script id="wc-cart-fragments-js-extra">
 var wc_cart_fragments_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url":"/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_c2ed3949bc23e759ec42e035d8db920d","fragment_name":"wc_fragments_c2ed3949bc23e759ec42e035d8db920d","request_timeout":"15000"};
 //# sourceURL=wc-cart-fragments-js-extra
@@ -245,7 +246,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager for WordPress by gtm4wp.com -->
 <link rel="alternate" href="https://www.beerdudes.club/bier/white-dog-brewery-spent-grain/" hreflang="nl"/>
 <link rel="alternate" href="https://www.beerdudes.club/en/bier/white-dog-brewery-spent-grain/" hreflang="en"/>
-<script type="application/json" id="weglot-data">{"website":"https:\/\/www.beerdudes.club","uid":"7f33020572","project_slug":"beer-dudes","deleted_at":null,"language_from":"nl","language_from_custom_flag":null,"language_from_custom_name":null,"auto_switch":true,"auto_switch_fallback":null,"translation_engine":3,"excluded_paths":[],"excluded_blocks":[],"dynamics":[],"custom_settings":{"wp_user_version":"4.2.8","button_style":{"is_dropdown":true,"with_flags":true,"full_name":true,"with_name":true,"flag_type":"rectangle_mat"},"translate_email":true,"translate_search":true,"translate_amp":false,"switchers":[{"style":{"full_name":false,"size_scale":"0.95"},"opts":{"hide_selected_language":false,"is_responsive":false,"display_device":"mobile","pixel_cutoff":768},"colors":{"bg_active":"#C9BB94","bg_inactive":"transparent","bg_hover":"transparent","text_active":"#FFFFFF","text_inactive":"#C9BB94","text_hover":"#000000"},"location":{"target":".flex-auto:nth-child(3) > .wpb_wrapper","sibling":".vc_custom_1757506898725"},"template":{"name":"toggle","hash":"974c73ad13a5a984c2c1afba2102244d41c20411"}}]},"media_enabled":false,"external_enabled":false,"page_views_enabled":false,"versions":{"translation":1724680221},"pending_translation_enabled":false,"curl_ssl_check_enabled":true,"custom_css":"","languages":[{"language_to":"en","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null}],"category":5,"organization_slug":"beer-dudes","technology_id":1,"technology_name":"WordPress","api_domain":"cdn-api-weglot.com","current_language":"nl","switcher_links":{"nl":"https:\/\/www.beerdudes.club\/bier\/white-dog-brewery-spent-grain\/?wg-choose-original=true","en":"https:\/\/www.beerdudes.club\/en\/bier\/white-dog-brewery-spent-grain\/?wg-choose-original=false"},"original_path":"\/bier\/white-dog-brewery-spent-grain\/"}</script>		<script type="text/javascript" id="webfont-queue">
+<script type="application/json" id="weglot-data">{"website":"https:\/\/www.beerdudes.club","uid":"7f33020572","project_slug":"beer-dudes","deleted_at":null,"language_from":"nl","language_from_custom_flag":null,"language_from_custom_name":null,"auto_switch":true,"auto_switch_fallback":null,"translation_engine":3,"excluded_paths":[],"excluded_blocks":[],"dynamics":[],"custom_settings":{"wp_user_version":"4.2.8","button_style":{"is_dropdown":true,"with_flags":true,"full_name":true,"with_name":true,"flag_type":"rectangle_mat"},"translate_email":true,"translate_search":true,"translate_amp":false,"switchers":[{"style":{"full_name":false,"size_scale":"0.95"},"opts":{"hide_selected_language":false,"is_responsive":false,"display_device":"mobile","pixel_cutoff":768},"colors":{"bg_active":"#C9BB94","bg_inactive":"transparent","bg_hover":"transparent","text_active":"#FFFFFF","text_inactive":"#C9BB94","text_hover":"#000000"},"location":{"target":".flex-auto:nth-child(3) \u003E .wpb_wrapper","sibling":".vc_custom_1757506898725"},"template":{"name":"toggle","hash":"974c73ad13a5a984c2c1afba2102244d41c20411"}}]},"media_enabled":false,"external_enabled":false,"page_views_enabled":false,"versions":{"translation":1724680221},"pending_translation_enabled":false,"curl_ssl_check_enabled":true,"custom_css":"","languages":[{"language_to":"en","custom_code":null,"custom_name":null,"custom_local_name":null,"provider":null,"enabled":true,"automatic_translation_enabled":true,"deleted_at":null,"connect_host_destination":null,"custom_flag":null}],"category":5,"organization_slug":"beer-dudes","technology_id":1,"technology_name":"WordPress","api_domain":"cdn-api-weglot.com","current_language":"nl","switcher_links":{"nl":"https:\/\/www.beerdudes.club\/bier\/white-dog-brewery-spent-grain\/?wg-choose-original=true","en":"https:\/\/www.beerdudes.club\/en\/bier\/white-dog-brewery-spent-grain\/?wg-choose-original=false"},"original_path":"\/bier\/white-dog-brewery-spent-grain\/"}</script>		<script type="text/javascript" id="webfont-queue">
 		WebFontConfig = {
 			google: { families: [ 'Kreon:400,500,600,700','Arial%2C+Helvetica%2C+sans-serif:400,700','American_captain:400,500,600,700,800','Kamu:400,500,600,700,800','Playfair+Display:400,700','Open+Sans:400,600,700&display=swap' ] }
 		};
@@ -844,7 +845,7 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 				<button type="button" value="-" class="minus">-</button>
 		<input
 			type="number"
-			id="quantity_6b0562cb5540c"
+			id="quantity_6b05fbd96c2c0"
 			class="input-text qty text"
 			step="1"
 			inputmode="numeric"
@@ -869,7 +870,7 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 		</div>
 
 	
-	<div class="woocommerce-tabs woocommerce-tabs-5xh4xg91 resp-htabs" id="product-tab">
+	<div class="woocommerce-tabs woocommerce-tabs-nb4p0x06 resp-htabs" id="product-tab">
 			<ul class="resp-tabs-list" role="tablist">
 							<li class="additional_information_tab" id="tab-title-additional_information" role="tab" data-target="tab-additional_information">
 					Aanvullende informatie				</li>
@@ -908,7 +909,7 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 			( function() {
 				var porto_init_desc_tab = function() {
 					( function( $ ) {
-						var $tabs = $('.woocommerce-tabs-5xh4xg91');
+						var $tabs = $('.woocommerce-tabs-nb4p0x06');
 
 						function init_tabs($tabs) {
 							$tabs.easyResponsiveTabs({
@@ -1005,270 +1006,30 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 
 				
 					
-<li role="none" class="product-col product-default product type-product post-31906 status-publish first instock product_cat-ipa product_cat-session-ipa product_tag-bierol has-post-thumbnail featured taxable shipping-taxable purchasable product-type-simple">
+<li role="none" class="product-col product-default product type-product post-8368 status-publish first instock product_cat-ipa product_tag-de-kromme-haring-special has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
 <div class="product-inner">
 	
 	<div class="product-image">
 
-		<a  href="https://www.beerdudes.club/bier/bierol-haumtaucher/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-31906" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="450" src="https://www.beerdudes.club/wp-content/uploads/2026/09/ChatGPT-Image-23-sep-2026-09_16_30-300x450.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="bierol-haumtaucher" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/session-ipa/" rel="tag">Session IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/bierol-haumtaucher/">
-	<h3 class="woocommerce-loop-product__title">Bierol Haumtaucher (2026)</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;3,50</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=31906" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_31906" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="31906" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Bierol Haumtaucher (2026)&ldquo;" rel="nofollow" data-success_message="&ldquo;Bierol Haumtaucher (2026)&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_31906" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="31906" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:31906,&quot;item_id&quot;:&quot;31906&quot;,&quot;item_name&quot;:&quot;Bierol Haumtaucher (2026)&quot;,&quot;sku&quot;:&quot;31906&quot;,&quot;price&quot;:3.5,&quot;stocklevel&quot;:20,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;Session IPA&quot;,&quot;id&quot;:&quot;31906&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/bierol-haumtaucher\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:1,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-12328 status-publish instock product_cat-alcoholarm product_cat-ipa product_tag-van-moll has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/van-moll-wanderlust/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-12328" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="400" src="https://www.beerdudes.club/wp-content/uploads/2022/07/289992321_567459228090956_8053666517176041867_n-300x400.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="Van Moll Wanderlust" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/alcoholarm/" rel="tag">Alcoholarm</a>, <a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/van-moll-wanderlust/">
-	<h3 class="woocommerce-loop-product__title">Van Moll Wanderlust</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;3,00</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=12328" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_12328" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="12328" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Van Moll Wanderlust&ldquo;" rel="nofollow" data-success_message="&ldquo;Van Moll Wanderlust&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_12328" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="12328" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:12328,&quot;item_id&quot;:&quot;12328&quot;,&quot;item_name&quot;:&quot;Van Moll Wanderlust&quot;,&quot;sku&quot;:&quot;12328&quot;,&quot;price&quot;:3,&quot;stocklevel&quot;:6,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;12328&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/van-moll-wanderlust\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:2,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-32757 status-publish instock product_cat-ipa product_cat-tripel product_tag-kaapse-brouwers has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/kaapse-koele-karel/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-32757" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="400" src="https://www.beerdudes.club/wp-content/uploads/2025/08/IMG_4085-removebg-preview-2-300x400.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="kaapse-koele-karel" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/tripel/" rel="tag">Tripel</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/kaapse-koele-karel/">
-	<h3 class="woocommerce-loop-product__title">Kaapse Koele Karel</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;2,80</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=32757" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_32757" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="32757" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Kaapse Koele Karel&ldquo;" rel="nofollow" data-success_message="&ldquo;Kaapse Koele Karel&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_32757" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="32757" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:32757,&quot;item_id&quot;:&quot;32757&quot;,&quot;item_name&quot;:&quot;Kaapse Koele Karel&quot;,&quot;sku&quot;:&quot;32757&quot;,&quot;price&quot;:2.8,&quot;stocklevel&quot;:30,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;32757&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/kaapse-koele-karel\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:3,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-9885 status-publish last instock product_cat-ipa product_tag-de-kromme-haring has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-dusky/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-9885" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2024/04/dusky-close-150dpi-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-dusky" decoding="async" /></div>		</a>
+		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-opah/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-8368" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2025/02/Opah-2026-close-1.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-opah" decoding="async" /></div>		</a>
 			</div>
 
 	<div class="product-content">
 		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-dusky/">
-	<h3 class="woocommerce-loop-product__title">De Kromme Haring Dusky</h3>	</a>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-opah/">
+	<h3 class="woocommerce-loop-product__title">De Kromme Haring Opah</h3>	</a>
 	
 		
-	<span class="price">&euro;&nbsp;3,20 – &euro;&nbsp;3,50</span>
+	<span class="price">&euro;&nbsp;3,70 – &euro;&nbsp;4,00</span>
 
 		<div class="add-links-wrap">
 	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=9885" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_9885" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="9885" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Dusky&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Dusky&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_9885" class="screen-reader-text">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=8368" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_8368" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="8368" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Opah&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Opah&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_8368" class="screen-reader-text">
 			</span>
-		<div class="quickview" data-id="9885" title="Snelle weergave">Snelle weergave</div>	</div>
+		<div class="quickview" data-id="8368" title="Snelle weergave">Snelle weergave</div>	</div>
 	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:9885,&quot;item_id&quot;:&quot;9885&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Dusky&quot;,&quot;sku&quot;:&quot;9885&quot;,&quot;price&quot;:3.5,&quot;stocklevel&quot;:35,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;9885&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-dusky\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:4,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-33755 status-publish first instock product_cat-ipa product_cat-neipa product_tag-van-moll has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/van-moll-dreamcatcher-2/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-33755" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="400" src="https://www.beerdudes.club/wp-content/uploads/2025/11/IMG_4941-removebg-preview-2-300x400.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="van-moll-dreamcatcher" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/neipa/" rel="tag">NEIPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/van-moll-dreamcatcher-2/">
-	<h3 class="woocommerce-loop-product__title">Van Moll Dreamcatcher</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;3,70</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=33755" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_33755" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="33755" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Van Moll Dreamcatcher&ldquo;" rel="nofollow" data-success_message="&ldquo;Van Moll Dreamcatcher&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_33755" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="33755" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:33755,&quot;item_id&quot;:&quot;33755&quot;,&quot;item_name&quot;:&quot;Van Moll Dreamcatcher&quot;,&quot;sku&quot;:&quot;33755&quot;,&quot;price&quot;:3.7,&quot;stocklevel&quot;:24,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;33755&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/van-moll-dreamcatcher-2\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:5,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-8068 status-publish instock product_cat-ipa product_tag-walhalla has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/walhalla-zeus-dipa/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-8068" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="400" src="https://www.beerdudes.club/wp-content/uploads/2026/07/IMG_7920-removebg-preview-2-300x400.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="walhalla-zeus-dipa" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/walhalla-zeus-dipa/">
-	<h3 class="woocommerce-loop-product__title">Walhalla Zeus DIPA</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;4,20</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=8068" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_8068" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="8068" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Walhalla Zeus DIPA&ldquo;" rel="nofollow" data-success_message="&ldquo;Walhalla Zeus DIPA&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_8068" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="8068" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:8068,&quot;item_id&quot;:&quot;8068&quot;,&quot;item_name&quot;:&quot;Walhalla Zeus DIPA&quot;,&quot;sku&quot;:&quot;8068&quot;,&quot;price&quot;:4.2,&quot;stocklevel&quot;:5,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;8068&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/walhalla-zeus-dipa\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:6,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-8111 status-publish instock product_cat-ipa product_cat-neipa product_tag-frontaal has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/frontaal-go-with-the-flow/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-8111" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="450" src="https://www.beerdudes.club/wp-content/uploads/2026/10/frontaal-go-with-the-flow-beer-dudes-300x450.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="frontaal-go-with-the-flow" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/neipa/" rel="tag">NEIPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/frontaal-go-with-the-flow/">
-	<h3 class="woocommerce-loop-product__title">Frontaal Go With The Flow</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;4,90</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=8111" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_8111" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="8111" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Frontaal Go With The Flow&ldquo;" rel="nofollow" data-success_message="&ldquo;Frontaal Go With The Flow&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_8111" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="8111" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:8111,&quot;item_id&quot;:&quot;8111&quot;,&quot;item_name&quot;:&quot;Frontaal Go With The Flow&quot;,&quot;sku&quot;:&quot;8111&quot;,&quot;price&quot;:4.9,&quot;stocklevel&quot;:20,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;8111&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/frontaal-go-with-the-flow\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:7,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-6057 status-publish last instock product_cat-ipa product_tag-de-kromme-haring has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-wahoo/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-6057" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2024/04/wahoo-close-150dpi-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-wahoo" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-wahoo/">
-	<h3 class="woocommerce-loop-product__title">De Kromme Haring Wahoo</h3>	</a>
-	
-		
-	<span class="price">&euro;&nbsp;3,30 – &euro;&nbsp;3,60</span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=6057" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_6057" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="6057" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Wahoo&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Wahoo&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_6057" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="6057" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:6057,&quot;item_id&quot;:&quot;6057&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Wahoo&quot;,&quot;sku&quot;:&quot;6057&quot;,&quot;price&quot;:3.6,&quot;stocklevel&quot;:16,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;6057&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-wahoo\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:8,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
-</div>
-
-</li>
-
-				
-					
-<li role="none" class="product-col product-default product type-product post-6155 status-publish first instock product_cat-ipa product_tag-de-dochter-van-de-korenaar has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
-<div class="product-inner">
-	
-	<div class="product-image">
-
-		<a  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-crime-passionel/" aria-label="Go to product page">
-			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-6155" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="375" src="https://www.beerdudes.club/wp-content/uploads/2024/03/Crime-Passionnel_productfoto-1-300x375.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-dochter-van-de-korenaar-crime-passionel" decoding="async" /></div>		</a>
-			</div>
-
-	<div class="product-content">
-		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
-			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-crime-passionel/">
-	<h3 class="woocommerce-loop-product__title">De Dochter van de Korenaar Crime Passionel</h3>	</a>
-	
-		
-	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;2,70</bdi></span></span>
-
-		<div class="add-links-wrap">
-	<div class="add-links clearfix">
-		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=6155" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_6155" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="6155" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Dochter van de Korenaar Crime Passionel&ldquo;" rel="nofollow" data-success_message="&ldquo;De Dochter van de Korenaar Crime Passionel&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_6155" class="screen-reader-text">
-			</span>
-		<div class="quickview" data-id="6155" title="Snelle weergave">Snelle weergave</div>	</div>
-	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:6155,&quot;item_id&quot;:&quot;6155&quot;,&quot;item_name&quot;:&quot;De Dochter van de Korenaar Crime Passionel&quot;,&quot;sku&quot;:&quot;6155&quot;,&quot;price&quot;:2.7,&quot;stocklevel&quot;:24,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;6155&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-dochter-van-de-korenaar-crime-passionel\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:9,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:8368,&quot;item_id&quot;:&quot;8368&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Opah&quot;,&quot;sku&quot;:&quot;8368&quot;,&quot;price&quot;:4,&quot;stocklevel&quot;:4,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;8368&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-opah\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:1,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
 </div>
 
 </li>
@@ -1298,7 +1059,247 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 			</span>
 		<div class="quickview" data-id="7887" title="Snelle weergave">Snelle weergave</div>	</div>
 	</div>
-<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:7887,&quot;item_id&quot;:&quot;7887&quot;,&quot;item_name&quot;:&quot;Frontaal Juice Punch&quot;,&quot;sku&quot;:&quot;7887&quot;,&quot;price&quot;:3.2,&quot;stocklevel&quot;:56,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;7887&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/frontaal-juice-punch\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:10,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:7887,&quot;item_id&quot;:&quot;7887&quot;,&quot;item_name&quot;:&quot;Frontaal Juice Punch&quot;,&quot;sku&quot;:&quot;7887&quot;,&quot;price&quot;:3.2,&quot;stocklevel&quot;:56,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;7887&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/frontaal-juice-punch\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:2,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-6443 status-publish instock product_cat-black-ipa product_cat-ipa product_tag-de-kromme-haring has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-inktvis/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-6443" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2024/04/inktvis-close-150dpi-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-inktvis" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/black-ipa/" rel="tag">Black IPA</a>, <a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-inktvis/">
+	<h3 class="woocommerce-loop-product__title">De Kromme Haring Inktvis</h3>	</a>
+	
+		
+	<span class="price">&euro;&nbsp;3,30 – &euro;&nbsp;3,60</span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=6443" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_6443" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="6443" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Inktvis&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Inktvis&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_6443" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="6443" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:6443,&quot;item_id&quot;:&quot;6443&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Inktvis&quot;,&quot;sku&quot;:&quot;6443&quot;,&quot;price&quot;:3.6,&quot;stocklevel&quot;:7,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;6443&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-inktvis\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:3,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-28706 status-publish last instock product_cat-black-ipa product_cat-ipa product_tag-de-kromme-haring-special has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-scylla-charybdis/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-28706" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="299" src="https://www.beerdudes.club/wp-content/uploads/2026/10/Scylla-Shop-Close-300x299.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-scylla-charybdis" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/black-ipa/" rel="tag">Black IPA</a>, <a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-scylla-charybdis/">
+	<h3 class="woocommerce-loop-product__title">De Kromme Haring Scylla &#038; Charybdis</h3>	</a>
+	
+		
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;4,20</bdi></span></span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=28706" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_28706" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="28706" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Scylla &amp; Charybdis&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Scylla &amp; Charybdis&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_28706" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="28706" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:28706,&quot;item_id&quot;:&quot;28706&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Scylla &amp; Charybdis&quot;,&quot;sku&quot;:&quot;28706&quot;,&quot;price&quot;:4.2,&quot;stocklevel&quot;:12,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;28706&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-scylla-charybdis\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:4,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-9156 status-publish first instock product_cat-glutenvrij product_cat-ipa product_cat-session-ipa product_tag-de-dochter-van-de-korenaar has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-passe-partout/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-9156" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="375" src="https://www.beerdudes.club/wp-content/uploads/2024/03/Passe-Partout_productfoto-1-300x375.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-dochter-van-de-korenaar-passe-partout" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/glutenvrij/" rel="tag">Glutenvrij</a>, <a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/session-ipa/" rel="tag">Session IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-passe-partout/">
+	<h3 class="woocommerce-loop-product__title">De Dochter van de Korenaar Passe-Partout</h3>	</a>
+	
+		
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;2,10</bdi></span></span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=9156" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_9156" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="9156" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Dochter van de Korenaar Passe-Partout&ldquo;" rel="nofollow" data-success_message="&ldquo;De Dochter van de Korenaar Passe-Partout&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_9156" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="9156" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:9156,&quot;item_id&quot;:&quot;9156&quot;,&quot;item_name&quot;:&quot;De Dochter van de Korenaar Passe-Partout&quot;,&quot;sku&quot;:&quot;9156&quot;,&quot;price&quot;:2.1,&quot;stocklevel&quot;:46,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;9156&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-dochter-van-de-korenaar-passe-partout\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:5,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-6057 status-publish instock product_cat-ipa product_tag-de-kromme-haring has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-wahoo/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-6057" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2024/04/wahoo-close-150dpi-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-wahoo" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-wahoo/">
+	<h3 class="woocommerce-loop-product__title">De Kromme Haring Wahoo</h3>	</a>
+	
+		
+	<span class="price">&euro;&nbsp;3,30 – &euro;&nbsp;3,60</span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=6057" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_6057" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="6057" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Wahoo&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Wahoo&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_6057" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="6057" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:6057,&quot;item_id&quot;:&quot;6057&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Wahoo&quot;,&quot;sku&quot;:&quot;6057&quot;,&quot;price&quot;:3.6,&quot;stocklevel&quot;:16,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;6057&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-wahoo\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:6,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-7121 status-publish instock product_cat-ipa product_tag-de-dochter-van-de-korenaar has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-extase/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-7121" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="375" src="https://www.beerdudes.club/wp-content/uploads/2024/03/Extase_productfoto-1-300x375.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-dochter-van-de-korenaar-extase" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-extase/">
+	<h3 class="woocommerce-loop-product__title">De Dochter van de Korenaar Extase</h3>	</a>
+	
+		
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;3,10</bdi></span></span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=7121" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_7121" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="7121" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Dochter van de Korenaar Extase&ldquo;" rel="nofollow" data-success_message="&ldquo;De Dochter van de Korenaar Extase&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_7121" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="7121" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:7121,&quot;item_id&quot;:&quot;7121&quot;,&quot;item_name&quot;:&quot;De Dochter van de Korenaar Extase&quot;,&quot;sku&quot;:&quot;7121&quot;,&quot;price&quot;:3.1,&quot;stocklevel&quot;:37,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;7121&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-dochter-van-de-korenaar-extase\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:7,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-19340 status-publish last instock product_cat-ipa product_cat-milkshake-ipa product_cat-pale-ale product_tag-kaapse-brouwers has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/kaapse-dude/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-19340" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="400" src="https://www.beerdudes.club/wp-content/uploads/2023/06/62E168D6-6857-49F9-B543-86B0F2E48D5B-removebg-preview-2-300x400.png" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="kaapse-dude" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/milkshake-ipa/" rel="tag">Milkshake IPA</a>, <a href="https://www.beerdudes.club/product-categorie/pale-ale/" rel="tag">Pale Ale</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/kaapse-dude/">
+	<h3 class="woocommerce-loop-product__title">Kaapse Dude</h3>	</a>
+	
+		
+	<span class="price">&euro;&nbsp;2,35 – &euro;&nbsp;2,60</span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=19340" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_19340" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="19340" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;Kaapse Dude&ldquo;" rel="nofollow" data-success_message="&ldquo;Kaapse Dude&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_19340" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="19340" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:19340,&quot;item_id&quot;:&quot;19340&quot;,&quot;item_name&quot;:&quot;Kaapse Dude&quot;,&quot;sku&quot;:&quot;19340&quot;,&quot;price&quot;:2.6,&quot;stocklevel&quot;:452,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;Pale Ale&quot;,&quot;id&quot;:&quot;19340&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/kaapse-dude\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:8,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-30841 status-publish first instock product_cat-barrel-aged product_cat-glutenvrij product_cat-ipa product_cat-session-ipa product_tag-de-dochter-van-de-korenaar has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-passe-partout-oak-aged/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-30841" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="375" src="https://www.beerdudes.club/wp-content/uploads/2025/04/Passe-Partout_Oak_Aged_productfoto-1-300x375.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-dochter-van-de-korenaar-passe-partout-oak-aged" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/barrel-aged/" rel="tag">Barrel Aged</a>, <a href="https://www.beerdudes.club/product-categorie/glutenvrij/" rel="tag">Glutenvrij</a>, <a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a>, <a href="https://www.beerdudes.club/product-categorie/session-ipa/" rel="tag">Session IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-dochter-van-de-korenaar-passe-partout-oak-aged/">
+	<h3 class="woocommerce-loop-product__title">De Dochter van de Korenaar Passe-Partout Oak Aged</h3>	</a>
+	
+		
+	<span class="price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol" translate="no" dir="auto">&euro;</span>&nbsp;4,20</bdi></span></span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=30841" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_30841" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="30841" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Dochter van de Korenaar Passe-Partout Oak Aged&ldquo;" rel="nofollow" data-success_message="&ldquo;De Dochter van de Korenaar Passe-Partout Oak Aged&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_30841" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="30841" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:30841,&quot;item_id&quot;:&quot;30841&quot;,&quot;item_name&quot;:&quot;De Dochter van de Korenaar Passe-Partout Oak Aged&quot;,&quot;sku&quot;:&quot;30841&quot;,&quot;price&quot;:4.2,&quot;stocklevel&quot;:23,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;30841&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-dochter-van-de-korenaar-passe-partout-oak-aged\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:9,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
+</div>
+
+</li>
+
+				
+					
+<li role="none" class="product-col product-default product type-product post-9885 status-publish instock product_cat-ipa product_tag-de-kromme-haring has-post-thumbnail taxable shipping-taxable purchasable product-type-simple">
+<div class="product-inner">
+	
+	<div class="product-image">
+
+		<a  href="https://www.beerdudes.club/bier/de-kromme-haring-dusky/" aria-label="Go to product page">
+			<div data-link="https://www.beerdudes.club/winkelwagen/" class="viewcart viewcart-9885" title="Bekijk winkelwagen"></div><div class="inner"><img loading="lazy" width="300" height="300" src="https://www.beerdudes.club/wp-content/uploads/2024/04/dusky-close-150dpi-1-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="de-kromme-haring-dusky" decoding="async" /></div>		</a>
+			</div>
+
+	<div class="product-content">
+		<span class="category-list"><a href="https://www.beerdudes.club/product-categorie/ipa/" rel="tag">IPA</a></span>
+			<a class="product-loop-title"  href="https://www.beerdudes.club/bier/de-kromme-haring-dusky/">
+	<h3 class="woocommerce-loop-product__title">De Kromme Haring Dusky</h3>	</a>
+	
+		
+	<span class="price">&euro;&nbsp;3,20 – &euro;&nbsp;3,50</span>
+
+		<div class="add-links-wrap">
+	<div class="add-links clearfix">
+		<a href="/bier/white-dog-brewery-spent-grain/?add-to-cart=9885" aria-describedby="woocommerce_loop_add_to_cart_link_describedby_9885" data-quantity="1" class="viewcart-style-1 button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="9885" data-product_sku="" aria-label="Toevoegen aan winkelwagen: &ldquo;De Kromme Haring Dusky&ldquo;" rel="nofollow" data-success_message="&ldquo;De Kromme Haring Dusky&rdquo; is toegevoegd aan je winkelwagen" role="button">In winkelwagen</a>		<span id="woocommerce_loop_add_to_cart_link_describedby_9885" class="screen-reader-text">
+			</span>
+		<div class="quickview" data-id="9885" title="Snelle weergave">Snelle weergave</div>	</div>
+	</div>
+<span class="gtm4wp_productdata" style="display:none; visibility:hidden;" data-gtm4wp_product_data="{&quot;internal_id&quot;:9885,&quot;item_id&quot;:&quot;9885&quot;,&quot;item_name&quot;:&quot;De Kromme Haring Dusky&quot;,&quot;sku&quot;:&quot;9885&quot;,&quot;price&quot;:3.5,&quot;stocklevel&quot;:35,&quot;stockstatus&quot;:&quot;instock&quot;,&quot;google_business_vertical&quot;:&quot;retail&quot;,&quot;item_category&quot;:&quot;IPA&quot;,&quot;id&quot;:&quot;9885&quot;,&quot;productlink&quot;:&quot;https:\/\/www.beerdudes.club\/bier\/de-kromme-haring-dusky\/&quot;,&quot;item_list_name&quot;:&quot;Gerelateerde producten&quot;,&quot;index&quot;:10,&quot;product_type&quot;:&quot;simple&quot;,&quot;item_list_id&quot;:&quot;related-products&quot;,&quot;item_brand&quot;:&quot;&quot;}"></span>	</div>
 </div>
 
 </li>
@@ -1325,7 +1326,7 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 		</div>
 	</div>
 </div></div><div class="vc_column_container col-md-6 col-lg-4 vc_custom_1757428287449"><div class="wpb_wrapper vc_column-inner"><p style="font-size: 15px;color: #ffffff;line-height: 26px;text-align: center;font-weight:600" class="vc_custom_heading vc_do_custom_heading wpb_custom_aa365bd5046e8294520b4e73732b9d15 text-uppercase" >YOUR GO-TO FOR CRAFT BEER</p><div class="porto-u-heading  wpb_custom_ecb26ca1f4533d328ca4dbb98fbd7dd6 porto-u-55ca8359258f9a412be7e73af65d2aac"><div class="porto-u-main-heading"><h3   style="color:#ffffff;margin-bottom: 16px;">BEER DUDES</h3></div><div class="porto-u-sub-heading" style="color: #ffffff;font-size:12.6px;">WAALWIJK / EST 2019</div><style>.porto-u-55ca8359258f9a412be7e73af65d2aac.porto-u-heading{text-align:center}</style></div><div class="porto-separator tall  mb-4"><hr class="separator-line  wpb_content_element align_center solid" style="background-color:#c29e75;height:1px;width:100%;"></div><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >www.beerdudes.club<br />
-<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1970777f76597b7c7c6b7d6c7d7c6a377a756c7b">[email&#160;protected]</a></p><div class="porto-separator tall  mb-4"><hr class="separator-line  wpb_content_element align_center solid" style="background-color:#c29e75;height:1px;width:100%;"></div><p style="font-size: 20px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >Beer Dudes Offline</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >Sprangsestraat 53, 5171 DZ Kaatsheuvel.</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >vrijdag: 12:00 - 18:00 uur</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >zaterdag: 11:00 - 17:00 uur</p><div class="porto-separator tall  mb-4"><hr class="separator-line  wpb_content_element align_center solid" style="background-color:#c29e75;height:1px;width:100%;"></div><h3 style="font-size: 19px;color: #ffffff;line-height: 24px;text-align: center;font-weight:700;letter-spacing:0.2" class="vc_custom_heading vc_do_custom_heading wpb_custom_aa365bd5046e8294520b4e73732b9d15" >VRAGEN? BEL ONS!</h3><h4 style="font-size: 44px;color: #ffffff;line-height: 1;text-align: center;font-weight:700" class="vc_custom_heading vc_do_custom_heading ls-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" ><a href="tel:+31631790235">06 317 902 35</a></h4>
+<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="40292e262f002225253224352425336e232c3522">[email&#160;protected]</a></p><div class="porto-separator tall  mb-4"><hr class="separator-line  wpb_content_element align_center solid" style="background-color:#c29e75;height:1px;width:100%;"></div><p style="font-size: 20px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >Beer Dudes Offline</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >Sprangsestraat 53, 5171 DZ Kaatsheuvel.</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >vrijdag: 12:00 - 18:00 uur</p><p style="font-size: 16px;color: #ffffff;line-height: 36px;text-align: center" class="vc_custom_heading vc_do_custom_heading mb-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" >zaterdag: 11:00 - 17:00 uur</p><div class="porto-separator tall  mb-4"><hr class="separator-line  wpb_content_element align_center solid" style="background-color:#c29e75;height:1px;width:100%;"></div><h3 style="font-size: 19px;color: #ffffff;line-height: 24px;text-align: center;font-weight:700;letter-spacing:0.2" class="vc_custom_heading vc_do_custom_heading wpb_custom_aa365bd5046e8294520b4e73732b9d15" >VRAGEN? BEL ONS!</h3><h4 style="font-size: 44px;color: #ffffff;line-height: 1;text-align: center;font-weight:700" class="vc_custom_heading vc_do_custom_heading ls-0 wpb_custom_aa365bd5046e8294520b4e73732b9d15" ><a href="tel:+31631790235">06 317 902 35</a></h4>
 	<div class="wpb_single_image wpb_content_element vc_align_center wpb_content_element  wpb_custom_81a4f7ef9830bf958462581aa01150fb"><div class="wpb_wrapper">
 			
 			<a href="https://untappd.com/v/beer-dudes/9897197" target="_blank" aria-label="Zoom the image"><div class="vc_single_image-wrapper"><img loading="lazy" width="110" height="154" src="https://www.beerdudes.club/wp-content/uploads/porto_placeholders/100x140.jpg" data-oi="https://www.beerdudes.club/wp-content/uploads/2019/05/VV-small.png" class="porto-lazyload vc_single_image-img attachment-full" alt="untappd verified venue" title="VV-small" decoding="async" /></div></a>
@@ -1335,8 +1336,10 @@ background-image: url(//www.beerdudes.club/wp-content/uploads/2025/09/bg-footer.
 <div class="wpcf7 no-js" id="wpcf7-f2874-o1" lang="nl-NL" dir="ltr" data-wpcf7-id="2874">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
 <form action="/bier/white-dog-brewery-spent-grain/#wpcf7-f2874-o1" method="post" class="wpcf7-form init" aria-label="Contactformulier" novalidate="novalidate" data-status="init" data-gtm4wp-form-name="Footer Contact Form">
-<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="2874" /><input type="hidden" name="_wpcf7_version" value="6.2.5" /><input type="hidden" name="_wpcf7_locale" value="nl_NL" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2874-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" /><input type="hidden" name="_wpcf7_recaptcha_response" value="" />
+<fieldset class="hidden-fields-container"><input type="hidden" name="_wpcf7" value="2874" /><input type="hidden" name="_wpcf7_version" value="6.2.6" /><input type="hidden" name="_wpcf7_locale" value="nl_NL" /><input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f2874-o1" /><input type="hidden" name="_wpcf7_container_post" value="0" /><input type="hidden" name="_wpcf7_posted_data_hash" value="" />
 </fieldset>
+<div class="wpcf7-turnstile cf-turnstile" data-sitekey="0x4AAAAAAGRJV0CTQIZnRNCk" data-response-field-name="_wpcf7_turnstile_response"></div>
+
 <div class="form-row">
     <div class="form-group col">
         <span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" maxlength="400" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control py-2" aria-required="true" aria-invalid="false" placeholder="Naam" value="" type="text" name="your-name" /></span>
@@ -1521,6 +1524,11 @@ var wc_add_to_cart_params = {"ajax_url":"/wp-admin/admin-ajax.php","wc_ajax_url"
 //# sourceURL=wc-add-to-cart-js-extra
 </script>
 <script data-wp-strategy="defer" id="wc-add-to-cart-js" src="https://www.beerdudes.club/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=11.3.1"></script>
+<script data-wp-strategy="async" id="cloudflare-turnstile-js" src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
+<script id="cloudflare-turnstile-js-after">
+document.addEventListener( 'wpcf7submit', e => turnstile.reset() );
+//# sourceURL=cloudflare-turnstile-js-after
+</script>
 <script id="gtm4wp-additional-datalayer-pushes-js-after">
 	dataLayer.push({"event":"view_item","ecommerce":{"currency":"EUR","value":5.4,"items":[{"item_id":"37699","item_name":"White Dog Brewery Spent Grain","sku":"37699","price":5.4,"stocklevel":55,"stockstatus":"instock","google_business_vertical":"retail","item_category":"NEIPA","id":"37699","quantity":1}]}});
 //# sourceURL=gtm4wp-additional-datalayer-pushes-js-after
@@ -1537,7 +1545,7 @@ window.gtm4wp_store_api_cart_url = "https:\/\/www.beerdudes.club\/wp-json\/wc\/s
 </script>
 <script id="gtm4wp-woocommerce-js" src="https://www.beerdudes.club/wp-content/plugins/duracelltomi-google-tag-manager/build/gtm4wp-woocommerce.js?ver=2.1.1"></script>
 <script id="vc_woocommerce-add-to-cart-js-js" src="https://www.beerdudes.club/wp-content/plugins/js_composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=9.2"></script>
-<script id="weglot-switcher-toggle-js" src="https://cdn.weglot.com/switchers/toggle.974c73ad13a5a984c2c1afba2102244d41c20411.min.js?ver=6.4.3"></script>
+<script id="weglot-switcher-toggle-js" src="https://cdn.weglot.com/switchers/toggle.974c73ad13a5a984c2c1afba2102244d41c20411.min.js?ver=6.5"></script>
 <script id="wp-hooks-js" src="https://www.beerdudes.club/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
 <script id="wp-i18n-js" src="https://www.beerdudes.club/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
 <script id="wp-i18n-js-after">
@@ -1545,7 +1553,7 @@ wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 //# sourceURL=wp-i18n-js-after
 </script>
 <script id="wc-ppcp-sdk-v6-boot-js-extra">
-var wc_ppcp_sdk_v6 = {"sdk_url":"https://www.paypal.com/web-sdk/v6/core","page_context":"product","buttons_enabled":"1","currency":"EUR","amount":"5.40","buyer_country":"NL","merchant_country":"NL","locale":"nl-NL","bn_code":"WooPPCP_Ecom_PS_CoreProfiler","vaulting_enabled":"","final_review":"1","pay_now_contexts":["checkout","pay-now"],"is_free_trial_cart":"","cart_needs_vaulting":"","has_subscriptions":"","verification_method":"NO_3D_SECURE","user":{"is_logged":false},"ajax":{"client_token":{"endpoint":"/?wc-ajax=ppc-sdk-v6-client-token","nonce":"6e1aa93b45"},"change_cart":{"endpoint":"/?wc-ajax=ppc-change-cart","nonce":"a009753243"},"simulate_cart":{"endpoint":"/?wc-ajax=ppc-sdk-v6-simulate-cart","nonce":"b43a35eae5"},"wallet_shipping":{"endpoint":"/?wc-ajax=ppc-sdk-v6-wallet-shipping","nonce":"4e28292e3d"},"create_order":{"endpoint":"/?wc-ajax=ppc-create-order","nonce":"cd35c338b2"},"approve_order":{"endpoint":"/?wc-ajax=ppc-approve-order","nonce":"9076393ab0"},"get_order":{"endpoint":"/?wc-ajax=ppc-get-order","nonce":"19c380d511"},"update_shipping":{"endpoint":"/?wc-ajax=ppc-update-shipping","nonce":"fb234cad55"},"create_setup_token":{"endpoint":"/?wc-ajax=ppc-create-setup-token","nonce":"3d4469b70f"},"create_payment_token":{"endpoint":"/?wc-ajax=ppc-create-payment-token","nonce":"344ec5d846"},"create_payment_token_for_guest":{"endpoint":"/?wc-ajax=ppc-update-customer-id","nonce":"f562430b1f"},"frontend_log":{"endpoint":"/?wc-ajax=ppc-frontend-log","nonce":"51b2eaac58"},"wc_store_api":{"cart":"https://www.beerdudes.club/wp-json/wc/store/v1/cart","select_shipping_rate":"https://www.beerdudes.club/wp-json/wc/store/v1/cart/select-shipping-rate","update_customer":"https://www.beerdudes.club/wp-json/wc/store/v1/cart/update-customer","nonce":"6d23d6dad7"}},"urls":{"checkout":"https://www.beerdudes.club/afrekenen/"},"labels":{"generic_error":"Er is iets fout gegaan. Probeer het opnieuw of kies een andere betalingsbron.","card_declined":"De kaart kon niet worden belast. Controleer de details of probeer een andere kaart.","shipping_unserviceable":"Kan niet verzenden naar het geselecteerde adres.","fields_empty":"De betalingsgegevens van de kaart ontbreken. Vul alle vereiste velden in.","fields_not_valid":"Je creditcard gegevens zijn niet geldig.","subtotal":"Subtotaal","shipping":"Verzenden","tax":"Belasting","discount":"Korting"},"shipping":{"in_context":{"product":false,"mini-cart":false},"countries":[]},"button_styles":{"product":{"colorClass":"paypal-gold","borderRadius":"4px","height":"48px"}},"pay_later_button":{"product":false},"venmo_button":{"product":true},"button_height":"48px","wrapper":"#ppc-button-ppcp-gateway-v6","mini_cart_wrapper":"#ppc-button-minicart-v6","card_fields":{"enabled":false,"payment_method":"ppcp-credit-card-gateway","funding_source":"card","title":"Debit & credit cards","is_vaulting_enabled":false,"card_icons":[],"fields":{"number":"#ppcp-credit-card-gateway-card-number","expiry":"#ppcp-credit-card-gateway-card-expiry","cvv":"#ppcp-credit-card-gateway-card-cvc"},"styles":[]},"card_button":{"row":false,"block_method":false,"payment_method":"ppcp-card-button-gateway","funding_source":"card","wrapper":"#ppc-button-ppcp-card-button-gateway-v6","title":"","description":"","supported_features":["products"],"styles":{"borderRadius":"4px","height":"48px","width":"100%"}},"fastlane":{"enabled":false,"payment_method":"ppcp-axo-gateway"},"messages":{"enabled":false,"wrapper":".ppcp-messages","is_hidden":false,"amount":"5.40","page_type":"product-details","style":{"logoType":"WORDMARK","logoPosition":"INLINE","textColor":"BLACK","fontSize":"12px"},"use_cart_simulation":false},"google_pay":{"enabled":false,"sdk_url":"https://pay.google.com/gp/p/js/pay.js","styles":[],"supported_features":["products"],"gateway":null,"environment":"PRODUCTION"},"apple_pay":{"enabled":false,"sdk_url":"https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js","styles":[],"supported_features":["products"],"gateway":null,"display_name":"Beer Dudes","validation":{"endpoint":"https://www.beerdudes.club/wp-admin/admin-ajax.php","action":"ppcp_validate","nonce":"9e70a3881f"}}};
+var wc_ppcp_sdk_v6 = {"sdk_url":"https://www.paypal.com/web-sdk/v6/core","page_context":"product","buttons_enabled":"1","currency":"EUR","amount":"5.40","buyer_country":"NL","merchant_country":"NL","locale":"nl-NL","bn_code":"WooPPCP_Ecom_PS_CoreProfiler","vaulting_enabled":"","final_review":"1","pay_now_contexts":["checkout","pay-now"],"is_free_trial_cart":"","cart_needs_vaulting":"","has_subscriptions":"","verification_method":"NO_3D_SECURE","user":{"is_logged":false},"ajax":{"client_token":{"endpoint":"/?wc-ajax=ppc-sdk-v6-client-token","nonce":"8fa5001692"},"change_cart":{"endpoint":"/?wc-ajax=ppc-change-cart","nonce":"859aaa98ee"},"simulate_cart":{"endpoint":"/?wc-ajax=ppc-sdk-v6-simulate-cart","nonce":"cac970da54"},"wallet_shipping":{"endpoint":"/?wc-ajax=ppc-sdk-v6-wallet-shipping","nonce":"a7d0803105"},"create_order":{"endpoint":"/?wc-ajax=ppc-create-order","nonce":"d4aa3bccbd"},"approve_order":{"endpoint":"/?wc-ajax=ppc-approve-order","nonce":"66f2ce5af2"},"get_order":{"endpoint":"/?wc-ajax=ppc-get-order","nonce":"79455cd24b"},"update_shipping":{"endpoint":"/?wc-ajax=ppc-update-shipping","nonce":"2751065622"},"create_setup_token":{"endpoint":"/?wc-ajax=ppc-create-setup-token","nonce":"d25427a575"},"create_payment_token":{"endpoint":"/?wc-ajax=ppc-create-payment-token","nonce":"f1b006ee50"},"create_payment_token_for_guest":{"endpoint":"/?wc-ajax=ppc-update-customer-id","nonce":"9827fc5cc3"},"frontend_log":{"endpoint":"/?wc-ajax=ppc-frontend-log","nonce":"88db225199"},"wc_store_api":{"cart":"https://www.beerdudes.club/wp-json/wc/store/v1/cart","select_shipping_rate":"https://www.beerdudes.club/wp-json/wc/store/v1/cart/select-shipping-rate","update_customer":"https://www.beerdudes.club/wp-json/wc/store/v1/cart/update-customer","nonce":"a1bf83f24e"}},"urls":{"checkout":"https://www.beerdudes.club/afrekenen/"},"labels":{"generic_error":"Er is iets fout gegaan. Probeer het opnieuw of kies een andere betalingsbron.","card_declined":"De kaart kon niet worden belast. Controleer de details of probeer een andere kaart.","shipping_unserviceable":"Kan niet verzenden naar het geselecteerde adres.","fields_empty":"De betalingsgegevens van de kaart ontbreken. Vul alle vereiste velden in.","fields_not_valid":"Je creditcard gegevens zijn niet geldig.","subtotal":"Subtotaal","shipping":"Verzenden","tax":"Belasting","discount":"Korting"},"shipping":{"in_context":{"product":false,"mini-cart":false},"countries":[]},"button_styles":{"product":{"colorClass":"paypal-gold","borderRadius":"4px","height":"48px"}},"pay_later_button":{"product":false},"venmo_button":{"product":true},"button_height":"48px","wrapper":"#ppc-button-ppcp-gateway-v6","mini_cart_wrapper":"#ppc-button-minicart-v6","card_fields":{"enabled":false,"payment_method":"ppcp-credit-card-gateway","funding_source":"card","title":"Debit & credit cards","is_vaulting_enabled":false,"card_icons":[],"fields":{"number":"#ppcp-credit-card-gateway-card-number","expiry":"#ppcp-credit-card-gateway-card-expiry","cvv":"#ppcp-credit-card-gateway-card-cvc"},"styles":[]},"card_button":{"row":false,"block_method":false,"payment_method":"ppcp-card-button-gateway","funding_source":"card","wrapper":"#ppc-button-ppcp-card-button-gateway-v6","title":"","description":"","supported_features":["products"],"styles":{"borderRadius":"4px","height":"48px","width":"100%"}},"fastlane":{"enabled":false,"payment_method":"ppcp-axo-gateway"},"messages":{"enabled":false,"wrapper":".ppcp-messages","is_hidden":false,"amount":"5.40","page_type":"product-details","style":{"logoType":"WORDMARK","logoPosition":"INLINE","textColor":"BLACK","fontSize":"12px"},"use_cart_simulation":false},"google_pay":{"enabled":false,"sdk_url":"https://pay.google.com/gp/p/js/pay.js","styles":[],"supported_features":["products"],"gateway":null,"environment":"PRODUCTION"},"apple_pay":{"enabled":false,"sdk_url":"https://applepay.cdn-apple.com/jsapi/v1/apple-pay-sdk.js","styles":[],"supported_features":["products"],"gateway":null,"display_name":"Beer Dudes","validation":{"endpoint":"https://www.beerdudes.club/wp-admin/admin-ajax.php","action":"ppcp_validate","nonce":"323ebb8641"}}};
 //# sourceURL=wc-ppcp-sdk-v6-boot-js-extra
 </script>
 <script id="wc-ppcp-sdk-v6-boot-js-translations">
@@ -1563,7 +1571,7 @@ var woosb_vars = {"wc_price_decimals":"2","wc_price_format":"%1$s\u00a0%2$s","wc
 </script>
 <script id="woosb-frontend-js" src="https://www.beerdudes.club/wp-content/plugins/woo-product-bundle/assets/js/frontend.js?ver=8.8.0"></script>
 <script id="porto-live-search-js-extra">
-var porto_live_search = {"nonce":"cf111a951f","sku":"SKU: ","product_tags":"Tags: "};
+var porto_live_search = {"nonce":"79a5440054","sku":"SKU: ","product_tags":"Tags: "};
 //# sourceURL=porto-live-search-js-extra
 </script>
 <script id="porto-live-search-js" src="https://www.beerdudes.club/wp-content/themes/porto/inc/lib/live-search/live-search.min.js?ver=7.10.2"></script>
@@ -1574,29 +1582,16 @@ var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":fa
 </script>
 <script id="wc-order-attribution-js" src="https://www.beerdudes.club/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=11.3.1"></script>
 <script id="ppcp-fraudnet-js-extra">
-var FraudNetConfig = {"f":"aa79edaa7b89ca15a45b15e39b39ca72","s":"7J3AGAHFZLZL4_checkout-page","sandbox":""};
+var FraudNetConfig = {"f":"cca773bc9845546f4b47937f05ba8159","s":"7J3AGAHFZLZL4_checkout-page","sandbox":""};
 //# sourceURL=ppcp-fraudnet-js-extra
 </script>
 <script id="ppcp-fraudnet-js" src="https://www.beerdudes.club/wp-content/plugins/woocommerce-paypal-payments/assets/ppcp-wc-gateway-js-fraudnet.js?ver=4.2.2"></script>
 <script id="fkcart-carousel-js" src="https://www.beerdudes.club/wp-content/plugins/cart-for-woocommerce/assets/addon/embla-carousel.min.js?ver=1.9.1.3"></script>
 <script id="fkcart-script-js-extra">
-var fkcart_app_data = {"ajax_nonce":"a2fcf84e20","is_preview":"","ajax_url":"https://www.beerdudes.club/wp-admin/admin-ajax.php?lang=nl","force_open_cart":"no","open_side_cart":"no","should_open_cart":"yes","is_cart":"","is_shop":"","is_single_product":"1","need_extra_slide_cart_ajax":"no","ajax_add_to_cart":"no","wc_endpoints":{"fkcart_get_slide_cart":"/?wc-ajax=fkcart_get_slide_cart&lang=nl","fkcart_add_item":"/?wc-ajax=fkcart_add_item&lang=nl","fkcart_update_item":"/?wc-ajax=fkcart_update_item&lang=nl","fkcart_remove_item":"/?wc-ajax=fkcart_remove_item&lang=nl","fkcart_apply_coupon":"/?wc-ajax=fkcart_apply_coupon&lang=nl","fkcart_remove_coupon":"/?wc-ajax=fkcart_remove_coupon&lang=nl","fkcart_quick_view":"/?wc-ajax=fkcart_quick_view&lang=nl","fkcart_update_attributes":"/?wc-ajax=fkcart_update_attributes&lang=nl","fkcart_add_spl_addon":"/?wc-ajax=fkcart_add_spl_addon&lang=nl","fkcart_remove_spl_addon":"/?wc-ajax=fkcart_remove_spl_addon&lang=nl"},"update_side_cart_on_load":"no","trigger_slide_cart_class":[".cart-item .header-cart-link",".et-cart-info","#mini-cart .cart-head span.cart-icon",".site-header-cart .cart-click",".wcmenucart",".wd-header-cart"],"cart_hash_key":"fkcart_hash_c2ed3949bc23e759ec42e035d8db920d","fragment_name":"fkcart_fragments_c2ed3949bc23e759ec42e035d8db920d","locale":"nl_NL","smart_buttons_wrapper":{"dynamic_buttons":{"#fkcart_fkwcs_smart_button":"#fkcart_fkwcs_smart_button"},"no_conflict_buttons":["#fkcart_paypalpayments_smart_button","#fkcart_pymntpl_paypal_payments_smart_button","#fkcart_fkwcs_smart_button_gpay"]},"cookie_names":{"quantity":"fkcart_cart_qty","cart_total":"fkcart_cart_total"},"cookie_domain":""};
+var fkcart_app_data = {"ajax_nonce":"e77e825589","is_preview":"","ajax_url":"https://www.beerdudes.club/wp-admin/admin-ajax.php?lang=nl","force_open_cart":"no","open_side_cart":"no","should_open_cart":"yes","is_cart":"","is_shop":"","is_single_product":"1","need_extra_slide_cart_ajax":"no","ajax_add_to_cart":"no","wc_endpoints":{"fkcart_get_slide_cart":"/?wc-ajax=fkcart_get_slide_cart&lang=nl","fkcart_add_item":"/?wc-ajax=fkcart_add_item&lang=nl","fkcart_update_item":"/?wc-ajax=fkcart_update_item&lang=nl","fkcart_remove_item":"/?wc-ajax=fkcart_remove_item&lang=nl","fkcart_apply_coupon":"/?wc-ajax=fkcart_apply_coupon&lang=nl","fkcart_remove_coupon":"/?wc-ajax=fkcart_remove_coupon&lang=nl","fkcart_quick_view":"/?wc-ajax=fkcart_quick_view&lang=nl","fkcart_update_attributes":"/?wc-ajax=fkcart_update_attributes&lang=nl","fkcart_add_spl_addon":"/?wc-ajax=fkcart_add_spl_addon&lang=nl","fkcart_remove_spl_addon":"/?wc-ajax=fkcart_remove_spl_addon&lang=nl"},"update_side_cart_on_load":"no","trigger_slide_cart_class":[".cart-item .header-cart-link",".et-cart-info","#mini-cart .cart-head span.cart-icon",".site-header-cart .cart-click",".wcmenucart",".wd-header-cart"],"cart_hash_key":"fkcart_hash_c2ed3949bc23e759ec42e035d8db920d","fragment_name":"fkcart_fragments_c2ed3949bc23e759ec42e035d8db920d","locale":"nl_NL","smart_buttons_wrapper":{"dynamic_buttons":{"#fkcart_fkwcs_smart_button":"#fkcart_fkwcs_smart_button"},"no_conflict_buttons":["#fkcart_paypalpayments_smart_button","#fkcart_pymntpl_paypal_payments_smart_button","#fkcart_fkwcs_smart_button_gpay"]},"cookie_names":{"quantity":"fkcart_cart_qty","cart_total":"fkcart_cart_total"},"cookie_domain":""};
 //# sourceURL=fkcart-script-js-extra
 </script>
 <script id="fkcart-script-js" src="https://www.beerdudes.club/wp-content/plugins/cart-for-woocommerce/assets/js/cart.min.js?ver=1.9.1.3"></script>
-<script id="google-recaptcha-js" src="https://www.google.com/recaptcha/api.js?render=6LfbZ84iAAAAAOZObOkP4Ex8bEAMq09RIERd_UVy&#038;ver=3.0"></script>
-<script id="wp-polyfill-js" src="https://www.beerdudes.club/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"></script>
-<script id="wpcf7-recaptcha-js-before">
-var wpcf7_recaptcha = {
-    "sitekey": "6LfbZ84iAAAAAOZObOkP4Ex8bEAMq09RIERd_UVy",
-    "actions": {
-        "homepage": "homepage",
-        "contactform": "contactform"
-    }
-};
-//# sourceURL=wpcf7-recaptcha-js-before
-</script>
-<script id="wpcf7-recaptcha-js" src="https://www.beerdudes.club/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=6.2.5"></script>
 <script id="bootstrap-js" src="https://www.beerdudes.club/wp-content/themes/porto/js/bootstrap.optimized.min.js?ver=5.0.1"></script>
 <script data-wp-strategy="defer" defer id="wc-jquery-cookie-js" src="https://www.beerdudes.club/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js?ver=1.4.1-wc.11.3.1"></script>
 <script id="owl.carousel-js" src="https://www.beerdudes.club/wp-content/themes/porto/js/libs/owl.carousel.min.js?ver=2.3.4"></script>
@@ -1604,7 +1599,7 @@ var wpcf7_recaptcha = {
 <script id="jquery-magnific-popup-js" async="async" src="https://www.beerdudes.club/wp-content/themes/porto/js/libs/jquery.magnific-popup.min.js?ver=1.1.0"></script>
 <script id="jquery-elevatezoom-js" src="https://www.beerdudes.club/wp-content/themes/porto/js/libs/jquery.elevatezoom.min.js?ver=3.0.8"></script>
 <script id="porto-theme-js-extra">
-var js_porto_vars = {"rtl":"","theme_url":"https://www.beerdudes.club/wp-content/themes/porto-child","ajax_url":"https://www.beerdudes.club/wp-admin/admin-ajax.php","cart_url":"https://www.beerdudes.club/winkelwagen/","change_logo":"1","container_width":"1440","grid_gutter_width":"20","show_sticky_header":"","show_sticky_header_tablet":"","show_sticky_header_mobile":"","ajax_loader_url":"//www.beerdudes.club/wp-content/themes/porto/images/ajax-loader@2x.gif","category_ajax":"1","compare_popup":"","compare_popup_title":"","prdctfltr_ajax":"","slider_loop":"1","slider_autoplay":"1","slider_autoheight":"1","slider_speed":"5000","slider_nav":"","slider_nav_hover":"1","slider_margin":"","slider_dots":"1","slider_animatein":"","slider_animateout":"","product_thumbs_count":"4","product_zoom":"","product_zoom_mobile":"1","product_image_popup":"","zoom_type":"lens","zoom_scroll":"","zoom_lens_size":"200","zoom_lens_shape":"square","zoom_contain_lens":"","zoom_lens_border":"1","zoom_border_color":"transparent","zoom_border":"4","screen_xl":"1160","screen_xxl":"1480","mfp_counter":"%curr% of %total%","mfp_img_error":"\u003Ca href=\"%url%\"\u003EThe image\u003C/a\u003E could not be loaded.","mfp_ajax_error":"\u003Ca href=\"%url%\"\u003EThe content\u003C/a\u003E could not be loaded.","popup_close":"Sluiten","popup_prev":"Vorige","popup_next":"Volgende","request_error":"The requested content cannot be loaded.\u003Cbr/\u003EPlease try again later.","loader_text":"Laden...","submenu_back":"Terug","porto_nonce":"532c76b34d","use_skeleton_screen":[],"user_edit_pages":"","quick_access":"Click to edit this element.","goto_type":"Go To the Type Builder.","legacy_mode":"1","home_url":"https://www.beerdudes.club/","is_multisite":"","current_blog_id":"1","texts":{"search_history_title":"Search History","search_history_clear_all":"Wissen","widget_search_placeholder":"Search for %s...","widget_search_default":"Search...","widget_search_empty":"No results found."},"pre_order":"","add_to_label":"Toevoegen aan winkelwagen","login_popup_waiting_msg":"Please wait...","wc_placeholder_img":"https://www.beerdudes.club/wp-content/uploads/woocommerce-placeholder-300x300.png","shop_filter_layout":null,"woo_widget_toggle":"1","woo_widget_search":["all"],"func_url":"https://www.beerdudes.club/wp-content/plugins/porto-functionality/","vc_tabs_url":"https://www.beerdudes.club/wp-content/plugins/js_composer/assets/lib/vc/vc_tabs/vc-tabs.min.js","wpb_native_responsive":"1"};
+var js_porto_vars = {"rtl":"","theme_url":"https://www.beerdudes.club/wp-content/themes/porto-child","ajax_url":"https://www.beerdudes.club/wp-admin/admin-ajax.php","cart_url":"https://www.beerdudes.club/winkelwagen/","change_logo":"1","container_width":"1440","grid_gutter_width":"20","show_sticky_header":"","show_sticky_header_tablet":"","show_sticky_header_mobile":"","ajax_loader_url":"//www.beerdudes.club/wp-content/themes/porto/images/ajax-loader@2x.gif","category_ajax":"1","compare_popup":"","compare_popup_title":"","prdctfltr_ajax":"","slider_loop":"1","slider_autoplay":"1","slider_autoheight":"1","slider_speed":"5000","slider_nav":"","slider_nav_hover":"1","slider_margin":"","slider_dots":"1","slider_animatein":"","slider_animateout":"","product_thumbs_count":"4","product_zoom":"","product_zoom_mobile":"1","product_image_popup":"","zoom_type":"lens","zoom_scroll":"","zoom_lens_size":"200","zoom_lens_shape":"square","zoom_contain_lens":"","zoom_lens_border":"1","zoom_border_color":"transparent","zoom_border":"4","screen_xl":"1160","screen_xxl":"1480","mfp_counter":"%curr% of %total%","mfp_img_error":"\u003Ca href=\"%url%\"\u003EThe image\u003C/a\u003E could not be loaded.","mfp_ajax_error":"\u003Ca href=\"%url%\"\u003EThe content\u003C/a\u003E could not be loaded.","popup_close":"Sluiten","popup_prev":"Vorige","popup_next":"Volgende","request_error":"The requested content cannot be loaded.\u003Cbr/\u003EPlease try again later.","loader_text":"Laden...","submenu_back":"Terug","porto_nonce":"bf5d7f8e88","use_skeleton_screen":[],"user_edit_pages":"","quick_access":"Click to edit this element.","goto_type":"Go To the Type Builder.","legacy_mode":"1","home_url":"https://www.beerdudes.club/","is_multisite":"","current_blog_id":"1","texts":{"search_history_title":"Search History","search_history_clear_all":"Wissen","widget_search_placeholder":"Search for %s...","widget_search_default":"Search...","widget_search_empty":"No results found."},"pre_order":"","add_to_label":"Toevoegen aan winkelwagen","login_popup_waiting_msg":"Please wait...","wc_placeholder_img":"https://www.beerdudes.club/wp-content/uploads/woocommerce-placeholder-300x300.png","shop_filter_layout":null,"woo_widget_toggle":"1","woo_widget_search":["all"],"func_url":"https://www.beerdudes.club/wp-content/plugins/porto-functionality/","vc_tabs_url":"https://www.beerdudes.club/wp-content/plugins/js_composer/assets/lib/vc/vc_tabs/vc-tabs.min.js","wpb_native_responsive":"1"};
 //# sourceURL=porto-theme-js-extra
 </script>
 <script id="porto-theme-js" src="https://www.beerdudes.club/wp-content/themes/porto/js/theme.min.js?ver=7.10.2"></script>

@@ -851,7 +851,7 @@ $(document).ready(() => {
 					</p>
 					<select id="style_picker">
 						<option value="all">All</option>
-						<option value="Barleywine - American">Barleywine - American (5)</option><option value="Barleywine - English">Barleywine - English (4)</option><option value="Barleywine - Other">Barleywine - Other (15)</option><option value="Belgian Blonde">Belgian Blonde (20)</option><option value="Belgian Dubbel">Belgian Dubbel (8)</option><option value="Belgian Quadrupel">Belgian Quadrupel (30)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (9)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (14)</option><option value="Belgian Tripel">Belgian Tripel (40)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (1)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (2)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (15)</option><option value="Bock - Doppelbock">Bock - Doppelbock (13)</option><option value="Bock - Eisbock">Bock - Eisbock (1)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (14)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Bock - Weizendoppelbock">Bock - Weizendoppelbock (2)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (1)</option><option value="Cider - Basque">Cider - Basque (2)</option><option value="Cider - Dry">Cider - Dry (10)</option><option value="Cider - Other">Cider - Other (2)</option><option value="Cider - Other Fruit">Cider - Other Fruit (6)</option><option value="Cider - Rosé">Cider - Rosé (1)</option><option value="Cider - Sweet">Cider - Sweet (3)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (13)</option><option value="Cream Ale">Cream Ale (1)</option><option value="Dark Ale">Dark Ale (1)</option><option value="Farmhouse Ale - Bière de Coupage">Farmhouse Ale - Bière de Coupage (1)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (9)</option><option value="Festbier">Festbier (5)</option><option value="Freeze-Distilled Beer">Freeze-Distilled Beer (4)</option><option value="Fruit Beer">Fruit Beer (6)</option><option value="Grape Ale - Other">Grape Ale - Other (5)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (1)</option><option value="IPA - American">IPA - American (12)</option><option value="IPA - Belgian">IPA - Belgian (1)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (2)</option><option value="IPA - Brut">IPA - Brut (1)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (12)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (29)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (51)</option><option value="IPA - Other">IPA - Other (8)</option><option value="IPA - Quadruple">IPA - Quadruple (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple">IPA - Triple (3)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (7)</option><option value="IPA - White / Wheat">IPA - White / Wheat (2)</option><option value="Kellerbier / Zwickelbier">Kellerbier / Zwickelbier (1)</option><option value="Kellerbier / Zwickelbier - Dunkel">Kellerbier / Zwickelbier - Dunkel (1)</option><option value="Lager - Dark">Lager - Dark (2)</option><option value="Lager - Fruited  ">Lager - Fruited   (1)</option><option value="Lager - Helles">Lager - Helles (2)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Lager - Vienna">Lager - Vienna (1)</option><option value="Lambic - Framboise">Lambic - Framboise (2)</option><option value="Lambic - Fruit">Lambic - Fruit (3)</option><option value="Lambic - Gueuze">Lambic - Gueuze (7)</option><option value="Lambic - Kriek">Lambic - Kriek (5)</option><option value="Mead - Braggot">Mead - Braggot (2)</option><option value="Mead - Cyser">Mead - Cyser (2)</option><option value="Mead - Melomel">Mead - Melomel (3)</option><option value="Mead - Traditional">Mead - Traditional (1)</option><option value="Pale Ale - American">Pale Ale - American (1)</option><option value="Pale Ale - Australian">Pale Ale - Australian (1)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (1)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (4)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (1)</option><option value="Pilsner - German">Pilsner - German (1)</option><option value="Pilsner - Imperial / Double">Pilsner - Imperial / Double (1)</option><option value="Porter - English">Porter - English (3)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (1)</option><option value="Porter - India Export">Porter - India Export (1)</option><option value="Porter - Smoked">Porter - Smoked (1)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="Rauchbier">Rauchbier (1)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Schwarzbier">Schwarzbier (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (2)</option><option value="Sour - Fruited">Sour - Fruited (25)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (3)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (2)</option><option value="Sour - Other">Sour - Other (5)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (59)</option><option value="Sour - Tomato / Vegetable Gose">Sour - Tomato / Vegetable Gose (1)</option><option value="Stout - American">Stout - American (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (1)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (53)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (5)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (39)</option><option value="Stout - Irish Dry">Stout - Irish Dry (1)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (12)</option><option value="Stout - White / Golden">Stout - White / Golden (2)</option><option value="Strong Ale - American">Strong Ale - American (1)</option><option value="Strong Ale - English">Strong Ale - English (1)</option><option value="Strong Ale - Other">Strong Ale - Other (2)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (1)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (1)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (11)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (3)</option><option value="Wheat Beer - Other">Wheat Beer - Other (1)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (14)</option><option value="Wild Ale - Other">Wild Ale - Other (8)</option><option value="Winter Ale">Winter Ale (9)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
+						<option value="Barleywine - American">Barleywine - American (5)</option><option value="Barleywine - English">Barleywine - English (4)</option><option value="Barleywine - Other">Barleywine - Other (15)</option><option value="Belgian Blonde">Belgian Blonde (20)</option><option value="Belgian Dubbel">Belgian Dubbel (8)</option><option value="Belgian Quadrupel">Belgian Quadrupel (30)</option><option value="Belgian Strong Dark Ale">Belgian Strong Dark Ale (9)</option><option value="Belgian Strong Golden Ale">Belgian Strong Golden Ale (14)</option><option value="Belgian Tripel">Belgian Tripel (40)</option><option value="Bière de Champagne / Bière Brut">Bière de Champagne / Bière Brut (1)</option><option value="Blonde / Golden Ale - American">Blonde / Golden Ale - American (1)</option><option value="Blonde / Golden Ale - English">Blonde / Golden Ale - English (2)</option><option value="Blonde / Golden Ale - Other">Blonde / Golden Ale - Other (15)</option><option value="Bock - Doppelbock">Bock - Doppelbock (13)</option><option value="Bock - Eisbock">Bock - Eisbock (1)</option><option value="Bock - Single / Traditional">Bock - Single / Traditional (14)</option><option value="Bock - Weizenbock">Bock - Weizenbock (2)</option><option value="Bock - Weizendoppelbock">Bock - Weizendoppelbock (2)</option><option value="Brown Ale - Imperial / Double">Brown Ale - Imperial / Double (1)</option><option value="Chilli / Chile Beer">Chilli / Chile Beer (1)</option><option value="Cider - Applewine">Cider - Applewine (1)</option><option value="Cider - Basque">Cider - Basque (2)</option><option value="Cider - Dry">Cider - Dry (10)</option><option value="Cider - Other">Cider - Other (2)</option><option value="Cider - Other Fruit">Cider - Other Fruit (6)</option><option value="Cider - Rosé">Cider - Rosé (1)</option><option value="Cider - Sweet">Cider - Sweet (3)</option><option value="Cider - Traditional / Apfelwein">Cider - Traditional / Apfelwein (13)</option><option value="Cream Ale">Cream Ale (1)</option><option value="Dark Ale">Dark Ale (1)</option><option value="Farmhouse Ale - Bière de Coupage">Farmhouse Ale - Bière de Coupage (1)</option><option value="Farmhouse Ale - Grisette">Farmhouse Ale - Grisette (1)</option><option value="Farmhouse Ale - Saison">Farmhouse Ale - Saison (9)</option><option value="Festbier">Festbier (5)</option><option value="Freeze-Distilled Beer">Freeze-Distilled Beer (4)</option><option value="Fruit Beer">Fruit Beer (6)</option><option value="Grape Ale - Other">Grape Ale - Other (5)</option><option value="Historical Beer - Gruit / Ancient Herbed Ale">Historical Beer - Gruit / Ancient Herbed Ale (1)</option><option value="IPA - American">IPA - American (12)</option><option value="IPA - Belgian">IPA - Belgian (1)</option><option value="IPA - Black / Cascadian Dark Ale">IPA - Black / Cascadian Dark Ale (2)</option><option value="IPA - Brut">IPA - Brut (1)</option><option value="IPA - Cold">IPA - Cold (2)</option><option value="IPA - Imperial / Double">IPA - Imperial / Double (12)</option><option value="IPA - Imperial / Double Black">IPA - Imperial / Double Black (1)</option><option value="IPA - Imperial / Double Milkshake">IPA - Imperial / Double Milkshake (1)</option><option value="IPA - Imperial / Double New England / Hazy">IPA - Imperial / Double New England / Hazy (29)</option><option value="IPA - New England / Hazy">IPA - New England / Hazy (51)</option><option value="IPA - Other">IPA - Other (8)</option><option value="IPA - Quadruple">IPA - Quadruple (1)</option><option value="IPA - Session">IPA - Session (2)</option><option value="IPA - Sour">IPA - Sour (1)</option><option value="IPA - Triple">IPA - Triple (3)</option><option value="IPA - Triple New England / Hazy">IPA - Triple New England / Hazy (7)</option><option value="IPA - White / Wheat">IPA - White / Wheat (2)</option><option value="Kellerbier / Zwickelbier">Kellerbier / Zwickelbier (1)</option><option value="Kellerbier / Zwickelbier - Dunkel">Kellerbier / Zwickelbier - Dunkel (1)</option><option value="Lager - Dark">Lager - Dark (2)</option><option value="Lager - Fruited  ">Lager - Fruited   (1)</option><option value="Lager - Helles">Lager - Helles (2)</option><option value="Lager - Japanese Rice">Lager - Japanese Rice (1)</option><option value="Lager - Other">Lager - Other (1)</option><option value="Lager - Vienna">Lager - Vienna (1)</option><option value="Lambic - Framboise">Lambic - Framboise (2)</option><option value="Lambic - Fruit">Lambic - Fruit (3)</option><option value="Lambic - Gueuze">Lambic - Gueuze (7)</option><option value="Lambic - Kriek">Lambic - Kriek (5)</option><option value="Mead - Braggot">Mead - Braggot (2)</option><option value="Mead - Cyser">Mead - Cyser (2)</option><option value="Mead - Melomel">Mead - Melomel (3)</option><option value="Mead - Traditional">Mead - Traditional (1)</option><option value="Pale Ale - American">Pale Ale - American (1)</option><option value="Pale Ale - Australian">Pale Ale - Australian (1)</option><option value="Pale Ale - Belgian">Pale Ale - Belgian (1)</option><option value="Pale Ale - New England / Hazy">Pale Ale - New England / Hazy (4)</option><option value="Pale Ale - New Zealand">Pale Ale - New Zealand (1)</option><option value="Pale Ale - Other">Pale Ale - Other (3)</option><option value="Pale Ale - XPA (Extra Pale)">Pale Ale - XPA (Extra Pale) (1)</option><option value="Pilsner - German">Pilsner - German (1)</option><option value="Pilsner - Imperial / Double">Pilsner - Imperial / Double (1)</option><option value="Porter - English">Porter - English (3)</option><option value="Porter - Imperial / Double">Porter - Imperial / Double (3)</option><option value="Porter - Imperial / Double Baltic">Porter - Imperial / Double Baltic (1)</option><option value="Porter - India Export">Porter - India Export (1)</option><option value="Porter - Smoked">Porter - Smoked (1)</option><option value="Pumpkin / Yam Beer">Pumpkin / Yam Beer (1)</option><option value="Rauchbier">Rauchbier (1)</option><option value="Red Ale - American Amber / Red">Red Ale - American Amber / Red (1)</option><option value="Red Ale - Irish">Red Ale - Irish (1)</option><option value="Rye Wine">Rye Wine (1)</option><option value="Schwarzbier">Schwarzbier (2)</option><option value="Scotch Ale / Wee Heavy">Scotch Ale / Wee Heavy (3)</option><option value="Sour - Flanders Red Ale">Sour - Flanders Red Ale (2)</option><option value="Sour - Fruited">Sour - Fruited (25)</option><option value="Sour - Fruited Berliner Weisse">Sour - Fruited Berliner Weisse (3)</option><option value="Sour - Fruited Gose">Sour - Fruited Gose (2)</option><option value="Sour - Other">Sour - Other (5)</option><option value="Sour - Smoothie / Pastry">Sour - Smoothie / Pastry (59)</option><option value="Sour - Tomato / Vegetable Gose">Sour - Tomato / Vegetable Gose (1)</option><option value="Stout - American">Stout - American (1)</option><option value="Stout - Foreign / Export">Stout - Foreign / Export (1)</option><option value="Stout - Imperial / Double">Stout - Imperial / Double (52)</option><option value="Stout - Imperial / Double Coffee">Stout - Imperial / Double Coffee (5)</option><option value="Stout - Imperial / Double Milk">Stout - Imperial / Double Milk (1)</option><option value="Stout - Imperial / Double Pastry">Stout - Imperial / Double Pastry (40)</option><option value="Stout - Irish Dry">Stout - Irish Dry (1)</option><option value="Stout - Oatmeal">Stout - Oatmeal (1)</option><option value="Stout - Pastry">Stout - Pastry (1)</option><option value="Stout - Russian Imperial">Stout - Russian Imperial (12)</option><option value="Stout - White / Golden">Stout - White / Golden (2)</option><option value="Strong Ale - American">Strong Ale - American (1)</option><option value="Strong Ale - English">Strong Ale - English (1)</option><option value="Strong Ale - Other">Strong Ale - Other (2)</option><option value="Wheat Beer - Dunkelweizen">Wheat Beer - Dunkelweizen (1)</option><option value="Wheat Beer - Fruited">Wheat Beer - Fruited (1)</option><option value="Wheat Beer - Hefeweizen">Wheat Beer - Hefeweizen (11)</option><option value="Wheat Beer - Hopfenweisse">Wheat Beer - Hopfenweisse (3)</option><option value="Wheat Beer - Other">Wheat Beer - Other (1)</option><option value="Wheat Beer - Wheat Wine">Wheat Beer - Wheat Wine (1)</option><option value="Wheat Beer - Witbier / Blanche">Wheat Beer - Witbier / Blanche (14)</option><option value="Wild Ale - Other">Wild Ale - Other (8)</option><option value="Winter Ale">Winter Ale (9)</option><option value="Winter Warmer">Winter Warmer (1)</option>					</select>
 				</div>
 			</div>
 						<div class="filter-holder">
@@ -1099,13 +1099,13 @@ $(document).ready(() => {
                                     Vocation Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.57253">
+                            <div class="caps small" data-rating="3.56223">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-60"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.57)</span>
+	</div>                                                            <span class="num">(3.56)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1135,13 +1135,13 @@ $(document).ready(() => {
                                     Vocation Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43421">
+                            <div class="caps small" data-rating="3.45179">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
+		<div class="cap cap-50"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.43)</span>
+	</div>                                                            <span class="num">(3.45)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1171,7 +1171,7 @@ $(document).ready(() => {
                                     Vocation Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.75266">
+                            <div class="caps small" data-rating="3.75263">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1207,7 +1207,7 @@ $(document).ready(() => {
                                     Vocation Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.78951">
+                            <div class="caps small" data-rating="3.79247">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1279,7 +1279,7 @@ $(document).ready(() => {
                                     Amundsen Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.2882">
+                            <div class="caps small" data-rating="3.289">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1351,7 +1351,7 @@ $(document).ready(() => {
                                     Amundsen Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79265">
+                            <div class="caps small" data-rating="3.79244">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1387,13 +1387,13 @@ $(document).ready(() => {
                                     Amundsen Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.35102">
+                            <div class="caps small" data-rating="4.34">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
-		<div class="cap cap-40"></div>
-	</div>                                                            <span class="num">(4.35)</span>
+		<div class="cap cap-30"></div>
+	</div>                                                            <span class="num">(4.34)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1423,13 +1423,13 @@ $(document).ready(() => {
                                     Game Over Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.6875">
+                            <div class="caps small" data-rating="3.70588">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-70"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.69)</span>
+	</div>                                                            <span class="num">(3.71)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1567,13 +1567,13 @@ $(document).ready(() => {
                                     Basqueland Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79286">
+                            <div class="caps small" data-rating="3.79551">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-80"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.79)</span>
+	</div>                                                            <span class="num">(3.8)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1603,7 +1603,7 @@ $(document).ready(() => {
                                     Basqueland Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.1257">
+                            <div class="caps small" data-rating="4.12722">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1639,13 +1639,13 @@ $(document).ready(() => {
                                     Dois Corvos</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.95932">
+                            <div class="caps small" data-rating="3.98571">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.96)</span>
+	</div>                                                            <span class="num">(3.99)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1711,7 +1711,7 @@ $(document).ready(() => {
                                     Whiplash</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.865">
+                            <div class="caps small" data-rating="3.8666">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1747,13 +1747,13 @@ $(document).ready(() => {
                                     Whiplash</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.08522">
+                            <div class="caps small" data-rating="4.0801">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.09)</span>
+	</div>                                                            <span class="num">(4.08)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Barrel-Aged: Bourbon</p>
                                                             </div>
@@ -1784,7 +1784,7 @@ $(document).ready(() => {
                                     Whiplash</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80064">
+                            <div class="caps small" data-rating="3.79654">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -1928,13 +1928,13 @@ $(document).ready(() => {
                                     Funky Fluid</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.89413">
+                            <div class="caps small" data-rating="3.90023">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.89)</span>
+	</div>                                                            <span class="num">(3.9)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -1964,7 +1964,7 @@ $(document).ready(() => {
                                     Vault City Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.88931">
+                            <div class="caps small" data-rating="3.88922">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2000,13 +2000,13 @@ $(document).ready(() => {
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.11594">
+                            <div class="caps small" data-rating="4.11497">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.12)</span>
+	</div>                                                            <span class="num">(4.11)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2186,7 +2186,7 @@ $(document).ready(() => {
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.59806">
+                            <div class="caps small" data-rating="3.59804">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2254,7 +2254,7 @@ $(document).ready(() => {
                                     White Dog Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09213">
+                            <div class="caps small" data-rating="4.09358">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2398,13 +2398,13 @@ $(document).ready(() => {
                                     Brouwerij LOST</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.07473">
+                            <div class="caps small" data-rating="4.07545">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.07)</span>
+	</div>                                                            <span class="num">(4.08)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2434,13 +2434,13 @@ $(document).ready(() => {
                                     Brouwerij LOST</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.10442">
+                            <div class="caps small" data-rating="4.10615">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.1)</span>
+	</div>                                                            <span class="num">(4.11)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2542,13 +2542,13 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.00173">
+                            <div class="caps small" data-rating="4.00531">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(4)</span>
+	</div>                                                            <span class="num">(4.01)</span>
                                                     </h6>
                                                     <p class="menu-beverage-tags">Vegan</p>
                                                             </div>
@@ -2579,7 +2579,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09106">
+                            <div class="caps small" data-rating="4.09435">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2616,7 +2616,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.08787">
+                            <div class="caps small" data-rating="4.08673">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2653,7 +2653,7 @@ $(document).ready(() => {
                                     Sudden Death Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.20102">
+                            <div class="caps small" data-rating="4.20404">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2690,13 +2690,13 @@ $(document).ready(() => {
                                     Prizm Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.91524">
+                            <div class="caps small" data-rating="3.92547">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-90"></div>
 		<div class="cap"></div>
-	</div>                                                            <span class="num">(3.92)</span>
+	</div>                                                            <span class="num">(3.93)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -2726,7 +2726,7 @@ $(document).ready(() => {
                                     Prizm Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.09137">
+                            <div class="caps small" data-rating="4.08944">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2798,7 +2798,7 @@ $(document).ready(() => {
                                     Outer Range Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.20904">
+                            <div class="caps small" data-rating="4.20802">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -2883,7 +2883,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brew York</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79312">
+                            <div class="caps small" data-rating="3.79384">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3100,7 +3100,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bierbrouwerij de Koningshoeven</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.10579">
+                            <div class="caps small" data-rating="3.10573">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3246,7 +3246,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Funky Fluid</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80883">
+                            <div class="caps small" data-rating="3.80903">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3282,7 +3282,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     BRULO®</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43252">
+                            <div class="caps small" data-rating="3.43247">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3319,7 +3319,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brouwerij 't IJ</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.58846">
+                            <div class="caps small" data-rating="3.58845">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3427,7 +3427,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie Dubuisson</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.71106">
+                            <div class="caps small" data-rating="3.71098">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3463,7 +3463,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie Cambier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49221">
+                            <div class="caps small" data-rating="3.49222">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3726,7 +3726,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     LOC Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.64754">
+                            <div class="caps small" data-rating="3.64768">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -3943,7 +3943,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     De Blauwe IJsbeer</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.68456">
+                            <div class="caps small" data-rating="3.68455">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4350,7 +4350,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gebrouwen door Vrouwen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.47619">
+                            <div class="caps small" data-rating="3.47618">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4387,7 +4387,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Jopen</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.59567">
+                            <div class="caps small" data-rating="3.59585">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4573,7 +4573,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brouwerij Corsendonk</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.67162">
+                            <div class="caps small" data-rating="3.67163">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4609,7 +4609,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brewery John Martin & Brewery Timmermans</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.41719">
+                            <div class="caps small" data-rating="3.41716">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4692,7 +4692,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     KOMPAAN Dutch Craft Beer Company</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51237">
+                            <div class="caps small" data-rating="3.51277">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4728,7 +4728,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     VAT'33</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.67873">
+                            <div class="caps small" data-rating="3.67898">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4800,7 +4800,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brewpub De Kromme Haring</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.37314">
+                            <div class="caps small" data-rating="3.37259">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4836,7 +4836,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     vandeStreek bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.39624">
+                            <div class="caps small" data-rating="3.39649">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4944,7 +4944,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bierbrouwerij De Magistraat</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.50369">
+                            <div class="caps small" data-rating="3.50491">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -4980,7 +4980,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gulpener Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.5432">
+                            <div class="caps small" data-rating="3.54321">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5016,7 +5016,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brasserie Lefebvre</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.48509">
+                            <div class="caps small" data-rating="3.48511">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5052,7 +5052,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Brouwerij De Snor</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.66099">
+                            <div class="caps small" data-rating="3.66013">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5088,7 +5088,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bierbrouwerij de Koningshoeven</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.52055">
+                            <div class="caps small" data-rating="3.52053">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5124,7 +5124,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Moersleutel Craft Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.86172">
+                            <div class="caps small" data-rating="3.86167">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5196,7 +5196,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Breugem Bier</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.4618">
+                            <div class="caps small" data-rating="3.46181">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5232,7 +5232,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gooische Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.46109">
+                            <div class="caps small" data-rating="3.46175">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5268,7 +5268,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.49889">
+                            <div class="caps small" data-rating="3.49897">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5304,7 +5304,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Schneider Weisse G. Schneider & Sohn</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.80367">
+                            <div class="caps small" data-rating="3.80366">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5376,7 +5376,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.48079">
+                            <div class="caps small" data-rating="3.48076">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5448,7 +5448,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Scheldebrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43336">
+                            <div class="caps small" data-rating="3.43342">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5484,7 +5484,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Ayinger Privatbrauerei</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.76141">
+                            <div class="caps small" data-rating="3.7614">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5520,7 +5520,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Van Moll</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51766">
+                            <div class="caps small" data-rating="3.5175">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5556,7 +5556,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Bird Brewery</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.43322">
+                            <div class="caps small" data-rating="3.43328">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5592,7 +5592,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Muifelbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.70058">
+                            <div class="caps small" data-rating="3.70071">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5628,7 +5628,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Gooische Bierbrouwerij</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.51614">
+                            <div class="caps small" data-rating="3.51611">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5857,7 +5857,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Frontaal Brewing Co.</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.72628">
+                            <div class="caps small" data-rating="3.72625">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5893,7 +5893,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Basqueland Brewing</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.69691">
+                            <div class="caps small" data-rating="3.69713">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -5940,13 +5940,13 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     SOMA Beer</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.13715">
+                            <div class="caps small" data-rating="4.13438">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.14)</span>
+	</div>                                                            <span class="num">(4.13)</span>
                                                     </h6>
                                                             </div>
             </div>
@@ -5976,7 +5976,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Beerbliotek</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="3.79369">
+                            <div class="caps small" data-rating="3.79351">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
@@ -6049,7 +6049,7 @@ Clearance sale. Last cans or bottles. Approaching best before date or just over.
                                     Left Handed Giant</a>
                                                                     •
                             </span>
-                            <div class="caps small" data-rating="4.02729">
+                            <div class="caps small" data-rating="4.02724">
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
 		<div class="cap cap-100"></div>
