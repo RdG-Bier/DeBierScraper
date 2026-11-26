@@ -552,7 +552,42 @@ $(document).ready(() => {
 					</li>
 				</ul>
 			</div>
-					
+								<div class="loyal">
+						<h3>Loyal Patrons (<a href="javascript:void(0)" class="tip" title="This data is refreshed every 48 hours.">?</a>)</h3>
+						<ul>
+							<li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Danielvv" title="Daniël Verstoep (432 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/0ebc907fde9022a91f7c94a3cef837c4_100x100.jpg" alt="Daniël Verstoep avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/borri86" title="borrie verschoor (48 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/a206a48f4a52678e134c93c43f880076_thumb.jpg" alt="borrie verschoor avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/DnDanny" title="Danny Wemmers (29 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/61f3619f996708149bc4b271bf5e9202_100x100.jpg" alt="Danny Wemmers avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/jsprblk" title="Jesper Balk (29 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/ba83bbb82969549a6c34d35c6970a64d_100x100.jpg" alt="Jesper Balk avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/MitchellMix" title="Mitchell Van Der Wende (28 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/d75dc34a5e880052f98300c3a81aded5_100x100.jpg" alt="Mitchell Van Der Wende avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/bakvaks" title="Peter Bakker (26 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/fca5f31b72c8eb4da499e012f685ceaa_100x100.jpg" alt="Peter Bakker avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Nocturnal_Fox" title="Christian de Vos (25 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/e4779c67a444f898a2268a5cd5968344_100x100.jpg" alt="Christian de Vos avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/DennisHeineken" title="Dennis Siebes (23 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/43f53528bf571b92c6c8ea53c2058d34_100x100.jpg" alt="Dennis Siebes avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Bierbakkus" title="Bier Bak (22 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/fe50f57b311a74c8d0977a5258288877_100x100.jpeg" alt="Bier Bak avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/KevinNoels" title="Kevin Noels (20 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/72d726c87b9e99ac3109b8426f4aee4e_100x100.jpg" alt="Kevin Noels avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Tommogator" title="Tom De graaf (17 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/71693d4a2bd2033f35998c166cc34e75_100x100.jpg" alt="Tom De graaf avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/ijsman24" title="Gerben vd Staal (17 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/9b6491bf42e3da4dfe6787609bbd8917_100x100.jpg" alt="Gerben vd Staal avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Nick_Elswood" title="Nick Elswood (16 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/dbc9bc9d2034dffc538ec4ebe8c061c8_100x100.jpg" alt="Nick Elswood avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/Andre_van_der_Giessen" title="André van der Giessen (16 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/1e5fb93543d7f8a2eb4bddba6de7e515_100x100.jpg" alt="André van der Giessen avatar">
+								</a></li><li><a class="tip track-click" data-track="venue" data-href=":loyal/drinkers" href="/user/GraafNick" title="Nick Graaf, van de (15 check-ins)">
+									<img loading="lazy" style="height: 45px;" src="https://assets.untappd.com/profile/61513c9b8c06b1a374ab24a21582bae4_100x100.jpg" alt="Nick Graaf, van de avatar">
+								</a></li>						</ul>
+					</div>
+							
 	</div>
 </div>
 
@@ -6615,87 +6650,4 @@ $(document).ready(() => {
                         <h6>
                             <span>10% ABV • 25 IBU
                                                                                                         • <a class="track-click" data-track="menu" data-href=":brewery" href="/BrouwerijtMeuleneind">
-                                    Brouwerij 't Meuleneind</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.11204">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-10"></div>
-	</div>                                                            <span class="num">(4.11)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6479597" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/lervig-all-i-want-for-christmas-2025-by-rackhouse/6479597">
-                                                                All I Want For Christmas 2025 By Rackhouse                            </a>
-                            <em>Stout - Imperial / Double Pastry</em>
-                        </h5>
-                        <h6>
-                            <span>14.8% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/LervigAS">
-                                    LERVIG</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.26072">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-30"></div>
-	</div>                                                            <span class="num">(4.26)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/5729303" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/omnipollo-barrel-aged-lunar-lycan-2024/5729303">
-                                                                Barrel Aged Lunar Lycan (2024)                            </a>
-                            <em>Stout - Imperial / Double Milk</em>
-                        </h5>
-                        <h6>
-                            <span>14.3% ABV • 65 IBU
-                                                                                                        • <a class="track-click" data-track="menu" data-href=":brewery" href="/Omnipollo">
-                                    Omnipollo</a>
-                                                                    •
-                            </span>
-                            <div class="caps small" data-rating="4.31586">
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-100"></div>
-		<div class="cap cap-30"></div>
-	</div>                                                            <span class="num">(4.32)</span>
-                                                    </h6>
-                                                            </div>
-            </div>
-                    </li>
-                <li class="menu-item" id="beer">
-            <div class="beer-info " style="min-height: 50px;">
-                <div class="beer-label">
-                                                                <img src="https://labels.untappd.com/6490765" />
-                                    </div>
-                <div class="beer-details">
-                                            <h5>
-                            <a class="track-click" data-track="menu" data-href=":" href="/b/omnipollo-all-the-coconut/6490765">
-                                                                All the Coconut                            </a>
-                            <em>Stout - Imperial / Double Pastry</em>
-                        </h5>
-                        <h6>
-                            <span>13.5% ABV • N/A IBU
-                                                                                                        • <a class="track-click" data-trac
+      
