@@ -21,6 +21,7 @@ button:disabled { opacity:.5; }
 table { border-collapse:collapse; width:100%; font-size:.82rem; min-width:720px; }
 th, td { padding:8px 6px; text-align:left; border-bottom:1px solid #eee; vertical-align:middle; }
 th { background:var(--licht); cursor:pointer; white-space:nowrap; user-select:none; position:sticky; top:0; }
+tr.kolomkop th { position:static; font-size:.76rem; padding:6px; border-bottom:1px solid #dfe9e5; }
 th .pijl { color:var(--groen); font-size:.7rem; }
 td.num, th.num { text-align:right; white-space:nowrap; }
 td.mid, th.mid { text-align:center; }
@@ -291,13 +292,27 @@ function sorteerOp(kol){
 }
 function standaardSortering(){ sortKol = null; sortRicht = 1; teken(); }
 
+/* Kolomkoppen boven elke shop (bij de standaardindeling per shop). De koppen
+   zijn klikbaar om te sorteren, net als de bovenste kop. */
+var KOLOMMEN = [["", "", "&#128230;"], ["shop", "", "Shop"], ["brouwerij", "", "Brouwerij"],
+                ["naam", "", "Naam bier"], ["prijs", "num", "Prijs"], ["verwacht", "", "Verwacht"],
+                ["binnen", "mid", "Binnen?"], ["betaald", "mid", "Betaald?"], ["lijst", "", "Lijst"], ["", "", ""]];
+function kolomkopRij(){
+  return '<tr class="kolomkop">' + KOLOMMEN.map(function(k){
+    return '<th' + (k[1] ? ' class="' + k[1] + '"' : '')
+      + (k[0] ? ' onclick="sorteerOp(\'' + k[0] + '\')"' : '') + '>' + k[2] + '</th>';
+  }).join('') + '</tr>';
+}
 function teken(){
   var rijen = gesorteerd(), html = "", vorigeShop = null;
+  // per shop gegroepeerd: koppen per shop, de bovenste kop is dan overbodig
+  document.querySelector('#tabel thead').style.display = sortKol ? '' : 'none';
   rijen.forEach(function(it){
     if(!sortKol && it.shop !== vorigeShop){
       html += '<tr class="shopkop"><td colspan="10">' + esc(shopLabel(it.shop))
         + ' <button class="selbinnen" onclick="selecteerBinnen(' + JSON.stringify(it.shop).replace(/"/g, '&quot;')
         + ')">alles wat binnen is aanvinken</button></td></tr>';
+      html += kolomkopRij();
       vorigeShop = it.shop;
     }
     var st = STATUS[it.id] || {};
@@ -434,9 +449,19 @@ function shopKeuze(){
   document.getElementById('f-shop-anders').style.display =
     document.getElementById('f-shop').value === "__anders" ? 'block' : 'none';
 }
+/* Bij een hele bestelling bij één winkel: een nieuw bier krijgt standaard de
+   shop en lijst van het laatst toegevoegde bier (onthouden in deze browser). */
+function laatsteKeuze(){
+  var l = {};
+  try { l = JSON.parse(localStorage.getItem("onderweg_laatst") || "{}") || {}; } catch(e){ l = {}; }
+  return { shop: l.shop || (SHOPS.length ? SHOPS[0].key : ""), lijst: l.lijst != null ? l.lijst : "R" };
+}
+function onthoudKeuze(it){
+  try { localStorage.setItem("onderweg_laatst", JSON.stringify({ shop: it.shop, lijst: it.lijst || "" })); } catch(e){}
+}
 function openFormulier(id){
   bewerkId = id;
-  var it = id == null ? { shop: SHOPS.length ? SHOPS[0].key : "", lijst: "R" } : vind(id);
+  var it = id == null ? laatsteKeuze() : vind(id);
   var sel = document.getElementById('f-shop');
   var bekend = SHOPS.some(function(s){ return s.key === it.shop; });
   sel.innerHTML = SHOPS.map(function(s){ return '<option value="' + esc(s.key) + '">' + esc(s.label) + '</option>'; }).join('')
@@ -474,7 +499,7 @@ function formulierKlaar(){
   it.lijst = document.getElementById('f-lijst').value;
   it.binnen = document.getElementById('f-binnen').checked;
   it.betaald = document.getElementById('f-betaald').checked;
-  if(bewerkId == null) ITEMS.push(it);
+  if(bewerkId == null){ ITEMS.push(it); onthoudKeuze(it); }
   sluitFormulier(); zetVuil(true); teken();
 }
 function verwijder(){
