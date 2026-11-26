@@ -35,10 +35,14 @@ jobs:
 
       - run: python main.py
 
-      - name: Resultaat committen (docs/)
+      - name: Resultaat committen (docs/ en opgeruimde lijsten)
         run: |
           git config user.name "bierscraper-bot"
           git config user.email "actions@github.com"
-          git add docs/
+          git add docs/ mijn_untappd/
           git diff --cached --quiet || git commit -m "Bieroverzicht bijgewerkt $(date +'%d-%m-%Y %H:%M')"
+          # Heb je tijdens de run iets op de pagina opgeslagen, dan eerst die
+          # wijziging ophalen. Bij een botsing wint jouw wijziging; het opruimen
+          # gebeurt dan gewoon bij de volgende run opnieuw.
+          git pull --rebase -X ours
           git push
