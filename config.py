@@ -4,7 +4,7 @@ Centrale configuratie voor de bierscraper.
 Alles wat je wilt finetunen (stijlen, gewichten, sites) staat hier.
 """
 
-VERSION = "v67"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
+VERSION = "v68"  # wordt getoond op de webpagina; wijzigt mee met elke nieuwe zip
 
 # ---------------------------------------------------------------------------
 # Websites
@@ -358,3 +358,10 @@ VANGNET_MIN_AANTAL = 20      # alleen bewaken als de shop er eerder minstens zov
 # blijft staan). Zet op False om de test alleen te laten waarschuwen.
 # ---------------------------------------------------------------------------
 ZELFTEST_BLOKKEERT = True
+
+# ---------------------------------------------------------------------------
+# Check-in gaat voor voorraad: bieren die in gehad.txt staan, worden bij elke
+# run automatisch uit voorraad_r.txt en voorraad_hr.txt gehaald (ook als je
+# nog meer flessen hebt). Weggehaalde regels: mijn_untappd/voorraad_opgeruimd.txt
+# ---------------------------------------------------------------------------
+VOORRAAD_AUTO_OPRUIMEN = True

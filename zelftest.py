@@ -208,6 +208,30 @@ def _test_naamgeving(fouten):
     _controleer(fouten, "Naamgeving: los brouwerswoord ('Nelson') maakt een ander bier", sl(a[3]) != sl(b[3]))
 
 
+def _test_opruimen(fouten, tmp):
+    """Check-in gaat voor voorraad: ingecheckte bieren verdwijnen uit de voorraadlijst."""
+    import untappd_profiel as up
+    pad = tmp / "voorraad_test.txt"
+    pad.write_text("# kop blijft staan\nKees - Motorolie\nFunky Fluid - Velvet\n"
+                   "Messorem - Temporalis #0061\n", encoding="utf-8")
+    gehad = {}
+    for r in ("Kees - Motorolie", "Messorem - Temporalis #0060"):
+        br, _, nm = r.partition(" - ")
+        up._voeg_toe(gehad, br, nm)
+    echt = up.BESTAND_OPGERUIMD
+    up.BESTAND_OPGERUIMD = tmp / "opgeruimd_test.txt"
+    try:
+        voorraad = up._lees_bestand(pad)
+        weg = up.ruim_voorraad_op(pad, voorraad, gehad)
+    finally:
+        up.BESTAND_OPGERUIMD = echt
+    over = pad.read_text(encoding="utf-8")
+    _controleer(fouten, "Opruimen: ingecheckt bier uit de voorraad", weg == ["Kees - Motorolie"], weg)
+    _controleer(fouten, "Opruimen: rest en kopregel blijven staan",
+                "Funky Fluid - Velvet" in over and "#0061" in over and over.startswith("# kop"))
+    _controleer(fouten, "Opruimen: ander volgnummer blijft in voorraad", "Temporalis #0061" in over)
+
+
 def _test_scoring(fouten, tmp):
     import scoring
     echt_db = scoring.DB_FILE
@@ -306,7 +330,7 @@ def draai():
                 test(fouten)
             except Exception as e:                       # een crash is ook een mislukte test
                 fouten.append("%s crashte: %r" % (test.__name__, e))
-        for test in (_test_scoring, _test_paginas):
+        for test in (_test_scoring, _test_paginas, _test_opruimen):
             try:
                 test(fouten, tmp)
             except Exception as e:

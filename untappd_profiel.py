@@ -62,6 +62,15 @@ def synchroniseer(all_beers):
     voorraad_r = _lees_bestand(BESTAND_VOORRAAD_R)
     voorraad_hr = _lees_bestand(BESTAND_VOORRAAD_HR)
 
+    # Check-in gaat voor voorraad: wat je hebt ingecheckt, verdwijnt uit de
+    # voorraadlijsten (ook als je nog een tweede fles hebt; het aantal telt niet).
+    if getattr(config, "VOORRAAD_AUTO_OPRUIMEN", True):
+        for pad, lijst in ((BESTAND_VOORRAAD_R, voorraad_r), (BESTAND_VOORRAAD_HR, voorraad_hr)):
+            weg = ruim_voorraad_op(pad, lijst, gehad)
+            if weg:
+                log.info("%s: %d bier(en) verwijderd omdat ze al in je check-ins staan: %s",
+                         pad.name, len(weg), "; ".join(weg))
+
     log.info("Untappd-lijsten: %d gehad, %d voorraad R, %d voorraad H&R",
              len(gehad), len(voorraad_r), len(voorraad_hr))
 
@@ -79,6 +88,74 @@ def synchroniseer(all_beers):
         "aantal_voorraad_r": len(voorraad_r),
         "aantal_voorraad_hr": len(voorraad_hr),
     })
+
+
+BESTAND_OPGERUIMD = Path(__file__).parent / "mijn_untappd" / "voorraad_opgeruimd.txt"
+
+
+def in_lijst(regel, lijst, indexen=None):
+    """Staat lijstregel 'Brouwerij - Biernaam' in 'lijst'? Zelfde regels als
+    de groene/gele markering op de kaarten."""
+    if indexen is None:
+        indexen = (_naam_index(lijst), _woord_index(lijst), _percentage_index(lijst))
+    naam_i, woord_i, pct_i = indexen
+    brouwerij, _, naam = regel.partition(" - ")
+    if not naam:
+        brouwerij, naam = "", regel
+    b = {"brouwerij": brouwerij, "naam": naam}
+    sleutel = utils.beer_match_key(brouwerij, naam)
+    return bool(sleutel) and (
+        sleutel in lijst
+        or _naam_match(b, utils.beer_match_key(None, naam), naam_i)
+        or _woord_match(sleutel, woord_i)
+        or _percentage_match(b, lijst, pct_i, woord_i, _woord_index(pct_i)))
+
+
+def ruim_voorraad_op(pad, voorraad, gehad):
+    """Haalt uit een voorraadbestand de bieren die al in je check-ins staan.
+    Past het bestand op schijf aan (de workflow zet het terug op GitHub) en
+    werkt 'voorraad' in het geheugen bij. Wat er weggehaald wordt, komt met
+    datum in voorraad_opgeruimd.txt, zodat een vergissing terug te zetten is."""
+    if not voorraad or not gehad or not pad.exists():
+        return []
+    indexen = (_naam_index(gehad), _woord_index(gehad), _percentage_index(gehad))
+    weg_sleutels = {k for k, regel in voorraad.items() if in_lijst(regel, gehad, indexen)}
+    if not weg_sleutels:
+        return []
+    weg_regels = {voorraad[k] for k in weg_sleutels}
+    regels = pad.read_text(encoding="utf-8").splitlines()
+    behouden, weg = [], []
+    for r in regels:
+        s = r.strip()
+        if s and not s.startswith("#") and _schoon_regel(s) in weg_regels:
+            weg.append(s)
+        else:
+            behouden.append(r)
+    if not weg:
+        return []
+    pad.write_text("\n".join(behouden).rstrip("\n") + "\n", encoding="utf-8")
+    for k in weg_sleutels:
+        voorraad.pop(k, None)
+    try:
+        nieuw = not BESTAND_OPGERUIMD.exists()
+        with BESTAND_OPGERUIMD.open("a", encoding="utf-8") as f:
+            if nieuw:
+                f.write("# Automatisch uit je voorraad gehaald omdat ze al in je check-ins staan.\n"
+                        "# Was het een vergissing? Zet de regel terug in de voorraadlijst en\n"
+                        "# haal hem uit gehad.txt.\n")
+            for s in weg:
+                f.write("%s | %s | %s\n" % (time.strftime("%Y-%m-%d %H:%M"), pad.stem, s))
+    except OSError:
+        pass
+    return weg
+
+
+def _schoon_regel(regel):
+    """Zelfde schrijfwijze als _voeg_toe() oplevert, om regels te herkennen."""
+    brouwerij, _, naam = regel.partition(" - ")
+    if not naam:
+        brouwerij, naam = "", regel
+    return f"{brouwerij.strip()} - {naam.strip()}".strip(" -")
 
 
 # ---------------------------------------------------------------------------
