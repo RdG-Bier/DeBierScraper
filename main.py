@@ -132,6 +132,10 @@ def main():
     log.info("Brouwerij afgeleid uit de productnaam bij %d bieren", n_br)
     # per shop bijhouden wat er wanneer gezien is (labels 'nieuw'/'prijs gedaald', Onderweg)
     scoring.werk_historie_bij(all_beers)
+    # hetzelfde bier bij alle shops dezelfde naam geven (na de historie, zodat
+    # hernoemde bieren niet ten onrechte als 'nieuw' worden gezien)
+    n_groep, n_kaart = scoring.unificeer_namen(all_beers, sites)
+    log.info("Eén naam per bier: %d bieren samengevoegd, %d kaarten hernoemd", n_groep, n_kaart)
     filled = scoring.enrich_untappd(all_beers)
     log.info("Untappd-scores geleend van andere shops: %d bieren aangevuld", filled)
 

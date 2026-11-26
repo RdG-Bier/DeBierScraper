@@ -67,6 +67,11 @@ CATEGORIEEN = {
 }
 
 ALGEMEEN = [
+    "Hetzelfde bier krijgt bij alle shops dezelfde naam, ook als de shops het verschillend "
+    "schrijven (bijvoorbeeld 'White Dog Will It Float #27' en 'WILL IT FLOAT #27'). Alleen "
+    "verschillen in schrijfwijze, een aangeplakt stijlwoord of een collab-partner tellen "
+    "daarbij; een extra smaak of vat maakt er een ander bier van. Zoeken op de naam zoals "
+    "de shop hem schrijft blijft werken.",
     "Staat hetzelfde bier bij meerdere shops, dan krijgt het overal dezelfde "
     "Untappd-score: die van de bron met de meeste beoordelingen.",
     "Ontbreekt een score, foto of inhoud, dan wordt die aangevuld uit de eigen "

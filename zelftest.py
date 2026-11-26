@@ -181,6 +181,33 @@ def _test_matching(fouten):
     _controleer(fouten, "Matching: ander jaar telt niet", not ander_jaar.get("gehad"))
 
 
+def _test_naamgeving(fouten):
+    """Eén naam per bier over de shops, zonder verschillende bieren samen te voegen."""
+    import scoring
+    import utils
+    def bier(br, nm):
+        return {"brouwerij": br, "naam": nm}
+    alle = {
+        "a": [bier("White Dog Brewery", "WILL IT FLOAT #27"), bier("Fine Balance Brewing", "Apex"),
+              bier("Kees", "Coconut Deth"), bier("WeldWerks Brewing Co.", "Extra Extra Juicy Bits"),
+              bier("Perennial", "Maman (2026)")],
+        "b": [bier("White Dog Brewery", "White Dog Will It Float #27"),
+              bier("Fine Balance Brewing", "Apex (Third Moon collab)"),
+              bier("Kees", "Supermassive Coconut Deth"),
+              bier("WeldWerks Brewing Co.", "Nelson Extra Extra Juicy Bits"),
+              bier("Perennial Artisan Ales", "Maman (2026)"), bier("Third Moon Brewing Company", "Iets"),
+              bier("Nelson Street Brewing", "Iets anders")]}
+    scoring.unificeer_namen(alle, [])
+    sl = lambda b: utils.beer_match_key(b["brouwerij"], b["naam"])
+    a, b = alle["a"], alle["b"]
+    _controleer(fouten, "Naamgeving: zelfde bier, andere schrijfwijze -> één naam", sl(a[0]) == sl(b[0]), (a[0], b[0]))
+    _controleer(fouten, "Naamgeving: collab-vermelding wordt weggelaten",
+                sl(a[1]) == sl(b[1]) and "collab" not in b[1]["naam"].lower(), b[1])
+    _controleer(fouten, "Naamgeving: alleen brouwerijnaam anders -> één naam", sl(a[4]) == sl(b[4]), (a[4], b[4]))
+    _controleer(fouten, "Naamgeving: 'Supermassive' maakt een ander bier", sl(a[2]) != sl(b[2]))
+    _controleer(fouten, "Naamgeving: los brouwerswoord ('Nelson') maakt een ander bier", sl(a[3]) != sl(b[3]))
+
+
 def _test_scoring(fouten, tmp):
     import scoring
     echt_db = scoring.DB_FILE
@@ -274,7 +301,7 @@ def draai():
     tmp = Path(tempfile.mkdtemp(prefix="zelftest_"))
     logging.disable(logging.WARNING)          # testmeldingen niet in het logboek
     try:
-        for test in (_test_untappd_menu, _test_webshops, _test_matching, _test_ophalen):
+        for test in (_test_untappd_menu, _test_webshops, _test_matching, _test_ophalen, _test_naamgeving):
             try:
                 test(fouten)
             except Exception as e:                       # een crash is ook een mislukte test

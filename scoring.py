@@ -4,6 +4,7 @@
 import difflib
 import json
 import math
+import re
 import time
 from pathlib import Path
 
@@ -329,6 +330,147 @@ def vul_brouwerijen_aan(all_beers):
                         break
                 break
     return aangevuld
+
+
+# ---------------------------------------------------------------------------
+# Eén naam per bier over alle shops.
+# ---------------------------------------------------------------------------
+# Woorden die een shop aan de naam plakt zonder dat het een ander bier wordt
+_STIJLWOORDEN = {"stout", "ipa", "ale", "sour", "dipa", "tipa", "qipa", "neipa", "porter",
+                 "lager", "collab", "collaboration", "edition", "beer", "brewing", "co"}
+_VAT = {"bourbon", "rum", "whisky", "whiskey", "cognac", "brandy", "port", "sherry",
+        "barrel", "ba", "tequila", "wine", "speyside", "laphroaig"}
+# Bronnen waarvan de naam exact de Untappd-naam is (menu op Untappd zelf)
+_UNTAPPD_TYPES = {"bierbrigadier"}
+
+
+def _zelfde_bier_strikt(a, b, brouwerijen, eigen=frozenset()):
+    """Zelfde bier volgens de STRENGE regel voor samenvoegen tussen shops.
+    Verschil alleen in tikfouten, een aangeplakt stijlwoord, 'BA/barrel aged'
+    als er al een vat genoemd wordt, of COMPLETE brouwerijnamen (collab-partner,
+    of de eigen brouwerij nog eens in de naam). Losse woorden die toevallig in
+    een brouwerijnaam staan ('Nelson', 'Maple', 'Little') tellen niet: die
+    maken er een ander bier van. 'brouwerijen' = set van frozensets met de
+    woorden van elke bekende brouwerijnaam; 'eigen' = de woorden uit de
+    brouwerijnamen van deze twee bieren zelf ('Perennial' vs 'Perennial
+    Artisan Ales', 'Brasserie du Bas' vs 'Brasserie du Bas-Canada')."""
+    import untappd_profiel as up
+    wa, wb = up._woorden(a), up._woorden(b)
+    klein, groot = (wa, wb) if len(wa) <= len(wb) else (wb, wa)
+    if len(klein) < 3 or up._getallen(wa) != up._getallen(wb):
+        return False
+    extra = up._woorden_in(klein, groot)
+    if extra is None:
+        return False
+    rest = extra - _STIJLWOORDEN - eigen
+    if klein & _VAT:
+        rest -= {"barrel", "aged", "ba"}
+    if not rest:
+        return True
+    gedekt = set()
+    for naam in brouwerijen:
+        if naam <= rest:
+            gedekt |= naam
+    return gedekt == rest
+
+
+_RE_COLLAB_VOOR = re.compile(r"^\s*x\s+[^-\u2013]{2,40}?\s+[-\u2013]\s+", re.I)
+_RE_COLLAB_NA = re.compile(r"\s*\([^()]*\bcollab\b[^()]*\)\s*$", re.I)
+
+
+def _schone_naam(naam):
+    """'x Pühaste - Blackwood' en 'Blackwood (Pühaste collab)' -> 'Blackwood'."""
+    schoon = _RE_COLLAB_NA.sub("", _RE_COLLAB_VOOR.sub("", naam or "")).strip()
+    return schoon if len(schoon) >= 2 else naam
+
+
+def _schone_brouwerij(brouwerij):
+    """'One Drop Brewing Co collab/ Vault City Brewing' -> 'One Drop Brewing Co'."""
+    return re.split(r"\s+collab\s*/", brouwerij or "", flags=re.I)[0].strip()
+
+
+def unificeer_namen(all_beers, sites=()):
+    """Geeft hetzelfde bier bij alle shops dezelfde naam en brouwerij. Daardoor
+    werken de prijsvergelijking en het tabblad 'Alles' ook als de shops het
+    bier verschillend schrijven. De gekozen naam: bij voorkeur die van een
+    Untappd-menu (exact de Untappd-naam), anders de schrijfwijze die het
+    vaakst voorkomt, zonder brouwerijnaam of stijlwoord ervoor/erachter."""
+    import untappd_profiel as up
+    untappd_shops = {s["key"] for s in sites if s.get("type") in _UNTAPPD_TYPES}
+    per_key = {}
+    eigen_woorden = {}
+    brouwerijen, brouwerswoorden = set(), set()
+    for shop, beers in all_beers.items():
+        for b in beers:
+            k = utils.beer_match_key(b.get("brouwerij"), b.get("naam"))
+            if k:
+                per_key.setdefault(k, []).append((shop, b))
+            if b.get("brouwerij"):
+                for deel in re.split(r"\s+collab\s*/|/", b["brouwerij"], flags=re.I):
+                    woorden = frozenset(w for w in utils.beer_match_key(None, deel).split()
+                                        if w not in ("x", "and", "the", "of"))
+                    if woorden and len("".join(woorden)) >= 3:
+                        brouwerijen.add(woorden)
+                        brouwerswoorden |= woorden
+                        if k:
+                            eigen_woorden.setdefault(k, set()).update(woorden)
+    keys = list(per_key)
+    index = up._woord_index({k: k for k in keys})
+    ouder = {k: k for k in keys}
+
+    def wortel(k):
+        while ouder[k] != k:
+            ouder[k] = ouder[ouder[k]]
+            k = ouder[k]
+        return k
+
+    for k in keys:
+        ws = up._woorden(k)
+        if len(ws) < 3:
+            continue
+        zeldzaam = sorted((w for w in ws if index.get(w)), key=lambda w: len(index[w]))[:3]
+        for w in zeldzaam:
+            for _, kk in index[w]:
+                if kk != k and wortel(kk) != wortel(k) and _zelfde_bier_strikt(k, kk, brouwerijen, frozenset(eigen_woorden.get(k, set()) | eigen_woorden.get(kk, set()))):
+                    ouder[wortel(kk)] = wortel(k)
+    groepen = {}
+    for k in keys:
+        groepen.setdefault(wortel(k), []).append(k)
+
+    n_groepen = n_hernoemd = 0
+    for leden in groepen.values():
+        if len(leden) < 2:
+            continue
+        # alle varianten moeten ONDERLING gelijk zijn (geen ketting A~B~C met A!=C)
+        if any(not _zelfde_bier_strikt(a, b, brouwerijen, frozenset(eigen_woorden.get(a, set()) | eigen_woorden.get(b, set())))
+               for i, a in enumerate(leden) for b in leden[i + 1:]):
+            continue
+        kandidaten = {}
+        for k in leden:
+            for shop, b in per_key[k]:
+                naam = (b.get("naam") or "").strip()
+                c = kandidaten.setdefault((b.get("brouwerij") or "", naam), {"punten": 0.0})
+                c["punten"] += 1 + (3 if shop in untappd_shops else 0)
+                eerste = utils.beer_match_key(None, naam).split()[:1]
+                if eerste and eerste[0] in brouwerswoorden:
+                    c["punten"] -= 1.5                  # brouwerijnaam vooraan in de biernaam
+                laatste = utils.beer_match_key(None, naam).split()[-1:]
+                if laatste and laatste[0] in _STIJLWOORDEN:
+                    c["punten"] -= 1.5                  # aangeplakt stijlwoord
+                if not b.get("brouwerij"):
+                    c["punten"] -= 2
+                if _schone_naam(naam) != naam or _schone_brouwerij(b.get("brouwerij")) != (b.get("brouwerij") or ""):
+                    c["punten"] -= 0.5                  # collab-versiering (wordt weggehaald)
+        (brouwerij, naam), _ = max(kandidaten.items(), key=lambda x: (x[1]["punten"], -len(x[0][1])))
+        naam, brouwerij = _schone_naam(naam), _schone_brouwerij(brouwerij)
+        n_groepen += 1
+        for k in leden:
+            for _, b in per_key[k]:
+                if (b.get("naam"), b.get("brouwerij") or "") != (naam, brouwerij):
+                    b.setdefault("naam_shop", b.get("naam"))
+                    b["naam"], b["brouwerij"] = naam, brouwerij or b.get("brouwerij")
+                    n_hernoemd += 1
+    return n_groepen, n_hernoemd
 
 
 def leen_prijzen(all_beers, doel_keys, voorkeur=None):

@@ -250,7 +250,7 @@ function pasFiltersToe(){
     var zichtbaar = 0;
     panel.querySelectorAll('.card').forEach(function(c){
       var ok = true;
-      if(q && c.textContent.toLowerCase().indexOf(q) < 0) ok = false;
+      if(q && (c.textContent + " " + (c.dataset.shopnaam || "")).toLowerCase().indexOf(q) < 0) ok = false;
       if(ok && minU){
         var u = parseFloat(c.dataset.untappd);
         if(isNaN(u) || u < minU) ok = false;
@@ -285,12 +285,12 @@ function sorteerPanel(panel){
   function getal(c, veld){ var v = parseFloat(c.dataset[veld]); return isNaN(v) ? null : v; }
   kaarten.sort(function(a, b){
     if(wijze){
-      var veld = wijze === "untappd-af" ? "untappd" : (wijze.indexOf("ppl") === 0 ? "ppl" : "prijs");
+      var veld = wijze.indexOf("untappd") === 0 ? "untappd" : (wijze.indexOf("ppl") === 0 ? "ppl" : "prijs");
       var x = getal(a, veld), y = getal(b, veld);
       if(x === null && y !== null) return 1;      // onbekend altijd onderaan
       if(y === null && x !== null) return -1;
       if(x !== null && y !== null && x !== y){
-        return (wijze === "prijs-op" || wijze === "ppl-op") ? x - y : y - x;
+        return /-op$/.test(wijze) ? x - y : y - x;
       }
     }
     return a.dataset.orig - b.dataset.orig;        // gelijk of standaard: op score
@@ -590,6 +590,7 @@ def build_html(all_beers, sites, output_path, excel_name="bieroverzicht.xlsx"):
         <option value="prijs-op">prijs laag &rarr; hoog</option>
         <option value="prijs-af">prijs hoog &rarr; laag</option>
         <option value="untappd-af">Untappd hoog &rarr; laag</option>
+        <option value="untappd-op">Untappd laag &rarr; hoog</option>
         <option value="ppl-op">prijs per liter laag &rarr; hoog</option>
         <option value="ppl-af">prijs per liter hoog &rarr; laag</option>
       </select>
@@ -734,7 +735,7 @@ def _card(beer, site, sites, price_lookup):
   data-voorraad="{'1' if beer.get('voorraad') else '0'}"
   data-voorraad-r="{'1' if beer.get('voorraad_r') else '0'}"
   data-voorraad-hr="{'1' if beer.get('voorraad_hr') else '0'}"
-  data-score="{beer.get('score', 0)}" data-shop="{e(site['label'])}"
+  data-score="{beer.get('score', 0)}" data-shop="{e(site['label'])}" data-shopnaam="{e(beer.get('naam_shop') or '')}"
   data-geleend="{'1' if beer.get('prijs_geleend') else '0'}" data-ppl="{ppl if ppl is not None else ''}"
   data-nieuw="{'1' if beer.get('nieuw') else '0'}" data-daling="{'1' if beer.get('prijs_was') else '0'}">
   <div class="top"><div><div class="name">{e(beer.get('naam'))}</div>
