@@ -292,9 +292,9 @@
     "is_purchasable": true,
     "is_in_stock": true,
     "is_on_backorder": false,
-    "low_stock_remaining": null,
+    "low_stock_remaining": 2,
     "stock_availability": {
-      "text": "3 op voorraad",
+      "text": "2 op voorraad",
       "class": "in-stock"
     },
     "sold_individually": false,
@@ -312,7 +312,7 @@
       "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=9415",
       "single_text": "Toevoegen aan winkelwagen",
       "minimum": 1,
-      "maximum": 3,
+      "maximum": 2,
       "multiple_of": 1
     },
     "is_password_protected": false,
@@ -441,7 +441,7 @@
     "is_on_backorder": false,
     "low_stock_remaining": null,
     "stock_availability": {
-      "text": "5 op voorraad",
+      "text": "3 op voorraad",
       "class": "in-stock"
     },
     "sold_individually": false,
@@ -459,7 +459,7 @@
       "url": "/wp-json/wc/store/v1/products?per_page=100&#038;page=1&#038;add-to-cart=9604",
       "single_text": "Toevoegen aan winkelwagen",
       "minimum": 1,
-      "maximum": 5,
+      "maximum": 3,
       "multiple_of": 1
     },
     "is_password_protected": false,
